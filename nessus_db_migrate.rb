@@ -24,43 +24,29 @@ class NessusCreateTables < ActiveRecord::Migration
 			t.column :comments, :string
 		end
 		
-		create_table :serverpreferences do |t|
+		create_table :server_preferences do |t|
 		  t.column :policy_id, :integer
 		  t.column :name, :string
 		  t.column :value, :string
 		end		
-		
-		create_table :pluginpreferences do |t|
-		  t.column :policy_id, :integer
-		  t.column :plugin_name, :string
-		  t.column :plugin_id, :string
-		  t.column :fullname, :string
-		  t.column :preference_name, :string
-		  t.column :preference_type, :string		  		  
-		  t.column :preference_values, :string
-		  t.column :selected_values, :string		  		  		  		  
-		end
 
+		create_table :families do |t|
+		  t.column :plugin_id, :integer
+		  t.column :family_name, :string
+		end		
+		
 		create_table :familyselections do |t|
 		  t.column :policy_id, :string
-		  t.column :family_name, :string
+		  t.column :family_id, :integer
 		  t.column :status, :string
 		end	
-		
-		create_table :individualpluginselections do |t|
-		  t.column :policy_id, :string
-		  t.column :plugin_id, :integer
-		  t.column :plugin_name, :string
-		  t.column :family, :string
-		  t.column :status, :string
-		end
 		
 		create_table :reports do |t|
 		  t.column :policy_id, :integer
 		  t.column :name, :string
 		end
 		
-		create_table :reporthosts do |t|
+		create_table :hosts do |t|
 		  t.column :report_id, :integer
 		  t.column :name, :string
 		  t.column :os, :string
@@ -69,20 +55,19 @@ class NessusCreateTables < ActiveRecord::Migration
 		  t.column :end, :datetime
 		end
 	
-		create_table :reportitems do |t|
-		  t.column :reporthost_id, :integer
+		create_table :items do |t|
+		  t.column :host_id, :integer
+		  t.column :plugin_id, :integer
 		  t.column :port, :integer
 		  t.column :svc_name, :string
 		  t.column :protocol, :string
 		  t.column :severity, :integer
-		  t.column :plugin_id, :integer
-		  t.column :checked, :boolean
+		  t.column :verified, :boolean
 		end	
 		
 		create_table :plugins do |t|
-		  t.column :plugin_id, :integer
 		  t.column :plugin_name, :string
-		  t.column :plugin_family, :string
+		  t.column :family_id, :string
 		  t.column :description, :string
 		  t.column :plugin_version, :string
 		  t.column :plugin_output, :string
@@ -96,26 +81,27 @@ class NessusCreateTables < ActiveRecord::Migration
 		  t.column :synopsis, :string
 	  end
 	  
-	  create_table :plugincves do |t|
+	  create_table :preferences do |t|
+		  t.column :plugin_id, :string
+		  t.column :fullname, :string
+		  t.column :preference_name, :string
+		  t.column :preference_type, :string		  		  
+		  t.column :preference_values, :string
+		  t.column :selected_values, :string		  		  		  		  
+		end
+
+		create_table :individualpluginselections do |t|
+		  t.column :policy_id, :string
+		  t.column :plugin_id, :integer
+		  t.column :family, :string
+		  t.column :status, :string
+		end
+	  
+	  create_table :references do |t|
 	    t.column :plugin_id, :integer
-		  t.column :cve, :string
+		  t.column :type, :string
+		  t.column :value, :string
     end
-    
-    create_table :pluginbids do |t|
-		  t.column :plugin_id, :integer      
-		  t.column :bid, :string
-    end
-    
-    create_table :pluginxrefs do |t|
-		  t.column :plugin_id, :integer      
-		  t.column :xref, :string
-    end
-    
-    create_table :pluginseealsos do |t|
-		  t.column :plugin_id, :integer      
-		  t.column :see_also, :string
-    end    
-    
 	end
 	
 	def self.down
@@ -127,10 +113,6 @@ class NessusCreateTables < ActiveRecord::Migration
 	  drop_table :reports
 	  drop_table :reporthosts
 	  drop_table :reportitems
-	  drop_table :pluginseealsos
-	  drop_table :pluginxrefs
-	  drop_table :pluginbids
-	  drop_table :plugincves
 	  drop_table :plugins
   end
 end

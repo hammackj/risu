@@ -4,63 +4,58 @@ require 'yaml'
 require 'nessus_db'
 
 class Policy < ActiveRecord::Base
-  has_many :Serverpreferences
-  has_many :Pluginpreferences
-  has_many :Familyselections
-  has_many :Individualpluginselections
-  has_many :Reports
+  has_many :ServerPreferences
+  has_many :familyselections
+  has_many :individualpluginselections
+  has_many :reports
+  has_many :preferences
+  has_many :plugins
 end
 
-class Serverpreference < ActiveRecord::Base
+class ServerPreference < ActiveRecord::Base
   belongs_to :policy
 end
 
-class Pluginpreference < ActiveRecord::Base
-  belongs_to :policy
+class FamilySelection < ActiveRecord::Base
+  belongs_to :family
 end
 
-class Familyselection < ActiveRecord::Base
-  belongs_to :policy
+class Family < ActiveRecord::Base
+  has_many :plugins
+  has_many :familyselections
 end
 
-class Individualpluginselection < ActiveRecord::Base
+class IndividualPluginSelection < ActiveRecord::Base
   belongs_to :policy
+  belongs_to :plugin
 end
 
 class Report < ActiveRecord::Base
-  has_many :Reporthosts
+  has_many :hosts
+  belongs_to :policy
 end
 
-class Reporthost < ActiveRecord::Base
-  belongs_to :Report
-  has_many :Reportitems
+class Host < ActiveRecord::Base
+  belongs_to :report
+  has_many :items
 end
 
-class Reportitem < ActiveRecord::Base
-  belongs_to :Reporthosts
-  has_many :Plugins
+class Item < ActiveRecord::Base
+  belongs_to :hosts
+  has_many :plugins
 end
 
 class Plugin < ActiveRecord::Base
-  belongs_to :Reportitems
-  has_many :Plugincves
-  has_many :Pluginbids
-  has_many :Pluginseealsos
-  has_many :Pluginxrefs
+  belongs_to :items
+  belongs_to :family
+  has_many :references
+  has_many :ndividualpluginselection
+end
+
+class Preference < ActiveRecord::Base
+  belongs_to :plugin
 end
   
-class Plugincve < ActiveRecord::Base
-  belongs_to :plugins
-end
-
-class Pluginbid < ActiveRecord::Base
-  belongs_to :plugins
-end
-
-class Pluginxref < ActiveRecord::Base
-  belongs_to :plugins
-end
-
-class Pluginseealso < ActiveRecord::Base
-  belongs_to :plugins
+class Reference < ActiveRecord::Base
+  has_many :plugins
 end
