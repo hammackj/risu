@@ -1,3 +1,6 @@
-nessusdb
+▙ ▌            ▛▀▖▛▀▖
+▌▌▌▞▀▖▞▀▘▞▀▘▌ ▌▌ ▌▙▄▘
+▌▝▌▛▀ ▝▀▖▝▀▖▌ ▌▌ ▌▌ ▌
+▘ ▘▝▀▘▀▀ ▀▀ ▝▀▘▀▀ ▀▀ 
 
-Nessusdb is a .nessus v2 xml parser, which outputs into a active record style database for easy report generation. 
+NessusDB is Nessus XMLv2 (*.nessus) parser, which pushes reports into an ActiveRecord database, easing report generation. It is currently under heavy development.
