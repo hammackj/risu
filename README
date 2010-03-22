@@ -3,4 +3,9 @@
 ▌▝▌▛▀ ▝▀▖▝▀▖▌ ▌▌ ▌▌ ▌
 ▘ ▘▝▀▘▀▀ ▀▀ ▝▀▘▀▀ ▀▀ 
 
-NessusDB is Nessus XMLv2 (*.nessus) parser, which pushes reports into an ActiveRecord database, easing report generation. It is currently under heavy development.
+NessusDB is Nessus XMLv2 (*.nessus) parser, which pushes reports into an ActiveRecord database, easing report generation. 
+
+
+It is currently under heavy development. When a working copy is ready it will be tagged 1.0.0 and noted in this document.
+
+
