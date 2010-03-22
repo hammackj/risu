@@ -5,7 +5,7 @@ require 'nessus_db'
 
 class Policy < ActiveRecord::Base
   has_many :ServerPreferences
-  has_many :familyselections
+  has_many :FamilySelections
   has_many :individualpluginselections
   has_many :reports
   has_many :preferences
@@ -17,17 +17,13 @@ class ServerPreference < ActiveRecord::Base
 end
 
 class FamilySelection < ActiveRecord::Base
-  belongs_to :family
-end
-
-class Family < ActiveRecord::Base
+  belongs_to :policy
   has_many :plugins
-  has_many :familyselections
 end
 
 class IndividualPluginSelection < ActiveRecord::Base
   belongs_to :policy
-  belongs_to :plugin
+  belongs_to :plugins
 end
 
 class Report < ActiveRecord::Base

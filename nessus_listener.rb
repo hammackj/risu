@@ -25,15 +25,15 @@ class NessusSaxListener
         #@item = @policy.Pluginpreferences.create
         #@item.save
       when "FamilyItem"
-        #@fi = @policy.Familyselections.create
-        #@fi.save
+        @family = @policy.FamilySelections.create
+        @family.save
       when "PluginItem"
         #@plugin = @policy.Individualpluginselections.create
         #@plugin.save
       when "Report"
-        #@report = @policy.Reports.create
-        #@report.name = attributes["name"]
-        #@report.save
+        @report = @policy.Reports.create
+        @report.name = attributes["name"]
+        @report.save
       when "ReportHost"
         #@rh = @report.Reporthosts.create
         #@rh.name = attributes["name"]
@@ -64,18 +64,6 @@ class NessusSaxListener
         #@plugin.plugin_family = attributes["pluginFamily"]
         #@plugin.save
         #@ri.save
-      when "see_also"
-        #@sa = @plugin.Pluginseealsos.create
-        #@sa.save
-      when "cve"
-        #@cve = @plugin.Plugincves.create
-        #@cve.save
-      when "bid"
-        #@bid = @plugin.Pluginbids.create
-        #@bid.save
-      when "xref"
-        #@xref = @plugin.Pluginxrefs.create
-        #@xref.save
     end
   end
   
@@ -93,13 +81,20 @@ class NessusSaxListener
     @tag = nil
     case element
       when "policyName"     
-        @policy.attributes = { :name => @vals["policyName"] } 
+        @policy.attributes = { 
+          :name => @vals["policyName"] 
+        } 
         @policy.save
       when "policyComments"
-        @policy.attributes = { :comments => @vals["policyComments"] }
+        @policy.attributes = { 
+          :comments => @vals["policyComments"] 
+        }
         @policy.save
       when "preference"
-        @sp.attributes = { :name => @vals["name"], :value => @vals["value"]}
+        @sp.attributes = { 
+          :name => @vals["name"], 
+          :value => @vals["value"]
+        }
         @sp.save
       when "item"
         #@item.attributes = {
@@ -113,11 +108,11 @@ class NessusSaxListener
         #}
         #@item.save
       when "FamilyItem"
-        #@fi.attributes = {
-        #  :family_name => @vals["FamilyName"],
-        #  :status => @vals["Status"], 
-        #}
-        #@fi.save
+        @family.attributes = {
+          :family_name => @vals["FamilyName"],
+          :status => @vals["Status"]
+        }
+        @family.save
       when "PluginItem"
         #@plugin.attributes = {
         #  :plugin_id => @vals["PluginId"],
@@ -161,18 +156,6 @@ class NessusSaxListener
       when "vuln_publication_date"
         #@plugin.attributes = { :vuln_publication_date => @vals["vuln_publication_date"]} 
         #@plugin.save
-      when "see_also"
-        #@sa.attributes = { :see_also => @vals["see_also"] }
-        #@sa.save
-      when "cve"
-        #@cve.attributes = { :cve => @vals["cve"] }
-        #@cve.save
-      when "bid"
-        #@bid.attributes = { :bid => @vals["bid"] }
-        #@bid.save
-      when "xref"
-        #@xref.attributes = { :xref => @vals["xref"] }
-        #@xref.save
       when "plugin_output"
         #@plugin.attributes = { :plugin_output => @vals["plugin_output"]}
         #@plugin.save

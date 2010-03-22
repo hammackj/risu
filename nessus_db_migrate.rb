@@ -11,13 +11,9 @@ require 'rubygems'
 require 'active_record'  
 require 'yaml'
 require 'nessus_db'
-require 'sqlite3'
+
 
 class NessusCreateTables < ActiveRecord::Migration
-  def self.new
-    db = SQLite3::Database.new( "db/development.sqlite3" )
-  end
-  
 	def self.up
 		create_table :policies do |t|
 			t.column :name, :string
@@ -30,17 +26,12 @@ class NessusCreateTables < ActiveRecord::Migration
 		  t.column :value, :string
 		end		
 
-		create_table :families do |t|
-		  t.column :plugin_id, :integer
+		create_table :family_selections do |t|
+		  t.column :policy_id, :integer
 		  t.column :family_name, :string
-		end		
-		
-		create_table :familyselections do |t|
-		  t.column :policy_id, :string
-		  t.column :family_id, :integer
 		  t.column :status, :string
-		end	
-		
+		end		
+				
 		create_table :reports do |t|
 		  t.column :policy_id, :integer
 		  t.column :name, :string
@@ -114,6 +105,7 @@ class NessusCreateTables < ActiveRecord::Migration
 	  drop_table :reporthosts
 	  drop_table :reportitems
 	  drop_table :plugins
+	  drop_table :references
   end
 end
 #NessusCreateTables.new
