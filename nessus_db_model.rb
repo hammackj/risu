@@ -6,34 +6,35 @@ require 'nessus_db'
 class Policy < ActiveRecord::Base
   has_many :ServerPreferences
   has_many :FamilySelections
-  has_many :individualpluginselections
-  has_many :reports
-  has_many :preferences
-  has_many :plugins
+  has_many :IndividualPluginSelections
+  has_many :Reports
+  has_many :PluginsPreferences
 end
 
 class ServerPreference < ActiveRecord::Base
-  belongs_to :policy
+  belongs_to :policies
 end
 
 class FamilySelection < ActiveRecord::Base
-  belongs_to :policy
-  has_many :plugins
+  belongs_to :policies
 end
 
 class IndividualPluginSelection < ActiveRecord::Base
-  belongs_to :policy
-  belongs_to :plugins
+  belongs_to :policies
+end
+
+class PluginsPreference < ActiveRecord::Base
+  belongs_to :policies
 end
 
 class Report < ActiveRecord::Base
-  has_many :hosts
-  belongs_to :policy
+  has_many :Hosts
+  belongs_to :policies
 end
 
 class Host < ActiveRecord::Base
-  belongs_to :report
-  has_many :items
+  belongs_to :Reports
+  has_many :Items
 end
 
 class Item < ActiveRecord::Base
@@ -44,14 +45,10 @@ end
 class Plugin < ActiveRecord::Base
   belongs_to :items
   belongs_to :family
-  has_many :references
-  has_many :ndividualpluginselection
+  has_many :References
+  has_many :IndividualPluginSelections
 end
 
-class Preference < ActiveRecord::Base
-  belongs_to :plugin
-end
-  
 class Reference < ActiveRecord::Base
   has_many :plugins
 end

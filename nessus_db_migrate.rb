@@ -25,6 +25,17 @@ class NessusCreateTables < ActiveRecord::Migration
 		  t.column :name, :string
 		  t.column :value, :string
 		end		
+		
+		create_table :plugins_preferences do |t|
+		  t.column :policy_id, :integer
+		  t.column :plugin_id, :integer
+		  t.column :plugin_name, :string
+		  t.column :fullname, :string
+		  t.column :preference_name, :string
+		  t.column :preference_type, :string		  		  
+		  t.column :preference_values, :string
+		  t.column :selected_values, :string		  		  		  		  
+		end
 
 		create_table :family_selections do |t|
 		  t.column :policy_id, :integer
@@ -58,7 +69,7 @@ class NessusCreateTables < ActiveRecord::Migration
 		
 		create_table :plugins do |t|
 		  t.column :plugin_name, :string
-		  t.column :family_id, :string
+		  t.column :family_name, :string
 		  t.column :description, :string
 		  t.column :plugin_version, :string
 		  t.column :plugin_output, :string
@@ -72,18 +83,10 @@ class NessusCreateTables < ActiveRecord::Migration
 		  t.column :synopsis, :string
 	  end
 	  
-	  create_table :preferences do |t|
-		  t.column :plugin_id, :string
-		  t.column :fullname, :string
-		  t.column :preference_name, :string
-		  t.column :preference_type, :string		  		  
-		  t.column :preference_values, :string
-		  t.column :selected_values, :string		  		  		  		  
-		end
-
-		create_table :individualpluginselections do |t|
+		create_table :individual_plugin_selections do |t|
 		  t.column :policy_id, :string
 		  t.column :plugin_id, :integer
+		  t.column :plugin_name, :string		  
 		  t.column :family, :string
 		  t.column :status, :string
 		end
