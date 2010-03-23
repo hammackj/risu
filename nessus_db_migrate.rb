@@ -4,16 +4,18 @@
 #Hammackj LLC.
 #A active record migration script for creating tables for parsing the data from .nessus v2 files
 
-#To use this file type:
-#./nessus_db_migrate.rb
+#To use this file type for usage
+#./nessus_migrator.rb
 
 require 'rubygems'  
 require 'active_record'  
 require 'yaml'
+require 'optparse' 
 require 'nessus_db'
 
+$stdout.sync = true
 
-class NessusCreateTables < ActiveRecord::Migration
+class NessusMigrator < ActiveRecord::Migration
 	def self.up
 		create_table :policies do |t|
 			t.column :name, :string
@@ -99,17 +101,54 @@ class NessusCreateTables < ActiveRecord::Migration
 	
 	def self.down
 	  drop_table :policies
-	  drop_table :serverpreferences
-	  drop_table :pluginpreferences
-	  drop_table :familyselections
+	  drop_table :server_preferences
+	  drop_table :plugins_preferences
+	  drop_table :family_selections
 	  drop_table :individual_plugin_selections
 	  drop_table :reports
-	  drop_table :reporthosts
-	  drop_table :reportitems
+	  drop_table :hosts
+	  drop_table :items
 	  drop_table :plugins
 	  drop_table :references
   end
+  
+  def parse_commandline
+    @opt = OptionParser.new { |opt|
+      opt.banner =  "NessusDB Database Migrator v1.0\nJacob Hammack\nhttp://www.hammackj.com\n\n"
+      opt.banner << "[*] Usage: #{$0} [mode] <options> [targets]"
+      opt.separator('')
+      opt.separator('Modes:')
+    
+      opt.on('-c', '--create-tables', 'Create the tables required by NessusDB') { 
+        NessusMigrator.migrate(:up)
+        puts "[*] Tables Created"
+        exit
+      }
+
+      opt.on('-d', '--delete-tables', 'Delete the tables required by NessusDB') { 
+        NessusMigrator.migrate(:down)
+        puts "[*] Tables Removed the database will still remain"
+        exit
+      }
+            
+      opt.on_tail("-h", "--help", "Show this message") { |help|
+        puts opt.to_s + "\n"
+        exit
+      }
+    }
+      
+      if ARGV.length != 0 
+        @opt.parse!
+      else
+        puts @opt.to_s + "\n"
+        exit
+      end    
+  end
+  
+  def main
+    self.parse_commandline
+  end
 end
-#NessusCreateTables.new
-#NessusCreateTables.migrate(:down)
-NessusCreateTables.migrate(:up)
+
+nessus = NessusMigrator.new
+nessus.main 
