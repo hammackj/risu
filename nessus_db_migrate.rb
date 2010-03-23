@@ -60,6 +60,7 @@ class NessusCreateTables < ActiveRecord::Migration
 		create_table :items do |t|
 		  t.column :host_id, :integer
 		  t.column :plugin_id, :integer
+		  t.column :plugin_output, :text
 		  t.column :port, :integer
 		  t.column :svc_name, :string
 		  t.column :protocol, :string
@@ -71,8 +72,6 @@ class NessusCreateTables < ActiveRecord::Migration
 		  t.column :plugin_name, :string
 		  t.column :family_name, :string
 		  t.column :description, :string
-		  t.column :plugin_version, :string
-		  t.column :plugin_output, :string
 		  t.column :plugin_version, :string
 		  t.column :plugin_publication_date, :datetime
 		  t.column :vuln_publication_date, :datetime
@@ -103,7 +102,7 @@ class NessusCreateTables < ActiveRecord::Migration
 	  drop_table :serverpreferences
 	  drop_table :pluginpreferences
 	  drop_table :familyselections
-	  drop_table :individualpluginselection
+	  drop_table :individual_plugin_selections
 	  drop_table :reports
 	  drop_table :reporthosts
 	  drop_table :reportitems
