@@ -61,15 +61,20 @@ class NessusSaxListener
           @vals["end"] = false
         end
       when "ReportItem"
+        @vals = Hash.new # have to clear this out or everything has the same references
         @ri = @rh.Items.create
-        @plugin = Plugin.find_or_create_by_id(attributes["pluginID"])
+        if attributes["pluginID"] == "0"
+          @plugin = Plugin.find_or_create_by_id(1)
+        else
+          @plugin = Plugin.find_or_create_by_id(attributes["pluginID"])
+        end
         
         @ri.port  = attributes["port"]
         @ri.svc_name = attributes["svc_name"]
         @ri.protocol = attributes["protocol"]
         @ri.severity = attributes["severity"]
         
-        @ri.plugin_id = attributes["pluginID"]        
+        @ri.plugin_id = @plugin.id       
         @plugin.plugin_name = attributes["pluginName"]
         @plugin.family_name = attributes["pluginFamily"]
         @plugin.save
@@ -107,8 +112,19 @@ class NessusSaxListener
           :name => @vals["name"], 
           :value => @vals["value"]
         }
-        
         @sp.save
+        
+        #This takes a really long time, there is about 34,000 pluginIDs in this
+        #field and it takes about 36 minutes to parse just this info =\
+        #lets prepopulate the plugins table with the known pluginid's
+        #if @vals["name"] == "plugin_set"
+        #  @all_plugins = @vals["value"].split(";")
+        #  
+        #  @all_plugins.each { |p|
+        #     @plug = Plugin.find_or_create_by_id(p)
+        #     @plug.save
+        #  }
+        #end
       when "item"
         @item.attributes = {
           :plugin_name => @vals["pluginName"], 
@@ -149,7 +165,34 @@ class NessusSaxListener
 	      end
 	      
 	      @rh.save
+	    #We cannot handle the references in the same block as the rest of the ReportItem tag because 
+	    #there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax 
+	    #parser. To solve this we do the references before the final plugin data
+	    when "cve"
+        @cve = @plugin.References.create        
+        @cve.type = "cve"
+        @cve.value = @vals["cve"]
+        @cve.save
+      when "bid"
+        @bid = @plugin.References.create        
+        @bid.type = "bid"
+        @bid.value = @vals["bid"]
+        @bid.save
+      when "see_also"
+        @see_also = @plugin.References.create        
+        @see_also.type = "see_also"
+        @see_also.value = @vals["see_also"]
+        @see_also.save
+      when "xref"
+        @xref = @plugin.References.create        
+        @xref.type = "xref"
+        @xref.value = @vals["xref"]
+        @xref.save        
       when "ReportItem"
+        
+        @ri.plugin_output = @vals["plugin_output"]
+        @ri.save
+        
         @plugin.attributes = { 
           :solution => @vals["solution"],
           :risk_factor => @vals["risk_factor"],
@@ -159,25 +202,9 @@ class NessusSaxListener
           :cvss_vector => @vals["cvss_vector"],
           :cvss_base_score => @vals["cvss_base_score"],
           :vuln_publication_date => @vals["vuln_publication_date"],
-          :plugin_output => @vals["plugin_output"],
           :plugin_version => @vals["plugin_version"]
         }
         @plugin.save
-        
-        if @vals["cve"] != nil
-          @cve = @plugin.References.create        
-        
-          @cve.attributes = { 
-            :type => "cve",
-            :value => @vals["cve"]
-          }
-          
-          @cve.save
-        end
-        
-        
-  
-  
     end  
   end
 end
