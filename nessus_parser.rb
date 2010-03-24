@@ -14,12 +14,13 @@ require 'nessus_listener'
 #each will be parsed into the database as seperate policy/reports
 begin
   ARGV.each { |arg| 
+    puts "NessusDB Parser v1.0\nJacob Hammack\nhttp://hammackj.com\n\n"
   	puts "[*] Parsing #{arg}..."
   	tstart = Time.new
   	parser = LibXML::XML::SaxParser.file arg
   	parser.callbacks = NessusSaxListener.new
   	parser.parse
-  	printf "[*] Finished parsing %s. Parse took %.02fs\n", arg, Time.now - tstart
+  	printf "[*] Finished parsing %s. Parse took %.02f seconds\n", arg, Time.now - tstart
   }
 rescue Interrupt => i
 	puts "[!] Parse cancelled!"
