@@ -1,6 +1,5 @@
 require 'libxml'
 require 'nessus_db_model'
-#require 'thread'
 
 class NessusSaxListener
 	include LibXML::XML::SaxParser::Callbacks
@@ -10,7 +9,6 @@ class NessusSaxListener
 	end
 	
 	def on_start_element(element, attributes)
-	  #@vals = Hash.new
 	  @tag = element
 	  @vals[@tag] = ""
 
