@@ -25,15 +25,15 @@ class NessusMigrator < ActiveRecord::Migration
 	#
   def self.up
     create_table :policies do |t|
-		  t.column :name, :string
-			t.column :comments, :string
-		end
+      t.column :name, :string
+      t.column :comments, :string
+    end
 		
-		create_table :server_preferences do |t|
+    create_table :server_preferences do |t|
       t.column :policy_id, :integer
       t.column :name, :string
       t.column :value, :string
-		end		
+    end		
 		
 		create_table :plugins_preferences do |t|
 		  t.column :policy_id, :integer
