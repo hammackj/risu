@@ -1,18 +1,28 @@
 require 'libxml'
 require 'nessus_db_model'
 
+# NessusSaxListener
+#
+# 
+# @author Jacob Hammack
 class NessusSaxListener
   include LibXML::XML::SaxParser::Callbacks
-
+  
+  # 
+  #
   def initialize
     @vals = Hash.new
   end
 	
+	# Callback for when the start of a xml element is reached
+	#
+	# @param element 
+	# @param attributes 
   def on_start_element(element, attributes)
     @tag = element
     @vals[@tag] = ""
 
-	  case element
+    case element
       when "Policy"
         @policy = Policy.create
         @policy.save
@@ -80,6 +90,8 @@ class NessusSaxListener
   end
   
   # Called when the inner text of a element is reached
+  #
+  # @param text
   def on_characters(text)
     if @vals[@tag] == nil then
       @vals[@tag] = text
@@ -89,6 +101,8 @@ class NessusSaxListener
   end
   
   # Called when the end of the xml element is reached
+  #
+  # @param element
   def on_end_element(element)
     @tag = nil
     case element
