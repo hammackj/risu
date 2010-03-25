@@ -5,7 +5,7 @@
 
 #A active record migration script for creating tables for parsing the data from .nessus v2 files
 
-#To use this file type for usage
+#To use this file, type for usage
 #./nessus_migrator.rb
 
 require 'rubygems'  
