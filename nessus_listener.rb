@@ -2,15 +2,15 @@ require 'libxml'
 require 'nessus_db_model'
 
 class NessusSaxListener
-	include LibXML::XML::SaxParser::Callbacks
+  include LibXML::XML::SaxParser::Callbacks
 
-	def initialize
-		@vals = Hash.new
-	end
+  def initialize
+    @vals = Hash.new
+  end
 	
-	def on_start_element(element, attributes)
-	  @tag = element
-	  @vals[@tag] = ""
+  def on_start_element(element, attributes)
+    @tag = element
+    @vals[@tag] = ""
 
 	  case element
       when "Policy"
@@ -37,27 +37,26 @@ class NessusSaxListener
         @rh.name = attributes["name"]
         @rh.save
       when "tag"
+        @attr = ""
         if attributes["name"] == "HOST_END"
-          @vals["end"] = true
-          @vals["mac"] = false
-          @vals["start"] = false
-          @vals["os"] = false
+          @attr = "HOST_END"
         elsif attributes["name"] == "mac-address"
-          @vals["mac"] = true
-          @vals["end"] = false
-          @vals["start"] = false
-          @vals["os"] = false
+          @attr = "mac-address"
         elsif attributes["name"] == "HOST_START"
-          @vals["start"] = true
-          @vals["mac"] = false
-          @vals["end"] = false
-          @vals["os"] = false
+          @attr = "HOST_START"
         elsif attributes["name"] == "operating-system"
-          @vals["os"] = true
-          @vals["mac"] = false
-          @vals["start"] = false
-          @vals["end"] = false
-        end
+          @attr = "operating-system"
+        elsif attributes["name"] == "host-ip"
+          @attr = "host-ip"
+        elsif attributes["name"] == "host-fqdn"
+          @attr = "host-fqdn"
+        elsif attributes["name"] == "netbios-name"
+          @attr = "netbios-name"
+        elsif attributes["name"] == "local-checks-proto"
+          @attr = "local-checks-proto"                   
+        elsif 
+          puts "New HostProperties attribute: #{attributes["name"]}, Please report this to jacob.hammack@hammackj.com\n"
+        end   
       when "ReportItem"
         @vals = Hash.new # have to clear this out or everything has the same references
         @ri = @rh.Items.create
@@ -152,14 +151,22 @@ class NessusSaxListener
 		    
 		    @plugin_selection.save
 	    when "tag"	      
-	      if @vals["end"] == true
+	      if @attr == "HOST_END"
 	        @rh.attributes = { :end => @vals["tag"] } 
-	      elsif @vals["start"] == true
-	        @rh.attributes = { :start => @vals["tag"] }	        
-	      elsif @vals["os"] == true
-	        @rh.attributes = { :os => @vals["tag"].gsub("\n", ",") }	        
-        elsif @vals["mac"] == true
-	        @rh.attributes = { :mac => @vals["tag"] } 
+	      elsif @attr == "mac-address"
+	        @rh.attributes = { :mac => @vals["tag"] }	        
+	      elsif @attr == "HOST_START"
+	        @rh.attributes = { :start => @vals["tag"].gsub("\n", ",") }	        
+        elsif @attr == "operating-system"
+	        @rh.attributes = { :os => @vals["tag"] } 
+        elsif @attr == "host-ip"
+	        @rh.attributes = { :ip => @vals["tag"] }	        
+        elsif @attr == "host-fqdn"
+	        @rh.attributes = { :fqdn => @vals["tag"] }
+        elsif @attr == "netbios-name"
+	        @rh.attributes = { :netbios => @vals["tag"] }	 
+	      elsif @attr == "local-checks-proto"
+  	      @rh.attributes = { :local_checks_proto => @vals["tag"] }       	        
 	      end
 	      
 	      @rh.save
