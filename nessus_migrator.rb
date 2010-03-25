@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby 
 
 #Jacob Hammack
-#Hammackj LLC.
+#http://hammackj.com
+
 #A active record migration script for creating tables for parsing the data from .nessus v2 files
 
 #To use this file type for usage
@@ -14,7 +15,14 @@ require 'optparse'
 
 $stdout.sync = true
 
+# NessusMigrator 
+#
+# @version 1.0
+# @author Jacob Hammack
 class NessusMigrator < ActiveRecord::Migration
+
+	# Creates all of the database tables required by the parser
+	#
 	def self.up
 		create_table :policies do |t|
 			t.column :name, :string
@@ -56,6 +64,10 @@ class NessusMigrator < ActiveRecord::Migration
 		  t.column :mac, :string
 		  t.column :start, :datetime
 		  t.column :end, :datetime
+		  t.column :ip, :string
+		  t.column :fqdn, :string
+		  t.column :netbios, :string
+		  t.column :local_checks_proto, :string
 		end
 	
 		create_table :items do |t|
@@ -98,6 +110,8 @@ class NessusMigrator < ActiveRecord::Migration
     end
 	end
 	
+	# Deletes all of the database tables created
+	#
 	def self.down
 	  drop_table :policies
 	  drop_table :server_preferences
@@ -111,6 +125,8 @@ class NessusMigrator < ActiveRecord::Migration
 	  drop_table :references
   end
   
+  # Checks to see if the database.yml file exists, if it doesn't exist the program exits.
+  #
   def check_for_database_yml
     if File.exists?("database.yml") == false
       puts "[!] You must have a database.yml file with database connection information to continue. Please see the -f option"
@@ -118,7 +134,9 @@ class NessusMigrator < ActiveRecord::Migration
     end
   end
   
-  def parse_commandline
+  # Parse's the command line options executes them and exits
+  #
+  def main
     @opt = OptionParser.new { |opt|
       opt.banner =  "NessusDB Database Migrator v1.0\nJacob Hammack\nhttp://www.hammackj.com\n\n"
       opt.banner << "[*] Usage: #{$0} [mode] <options> [targets]"
@@ -169,9 +187,6 @@ class NessusMigrator < ActiveRecord::Migration
     end    
   end
   
-  def main
-    self.parse_commandline
-  end
 end
 
 nessus = NessusMigrator.new
