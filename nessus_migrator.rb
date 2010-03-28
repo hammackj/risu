@@ -84,15 +84,15 @@ class NessusMigrator < ActiveRecord::Migration
 		create_table :plugins do |t|
 		  t.column :plugin_name, :string
 		  t.column :family_name, :string
-		  t.column :description, :string
+		  t.column :description, :text
 		  t.column :plugin_version, :string
 		  t.column :plugin_publication_date, :datetime
 		  t.column :vuln_publication_date, :datetime
       t.column :cvss_vector, :string
       t.column :cvss_base_score, :string
 		  t.column :risk_factor, :string
-		  t.column :solution, :string
-		  t.column :synopsis, :string
+		  t.column :solution, :text
+		  t.column :synopsis, :text
 	  end
 	  
 		create_table :individual_plugin_selections do |t|
@@ -105,7 +105,7 @@ class NessusMigrator < ActiveRecord::Migration
 	  
 	  create_table :references do |t|
 	    t.column :plugin_id, :integer
-		  t.column :type, :string
+		  t.column :reference_name, :string
 		  t.column :value, :string
     end
 	end
