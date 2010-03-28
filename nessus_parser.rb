@@ -17,6 +17,7 @@ require 'nessus_listener'
 
 puts "NessusDB Parser v1.0\nJacob Hammack\nhttp://hammackj.com\n\n"
 
+begin
 ARGV.each { |arg| 
   begin
     	puts "[*] Parsing #{arg}..."
@@ -35,3 +36,6 @@ ARGV.each { |arg|
     next
   end  
 }
+rescue Interrupt => i
+	puts "[!] Parse cancelled!"
+end
