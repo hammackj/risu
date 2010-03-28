@@ -189,22 +189,22 @@ class NessusSaxListener
 	    #parser. To solve this we do the references before the final plugin data
 	    when "cve"
         @cve = @plugin.References.create        
-        @cve.type = "cve"
+        @cve.reference_name = "cve"
         @cve.value = @vals["cve"]
         @cve.save
       when "bid"
         @bid = @plugin.References.create        
-        @bid.type = "bid"
+        @bid.reference_name = "bid"
         @bid.value = @vals["bid"]
         @bid.save
       when "see_also"
         @see_also = @plugin.References.create        
-        @see_also.type = "see_also"
+        @see_also.reference_name = "see_also"
         @see_also.value = @vals["see_also"]
         @see_also.save
       when "xref"
         @xref = @plugin.References.create        
-        @xref.type = "xref"
+        @xref.reference_name = "xref"
         @xref.value = @vals["xref"]
         @xref.save        
       when "ReportItem"
