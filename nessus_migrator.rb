@@ -69,7 +69,8 @@ class NessusMigrator < ActiveRecord::Migration
 		  t.column :netbios, :string
 		  t.column :local_checks_proto, :string
 		  t.column :smb_login_used, :string
-		  t.column :ssh_auth_meth, :string		  		    
+		  t.column :ssh_auth_meth, :string
+		  t.column :ssh_login_used, :string		  		    
 		end
 	
 		create_table :items do |t|

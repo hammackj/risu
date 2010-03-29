@@ -68,6 +68,8 @@ class NessusSaxListener
           @attr = "smb-login-used" 
         elsif   attributes["name"] == "ssh-auth-meth"
           @attr = "ssh-auth-meth"                               
+        elsif   attributes["name"] == "ssh-login-used"
+          @attr = "ssh-login-used"        
         elsif 
           puts "New HostProperties attribute: #{attributes["name"]}, Please report this to jacob.hammack@hammackj.com\n"
         end   
@@ -188,7 +190,9 @@ class NessusSaxListener
 	      elsif @attr == "smb-login-used"
   	      @rh.attributes = { :smb_login_used => @vals["tag"] }  	      
 	      elsif @attr == "ssh-auth-meth"
-  	      @rh.attributes = { :ssh_auth_meth => @vals["tag"] }  	         	        
+  	      @rh.attributes = { :ssh_auth_meth => @vals["tag"] }  	    
+	      elsif @attr == "ssh-login-used"
+  	      @rh.attributes = { :ssh_login_used => @vals["tag"] }  	    
 	      end
 	      
 	      @rh.save
