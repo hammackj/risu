@@ -63,7 +63,11 @@ class NessusSaxListener
         elsif attributes["name"] == "netbios-name"
           @attr = "netbios-name"
         elsif attributes["name"] == "local-checks-proto"
-          @attr = "local-checks-proto"                   
+          @attr = "local-checks-proto"
+        elsif   attributes["name"] == "smb-login-used"
+          @attr = "smb-login-used" 
+        elsif   attributes["name"] == "ssh-auth-meth"
+          @attr = "ssh-auth-meth"                               
         elsif 
           puts "New HostProperties attribute: #{attributes["name"]}, Please report this to jacob.hammack@hammackj.com\n"
         end   
@@ -180,7 +184,11 @@ class NessusSaxListener
         elsif @attr == "netbios-name"
 	        @rh.attributes = { :netbios => @vals["tag"] }	 
 	      elsif @attr == "local-checks-proto"
-  	      @rh.attributes = { :local_checks_proto => @vals["tag"] }       	        
+  	      @rh.attributes = { :local_checks_proto => @vals["tag"] }   
+	      elsif @attr == "smb-login-used"
+  	      @rh.attributes = { :smb_login_used => @vals["tag"] }  	      
+	      elsif @attr == "ssh-auth-meth"
+  	      @rh.attributes = { :ssh_auth_meth => @vals["tag"] }  	         	        
 	      end
 	      
 	      @rh.save
