@@ -20,7 +20,7 @@ These are all available through [RubyGems](http://rubygems.org/).
 Any database that ActiveRecord supports should work. Testing has been with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/). 
 
 
-Setting up the database
+Database Setup
 ---
 
 	% ./migrate.rb -f
@@ -32,13 +32,12 @@ Setting up the database
 3. Migrate the database schema.
 
 
-Parsing the .nessus files
+Parsing Nessus Output
 ---
 
 	% ./nessus_parser.rb report1.nessus [report2.nessus ...]
 
-1. Run the nessus_parser.rb script like this: ./nessus_parser.rb <file to be parsed>
-2. The amount of time it takes to parse out the xml
+1. Parse the files by passing their names on the command line.
 
 
 Viewing Data
