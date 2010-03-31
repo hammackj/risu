@@ -1,9 +1,5 @@
- _   _                       ____________ 
-| \ | |                      |  _  \ ___ \
-|  \| | ___ ___ ___ _   _ ___| | | | |_/ /
-| . ` |/ _ | __/ __| | | / __| | | | ___ \
-| |\  |  __|__ \__ \ |_| \__ \ |/ /| |_/ /
-\_| \_/\___|___/___/\__,_|___/___/ \____/
+NessusDB
+===
 
 
 NessusDB is Nessus XMLv2 (*.nessus) parser, which pushes reports into an ActiveRecord database, easing report generation. 
@@ -12,12 +8,13 @@ NessusDB is Nessus XMLv2 (*.nessus) parser, which pushes reports into an ActiveR
 It is currently under heavy development. When a working copy is ready it will be tagged 1.0.0 and noted in this document.
 
 Requirements
--------------------------
-ruby
-rubygems
-libxml
-active_record
-yaml
+---
+
+* ruby
+* rubygems
+* libxml
+* active_record
+* yaml
 
 These can all be installed with sudo gem install.
 
@@ -43,8 +40,8 @@ The data can be view with any sql viewer made for you sql engine. I am working o
 
 Contributors
 -------------------------
-Jacob Hammack
-Andrew Benson
+* Jacob Hammack
+* Andrew Benson
 
 
 Contact
