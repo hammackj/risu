@@ -1,7 +1,6 @@
 NessusDB
 ===
 
-
 NessusDB is [Nessus](http://www.nessus.org) XMLv2 parser, which pushes reports into an [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, easing report generation. 
 
 
@@ -22,7 +21,7 @@ Any database that ActiveRecord supports should work. Testing has been with [MySQ
 
 
 Setting up the database
--------------------------
+---
 
 	% ./migrate.rb -f
 	% $EDITOR database.yml
@@ -34,7 +33,7 @@ Setting up the database
 
 
 Parsing the .nessus files
--------------------------
+---
 
 	% ./nessus_parser.rb report1.nessus [report2.nessus ...]
 
@@ -42,12 +41,12 @@ Parsing the .nessus files
 2. The amount of time it takes to parse out the xml
 
 
-Viewing the Data
--------------------------
-The data can be view with any sql viewer made for you sql engine. I am working on a rails front end to the database but it is not available yet.
+Viewing Data
+---
+The data can be viewed with a query browser available for your database. A Rails front end will be available in the future.
 
 Contributors
--------------------------
+---
 * Jacob Hammack
 * Andrew Benson
 
