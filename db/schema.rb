@@ -1,25 +1,8 @@
-#!/usr/bin/env ruby 
-
-#Jacob Hammack
-#http://hammackj.com
-
-#A active record migration script for creating tables for parsing the data from .nessus v2 files
-
-#To use this file, type for usage
-#./nessus_migrator.rb
-
-require 'rubygems'  
-require 'active_record'  
-require 'yaml'
-require 'optparse' 
-
-$stdout.sync = true
-
-# NessusMigrator 
+# NessusDB Schema
 #
 # @version 1.0
 # @author Jacob Hammack
-class NessusMigrator < ActiveRecord::Migration
+class Schema < ActiveRecord::Migration
 
 	# Creates all of the database tables required by the parser
 	#
@@ -127,70 +110,5 @@ class NessusMigrator < ActiveRecord::Migration
 	  drop_table :plugins
 	  drop_table :references
   end
-  
-  # Checks to see if the database.yml file exists, if it doesn't exist the program exits.
-  #
-  def check_for_database_yml
-    if File.exists?("database.yml") == false
-      puts "[!] You must have a database.yml file with database connection information to continue. Please see the -f option"
-      exit
-    end
-  end
-  
-  # Parse's the command line options executes them and exits
-  #
-  def main
-    @opt = OptionParser.new { |opt|
-      opt.banner =  "NessusDB Database Migrator v1.0\nJacob Hammack\nhttp://www.hammackj.com\n\n"
-      opt.banner << "[*] Usage: #{$0} [mode] <options> [targets]"
-      opt.separator('')
-      opt.separator('Modes:')
-    
-      opt.on('-c', '--create-tables', 'Create the tables required by NessusDB') { 
-        check_for_database_yml      
-        require 'nessus_db'  
-        NessusMigrator.migrate(:up)
-        puts "[*] Tables Created"
-        exit
-      }
 
-      opt.on('-d', '--delete-tables', 'Delete the tables required by NessusDB') { 
-        check_for_database_yml
-        require 'nessus_db'
-        NessusMigrator.migrate(:down)
-        puts "[*] Tables Removed the database will still remain"
-        exit
-      }
-      
-      opt.on('-f', '--create-config-file', 'Creates the database.yml required by NessusDB') { 
-        if File.exists?("database.yml") == false
-          File.open("database.yml", 'w+') { |f| 
-            f.write("adapter: \nhost: \nport: \ndatabase: \nusername: \npassword: \ntimeout: \n") 
-          }
-          
-          puts "[*] database.yml created, please fill in the correct information."
-          exit
-        else
-          puts "[!] database.yml already exists, please delete it if you want to recreate it."
-        end
-        
-      }    
-               
-      opt.on_tail("-h", "--help", "Show this message") { |help|
-        puts opt.to_s + "\n"
-        exit
-      }
-    }
-      
-    if ARGV.length != 0 
-      @opt.parse!
-    else
-      puts @opt.to_s + "\n"
-      exit
-    end    
-  end
-  
 end
-
-nessus = NessusMigrator.new
-nessus.main 
