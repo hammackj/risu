@@ -23,9 +23,14 @@ Any database engine that active record supports should work. It has been tested 
 
 Setting up the database
 -------------------------
-1. Run the nessus_migrator.rb script with the -f option to create the database.yml file
-2. Fill out the generated database.yml file
-3. Run the nessus_migrator.rb script again with the -c option and all the database will be created
+
+	% ./migrate.rb -f
+	% $EDITOR database.yml
+	% ./migrate -c
+
+1. Generate the database.yml file.
+2. Edit the database.yml file, filling in the variables as needed. Please see (ActiveRecord)[http://api.rubyonrails.org/classes/ActiveRecord/Base.html] for more details.
+3. Migrate the database schema.
 
 
 Parsing the .nessus files
