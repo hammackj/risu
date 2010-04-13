@@ -48,9 +48,8 @@ Generating Reports
 ---
 To generate a technical summary report please execute the following after the the data is parsed into the database.
 
-	%
 	% ./technical_findings.rb -t "REPORT_NAME" -a "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
-	%
+
 
 Contributors
 ---
@@ -59,6 +58,6 @@ Contributors
 
 
 Contact
--------------------------
+---
 You can reach me at jacob[dot]hammack[at]hammackj[dot]com.
 
