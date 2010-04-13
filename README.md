@@ -19,6 +19,11 @@ These are all available through [RubyGems](http://rubygems.org/).
 
 Any database that ActiveRecord supports should work. Testing has been with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/). 
 
+Installation
+---
+Installation is really easy just clone the repo and start.
+
+	% git clone git://github.com/hammackj/nessusdb.git
 
 Database Setup
 ---
