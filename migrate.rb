@@ -11,12 +11,12 @@ $stdout.sync = true
 
 
 def migrate(direction)
-	ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
-
 	if File.exists?("database.yml") == false
 		puts "Could not find database.yml!"
 		exit
 	end
+
+	ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
 	
 	Schema.migrate(direction)
 end
