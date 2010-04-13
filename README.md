@@ -44,6 +44,14 @@ Viewing Data
 ---
 The data can be viewed with a query browser available for your database. A Rails front end will be available in the future.
 
+Generating Reports
+---
+To generate a technical summary report please execute the following after the the data is parsed into the database.
+
+	%
+	% ./technical_findings.rb -t "REPORT_NAME" -a "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
+	%
+
 Contributors
 ---
 * Jacob Hammack
