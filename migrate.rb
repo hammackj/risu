@@ -29,13 +29,13 @@ end
 
 	opt.on('-c', '--create-tables', 'Creates tables.') { 
 		migrate(:up)
-		puts "Successfully created tables."
+		puts "[*] Successfully created tables."
 		exit
 	}
 
 	opt.on('-d', '--delete-tables', 'Deletes tables.') { 
 		migrate(:down)
-		puts "Successfully deleted tables."
+		puts "[*] Successfully deleted tables."
 		exit
 	}
      
@@ -45,10 +45,10 @@ end
 				f.write("adapter: \nhost: \nport: \ndatabase: \nusername: \npassword: \ntimeout: \n") 
 			}
           
-				puts "An empty database.yml has been created. Please edit and fill in the correct values."
+				puts "[*] An empty database.yml has been created. Please edit and fill in the correct values."
 				exit
 		else
-			puts "Cowardly refusing to overwrite existing database.yml. Please delete it first and then try to recreate it."
+			puts "[!] Cowardly refusing to overwrite existing database.yml. Please delete it first and then try to recreate it."
 		end
 	}    
 
