@@ -12,8 +12,10 @@ Requirements
 * ruby
 * rubygems
 * libxml
+* choice
 * active_record
 * yaml
+* pdf-writer (sudo gem install pdf-writer)
 
 These are all available through [RubyGems](http://rubygems.org/).
 
@@ -35,7 +37,7 @@ Database Setup
 Parsing Nessus Output
 ---
 
-	% ./nessus_parser.rb report1.nessus [report2.nessus ...]
+	$ ./nessus_parser.rb report1.nessus [report2.nessus ...]
 
 1. Parse the files by passing their names on the command line.
 
@@ -48,9 +50,7 @@ Generating Reports
 ---
 To generate a technical summary report please execute the following after the the data is parsed into the database.
 
-	%
-	% ./technical_findings.rb -t "REPORT_NAME" -a "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
-	%
+ 	$./technical_findings.rb -t "REPORT_NAME" -a "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
 
 Contributors
 ---
