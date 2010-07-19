@@ -1,0 +1,4 @@
+.DS_Store
+*.pdf
+test_data/
+database.yml
