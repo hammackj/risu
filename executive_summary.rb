@@ -2,9 +2,51 @@
 
 require 'rubygems'
 require "pdf/writer"
-
+require 'choice'
 require 'nessus_db_model'
 require 'findings'
+
+module NessusDB
+  class ExecutiveSummary
+	attr_accessor :title, :author, :classification, :findings, :output_file, :date
+	PROGRAM_VERSION = "1.0"
+    def generate_report
+    end
+    
+    def main
+		Choice.options do
+	    	banner sprintf 'NessusDB - Executive Summary Generator v%s', PROGRAM_VERSION
+	        header 'Jacob Hammack'
+    	    header 'http://hammackj.com'
+        	header 'Usage: executive_summary.rb [OPTIONS]'
+	        header ''
+
+    	    header 'Options:'
+    
+        	option :author do
+          		short '-a'
+		        long '--author AUTHOR'
+          		desc 'Author of the report'
+	        end
+
+        	option :title do
+          		short '-t'
+		        long '--title TITLE'
+          		desc 'Title of the report'
+			end
+			
+			option :date do
+				short '-d'
+				long '--date DATE'
+				desc 'Date of assessment'
+			end
+  
+		end
+    end
+  end
+end
+
+
 
 report = "report-mccamey.pdf"
 assessment_title = "McCamey Hospital"
@@ -24,19 +66,19 @@ pdf = PDF::Writer.new
 pdf.select_font "Times-Roman"
 
 findings = Findings.new
-findings.number_of_hosts = Host.find(:all).count
-findings.number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4)"]).count
-findings.number_of_critical = Item.find(:all, :conditions => ["severity = 3"]).count
-findings.number_of_high = Item.find(:all, :conditions => ["severity = 2"]).count
-findings.number_of_medium = Item.find(:all, :conditions => ["severity = 1"]).count
-findings.number_of_low = Item.find(:all, :conditions => ["severity = 0"]).count
+#findings.number_of_hosts = Host.find(:all).count
+#findings.number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4)"]).count
+#findings.number_of_critical = Item.find(:all, :conditions => ["severity = 3"]).count
+#findings.number_of_high = Item.find(:all, :conditions => ["severity = 2"]).count
+#findings.number_of_medium = Item.find(:all, :conditions => ["severity = 1"]).count
+#findings.number_of_low = Item.find(:all, :conditions => ["severity = 0"]).count
 #findings.number_of_none = Item.find(:all, :conditions => ["severity = 0"]).count
-findings.findings_by_service = Item.find_by_sql("SELECT svc_name, count(*) as c FROM items where svc_name != 'unknown' and svc_name != 'general' group by svc_name order by c desc limit 10").map(&:svc_name)#Item.find(:all, :group => :svc_name).map(&:svc_name)
-findings.other_operating_systems = Host.find(:all, :conditions => ["os not like '%%Windows%%'"], :group => :os).map(&:os)
-findings.windows_operating_systems = Host.find(:all, :conditions => ["os like '%%Windows%%'"], :group => :os).map(&:os)
-findings.critical_findings = Item.find(:all, :conditions => ["severity = 3"], :joins => "INNER JOIN plugins ON items.plugin_id = plugins.id", :order => 'plugins.cvss_base_score')
-findings.high_findings = Item.find(:all, :conditions => ["severity = 2"])
-findings.top_plugins = Item.find_by_sql("SELECT *, count(plugin_id) FROM items WHERE plugin_id NOT IN (1) AND severity in (3) GROUP BY plugin_id ORDER BY count(plugin_id) DESC LIMIT 5").map(&:plugin_id)
+#findings.findings_by_service = Item.find_by_sql("SELECT svc_name, count(*) as c FROM items where svc_name != 'unknown' and svc_name != 'general' group by svc_name order by c desc limit 10").map(&:svc_name)#Item.find(:all, :group => :svc_name).map(&:svc_name)
+#findings.other_operating_systems = Host.find(:all, :conditions => ["os not like '%%Windows%%'"], :group => :os).map(&:os)
+#findings.windows_operating_systems = Host.find(:all, :conditions => ["os like '%%Windows%%'"], :group => :os).map(&:os)
+#findings.critical_findings = Item.find(:all, :conditions => ["severity = 3"], :joins => "INNER JOIN plugins ON items.plugin_id = plugins.id", :order => 'plugins.cvss_base_score')
+#findings.high_findings = Item.find(:all, :conditions => ["severity = 2"])
+#findings.top_plugins = Item.find_by_sql("SELECT *, count(plugin_id) FROM items WHERE plugin_id NOT IN (1) AND severity in (3) GROUP BY plugin_id ORDER BY count(plugin_id) DESC LIMIT 5").map(&:plugin_id)
 
 
 #print out the header, centered
