@@ -16,24 +16,25 @@ module NessusDB
   # Technical Findings class 
   #
   class TechnicalFindings
-    attr_accessor :title, :author, :findings, :output_file
+    attr_accessor :title, :author, :classification, :findings, :output_file
     PROGRAM_VERSION = 1.0
   
     # Generates a PDF report of the findings
     #
     def generate_report()
       @findings = Findings.new
-      @findings.number_of_hosts = Host.find(:all).count
-      @findings.number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4)"]).count
-      @findings.number_of_critical = Item.find(:all, :conditions => ["severity = 3"]).count
-      @findings.number_of_high = Item.find(:all, :conditions => ["severity = 2"]).count
-      @findings.number_of_medium = Item.find(:all, :conditions => ["severity = 1"]).count
-      @findings.number_of_low = Item.find(:all, :conditions => ["severity = 0"]).count
-      @findings.findings_by_service = Item.find_by_sql("SELECT svc_name, count(*) as c FROM items where svc_name != 'unknown' and svc_name != 'general' group by svc_name order by c desc limit 10").map(&:svc_name)#Item.find(:all, :group => :svc_name).map(&:svc_name)
-      @findings.other_operating_systems = Host.find(:all, :conditions => ["os not like '%%Windows%%'"], :group => :os).map(&:os)
-      @findings.windows_operating_systems = Host.find(:all, :conditions => ["os like '%%Windows%%'"], :group => :os).map(&:os)
-      @findings.critical_findings = Item.find(:all, :conditions => ["severity = 3 AND plugin_id NOT IN (26928, 45411, 42873, 20007, 31705, 18405, 10882)"], :joins => "INNER JOIN plugins ON items.plugin_id = plugins.id", :order => 'plugins.cvss_base_score')
-      @findings.high_findings = Item.find(:all, :conditions => ["severity = 2 AND plugin_id NOT IN (26928, 45411, 42873, 20007, 31705, 18405, 10882)"])
+
+      #@findings.number_of_hosts = Host.find(:all).count
+      #@findings.number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4)"]).count
+      #@findings.number_of_critical = Item.find(:all, :conditions => ["severity = 3"]).count
+      #@findings.number_of_high = Item.find(:all, :conditions => ["severity = 2"]).count
+      #@findings.number_of_medium = Item.find(:all, :conditions => ["severity = 1"]).count
+      #@findings.number_of_low = Item.find(:all, :conditions => ["severity = 0"]).count
+      #@findings.findings_by_service = Item.find_by_sql("SELECT svc_name, count(*) as c FROM items where svc_name != 'unknown' and svc_name != 'general' group by svc_name order by c desc limit 10").map(&:svc_name)#Item.find(:all, :group => :svc_name).map(&:svc_name)
+      #@findings.other_operating_systems = Host.find(:all, :conditions => ["os not like '%%Windows%%'"], :group => :os).map(&:os)
+      #@findings.windows_operating_systems = Host.find(:all, :conditions => ["os like '%%Windows%%'"], :group => :os).map(&:os)
+      #@findings.critical_findings = Item.find(:all, :conditions => ["severity = 3 AND plugin_id NOT IN (26928, 45411, 42873, 20007, 31705, 18405, 10882)"], :joins => "INNER JOIN plugins ON items.plugin_id = plugins.id", :order => 'plugins.cvss_base_score')
+      #@findings.high_findings = Item.find(:all, :conditions => ["severity = 2 AND plugin_id NOT IN (26928, 45411, 42873, 20007, 31705, 18405, 10882)"])
     
       pdf = PDF::Writer.new
       pdf.select_font "Times-Roman"
@@ -53,7 +54,7 @@ module NessusDB
     # @author Jacob Hammack
     #
     def print_header(pdf)
-      pdf.text("CONFIDENTIAL", :font_size => 16, :justification => :center)
+      pdf.text(@classification, :font_size => 16, :justification => :center)
       pdf.text("\n")
       pdf.text(@title, :font_size => 20, :justification => :center)
       pdf.text("Technical Summary", :font_size => 18, :justification => :center)
@@ -159,7 +160,19 @@ module NessusDB
           long '--title TITLE'
           desc 'Title of the Report'
         end
-      
+        
+        option :classification do
+          short '-c'
+          long '--classificiation STRING'
+          desc 'Overall classification of the report, default is Confidential'
+        end
+        
+        option :output_file do
+          short '-o'
+          long '--output-file FILE'
+          desc 'The Name of output PDF'
+        end
+        
         option :help do
           short ''
           long '--help'
@@ -194,7 +207,19 @@ module NessusDB
       else
         @title = "Untitled Report"
       end
-    
+      
+      if Coice.choices[:classification]
+        @classification = Choice.choices[:classification]
+      else
+        @classification = "CONFIDENTIAL"
+      end
+      
+      if Choice.choices[:output_file]
+        @output_file = Choice.choices[:output_file]
+      else
+        @output_file = "technical_findings.pdf"
+      end
+      
       generate_report
     end
   end
