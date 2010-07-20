@@ -28,5 +28,3 @@ module NessusDB
     end
   end
 end
-
-
