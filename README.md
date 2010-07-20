@@ -21,6 +21,11 @@ These are all available through [RubyGems](http://rubygems.org/).
 
 Any database that ActiveRecord supports should work. Testing has been with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/). 
 
+Installation
+---
+Installation is really easy just clone the repo and start.
+
+	% git clone git://github.com/hammackj/nessusdb.git
 
 Database Setup
 ---
@@ -50,7 +55,12 @@ Generating Reports
 ---
 To generate a technical summary report please execute the following after the the data is parsed into the database.
 
+<<<<<<< HEAD
  	$./technical_findings.rb -t "REPORT_NAME" -a "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
+=======
+	% ./technical_findings.rb -t "REPORT_NAME" -a "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
+
+>>>>>>> 0def55b9c6d784f584e961d5126fbe98ca9ebce1
 
 Contributors
 ---
@@ -59,6 +69,6 @@ Contributors
 
 
 Contact
--------------------------
+---
 You can reach me at jacob[dot]hammack[at]hammackj[dot]com.
 

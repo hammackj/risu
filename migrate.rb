@@ -11,18 +11,18 @@ $stdout.sync = true
 
 
 def migrate(direction)
-	ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
-
 	if File.exists?("database.yml") == false
 		puts "Could not find database.yml!"
 		exit
 	end
+
+	ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
 	
 	Schema.migrate(direction)
 end
 
 @opt = OptionParser.new { |opt|
-	opt.banner =  "DB Migration Tool"
+	opt.banner =  "NessusDB Migration Tool v1.0\nJacob Hammack\nhttp://hammackj.com\n\n"
 	opt.banner << "usage: #{$0} [command] <options> [targets]"
 	opt.separator('')
 	opt.separator('Commands:')
