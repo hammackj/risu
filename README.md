@@ -25,9 +25,9 @@ Any database that ActiveRecord supports should work. Testing has been with [MySQ
 Database Setup
 ---
 
-	% ./migrate.rb -f
+	% nessusdb -f
 	% $EDITOR database.yml
-	% ./migrate -c
+	% nessusdb -c
 
 1. Generate the database.yml file.
 2. Edit the database.yml file, filling in the variables as needed. Please see [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) for more details.
@@ -37,7 +37,7 @@ Database Setup
 Parsing Nessus Output
 ---
 
-	$ ./nessus_parser.rb report1.nessus [report2.nessus ...]
+	$ nessusdb report1.nessus [report2.nessus ...]
 
 1. Parse the files by passing their names on the command line.
 
