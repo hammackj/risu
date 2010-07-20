@@ -122,16 +122,4 @@ end
 
 
 
-report = "report-mccamey.pdf"
-assessment_title = "McCamey Hospital"
-
-assessment_date = "24 May 2010"
-assessment_assessor = "Jacob Hammack, CISSP"
-company_name = "RT & Associates"
-assessment_objective = "The primary objective of this engagement was to fulfill requirements for annual security assessments under the HIPAA guidelines"
-
-#assessment_title = "SIAN"
-#company_name = "Tangent Security"
-#assessment_objective = "The primary objective of this engagement was to fulfill requirements for network certification"
-
 
