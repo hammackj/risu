@@ -62,6 +62,9 @@ Contributors
 * Jacob Hammack
 * Andrew Benson
 
+Special Thanks
+---
+I would like to give a special thanks to Eric Hulse for hooking me up with the gig that I developed all of this for.
 
 Contact
 ---
