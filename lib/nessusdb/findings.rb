@@ -1,6 +1,6 @@
 module NessusDB
   
-  # Overall findings for easy access for report / graph generation
+  # Overall findings for easy access for report / graph generation 
   #
   # @author Jacob Hammack
   class Findings
