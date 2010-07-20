@@ -1,6 +1,3 @@
-require 'libxml'
-require 'nessus_db_model'
-
 module NessusDB
 	# NessusSaxListener
 	#

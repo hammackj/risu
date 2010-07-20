@@ -4,7 +4,10 @@ end
 
 require 'rubygems'
 require 'libxml'
-require 'choice'
+require 'choice'  
+require 'active_record'  
+require 'yaml'
+require 'logger'
 
 require 'nessusdb/findings'
 require 'nessusdb/nessus_db'

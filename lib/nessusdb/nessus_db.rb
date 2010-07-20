@@ -1,8 +1,3 @@
-require 'rubygems'  
-require 'active_record'  
-require 'yaml'
-require 'logger'
-
 ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))  
 
 # normally disabled due to peformance, enable for debugging

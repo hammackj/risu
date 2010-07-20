@@ -3,18 +3,18 @@ NessusDB
 
 NessusDB is [Nessus](http://www.nessus.org) XMLv2 parser, which pushes reports into an [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, easing report generation. 
 
-
-It is currently under heavy development. When a working copy is ready it will be tagged 1.0.0 and noted in this document.
+Version 1.0 Alpha is the current release.
 
 Requirements
 ---
 
-* ruby
+* ruby (Tested with 1.8.7)
 * rubygems
 * libxml
 * choice
 * active_record
 * yaml
+* logger
 * pdf-writer (sudo gem install pdf-writer)
 
 These are all available through [RubyGems](http://rubygems.org/).
