@@ -55,12 +55,7 @@ Generating Reports
 ---
 To generate a technical summary report please execute the following after the the data is parsed into the database.
 
-<<<<<<< HEAD
- 	$./technical_findings.rb -t "REPORT_NAME" -a "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
-=======
 	% ./technical_findings.rb -t "REPORT_NAME" -a "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
-
->>>>>>> 0def55b9c6d784f584e961d5126fbe98ca9ebce1
 
 Contributors
 ---
