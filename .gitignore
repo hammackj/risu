@@ -2,3 +2,4 @@
 *.pdf
 test_data/
 database.yml
+doc/
