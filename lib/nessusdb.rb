@@ -8,6 +8,8 @@ require 'choice'
 require 'active_record'  
 require 'yaml'
 require 'logger'
+require 'rubygems'
+require 'pdf/writer'
 
 require 'nessusdb/models'
 require 'nessusdb/listener'

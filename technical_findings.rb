@@ -1,20 +1,23 @@
 #!/usr/bin/env ruby
 
-#Jacob Hammack
-#jacob.hammack@hammackj.com
-#http://www.hammackj.com
+# technical_findings.rb - This tool generates a report of technical fixes.
+# 
+# hammackj -  07-25-2010 - Version 1.0 of technical_findings.rb complete. 
 #
-#This script generates a tehcnical fix list and finding guide for the customer
 
-require 'rubygems'
-require 'pdf/writer'
-require 'nessus_db_model'
-require 'findings'
-require 'choice'
+base = __FILE__
+$:.unshift(File.join(File.dirname(base), 'lib'))
+
+$stdout.sync = true
+$stderr.sync = true
+
+require 'nessusdb'
 
 module NessusDB
+	
   # Technical Findings class 
   #
+	# @author Jacob Hammack
   class TechnicalFindings
     attr_accessor :title, :author, :classification, :findings, :output_file
     PROGRAM_VERSION = 1.0
@@ -23,26 +26,14 @@ module NessusDB
     #
     def generate_report()
       @findings = Findings.new
-
-      #@findings.number_of_hosts = Host.find(:all).count
-      #@findings.number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4)"]).count
-      #@findings.number_of_critical = Item.find(:all, :conditions => ["severity = 3"]).count
-      #@findings.number_of_high = Item.find(:all, :conditions => ["severity = 2"]).count
-      #@findings.number_of_medium = Item.find(:all, :conditions => ["severity = 1"]).count
-      #@findings.number_of_low = Item.find(:all, :conditions => ["severity = 0"]).count
-      #@findings.findings_by_service = Item.find_by_sql("SELECT svc_name, count(*) as c FROM items where svc_name != 'unknown' and svc_name != 'general' group by svc_name order by c desc limit 10").map(&:svc_name)#Item.find(:all, :group => :svc_name).map(&:svc_name)
-      #@findings.other_operating_systems = Host.find(:all, :conditions => ["os not like '%%Windows%%'"], :group => :os).map(&:os)
-      #@findings.windows_operating_systems = Host.find(:all, :conditions => ["os like '%%Windows%%'"], :group => :os).map(&:os)
-      #@findings.critical_findings = Item.find(:all, :conditions => ["severity = 3 AND plugin_id NOT IN (26928, 45411, 42873, 20007, 31705, 18405, 10882)"], :joins => "INNER JOIN plugins ON items.plugin_id = plugins.id", :order => 'plugins.cvss_base_score')
-      #@findings.high_findings = Item.find(:all, :conditions => ["severity = 2 AND plugin_id NOT IN (26928, 45411, 42873, 20007, 31705, 18405, 10882)"])
     
       pdf = PDF::Writer.new
       pdf.select_font "Times-Roman"
 
       print_header(pdf)
 
-      print_findings(pdf, @findings.critical_findings, "Critical Findings", Color::RGB::Red)
-      print_findings(pdf, @findings.high_findings, "High Findings", Color::RGB::Orange)
+      print_findings(pdf, @findings.critical_findings, "Critical Findings", Color::RGB::Red) unless @findings.critical_findings.length < 1
+      print_findings(pdf, @findings.high_findings, "High Findings", Color::RGB::Orange) unless @findings.high_findings.length < 1
     
       pdf.save_as(@output_file)
     end
@@ -50,8 +41,6 @@ module NessusDB
     # Prints the findings in a structured way
     #
     # @param pdf pdf object to write to
-    #
-    # @author Jacob Hammack
     #
     def print_header(pdf)
       pdf.text(@classification, :font_size => 16, :justification => :center)
@@ -72,8 +61,6 @@ module NessusDB
     # @param findings findings to enumerate for the output
     # @param finding_type Type of finding section used as title
     # @param color Color of the finding section
-    #
-    # @author Jacob Hammack
     #
     def print_findings(pdf, findings, finding_type, color)
       pdf.fill_color  color
@@ -137,11 +124,9 @@ module NessusDB
   
     # Main function for the technical findings class
     #
-    # @author Jacob Hammack
-    #
     def main()
       Choice.options do
-        banner sprintf 'NessusDB - Technical Findings Report Summary Generator v%s', PROGRAM_VERSION
+        banner sprintf 'NessusDB - Technical Findings Report Generator v%s', PROGRAM_VERSION
         header 'Jacob Hammack'
         header 'http://hammackj.com'
         header 'Usage: technical_findings.rb [OPTIONS]'
@@ -153,24 +138,28 @@ module NessusDB
           short '-a'
           long '--author AUTHOR'
           desc 'Author of the report'
+					default 'Null Author'
         end
       
         option :title do
           short '-t'
           long '--title TITLE'
           desc 'Title of the Report'
+					default 'Untitled Report'
         end
         
         option :classification do
           short '-c'
           long '--classificiation STRING'
           desc 'Overall classification of the report, default is Confidential'
+					default 'CONFIDENTIAL'
         end
         
         option :output_file do
           short '-o'
           long '--output-file FILE'
           desc 'The Name of output PDF'
+					default 'technical_findings.pdf'
         end
         
         option :help do
@@ -196,30 +185,11 @@ module NessusDB
         puts Choice.help
       end
     
-      if Choice.choices[:author]
-        @author = Choice.choices[:author]
-      else
-        @author = "Null Author"
-      end
-    
-      if Choice.choices[:title]
-        @title = Choice.choices[:title]
-      else
-        @title = "Untitled Report"
-      end
-      
-      if Coice.choices[:classification]
-        @classification = Choice.choices[:classification]
-      else
-        @classification = "CONFIDENTIAL"
-      end
-      
-      if Choice.choices[:output_file]
-        @output_file = Choice.choices[:output_file]
-      else
-        @output_file = "technical_findings.pdf"
-      end
-      
+			@author = Choice.choices[:author]
+			@title = Choice.choices[:title]
+			@classification = Choice.choices[:classification]
+			@output_file = "technical_findings.pdf"
+            
       generate_report
     end
   end
