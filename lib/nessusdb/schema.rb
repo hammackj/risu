@@ -1,4 +1,5 @@
 module NessusDB
+	
 	# NessusDB Schema
 	#
 	# @version 1.0
@@ -7,6 +8,7 @@ module NessusDB
 
 		# Creates all of the database tables required by the parser
 		#
+		# @author Jacob Hammack
 	  def self.up
 	    create_table :policies do |t|
 	      t.column :name, :string
