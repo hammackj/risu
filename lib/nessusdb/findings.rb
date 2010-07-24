@@ -8,6 +8,8 @@ module NessusDB
     attr_accessor :number_of_medium, :number_of_low, :findings_by_service
     attr_accessor :windows_operating_systems, :critical_findings, :high_findings, :top_plugins
     attr_accessor :other_operating_systems, :top_vuln_hosts
+
+		attr_accessor :title, :author, :company, :classification, :date
     
     # Pulls in all of the data required for report generation and graph generation
     #
