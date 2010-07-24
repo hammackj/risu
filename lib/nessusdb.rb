@@ -1,5 +1,6 @@
 
 module NessusDB
+	VERSION = "1.0a"
 end
 
 require 'rubygems'
