@@ -10,6 +10,7 @@ require 'yaml'
 require 'logger'
 require 'rubygems'
 require 'pdf/writer'
+require 'erb'
 
 require 'nessusdb/models'
 require 'nessusdb/listener'
