@@ -1,6 +1,6 @@
 
 module NessusDB
-	VERSION = "1.0a"
+	VERSION = "0.5a"
 end
 
 require 'rubygems'
@@ -17,3 +17,4 @@ require 'nessusdb/models'
 require 'nessusdb/listener'
 require 'nessusdb/findings'
 require 'nessusdb/schema'
+require 'nessusdb/templater'

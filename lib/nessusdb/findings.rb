@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module NessusDB
   
   # Overall findings for easy access for report / graph generation 

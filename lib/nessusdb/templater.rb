@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module NessusDB
 
 	# Templater class for generating a report from a erb template

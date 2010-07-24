@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 begin
 	file = File.open('database.yml')
 	yaml = YAML::load(file)

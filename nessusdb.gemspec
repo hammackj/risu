@@ -6,7 +6,7 @@ $:.unshift(File.join(File.dirname(base), 'lib'))
 require 'nessusdb'
 
 Gem::Specification.new do |s|
-	s.name 									= %q{librex}
+	s.name 									= 'nessusdb'
 	s.version 							= NessusDB::VERSION
 	s.homepage 							= "http://www.hammackj.com/"
 	s.summary 							= "NessusDB"

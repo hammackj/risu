@@ -27,6 +27,10 @@ Installation
 Installation is really easy just clone the repo and start.
 
 	% git clone git://github.com/hammackj/nessusdb.git
+	
+Alternatively you can 
+
+	% sudo gem install nessusdb
 
 Database Setup
 ---
