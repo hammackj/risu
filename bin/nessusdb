@@ -1,0 +1,199 @@
+#!/usr/bin/env ruby
+
+# encoding: utf-8
+
+# nessusdb - A Nessus XML parser
+# 
+# hammackj -  07-25-2010 - Version 1.0 of nessusdb complete. 
+#
+
+base = __FILE__
+$:.unshift(File.join(File.dirname(base), '/../lib'))
+
+$stdout.sync = true
+$stderr.sync = true
+
+require 'nessusdb'
+
+module NessusDB
+
+	# Main NessusDB class, wraps around all of the command line usage
+	#
+	# @author Jacob Hammack
+	class NessusDB
+		
+		#
+		#
+		def initialize
+		end
+		
+		# Initiator for [ActiveRecord] migrations.
+		#
+		def self.migrate(direction)
+			begin
+				ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
+
+				if File.exists?("database.yml") == false
+					puts "[!] Could not find database.yml!"
+					exit
+				end
+
+				Schema.migrate(direction)
+			rescue => ex
+				puts "[!] Error during migration - #{ex.message}"
+			end
+		end
+		
+		# Main function, parses command line arguments and parses each .nessus file passed on the
+		# command line. All data will be parsed into the database specified by the database.yml file.
+		# Each file will be parsed as seperate policy / reports.
+		#
+		def main	
+			Choice.options do
+				banner "NessusDB - v#{VERSION}" 
+				header 'Jacob Hammack'
+		    header 'http://hammackj.com'
+		  	header 'Usage: nessusdb [OPTIONS] files'
+		    header ''
+				separator 'Parsing Options'
+				
+		    option :create_tables do
+		      short '-c'
+		      long '--create-tables'
+		      desc 'Create database tables'
+					action do
+						NessusDB.migrate(:up)
+						puts "[*] Successfully created tables."
+						exit
+					end
+		    end		
+
+		    option :drop_tables do
+		      short '-d'
+		      long '--drop-tables'
+		      desc 'Drop database tables'
+					action do
+						NessusDB.migrate(:down)
+						puts "[*] Successfully dropped tables."
+						exit
+					end
+		    end
+		
+				option :create_config do
+		      short '-f'
+		      long '--create-config'
+		      desc 'Creates an empty database config file'
+					action do
+						if File.exists?("database.yml") == false
+							File.open("database.yml", 'w+') do |f| 
+								f.write("adapter: \nhost: \nport: \ndatabase: \nusername: \npassword: \ntimeout: \n") 
+							end
+
+							puts "[*] An empty database.yml has been created. Please edit and fill in the correct values."
+							exit
+						else
+							puts "[!] database.yml already exists. Please delete it if you wish to create it."
+							exit
+						end
+					end
+		    end
+		
+				separator ''
+				separator 'Reporting Options'
+				
+				option :report_template do
+					short '-t'
+					long '--report-template TEMPLATE'
+					desc 'Template file to use to generate report'
+				end
+				
+				option :author do
+          short '-a'
+          long '--author AUTHOR'
+          desc 'Author of the report'
+					default 'Null Author'
+        end
+      
+        option :title do
+          short '-t'
+          long '--title TITLE'
+          desc 'Title of the Report'
+					default 'Untitled Report'
+        end
+        
+        option :classification do
+          short '-c'
+          long '--classificiation CLASS'
+          desc 'Overall classification of the report, default is Confidential'
+					default 'CONFIDENTIAL'
+        end
+
+  			option :company do
+  				long '--company-name COMPANY'
+  				desc 'Name of the company that preformed the assessment'
+  			end
+
+  			option :date do
+  				long '--date DATE'
+  				desc 'Date assessment was preformed'
+  			end
+        
+        option :output_file do
+          short '-o'
+          long '--output-file FILE'
+          desc 'The Name of output PDF'
+					default 'technical_findings.pdf'
+        end
+				
+				separator ''
+				separator 'Other Options'
+
+		    option :help do
+		      short '-h'
+		      long '--help'
+		      desc 'Show this message'
+		    end
+
+		    option :version do
+		      short '-v'
+		      long '--version'
+		      desc 'Show version'
+		      action do
+		        puts "NessusDB - Executive Summary Generator v#{PROGRAM_VERSION}"
+		        exit
+		      end
+		  	end
+		
+				footer ''
+			end
+			
+			if ARGV.length == 0
+			  puts Choice.help
+			end
+			
+			begin
+				ARGV.each do |arg| 
+				  begin
+				    	puts "[*] Parsing #{arg}..."
+				    	tstart = Time.new
+				    	parser = LibXML::XML::SaxParser.file arg
+				    	parser.callbacks = NessusSaxListener.new
+				    	parser.parse
+				    	printf "[*] Finished parsing %s. Parse took %.02f seconds\n", arg, Time.now - tstart
+
+				  rescue Interrupt => i
+				  	puts "[!] Parse cancelled!"
+				  rescue => e
+				    puts "[!] Error: #{arg}"
+				    next
+				  end  
+				end
+			rescue Interrupt => i
+				puts "[!] Caught Interrupt parse cancelled!"
+			end
+		end
+	end
+end	
+
+app = NessusDB::NessusDB.new
+app.main
