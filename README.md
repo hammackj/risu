@@ -16,6 +16,7 @@ Requirements
 * yaml
 * logger
 * pdf-writer (sudo gem install pdf-writer)
+* pdf-kit
 
 These are all available through [RubyGems](http://rubygems.org/).
 
