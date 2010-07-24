@@ -5,7 +5,7 @@ module NessusDB
   # @author Jacob Hammack
   class Findings
     attr_accessor :number_of_hosts, :number_of_risks, :number_of_critical, :number_of_high
-    attr_accessor :number_of_medium, :number_of_low, :number_of_none, :findings_by_service
+    attr_accessor :number_of_medium, :number_of_low, :findings_by_service
     attr_accessor :windows_operating_systems, :critical_findings, :high_findings, :top_plugins
     attr_accessor :other_operating_systems, :top_vuln_hosts
     
@@ -27,5 +27,12 @@ module NessusDB
 			@top_vuln_hosts = nil
 			@top_plugins = nil
     end
+
+		# ERB binding for report generation.
+		#
+		# @author Jacob Hammack
+		def get_binding
+			binding
+		end
   end
 end
