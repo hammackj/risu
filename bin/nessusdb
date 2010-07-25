@@ -51,7 +51,7 @@ module NessusDB
 				banner "NessusDB - v#{VERSION}" 
 				header 'Jacob Hammack'
 		    header 'http://hammackj.com'
-		  	header 'Usage: nessusdb [OPTIONS] files'
+		  	header 'Usage: nessusdb [OPTIONS]'
 		    header ''
 				separator 'Parsing Options'
 				
@@ -78,7 +78,6 @@ module NessusDB
 		    end
 		
 				option :create_config do
-		      short '-f'
 		      long '--create-config'
 		      desc 'Creates an empty database config file'
 					action do
@@ -95,6 +94,12 @@ module NessusDB
 						end
 					end
 		    end
+		
+				option :files do
+					short '-f'
+					long '--input-files *FILES'
+					desc 'Files to be parsed'
+				end
 		
 				separator ''
 				separator 'Reporting Options'
@@ -129,18 +134,20 @@ module NessusDB
   			option :company do
   				long '--company-name COMPANY'
   				desc 'Name of the company that preformed the assessment'
+					default 'No Company'
   			end
 
   			option :date do
   				long '--date DATE'
-  				desc 'Date assessment was preformed'
+  				desc 'Date assessment was preformed, Default is now()'
+					default Time.now.strftime("%b %d, %Y")
   			end
         
         option :output_file do
           short '-o'
           long '--output-file FILE'
-          desc 'The Name of output PDF'
-					default 'technical_findings.pdf'
+          desc 'The Name of output file'
+					default 'findings.html'
         end
 				
 				separator ''
@@ -169,26 +176,41 @@ module NessusDB
 			  puts Choice.help
 			end
 			
-			begin
-				ARGV.each do |arg| 
+			begin		
+				Choice.choices.files.each do |file| 
 				  begin
-				    	puts "[*] Parsing #{arg}..."
+				    	puts "[*] Parsing #{file}..."
 				    	tstart = Time.new
-				    	parser = LibXML::XML::SaxParser.file arg
+				    	parser = LibXML::XML::SaxParser.file file
 				    	parser.callbacks = NessusSaxListener.new
 				    	parser.parse
-				    	printf "[*] Finished parsing %s. Parse took %.02f seconds\n", arg, Time.now - tstart
-
+				    	printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
 				  rescue Interrupt => i
 				  	puts "[!] Parse cancelled!"
 						exit(1)
 				  rescue => e
-				    puts "[!] Error: #{arg}"
+				    puts "[!] Error: #{file}"
 				    next
 				  end  
+				end unless Choice.choices.files == nil
+	
+				if Choice.choices[:report_template] != nil
+					@findings = Findings.new
+					@findings.author = Choice.choices[:author]
+					@findings.date = Choice.choices[:date]
+					@findings.title = Choice.choices[:title]
+					@findings.company = Choice.choices[:company]
+					@findings.classification = Choice.choices[:classifiction]
+					
+					template = Templater.new(Choice.choices[:report_template], @findings)
+					html = template.generate
+					
+					File.open(Choice.choices[:output_file], 'w') {|f| f.write(html) }
+					
 				end
+				
 			rescue Interrupt => i
-				puts "[!] Caught Interrupt parse cancelled!"
+				puts "[!] Caught Interrupt Action cancelled!"
 				exit(1)
 			end
 		end
