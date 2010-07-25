@@ -14,7 +14,7 @@ module NessusDB
 		def initialize(template, findings)
 			@template = template
 			@findings = findings
-			@erb = ERB.new(@template)
+			@erb = ERB.new File.new(@template).read, nil, "%" #(@template)
 		end
 		
 		# Generates a report based on the erb template
@@ -23,9 +23,13 @@ module NessusDB
 		# 
 		# @author Jacob Hammack
 		def generate
-			html = @erb.run(@findings.get_binding)
-			
-			return html
+			begin
+				html = @erb.result(@findings.get_binding)
+								
+				return html
+			rescue => e
+				puts "Error:" << e.message
+			end
 		end
 	end
 end
