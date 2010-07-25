@@ -28,8 +28,8 @@ module NessusDB
       @critical_findings = Item.find(:all, :conditions => ["severity = 3 AND plugin_id NOT IN (26928, 45411, 42873, 20007, 31705, 18405, 10882)"], :joins => "INNER JOIN plugins ON items.plugin_id = plugins.id", :order => 'plugins.cvss_base_score')
       @high_findings = Item.find(:all, :conditions => ["severity = 2 AND plugin_id NOT IN (26928, 45411, 42873, 20007, 31705, 18405, 10882)"])      
       @top_plugins = Item.find_by_sql("SELECT *, count(plugin_id) FROM items WHERE plugin_id NOT IN (1) AND severity in (3) GROUP BY plugin_id ORDER BY count(plugin_id) DESC LIMIT 5").map(&:plugin_id)
-			@top_vuln_hosts = nil
-			@top_plugins = nil
+			@top_vuln_hosts = Item.find_by_sql("SELECT host_id, count(host_id) FROM items WHERE plugin_id != 1 AND severity IN (3,2) GROUP BY host_id ORDER BY count(host_id) DESC LIMIT 10").map(&:host_id)
+			@top_plugins = Item.find_by_sql("SELECT *, count(plugin_id) FROM items WHERE plugin_id NOT IN (1) AND severity in (3) GROUP BY plugin_id ORDER BY count(plugin_id) DESC LIMIT 5").map(&:plugin_id)
     end
 
 		# ERB binding for report generation.
