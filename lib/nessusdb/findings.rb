@@ -12,10 +12,12 @@ module NessusDB
     attr_accessor :other_operating_systems, :top_vuln_hosts
 
 		attr_accessor :title, :author, :company, :classification, :date
+		attr_accessor :findings_array
     
     # Pulls in all of the data required for report generation and graph generation
     #
     def initialize
+			@findings_array = Array.new
       @number_of_hosts = Host.find(:all).count
       @number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4)"]).count
       @number_of_critical = Item.find(:all, :conditions => ["severity = 3"]).count
@@ -30,6 +32,9 @@ module NessusDB
       @top_plugins = Item.find_by_sql("SELECT *, count(plugin_id) FROM items WHERE plugin_id NOT IN (1) AND severity in (3) GROUP BY plugin_id ORDER BY count(plugin_id) DESC LIMIT 5").map(&:plugin_id)
 			@top_vuln_hosts = Item.find_by_sql("SELECT host_id, count(host_id) FROM items WHERE plugin_id != 1 AND severity IN (3,2) GROUP BY host_id ORDER BY count(host_id) DESC LIMIT 10").map(&:host_id)
 			@top_plugins = Item.find_by_sql("SELECT *, count(plugin_id) FROM items WHERE plugin_id NOT IN (1) AND severity in (3) GROUP BY plugin_id ORDER BY count(plugin_id) DESC LIMIT 5").map(&:plugin_id)
+			
+			@findings_array << Hash[:title => "Critical Findings", :color => Color::RGB::Red, :values => @critical_findings]
+			@findings_array << Hash[:title => "High Findings", :color => Color::RGB::Orange, :values => @high_findings]
     end
 
 		# ERB binding for report generation.
