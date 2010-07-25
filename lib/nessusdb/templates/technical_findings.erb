@@ -30,6 +30,37 @@
 					<h2><%= plugin.plugin_name %></h2>
 					<p><b>Host</b> <%= host.name %></p>
 					<p>&nbsp;</p>
+					
+					<% if f.plugin_output != nil %>
+						<p><b>Plugin output</b> <%= f.plugin_output %></p>
+					<% end %>
+					
+					<% if plugin.description != nil %>
+						<p><b>Description</b> <%= plugin.description %></p>
+					<% end %>
+					
+					<% if plugin.synopsis != nil %>
+						<p><b>Synopsis</b> <%= plugin.synopsis %></p>
+					<% end %>										
+					
+					<% if plugin.cvss_base_score != nil %>
+						<p><b>CVSS Base Score</b> <%= plugin.cvss_base_score %></p>
+					<% end %>					
+					
+					<% if plugin.solution != nil %>
+						<p><b>Solution</b> <%= plugin.solution %></p>
+					<% end %>
+					
+			        <% if references.size != 0 %>
+			          <p><b>References</b></p>
+			          <% references.each { |ref| %>
+			            <% ref_text = sprintf "%s: %s\n", ref.reference_name, ref.value %>
+			            <%= ref_text %>
+			          <% } %>
+			          
+			        <% end %>
+				
+					
 				<% end %>
 			<% end %>
 		<% end %>		
