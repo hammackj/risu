@@ -1,15 +1,37 @@
 <html>
 	<head>
-		<title><% @findings.title %></title>
+		<title><%= @title %></title>
 	</head>
 	
 	<body>
+		<!-- Header -->
+		<p><center><%= @classification %></center></p>
+		<p>&nbsp;</p>
 		<p><center>Technical Summary</center></p>
 		<p><center>Critical and High Findings</center></p>
-		<p>&nsbp;</p>
-		<p>This report was prepared by <% @findings.author %></p>
+		<p>&nbsp;</p>
+		<p><center>This report was prepared by <%= @author %></center></p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<!-- Header End -->
 		
-		<p></p>
+		<% %>
 		
+		<!-- Findings -->
+		<% findings_array.each do |h| %>
+			<% if h[:values].length > 1 %>
+				<p><%= h[:title] %></p>
+				
+				<% h[:values].each do |f| %>
+					<% host = Host.find_by_id(f.host_id) %>
+					<% plugin = Plugin.find_by_id(f.plugin_id) %>
+					<% references = Reference.find(:all, :group => :value, :order => :reference_name, :order => :reference_name, :conditions => {:plugin_id => plugin.id}) %>
+					
+					<h2><%= plugin.plugin_name %></h2>
+					<p><b>Host</b> <%= host.name %></p>
+					<p>&nbsp;</p>
+				<% end %>
+			<% end %>
+		<% end %>		
 	</body>
 </html>
