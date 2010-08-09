@@ -205,10 +205,8 @@ module NessusDB
 					template = Templater.new(Choice.choices[:report_template], @findings)
 					html = template.generate
 					
-					File.open(Choice.choices[:output_file], 'w') {|f| f.write(html) }
-					
+					File.open(Choice.choices[:output_file], 'w') {|f| f.write(html) }		
 				end
-				
 			rescue Interrupt => i
 				puts "[!] Caught Interrupt Action cancelled!"
 				exit(1)
