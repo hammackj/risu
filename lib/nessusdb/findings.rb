@@ -16,6 +16,7 @@ module NessusDB
     
     # Pulls in all of the data required for report generation and graph generation
     #
+		# @author Jacob Hammack
     def initialize
 			@findings_array = Array.new
       @number_of_hosts = Host.find(:all).count
