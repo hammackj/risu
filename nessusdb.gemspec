@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 	s.version 							= NessusDB::VERSION
 	s.homepage 							= "http://www.hammackj.com/"
 	s.summary 							= "NessusDB"
-	s.description 					= "NessusDB is a nessus xml parser and reporting tool"
+	s.description 					= "NessusDB is a Nessus .nessus xml parser and reporting tool"
 	
 	s.author 								= "Jacob Hammack"
 	s.email 								= "jacob.hammack@hammackj.com"
@@ -22,4 +22,9 @@ Gem::Specification.new do |s|
 	
 	s.has_rdoc 							= 'yard'
 	s.extra_rdoc_files 			= ["README.md", "LICENSE", "NEWS.md"]
+	
+	s.add_dependency('choice', '>= 0.1.4')
+	s.add_dependency('activerecord','>= 2.3.8')
+	s.add_dependency('libxml-ruby','>= 1.1.4')
+	s.add_dependency('','')
 end
