@@ -1,4 +1,4 @@
-0.5 (July 24 2010)
+1.0 (August 15 2010)
 ===
  - Initial release
 
