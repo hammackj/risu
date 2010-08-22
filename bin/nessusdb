@@ -111,21 +111,18 @@ module NessusDB
 				end
 				
 				option :author do
-          short '-a'
           long '--author AUTHOR'
           desc 'Author of the report'
 					default 'Null Author'
         end
       
         option :title do
-          short '-t'
           long '--title TITLE'
           desc 'Title of the Report'
 					default 'Untitled Report'
         end
         
         option :classification do
-          short '-c'
           long '--classificiation CLASS'
           desc 'Overall classification of the report, default is Confidential'
 					default 'CONFIDENTIAL'
