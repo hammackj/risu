@@ -15,6 +15,8 @@ Requirements
 * active_record
 * yaml
 * logger
+* rmagick (sudo gem install rmagick)
+* gruff (sudo gem install gruff)
 * pdf-writer (sudo gem install pdf-writer)
 * pdf-kit
 
