@@ -3,7 +3,8 @@
 
 # nessusdb - A Nessus XML parser
 # 
-# hammackj -  07-25-2010 - Version 1.0 of nessusdb complete. 
+# hammackj - 07-25-2010 - Version 0.5.1
+# hammackj - 08-22-2010 - Version 0.5.2
 #
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '/../lib'))
@@ -147,8 +148,8 @@ module NessusDB
 					default 'findings.html'
         end
 				
-				separator ''
-				separator 'Other Options'
+			separator ''
+			separator 'Other Options'
 
 		    option :help do
 		      short '-h'
@@ -197,12 +198,21 @@ module NessusDB
 					@findings.date = Choice.choices[:date]
 					@findings.title = Choice.choices[:title]
 					@findings.company = Choice.choices[:company]
-					@findings.classification = Choice.choices[:classifiction]
+					@findings.classification = Choice.choices[:classification]
 					
-					template = Templater.new(Choice.choices[:report_template], @findings)
-					html = template.generate
-					
-					File.open(Choice.choices[:output_file], 'w') {|f| f.write(html) }		
+					#template = Templater.new(Choice.choices[:report_template], @findings)
+					#html = template.generate
+					template = PrawnTemplater.new(Choice.choices[:report_template], @findings, Choice.choices[:output_file])
+					template.generate
+										
+					#File.open(Choice.choices[:output_file], 'w') {|f| f.write(pdf) }
+						
+					#if Choice.choices[:output_file].include? ".pdf"
+
+						#file = kit.to_file(Choice.choices[:output_file])
+					#else
+					#	File.open(Choice.choices[:output_file], 'w') {|f| f.write(html) }		
+					#end
 				end
 			rescue Interrupt => i
 				puts "[!] Caught Interrupt Action cancelled!"
@@ -214,3 +224,4 @@ end
 
 app = NessusDB::NessusDB.new
 app.main
+
