@@ -1,20 +1,24 @@
 text findings.classification, :align => :center
+text "\n"
 
 font_size(24) { text findings.title, :align => :center }
 font_size(18) { 
 	text "Critical and High Findings", :align => :center
-	text "This report was prepared by #{findings.author}", :align => :center
+	text "\n"
+	text "This report was prepared by\n#{findings.author}", :align => :center
 }
 text "\n\n\n"
 
 findings.findings_array_unique.each do |h|
 	if h[:values].length > 1
-		font_size(24){ 
+		font_size(24) { 
 			fill_color h[:color]
 			text h[:title] 
 			fill_color "000000"
 			}
-	
+		
+		text "\n"
+		
 		h[:values].each do |f|
       hosts = Item.find(:all, :conditions => {:plugin_id => f.plugin_id })
       plugin = Plugin.find_by_id(f.plugin_id)
