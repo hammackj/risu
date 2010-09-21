@@ -145,7 +145,7 @@ module NessusDB
           short '-o'
           long '--output-file FILE'
           desc 'The Name of output file'
-					default 'findings.html'
+					default 'findings.pdf'
         end
 				
 			separator ''
