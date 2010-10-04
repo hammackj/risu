@@ -7,6 +7,7 @@ font_size(18) {
 	text "\n"
 	text "This report was prepared by\n#{findings.author}", :align => :center
 }
+
 text "\n\n\n"
 
 findings.findings_array_unique.each do |h|
