@@ -26,5 +26,9 @@ Gem::Specification.new do |s|
 	s.add_dependency('choice', '>= 0.1.4')
 	s.add_dependency('activerecord','>= 2.3.8')
 	s.add_dependency('libxml-ruby','>= 1.1.4')
-	s.add_dependency('','')
+	s.add_dependency('prawn','>=0.8.4')
+	s.add_dependency('prawn-core','>=0.8.4')
+	s.add_dependency('prawn-layout','>=0.8.4')
+	s.add_dependency('gruff','>=0.3.6')
+	
 end
