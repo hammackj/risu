@@ -22,6 +22,8 @@ module NessusDB
 		attr_accessor :blacklist_plugins, :blacklist_host, :blacklist_host_id
 		
 		attr_accessor :scan_date
+		
+		GRAPH_WIDTH = 500
 
     # Pulls in all of the data required for report generation and graph generation
     #
@@ -68,11 +70,144 @@ module NessusDB
 			@findings_array_unique << Hash[:title => "High Findings", :color => "FF8040", :values => @high_findings_unique]
     end
 
-		# ERB binding for report generation.
 		#
-		# @author Jacob Hammack
-		def get_binding
-			binding
+		#
+		#
+		def graph_findings_by_severity(findings, filename="findings_by_severity.png")
+		  g = Gruff::Bar.new(500)
+		  g.title = "Findings By Severity"
+		  g.sort = false
+		  g.theme = {
+		     :background_colors => %w(white white)
+		  }
+
+		  g.data("Critical", findings.number_of_critical, "red") unless findings.number_of_critical == 0
+		  g.data("High", findings.number_of_high, "orange") unless findings.number_of_high == 0
+		  g.data("Medium", findings.number_of_medium, "yellow") unless findings.number_of_medium == 0
+		  g.data("Low", findings.number_of_low, "blue") unless findings.number_of_low == 0
+
+		  g.write(filename)
+		
+			return filename
+		end		
+
+		#
+		# 
+		#
+		def graph_top_plugins_by_count(findings, filename="findings_top_plugins.png")
+		  g = Gruff::Bar.new(500)
+		  g.title = sprintf "Top %d Critical Findings By Plugin", findings.top_plugins.count
+		  g.sort = false
+		  g.theme = {
+		    :colors => %w(red green blue orange yellow purple black grey brown pink),
+		    :background_colors => %w(white white)
+		  }
+
+		  findings.top_plugins.each { |plugin|
+		    plugin_name = Plugin.find_by_id(plugin).plugin_name
+
+		    #We need to filter the names a little to make everything look nice on the graph
+		    plugin_name = case plugin
+		      when 35362 then plugin_name.split(":")[0]
+		      when 34477 then plugin_name.split(":")[0]
+		      when 35635 then plugin_name.split(":")[0]
+		      when 21564 then "VNC Remote Authentication Bypass"
+		      when 38664 then "Intel Common Base Agent Remote Command Execution"  
+		    end
+
+		    g.data(plugin_name, Item.find(:all, :conditions => {:plugin_id => plugin}).count)
+		  }
+
+		  g.write(filename)
+		
+			return filename
 		end
+
+		#
+		#
+		#
+		def graph_top_vuln_hosts(findings, filename="findings_top_vuln_hosts.png")
+		  g = Gruff::Bar.new(500)
+		  g.title = sprintf "Top %d Critical/High Finding Count Per Host ", findings.top_vuln_hosts.count
+		  g.sort = false
+		  g.theme = {
+		    :colors => %w(red green blue orange yellow purple black grey brown pink),
+		    :background_colors => %w(white white)
+		  }
+
+		  findings.top_vuln_hosts.each { |host|
+		    ip = Host.find_by_id(host).name
+
+		    g.data(ip, Item.find(:all, :conditions => ["host_id = ? AND plugin_id != 1 AND plugin_id NOT IN (#{findings.blacklist_plugins}) AND severity in (3,2)", host]).count)
+		  }
+
+		  g.write(filename)
+		
+			return filename
+		end
+
+		#
+		#
+		#
+		def graph_findings_by_service(findings, filename="findings_by_service.png")
+		  g = Gruff::Pie.new(600)
+		  g.title = sprintf "Top %d Findings By Service", findings.findings_by_service.count
+		  g.sort = false
+		  g.theme = {
+		    :colors => %w(red green blue orange yellow purple black grey brown pink),
+		    :background_colors => %w(white white)
+		  }
+
+		  findings.findings_by_service.each { |service| 
+		    g.data(service, Item.find(:all, :conditions => {:svc_name => service}).count)
+		  }
+
+		  g.write(filename)
+		
+			return filename
+		end
+
+		#
+		#
+		#
+		def graph_other_operating_systems_by_count(findings, filename="other_operating_system_by_count.png")
+		  g = Gruff::Pie.new(600)
+		  g.title = "Other Operating Systems By Count"
+		  g.sort = false
+		  g.theme = {
+		    :colors => %w(red green blue orange yellow purple black grey brown pink),
+		    :background_colors => %w(white white)
+		  }
+
+		  findings.other_operating_systems.each { |os|
+		    g.data(os.gsub("\n", '/').gsub("Microsoft",'').gsub("Service Pack", 'SP').gsub("Red Hat Enterprise Linux", "RHEL").gsub("Kernel",""), Host.find(:all, :conditions => {:os => os}).count) unless os == nil
+		  }
+
+		  g.write(filename)  
+		
+			return filename
+		end
+
+		#
+		#
+		#
+		def graph_windows_operating_systems_by_count(findings, filename="windows_operating_system_by_count.png")
+		  g = Gruff::Pie.new(600)
+		  g.title = "Windows Operating Systems By Count"
+		  g.sort = false
+		  g.theme = {
+		    :colors => %w(red green blue orange yellow purple black grey brown pink),
+		    :background_colors => %w(white white)
+		  }
+
+		  findings.windows_operating_systems.each { |os|
+		    g.data(os.gsub("\n", '/').gsub("Microsoft",'').gsub("Service Pack", 'SP').gsub("Red Hat Enterprise Linux", "RHEL").gsub("Standard","Std").gsub("Windows",""), Host.find(:all, :conditions => {:os => os}).count) unless os == nil
+		  }
+
+		  g.write(filename)  
+		
+			return filename
+		end
+		
   end
 end
