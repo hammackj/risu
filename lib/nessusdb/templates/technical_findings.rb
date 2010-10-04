@@ -21,7 +21,7 @@ findings.findings_array_unique.each do |h|
 		text "\n"
 		
 		h[:values].each do |f|
-      hosts = Item.find(:all, :conditions => {:plugin_id => f.plugin_id })
+      hosts = Item.find(:all, :conditions => ["plugin_id = #{f.plugin_id} AND host_id != #{findings.blacklist_host_id}"])
       plugin = Plugin.find_by_id(f.plugin_id)
       references = Reference.find(:all, :group => :value, :order => :reference_name, :order => :reference_name, :conditions => {:plugin_id => plugin.id})
 						
