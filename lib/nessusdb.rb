@@ -8,7 +8,7 @@ require 'libxml'
 require 'choice'  
 require 'active_record'  
 require 'yaml'
-#require 'logger'
+require 'gruff'
 require 'prawn'
 require 'prawn/layout' 
 
