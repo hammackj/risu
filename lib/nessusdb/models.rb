@@ -9,7 +9,7 @@ begin
 		puts "[!] Unable to connect to database! Please check your database.yml"
 	end
 rescue
-	puts "[!] Warning database.yml does not exist. Please run nessusdb -f to create one."	
+	puts "[!] Warning database.yml does not exist. Please run nessusdb --create-config to create one."	
 end
 
 # normally disabled due to peformance, enable for debugging

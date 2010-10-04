@@ -8,7 +8,7 @@
 # hammackj - 08-22-2010 - Version 0.5.2
 #
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '/../lib'))
 
 $stdout.sync = true
 $stderr.sync = true
