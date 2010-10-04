@@ -73,6 +73,8 @@ I have included several templates:
 	
 The templates are located in the nessusdb/templates folder, where ever the gem was installed.
 
+The templates are written in ruby using prawn, they are fairly easy to make. I will add any templates as requested.
+
 Issues
 ---
 If you have any problems or bugs please use the [github issue tracker][http://github.com/hammackj/nessusdb/issues].
