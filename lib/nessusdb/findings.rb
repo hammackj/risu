@@ -32,6 +32,7 @@ module NessusDB
 			@blacklist_plugins = "26928, 45411, 42873, 20007, 31705, 18405, 10882, 19506"
 
 			#Used to blacklist the scanning box so it doesn't show up in the report
+			#going to move this to the config file soon
 			#@blacklist_host_mac = "70:5a:b6:62:f6:d2"
 			@blacklist_host_mac = ""
 			@findings_array = Array.new
