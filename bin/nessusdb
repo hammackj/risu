@@ -3,11 +3,12 @@
 
 # nessusdb - A Nessus XML parser
 # 
+# hammackj - 10-04-2010 - Version 0.6.6
 # hammackj - 07-25-2010 - Version 0.5.1
 # hammackj - 08-22-2010 - Version 0.5.2
 #
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '/../lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../lib'))
 
 $stdout.sync = true
 $stderr.sync = true
