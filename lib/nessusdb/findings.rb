@@ -28,13 +28,15 @@ module NessusDB
 		# @author Jacob Hammack
     def initialize
 			@blacklist_plugins = "26928, 45411, 42873, 20007, 31705, 18405, 10882, 19506"
-			@blacklist_host = ""
+
+			#Used to blacklist the scanning box so it doesn't show up in the report
+			@blacklist_host_mac = ""
 			@findings_array = Array.new
 			@findings_array_unique = Array.new
 			
 			@scan_date = Host.find(:first, :conditions => ["start is not null"])[:start].to_s
 			
-			@blacklist_host_id = Host.find(:first, :conditions => ['mac like ?', "%#{@blacklist_host}%"])[:id]
+			@blacklist_host_id = Host.find(:first, :conditions => ['mac like ?', "%#{@blacklist_host_mac}%"])[:id]
       @number_of_hosts = Host.find(:all, :conditions => ["id != #{@blacklist_host_id}"]).count
       @number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
       @number_of_critical = Item.find(:all, :conditions => ["severity IN (3) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
