@@ -12,6 +12,14 @@ module NessusDB
 	  #
 	  def initialize
 	    @vals = Hash.new
+	
+			@valid_elements = Array["see_also", "cve", "ReportItem", "xref", "bid", "plugin_version", "risk_factor",
+				"description", "cvss_base_score", "solution", "item", "plugin_output", "tag", "synopsis", "plugin_modification_date",
+				"FamilyName", "FamilyItem", "Status", "vuln_publication_date", "ReportHost", "HostProperties", "preferenceName",
+				"preferenceValues", "preferenceType", "fullName", "pluginId", "pluginName", "selectedValue", "selectedValue",
+				"name", "value", "preference", "plugin_publication_date", "cvss_vector", "patch_publication_date",
+				"NessusClientData_v2", "Policy", "PluginName", "ServerPreferences", "policyComments", "policyName", "PluginItem",
+				"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId"]
 	  end
 	
 		# Callback for when the start of a xml element is reached
@@ -21,6 +29,10 @@ module NessusDB
 	  def on_start_element(element, attributes)
 	    @tag = element
 	    @vals[@tag] = ""
+				
+			if !@valid_elements.include?(element)
+				puts "New XML element detected: #{element}. Please report this to jacob.hammack@hammackj.com"
+			end
 
 	    case element
 	      when "Policy"
@@ -71,7 +83,7 @@ module NessusDB
 	        elsif   attributes["name"] == "ssh-login-used"
 	          @attr = "ssh-login-used"        
 	        elsif 
-	          puts "New HostProperties attribute: #{attributes["name"]}, Please report this to jacob.hammack@hammackj.com\n"
+	          puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n"
 	        end   
 	      when "ReportItem"
 	        @vals = Hash.new # have to clear this out or everything has the same references
