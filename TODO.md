@@ -4,3 +4,4 @@ TODO
 	- Provide more templates
 	- Move to ActiveRecord 3.0
 	- add blacklist stuff to config file
+	- tests!
