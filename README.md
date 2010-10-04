@@ -77,7 +77,7 @@ The templates are written in ruby using prawn, they are fairly easy to make. I w
 
 Issues
 ---
-If you have any problems or bugs please use the [github issue tracker][http://github.com/hammackj/nessusdb/issues].
+If you have any problems or bugs please use the [github issue tracker](http://github.com/hammackj/nessusdb/issues).
 
 Special Thanks
 ---
