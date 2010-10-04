@@ -3,7 +3,7 @@ NessusDB
 
 NessusDB is [Nessus](http://www.nessus.org) XMLv2 parser, which pushes reports into an [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, easing report generation. 
 
-Version 0.65a Alpha is the current release, and under going major changes at the moment, but it should be functional.
+Version 0.6.6 Alpha is the current release, and under going major changes at the moment, but it should be functional.
 
 Requirements
 ---
@@ -31,12 +31,12 @@ Installation is really easy just clone the repo and start.
 	
 Alternatively you can 
 
-	% sudo gem install nessusdb
+	% sudo gem install nessusdb [soon!]
 
 Database Setup
 ---
 
-	% nessusdb -f
+	% nessusdb --create-config
 	% $EDITOR database.yml
 	% nessusdb -c
 
@@ -48,7 +48,7 @@ Database Setup
 Parsing Nessus Output
 ---
 
-	$ nessusdb report1.nessus [report2.nessus ...]
+	$ nessusdb -f report1.nessus [report2.nessus ...]
 
 1. Parse the files by passing their names on the command line.
 
@@ -61,12 +61,21 @@ Generating Reports
 ---
 To generate a technical summary report please execute the following after the the data is parsed into the database.
 
-	% ./technical_findings.rb -t "REPORT_NAME" -a "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
-
-Contributors
+	% ./nessusdb -t "TEMPLATE_PATH" --title "REPORT_NAME" --author "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
+	
+Templates
 ---
-* Jacob Hammack
-* Andrew Benson
+I have included several templates:
+
+	1. graphs.rb - several graphs written to disk as png's and as a complete pdf
+	2. technical_findings.rb - a detailed pdf of the critical and highs from the assessment
+	3. finding_statistics.rb - this is a pdf summary of the assessment
+	
+The templates are located in the nessusdb/templates folder, where ever the gem was installed.
+
+Issues
+---
+If you have any problems or bugs please use the [github issue tracker][http://github.com/hammackj/nessusdb/issues].
 
 Special Thanks
 ---
