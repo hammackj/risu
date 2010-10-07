@@ -1,3 +1,8 @@
+1.0.0 (October 8, 2010)
+===
+	- Cleaned up more code
+	- Fixed a Mysql error for when the tables do not exist.
+	
 0.6.6 (October 4, 2010)
 ===
 	- Moved to prawn for pdf output
@@ -8,7 +13,7 @@
 	
 0.6.5 (August 15, 2010)
 ===
-	- Initial release
+	- Initial public release
 
 
 
