@@ -3,7 +3,7 @@ NessusDB
 
 NessusDB is [Nessus](http://www.nessus.org) XMLv2 parser, which pushes reports into an [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, easing report generation. 
 
-Version 0.6.6 Alpha is the current release, and under going major changes at the moment, but it should be functional.
+Version 1.0.0 is the current release.
 
 Requirements
 ---
