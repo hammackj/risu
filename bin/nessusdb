@@ -124,9 +124,9 @@ module NessusDB
           desc 'Title of the Report'
 					default 'Untitled Report'
         end
-        
+
         option :classification do
-          long '--classificiation CLASS'
+          long '--classification CLASS'
           desc 'Overall classification of the report, default is Confidential'
 					default 'CONFIDENTIAL'
         end
