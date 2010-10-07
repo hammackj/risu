@@ -80,4 +80,4 @@ findings.findings_array_unique.each do |h|
 	start_new_page
 end
 
-number_pages "<page> in a total of <total>", [bounds.right - 75, 0]
+number_pages "<page> of <total>", [bounds.right - 75, 0]
