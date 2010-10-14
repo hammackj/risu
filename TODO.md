@@ -1,14 +1,17 @@
 TODO
 ===
-1.0 TODO
+1.0 - Complete
 
-1.1 TODO
-- Provide more templates
-	-PCI Complience
-	-Virtual Machines
--Add Scheme checks to make sure the scheme is compatible
-- Sort Technical Findings Report by count/score	
-1.2+ TODO
-	- Move to ActiveRecord 3.0
+1.1
+---
+	- Provide more templates
+		-PCI Complience
+		-Virtual Machines
+	- Add Schema checks to make sure the schema is compatible
+	- Sort Technical Findings Report by count/score	
 	- add blacklist stuff to config file
+
+1.2
+---
+	- Move to ActiveRecord 3.0
 	- tests!
