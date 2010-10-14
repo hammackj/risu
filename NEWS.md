@@ -1,3 +1,7 @@
+1.1.0 (October *, 2010)
+	- Fixed a typo on the classification argument
+	-
+	
 1.0.0 (October 8, 2010)
 ===
 	- Cleaned up more code
