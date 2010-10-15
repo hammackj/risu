@@ -4,7 +4,7 @@ module NessusDB
 	
 	# NessusDB Schema
 	#
-	# @version 1.0
+	# @version 1.1.0
 	# @author Jacob Hammack
 	class Schema < ActiveRecord::Migration
 
@@ -58,7 +58,8 @@ module NessusDB
 			  t.column :local_checks_proto, :string
 			  t.column :smb_login_used, :string
 			  t.column :ssh_auth_meth, :string
-			  t.column :ssh_login_used, :string		  		    
+			  t.column :ssh_login_used, :string
+				t.column :pci_dss_compliance, :string
 			end
 	
 			create_table :items do |t|
@@ -81,11 +82,16 @@ module NessusDB
 			  t.column :vuln_publication_date, :datetime
 	      t.column :cvss_vector, :string
 	      t.column :cvss_base_score, :string
+				t.column :cvss_temporal_score, :string
+				t.column :cvss_temporal_vector, :string
+				t.column :exploitability_ease, :string
+				t.column :exploit_framework_core, :string
+				t.column :exploit_available, :string
 			  t.column :risk_factor, :string
 			  t.column :solution, :text
 			  t.column :synopsis, :text
 		  end
-	  
+			
 			create_table :individual_plugin_selections do |t|
 			  t.column :policy_id, :string
 			  t.column :plugin_id, :integer
@@ -99,6 +105,10 @@ module NessusDB
 			  t.column :reference_name, :string
 			  t.column :value, :string
 	    end
+	
+			create_table :versions do |t|
+				t.column :version, :string
+			end
 		end
 	
 		# Deletes all of the database tables created
@@ -114,6 +124,7 @@ module NessusDB
 		  drop_table :items
 		  drop_table :plugins
 		  drop_table :references
+			drop_table :versions
 	  end
 
 	end
