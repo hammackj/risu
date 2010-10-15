@@ -97,4 +97,10 @@ module NessusDB
 	class Reference < ActiveRecord::Base
 	  has_many :plugins
 	end
+	
+	# Version Model for the DB
+	#
+	# @author Jacob Hammack
+	class Version < ActiveRecord::Base
+	end
 end
