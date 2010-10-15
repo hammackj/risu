@@ -3,6 +3,7 @@
 
 # nessusdb - A Nessus XML parser
 # 
+# hammackj - 10-14-2010 - Version 1.1.0 
 # hammackj - 10-08-2010 - Version 1.0.0
 # hammackj - 10-04-2010 - Version 0.6.6
 # hammackj - 07-25-2010 - Version 0.5.1
@@ -38,8 +39,14 @@ module NessusDB
 					puts "[!] Could not find database.yml!"
 					exit
 				end
-
 				Schema.migrate(direction)
+				
+				if direction == :up
+					ver = Version.create
+					ver.version = VERSION
+					ver.save
+				end
+				
 			rescue => ex
 				puts "[!] Error during migration - #{ex.message}"
 			end
