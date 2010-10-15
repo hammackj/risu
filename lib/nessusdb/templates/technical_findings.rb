@@ -1,7 +1,7 @@
 text findings.classification, :align => :center
 text "\n"
 
-font_size(24) { text findings.title, :align => :center }
+font_size(22) { text findings.title, :align => :center }
 font_size(18) { 
 	text "Critical and High Findings", :align => :center
 	text "\n"
@@ -12,9 +12,9 @@ text "\n\n\n"
 
 findings.findings_array_unique.each do |h|
 	if h[:values].length > 1
-		font_size(24) { 
+		font_size(20) { 
 			fill_color h[:color]
-			text h[:title] 
+			text h[:title], :style => :bold 
 			fill_color "000000"
 			}
 		
@@ -25,7 +25,7 @@ findings.findings_array_unique.each do |h|
       plugin = Plugin.find_by_id(f.plugin_id)
       references = Reference.find(:all, :group => :value, :order => :reference_name, :order => :reference_name, :conditions => {:plugin_id => plugin.id})
 						
-			font_size(18) { text "#{plugin.plugin_name}\n" }
+			font_size(16) { text "#{plugin.plugin_name}\n" }
 
     	if hosts.length > 1
 				text "Hosts", :style => :bold
@@ -60,6 +60,11 @@ findings.findings_array_unique.each do |h|
 				text "\nCVSS Base Score", :style => :bold
 				text plugin.cvss_base_score
 			end
+			
+			if plugin.exploit_available != nil
+				text "\nExploit Available", :style => :bold
+				text plugin.exploit_available
+			end
 		
 			if plugin.solution != nil
 				text "\nSolution", :style => :bold
@@ -77,7 +82,7 @@ findings.findings_array_unique.each do |h|
 				text "\n"
 		end
 	end
-	start_new_page
+	start_new_page unless h[:values] == nil
 end
 
 number_pages "<page> of <total>", [bounds.right - 75, 0]
