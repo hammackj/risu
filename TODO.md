@@ -14,6 +14,12 @@ TODO
 		- add blacklist stuff to config
 	- Provide more templates
 		- Virtual Machine Summary
-		- Microsoft Patche Summary
+		- Microsoft Patches Summary
 	- Add Schema checks to make sure the schema is compatible
 	- Sort Technical Findings Report by count/score	
+	- Add template validation and more error checking
+	- Colorize the reports with better style
+	
+1.5
+---
+	- Rails FrontEnd to Nessus
