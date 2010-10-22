@@ -21,7 +21,7 @@ module NessusDB
 				"NessusClientData_v2", "Policy", "PluginName", "ServerPreferences", "policyComments", "policyName", "PluginItem",
 				"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
 				"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
-				"exploit_available"]
+				"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit"]
 	  end
 	
 		# Callback for when the start of a xml element is reached
@@ -237,8 +237,7 @@ module NessusDB
 	        @xref.reference_name = "xref"
 	        @xref.value = @vals["xref"]
 	        @xref.save        
-	      when "ReportItem"
-        
+	      when "ReportItem" 
 	        @ri.plugin_output = @vals["plugin_output"]
 	        @ri.save
         
@@ -256,7 +255,11 @@ module NessusDB
 						:cvss_temporal_vector => @vals["cvss_temporal_vector"],
 						:exploitability_ease => @vals["exploitability_ease"],
 						:exploit_framework_core => @vals["exploit_framework_core"],
-						:exploit_available => @vals["exploit_available"]
+						:exploit_available => @vals["exploit_available"],
+						:exploit_framework_metasploit => @vals["exploit_framework_metasploit"],
+						:metasploit_name => @vals["metasploit_name"],
+						:exploit_framework_canvas => @vals["exploit_framework_canvas"],
+						:canvas_package => @vals["canvas_package"]
 	        }
 	        @plugin.save
 	    end  
