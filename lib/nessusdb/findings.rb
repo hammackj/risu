@@ -38,16 +38,19 @@ module NessusDB
 			@findings_array = Array.new
 			@findings_array_unique = Array.new
 			
-			@scan_date = Host.find(:first, :conditions => ["start is not null"])[:start].to_s
+			#@scan_date = Host.find(:first, :conditions => ["start is not null"])[:start].to_s
+			@scan_date = Host.where("start is not null").first[:start].to_s
 			
-			@blacklist_host = Host.find(:first, :conditions => ['mac like ?', "%#{@blacklist_host_mac}%"])#[:id]
+			#@blacklist_host = Host.find(:first, :conditions => ['mac like ?', "%#{@blacklist_host_mac}%"])#[:id]
+			@blacklist_host = Host.where("mac like %?%", @blacklist_host_mac)
 			@blacklist_host_id = -1
 			
 			if @blacklist_host != nil
 				@blacklist_host_id = @blacklist_host[:id]
 			end
 			
-      @number_of_hosts = Host.find(:all, :conditions => ["id != #{@blacklist_host_id}"]).count
+      #@number_of_hosts = Host.find(:all, :conditions => ["id != #{@blacklist_host_id}"]).count
+			@number_of_hosts = Host.where("id != ?", @blacklist_host_id).all.count
       @number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
       @number_of_critical = Item.find(:all, :conditions => ["severity IN (3) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
       @number_of_high = Item.find(:all, :conditions => ["severity IN (2) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
@@ -77,6 +80,22 @@ module NessusDB
 			@findings_array_unique << Hash[:title => "Critical Findings", :color => "FF0000", :values => @critical_findings_unique]
 			@findings_array_unique << Hash[:title => "High Findings", :color => "FF8040", :values => @high_findings_unique]
     end
+
+		# Builds a list of hosts and sorts them in natural ip order
+		#
+		# @returns [Array] of sorted hosts
+		#
+		# @author Jacob Hammack
+		def sorted_hosts
+			hosts = Host.order("ip").all
+
+			#Sort the ips in natural order.
+			hosts.sort! { |a, b|
+				a.ip.gsub(".", "").to_i <=> b.ip.gsub(".", "").to_i
+			}
+			
+			return hosts
+		end
 
 		#
 		#
