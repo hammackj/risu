@@ -21,7 +21,7 @@ module NessusDB
 		
 		# Generates a report based on the erb template
 		#
-		# @ returns [String] html output of the erb template
+		# @returns [String] html output of the erb template
 		# 
 		# @author Jacob Hammack
 		def generate
