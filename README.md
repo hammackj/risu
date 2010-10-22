@@ -3,35 +3,33 @@ NessusDB
 
 NessusDB is [Nessus](http://www.nessus.org) XMLv2 parser, which pushes reports into an [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, easing report generation. 
 
-Version 1.1.0 is the current release.
+Version 1.2.0 is the current release.
 
 Requirements
 ---
 
 * ruby (Tested with 1.8.7)
 * rubygems (Install it from source!, it is included with ruby 1.9.1+)
-* libxml (sudo gem install libxml-ruby)
-* choice (sudo gem install choice)
-* active_record (best to just sudo gem install rails)
+* libxml
+* choice
+* rails
 * yaml 
 * logger
-* rmagick (sudo gem install rmagick)
-* gruff (sudo gem install gruff)
-* prawn (sudo gem install prawn)
+* rmagick
+* gruff
+* prawn
 
-These are all available through [RubyGems](http://rubygems.org/).
+These are all available through [RubyGems](http://rubygems.org/). This command will install them all:
+
+	% sudo gem install libxml-ruby choice rails yaml logger rmagick gruff prawn nessusdb
 
 Any database that ActiveRecord supports should work. Testing has been with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/). 
 
 Installation
 ---
-Installation is really easy just clone the repo and start.
+Installation is really easy just gem install!
 
-	% git clone git://github.com/hammackj/nessusdb.git
-	
-Alternatively you can 
-
-	% sudo gem install nessusdb [soon!]
+	% sudo gem install nessusdb
 
 Database Setup
 ---
@@ -61,7 +59,7 @@ Generating Reports
 ---
 To generate a technical summary report please execute the following after the the data is parsed into the database.
 
-	% ./nessusdb -t "TEMPLATE_PATH" --title "REPORT_NAME" --author "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
+	% nessusdb -t "TEMPLATE_PATH" --title "REPORT_NAME" --author "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
 	
 Templates
 ---
