@@ -86,6 +86,10 @@ module NessusDB
 				t.column :cvss_temporal_vector, :string
 				t.column :exploitability_ease, :string
 				t.column :exploit_framework_core, :string
+				t.column :exploit_framework_metasploit, :string
+				t.column :metasploit_name, :string
+				t.column :exploit_framework_canvas, :string
+				t.column :canvas_package, :string
 				t.column :exploit_available, :string
 			  t.column :risk_factor, :string
 			  t.column :solution, :text
