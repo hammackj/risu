@@ -10,14 +10,7 @@ font_size(18) {
 
 text "\n\n"
 
-@hosts = Host.find(:all, :order => :ip)
-
-#Sort the ips in natural order.
-@hosts.sort! { |a, b|
-	a.ip.gsub(".", "").to_i <=> b.ip.gsub(".", "").to_i
-}
-
-@hosts.each do |host|
+findings.sorted_hosts.each do |host|
 	text "Name: #{host.name}\n"
 	text "FQDN: #{host.fqdn}\n" unless host.fqdn == nil
 	text "IP Address: #{host.ip}\n" unless host.ip == nil
