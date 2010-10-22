@@ -6,6 +6,7 @@ TODO
 	- Move to ActiveRecord 3.0
 	- Create rSpec tests for everything
 	- Create test fixutures
+	- 
 	
 1.3
 ---
@@ -15,7 +16,8 @@ TODO
 	- Provide more templates
 		- Virtual Machine Summary
 		- Microsoft Patches Summary
-	- Add Schema checks to make sure the schema is compatible
+		- Fix list Report?
+	- Add Schema checks to make sure the schema is compatible with the version of nessusdb
 	- Sort Technical Findings Report by count/score	
 	- Add template validation and more error checking
 	- Colorize the reports with better style
