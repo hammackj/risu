@@ -3,7 +3,7 @@ NessusDB
 
 NessusDB is [Nessus](http://www.nessus.org) XMLv2 parser, which pushes reports into an [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, easing report generation. 
 
-Version 1.0.0 is the current release.
+Version 1.1.0 is the current release.
 
 Requirements
 ---
@@ -70,6 +70,8 @@ I have included several templates:
 	1. graphs.rb - several graphs written to disk as png's and as a complete pdf
 	2. technical_findings.rb - a detailed pdf of the critical and highs from the assessment
 	3. finding_statistics.rb - this is a pdf summary of the assessment
+	4. assets.rb - this is a summary of all the hosts found during the scan
+	5. pci_compliance.rb - this generates of list of hosts that pass or failed pci/dss auditing
 	
 The templates are located in the nessusdb/templates folder, where ever the gem was installed.
 

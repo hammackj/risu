@@ -1,14 +1,25 @@
 TODO
 ===
-1.0 TODO
 
-1.1 TODO
-- Provide more templates
-	-PCI Complience
-	-Virtual Machines
--Add Scheme checks to make sure the scheme is compatible
-- Sort Technical Findings Report by count/score	
-1.2+ TODO
+1.2
+---
 	- Move to ActiveRecord 3.0
-	- add blacklist stuff to config file
-	- tests!
+	- Create rSpec tests for everything
+	- Create test fixutures
+	
+1.3
+---
+	- Rework the blacklisting stuff
+	- Create a config file to store variables in
+		- add blacklist stuff to config
+	- Provide more templates
+		- Virtual Machine Summary
+		- Microsoft Patches Summary
+	- Add Schema checks to make sure the schema is compatible
+	- Sort Technical Findings Report by count/score	
+	- Add template validation and more error checking
+	- Colorize the reports with better style
+	
+1.5
+---
+	- Rails FrontEnd to Nessus

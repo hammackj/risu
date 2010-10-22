@@ -40,7 +40,13 @@ module NessusDB
 			
 			@scan_date = Host.find(:first, :conditions => ["start is not null"])[:start].to_s
 			
-			@blacklist_host_id = Host.find(:first, :conditions => ['mac like ?', "%#{@blacklist_host_mac}%"])[:id]
+			@blacklist_host = Host.find(:first, :conditions => ['mac like ?', "%#{@blacklist_host_mac}%"])#[:id]
+			@blacklist_host_id = -1
+			
+			if @blacklist_host != nil
+				@blacklist_host_id = @blacklist_host[:id]
+			end
+			
       @number_of_hosts = Host.find(:all, :conditions => ["id != #{@blacklist_host_id}"]).count
       @number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
       @number_of_critical = Item.find(:all, :conditions => ["severity IN (3) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count

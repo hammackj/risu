@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 module NessusDB
+	
 	# NessusSaxListener
 	#
 	# 
@@ -8,8 +9,9 @@ module NessusDB
 	class NessusSaxListener
 	  include LibXML::XML::SaxParser::Callbacks
   
-	  # 
+	  # Sets up a array of all valid xml fields
 	  #
+		# @author Jacob Hammack
 	  def initialize
 	    @vals = Hash.new
 	
@@ -19,7 +21,9 @@ module NessusDB
 				"preferenceValues", "preferenceType", "fullName", "pluginId", "pluginName", "selectedValue", "selectedValue",
 				"name", "value", "preference", "plugin_publication_date", "cvss_vector", "patch_publication_date",
 				"NessusClientData_v2", "Policy", "PluginName", "ServerPreferences", "policyComments", "policyName", "PluginItem",
-				"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId"]
+				"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
+				"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
+				"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit"]
 	  end
 	
 		# Callback for when the start of a xml element is reached
@@ -76,13 +80,15 @@ module NessusDB
 	          @attr = "netbios-name"
 	        elsif attributes["name"] == "local-checks-proto"
 	          @attr = "local-checks-proto"
-	        elsif   attributes["name"] == "smb-login-used"
+	        elsif attributes["name"] == "smb-login-used"
 	          @attr = "smb-login-used" 
-	        elsif   attributes["name"] == "ssh-auth-meth"
+	        elsif attributes["name"] == "ssh-auth-meth"
 	          @attr = "ssh-auth-meth"                               
-	        elsif   attributes["name"] == "ssh-login-used"
-	          @attr = "ssh-login-used"        
-	        elsif 
+	        elsif attributes["name"] == "ssh-login-used"
+	          @attr = "ssh-login-used"
+	       	elsif attributes["name"] == "pci-dss-compliance"
+						@attr = "pci-dss-compliance"
+	        else 
 	          puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n"
 	        end   
 	      when "ReportItem"
@@ -204,7 +210,9 @@ module NessusDB
 		      elsif @attr == "ssh-auth-meth"
 	  	      @rh.attributes = { :ssh_auth_meth => @vals["tag"] }  	    
 		      elsif @attr == "ssh-login-used"
-	  	      @rh.attributes = { :ssh_login_used => @vals["tag"] }  	    
+	  	      @rh.attributes = { :ssh_login_used => @vals["tag"] } 
+	 	    	elsif @attr == "pci-dss-compliance"
+						@rh.attributes = { :pci_dss_compliance => @vals["tag"] }
 		      end
 	      
 		      @rh.save
@@ -231,8 +239,7 @@ module NessusDB
 	        @xref.reference_name = "xref"
 	        @xref.value = @vals["xref"]
 	        @xref.save        
-	      when "ReportItem"
-        
+	      when "ReportItem" 
 	        @ri.plugin_output = @vals["plugin_output"]
 	        @ri.save
         
@@ -245,7 +252,16 @@ module NessusDB
 	          :cvss_vector => @vals["cvss_vector"],
 	          :cvss_base_score => @vals["cvss_base_score"],
 	          :vuln_publication_date => @vals["vuln_publication_date"],
-	          :plugin_version => @vals["plugin_version"]
+	          :plugin_version => @vals["plugin_version"],
+						:cvss_temporal_score => @vals["cvss_temporal_score"],
+						:cvss_temporal_vector => @vals["cvss_temporal_vector"],
+						:exploitability_ease => @vals["exploitability_ease"],
+						:exploit_framework_core => @vals["exploit_framework_core"],
+						:exploit_available => @vals["exploit_available"],
+						:exploit_framework_metasploit => @vals["exploit_framework_metasploit"],
+						:metasploit_name => @vals["metasploit_name"],
+						:exploit_framework_canvas => @vals["exploit_framework_canvas"],
+						:canvas_package => @vals["canvas_package"]
 	        }
 	        @plugin.save
 	    end  
