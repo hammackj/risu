@@ -50,7 +50,7 @@ module NessusDB
 			end
 			
       #@number_of_hosts = Host.find(:all, :conditions => ["id != #{@blacklist_host_id}"]).count
-			@number_of_hosts = Host.where("id != ?", @blacklist_host_id).all.count
+			@number_of_hosts = Host.where("id != ?", @blacklist_host_id).count
       @number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
       @number_of_critical = Item.find(:all, :conditions => ["severity IN (3) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
       @number_of_high = Item.find(:all, :conditions => ["severity IN (2) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
