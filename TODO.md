@@ -4,6 +4,7 @@ TODO
 1.2
 ---
 	- Move to ActiveRecord 3.0
+	- Use named scope to clean up the interface to using findings
 	- Create rSpec tests for everything
 	- Create test fixutures
 	- 
@@ -21,7 +22,11 @@ TODO
 	- Sort Technical Findings Report by count/score	
 	- Add template validation and more error checking
 	- Colorize the reports with better style
-	
+
+1.4
+---
+	- Clean up / Bug fixes before 1.5
+
 1.5
 ---
 	- Rails FrontEnd to Nessus
