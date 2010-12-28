@@ -99,7 +99,7 @@ module NessusDB
 							puts "[*] An empty database.yml has been created. Please edit and fill in the correct values."
 							exit
 						else
-							puts "[!] database.yml already exists. Please delete it if you wish to create it."
+							puts "[!] database.yml already exists. Please delete it if you wish to re-create it."
 							exit
 						end
 					end
