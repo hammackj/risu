@@ -7,7 +7,9 @@ TODO
 	- Use named scope to clean up the interface to using findings
 	- Create rSpec tests for everything
 	- Create test fixutures
-	- 
+	- Check to see that the xml is version 2
+		- Version 1 = NessusClientData
+		- Version 2 = NessusClientData_V2
 	
 1.3
 ---
@@ -29,4 +31,4 @@ TODO
 
 1.5
 ---
-	- Rails FrontEnd to Nessus
+	- Rails FrontEnd to NessusDB
