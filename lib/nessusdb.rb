@@ -1,9 +1,9 @@
 
 module NessusDB
+	APP_NAME = "nessusdb"
 	VERSION = "1.2-dev"
 end
 
-require 'rubygems'
 require 'libxml'
 require 'choice'  
 require 'active_record'  
