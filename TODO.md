@@ -24,11 +24,12 @@ TODO
 	- Sort Technical Findings Report by count/score	
 	- Add template validation and more error checking
 	- Colorize the reports with better style
+	- DSL for report creation to abstract the reports to have different output types
 
 1.4
 ---
-	- Clean up / Bug fixes before 1.5
+	- Clean up / Bug fixes before 2.0
 
-1.5
+2.0
 ---
 	- Rails FrontEnd to NessusDB
