@@ -17,6 +17,8 @@ $stdout.sync = true
 $stderr.sync = true
 
 require 'rubygems'
+require 'choice'
+
 require 'nessusdb'
 
 module NessusDB
