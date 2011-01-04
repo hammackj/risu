@@ -1,8 +1,14 @@
+1.2.0 (January 05, 2011)
+===
+	- Preformed some code clean up
+	- Fixed a ton of typos
+	
+
 1.1.0 (October 22, 2010)
 ===
 	- Fixed a typo on the classification argument
 	- Added a assets report template
-	- Added a simple PCI/DSS compliance report template (Requires Professional Feed)
+	- Added a simple PCI/DSS compliance report template (Requires Nessus Professional Feed for the plugin)
 	- Updated the parser to take into account the new fields
 		- HostProperties attribute: pci-dss-compliance
 		- New XML element: exploitability_ease. 
