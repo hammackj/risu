@@ -21,12 +21,12 @@ require 'nessusdb'
 
 module NessusDB
 
-	# Main NessusDB class, wraps around all of the command line usage
+	# Main NessusDB Application class, wraps around all of the command line usage
 	#
 	# @author Jacob Hammack
-	class NessusDB
+	class Application
 		
-		#
+		# Creates a new instance of the NessusDB Application
 		#
 		def initialize
 		end
@@ -60,10 +60,10 @@ module NessusDB
 		#
 		def main	
 			Choice.options do
-				banner "NessusDB - v#{VERSION}" 
+				banner "#{APP_NAME} - v#{VERSION}" 
 				header 'Jacob Hammack'
 		    header 'http://hammackj.com'
-		  	header 'Usage: nessusdb [OPTIONS]'
+		  	header 'Usage: #{APP_NAME} [OPTIONS]'
 		    header ''
 				separator 'Parsing Options'
 				
@@ -173,7 +173,7 @@ module NessusDB
 		      long '--version'
 		      desc 'Show version'
 		      action do
-		        puts "NessusDB - Nessus Parser and Report Generator v#{VERSION}"
+		        puts "#{APP_NAME} - Nessus Parser and Report Generator v#{VERSION}"
 		        exit
 		      end
 		  	end
@@ -227,6 +227,6 @@ module NessusDB
 	end
 end	
 
-app = NessusDB::NessusDB.new
+app = NessusDB::Application.new
 app.main
 
