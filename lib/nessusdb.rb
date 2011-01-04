@@ -5,12 +5,11 @@ module NessusDB
 end
 
 require 'libxml'
-require 'choice'  
-require 'active_record'  
+require 'active_record'
 require 'yaml'
 require 'gruff'
 require 'prawn'
-require 'prawn/layout' 
+require 'prawn/layout'
 
 require 'nessusdb/models'
 require 'nessusdb/listener'
