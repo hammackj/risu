@@ -15,3 +15,19 @@ end
 # normally disabled due to peformance, enable for debugging
 #ActiveRecord.colorize_logging = false
 #ActiveRecord::Base.logger = Logger.new("db.log")
+
+module NessusDB
+	module Models
+		require 'nessusdb/models/host'
+		require 'nessusdb/models/familyselection'
+		require 'nessusdb/models/item'
+		require 'nessusdb/models/individualpluginselection'
+		require 'nessusdb/models/plugin'
+		require 'nessusdb/models/pluginspreference'
+		require 'nessusdb/models/policy'
+		require 'nessusdb/models/report'
+		require 'nessusdb/models/reference'
+		require 'nessusdb/models/serverpreference'
+		require 'nessusdb/models/version'
+	end
+end
