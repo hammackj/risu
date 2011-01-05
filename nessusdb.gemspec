@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
 	s.homepage 							= "http://www.hammackj.com/"
 	s.summary 							= "NessusDB"
 	s.description 					= "NessusDB is a Nessus .nessus xml parser and report generation tool"
+	s.license								= "BSD"
 	
 	s.author 								= "Jacob Hammack"
 	s.email 								= "jacob.hammack@hammackj.com"
