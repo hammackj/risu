@@ -10,6 +10,7 @@ TODO
 	- Check to see that the xml is version 2
 		- Version 1 = NessusClientData
 		- Version 2 = NessusClientData_V2
+	- Move the YAML/Database code out of models.rb
 	
 1.3
 ---
