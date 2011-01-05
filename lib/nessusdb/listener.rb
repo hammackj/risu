@@ -8,6 +8,7 @@ module NessusDB
 	# @author Jacob Hammack
 	class NessusSaxListener
 	  include LibXML::XML::SaxParser::Callbacks
+		include NessusDB::Models
   
 	  # Sets up a array of all valid xml fields
 	  #
