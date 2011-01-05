@@ -65,7 +65,7 @@ module NessusDB
 				banner "#{APP_NAME} - v#{VERSION}" 
 				header 'Jacob Hammack'
 		    header 'http://hammackj.com'
-		  	header 'Usage: #{APP_NAME} [OPTIONS]'
+		  	header "Usage: #{APP_NAME} [OPTIONS]"
 		    header ''
 				separator 'Parsing Options'
 				
@@ -74,7 +74,7 @@ module NessusDB
 		      long '--create-tables'
 		      desc 'Create database tables'
 					action do
-						NessusDB.migrate(:up)
+						Application.migrate(:up)
 						puts "[*] Successfully created tables."
 						exit
 					end
@@ -85,7 +85,7 @@ module NessusDB
 		      long '--drop-tables'
 		      desc 'Drop database tables'
 					action do
-						NessusDB.migrate(:down)
+						Application.migrate(:down)
 						puts "[*] Successfully dropped tables."
 						exit
 					end
@@ -192,9 +192,14 @@ module NessusDB
 				  begin
 				    	puts "[*] Parsing #{file}..."
 				    	tstart = Time.new
-				    	parser = LibXML::XML::SaxParser.file file
-				    	parser.callbacks = NessusSaxListener.new
-				    	parser.parse
+				    	# => parser = LibXML::XML::SaxParser.file file
+				    	#parser.callbacks = NessusSaxListener.new
+				    	#parser.parse
+				
+							doc = NessusDocument.new file
+							doc.validate
+							
+				
 				    	printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
 				  rescue Interrupt => i
 				  	puts "[!] Parse cancelled!"
@@ -205,6 +210,8 @@ module NessusDB
 							exit(1)
 						end
 				  rescue => e
+					
+						puts e.inspect
 				    puts "[!] Error: #{file}"
 				    next
 				  end  
