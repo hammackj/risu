@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module NessusDB
 	module Modules	
 		# FamilySelection Model
