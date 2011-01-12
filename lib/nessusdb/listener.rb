@@ -5,7 +5,7 @@ module NessusDB
 	# NessusSaxListener
 	#
 	# 
-	# @author Jacob Hammack
+	# @author Jacob Hammack <jacob.hammack@hammackj.com>
 	class NessusSaxListener
 		include LibXML::XML::SaxParser::Callbacks
 		include NessusDB::Models
