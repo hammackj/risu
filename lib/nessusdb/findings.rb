@@ -4,7 +4,7 @@ module NessusDB
   
   # Overall findings for easy access for report / graph generation 
   #
-  # @author Jacob Hammack
+  # @author Jacob Hammack <jacob.hammack@hammackj.com>
   class Findings
     attr_accessor :number_of_hosts, :number_of_risks, :number_of_critical, :number_of_high
     attr_accessor :number_of_medium, :number_of_low, :findings_by_service
@@ -50,12 +50,13 @@ module NessusDB
 			end
 			
       #@number_of_hosts = Host.find(:all, :conditions => ["id != #{@blacklist_host_id}"]).count
-			@number_of_hosts = Host.where("id != ?", @blacklist_host_id).count
-      @number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
-      @number_of_critical = Item.find(:all, :conditions => ["severity IN (3) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
-      @number_of_high = Item.find(:all, :conditions => ["severity IN (2) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
-      @number_of_medium = Item.find(:all, :conditions => ["severity IN (1) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
-      @number_of_low = Item.find(:all, :conditions => ["severity IN (0) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
+			#@number_of_hosts = Host.where("id != ?", @blacklist_host_id).count
+      
+			#@number_of_risks = Item.find(:all, :conditions => ["severity IN (0,1,2,3,4) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
+      #@number_of_critical = Item.find(:all, :conditions => ["severity IN (3) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
+      #@number_of_high = Item.find(:all, :conditions => ["severity IN (2) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
+      #@number_of_medium = Item.find(:all, :conditions => ["severity IN (1) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
+      #@number_of_low = Item.find(:all, :conditions => ["severity IN (0) AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"]).count
 
       @findings_by_service = Item.find_by_sql("SELECT svc_name, count(*) as c FROM items where svc_name != 'unknown' and svc_name != 'general' group by svc_name order by c desc limit 10").map(&:svc_name)#Item.find(:all, :group => :svc_name).map(&:svc_name)
       @other_operating_systems = Host.find(:all, :conditions => ["os not like '%%Windows%%' AND id != #{@blacklist_host_id}"], :group => :os).map(&:os)
@@ -97,9 +98,9 @@ module NessusDB
 			return hosts
 		end
 
+		# Creates a graph based on Severity
 		#
-		#
-		#
+		# @return Filename of the created graph
 		def graph_findings_by_severity(findings, filename="findings_by_severity.png")
 		  g = Gruff::Bar.new(500)
 		  g.title = "Findings By Severity"
@@ -118,9 +119,9 @@ module NessusDB
 			return filename
 		end		
 
-		#
+		# Creates a graph based on the top plugins sorted by count
 		# 
-		#
+		# @return Filename of the created graph
 		def graph_top_plugins_by_count(findings, filename="findings_top_plugins.png")
 		  g = Gruff::Bar.new(500)
 		  g.title = sprintf "Top %d Critical Findings By Plugin", findings.top_plugins.count
