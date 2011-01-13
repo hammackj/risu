@@ -10,7 +10,7 @@ font_size(18) {
 
 text "\n\n"
 
-findings.sorted_hosts.each do |host|
+Host.sorted_hosts.each do |host|
 	text "Name: #{host.name}\n"
 	text "FQDN: #{host.fqdn}\n" unless host.fqdn == nil
 	text "IP Address: #{host.ip}\n" unless host.ip == nil
