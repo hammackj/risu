@@ -1,7 +1,7 @@
 
 module NessusDB
 	APP_NAME = "nessusdb"
-	VERSION = "1.2-dev"
+	VERSION = "1.2"
 end
 
 require 'libxml'
