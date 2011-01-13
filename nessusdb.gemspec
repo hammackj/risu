@@ -6,11 +6,11 @@ $:.unshift(File.join(File.dirname(base), 'lib'))
 require 'nessusdb'
 
 Gem::Specification.new do |s|
-	s.name 									= 'nessusdb'
+	s.name 									= "#{NessusDB::APP_NAME}"
 	s.version 							= NessusDB::VERSION
 	s.homepage 							= "http://www.hammackj.com/"
-	s.summary 							= "NessusDB"
-	s.description 					= "NessusDB is a Nessus .nessus xml parser and report generation tool"
+	s.summary 							= "#{NessusDB::APP_NAME}"
+	s.description 					= "#{NessusDB::APP_NAME} is a Nessus .nessus xml parser and report generation tool"
 	s.license								= "BSD"
 	
 	s.author 								= "Jacob Hammack"
@@ -27,14 +27,14 @@ Gem::Specification.new do |s|
 	s.required_rubygems_version = ">= 1.3.6"
 	s.rubyforge_project         = "nessusdb"
 	
-	s.add_development_dependency "rspec"
+	s.add_development_dependency "rspec", '>= 2.4.0'
+	s.add_development_dependency "rcov", '>= 0.9.9'
 	
 	s.add_dependency('choice', '>= 0.1.4')
-	s.add_dependency('activerecord', '>= 2.3.8')
+	s.add_dependency('activerecord', '>= 3.0.3')
 	s.add_dependency('libxml-ruby', '>= 1.1.4')
 	s.add_dependency('prawn', '>=0.8.4')
 	s.add_dependency('prawn-core', '>=0.8.4')
 	s.add_dependency('prawn-layout', '>=0.8.4')
 	s.add_dependency('gruff', '>=0.3.6')
-	
 end
