@@ -10,7 +10,11 @@ font_size(18) {
 
 text "\n\n\n"
 
-findings.findings_array_unique.each do |h|
+unique_risks = Array.new
+unique_risks << Hash[:title => "Critical Findings", :color => "FF0000", :values => Item.critical_risks_unique]
+unique_risks << Hash[:title => "High Findings", :color => "FF8040", :values => Item.high_risks_unique]
+
+unique_risks.each do |h|
 	if h[:values].length > 1
 		font_size(20) { 
 			fill_color h[:color]
