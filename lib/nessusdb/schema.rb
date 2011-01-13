@@ -4,7 +4,6 @@ module NessusDB
 	
 	# NessusDB Schema
 	#
-	# @version 1.1.0
 	# @author Jacob Hammack
 	class Schema < ActiveRecord::Migration
 
