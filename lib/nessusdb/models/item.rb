@@ -6,8 +6,8 @@ module NessusDB
 		#
 		# @author Jacob Hammack
 		class Item < ActiveRecord::Base
-		  belongs_to :hosts
-		  has_many :plugins
+			belongs_to :hosts
+			has_many :plugins
 		
 			class << self
 
