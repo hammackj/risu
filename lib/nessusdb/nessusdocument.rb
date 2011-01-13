@@ -19,6 +19,7 @@ module NessusDB
 			@parser = LibXML::XML::Parser.file @document
 			doc = @parser.parse
 			
+			puts doc.inspect
 
 		end
 				
