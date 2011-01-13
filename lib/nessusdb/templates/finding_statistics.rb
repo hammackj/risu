@@ -12,10 +12,9 @@ text "\n\n\n"
 
 
 text "Scan Date:", :style => :bold
-text "#{findings.scan_date}"
+text "#{Report.scan_date}"
 text "\n"
 
 table([["Number of hosts","Number of risks","Critical Risks", "High Risks", "Medium Risks", "Low Risks"], 
-[findings.number_of_hosts, findings.number_of_risks, findings.number_of_critical, findings.number_of_high, findings.number_of_medium, findings.number_of_low]], 
+[Hosts.count, Item.risks.count, Item.critical_risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count]], 
 :cell_style => { :padding =>12 }, :width => bounds.width)
-
