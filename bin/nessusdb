@@ -195,11 +195,12 @@ module NessusDB
 				    	# => parser = LibXML::XML::SaxParser.file file
 				    	#parser.callbacks = NessusSaxListener.new
 				    	#parser.parse
-				
+
 							doc = NessusDocument.new file
-							doc.validate
-							
-				
+							if doc.valid? == true
+								doc.parse
+							end
+											
 				    	printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
 				  rescue Interrupt => i
 				  	puts "[!] Parse cancelled!"
