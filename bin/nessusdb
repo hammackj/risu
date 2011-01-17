@@ -35,7 +35,7 @@ module NessusDB
 		
 		# Initiator for [ActiveRecord] migrations.
 		#
-		def self.migrate(direction)
+		def migrate(direction)
 			begin
 				ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
 
@@ -47,7 +47,7 @@ module NessusDB
 				
 				if direction == :up
 					ver = Version.create
-					ver.version = VERSION
+					ver.version = NessusDB::VERSION
 					ver.save
 				end
 				
@@ -73,22 +73,12 @@ module NessusDB
 		      short '-c'
 		      long '--create-tables'
 		      desc 'Create database tables'
-					action do
-						Application.migrate(:up)
-						puts "[*] Successfully created tables."
-						exit
-					end
 		    end		
 
 		    option :drop_tables do
 		      short '-d'
 		      long '--drop-tables'
 		      desc 'Drop database tables'
-					action do
-						Application.migrate(:down)
-						puts "[*] Successfully dropped tables."
-						exit
-					end
 		    end
 		
 				option :create_config do
@@ -187,14 +177,23 @@ module NessusDB
 			  puts Choice.help
 			end
 			
+			if Choice.choices[:create_tables] != nil
+				migrate(:up)
+				puts "[*] Successfully created tables."
+				exit
+			end
+			
+			if Choice.choices[:drop_tables] != nil
+				migrate(:down)
+				puts "[*] Successfully dropped tables."
+				exit
+			end
+				
 			begin		
 				Choice.choices.files.each do |file| 
 				  begin
 				    	puts "[*] Parsing #{file}..."
 				    	tstart = Time.new
-				    	# => parser = LibXML::XML::SaxParser.file file
-				    	#parser.callbacks = NessusSaxListener.new
-				    	#parser.parse
 
 							doc = NessusDocument.new file
 							if doc.valid? == true
