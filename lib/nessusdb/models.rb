@@ -18,5 +18,6 @@ end
 
 module NessusDB
 	module Models
+
 	end
 end
