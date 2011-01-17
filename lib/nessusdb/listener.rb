@@ -10,16 +10,6 @@ module NessusDB
 	# @author Jacob Hammack <jacob.hammack@hammackj.com>
 	class NessusSaxListener
 		include LibXML::XML::SaxParser::Callbacks
-		include NessusDB::Models::FamilySelection
-		include NessusDB::Models::Item
-		include NessusDB::Models::Plugin
-		include NessusDB::Models::Host
-		include NessusDB::Models::Policy
-		include NessusDB::Models::Report
-		include NessusDB::Models::Reference
-		include NessusDB::Models::IndividualPluginSelection
-		include NessusDB::Models::PluginsPreference
-		include NessusDB::Models::ServerPreference
 	
 		# Sets up a array of all valid xml fields
 		#
@@ -52,7 +42,7 @@ module NessusDB
 
 			case element
 				when "Policy"
-					@policy = Policy.create
+					@policy = NessusDB::Models::Policy.create
 					@policy.save
 				when "preference"
 					@sp = @policy.ServerPreferences.create
@@ -107,9 +97,9 @@ module NessusDB
 					@vals = Hash.new # have to clear this out or everything has the same references
 					@ri = @rh.Items.create
 					if attributes["pluginID"] == "0"
-						@plugin = Plugin.find_or_create_by_id(1)
+						@plugin = NessusDB::Models::Plugin.find_or_create_by_id(1)
 					else
-						@plugin = Plugin.find_or_create_by_id(attributes["pluginID"])
+						@plugin = NessusDB::Models::Plugin.find_or_create_by_id(attributes["pluginID"])
 					end
 				
 					@ri.port	= attributes["port"]
