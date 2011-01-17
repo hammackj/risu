@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 
 module NessusDB
 	APP_NAME = "nessusdb"
