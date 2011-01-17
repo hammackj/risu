@@ -33,5 +33,8 @@
 - Create a Nessus document generator, for testing the parser
 - 100% code coverage for testing
 
-## 2.0 (8/4/2011) ##
+## 1.5 (8/4/2011) ##
+- Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
+
+## 2.0 (10/4/2011) ##
 - Rails FrontEnd to NessusDB
