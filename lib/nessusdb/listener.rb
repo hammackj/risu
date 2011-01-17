@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require "nessusdb/models"
+
 module NessusDB
 	
 	# NessusSaxListener
@@ -8,11 +10,16 @@ module NessusDB
 	# @author Jacob Hammack <jacob.hammack@hammackj.com>
 	class NessusSaxListener
 		include LibXML::XML::SaxParser::Callbacks
-		include NessusDB::Models
+		#include NessusDB::Models::FamilySelection
+		#include NessusDB::Models::Item
+		#include NessusDB::Models::Plugin
+		#include NessusDB::Models::Host
+		#include NessusDB::Models::Policy
+		include NessusDB::Models::Policy
 	
 		# Sets up a array of all valid xml fields
 		#
-		# @author Jacob Hammack
+		# 
 		def initialize
 			@vals = Hash.new
 	
