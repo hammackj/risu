@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 module NessusDB
-	module Modules
+	module Models
 		# Item Model
 		#
 		# @author Jacob Hammack

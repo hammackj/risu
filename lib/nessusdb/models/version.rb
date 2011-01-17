@@ -1,5 +1,5 @@
 module NessusDB
-	module Modules
+	module Models
 		# Version Model for the DB
 		#
 		# @author Jacob Hammack

@@ -1,5 +1,5 @@
 module NessusDB
-	module Modules
+	module Models
 		# Policy Model
 		#
 		# @author Jacob Hammack

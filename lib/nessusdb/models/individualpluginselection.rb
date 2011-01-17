@@ -1,5 +1,5 @@
 module NessusDB
-	module Modules
+	module Models
 		# IndividualPluginSelection Model
 		#
 		# @author Jacob Hammack

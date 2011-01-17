@@ -1,5 +1,5 @@
 module NessusDB
-	module Modules
+	module Models
 		# PluginPreference Model
 		#
 		# @author Jacob Hammack

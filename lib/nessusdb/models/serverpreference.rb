@@ -1,5 +1,5 @@
 module NessusDB
-	module Modules
+	module Models
 		# ServerPreference Model
 		#
 		# @author Jacob Hammack

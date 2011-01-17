@@ -10,12 +10,16 @@ module NessusDB
 	# @author Jacob Hammack <jacob.hammack@hammackj.com>
 	class NessusSaxListener
 		include LibXML::XML::SaxParser::Callbacks
-		#include NessusDB::Models::FamilySelection
-		#include NessusDB::Models::Item
-		#include NessusDB::Models::Plugin
-		#include NessusDB::Models::Host
+		include NessusDB::Models::FamilySelection
+		include NessusDB::Models::Item
+		include NessusDB::Models::Plugin
+		include NessusDB::Models::Host
 		include NessusDB::Models::Policy
-		#include NessusDB::Models
+		include NessusDB::Models::Report
+		include NessusDB::Models::Reference
+		include NessusDB::Models::IndividualPluginSelection
+		include NessusDB::Models::PluginsPreference
+		include NessusDB::Models::ServerPreference
 	
 		# Sets up a array of all valid xml fields
 		#
