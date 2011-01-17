@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require "nessusdb/models"
+require "nessusdb"
 
 module NessusDB
 	
@@ -14,8 +14,8 @@ module NessusDB
 		#include NessusDB::Models::Item
 		#include NessusDB::Models::Plugin
 		#include NessusDB::Models::Host
-		#include NessusDB::Models::Policy
 		include NessusDB::Models::Policy
+		#include NessusDB::Models
 	
 		# Sets up a array of all valid xml fields
 		#
