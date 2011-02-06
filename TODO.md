@@ -2,7 +2,7 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.2 (2/4/2011) ##
+## 1.2 (2/11/2011) ##
 - Move to ActiveRecord 3.0
 	- Use named scope to clean up the interface to using findings
 - Check to see that the xml is version 2
@@ -35,6 +35,7 @@
 
 ## 1.5 (8/4/2011) ##
 - Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
+- Move to ruby 1.9.x only support
 
 ## 2.0 (10/4/2011) ##
 - Rails FrontEnd to NessusDB
