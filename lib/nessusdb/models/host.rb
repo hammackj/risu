@@ -6,8 +6,8 @@ module NessusDB
 		#
 		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Host < ActiveRecord::Base
-			belongs_to :Reports
-			has_many :Items
+			belongs_to :reports
+			has_many :items
 			
 			class << self
 				
