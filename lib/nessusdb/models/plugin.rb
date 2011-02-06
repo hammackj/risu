@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module NessusDB
 	module Models
 		# Plugin Model
@@ -6,8 +8,8 @@ module NessusDB
 		class Plugin < ActiveRecord::Base
 		  belongs_to :items
 		  belongs_to :family
-		  has_many :References
-		  has_many :IndividualPluginSelections
+		  has_many :references
+		  has_many :individualpluginselections
 		end
 	end
 end
