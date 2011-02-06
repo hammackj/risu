@@ -14,7 +14,7 @@ module NessusDB
 				#
 				#@scan_date = Host.where("start is not null").first[:start].to_s
 				#
-				def report_date
+				def scan_date
 					Host.where("start is not null").first[:start].to_s
 				end
 			end
