@@ -10,7 +10,7 @@ module NessusDB
 		
 		# Setups of the Templater class initalizing all of the variables
 		#
-		# 
+		# @return [PrawnTemplater] New Instance
 		def initialize(template, findings, output)
 			@template = template
 			@findings = findings
@@ -21,7 +21,7 @@ module NessusDB
 		
 		# Generates a report based on the erb template
 		#
-		# @returns [String] html output of the erb template
+		# @return [String] html output of the erb template
 		def generate
 			begin				
 				source = @template_source
@@ -35,4 +35,3 @@ module NessusDB
 		end
 	end
 end
-
