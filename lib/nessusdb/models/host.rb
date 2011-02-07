@@ -56,7 +56,7 @@ module NessusDB
 				# @other_operating_systems = Host.find(:all, :conditions => ["os not like '%%Windows%%' AND id != #{@blacklist_host_id}"], :group => :os).map(&:os)
 				#
 				def os_other
-					where("os not like '%%Windows%%''")
+					where("os not like '%%Windows%%'")
 				end		
 			end
 		end
