@@ -4,7 +4,7 @@ module NessusDB
 		#
 		# @author Jacob Hammack
 		class IndividualPluginSelection < ActiveRecord::Base
-		  belongs_to :policies
+		  belongs_to :policy
 		end
 	end
 end

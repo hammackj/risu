@@ -4,9 +4,9 @@ module NessusDB
 	module Models
 		# Item Model
 		#
-		# @author Jacob Hammack
+		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Item < ActiveRecord::Base
-			belongs_to :hosts
+			belongs_to :host
 			has_many :plugins
 		
 			class << self
