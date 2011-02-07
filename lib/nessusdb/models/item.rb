@@ -50,7 +50,6 @@ module NessusDB
 				#@critical_findings_unique = Item.find(:all, :conditions => ["severity = 3 AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"], :joins => "INNER JOIN plugins ON items.plugin_id = plugins.id", :order => 'plugins.cvss_base_score', :group => :plugin_id)
 				#
 				def critical_risks_unique
-					#where(:severity => 3).joins("INNER JOIN plugins ON items.plugin_id = plugins.id").order(:cvss_base_score).group(:plugin_id)
 					where(:severity => 3).joins(:plugins).order(:cvss_base_score).group(:plugin_id)
 				end
 				
@@ -93,7 +92,7 @@ module NessusDB
 				##@top_vuln_hosts = Item.find_by_sql("SELECT host_id, count(host_id) FROM items WHERE plugin_id != 1 AND plugin_id NOT IN (#{@blacklist_plugins}) AND severity IN (3,2) GROUP BY host_id ORDER BY count(host_id) DESC LIMIT 10").map(&:host_id)
 				#
 				def risks_by_host
-					select("items.*").select("count(*) as count_all").joins(:hosts).where("plugin_id != 1").where(:severity => [3,2]).group(:host_id).order("count_all DESC")
+					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => [3,2]).group(:host_id).order("count_all DESC")
 				end
 			end
 		end
