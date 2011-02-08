@@ -3,6 +3,7 @@
 module NessusDB
 	APP_NAME = "nessusdb"
 	VERSION = "1.2"
+	GRAPH_WIDTH = 750
 end
 
 require 'libxml'
@@ -12,6 +13,7 @@ require 'yaml'
 require 'gruff'
 require 'prawn'
 require 'prawn/layout'
+require 'stringio'
 require 'mysql'
 
 require 'nessusdb/models'
