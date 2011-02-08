@@ -7,7 +7,6 @@ end
 
 require 'libxml'
 require 'active_record'
-require 'active_model'
 
 require 'yaml'
 require 'gruff'
