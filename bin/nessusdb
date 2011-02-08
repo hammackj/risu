@@ -218,9 +218,9 @@ module NessusDB
 				end unless Choice.choices.files == nil
 	
 				if Choice.choices[:report_template] != nil
-					@findings = Findings.new
+					@findings = Report
 					@findings.author = Choice.choices[:author]
-					@findings.date = Choice.choices[:date]
+					#@findings.date = Choice.choices[:date]
 					@findings.title = Choice.choices[:title]
 					@findings.company = Choice.choices[:company]
 					@findings.classification = Choice.choices[:classification]
