@@ -6,7 +6,7 @@ module NessusDB
 		#
 		# @author Jacob Hammack
 		class Plugin < ActiveRecord::Base
-		  belongs_to :item
+		  has_many :items
 		  belongs_to :family
 		  has_many :references
 		  has_many :individualpluginselections
