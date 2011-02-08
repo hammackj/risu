@@ -17,8 +17,8 @@ module NessusDB
 		#attr_accessor :medium_findings_unique
 		#attr_accessor :low_findings_unique
 
-		attr_accessor :title, :author, :company, :classification, :date
-		attr_accessor :scan_date
+		#attr_accessor :title, :author, :company, :classification, :date
+		#attr_accessor :scan_date
 		
 		#attr_accessor :findings_array, :findings_array_unique
 		#attr_accessor :blacklist_plugins, :blacklist_host, :blacklist_host_id
@@ -72,7 +72,7 @@ module NessusDB
 			#@high_findings = Item.find(:all, :conditions => ["severity = 2 AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"])      
 
 			#@top_plugins = Item.find_by_sql("SELECT *, count(plugin_id) FROM items WHERE plugin_id NOT IN (1) AND severity in (3) GROUP BY plugin_id ORDER BY count(plugin_id) DESC LIMIT 5").map(&:plugin_id)
-#@top_vuln_hosts = Item.find_by_sql("SELECT host_id, count(host_id) FROM items WHERE plugin_id != 1 AND plugin_id NOT IN (#{@blacklist_plugins}) AND severity IN (3,2) GROUP BY host_id ORDER BY count(host_id) DESC LIMIT 10").map(&:host_id)
+			#@top_vuln_hosts = Item.find_by_sql("SELECT host_id, count(host_id) FROM items WHERE plugin_id != 1 AND plugin_id NOT IN (#{@blacklist_plugins}) AND severity IN (3,2) GROUP BY host_id ORDER BY count(host_id) DESC LIMIT 10").map(&:host_id)
 			#@top_plugins = Item.find_by_sql("SELECT *, count(plugin_id) FROM items WHERE plugin_id NOT IN (1) AND severity in (3) GROUP BY plugin_id ORDER BY count(plugin_id) DESC LIMIT 5").map(&:plugin_id)
 			
 			#@findings_array << Hash[:title => "Critical Findings", :color => "FF0000", :values => @critical_findings]
@@ -100,26 +100,33 @@ module NessusDB
 
 		# Creates a graph based on Severity
 		#
+		#
+		# @todo Move to the Item class
+		#
+		#
 		# @return Filename of the created graph
-		def graph_findings_by_severity(findings, filename="findings_by_severity.png")
-		  g = Gruff::Bar.new(500)
-		  g.title = "Findings By Severity"
-		  g.sort = false
-		  g.theme = {
-		     :background_colors => %w(white white)
-		  }
-
-		  g.data("Critical", findings.number_of_critical, "red") unless findings.number_of_critical == 0
-		  g.data("High", findings.number_of_high, "orange") unless findings.number_of_high == 0
-		  g.data("Medium", findings.number_of_medium, "yellow") unless findings.number_of_medium == 0
-		  g.data("Low", findings.number_of_low, "blue") unless findings.number_of_low == 0
-
-		  g.write(filename)
-		
-			return filename
-		end		
+#		def graph_findings_by_severity(findings, filename="findings_by_severity.png")
+#		  g = Gruff::Bar.new(500)
+#		  g.title = "Findings By Severity"
+#		  g.sort = false
+#		  g.theme = {
+#		     :background_colors => %w(white white)
+#		  }
+#
+#		  g.data("Critical", findings.number_of_critical, "red") unless findings.number_of_critical == 0
+#		  g.data("High", findings.number_of_high, "orange") unless findings.number_of_high == 0
+#		  g.data("Medium", findings.number_of_medium, "yellow") unless findings.number_of_medium == 0
+#		  g.data("Low", findings.number_of_low, "blue") unless findings.number_of_low == 0
+#
+#		  g.write(filename)
+#		
+#			return filename
+#		end		
 
 		# Creates a graph based on the top plugins sorted by count
+		#
+		# 
+		# @todo move to the plugins class
 		# 
 		# @return Filename of the created graph
 		def graph_top_plugins_by_count(findings, filename="findings_top_plugins.png")
@@ -152,7 +159,7 @@ module NessusDB
 		end
 
 		#
-		#
+		# @todo Move to the host class
 		#
 		def graph_top_vuln_hosts(findings, filename="findings_top_vuln_hosts.png")
 		  g = Gruff::Bar.new(500)
@@ -175,44 +182,47 @@ module NessusDB
 		end
 
 		#
+		# move to the item class
 		#
-		#
-		def graph_findings_by_service(findings, filename="findings_by_service.png")
-		  g = Gruff::Pie.new(600)
-		  g.title = sprintf "Top %d Findings By Service", findings.findings_by_service.count
-		  g.sort = false
-		  g.theme = {
-		    :colors => %w(red green blue orange yellow purple black grey brown pink),
-		    :background_colors => %w(white white)
-		  }
-
-		  findings.findings_by_service.each { |service| 
-		    g.data(service, Item.find(:all, :conditions => {:svc_name => service}).count)
-		  }
-
-		  g.write(filename)
+#		def graph_findings_by_service(findings, filename="findings_by_service.png")
+#		  g = Gruff::Pie.new(600)
+#		  g.title = sprintf "Top %d Findings By Service", findings.findings_by_service.count
+#		  g.sort = false
+#		  g.theme = {
+#		    :colors => %w(red green blue orange yellow purple black grey brown pink),#
+#		    :background_colors => %w(white white)
+#		  }
+#
+#		  findings.findings_by_service.each { |service| 
+#		    g.data(service, Item.find(:all, :conditions => {:svc_name => service}).count)
+#		  }
+#
+#		  g.write(filename)
+#		
+#			return filename
+#		end
 		
-			return filename
-		end
-		
-		def graph_findings_by_service_blob(findings, filename="findings_by_service.png")
-		  g = Gruff::Pie.new(600)
-		  g.title = sprintf "Top %d Findings By Service", Item.risks_by_service.limit(10).size.to_hash.size
-		  g.sort = false
-		  g.theme = {
-		    :colors => %w(red green blue orange yellow purple black grey brown pink),
-		    :background_colors => %w(white white)
-		  }
+		#
+		# move to the item class
+		#
+		#def graph_findings_by_service_blob(findings, filename="findings_by_service.png")
+		  #g = Gruff::Pie.new(600)
+		  #g.title = sprintf "Top %d Findings By Service", Item.risks_by_service.limit(10).size.to_hash.size
+		  #g.sort = false
+		  #g.theme = {
+		  #  :colors => %w(red green blue orange yellow purple black grey brown pink),
+		  #  :background_colors => %w(white white)
+		  #}
 
-		  Item.risks_by_service.limit(10).each { |service| 
-		    g.data(service.svc_name, Item.find(:all, :conditions => {:svc_name => service.svc_name}).count)
-		  }
-
-		  g.to_blob
-		end
+#		  Item.risks_by_service.limit(10).each { |service| 
+#		    g.data(service.svc_name, Item.find(:all, :conditions => {:svc_name => service.svc_name}).count)
+#		  }
+#
+		#  g.to_blob
+		#end
 
 		#
-		#
+		# move to the host class
 		#
 		def graph_other_operating_systems_by_count(findings, filename="other_operating_system_by_count.png")
 		  g = Gruff::Pie.new(600)
@@ -233,7 +243,7 @@ module NessusDB
 		end
 
 		#
-		#
+		# move to the host class
 		#
 		def graph_windows_operating_systems_by_count(findings, filename="windows_operating_system_by_count.png")
 		  g = Gruff::Pie.new(600)
