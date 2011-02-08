@@ -25,6 +25,7 @@
 - Add template validation and more error checking
 - Colorize the reports with better style
 - DSL for report creation to abstract the reports to have different output types
+- Migrate away from Choice for command line parsing
 
 ## 1.4 (6/4/2011) ##
 - Clean up / Bug fixes before 2.0
