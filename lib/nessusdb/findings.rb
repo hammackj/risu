@@ -224,44 +224,43 @@ module NessusDB
 		#
 		# move to the host class
 		#
-		def graph_other_operating_systems_by_count(findings, filename="other_operating_system_by_count.png")
-		  g = Gruff::Pie.new(600)
-		  g.title = "Other Operating Systems By Count"
-		  g.sort = false
-		  g.theme = {
-		    :colors => %w(red green blue orange yellow purple black grey brown pink),
-		    :background_colors => %w(white white)
-		  }
-
-		  findings.other_operating_systems.each { |os|
-		    g.data(os.gsub("\n", '/').gsub("Microsoft",'').gsub("Service Pack", 'SP').gsub("Red Hat Enterprise Linux", "RHEL").gsub("Kernel",""), Host.find(:all, :conditions => {:os => os}).count) unless os == nil
-		  }
-
-		  g.write(filename)  
-		
-			return filename
-		end
+#		def graph_other_operating_systems_by_count(findings, filename="other_operating_system_by_count.png")
+#		  g = Gruff::Pie.new(600)
+#		  g.title = "Other Operating Systems By Count"
+#		  g.sort = false
+#		  g.theme = {
+#		    :colors => %w(red green blue orange yellow purple black grey brown pink),
+#		    :background_colors => %w(white white)
+#		  }
+#
+#		  findings.other_operating_systems.each { |os|
+#		    g.data(os.gsub("\n", '/').gsub("Microsoft",'').gsub("Service Pack", 'SP').gsub("Red Hat Enterprise Linux", "RHEL").gsub("Kernel",""), Host.find(:all, :conditions => {:os => os}).count) unless os == nil
+#		  }
+#
+#		  g.write(filename)  
+#		
+#			return filename
+#		end
 
 		#
 		# move to the host class
 		#
-		def graph_windows_operating_systems_by_count(findings, filename="windows_operating_system_by_count.png")
-		  g = Gruff::Pie.new(600)
-		  g.title = "Windows Operating Systems By Count"
-		  g.sort = false
-		  g.theme = {
-		    :colors => %w(red green blue orange yellow purple black grey brown pink),
-		    :background_colors => %w(white white)
-		  }
-
-		  findings.windows_operating_systems.each { |os|
-		    g.data(os.gsub("\n", '/').gsub("Microsoft",'').gsub("Service Pack", 'SP').gsub("Red Hat Enterprise Linux", "RHEL").gsub("Standard","Std").gsub("Windows",""), Host.find(:all, :conditions => {:os => os}).count) unless os == nil
-		  }
-
-		  g.write(filename)  
-		
-			return filename
-		end
+#		def graph_windows_operating_systems_by_count(findings, filename="windows_operating_system_by_count.png")
+#		  g = Gruff::Pie.new(600)
+#		  g.title = "Windows Operating Systems By Count"
+#		  g.sort = false
+#		  g.theme = {
+#		    :colors => %w(red green blue orange yellow purple black grey brown pink),
+#		    :background_colors => %w(white white)
+#		  }
+#
+#		  findings.windows_operating_systems.each { |os|
+#		    g.data(os.gsub("\n", '/').gsub("Microsoft",'').gsub("Service Pack", 'SP').gsub("Red Hat Enterprise Linux", "RHEL").gsub("Standard","Std").gsub("Windows",""), Host.find(:all, :conditions => {:os => os}).count) unless os == nil
+#		  }
+#
+#		  g.write(filename)  
+#			return filename
+#		end
 		
   end
 end
