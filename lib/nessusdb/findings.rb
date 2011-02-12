@@ -129,57 +129,57 @@ module NessusDB
 		# @todo move to the plugins class
 		# 
 		# @return Filename of the created graph
-		def graph_top_plugins_by_count(findings, filename="findings_top_plugins.png")
-		  g = Gruff::Bar.new(500)
-		  g.title = sprintf "Top %d Critical Findings By Plugin", findings.top_plugins.count
-		  g.sort = false
-		  g.theme = {
-		    :colors => %w(red green blue orange yellow purple black grey brown pink),
-		    :background_colors => %w(white white)
-		  }
-
-		  findings.top_plugins.each { |plugin|
-		    plugin_name = Plugin.find_by_id(plugin).plugin_name
-
-		    #We need to filter the names a little to make everything look nice on the graph
-		    plugin_name = case plugin
-		      when 35362 then plugin_name.split(":")[0]
-		      when 34477 then plugin_name.split(":")[0]
-		      when 35635 then plugin_name.split(":")[0]
-		      when 21564 then "VNC Remote Authentication Bypass"
-		      when 38664 then "Intel Common Base Agent Remote Command Execution"  
-		    end
-
-		    g.data(plugin_name, Item.find(:all, :conditions => {:plugin_id => plugin}).count)
-		  }
-
-		  g.write(filename)
-		
-			return filename
-		end
+		#def graph_top_plugins_by_count(findings, filename="findings_top_plugins.png")
+		#  g = Gruff::Bar.new(500)
+		#  g.title = sprintf "Top %d Critical Findings By Plugin", findings.top_plugins.count
+		#  g.sort = false
+		#  g.theme = {
+		#    :colors => %w(red green blue orange yellow purple black grey brown pink),
+		#    :background_colors => %w(white white)
+		#  }
+#
+#		  findings.top_plugins.each { |plugin|
+#		    plugin_name = Plugin.find_by_id(plugin).plugin_name
+#
+#		    #We need to filter the names a little to make everything look nice on the graph
+#		    plugin_name = case plugin
+#		      when 35362 then plugin_name.split(":")[0]
+#		      when 34477 then plugin_name.split(":")[0]
+#		      when 35635 then plugin_name.split(":")[0]
+#		      when 21564 then "VNC Remote Authentication Bypass"
+#		      when 38664 then "Intel Common Base Agent Remote Command Execution"  
+#		    end
+#
+#		    g.data(plugin_name, Item.find(:all, :conditions => {:plugin_id => plugin}).count)
+#		  }
+#
+#		  g.write(filename)
+#		
+#			return filename
+#		end
 
 		#
 		# @todo Move to the host class
 		#
-		def graph_top_vuln_hosts(findings, filename="findings_top_vuln_hosts.png")
-		  g = Gruff::Bar.new(500)
-		  g.title = sprintf "Top %d Critical/High Finding Count Per Host ", findings.top_vuln_hosts.count
-		  g.sort = false
-		  g.theme = {
-		    :colors => %w(red green blue orange yellow purple black grey brown pink),
-		    :background_colors => %w(white white)
-		  }
-
-		  findings.top_vuln_hosts.each { |host|
-		    ip = Host.find_by_id(host).name
-
-		    g.data(ip, Item.find(:all, :conditions => ["host_id = ? AND plugin_id != 1 AND plugin_id NOT IN (#{findings.blacklist_plugins}) AND severity in (3,2)", host]).count)
-		  }
-
-		  g.write(filename)
-		
-			return filename
-		end
+#		def graph_top_vuln_hosts(findings, filename="findings_top_vuln_hosts.png")
+#		  g = Gruff::Bar.new(500)
+#		  g.title = sprintf "Top %d Critical/High Finding Count Per Host ", findings.top_vuln_hosts.count
+#		  g.sort = false
+#		  g.theme = {
+#		    :colors => %w(red green blue orange yellow purple black grey brown pink),
+#		    :background_colors => %w(white white)
+#		  }
+#
+#		  findings.top_vuln_hosts.each { |host|
+#		    ip = Host.find_by_id(host).name
+#
+#		    g.data(ip, Item.find(:all, :conditions => ["host_id = ? AND plugin_id != 1 AND plugin_id NOT IN (#{findings.blacklist_plugins}) AND severity in (3,2)", host]).count)
+#		  }
+#
+#		  g.write(filename)
+#		
+#			return filename
+#		end
 
 		#
 		# move to the item class
