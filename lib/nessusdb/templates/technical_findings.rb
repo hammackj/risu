@@ -1,11 +1,11 @@
-text findings.classification, :align => :center
+text Report.classification, :align => :center
 text "\n"
 
-font_size(22) { text findings.title, :align => :center }
+font_size(22) { text Report.title, :align => :center }
 font_size(18) { 
 	text "Critical and High Findings", :align => :center
 	text "\n"
-	text "This report was prepared by\n#{findings.author}", :align => :center
+	text "This report was prepared by\n#{Report.author}", :align => :center
 }
 
 text "\n\n\n"
@@ -25,7 +25,8 @@ unique_risks.each do |h|
 		text "\n"
 		
 		h[:values].each do |f|
-      hosts = Item.find(:all, :conditions => ["plugin_id = #{f.plugin_id} AND host_id != #{findings.blacklist_host_id}"])
+      #hosts = Item.find(:all, :conditions => ["plugin_id = #{f.plugin_id} AND host_id != #{findings.blacklist_host_id}"])
+			hosts = Item.where(:plugin_id => f.plugin_id)
       plugin = Plugin.find_by_id(f.plugin_id)
       references = Reference.find(:all, :group => :value, :order => :reference_name, :order => :reference_name, :conditions => {:plugin_id => plugin.id})
 						
