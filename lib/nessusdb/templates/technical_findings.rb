@@ -25,11 +25,11 @@ unique_risks.each do |h|
 		text "\n"
 		
 		h[:values].each do |f|
-      #hosts = Item.find(:all, :conditions => ["plugin_id = #{f.plugin_id} AND host_id != #{findings.blacklist_host_id}"])
 			hosts = Item.where(:plugin_id => f.plugin_id)
       plugin = Plugin.find_by_id(f.plugin_id)
-      references = Reference.find(:all, :group => :value, :order => :reference_name, :order => :reference_name, :conditions => {:plugin_id => plugin.id})
-						
+      #references = Reference.find(:all, :group => :value, :order => :reference_name, :order => :reference_name, :conditions => {:plugin_id => plugin.id})
+			references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
+			
 			font_size(16) { text "#{plugin.plugin_name}\n" }
 
     	if hosts.length > 1
@@ -87,6 +87,7 @@ unique_risks.each do |h|
 				text "\n"
 		end
 	end
+	
 	start_new_page unless h[:values] == nil
 end
 
