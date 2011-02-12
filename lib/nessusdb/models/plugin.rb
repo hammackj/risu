@@ -27,35 +27,27 @@ module NessusDB
 						:background_colors => %w(white white)
 					}
 					
-					puts Item.risks_by_plugin(limit).count
-
-					Item.risks_by_plugin(limit).each { |plugin|
-					
-						#puts plugin.inspect
-					
+					Item.risks_by_plugin(limit).each do |plugin|					
 						plugin_name = Plugin.find_by_id(plugin.plugin_id).plugin_name
 						
-						#puts "name = #{plugin_name} "						
-
 						#We need to filter the names a little to make everything look nice on the graph
-						plugin_name = case plugin
+						plugin_name = case plugin.plugin_id
 							when 35362 then plugin_name.split(":")[0]
 							when 34477 then plugin_name.split(":")[0]
 							when 35635 then plugin_name.split(":")[0]
 							when 21564 then "VNC Remote Authentication Bypass"
 							when 38664 then "Intel Common Base Agent Remote Command Execution"
-							when /^(MS\d{2}-\d{3}):/ then 
-								puts $1
-								$1
+							when 42411 then "Windows SMB Shares Unprivileged Access"
 							else
-								plugin_name = plugin_name
-						end unless plugin_name.length == 0
+								plugin_name = Plugin.find_by_id(plugin.plugin_id).plugin_name
+						end
 
-						#puts "name = #{plugin_name} "
+						if plugin_name =~ /^(MS\d{2}-\d{3}):/
+							plugin_name = $1
+						end
 
-						#g.data(plugin_name, Item.find(:all, :conditions => {:plugin_id => plugin}).count)
-						g.data(plugin_name, Item.where(:plugin_id => plugin).count)
-					}
+						g.data(plugin_name, Item.where(:plugin_id => plugin.plugin_id).count)
+					end
 				
 					StringIO.new(g.to_blob)
 				end
