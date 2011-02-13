@@ -10,11 +10,16 @@ font_size(18) {
 
 text "\n\n\n"
 
+#@todo Revamping blacklisting in 1.3
+#blacklist_ip = "172.20.5.7"
+#blacklist_host_id = Host.where(:ip => blacklist_ip)
+#.where("host_id != (?)", blacklist_host_id)
+
 unique_risks = Array.new
 unique_risks << Hash[:title => "Critical Findings", :color => "FF0000", :values => Item.critical_risks_unique]
 unique_risks << Hash[:title => "High Findings", :color => "FF8040", :values => Item.high_risks_unique]
 
-unique_risks.each do |h|
+unique_risks.each do |h|	
 	if h[:values].length > 1
 		font_size(20) { 
 			fill_color h[:color]
@@ -25,9 +30,18 @@ unique_risks.each do |h|
 		text "\n"
 		
 		h[:values].each do |f|
+			
 			hosts = Item.where(:plugin_id => f.plugin_id)
-      plugin = Plugin.find_by_id(f.plugin_id)
-      #references = Reference.find(:all, :group => :value, :order => :reference_name, :order => :reference_name, :conditions => {:plugin_id => plugin.id})
+			plugin = Plugin.find_by_id(f.plugin_id)
+			
+			#Check if vuln is just on the blacklisted
+			#if hosts.count == 1
+			#	if hosts.first.host_id == blacklist_host_id.first.id
+			#		next
+			#	end
+			#end
+      
+			
 			references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 			
 			font_size(16) { text "#{plugin.plugin_name}\n" }
@@ -41,7 +55,9 @@ unique_risks.each do |h|
 			hostlist = Array.new
 			hosts.each do |host|
 				h = Host.find_by_id(host.host_id)
-				hostlist << h.name
+				#if h.id != blacklist_host_id.first.id
+					hostlist << h.name
+				#end
 			end
 
 			text hostlist.join(', ')
@@ -68,7 +84,12 @@ unique_risks.each do |h|
 			
 			if plugin.exploit_available != nil
 				text "\nExploit Available", :style => :bold
-				text plugin.exploit_available
+				
+				if plugin.exploit_available == "true"
+					text "Yes"
+				else
+					text "No"
+				end
 			end
 		
 			if plugin.solution != nil
