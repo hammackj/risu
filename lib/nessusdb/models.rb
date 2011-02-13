@@ -1,10 +1,12 @@
 # encoding: utf-8
 
-begin
-	file = File.open('database.yml')
-	yaml = YAML::load(file)
-	begin 
-		ActiveRecord::Base.establish_connection(yaml) 
+begin	
+	begin
+		#if File.exists?("database.yml") == true
+			file = File.open('database.yml')
+			yaml = YAML::load(file)
+			ActiveRecord::Base.establish_connection(yaml) 
+		#end
 	rescue
 		puts "[!] Unable to connect to database! Please check your database.yml"
 	end
@@ -13,8 +15,9 @@ rescue
 end
 
 # normally disabled due to peformance, enable for debugging
-#ActiveRecord.colorize_logging = false
-#ActiveRecord::Base.logger = Logger.new("db.log")
+#
+#ActiveRecord::Base.logger = Logger.new(STDOUT)
+#ActiveRecord::Migration.verbose = true
 
 module NessusDB
 	module Models
