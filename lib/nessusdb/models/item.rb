@@ -50,28 +50,28 @@ module NessusDB
 				#@critical_findings_unique = Item.find(:all, :conditions => ["severity = 3 AND plugin_id NOT IN (#{@blacklist_plugins}) AND host_id != #{@blacklist_host_id}"], :joins => "INNER JOIN plugins ON items.plugin_id = plugins.id", :order => 'plugins.cvss_base_score', :group => :plugin_id)
 				#
 				def critical_risks_unique
-					where(:severity => 3).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)#.all
+					where(:severity => 3).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
 				end
 				
 				#
 				#
 				#
 				def high_risks_unique
-					where(:severity => 2).joins(:plugin).order(:cvss_base_score).group(:plugin_id)#.all
+					where(:severity => 2).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
 				end
 				
 				#
 				#
 				#
 				def medium_risks_unique
-					where(:severity => 1).joins(:plugin).order(:cvss_base_score).group(:plugin_id)#.all
+					where(:severity => 1).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
 				end
 				
 				#
 				#
 				#
 				def low_risks_unique
-					where(:severity => 0).joins(:plugin).order(:cvss_base_score).group(:plugin_id)#.all
+					where(:severity => 0).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
 				end
 				
 				#
