@@ -8,6 +8,7 @@ end
 
 require 'libxml'
 require 'active_record'
+require 'logger'
 
 require 'yaml'
 require 'gruff'
@@ -18,7 +19,6 @@ require 'mysql'
 
 require 'nessusdb/models'
 require 'nessusdb/listener'
-require 'nessusdb/findings'
 require 'nessusdb/schema'
 require 'nessusdb/prawn_templater'
 require 'nessusdb/nessusdocument'
