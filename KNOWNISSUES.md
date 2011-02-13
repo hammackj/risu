@@ -1,6 +1,6 @@
-# Known Issues #
+# Known Issues
 
-## RMagick Breaks on ImageMagick Updates ##
+## RMagick Breaks on ImageMagick Updates
 The easy way to fix this is to just reinstall RMagick, like below:
 
 	[hammackj@taco:~/Projects/public/nessusdb]$ nessusdb 
