@@ -1,10 +1,10 @@
-# NessusDB #
+# NessusDB
 
 NessusDB is [Nessus](http://www.nessus.org) XMLv2 parser, which pushes reports into an [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, easing report generation. 
 
 Version 1.2.0 is the current release.
 
-## Requirements ##
+## Requirements
 
 - ruby (Tested with 1.8.7)
 - rubygems (Install it from source!, it is included with ruby 1.9.1+)
@@ -16,19 +16,22 @@ Version 1.2.0 is the current release.
 - rmagick
 - gruff
 - prawn
+- mysql
 
 These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install nessusdb, If not this command will install them all:
 
-	% sudo gem install libxml-ruby choice rails yaml logger rmagick gruff prawn nessusdb
+	% gem install libxml-ruby choice yaml rails logger gruff prawn rmagick mysql
+	
+**You my need sudo/root access depending on your system setup**
 
 Any database that ActiveRecord supports should work. NessusDB has been tested with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/). 
 
-## Installation ##
+## Installation
 Installation is really easy just gem install!
 
 	% sudo gem install nessusdb
 
-## Database Setup ##
+## Database Setup
 
 	% nessusdb --create-config
 	% $EDITOR database.yml
@@ -39,7 +42,7 @@ Installation is really easy just gem install!
 3. Migrate the database schema.
 
 
-## Parsing Nessus Output ##
+## Parsing Nessus Output
 
 	% nessusdb -f report1.nessus [report2.nessus ...]
 
