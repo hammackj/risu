@@ -20,14 +20,14 @@ module NessusDB
 				# @return Filename of the created graph
 				def top_by_count_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d Critical Findings By Plugin", Item.risks_by_plugin(limit).count
+					g.title = sprintf "Top %d Critical Findings By Plugin", Item.risks_by_plugin(limit).all.count
 					g.sort = false
 					g.theme = {
 						:colors => %w(red green blue orange yellow purple black grey brown pink),
 						:background_colors => %w(white white)
 					}
 					
-					Item.risks_by_plugin(limit).each do |plugin|					
+					Item.risks_by_plugin(limit).all.each do |plugin|					
 						plugin_name = Plugin.find_by_id(plugin.plugin_id).plugin_name
 						
 						#We need to filter the names a little to make everything look nice on the graph
