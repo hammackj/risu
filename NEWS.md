@@ -1,6 +1,6 @@
-# News #
+# News
 
-# 1.2.0 (January 05, 2011)
+# 1.2.0 (February 13, 2011)
 **This update breaks all existing templates, included templates are updated**
 	
 - Preformed tons code clean up
