@@ -1,4 +1,5 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+require 'rubygems' # not sure why...
 require "nessusdb"
  
 task :build do
