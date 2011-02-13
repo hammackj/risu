@@ -100,14 +100,14 @@ module NessusDB
 				# @return [StringIO] Object containing the generated PNG image
 				def risks_by_service_graph(limit=10)
 					g = Gruff::Pie.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d Findings By Service", Item.risks_by_service(limit).count
+					g.title = sprintf "Top %d Findings By Service", Item.risks_by_service(limit).all.count
 					g.sort = false
 					g.theme = {
 						:colors => %w(red green blue orange yellow purple black grey brown pink),
 						:background_colors => %w(white white)
 					}
 
-					Item.risks_by_service(limit).each { |service| 
+					Item.risks_by_service(limit).all.each { |service| 
 						g.data(service.svc_name, Item.find(:all, :conditions => {:svc_name => service.svc_name}).count)
 					}
 
