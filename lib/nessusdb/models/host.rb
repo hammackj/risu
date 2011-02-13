@@ -111,14 +111,14 @@ module NessusDB
 				#
 				def top_vuln_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d Critical/High Finding Count Per Host ", Item.risks_by_host(limit).count
+					g.title = sprintf "Top %d Critical/High Finding Count Per Host ", Item.risks_by_host(limit).all.count
 					g.sort = false
 					g.theme = {
 						:colors => %w(red green blue orange yellow purple black grey brown pink),
 						:background_colors => %w(white white)
 					}
 
-					Item.risks_by_host(limit).each do |item|
+					Item.risks_by_host(limit).all.each do |item|
 						ip = Host.find_by_id(item.host_id).name
 						count = Item.where(:host_id => item.host_id).where("severity IN (?)", [2,3]).count
 						
