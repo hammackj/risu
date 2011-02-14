@@ -11,7 +11,7 @@ font_size(18) {
 text "\n\n\n"
 
 #@todo Revamping blacklisting in 1.3
-#blacklist_ip = "172.20.5.7"
+#blacklist_ip = "-"
 #blacklist_host_id = Host.where(:ip => blacklist_ip)
 #.where("host_id != (?)", blacklist_host_id)
 
