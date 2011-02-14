@@ -38,7 +38,7 @@ module NessusDB
 		def migrate(direction)
 			begin
 				if File.exists?("database.yml") == false
-					puts "[!] Could not find database.yml!"
+					puts "[!] Could not find database.yml please use #{APP_NAME} --create-config to generate a skeleton one!"
 					exit
 				end
 				
