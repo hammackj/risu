@@ -9,6 +9,7 @@
 - All queries are now using ActiveRecord 3
 	- Use named scope off each Model to access data
 - Ported all the templates to use the new ActiveRecord3 style
+- Solved some missing dependency issues that are now accounted for!
 
 # 1.1.0 (October 22, 2010)
 - Fixed a typo on the classification argument
