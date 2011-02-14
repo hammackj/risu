@@ -21,8 +21,7 @@ Gem::Specification.new do |s|
 	s.default_executable		= 'nessusdb'
 	s.executables						= ['nessusdb']
 	s.require_paths					= ["lib"]
-	
-	s.has_rdoc							= 'yard'
+	s.has_rdoc      				= 'yard'
 	s.extra_rdoc_files			= ["README.md", "LICENSE", "NEWS.md", "TODO.md", "KNOWNISSUES.md"]
 	
 	s.required_rubygems_version = ">= 1.3.6"
