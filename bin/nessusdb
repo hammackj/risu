@@ -43,6 +43,7 @@ module NessusDB
 				end
 				
 				ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
+				require 'nessusdb/schema'
 				Schema.migrate(direction)
 				
 				if direction == :up
