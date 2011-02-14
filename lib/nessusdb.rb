@@ -6,8 +6,9 @@ module NessusDB
 	GRAPH_WIDTH = 750
 end
 
-require 'libxml'
 require 'active_record'
+require "active_support"
+require 'libxml'
 require 'logger'
 
 require 'yaml'
@@ -17,9 +18,9 @@ require 'prawn/layout'
 require 'stringio'
 require 'mysql'
 
+require 'nessusdb/schema'
 require 'nessusdb/models'
 require 'nessusdb/listener'
-require 'nessusdb/schema'
 require 'nessusdb/prawn_templater'
 require 'nessusdb/nessusdocument'
 
