@@ -18,8 +18,12 @@ require 'prawn/layout'
 require 'stringio'
 require 'mysql'
 
-require 'nessusdb/schema'
 require 'nessusdb/models'
+
+if ActiveRecord::Base.connected? == true
+	require 'nessusdb/schema'
+end
+
 require 'nessusdb/listener'
 require 'nessusdb/prawn_templater'
 require 'nessusdb/nessusdocument'
