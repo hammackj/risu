@@ -2,11 +2,12 @@
 
 begin	
 	begin
-		#if File.exists?("database.yml") == true
+		if File.exists?("database.yml") == true
+			puts "[*] opening database.yml"
 			file = File.open('database.yml')
 			yaml = YAML::load(file)
 			ActiveRecord::Base.establish_connection(yaml) 
-		#end
+		end
 	rescue
 		puts "[!] Unable to connect to database! Please check your database.yml"
 	end
