@@ -2,7 +2,7 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.3 (4/4/2011)
+## 1.3 (5/4/2011)
 
 - Rework the blacklisting stuff
 - Create a config file to store variables in
@@ -23,17 +23,20 @@
 	- Version 2 = NessusClientData_V2
 - Move the YAML/Database code out of models.rb
 - Add a irb like console to manually interact with the manuals
+- Update all the Migration code to use the new AR3 format
+- Migrate to OptionParser Choice seems to be an abandoned gem with bugs
+- Add a command line option for passing it a config file to use
 
-## 1.4 (6/4/2011)
+## 1.4 (7/4/2011)
 - Clean up / Bug fixes before 2.0
 - Create rSpec tests for everything
 - Create test fixtures
 - Create a Nessus document generator, for testing the parser
 - 100% code coverage for testing
 
-## 1.5 (8/4/2011)
+## 1.5 (9/4/2011)
 - Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
 - Move to ruby 1.9.x only support
 
-## 2.0 (10/4/2011)
+## 2.0 (12/4/2011)
 - Rails FrontEnd to NessusDB
