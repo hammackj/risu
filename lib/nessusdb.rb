@@ -4,6 +4,7 @@ module NessusDB
 	APP_NAME = "nessusdb"
 	VERSION = "1.2"
 	GRAPH_WIDTH = 750
+	EMAIL = "jacob.hammack@hammackj.com"
 end
 
 require 'active_record'
