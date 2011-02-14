@@ -3,7 +3,7 @@
 begin	
 	begin
 		if File.exists?("database.yml") == true
-			puts "[*] opening database.yml"
+			#puts "[*] opening database.yml"
 			file = File.open('database.yml')
 			yaml = YAML::load(file)
 			ActiveRecord::Base.establish_connection(yaml) 
