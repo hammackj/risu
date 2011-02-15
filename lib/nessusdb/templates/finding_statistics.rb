@@ -15,6 +15,10 @@ text "Scan Date:", :style => :bold
 text "#{Report.scan_date}"
 text "\n"
 
-table([["Number of hosts","Number of risks","Critical Risks", "High Risks", "Medium Risks", "Low Risks"], 
-[Host.count, Item.risks.count, Item.critical_risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count]], 
-:cell_style => { :padding =>12 }, :width => bounds.width)
+headers = ["Number of hosts","Number of risks","Critical Risks", "High Risks", "Medium Risks", "Low Risks"]
+data = [[Host.count, Item.risks.count, Item.critical_risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count]]
+
+table(data, :headers => headers,
+						:border_style => :grid, 
+						:header_color => 'cccccc',
+						:width => bounds.width)
