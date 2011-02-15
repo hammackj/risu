@@ -95,6 +95,20 @@ module NessusDB
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => [3,2]).group(:host_id).order("count_all DESC").limit(limit)
 				end
 				
+				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def ms_patches
+					where(:plugin_id => 38153).joins(:host)
+				end
+				
+				# Queries for all host with the Microsoft Update Summary plugin(12028)
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def ms_update
+					where(:plugin_id => 12028).joins(:host)
+				end
+				
 				# Generates a Graph of all the risks by service
 				# 
 				# @return [StringIO] Object containing the generated PNG image
