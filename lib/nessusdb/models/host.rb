@@ -23,10 +23,9 @@ module NessusDB
 				end
 				
 				
-				#
-				# @todo test for nil ip
+				# Sorts all of the hosts where the ip address is not null
 				# 
-				#
+				# @return [Array] With all the Ip's in sorted order
 				def sorted
 					hosts = Host.where("ip is not NULL").order("ip").all
 					
@@ -38,10 +37,13 @@ module NessusDB
 					end
 
 					#Sort the ips in natural order.
-					hosts.sort! { |a, b|
-						a.ip.gsub(".", "").to_i <=> b.ip.gsub(".", "").to_i
-					}
-
+					hosts.sort! do |a,b|
+						ip1 = IPAddr.new a.ip
+						ip2 = IPAddr.new b.ip
+						
+						ip1 <=> ip2
+					end
+					
 					return hosts
 				end
 				
