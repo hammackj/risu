@@ -2,7 +2,7 @@
 
 module NessusDB
 	APP_NAME = "nessusdb"
-	VERSION = "1.2"
+	VERSION = "1.3"
 	GRAPH_WIDTH = 750
 	EMAIL = "jacob.hammack@hammackj.com"
 end
@@ -11,6 +11,7 @@ require 'active_record'
 require "active_support"
 require 'libxml'
 require 'logger'
+require 'ipaddr'
 
 require 'yaml'
 require 'gruff'
