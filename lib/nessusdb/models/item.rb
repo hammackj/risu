@@ -53,11 +53,19 @@ module NessusDB
 					where(:severity => 3).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
 				end
 				
+				def critical_risks_unique_sorted
+					select("items.*").select("count() as count_all").where(:severity => 3).group(:plugin_id).order("count_all DESC")
+				end
+				
 				# Queries for all the unique high risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_unique
 					where(:severity => 2).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
+				end
+				
+				def high_risks_unique_sorted
+					select("items.*").select("count() as count_all").where(:severity => 2).group(:plugin_id).order("count_all DESC")
 				end
 				
 				# Queries for all the unique medium risks in the database
@@ -67,11 +75,19 @@ module NessusDB
 					where(:severity => 1).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
 				end
 				
+				def medium_risks_unique_sorted
+					select("items.*").select("count() as count_all").where(:severity => 1).group(:plugin_id).order("count_all DESC")
+				end
+				
 				# Queries for all the unique low risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def low_risks_unique
 					where(:severity => 0).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
+				end
+				
+				def low_risks_unique_sorted
+					select("items.*").select("count() as count_all").where(:severity => 0).group(:plugin_id).order("count_all DESC")
 				end
 				
 				# Queries for all the risks grouped by service type, used for the Vulnerbilities by Service graph
