@@ -103,7 +103,8 @@ unique_risks.each do |h|
 	        ref_text = sprintf "%s: %s\n", ref.reference_name, ref.value
 	        text ref_text
 	      }
-				text "nessuspluginid: #{f.plugin_id}"
+				text "\nNessus Plugin", :style => :bold
+				text "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{f.plugin_id}"
 	    end
 				text "\n"
 		end
