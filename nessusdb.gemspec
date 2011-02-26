@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 	s.executables						= ['nessusdb']
 	s.require_paths					= ["lib"]
 	s.has_rdoc      				= 'yard'
-	s.extra_rdoc_files			= ["README.md", "LICENSE", "NEWS.md", "TODO.md", "KNOWNISSUES.md"]
+	s.extra_rdoc_files			= ["README.markdown", "LICENSE", "NEWS.markdown", "TODO.markdown", "KNOWNISSUES.markdown"]
 	
 	s.required_rubygems_version = ">= 1.3.6"
 	s.rubyforge_project					= "nessusdb"
