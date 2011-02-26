@@ -237,6 +237,6 @@ module NessusDB
 	end
 end	
 
-app = NessusDB::Application.new
-app.main
+app = NessusDB::CLI::Application.new
+app.run
 
