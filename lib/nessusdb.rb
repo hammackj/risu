@@ -5,7 +5,7 @@ module NessusDB
 	VERSION = "1.3"
 	GRAPH_WIDTH = 750
 	EMAIL = "jacob.hammack@hammackj.com"
-	CONFIG_FILE = "~/.nessusdb"
+	CONFIG_FILE = ".nessusdb"
 end
 
 require 'active_record'
@@ -21,6 +21,8 @@ require 'prawn/layout'
 require 'stringio'
 require 'mysql'
 
+require 'optparse'
+
 require 'nessusdb/models'
 
 if ActiveRecord::Base.connected? == true
@@ -30,6 +32,8 @@ end
 require 'nessusdb/listener'
 require 'nessusdb/prawn_templater'
 require 'nessusdb/nessusdocument'
+
+require 'nessusdb/cli'
 
 require 'nessusdb/models/host'
 require 'nessusdb/models/familyselection'
