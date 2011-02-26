@@ -1,6 +1,8 @@
 # News
 
 # 1.3.0 (May 5, 2011)
+**Command line options have changed slightly, run nessusdb -? for a full list**
+
 - New templates
 	- Microsoft Patches Summary
 	- Microsoft Update Enabled Summary
