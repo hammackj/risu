@@ -5,7 +5,7 @@ module NessusDB
 	VERSION = "1.3"
 	GRAPH_WIDTH = 750
 	EMAIL = "jacob.hammack@hammackj.com"
-	CONFIG_FILE = ".nessusdb"
+	CONFIG_FILE = "./nessusdb.cfg"
 end
 
 require 'active_record'
