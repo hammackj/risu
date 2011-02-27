@@ -7,7 +7,6 @@ module NessusDB
 		#
 		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Application
-			
 			#
 			#
 			def initialize
@@ -248,7 +247,17 @@ module NessusDB
 				end
 				
 				ARGV.each do |file|
-					process_file file
+					begin
+						process_file file
+						
+					rescue NessusDB::Exceptions::InvalidDocument => id
+						puts "[!] #{id.message}"
+						next
+					rescue => e
+						puts e.inspect
+				    puts "[!] Error: #{file}"
+						next
+				  end
 				end				
 			end
 			
@@ -262,6 +271,8 @@ module NessusDB
 						doc = NessusDocument.new file
 						if doc.valid? == true
 							doc.parse
+						else
+							raise NessusDB::Exceptions::InvalidDocument, "[!] Invalid Document - #{file}" 
 						end
 										
 			    	printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
@@ -273,9 +284,6 @@ module NessusDB
 						puts "[!] Error: Tables were not created. Please run nessusdb --create-tables"
 						exit(1)
 					end
-			  rescue => e
-					puts e.inspect
-			    puts "[!] Error: #{file}"
 			  end
 			end
 		end
