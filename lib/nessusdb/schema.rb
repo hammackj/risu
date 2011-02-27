@@ -22,53 +22,53 @@ module NessusDB
 			end		
 		
 			create_table :plugins_preferences do |t|
-				t.column :policy_id, :integer
-				t.column :plugin_id, :integer
-				t.column :plugin_name, :string
-				t.column :fullname, :string
-				t.column :preference_name, :string
-				t.column :preference_type, :string
-				t.column :preference_values, :string
-				t.column :selected_values, :string
+				t.integer :policy_id
+				t.integer :plugin_id
+				t.string :plugin_name
+				t.string :fullname
+				t.string :preference_name
+				t.string :preference_type
+				t.string :preference_values
+				t.string :selected_values
 			end
 
 			create_table :family_selections do |t|
-				t.column :policy_id, :integer
-				t.column :family_name, :string
-				t.column :status, :string
+				t.integer :policy_id
+				t.string :family_name
+				t.string :status
 			end		
 				
 			create_table :reports do |t|
-				t.column :policy_id, :integer
-				t.column :name, :string
+				t.integer :policy_id
+				t.string :name
 			end
 		
 			create_table :hosts do |t|
-				t.column :report_id, :integer
-				t.column :name, :string
-				t.column :os, :string
-				t.column :mac, :string
-				t.column :start, :datetime
-				t.column :end, :datetime
-				t.column :ip, :string
-				t.column :fqdn, :string
-				t.column :netbios, :string
-				t.column :local_checks_proto, :string
-				t.column :smb_login_used, :string
-				t.column :ssh_auth_meth, :string
-				t.column :ssh_login_used, :string
-				t.column :pci_dss_compliance, :string
+				t.integer :report_id, :integer
+				t.string :name, :string
+				t.string :os, :string
+				t.string :mac
+				t.datetime :start
+				t.datetime :end
+				t.string :ip
+				t.string :fqdn
+				t.string :netbios
+				t.string :local_checks_proto
+				t.string :smb_login_used
+				t.string :ssh_auth_meth
+				t.string :ssh_login_used
+				t.string :pci_dss_compliance
 			end
 	
 			create_table :items do |t|
-				t.column :host_id, :integer
-				t.column :plugin_id, :integer
-				t.column :plugin_output, :text
-				t.column :port, :integer
-				t.column :svc_name, :string
-				t.column :protocol, :string
-				t.column :severity, :integer
-				t.column :verified, :boolean
+				t.integer :host_id
+				t.integer :plugin_id
+				t.text :plugin_output
+				t.integer :port
+				t.string :svc_name
+				t.string :protocol
+				t.integer :severity
+				t.boolean :verified
 			end 
 		
 			create_table :plugins do |t|
