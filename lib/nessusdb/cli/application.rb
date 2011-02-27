@@ -59,12 +59,11 @@ module NessusDB
 			#
 			def migrate(direction)
 				begin
-					if File.exists?(@options[:config_file]) == false
-						puts "[!] Could not find database.yml please use #{APP_NAME} --create-config to generate a skeleton one!"
-						exit
+					if @database[:adapter] == nil
+						return false, "[!] Invalid database adapter, please check your config file"
 					end
-
-					ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
+					
+					ActiveRecord::Base.establish_connection(@database)
 					require 'nessusdb/schema'
 					Schema.migrate(direction)
 
@@ -74,8 +73,14 @@ module NessusDB
 						ver.save
 					end
 
-				rescue => ex
-					puts "[!] Error during migration - #{ex.message}"
+				rescue ActiveRecord::AdapterNotSpecified => ans
+					puts "[!] Database adapter not found, please check your config file"
+					exit
+				rescue ActiveRecord::AdapterNotFound => anf
+					puts "[!] Database adapter not found, please check your config file"
+					exit
+				rescue => e
+					puts "[!] Exception! #{e.message}"
 				end
 			end
 			
@@ -90,7 +95,7 @@ module NessusDB
 					ActiveRecord::Base.establish_connection(@database)
 					
 					if ActiveRecord::Base.connected? == true
-						return true, "[*] Connection Test Sucessful"
+						return true, "[*] Connection Test Successful"
 					else
 						return false, "[!] Connection Test Failed"
 					end
@@ -131,7 +136,7 @@ module NessusDB
 							if File.exists?(option) == true
 								@options[:config_file] = option
 							else
-								puts "[!] Specified config file does not exist. Please specificy a file that exists."
+								puts "[!] Specified config file does not exist. Please specify a file that exists."
 								exit
 							end
 						end
@@ -202,9 +207,7 @@ module NessusDB
 			#
 			def run
 				parse_options
-				
-				puts "[!] loading config"
-				
+								
 				if @options[:config_file] != nil
 					load_config @options[:config_file]
 				else
@@ -218,12 +221,63 @@ module NessusDB
 					exit
 				end
 				
+				if @options[:create_tables] != nil
+					migrate(:up)
+					exit
+				end
 				
-				puts "ARGV = #{ARGV}"
+				if @options[:drop_tables] != nil
+					migrate(:down)
+					exit
+				end
 				
+				if @options[:template] != nil and @options[:output_file] != nil
+					if File.exists?(@options[:template]) == false
+						puts "[!] Template \"#{@options[:template]}\" does not exist. Please check the filename"
+						exit
+					end
+					
+					@findings = Report
+					@findings.author = @report[:author]
+					@findings.title = @report[:title]
+					@findings.company = @report[:company]
+					@findings.classification = @report[:classification]
+					
+					template = PrawnTemplater.new(@options[:template], @findings, @options[:output_file])
+					template.generate
+				end
 				
+				ARGV.each do |file|
+					process_file file
+				end				
 			end
 			
+			#
+			#
+			def process_file file
+				begin
+			    	puts "[*] Parsing #{file}..."
+			    	tstart = Time.new
+
+						doc = NessusDocument.new file
+						if doc.valid? == true
+							doc.parse
+						end
+										
+			    	printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
+			  rescue Interrupt => i
+			  	puts "[!] Parse cancelled!"
+					exit(1)
+				rescue Mysql::Error => m 
+					if m.errno == 1146
+						puts "[!] Error: Tables were not created. Please run nessusdb --create-tables"
+						exit(1)
+					end
+			  rescue => e
+					puts e.inspect
+			    puts "[!] Error: #{file}"
+			  end
+			end
 		end
 	end
 end
