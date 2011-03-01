@@ -9,6 +9,7 @@
 	- Sample Exec Summary
 	- Host Summary
 	- Findings Summary
+	- Cover Sheet example
 - Fixed up the yardoc documentation
 - Reports
 	- Set a default font size of 12
