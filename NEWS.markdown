@@ -3,6 +3,8 @@
 # 1.3.0 (May 5, 2011)
 **Command line options have changed slightly, run nessusdb -? for a full list of commands**
 
+**The default config file name is now nessusdb.cfg**
+
 - New templates
 	- Microsoft Patches Summary
 	- Microsoft Update Enabled Summary
@@ -17,7 +19,7 @@
 	- Cleaned up the graphs to be a little easier to read
 - Added significantly more error checking to the command line	application
 - Updated the config file format to handle all of the report generation options as well as the database configuration options
-- Added a command line option for passing it a config file to use instead of forcing the default database.yml
+- Added a command line option for passing it a config file to use instead of forcing the default ./nessusdb.cfg
 - Migrated to OptionParser Choice seems to be an abandoned gem with bugs
 - Updated all the Migration code to use the new AR3 format
 
