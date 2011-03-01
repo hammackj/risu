@@ -25,7 +25,7 @@ module NessusDB
 		def generate
 			begin				
 				source = @template_source
-				findings = @findings
+				template = @template
 				Prawn::Document.generate(@output_file, :margin => [75, 50, 75, 50]) do
 					font_size 12
 					eval source
