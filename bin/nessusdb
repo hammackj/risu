@@ -82,7 +82,6 @@ module NessusDB
 		      desc 'Drop database tables'
 		    end
 				
-				#ported
 				option :create_config do
 		      long '--create-config'
 		      desc 'Creates an empty database config file'
