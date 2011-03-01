@@ -44,9 +44,9 @@ module NessusDB
 			end
 		
 			create_table :hosts do |t|
-				t.integer :report_id, :integer
-				t.string :name, :string
-				t.string :os, :string
+				t.integer :report_id
+				t.string :name
+				t.string :os
 				t.string :mac
 				t.datetime :start
 				t.datetime :end
@@ -72,44 +72,44 @@ module NessusDB
 			end 
 		
 			create_table :plugins do |t|
-				t.column :plugin_name, :string
-				t.column :family_name, :string
-				t.column :description, :text
-				t.column :plugin_version, :string
-				t.column :plugin_publication_date, :datetime
-				t.column :vuln_publication_date, :datetime
-				t.column :cvss_vector, :string
-				t.column :cvss_base_score, :string
-				t.column :cvss_temporal_score, :string
-				t.column :cvss_temporal_vector, :string
-				t.column :exploitability_ease, :string
-				t.column :exploit_framework_core, :string
-				t.column :exploit_framework_metasploit, :string
-				t.column :metasploit_name, :string
-				t.column :exploit_framework_canvas, :string
-				t.column :canvas_package, :string
-				t.column :exploit_available, :string
-				t.column :risk_factor, :string
-				t.column :solution, :text
-				t.column :synopsis, :text
+				t.string :plugin_name
+				t.string :family_name
+				t.text :description
+				t.string :plugin_version
+				t.datetime :plugin_publication_date
+				t.datetime :vuln_publication_date
+				t.string :cvss_vector
+				t.string :cvss_base_score
+				t.string :cvss_temporal_score
+				t.string :cvss_temporal_vector
+				t.string :exploitability_ease
+				t.string :exploit_framework_core
+				t.string :exploit_framework_metasploit
+				t.string :metasploit_name
+				t.string :exploit_framework_canvas
+				t.string :canvas_package
+				t.string :exploit_available
+				t.string :risk_factor
+				t.text :solution
+				t.text :synopsis
 			end
 			
 			create_table :individual_plugin_selections do |t|
-				t.column :policy_id, :string
-				t.column :plugin_id, :integer
-				t.column :plugin_name, :string
-				t.column :family, :string
-				t.column :status, :string
+				t.string :policy_id
+				t.integer :plugin_id
+				t.string :plugin_name
+				t.string :family
+				t.string :status
 			end
 		
 			create_table :references do |t|
-				t.column :plugin_id, :integer
-				t.column :reference_name, :string
-				t.column :value, :string
+				t.integer :plugin_id
+				t.string :reference_name
+				t.string :value
 			end
 	
 			create_table :versions do |t|
-				t.column :version, :string
+				t.string :version
 			end
 		end
 	
