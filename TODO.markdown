@@ -7,7 +7,6 @@
 - Rework the blacklisting stuff
 - Create a config file to store variables in
 	- add blacklist stuff to config
-	- Move all report generation options to config file
 - Provide more templates
 	- Virtual Machine Summary
 	- Fix list Report?
@@ -16,14 +15,10 @@
 - Add template validation and more error checking
 - Colorize the reports with better style
 - DSL for report creation to abstract the reports to have different output types
-- Migrate away from Choice for command line parsing
 - Check to see that the xml is version 2
 	- Version 1 = NessusClientData
 	- Version 2 = NessusClientData_V2
 - Move the YAML/Database code out of models.rb
-- Update all the Migration code to use the new AR3 format
-- Migrate to OptionParser Choice seems to be an abandoned gem with bugs
-- Add a command line option for passing it a config file to use
 - Comment all named scope from 1.2
 
 ## 1.4 (7/4/2011)
