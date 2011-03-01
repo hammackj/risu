@@ -30,9 +30,8 @@ Gem::Specification.new do |s|
 	s.add_development_dependency("rspec", ">= 2.4.0")
 	s.add_development_dependency("rcov", ">= 0.9.9")
 	s.add_development_dependency("yard", ">= 0.6.4")
-	
-	s.add_dependency('choice', '>= 0.1.4')
-	s.add_dependency('activerecord', '>= 3.0.3')
+
+	s.add_dependency('rails', '>= 3.0.5')
 	s.add_dependency('libxml-ruby', '>= 1.1.4')
 	s.add_dependency('prawn', '>= 0.8.4')
 	s.add_dependency('prawn-core', '>= 0.8.4')
