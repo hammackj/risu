@@ -13,6 +13,7 @@ module NessusDB
 				@options = {}
 				@database = {}
 				@report = {}
+				@blacklist = {}
 			end
 			
 			# Creates a blank config file
@@ -32,6 +33,10 @@ module NessusDB
 					f.write("  username: \n")
 					f.write("  password: \n")
 					f.write("  timeout: \n\n")
+					f.write("blacklist:\n")
+					f.write("  ips: \n")
+					f.write("  macs: \n")
+					f.write("  plugins: \n")
 				end
 			end
 			
@@ -44,6 +49,15 @@ module NessusDB
 						
 						@database = yaml["database"]
 						@report = yaml["report"]
+						
+						#If no values were entered put a default value in
+						@report.each do |k, v|
+							if v == nil
+								@report[k] = "No #{k}"
+							end
+						end
+																		
+						@blacklist = yaml["blacklist"]
 					rescue => e
 						puts "[!] Error loading config! - #{ex.message}"
 						exit
@@ -237,10 +251,11 @@ module NessusDB
 					end
 					
 					@findings = Report
-					@findings.author = @report[:author]
-					@findings.title = @report[:title]
-					@findings.company = @report[:company]
-					@findings.classification = @report[:classification]
+										
+					@findings.author = @report["author"]
+					@findings.title = @report["title"]
+					@findings.company = @report["company"]
+					@findings.classification = @report["classification"]
 					
 					template = PrawnTemplater.new(@options[:template], @findings, @options[:output_file])
 					template.generate
@@ -248,7 +263,7 @@ module NessusDB
 				
 				ARGV.each do |file|
 					begin
-						process_file file
+						parse_file file
 						
 					rescue NessusDB::Exceptions::InvalidDocument => id
 						puts "[!] #{id.message}"
@@ -261,12 +276,16 @@ module NessusDB
 				end				
 			end
 			
+			# Handles the parsing of a single file
 			#
-			#
-			def process_file file
+			def parse_file file
 				begin
 			    	puts "[*] Parsing #{file}..."
 			    	tstart = Time.new
+			
+						if File.exists?(file) == false
+							raise NessusDB::Exceptions::InvalidDocument, "[!] Document does not exist - #{file}"
+						end
 
 						doc = NessusDocument.new file
 						if doc.valid? == true

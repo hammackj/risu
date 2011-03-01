@@ -23,7 +23,7 @@ require 'mysql'
 
 require 'optparse'
 
-require 'nessusdb/models'
+
 
 if ActiveRecord::Base.connected? == true
 	require 'nessusdb/schema'
@@ -34,17 +34,19 @@ require 'nessusdb/prawn_templater'
 require 'nessusdb/nessusdocument'
 
 require 'nessusdb/cli'
+require 'nessusdb/exceptions'
+require 'nessusdb/models'
 
-require 'nessusdb/models/host'
-require 'nessusdb/models/familyselection'
-require 'nessusdb/models/item'
-require 'nessusdb/models/individualpluginselection'
-require 'nessusdb/models/plugin'
-require 'nessusdb/models/pluginspreference'
-require 'nessusdb/models/policy'
-require 'nessusdb/models/report'
-require 'nessusdb/models/reference'
-require 'nessusdb/models/serverpreference'
-require 'nessusdb/models/version'
+#require 'nessusdb/models/host'
+#require 'nessusdb/models/familyselection'
+#require 'nessusdb/models/item'
+#require 'nessusdb/models/individualpluginselection'
+#require 'nessusdb/models/plugin'
+#require 'nessusdb/models/pluginspreference'
+#require 'nessusdb/models/policy'
+#require 'nessusdb/models/report'
+#require 'nessusdb/models/reference'
+#require 'nessusdb/models/serverpreference'
+#require 'nessusdb/models/version'
 
 include NessusDB::Models
