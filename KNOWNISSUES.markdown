@@ -28,3 +28,5 @@ The easy way to fix this is to just reinstall RMagick, like below:
 The gems for mysql and rmagick will fail to build if these are not installed.
 
 sudo port install ImageMagick mysql5
+
+## Linux Native Dependencies
