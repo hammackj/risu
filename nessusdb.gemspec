@@ -18,10 +18,11 @@ Gem::Specification.new do |s|
 	s.email									= "jacob.hammack@hammackj.com"
 	
 	s.files									= Dir['[A-Z]*'] + Dir['lib/**/*'] + ['nessusdb.gemspec']
-	s.default_executable		= 'nessusdb'
-	s.executables						= ['nessusdb']
+	s.bindir								= "bin"
+	s.default_executable		= "#{NessusDB::APP_NAME}"
+	s.executables						= "#{NessusDB::APP_NAME}"
 	s.require_paths					= ["lib"]
-	s.has_rdoc      				= 'yard'
+	s.has_rdoc							= 'yard'
 	s.extra_rdoc_files			= ["README.markdown", "LICENSE", "NEWS.markdown", "TODO.markdown", "KNOWNISSUES.markdown"]
 	
 	s.required_rubygems_version = ">= 1.3.6"
