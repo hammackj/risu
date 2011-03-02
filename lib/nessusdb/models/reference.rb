@@ -4,7 +4,7 @@ module NessusDB
 		#
 		# @author Jacob Hammack
 		class Reference < ActiveRecord::Base
-		  has_many :plugins
+		  has_many :Plugins
 		end
 	end
 end
