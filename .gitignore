@@ -5,3 +5,4 @@ database.yml
 doc/
 *.gem
 *.db
+*.cfg
