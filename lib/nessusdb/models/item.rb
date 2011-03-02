@@ -51,6 +51,7 @@ module NessusDB
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_unique
 					where(:severity => 3).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
+					#where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id)
 				end
 				
 				def critical_risks_unique_sorted
@@ -62,6 +63,7 @@ module NessusDB
 				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_unique
 					where(:severity => 2).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
+					#where(:severity => 2).order(:cvss_base_score).group(:plugin_id)
 				end
 				
 				def high_risks_unique_sorted
@@ -101,7 +103,8 @@ module NessusDB
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_plugin(limit=10)
-					select("items.*").select("count() as count_all").joins(:plugin).where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
+					#select("items.*").select("count() as count_all").joins(:Plugin).where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
+					select("items.*").select("count() as count_all").where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
 				end
 				
 				# Queries for all the risks by host
@@ -109,6 +112,7 @@ module NessusDB
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => [3,2]).group(:host_id).order("count_all DESC").limit(limit)
+					#select("items.*").select("count(*) as count_all").where("plugin_id != 1").where(:severity => [3,2]).group(:host_id).order("count_all DESC").limit(limit)
 				end
 				
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
