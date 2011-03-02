@@ -6,10 +6,10 @@ module NessusDB
 		#
 		# @author Jacob Hammack
 		class Plugin < ActiveRecord::Base
-			has_many :items
-			belongs_to :family
-			has_many :references
-			has_many :individualpluginselections
+			has_many :Items
+			belongs_to :Family
+			has_many :References
+			has_many :IndividualPluginSelections
 		
 			class << self
 				# Creates a graph based on the top plugins sorted by count
