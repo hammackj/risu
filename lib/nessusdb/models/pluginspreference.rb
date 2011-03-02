@@ -6,7 +6,7 @@ module NessusDB
 		#
 		# @author Jacob Hammack
 		class PluginsPreference < ActiveRecord::Base
-		  belongs_to :policy
+		  belongs_to :Policy
 		end
 	end
 end
