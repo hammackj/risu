@@ -1,18 +1,18 @@
 # encoding: utf-8
 
-begin	
-	begin
-		if File.exists?("database.yml") == true
-			file = File.open('database.yml')
-			yaml = YAML::load(file)
-			ActiveRecord::Base.establish_connection(yaml) 
-		end
-	rescue
-		puts "[!] Unable to connect to database! Please check your database.yml"
-	end
-rescue
-	puts "[!] Warning database.yml does not exist. Please run nessusdb --create-config to create one."	
-end
+#begin	
+#	begin
+#		if File.exists?("database.yml") == true
+#			file = File.open('database.yml')
+#			yaml = YAML::load(file)
+#			ActiveRecord::Base.establish_connection(yaml) 
+#		end
+#	rescue
+#		puts "[!] Unable to connect to database! Please check your database.yml"
+#	end
+#rescue
+#	puts "[!] Warning database.yml does not exist. Please run nessusdb --create-config to create one."	
+#end
 
 # normally disabled due to peformance, enable for debugging
 #
