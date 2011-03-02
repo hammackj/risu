@@ -7,6 +7,7 @@ module NessusDB
 		#
 		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Application
+			attr_accessor :database
 			#
 			#
 			def initialize
@@ -14,6 +15,8 @@ module NessusDB
 				@database = {}
 				@report = {}
 				@blacklist = {}
+				
+				@options[:debug] = false
 			end
 			
 			# Creates a blank config file
@@ -50,6 +53,8 @@ module NessusDB
 						@database = yaml["database"]
 						@report = yaml["report"]
 						
+						puts @database.inspect if @options[:debug]
+						
 						#If no values were entered put a default value in
 						@report.each do |k, v|
 							if v == nil
@@ -72,7 +77,7 @@ module NessusDB
 			#
 			def migrate(direction)
 				begin
-					if @database[:adapter] == nil
+					if @database["adapter"] == nil
 						return false, "[!] Invalid database adapter, please check your config file"
 					end
 					
@@ -88,39 +93,68 @@ module NessusDB
 
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your config file"
+					
+					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
+					
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
 					puts "[!] Database adapter not found, please check your config file"
+					
+					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
+					
 					exit
 				rescue => e
-					puts "[!] Exception! #{e.message}"
+					puts "[!] Exception! #{e.message}\n#{e.backtrace}"
+					exit
 				end
+			end
+			
+			#
+			#
+			def db_connect
+				begin
+					if @database["adapter"] == nil
+
+						puts "[!] #{@database['adapter']}" if @options[:debug]
+
+						return false, "[!] Invalid database adapter, please check your config file"
+					end
+
+					ActiveRecord::Base.establish_connection(@database)
+					
+					ActiveRecord::Base.connection
+
+				rescue ActiveRecord::AdapterNotSpecified => ans
+					puts "[!] Database adapter not found, please check your config file"
+
+					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
+
+					exit
+				rescue ActiveRecord::AdapterNotFound => anf
+					puts "[!] Database adapter not found, please check your config file"
+
+					puts "#{anf.message}\n #{anf.backtrace}" if @options[:debug]
+
+					exit
+				rescue => e
+					puts "[!] Exception! #{e.message}\n #{e.backtrace}"
+				end				
 			end
 			
 			#
 			#
 			def test_connection
 				begin
-					if @database[:adapter] == nil
-						return false, "[!] Invalid database adapter, please check your config file"
-					end
 					
-					ActiveRecord::Base.establish_connection(@database)
+					db_connect
 					
 					if ActiveRecord::Base.connected? == true
 						return true, "[*] Connection Test Successful"
 					else
 						return false, "[!] Connection Test Failed"
 					end
-					
-				rescue ActiveRecord::AdapterNotSpecified => ans
-					puts "[!] Database adapter not found, please check your config file"
-					exit
-				rescue ActiveRecord::AdapterNotFound => anf
-					puts "[!] Database adapter not found, please check your config file"
-					exit
 				rescue => e
-					puts "[!] Exception! #{e.message}"
+					puts "[!] Exception! #{e.message}\n #{e.backtrace}"
 				end
 			end
 			
@@ -194,6 +228,10 @@ module NessusDB
 							puts "#{APP_NAME} - #{VERSION}"
 							exit
 						end
+						
+						opt.on('-d','--debug','Enable Debug Mode (More verbose output)') do |option|
+							@options[:debug] = true
+						end
 
 						opt.on_tail("-?", "--help", "Show this message") do
 							puts opt.to_s + "\n"
@@ -220,12 +258,19 @@ module NessusDB
 			#
 			def run
 				parse_options
+				
+				if @options[:debug] == true
+					puts "[*] Enabling Debug Mode"
+				end
+				
 								
 				if @options[:config_file] != nil
 					load_config @options[:config_file]
 				else
 					load_config
 				end
+				
+				db_connect
 				
 				if @options[:test_connection] != nil
 					result = test_connection
