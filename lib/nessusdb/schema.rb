@@ -58,6 +58,7 @@ module NessusDB
 				t.string :ssh_auth_meth
 				t.string :ssh_login_used
 				t.string :pci_dss_compliance
+				t.text :notes
 			end
 	
 			create_table :items do |t|
