@@ -3,6 +3,10 @@ $:.unshift(File.join(File.dirname(base), '../lib'))
 
 require 'nessusdb'
 
+app = NessusDB::CLI::Application.new
+app.load_config
+ActiveRecord::Base.establish_connection(app.database)
+
 module NessusDB
 	module Models		
 		describe Item, ".risks.count" do
