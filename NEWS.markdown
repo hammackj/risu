@@ -22,6 +22,8 @@
 - Added a command line option for passing it a config file to use instead of forcing the default ./nessusdb.cfg
 - Migrated to OptionParser Choice seems to be an abandoned gem with bugs
 - Updated all the Migration code to use the new AR3 format
+- Special Thanks to Ed Davison for numerous bug reports and template testing.
+
 
 # 1.2.0 (February 13, 2011)
 **This update breaks all existing templates, included templates are updated**
