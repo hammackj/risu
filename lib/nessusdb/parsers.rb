@@ -4,3 +4,5 @@ module NessusDB
 	module Parsers
 	end
 end
+
+require 'nessusdb/parsers/'
