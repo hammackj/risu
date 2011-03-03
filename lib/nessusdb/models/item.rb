@@ -2,6 +2,7 @@
 
 module NessusDB
 	module Models
+		
 		# Item Model
 		#
 		# @author Jacob Hammack <jacob.hammack@hammackj.com>

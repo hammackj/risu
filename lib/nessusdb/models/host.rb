@@ -6,8 +6,8 @@ module NessusDB
 		#
 		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Host < ActiveRecord::Base
-			belongs_to :Report
-			has_many :Items
+			belongs_to :report
+			has_many :items
 			
 			class << self
 				
@@ -21,8 +21,7 @@ module NessusDB
 						count
 					end
 				end
-				
-				
+							
 				# Sorts all of the hosts where the ip address is not null
 				# 
 				# @return [Array] With all the Ip's in sorted order

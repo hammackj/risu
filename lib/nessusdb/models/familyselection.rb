@@ -6,7 +6,7 @@ module NessusDB
 		#
 		# @author Jacob Hammack
 		class FamilySelection < ActiveRecord::Base
-		  belongs_to :Policy
+		  belongs_to :policy
 		end
 	end
 end
