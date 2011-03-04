@@ -10,7 +10,7 @@ module NessusDB
 			has_many :items
 			belongs_to :family
 			has_many :references
-			has_many :individualpluginselections
+			has_many :individual_plugin_selections
 		
 			class << self
 				# Creates a graph based on the top plugins sorted by count
