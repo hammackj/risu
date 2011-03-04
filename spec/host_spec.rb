@@ -1,12 +1,14 @@
+# encoding: utf-8
 
 require "spec_helper"
 
 module NessusDB
 	module Models
-		
 		describe Host do
 			before(:all) do
 				@host = Host.make(:ip => "10.0.0.1", :os => "Microsoft Windows XP Processional Service Pack 3")
+				
+				printf "%s\n\n", @host.inspect
 			end
 			
 			it "returns 10.0.0.1 for Host.ip" do
