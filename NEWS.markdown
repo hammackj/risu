@@ -1,6 +1,6 @@
 # News
 
-# 1.3.0 (May 5, 2011)
+# 1.3.0 (March 4, 2011)
 **Command line options have changed slightly, run nessusdb -? for a full list of commands**
 
 **The default config file name is now nessusdb.cfg**
@@ -22,8 +22,9 @@
 - Added a command line option for passing it a config file to use instead of forcing the default ./nessusdb.cfg
 - Migrated to OptionParser Choice seems to be an abandoned gem with bugs
 - Updated all the Migration code to use the new AR3 format
-- Special Thanks to Ed Davison for numerous bug reports and template testing.
 
+- Special thanks to Ed Davison for numerous bug reports and template testing.
+- Special thanks to Andrew Benson for helping track down a major ActiveRecord bug.
 
 # 1.2.0 (February 13, 2011)
 **This update breaks all existing templates, included templates are updated**
