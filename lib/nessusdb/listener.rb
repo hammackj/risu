@@ -37,7 +37,7 @@ module NessusDB
 			@vals[@tag] = ""
 				
 			if !@valid_elements.include?(element)
-				puts "New XML element detected: #{element}. Please report this to jacob.hammack@hammackj.com"
+				puts "New XML element detected: #{element}. Please report this to #{NessusDB::EMAIL}"
 			end
 
 			case element
@@ -45,23 +45,23 @@ module NessusDB
 					@policy = NessusDB::Models::Policy.create
 					@policy.save
 				when "preference"
-					@sp = @policy.ServerPreferences.create
+					@sp = @policy.server_preferences.create
 					@sp.save
 				when "item"
-					@item = @policy.PluginsPreferences.create
+					@item = @policy.plugins_preferences.create
 					@item.save
 				when "FamilyItem"
-					@family = @policy.FamilySelections.create
+					@family = @policy.family_selections.create
 					@family.save
 				when "PluginItem"
-					@plugin_selection = @policy.IndividualPluginSelections.create
+					@plugin_selection = @policy.individual_plugin_selections.create
 					@plugin_selection.save
 				when "Report"
-					@report = @policy.Reports.create
+					@report = @policy.reports.create
 					@report.name = attributes["name"]
 					@report.save
 				when "ReportHost"
-					@rh = @report.Hosts.create
+					@rh = @report.hosts.create
 					@rh.name = attributes["name"]
 					@rh.save
 				when "tag"
@@ -95,7 +95,7 @@ module NessusDB
 					end		
 				when "ReportItem"
 					@vals = Hash.new # have to clear this out or everything has the same references
-					@ri = @rh.Items.create
+					@ri = @rh.items.create
 					if attributes["pluginID"] == "0"
 						@plugin = NessusDB::Models::Plugin.find_or_create_by_id(1)
 					else
@@ -222,22 +222,22 @@ module NessusDB
 				#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax 
 				#parser. To solve this we do the references before the final plugin data
 				when "cve"
-					@cve = @plugin.References.create				
+					@cve = @plugin.references.create				
 					@cve.reference_name = "cve"
 					@cve.value = @vals["cve"]
 					@cve.save
 				when "bid"
-					@bid = @plugin.References.create				
+					@bid = @plugin.references.create				
 					@bid.reference_name = "bid"
 					@bid.value = @vals["bid"]
 					@bid.save
 				when "see_also"
-					@see_also = @plugin.References.create				 
+					@see_also = @plugin.references.create
 					@see_also.reference_name = "see_also"
 					@see_also.value = @vals["see_also"]
 					@see_also.save
 				when "xref"
-					@xref = @plugin.References.create				 
+					@xref = @plugin.references.create				 
 					@xref.reference_name = "xref"
 					@xref.value = @vals["xref"]
 					@xref.save				
