@@ -11,13 +11,6 @@
 - Move the YAML/Database code out of models.rb
 - Comment all named scope from 1.2
 
-	[*] Parsing /Users/hammackj/Projects/private/hammackjllc/assessments/2011/matagorda/nessus_report_Matagorda__scheduled_.nessus...
-	#<ActiveRecord::StatementInvalid: Could not find table 'policies'>
-	[!] Error: /Users/hammackj/Projects/private/hammackjllc/assessments/2011/matagorda/nessus_report_Matagorda__scheduled_.nessus
-	ruby(38444,0x7fff70c12ca0) malloc: *** error for object 0x1005a3ae0: pointer being freed was not allocated
-	*** set a breakpoint in malloc_error_break to debug
-	Abort trap
-
 ## 1.4 (7/4/2011)
 - Clean up / Bug fixes before 2.0
 - Create rSpec tests for everything
