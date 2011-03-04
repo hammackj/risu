@@ -31,7 +31,10 @@ Gem::Specification.new do |s|
 	s.add_development_dependency("rspec", ">= 2.4.0")
 	s.add_development_dependency("rcov", ">= 0.9.9")
 	s.add_development_dependency("yard", ">= 0.6.4")
-
+	s.add_development_dependency("machinist", ">= 1.0.6")
+	s.add_development_dependency("sham", ">= 0.4.0")	
+	s.add_development_dependency("faker", ">= 0.9.5")	
+	
 	s.add_dependency('rails', '>= 3.0.5')
 	s.add_dependency('libxml-ruby', '>= 1.1.4')
 	s.add_dependency('prawn', '>= 0.8.4')
