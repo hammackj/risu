@@ -6,7 +6,7 @@ require 'spec_helper'
 module NessusDB
 	module Models		
 		describe Item do
-			before(:all) dog
+			before(:all) do
 				@crit = Item.make(:Critical)
 				@high = Item.make(:High)
 				@med = Item.make(:Medium)
