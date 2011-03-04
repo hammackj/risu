@@ -1,17 +1,20 @@
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), '../lib'))
 
-require 'nessusdb'
-
-app = NessusDB::CLI::Application.new
-app.load_config
-ActiveRecord::Base.establish_connection(app.database)
+require 'spec_helper'
 
 module NessusDB
 	module Models		
-		describe Item, ".risks.count" do
-			it "returns 10251	 risks for Item.risks.count" do 
-				Item.risks.count.should == 10251
+		describe Item do
+			before(:all) do
+				@crit = Item.make(:Critical)
+				@high = Item.make(:High)
+				@med = Item.make(:Medium)
+				@low = Item.make(:Low)				
+			end
+			
+			it "should include critical, high, medium and low	risks for Item.risks.all" do 				
+				Item.risks.all.should include(@crit, @high, @med, @low)
 			end
 		end
 
