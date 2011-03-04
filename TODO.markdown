@@ -4,22 +4,22 @@
 
 ## 1.3 (5/4/2011)
 
-- Add Schema checks to make sure the schema is compatible with the version of nessusdb
-- Check to see that the xml is version 2
-	- Version 1 = NessusClientData
-	- Version 2 = NessusClientData_V2
-- Move the YAML/Database code out of models.rb
-- Comment all named scope from 1.2
+
 
 ## 1.4 (7/4/2011)
 - Clean up / Bug fixes before 2.0
 - Create rSpec tests for everything
 - Create test fixtures
+- Comment all named scope from 1.2
 - Create a Nessus document generator, for testing the parser
 - 100% code coverage for testing
 - Add a irb like console to manually interact with the manuals
 - Rework the blacklisting stuff
 	- Add blacklisting to config
+- Add Schema checks to make sure the schema is compatible with the version of nessusdb
+	- Check to see that the xml is version 2
+		- Version 1 = NessusClientData
+		- Version 2 = NessusClientData_V2	
 
 ## 1.5 (9/4/2011)
 - Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
