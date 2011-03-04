@@ -36,10 +36,10 @@ module NessusDB
 					f.write("  username: \n")
 					f.write("  password: \n")
 					f.write("  timeout: \n\n")
-					f.write("blacklist:\n")
-					f.write("  ips: \n")
-					f.write("  macs: \n")
-					f.write("  plugins: \n")
+					#f.write("blacklist:\n")
+					#f.write("  ips: \n")
+					#f.write("  macs: \n")
+					#f.write("  plugins: \n\n")
 				end
 			end
 			
@@ -62,7 +62,7 @@ module NessusDB
 							end
 						end
 																		
-						@blacklist = yaml["blacklist"]
+						#@blacklist = yaml["blacklist"]
 					rescue => e
 						puts "[!] Error loading config! - #{ex.message}"
 						exit
@@ -275,7 +275,7 @@ module NessusDB
 				if @options[:test_connection] != nil
 					result = test_connection
 
-					puts result[1]
+					puts "#{result[1]}"
 					exit
 				end
 				
@@ -313,6 +313,9 @@ module NessusDB
 					rescue NessusDB::Exceptions::InvalidDocument => id
 						puts "[!] #{id.message}"
 						next
+					rescue ActiveRecord::StatementInvalid => si
+						puts "[!] Please run nessusdb --create-tables, to create the required database schema!"
+						exit
 					rescue => e
 						puts e.inspect
 				    puts "[!] Error: #{file}"
