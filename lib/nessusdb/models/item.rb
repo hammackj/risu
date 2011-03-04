@@ -100,20 +100,18 @@ module NessusDB
 					select("items.*").select("count(*) as count_all").where("svc_name != 'unknown' and svc_name != 'general'").group(:svc_name).order("count_all DESC").limit(limit)
 				end
 				
-				# Queries for all the risks by plugin
+				# Queries for all the critical risks by plugin
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_plugin(limit=10)
-					#select("items.*").select("count() as count_all").joins(:Plugin).where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
-					select("items.*").select("count() as count_all").where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
+					select("items.*").select("count() as count_all").joins(:plugin).where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
 				end
 				
 				# Queries for all the risks by host
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => [3,2]).group(:host_id).order("count_all DESC").limit(limit)
-					#select("items.*").select("count(*) as count_all").where("plugin_id != 1").where(:severity => [3,2]).group(:host_id).order("count_all DESC").limit(limit)
+					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => [3, 2]).group(:host_id).order("count_all DESC").limit(limit)
 				end
 				
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
