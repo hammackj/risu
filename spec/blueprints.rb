@@ -12,6 +12,13 @@ os_options << "Windows Vista"
 os_options << "FreeBSD 7.0"
 os_options << "OpenBSD 1.0"
 
+svc_options = Array.new
+svc_options << "www"
+svc_options << "cifs"
+svc_options << "dns"
+svc_options << "ftp"
+svc_options << "mdns"
+
 Sham.define do
 	ip { "#{rand(255)}.#{rand(255)}.#{rand(255)}.#{rand(255)}" }
 	port { "#{rand(65000)}" }
@@ -24,6 +31,13 @@ Sham.define do
 		md.to_a.each_slice(2).map(&:join).join(":")
 	}
 	os { os_options[rand(os_options.size)]}
+	svc { svc_options[rand(svc_options.size)] }
+end
+
+Plugin.blueprint do
+	id { rand(50000) + 1 }
+	plugin_name { Faker::Lorem.words }
+	description { Faker::Lorem.paragraphs }
 end
 
 Host.blueprint do
@@ -36,31 +50,9 @@ end
 Item.blueprint do
 	port { Sham.port }
 	host { Host.make }
+	svc_name { Sham.svc }
 	severity { 0 }
-end
-
-Item.blueprint(:critical) do
-	port { true }
-	host { true }
-	severity { 3 }
-end
-
-Item.blueprint(:high) do
-	port { true }
-	host { true }
-	severity { 2 }
-end
-
-Item.blueprint(:medium) do
-	port { true }
-	host { true }
-	severity { 1 }
-end
-
-Item.blueprint(:low) do
-	port { true }
-	host { true }
-	severity { 0 }
+	plugin { Plugin.make }
 end
 
 Report.blueprint do
