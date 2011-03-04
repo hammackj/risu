@@ -2,11 +2,7 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.3 (5/4/2011)
-
-
-
-## 1.4 (7/4/2011)
+## 1.4 (5/4/2011)
 - Clean up / Bug fixes before 2.0
 - Create rSpec tests for everything
 - Create test fixtures
@@ -21,7 +17,7 @@
 		- Version 1 = NessusClientData
 		- Version 2 = NessusClientData_V2	
 
-## 1.5 (9/4/2011)
+## 1.5 (7/4/2011)
 - Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
 - Move to ruby 1.9.x only support
 - Add Parser for NBE Format
