@@ -351,6 +351,9 @@ module NessusDB
 						puts "[!] Error: Tables were not created. Please run nessusdb --create-tables"
 						exit(1)
 					end
+				rescue => e
+					puts "[!] #{e.message}\n #{e.backtrace.join("\n")}\n"
+					exit(1)
 			  end
 			end
 		end
