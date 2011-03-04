@@ -11,16 +11,16 @@ module NessusDB
 			
 			class << self
 				
+				# 
 				#
 				#
-				#
-				def hosts_with_blacklist blacklist_hosts_id
-					if blacklist_host_id == nil
-						where("id != ?", blacklist_host_id).count
-					else
-						count
-					end
-				end
+				#def hosts_with_blacklist blacklist_hosts_id
+				#	if blacklist_host_id == nil
+				#		where("id != ?", blacklist_host_id).count
+				#	else
+			 #		count
+				#	end
+				#end
 							
 				# Sorts all of the hosts where the ip address is not null
 				# 
@@ -46,70 +46,108 @@ module NessusDB
 					return hosts
 				end
 				
+				# Queries for hosts with a Windows based Operating System
 				#
-				#@windows_operating_systems = Host.find(:all, :conditions => ["os like '%%Windows%%' AND id != #{@blacklist_host_id}"], :group => :os).map(&:os)
-				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_windows
-					where("os like '%Windows%'").group(:os)
+					where("os LIKE '%Windows%'")#.group(:os)
 				end
 				
+				# Queries for hosts with a Windows 2000 based Operating System
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_2k
-					where("os like '%Windows 2000%'")
+					where("os LIKE '%Windows 2000%'")
 				end
 				
+				# Queries for hosts with a Windows XP based Operating System
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_xp
-					where("os like '%Windows XP%'")
+					where("os LIKE '%Windows XP%'")
 				end
 				
+				# Queries for hosts with a Windows Server 2003 based Operating System
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_2k3
-					where("os like '%Windows Server 2003%'")
+					where("os LIKE '%Windows Server 2003%'")
 				end
 				
+				# Queries for hosts with a Windows Vista based Operating System
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_vista
-					where("os like '%Windows Vista%'")
+					where("os LIKE '%Windows Vista%'")
 				end
 				
+				# Queries for hosts with a Windows Server 2008 based Operating System
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_2k8
-					where("os like '%Windows Server 2008%'")
+					where("os LIKE '%Windows Server 2008%'")
 				end
 				
+				# Queries for hosts with a Windows 7 based Operating System
+				#
+				#
 				def os_windows_7
-					where("os like '%Windows 7%'")
+					where("os LIKE '%Windows 7%'")
 				end
 				
+				# Queries for hosts with a Windows Operating System that are not 2000,
+				# XP, 2003, Vista, 2008 or 7
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_other
 					where("os NOT LIKE '%Windows 2000%'").where("os NOT LIKE '%Windows XP%'").where("os NOT LIKE '%Windows Server 2003%'").where("os NOT LIKE '%Windows 7%'")
 				end
 				
-				#
-				# @other_operating_systems = Host.find(:all, :conditions => ["os not like '%%Windows%%' AND id != #{@blacklist_host_id}"], :group => :os).map(&:os)
-				#
+				# Queries for all hosts with a Linux based Operating system
+				# 
+				# @return [ActiveRecord::Relation] with the query results
 				def os_linux
 					where("os like '%Linux%'")
 				end
 				
+				# Queries for all hosts with a FreeBSD based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_freebsd
 					where("os like '%FreeBSD%'")
 				end
 				
+				# Queries for all hosts with a NetBSD based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_netbsd
 					where("os like '%NetBsd%'")
 				end
 				
+				# Queries for all hosts with a Cisco IOS based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_cisco
 					where("os like '%CISCO%'")
 				end
 				
+				# Queries for all hosts with a VXWorks based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_vxworks
 					where("os like '%VxWorks%'")
 				end
 				
+				#
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_other
 					where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%NetBsd%'").where("os NOT LIKE '%FreeBSD%'").where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%Windows%'").where("os not like '%CISCO%'").where("os NOT LIKE '%VxWorks%'")
 				end
 				
+				# Generates a graph of the critical and high findings count per host
 				#
-				#
+				# @return [StringIO] Binary image object of the results
 				def top_vuln_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
 					g.title = sprintf "Top %d Critical/High Finding Count Per Host ", Item.risks_by_host(limit).all.count
@@ -128,9 +166,10 @@ module NessusDB
 
 					StringIO.new(g.to_blob)
 				end
-				
+
+				# Graphs the percentage of other "non Windows" Operating Systems
 				#
-				#
+				# @return [StringIO] Binary image object of the results
 				def other_os_graph
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = "Other Operating Systems Percentage"
@@ -160,8 +199,9 @@ module NessusDB
 					StringIO.new(g.to_blob)
 				end
 				
+				# Graphs the percentage of Windows Operating Systems
 				#
-				#
+				# @return [StringIO] Binary image object of the results
 				def windows_os_graph
 				  g = Gruff::Pie.new(GRAPH_WIDTH)
 				  g.title = "Windows Operating Systems By Percentage"
