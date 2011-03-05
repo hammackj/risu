@@ -13,7 +13,6 @@ require "active_support"
 require 'libxml'
 require 'logger'
 require 'ipaddr'
-
 require 'yaml'
 require 'gruff'
 require 'prawn'
@@ -22,8 +21,6 @@ require 'stringio'
 require 'mysql'
 
 require 'optparse'
-
-
 
 if ActiveRecord::Base.connected? == true
 	require 'nessusdb/schema'
