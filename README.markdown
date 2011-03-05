@@ -2,14 +2,13 @@
 
 NessusDB is [Nessus](http://www.nessus.org) XMLv2 parser, which pushes reports into an [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, easing report generation. 
 
-Version 1.2.0 is the current release.
+Version 1.3.0 is the current release.
 
 ## Requirements
 
-- ruby (Tested with 1.8.7)
+- ruby (Tested with 1.8.7 and 1.9.2)
 - rubygems (Install it from source!, it is included with ruby 1.9.1+)
 - libxml
-- choice
 - rails
 - yaml 
 - logger
@@ -34,17 +33,17 @@ Installation is really easy just gem install!
 ## Database Setup
 
 	% nessusdb --create-config
-	% $EDITOR database.yml
-	% nessusdb -c
+	% $EDITOR nessusdb.cfg
+	% nessusdb --create-tables
 
-1. Generate the database.yml file.
-2. Edit the database.yml file, filling in the variables as needed. Please see [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) for more details.
+1. Generate the nessusdb.cfg file.
+2. Edit the nessusdb.cfg file, filling in the variables as needed. Please see [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) for more details.
 3. Migrate the database schema.
 
 
 ## Parsing Nessus Output
 
-	% nessusdb -f report1.nessus [report2.nessus ...]
+	% nessusdb report1.nessus [report2.nessus ...]
 
 1. Parse the files by passing their names on the command line.
 
@@ -55,7 +54,7 @@ The data can be viewed with a query browser available for your database. A Rails
 ## Generating Reports ##
 To generate a technical summary report please execute the following after the the data is parsed into the database.
 
-	% nessusdb -t "TEMPLATE_PATH" --title "REPORT_NAME" --author "REPORT_AUTHOR" -o "REPORT_NAME.pdf"
+	% nessusdb -t "TEMPLATE_PATH" -o "REPORT_NAME.pdf"
 	
 ## Templates ##
 Serveral templates are included:
