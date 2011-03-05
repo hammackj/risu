@@ -1,13 +1,18 @@
 # NessusDB
 
-NessusDB is [Nessus](http://www.nessus.org) XMLv2 parser, which pushes reports into an [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, easing report generation. 
+NessusDB is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerbility verification. 
 
-Version 1.3.0 is the current release.
+Version 1.4.0 is the current release.
 
 ## Requirements
 
-- ruby (Tested with 1.8.7 and 1.9.2)
-- rubygems (Install it from source!, it is included with ruby 1.9.1+)
+### Ruby
+NessusDB has been tested with ruby-1.8.7-p330, ruby-1.9.1-p378, ruby-1.9.2-p136. Please try to use one of these versions if possible
+
+### RubyGems
+NessusDB relies heavily on the RubyGems framework to install other dependencies I highly recommend using it. RubyGems is included by default in the Ruby 1.9 branches.
+
+
 - libxml
 - rails
 - yaml 
@@ -16,6 +21,8 @@ Version 1.3.0 is the current release.
 - gruff
 - prawn
 - mysql
+
+## Developmental Requirements
 
 These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install nessusdb, If not this command will install them all:
 
@@ -64,6 +71,13 @@ Serveral templates are included:
 3. finding_statistics.rb - this is a pdf summary of the assessment
 4. assets.rb - this is a summary of all the hosts found during the scan
 5. pci_compliance.rb - this generates of list of hosts that pass or failed pci/dss auditing
+6. exec_summary.rb - A sample executive summary report
+7. executive_summary.rb - A more detailed sample executive summary report
+8. findings_summary.rb - A summary of all the findings report
+9. ms_update_summary.rb - a summary of all the windows update enable hosts
+10. ms_patch_summary.rb - a summary of all the missing windows patches
+11. cover_sheet.rb - a example coversheet report
+
 	
 The templates are located in the nessusdb/templates folder, where ever the gem was installed. On a typical Mac OSX install the path is:
 
