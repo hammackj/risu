@@ -12,7 +12,7 @@
 	- Host Summary
 	- Findings Summary
 	- Cover Sheet example
-- Fixed up the yardoc documentation
+- Updated more yardoc documentation
 - Reports
 	- Set a default font size of 12
 	- Set default margins of 50,75,50,75
@@ -23,8 +23,8 @@
 - Migrated to OptionParser Choice seems to be an abandoned gem with bugs
 - Updated all the Migration code to use the new AR3 format
 
-- Special thanks to Ed Davison for numerous bug reports and template testing.
-- Special thanks to Andrew Benson for helping track down a major ActiveRecord bug.
+- Special thanks to **Ed Davison** for numerous bug reports and template testing.
+- Special thanks to **Andrew Benson** for helping track down a major ActiveRecord bug.
 
 # 1.2.0 (February 13, 2011)
 **This update breaks all existing templates, included templates are updated**
