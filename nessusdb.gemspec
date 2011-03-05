@@ -7,28 +7,28 @@ require 'rubygems'
 require 'nessusdb'
 
 Gem::Specification.new do |s|
-	s.name									= "#{NessusDB::APP_NAME}"
-	s.version								= NessusDB::VERSION
+	s.name								= "#{NessusDB::APP_NAME}"
+	s.version							= NessusDB::VERSION
 	s.homepage							= "http://www.hammackj.com/"
-	s.summary								= "#{NessusDB::APP_NAME}"
+	s.summary							= "#{NessusDB::APP_NAME}"
 	s.description						= "#{NessusDB::APP_NAME} is a Nessus .nessus xml parser and report generation tool"
-	s.license								= "BSD"
+	s.license							= "BSD"
 	
 	s.author								= "Jacob Hammack"
-	s.email									= "jacob.hammack@hammackj.com"
+	s.email								= "jacob.hammack@hammackj.com"
 	
-	s.files									= Dir['[A-Z]*'] + Dir['lib/**/*'] + ['nessusdb.gemspec']
+	s.files								= Dir['[A-Z]*'] + Dir['lib/**/*'] + ['nessusdb.gemspec']
 	s.bindir								= "bin"
-	s.default_executable		= "#{NessusDB::APP_NAME}"
+	s.default_executable 			= "#{NessusDB::APP_NAME}"
 	s.executables						= "#{NessusDB::APP_NAME}"
 	s.require_paths					= ["lib"]
 	s.has_rdoc							= 'yard'
-	s.extra_rdoc_files			= ["README.markdown", "LICENSE", "NEWS.markdown", "TODO.markdown", "KNOWNISSUES.markdown"]
+	s.extra_rdoc_files				= ["README.markdown", "LICENSE", "NEWS.markdown", "TODO.markdown", "KNOWNISSUES.markdown"]
 	
-	s.required_rubygems_version = ">= 1.3.6"
-	s.rubyforge_project					= "nessusdb"
+	s.required_rubygems_version 	= ">= 1.3.6"
+	s.rubyforge_project				= "#{NessusDB::APP_NAME}"
 	
-	s.add_development_dependency("rspec", ">= 2.4.0")
+	s.add_development_dependency("rspec", ">= 2.5.0")
 	s.add_development_dependency("rcov", ">= 0.9.9")
 	s.add_development_dependency("yard", ">= 0.6.4")
 	s.add_development_dependency("machinist", ">= 1.0.6")
