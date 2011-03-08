@@ -41,5 +41,23 @@ module NessusDB
     	@parser.parse
 		end
 		
+		# Fixes the ip field if nil and replaces it with the name if its an ip
+		#
+		def fix_ips
+			@hosts = Host.all
+			
+			@hosts.each do |host|
+				if host.ip == nil
+					begin
+						ip = IPAddr.new host.name
+						host.ip = ip.to_string
+						host.save
+					rescue ArgumentError => ae
+						next
+					end
+				end
+			end
+		end
+		
 	end
 end
