@@ -158,6 +158,27 @@ module NessusDB
 				end
 			end
 			
+			def consolize &block
+
+			  yield
+
+				IRB.setup(nil)
+				IRB.conf[:USE_READLINE] = true
+				IRB.conf[:PROMPT_MODE] = :SIMPLE
+
+				irb = IRB::Irb.new
+				IRB.conf[:MAIN_CONTEXT] = irb.context
+
+			  irb.context.evaluate("require 'irb/completion'", 0)
+
+			  trap("SIGINT") do
+			    irb.signal_handle
+			  end
+			  catch(:IRB_EXIT) do
+			    irb.eval_input
+			  end
+			end
+			
 			# Parses all the command line
 			#
 			def parse_options
@@ -232,6 +253,10 @@ module NessusDB
 						opt.on('-d','--debug','Enable Debug Mode (More verbose output)') do |option|
 							@options[:debug] = true
 						end
+						
+						opt.on('--console', 'Starts an ActiveRecord console into the configured database') do |option|
+							@options[:console] = option
+						end
 
 						opt.on_tail("-?", "--help", "Show this message") do
 							puts opt.to_s + "\n"
@@ -262,8 +287,7 @@ module NessusDB
 				if @options[:debug] == true
 					puts "[*] Enabling Debug Mode"
 				end
-				
-								
+												
 				if @options[:config_file] != nil
 					load_config @options[:config_file]
 				else
@@ -271,6 +295,14 @@ module NessusDB
 				end
 				
 				db_connect
+				
+				if @options[:console] != nil
+					consolize do
+						puts NessusDB::CLI::Banner
+						puts "NessusDB Console v#{VERSION}"
+					end
+					exit
+				end
 				
 				if @options[:test_connection] != nil
 					result = test_connection
