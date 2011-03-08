@@ -26,7 +26,7 @@
 - Add Schema checks to make sure the schema is compatible with the version of nessusdb
 	- Check to see that the xml is version 2
 		- Version 1 = NessusClientData
-		- Version 2 = NessusClientData_V2	
+		- Version 2 = NessusClientData_V2
 
 ## 1.5 (7/4/2011)
 - Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
