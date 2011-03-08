@@ -93,6 +93,7 @@ module NessusDB
 				t.string :risk_factor
 				t.text :solution
 				t.text :synopsis
+				t.string :plugin_type
 			end
 			
 			create_table :individual_plugin_selections do |t|
