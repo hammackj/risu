@@ -3,6 +3,9 @@
 #1.4.0 (May 5, 2011)
 
 - Added a --console option for creating a ActiveRecord console into the database
+- Updated the parser to handle the new plugin_type field on the plugins table
+- Fixed a issue with the parser where Nessus leaves the ip field blank for some reason but the name field is the ip. Validates the correctness of the ip and puts it in the ip field
+
 
 
 # 1.3.0 (March 4, 2011)
