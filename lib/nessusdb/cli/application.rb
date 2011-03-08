@@ -370,6 +370,11 @@ module NessusDB
 						doc = NessusDocument.new file
 						if doc.valid? == true
 							doc.parse
+							
+							puts "[*] Fixing IP Address field"
+							
+							doc.fix_ips
+							
 						else
 							raise NessusDB::Exceptions::InvalidDocument, "[!] Invalid Document - #{file}" 
 						end
