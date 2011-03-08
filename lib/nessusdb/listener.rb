@@ -25,7 +25,8 @@ module NessusDB
 				"NessusClientData_v2", "Policy", "PluginName", "ServerPreferences", "policyComments", "policyName", "PluginItem",
 				"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
 				"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
-				"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit"]
+				"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
+				"plugin_type"]
 		end
 	
 		# Callback for when the start of a xml element is reached
@@ -251,6 +252,7 @@ module NessusDB
 						:description => @vals["description"],
 						:plugin_publication_date => @vals["plugin_publication_date"],
 						:synopsis => @vals["synopsis"],
+						:plugin_type => @vals["plugin_type"],
 						:cvss_vector => @vals["cvss_vector"],
 						:cvss_base_score => @vals["cvss_base_score"],
 						:vuln_publication_date => @vals["vuln_publication_date"],
