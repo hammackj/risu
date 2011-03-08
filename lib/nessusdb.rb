@@ -2,7 +2,7 @@
 
 module NessusDB
 	APP_NAME = "nessusdb"
-	VERSION = "1.3"
+	VERSION = "1.4-dev"
 	GRAPH_WIDTH = 750
 	EMAIL = "jacob.hammack@hammackj.com"
 	CONFIG_FILE = "./nessusdb.cfg"
@@ -19,6 +19,7 @@ require 'prawn'
 require 'prawn/layout'
 require 'stringio'
 require 'mysql'
+require 'irb'
 
 require 'optparse'
 
