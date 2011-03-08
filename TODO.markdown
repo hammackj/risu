@@ -5,11 +5,22 @@
 ## 1.4 (5/4/2011)
 - Clean up / Bug fixes before 2.0
 - Create rSpec tests for everything
+	- Parser tests
+	- application specs
+	- models tests
+		- policy
+		- family selection
+		- individualpluginselection
+		- reference
+		- version
+		- report
+		- plugin
+		- plugin preference
+		- server preference
 - Create test fixtures
 - Comment all named scope from 1.2
 - Create a Nessus document generator, for testing the parser
 - 100% code coverage for testing
-- Add a irb like console to manually interact with the manuals
 - Rework the blacklisting stuff
 	- Add blacklisting to config
 - Add Schema checks to make sure the schema is compatible with the version of nessusdb
