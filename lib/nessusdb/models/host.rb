@@ -27,13 +27,6 @@ module NessusDB
 				# @return [Array] With all the Ip's in sorted order
 				def sorted
 					hosts = Host.where("ip is not NULL").order("ip").all
-					
-					#The name is usally the ip also so if the ip is nil just use the name
-					hosts.each do |host|
-						if host.ip == nil
-							host.ip = host.name
-						end
-					end
 
 					#Sort the ips in natural order.
 					hosts.sort! do |a,b|
