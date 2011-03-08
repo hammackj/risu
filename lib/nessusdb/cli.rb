@@ -6,3 +6,4 @@ module NessusDB
 end
 
 require 'nessusdb/cli/application'
+require 'nessusdb/cli/banner'
