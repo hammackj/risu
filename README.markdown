@@ -47,7 +47,6 @@ Installation is really easy just gem install!
 2. Edit the nessusdb.cfg file, filling in the variables as needed. Please see [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) for more details.
 3. Migrate the database schema.
 
-
 ## Parsing Nessus Output
 
 	% nessusdb report1.nessus [report2.nessus ...]
@@ -55,15 +54,31 @@ Installation is really easy just gem install!
 1. Parse the files by passing their names on the command line.
 
 
-# Viewing Data #
+# Viewing Data
 The data can be viewed with a query browser available for your database. A Rails front end will be available in the future.
 
-## Generating Reports ##
+## Generating Reports
 To generate a technical summary report please execute the following after the the data is parsed into the database.
 
 	% nessusdb -t "TEMPLATE_PATH" -o "REPORT_NAME.pdf"
 	
-## Templates ##
+## NessusDB Console
+
+Using the NessusDB Console is just like using Rails. You can access all of the ActiveRecord models directly and pull specific data from each model. Like SQL only easier!
+
+	[hammackj@taco:~/Projects/public/nessusdb]$ ../bin/nessusdb --console
+
+	                                   _ _       
+	 _ __   ___  ___ ___ _   _ ___  __| | |__  
+	| '_ \ / _ \/ __/ __| | | / __|/ _` | '_ \ 
+	| | | |  __/\__ \__ \ |_| \__ \ (_| | |_) |
+	|_| |_|\___||___/___/\__,_|___/\__,_|_.__/ 
+
+	NessusDB Console v1.4-dev
+	>> Host.first
+	=> #<NessusDB::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
+	
+## Templates
 Serveral templates are included:
 
 1. graphs.rb - several graphs written to disk as png's and as a complete pdf
@@ -77,7 +92,7 @@ Serveral templates are included:
 9. ms_update_summary.rb - a summary of all the windows update enable hosts
 10. ms_patch_summary.rb - a summary of all the missing windows patches
 11. cover_sheet.rb - a example coversheet report
-
+12. findings_host.rb - list of findings per host
 	
 The templates are located in the nessusdb/templates folder, where ever the gem was installed. On a typical Mac OSX install the path is:
 
