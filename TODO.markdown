@@ -2,7 +2,7 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.4 (5/4/2011)
+## 1.5 (7/4/2011)
 - Clean up / Bug fixes before 2.0
 - Create rSpec tests for everything
 	- Parser tests
@@ -27,8 +27,6 @@
 	- Check to see that the xml is version 2
 		- Version 1 = NessusClientData
 		- Version 2 = NessusClientData_V2
-
-## 1.5 (7/4/2011)
 - Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
 - Move to ruby 1.9.x only support
 - Add Parser for NBE Format
@@ -43,6 +41,9 @@
 - Add template validation and more error checking
 - Colorize the reports with better style
 - Sort Technical Findings Report by count/score	
+
+## 1.6 (9/4/2011)
+- Remove rmagick
 
 ## 2.0 (12/4/2011)
 - Rails FrontEnd to NessusDB
