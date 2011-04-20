@@ -8,7 +8,7 @@ require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
 begin
 	app = NessusDB::CLI::Application.new
-	app.load_config("test_data/nessusdb_spec.cfg")
+	app.load_config("nessusdb_spec.cfg")
 	app.db_connect
 	app.migrate(:down)
 	app.migrate(:up)
