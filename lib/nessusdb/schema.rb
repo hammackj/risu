@@ -79,6 +79,7 @@ module NessusDB
 				t.string :plugin_version
 				t.datetime :plugin_publication_date
 				t.datetime :vuln_publication_date
+				t.string :cpe
 				t.string :cvss_vector
 				t.string :cvss_base_score
 				t.string :cvss_temporal_score
