@@ -26,7 +26,7 @@ module NessusDB
 				"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
 				"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
 				"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
-				"plugin_type"]
+				"plugin_type", "cpe"]
 		end
 	
 		# Callback for when the start of a xml element is reached
@@ -265,7 +265,8 @@ module NessusDB
 						:exploit_framework_metasploit => @vals["exploit_framework_metasploit"],
 						:metasploit_name => @vals["metasploit_name"],
 						:exploit_framework_canvas => @vals["exploit_framework_canvas"],
-						:canvas_package => @vals["canvas_package"]
+						:canvas_package => @vals["canvas_package"],
+						:cpe => @vals["cpe"]
 					}
 					@plugin.save
 			end	 
