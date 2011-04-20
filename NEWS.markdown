@@ -1,6 +1,6 @@
 # News
 
-#1.4.0 (May 5, 2011)
+#1.4.0 (April 20, 2011)
 
 - Added a --console option for creating a ActiveRecord console into the database
 - Updated the parser to handle the new plugin_type field on the plugins table
@@ -8,8 +8,6 @@
 - Added 'cpe' field from the updated Nessus XML
 - New Templates
 	- Simple list of findings by host, in findings_host.rb [Ticket #27]
-
-
 
 # 1.3.0 (March 4, 2011)
 **Command line options have changed slightly, run nessusdb -? for a full list of commands**
