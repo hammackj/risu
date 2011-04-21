@@ -36,6 +36,7 @@ module NessusDB
 					f.write("  username: \n")
 					f.write("  password: \n")
 					f.write("  timeout: \n\n")
+					#TODO blacklisting
 					#f.write("blacklist:\n")
 					#f.write("  ips: \n")
 					#f.write("  macs: \n")
@@ -93,13 +94,11 @@ module NessusDB
 
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your config file"
-					
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
 					
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
 					puts "[!] Database adapter not found, please check your config file"
-					
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
 					
 					exit
@@ -114,7 +113,6 @@ module NessusDB
 			def db_connect
 				begin
 					if @database["adapter"] == nil
-
 						puts "[!] #{@database['adapter']}" if @options[:debug]
 
 						return false, "[!] Invalid database adapter, please check your config file"
