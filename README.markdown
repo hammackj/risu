@@ -7,10 +7,10 @@ Version 1.4.0 is the current release.
 ## Requirements
 
 ### Ruby
-NessusDB has been tested with ruby-1.8.7-p330, ruby-1.9.1-p378, ruby-1.9.2-p136. Please try to use one of these versions if possible
+NessusDB has been tested with ruby-1.8.7-p334, ruby-1.9.1-p431, ruby-1.9.2-p180. Please try to use one of these versions if possible
 
 ### RubyGems
-NessusDB relies heavily on the RubyGems framework to install other dependencies I highly recommend using it. RubyGems is included by default in the Ruby 1.9 branches.
+NessusDB relies heavily on RubyGems to install other dependencies I highly recommend using it. RubyGems is included by default in the Ruby 1.9 branches.
 
 
 - libxml
@@ -26,7 +26,7 @@ NessusDB relies heavily on the RubyGems framework to install other dependencies 
 
 These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install nessusdb, If not this command will install them all:
 
-	% gem install libxml-ruby choice yaml rails logger gruff prawn rmagick mysql
+	% gem install rmagick gruff prawn sham faker rspec rcov machinist yard mysql libxml-ruby rails sqlite3 logger yaml
 	
 **You my need sudo/root access depending on your system setup**
 
@@ -35,7 +35,7 @@ Any database that ActiveRecord supports should work. NessusDB has been tested wi
 ## Installation
 Installation is really easy just gem install!
 
-	% sudo gem install nessusdb
+	% gem install nessusdb
 
 ## Database Setup
 
@@ -74,7 +74,7 @@ Using the NessusDB Console is just like using Rails. You can access all of the A
 	| | | |  __/\__ \__ \ |_| \__ \ (_| | |_) |
 	|_| |_|\___||___/___/\__,_|___/\__,_|_.__/ 
 
-	NessusDB Console v1.4-dev
+	NessusDB Console v1.4
 	>> Host.first
 	=> #<NessusDB::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 	
