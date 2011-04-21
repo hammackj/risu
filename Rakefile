@@ -11,6 +11,8 @@ end
  
 task :release => :build do
   system "gem push nessusdb-#{NessusDB::VERSION}.gem"
+
+	puts "Just released NessusDB v#{NessusDB::VERSION}. NessusDB is awlays available in RubyGems"
 end
 
 task :clean do
