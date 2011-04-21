@@ -5,4 +5,4 @@ module NessusDB
 	end
 end
 
-require 'nessusdb/parsers/'
+#require 'nessusdb/parsers/'
