@@ -3,11 +3,12 @@
 module NessusDB
 	module CLI
 		
-		# 
+		# Application class for NessusDB
 		#
 		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Application
 			attr_accessor :database
+			
 			#
 			#
 			def initialize
@@ -108,7 +109,7 @@ module NessusDB
 				end
 			end
 			
-			#
+			# 
 			#
 			def db_connect
 				begin
