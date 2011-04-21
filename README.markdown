@@ -1,13 +1,13 @@
 # NessusDB
 
-NessusDB is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerbility verification. 
+NessusDB is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
 
 Version 1.4.0 is the current release.
 
 ## Requirements
 
 ### Ruby
-NessusDB has been tested with ruby-1.8.7-p334, ruby-1.9.1-p431, ruby-1.9.2-p180. Please try to use one of these versions if possible
+NessusDB has been tested with ruby-1.8.7-p334, ruby-1.9.1-p431, ruby-1.9.2-p180. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
 
 ### RubyGems
 NessusDB relies heavily on RubyGems to install other dependencies I highly recommend using it. RubyGems is included by default in the Ruby 1.9 branches.
@@ -98,22 +98,31 @@ The templates are located in the nessusdb/templates folder, where ever the gem w
 
 	[hammackj@taco:~]$ ruby -v
 	ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]
-	[hammackj@taco:~]$ l /Library/Ruby/Gems/1.8/gems/nessusdb-1.1.0/lib/nessusdb/templates/
+	[hammackj@taco:~]$ l /Library/Ruby/Gems/1.8/gems/nessusdb-1.4.0/lib/nessusdb/templates/
 	total 40
 	drwxr-xr-x  7 hammackj  admin   238B Oct 21 19:24 ./
 	drwxr-xr-x  8 hammackj  admin   272B Oct 21 19:24 ../
-	-rw-r--r--  1 root      admin   847B Oct 21 19:24 assets.rb
-	-rw-r--r--  1 root      admin   686B Oct 21 19:24 finding_statistics.rb
-	-rw-r--r--  1 root      admin   873B Oct 21 19:24 graphs.rb
-	-rw-r--r--  1 root      admin   1.6K Oct 21 19:24 pci_compliance.rb
-	-rw-r--r--  1 root      admin   2.2K Oct 21 19:24 technical_findings.rb
+	-rw-r--r--   1 hammackj  staff   695B Mar  9 15:59 assets.rb
+	-rw-r--r--   1 hammackj  staff   691B Mar  9 15:59 cover_sheet.rb
+	drwxr-xr-x   3 hammackj  staff   102B Mar  9 15:59 data/
+	-rw-r--r--   1 hammackj  staff   2.0K Mar  9 15:59 exec_summary.rb
+	-rw-r--r--   1 hammackj  staff   6.7K Mar  9 15:59 executive_summary.rb
+	-rw-r--r--   1 hammackj  staff   724B Mar  9 15:59 finding_statistics.rb
+	-rw-r--r--@  1 hammackj  staff   1.2K Mar 17 14:55 findings_host.rb
+	-rw-r--r--   1 hammackj  staff   1.5K Mar  9 15:59 findings_summary.rb
+	-rw-r--r--   1 hammackj  staff   831B Mar  9 15:59 graphs.rb
+	-rw-r--r--   1 hammackj  staff   1.2K Mar  9 15:59 host_summary.rb
+	-rw-r--r--   1 hammackj  staff   663B Mar  9 15:59 ms_patch_summary.rb
+	-rw-r--r--   1 hammackj  staff   924B Mar  9 15:59 ms_update_summary.rb
+	-rw-r--r--   1 hammackj  staff   1.6K Mar  9 15:59 pci_compliance.rb
+	-rw-r--r--   1 hammackj  staff   2.8K Mar  9 15:59 technical_findings.rb
 	[hammackj@taco:~]$ 
 
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested.
 
-# Issues #
+# Issues
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/hammackj/nessusdb/issues).
 
-# Contact #
+# Contact
 You can reach me at jacob[dot]hammack[at]hammackj[dot]com.
 
