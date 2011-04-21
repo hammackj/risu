@@ -6,6 +6,7 @@
 - Updated the parser to handle the new plugin_type field on the plugins table
 - Fixed a issue with the parser where Nessus leaves the ip field blank for some reason but the name field is the ip. Validates the correctness of the ip and puts it in the ip field
 - Added 'cpe' field from the updated Nessus XML
+- Added 'plugin_type' field from the updated Nessus XML
 - New Templates
 	- Simple list of findings by host, in findings_host.rb [Ticket #27]
 
