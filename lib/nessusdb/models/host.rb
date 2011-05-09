@@ -220,12 +220,12 @@ module NessusDB
 					w2k8 = Host.os_windows_2k8.count
 					w7 = Host.os_windows_7.count
 					
-					g.data("2000", w2k) unless Host.os_windows_2k.count == nil
-					g.data("XP", xp) unless Host.os_windows_xp.count == nil
-					g.data("Server 2003", w2k3) unless Host.os_windows_2k3.count == nil
-					g.data("Vista", w2k3) unless Host.os_windows_vista.count == nil
-					g.data("Server 2008", w2k3) unless Host.os_windows_2k8.count == nil
-					g.data("7", w2k3) unless Host.os_windows_7.count == nil
+					g.data("2000", w2k) unless w2k == nil
+					g.data("XP", xp) unless xp == nil
+					g.data("Server 2003", w2k3) unless w2k3 == nil
+					g.data("Vista", vista) unless vista == nil
+					g.data("Server 2008", w2k8) unless w2k8 == nil
+					g.data("7", w7) unless w7 == nil
 					
 					StringIO.new(g.to_blob)
 				end
