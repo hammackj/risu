@@ -1,5 +1,10 @@
 # News
 
+#1.4.1 (May 9, 2011)
+
+- Fixed a issue with a nonexistant 'Critical' severity.
+
+
 #1.4.0 (April 20, 2011)
 
 - Added a --console option for creating a ActiveRecord console into the database

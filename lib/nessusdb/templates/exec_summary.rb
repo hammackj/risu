@@ -18,13 +18,13 @@ text "This report contains the results of a security audit performed on #{Report
 
 text "A total of #{Host.count} hosts were found and scanned for vulnerabities.\n\n"
 
-text "There were #{Item.risks.count} vulnerabilities found during this scan. Of these, #{Item.critical_risks.count} were critical vulnerabilities, #{Item.high_risks.count} were high vulnerabilities, #{Item.medium_risks.count} were medium vulnerabilities and #{Item.low_risks.count} were low vulnerabilties.\n\n"
+text "There were #{Item.risks.count} vulnerabilities found during this scan. Of these, #{Item.high_risks.count} were high vulnerabilities, #{Item.medium_risks.count} were medium vulnerabilities, #{Item.low_risks.count} were low vulnerabilities and #{Item.info_risks.count} were information findings.\n\n"
 
 text "Scan Statistics", :style => :bold
 text "\n"
 
-table([["Number of hosts","Number of risks","Critical Risks", "High Risks", "Medium Risks", "Low Risks"], 
-[Host.count, Item.risks.count, Item.critical_risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count]], 
+table([["Number of hosts","Number of risks","High Risks", "Medium Risks", "Low Risks", "Info Risks"], 
+[Host.count, Item.risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count, Item.info_risks.count]], 
 :cell_style => { :padding =>12 }, :width => bounds.width)
 text "\n\n\n"
 

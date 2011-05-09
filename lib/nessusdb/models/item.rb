@@ -19,77 +19,87 @@ module NessusDB
 					where(:severity => [0,1,2,3])
 				end
 			
-				# Queries for all the critical risks in the database
+				# Queries for all the high risks in the database
 				# 
 				# @return [ActiveRecord::Relation] with the query results
-				def critical_risks
+				def high_risks
 					where(:severity => 3)
 				end
 			
-				# Queries for all the high risks in the database
-				#
-				# @return [ActiveRecord::Relation] with the query results 
-				def high_risks
-					where(:severity => 2)
-				end
-				
 				# Queries for all the medium risks in the database
 				#
-				# @return [ActiveRecord::Relation] with the query results
+				# @return [ActiveRecord::Relation] with the query results 
 				def medium_risks
-					where(:severity => 1)
+					where(:severity => 2)
 				end
 				
 				# Queries for all the low risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def low_risks
-					where(:severity => 0)
+					where(:severity => 1)
 				end
 				
-				# Queries for all the unique critical risks in the database
+				# Queries for all the info risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
-				def critical_risks_unique
-					where(:severity => 3).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
-					#where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id)
-				end
-				
-				def critical_risks_unique_sorted
-					select("items.*").select("count() as count_all").where(:severity => 3).group(:plugin_id).order("count_all DESC")
+				def info_risks
+					where(:severity => 0)
 				end
 				
 				# Queries for all the unique high risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_unique
-					where(:severity => 2).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
-					#where(:severity => 2).order(:cvss_base_score).group(:plugin_id)
+					where(:severity => 3).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
 				end
 				
+				# Queries for all the unique high findings and sorts them by count
+				# 
+				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_unique_sorted
-					select("items.*").select("count() as count_all").where(:severity => 2).group(:plugin_id).order("count_all DESC")
+					select("items.*").select("count() as count_all").where(:severity => 3).group(:plugin_id).order("count_all DESC")
 				end
 				
 				# Queries for all the unique medium risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks_unique
-					where(:severity => 1).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
+					where(:severity => 2).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
 				end
 				
+				# Queries for all the unique medium findings and sorts them by count
+				# 
+				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks_unique_sorted
-					select("items.*").select("count() as count_all").where(:severity => 1).group(:plugin_id).order("count_all DESC")
+					select("items.*").select("count() as count_all").where(:severity => 2).group(:plugin_id).order("count_all DESC")
 				end
 				
 				# Queries for all the unique low risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def low_risks_unique
+					where(:severity => 1).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
+				end
+				
+				# Queries for all the unique low findings and sorts them by count
+				# 
+				# @return [ActiveRecord::Relation] with the query results
+				def low_risks_unique_sorted
+					select("items.*").select("count() as count_all").where(:severity => 1).group(:plugin_id).order("count_all DESC")
+				end
+				
+				# Queries for all the unique info risks in the database
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def info_risks_unique
 					where(:severity => 0).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
 				end
 				
-				def low_risks_unique_sorted
+				# Queries for all the unique info findings and sorts them by count
+				# 
+				# @return [ActiveRecord::Relation] with the query results
+				def info_risks_unique_sorted
 					select("items.*").select("count() as count_all").where(:severity => 0).group(:plugin_id).order("count_all DESC")
 				end
 				
@@ -100,7 +110,9 @@ module NessusDB
 					select("items.*").select("count(*) as count_all").where("svc_name != 'unknown' and svc_name != 'general'").group(:svc_name).order("count_all DESC").limit(limit)
 				end
 				
-				# Queries for all the critical risks by plugin
+				# Queries for all the high risks by plugin
+				#
+				# @todo update this
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_plugin(limit=10)
@@ -158,10 +170,10 @@ module NessusDB
 				     :background_colors => %w(white white)
 				  }
 
-				  g.data("Critical", Item.critical_risks.count, "red") unless Item.critical_risks.count == 0
-				  g.data("High", Item.high_risks.count, "orange") unless Item.high_risks.count == 0
-				  g.data("Medium", Item.medium_risks.count, "yellow") unless Item.medium_risks.count == 0
-				  g.data("Low", Item.low_risks.count, "blue") unless Item.low_risks.count == 0
+				  g.data("High", Item.high_risks.count, "red") unless Item.high_risks.count == 0
+				  g.data("Medium", Item.medium_risks.count, "orange") unless Item.medium_risks.count == 0
+				  g.data("Low", Item.low_risks.count, "yellow") unless Item.low_risks.count == 0
+				  g.data("Info", Item.info_risks.count, "blue") unless Item.info_risks.count == 0
 
 				  StringIO.new(g.to_blob)
 				end

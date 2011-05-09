@@ -12,7 +12,7 @@ text "\n\n\n"
 
 results = Array.new
 
-headers = ["Hostname","Total", "Critical", "High", "Medium", "Low"]
+headers = ["Hostname","Total", "High", "Medium", "Low", "Info"]
 header_widths = {0 => 137, 1 => 75, 2 => 75, 3 => 75, 4 => 75, 5 => 75}
 
 puts Host.sorted.class
@@ -21,17 +21,17 @@ Host.sorted.each do |host|
 	row = Array.new
 
 	total  = Item.risks.where(:host_id => host.id).count
-	critical = Item.critical_risks.where(:host_id => host.id).count
 	high = Item.high_risks.where(:host_id => host.id).count
 	medium = Item.medium_risks.where(:host_id => host.id).count
 	low = Item.low_risks.where(:host_id => host.id).count
+	info = Item.info_risks.where(:host_id => host.id).count
 
 	row.push(host.name)
 	row.push(total)
-	row.push(critical)
 	row.push(high)
 	row.push(medium)
 	row.push(low)
+	row.push(info)
 
 	
 	results.push(row)

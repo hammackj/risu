@@ -3,7 +3,7 @@ text "\n"
 
 font_size(22) { text Report.title, :align => :center }
 font_size(18) { 
-	text "Critical and High Findings", :align => :center
+	text "High and Medium Findings", :align => :center
 	text "\n"
 	text "This report was prepared by\n#{Report.author}", :align => :center
 }
@@ -16,8 +16,8 @@ text "\n\n\n"
 #.where("host_id != (?)", blacklist_host_id)
 
 unique_risks = Array.new
-unique_risks << Hash[:title => "Critical Findings", :color => "FF0000", :values => Item.critical_risks_unique]
-unique_risks << Hash[:title => "High Findings", :color => "FF8040", :values => Item.high_risks_unique]
+unique_risks << Hash[:title => "High Findings", :color => "FF0000", :values => Item.high_risks_unique]
+unique_risks << Hash[:title => "Medium Findings", :color => "FF8040", :values => Item.medium_risks_unique]
 
 unique_risks.each do |h|	
 	if h[:values].length > 1

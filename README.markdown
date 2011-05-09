@@ -2,7 +2,7 @@
 
 NessusDB is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
 
-Version 1.4.0 is the current release.
+Version 1.4.1 is the current release.
 
 ## Requirements
 
@@ -82,7 +82,7 @@ Using the NessusDB Console is just like using Rails. You can access all of the A
 Serveral templates are included:
 
 1. graphs.rb - several graphs written to disk as png's and as a complete pdf
-2. technical_findings.rb - a detailed pdf of the critical and highs from the assessment
+2. technical_findings.rb - a detailed pdf of the high and medium findings from the assessment
 3. finding_statistics.rb - this is a pdf summary of the assessment
 4. assets.rb - this is a summary of all the hosts found during the scan
 5. pci_compliance.rb - this generates of list of hosts that pass or failed pci/dss auditing

@@ -42,8 +42,8 @@ start_new_page
 	text "Scan Statistics", :style => :bold
 	text "\n"
 
-	headers = ["Number of hosts","Number of risks","Critical Risks", "High Risks", "Medium Risks", "Low Risks"]
-	data = [[Host.count, Item.risks.count, Item.critical_risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count]]
+	headers = ["Number of hosts","Number of risks","High Risks", "Medium Risks", "Low Risks", "Info Risks"]
+	data = [[Host.count, Item.risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count, Item.info_risks.count]]
 
 	table(data, :headers => headers,
 		:border_style => :grid,
@@ -54,15 +54,15 @@ start_new_page
 	text "A total of #{Host.count} hosts were found and scanned for vulnerabities.\n"
 	text "\n"
 
-	text "There were #{Item.risks.count} risks found during this scan.  Of these, #{Item.critical_risks.count} were Critical risk vulnerabilities.  Critical risk vulnerabilities require immediate attention to handle as they are relatively easy for attackers to exploit frequently resulting in full access to affected systems.  There were #{Item.high_risks.count} findings which were High risk.  High risk vulnerabilities are harder to exploit and may not result in full control of the affected system and should be addressed rapidly and with priority.  There were #{Item.medium_risks.count} findings which were Medium risk vulnerabilities.  These risks usually let attackers gain information about your network making it easier for launching more advanced attacks and should be handled in a timely manner.  And #{Item.low_risks.count} findings which were Low risk vulnerabilties.\n"
+	text "There were #{Item.risks.count} risks found during this scan.  Of these, #{Item.high_risks.count} were High risk vulnerabilities.  High risk vulnerabilities require immediate attention to handle as they are relatively easy for attackers to exploit frequently resulting in full access to affected systems.  There were #{Item.medium_risks.count} findings which were Medium risk.  High risk vulnerabilities are harder to exploit and may not result in full control of the affected system and should be addressed rapidly and with priority.  There were #{Item.low_risks.count} findings which were Low risk vulnerabilities.  These risks usually let attackers gain information about your network making it easier for launching more advanced attacks and should be handled in a timely manner.  And #{Item.info_risks.count} findings which were information findings.\n"
 	text "\n"
 
-	crit_host_count = Item.where(:severity => 3).group(:host_id).all.count
-	high_host_count = Item.where(:severity => 2).group(:host_id).all.count
-	medium_host_count = Item.where(:severity => 1).group(:host_id).all.count
-	low_host_count = Item.where(:severity => 0).group(:host_id).all.count
+	high_host_count = Item.where(:severity => 3).group(:host_id).all.count
+	medium_host_count = Item.where(:severity => 2).group(:host_id).all.count
+	low_host_count = Item.where(:severity => 1).group(:host_id).all.count
+	info_host_count = Item.where(:severity => 0).group(:host_id).all.count
 
-	text "There were #{crit_host_count} hosts with Critical risk vulnerabilities, #{high_host_count} hosts with High risk vulnerabilities, #{medium_host_count} hosts with Medium risk vulnerabilities and #{low_host_count} hosts with Low risk vulnerabilities."
+	text "There were #{high_host_count} hosts with High risk vulnerabilities, #{medium_host_count} hosts with Medium risk vulnerabilities, #{low_host_count} hosts with Low risk vulnerabilities and #{info_host_count} hosts with information findings."
 	text "\n"
 
 	text "The following table shows the top 5 vulnerabilities that were found.  These are the most important vulnerabilities to address as they represent a sizeable footprint for an attacker to exploit in an attempt to compromise.\n"

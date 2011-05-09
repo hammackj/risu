@@ -138,12 +138,12 @@ module NessusDB
 					where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%NetBsd%'").where("os NOT LIKE '%FreeBSD%'").where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%Windows%'").where("os not like '%CISCO%'").where("os NOT LIKE '%VxWorks%'")
 				end
 				
-				# Generates a graph of the critical and high findings count per host
+				# Generates a graph of the high and medium findings count per host
 				#
 				# @return [StringIO] Binary image object of the results
 				def top_vuln_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d Critical/High Finding Count Per Host ", Item.risks_by_host(limit).all.count
+					g.title = sprintf "Top %d High/Medium Finding Count Per Host ", Item.risks_by_host(limit).all.count
 					g.sort = false
 					g.theme = {
 						:colors => %w(red green blue orange yellow purple black grey brown pink),

@@ -15,8 +15,8 @@ text "Scan Date:", :style => :bold
 text "#{Report.scan_date}"
 text "\n"
 
-headers = ["Number of hosts","Number of risks","Critical Risks", "High Risks", "Medium Risks", "Low Risks"]
-data = [[Host.count, Item.risks.count, Item.critical_risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count]]
+headers = ["Number of hosts","Number of risks","High Risks", "Medium Risks", "Low Risks", "Info Risks"]
+data = [[Host.count, Item.risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count, Item.info_risks.count]]
 
 table(data, :headers => headers,
 						:border_style => :grid, 

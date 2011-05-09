@@ -12,21 +12,6 @@ text "\n\n\n"
 
 font_size(20) { 
 	fill_color "FF0000"
-	text "Critical Findings", :style => :bold 
-	fill_color "000000"
-}
-
-Item.critical_risks_unique_sorted.each do |item|
-	name = Plugin.find_by_id(item.plugin_id).plugin_name
-	count = Item.where(:plugin_id => item.plugin_id).count
-
-	text "#{count} - #{name}"
-end
-
-start_new_page
-
-font_size(20) { 
-	fill_color "FF8040"
 	text "High Findings", :style => :bold 
 	fill_color "000000"
 }
@@ -41,12 +26,27 @@ end
 start_new_page
 
 font_size(20) { 
-	fill_color "0000FF"
+	fill_color "FF8040"
 	text "Medium Findings", :style => :bold 
 	fill_color "000000"
 }
 
 Item.medium_risks_unique_sorted.each do |item|
+	name = Plugin.find_by_id(item.plugin_id).plugin_name
+	count = Item.where(:plugin_id => item.plugin_id).count
+
+	text "#{count} - #{name}"
+end
+
+start_new_page
+
+font_size(20) { 
+	fill_color "0000FF"
+	text "Low Findings", :style => :bold 
+	fill_color "000000"
+}
+
+Item.low_risks_unique_sorted.each do |item|
 	name = Plugin.find_by_id(item.plugin_id).plugin_name
 	count = Item.where(:plugin_id => item.plugin_id).count
 

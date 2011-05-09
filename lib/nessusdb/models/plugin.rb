@@ -16,12 +16,11 @@ module NessusDB
 				# Creates a graph based on the top plugins sorted by count
 				#
 				# 
-				# @todo move to the plugins class
 				# 
 				# @return Filename of the created graph
 				def top_by_count_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d Critical Findings By Plugin", Item.risks_by_plugin(limit).all.count
+					g.title = sprintf "Top %d High Findings By Plugin", Item.risks_by_plugin(limit).all.count
 					g.sort = false
 					g.theme = {
 						:colors => %w(red green blue orange yellow purple black grey brown pink),
