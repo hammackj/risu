@@ -131,11 +131,18 @@ module NessusDB
 					where("os like '%VxWorks%'")
 				end
 				
+				# Queries for all hosts with a VMware ESX based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def os_vmware_esx
+					where("os like %VMware ESX%")
+				end
+				
 				#
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def os_other
-					where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%NetBsd%'").where("os NOT LIKE '%FreeBSD%'").where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%Windows%'").where("os not like '%CISCO%'").where("os NOT LIKE '%VxWorks%'")
+					where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%NetBsd%'").where("os NOT LIKE '%FreeBSD%'").where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%Windows%'").where("os not like '%CISCO%'").where("os NOT LIKE '%VxWorks%'").where("os like %VMware ESX%")
 				end
 				
 				# Generates a graph of the high and medium findings count per host
@@ -177,12 +184,14 @@ module NessusDB
 					netbsd = Host.os_netbsd.count
 					cisco = Host.os_cisco.count
 					vxworks = Host.os_vxworks.count
+					esx = Host.os_vmware_esx.count
 					
-					g.data("Linux", linux) unless Host.os_linux.count == nil
-					g.data("FreeBSD", freebsd) unless Host.os_freebsd.count == nil
-					g.data("NetBSD", netbsd) unless Host.os_netbsd.count == nil
-					g.data("Cisco ISO", cisco) unless Host.os_cisco.count == nil
-					g.data("VxWorks", vxworks) unless Host.os_vxworks.count == nil
+					g.data("Linux", linux) unless linux == nil
+					g.data("FreeBSD", freebsd) unless freebsd == nil
+					g.data("NetBSD", netbsd) unless netbsd == nil
+					g.data("Cisco ISO", cisco) unless cisco == nil
+					g.data("VxWorks", vxworks) unless vxworks == nil
+					g.data("VMware", esx) unless esx == nil
 					
 					
 					Host.os_other.each do |host|
