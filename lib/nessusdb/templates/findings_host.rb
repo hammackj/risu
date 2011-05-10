@@ -46,5 +46,4 @@ Host.sorted.each do |host|
 	if host.items.high_risks_unique_sorted.all.size > 0 or host.items.medium_risks_unique_sorted.all.size > 0
 		text "\n"
 	end
-	
 end

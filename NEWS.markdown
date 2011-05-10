@@ -1,9 +1,10 @@
 # News
 
-#1.4.1 (May 9, 2011)
+#1.4.1 (May 10, 2011)
 
-- Fixed a issue with a nonexistant 'Critical' severity.
-
+- Fixed a issue with a nonexistent 'Critical' severity.
+- Added VMware ESX to the Other OS graph Ticket #33
+- windows_os_graph were using the wrong counters Ticket #32
 
 #1.4.0 (April 20, 2011)
 

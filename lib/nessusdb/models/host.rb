@@ -135,14 +135,14 @@ module NessusDB
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def os_vmware_esx
-					where("os like %VMware ESX%")
+					where("os like '%VMware ESX%'")
 				end
 				
 				#
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def os_other
-					where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%NetBsd%'").where("os NOT LIKE '%FreeBSD%'").where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%Windows%'").where("os not like '%CISCO%'").where("os NOT LIKE '%VxWorks%'").where("os like %VMware ESX%")
+					where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%NetBsd%'").where("os NOT LIKE '%FreeBSD%'").where("os NOT LIKE '%Linux%'").where("os NOT LIKE '%Windows%'").where("os not like '%CISCO%'").where("os NOT LIKE '%VxWorks%'").where("os NOT LIKE '%VMware ESX%'")
 				end
 				
 				# Generates a graph of the high and medium findings count per host
