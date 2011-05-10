@@ -79,7 +79,7 @@ Using the NessusDB Console is just like using Rails. You can access all of the A
 	=> #<NessusDB::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 	
 ## Templates
-Serveral templates are included:
+Several templates are included:
 
 1. graphs.rb - several graphs written to disk as png's and as a complete pdf
 2. technical_findings.rb - a detailed pdf of the high and medium findings from the assessment

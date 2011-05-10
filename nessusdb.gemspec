@@ -35,11 +35,9 @@ Gem::Specification.new do |s|
 	s.add_development_dependency("sham", ">= 0.4.0")
 	s.add_development_dependency("faker", ">= 0.9.5")
 
-	s.add_dependency('rails', '>= 3.0.5')
+	s.add_dependency('rails', '>= 3.0.7')
 	s.add_dependency('libxml-ruby', '>= 1.1.4')
-	s.add_dependency('prawn', '>= 0.8.4')
-	s.add_dependency('prawn-core', '>= 0.8.4')
-	s.add_dependency('prawn-layout', '>= 0.8.4')
+	s.add_dependency('prawn', '>= 0.11.1')
 	s.add_dependency('gruff', '>= 0.3.6')
 	s.add_dependency('mysql', '>= 2.8.1')
 	s.add_dependency('rmagick', ">= 2.13.1")
