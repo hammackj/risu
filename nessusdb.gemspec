@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
 
 	s.files	= Dir['[A-Z]*'] + Dir['lib/**/*'] + ['nessusdb.gemspec']
 	s.bindir = "bin"
-	s.default_executable = "#{NessusDB::APP_NAME}"
 	s.executables = "#{NessusDB::APP_NAME}"
 	s.require_paths = ["lib"]
 	s.has_rdoc = 'yard'
