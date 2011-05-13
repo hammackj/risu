@@ -26,7 +26,8 @@ module NessusDB
 				"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
 				"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
 				"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
-				"plugin_type", "cpe"]
+				"plugin_type", "cpe", "MS11-030", "MS11-026", "MS11-034", "MS11-021", "MS11-029", "MS11-023", "MS11-022", "MS09-027", 
+				"MS11-033", "MS11-019", "MS11-024", "MS11-031", "MS11-020", "MS11-018", "MS11-028", "MS11-032"]
 		end
 	
 		# Callback for when the start of a xml element is reached
@@ -91,7 +92,9 @@ module NessusDB
 						@attr = "ssh-login-used"
 					elsif attributes["name"] == "pci-dss-compliance"
 						@attr = "pci-dss-compliance"
-					else 
+					elsif attributes["name"] =~ /(MS\d\d-\d\d\d)/
+						#Ignore useless data
+					else	
 						puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n"
 					end		
 				when "ReportItem"
