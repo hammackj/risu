@@ -58,7 +58,7 @@ module NessusDB
 				# 
 				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_unique_sorted
-					select("items.*").select("count() as count_all").where(:severity => 3).group(:plugin_id).order("count_all DESC")
+					select("items.*").select("count(*) as count_all").where(:severity => 3).group(:plugin_id).order("count_all DESC")
 				end
 				
 				# Queries for all the unique medium risks in the database
@@ -72,7 +72,7 @@ module NessusDB
 				# 
 				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks_unique_sorted
-					select("items.*").select("count() as count_all").where(:severity => 2).group(:plugin_id).order("count_all DESC")
+					select("items.*").select("count(*) as count_all").where(:severity => 2).group(:plugin_id).order("count_all DESC")
 				end
 				
 				# Queries for all the unique low risks in the database
@@ -86,7 +86,7 @@ module NessusDB
 				# 
 				# @return [ActiveRecord::Relation] with the query results
 				def low_risks_unique_sorted
-					select("items.*").select("count() as count_all").where(:severity => 1).group(:plugin_id).order("count_all DESC")
+					select("items.*").select("count(*) as count_all").where(:severity => 1).group(:plugin_id).order("count_all DESC")
 				end
 				
 				# Queries for all the unique info risks in the database
@@ -100,7 +100,7 @@ module NessusDB
 				# 
 				# @return [ActiveRecord::Relation] with the query results
 				def info_risks_unique_sorted
-					select("items.*").select("count() as count_all").where(:severity => 0).group(:plugin_id).order("count_all DESC")
+					select("items.*").select("count(*) as count_all").where(:severity => 0).group(:plugin_id).order("count_all DESC")
 				end
 				
 				# Queries for all the risks grouped by service type, used for the Vulnerbilities by Service graph
@@ -116,7 +116,7 @@ module NessusDB
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_plugin(limit=10)
-					select("items.*").select("count() as count_all").joins(:plugin).where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
+					select("items.*").select("count(*) as count_all").joins(:plugin).where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
 				end
 				
 				# Queries for all the risks by host
