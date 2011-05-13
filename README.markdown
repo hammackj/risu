@@ -2,7 +2,7 @@
 
 NessusDB is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
 
-Version 1.4.1 is the current release.
+Version 1.4.2 is the current release.
 
 ## Requirements
 
@@ -11,7 +11,6 @@ NessusDB has been tested with ruby-1.8.7-p334, ruby-1.9.1-p431, ruby-1.9.2-p180.
 
 ### RubyGems
 NessusDB relies heavily on RubyGems to install other dependencies I highly recommend using it. RubyGems is included by default in the Ruby 1.9 branches.
-
 
 - libxml
 - rails
@@ -74,7 +73,7 @@ Using the NessusDB Console is just like using Rails. You can access all of the A
 	| | | |  __/\__ \__ \ |_| \__ \ (_| | |_) |
 	|_| |_|\___||___/___/\__,_|___/\__,_|_.__/ 
 
-	NessusDB Console v1.4.1
+	NessusDB Console v1.4.2
 	>> Host.first
 	=> #<NessusDB::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 	
@@ -125,4 +124,3 @@ If you have any problems, bugs or feature requests please use the [github issue 
 
 # Contact
 You can reach me at jacob[dot]hammack[at]hammackj[dot]com.
-
