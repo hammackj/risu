@@ -1,5 +1,11 @@
 # News
 
+#1.4.2 (May 13, 2011)
+
+- Added a fix for all of the MSXX-XXX Host Properties tags that don't serve any purpose
+- Added sqlite3 as an install dependency to help with sqlite usage
+- Fixed a privately report bug with the *_risks_unique_sorted functions not working on MySQL
+
 #1.4.1 (May 10, 2011)
 
 - Fixed a issue with a nonexistent 'Critical' severity.
