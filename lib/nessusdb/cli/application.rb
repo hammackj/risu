@@ -47,10 +47,14 @@ module NessusDB
 			
 			# Loads the configuration file
 			#
-			def load_config(file=CONFIG_FILE)
-				if File.exists?(file) == true
+			def load_config(file=CONFIG_FILE, in_memory_config=false)
+				if File.exists?(file) == true or in_memory_config == true
 					begin
-						yaml = YAML::load(File.open(file))
+						if in_memory_config
+							yaml = YAML::load(file)
+						else
+							yaml = YAML::load(File.open(file))
+						end
 						
 						@database = yaml["database"]
 						@report = yaml["report"]
