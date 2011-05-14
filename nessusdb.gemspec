@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
 	s.required_rubygems_version = ">= 1.6.0"
 	s.rubyforge_project	= "#{NessusDB::APP_NAME}"
 
-	s.add_development_dependency("rspec", ">= 2.5.0")
+	s.add_development_dependency("rspec", "= 2.5.0")
 	s.add_development_dependency("rcov", ">= 0.9.9")
 	s.add_development_dependency("yard", ">= 0.6.4")
 	s.add_development_dependency("machinist", ">= 1.0.6")
@@ -40,4 +40,5 @@ Gem::Specification.new do |s|
 	s.add_dependency('gruff', '>= 0.3.6')
 	s.add_dependency('mysql', '>= 2.8.1')
 	s.add_dependency('rmagick', ">= 2.13.1")
+	s.add_dependency('sqlite3', ">= 1.3.3")
 end
