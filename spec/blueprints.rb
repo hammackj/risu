@@ -19,6 +19,13 @@ svc_options << "dns"
 svc_options << "ftp"
 svc_options << "mdns"
 
+risks = Array.new
+risks << "Critical"
+risks << "High"
+risks << "Medium"
+risks << "Low"
+risks << "None"
+
 Sham.define do
 	ip { "#{rand(255)}.#{rand(255)}.#{rand(255)}.#{rand(255)}" }
 	port { "#{rand(65000)}" }
@@ -32,12 +39,14 @@ Sham.define do
 	}
 	os { os_options[rand(os_options.size)]}
 	svc { svc_options[rand(svc_options.size)] }
+	risk_factor {risks[rand(risks.size)] }
 end
 
 Plugin.blueprint do
 	id { rand(50000) + 1 }
 	plugin_name { Faker::Lorem.words }
 	description { Faker::Lorem.paragraphs }
+	risk_factor { 0 }
 end
 
 Host.blueprint do
