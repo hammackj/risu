@@ -13,6 +13,31 @@ module NessusDB
 			has_many :individual_plugin_selections
 		
 			class << self
+				
+				def risks
+					critical_risks + high_risks + medium_risks + low_risks + none_risks
+				end
+				
+				def critical_risks
+					where(:risk_factor => "Critical")
+				end
+				
+				def high_risks
+					where(:risk_factor => "High")
+				end
+				
+				def medium_risks
+					where(:risk_factor => "Medium")
+				end
+				
+				def low_risks
+					where(:risk_factor => "Low")
+				end
+				
+				def none_risks
+					where(:risk_factor => "None")
+				end
+				
 				# Creates a graph based on the top plugins sorted by count
 				#
 				# 
