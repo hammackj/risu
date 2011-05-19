@@ -58,9 +58,18 @@ module NessusDB
 				t.string :ssh_auth_meth
 				t.string :ssh_login_used
 				t.string :pci_dss_compliance
+				t.string :pci_dss_compliance_
+				t.string :pcidss_compliance_failed
+				t.string :pcidss_compliance_passed
+				t.string :pcidss_deprecated_ssl
+				t.string :pcidss_expired_ssl_certificate
+				t.string :pcidss_high_risk_flaw
+				t.string :pcidss_medium_risk_flaw
+				t.string :pcidss_reachable_db
+				t.string :pcidss_www_xss				
 				t.text :notes
 			end
-	
+
 			create_table :items do |t|
 				t.integer :host_id
 				t.integer :plugin_id
