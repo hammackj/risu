@@ -21,32 +21,37 @@ module NessusDB
 					critical_risks + high_risks + medium_risks + low_risks + none_risks
 				end
 				
+				# Queries for all the critical risks based on Plugin.risk_factor
 				#
-				#
+				# @return [ActiveRelation] of Critical Risks
 				def critical_risks
 					where(:risk_factor => "Critical")
 				end
 				
+				#Queries for all the critical risks based on Plugin.risk_factor
 				#
-				#
+				# @return [ActiveRelation] of High Risks
 				def high_risks
 					where(:risk_factor => "High")
 				end
 				
+				# Queries for all the critical risks based on Plugin.risk_factor
 				#
-				#
+				# @return [ActiveRelation] of Medium Risks
 				def medium_risks
 					where(:risk_factor => "Medium")
 				end
 				
+				# Queries for all the critical risks based on Plugin.risk_factor
 				#
-				#
+				# @return [ActiveRelation] of Low Risks
 				def low_risks
 					where(:risk_factor => "Low")
 				end
 				
+				# Queries for all the critical risks based on Plugin.risk_factor
 				#
-				#
+				# @return [ActiveRelation] of None Risks
 				def none_risks
 					where(:risk_factor => "None")
 				end
