@@ -37,7 +37,7 @@ Item.ms_update.each do |item|
 	results.push(row)
 end
 
-table([headers] + [results], :header => true, :column_widths => header_widths, :row_colors => ['ffffff', '336699']) do
+table([headers] + results, :header => true, :column_widths => header_widths, :row_colors => ['ffffff', '336699']) do
 	row(0).style(:font_style => :bold, :background_color => 'cccccc')
 	cells.borders = [:top, :bottom, :left, :right]
 end
