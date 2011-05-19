@@ -123,8 +123,7 @@ module NessusDB
 						return false, "[!] Invalid database adapter, please check your config file"
 					end
 
-					ActiveRecord::Base.establish_connection(@database)
-					
+					ActiveRecord::Base.establish_connection(@database)					
 					ActiveRecord::Base.connection
 
 				rescue ActiveRecord::AdapterNotSpecified => ans
@@ -161,6 +160,8 @@ module NessusDB
 				end
 			end
 			
+			# Starts a console and executes anything in a block sent to it
+			#
 			def consolize &block
 
 			  yield
