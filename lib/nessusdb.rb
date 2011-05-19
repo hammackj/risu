@@ -2,7 +2,7 @@
 
 module NessusDB
 	APP_NAME = "nessusdb"
-	VERSION = "1.4.2"
+	VERSION = "1.4.3"
 	GRAPH_WIDTH = 750
 	EMAIL = "jacob.hammack@hammackj.com"
 	CONFIG_FILE = "./nessusdb.cfg"
