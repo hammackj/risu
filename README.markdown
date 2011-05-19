@@ -2,7 +2,7 @@
 
 NessusDB is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
 
-Version 1.4.2 is the current release.
+Version 1.4.3 is the current release.
 
 ## Requirements
 
@@ -43,7 +43,7 @@ Installation is really easy just gem install!
 	% nessusdb --create-tables
 
 1. Generate the nessusdb.cfg file.
-2. Edit the nessusdb.cfg file, filling in the variables as needed. Please see [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) for more details.
+2. Edit the nessusdb.cfg file, filling in the variables as needed.
 3. Migrate the database schema.
 
 ## Parsing Nessus Output
@@ -54,10 +54,10 @@ Installation is really easy just gem install!
 
 
 # Viewing Data
-The data can be viewed with a query browser available for your database. A Rails front end will be available in the future.
+The data can be viewed with a query browser available for your database. A Rails front end will be available in the **future**.
 
 ## Generating Reports
-To generate a technical summary report please execute the following after the the data is parsed into the database.
+To generate a report please execute the following after the the data is parsed into the database.
 
 	% nessusdb -t "TEMPLATE_PATH" -o "REPORT_NAME.pdf"
 	
