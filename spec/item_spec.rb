@@ -11,7 +11,7 @@ module NessusDB
 				@low = Item.make(:severity => 1)
 				@info = Item.make(:severity => 0)
 					
-				printf "%s\n%s\n%s\n%s\n\n", @high.inspect, @med.inspect, @low.inspect, @info.inspect, 
+				printf "%s\n%s\n%s\n%s\n\n", @high.inspect, @med.inspect, @low.inspect, @info.inspect
 							
 			end
 			
@@ -65,7 +65,16 @@ module NessusDB
 			
 			it "returns 1 for Item.info_risks_unique.count" do
 				Item.info_risks_unique.all.count.should == 1
-			end			
+			end
+	
+			it "returns a graph Item.risks_by_severity_graph" do
+				Item.risks_by_severity_graph.class.should == StringIO
+			end
+			
+			it "returns a graph Item.risks_by_service_graph" do
+				Item.risks_by_service_graph.class.should == StringIO
+			end
+						
 		end
 	end
 end
