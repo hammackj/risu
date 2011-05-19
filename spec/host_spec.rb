@@ -16,6 +16,10 @@ module NessusDB
 				@host.ip.should == "10.0.0.1"
 			end
 			
+			it "returns sorted ips for Host.sorted" do
+				Host.sorted.first.ip.should == "10.0.0.1" and Host.sorted[1].ip.should == "10.0.0.2"
+			end
+			
 			it "returns 1 for Host.os_windows" do
 				Host.os_windows.all.count.should == 1
 			end
