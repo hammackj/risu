@@ -14,34 +14,45 @@ module NessusDB
 		
 			class << self
 				
+				# Queries for all risks based on Plugin.risk_factor
+				#
+				# @return [Array] of all risks
 				def risks
 					critical_risks + high_risks + medium_risks + low_risks + none_risks
 				end
 				
+				#
+				#
 				def critical_risks
 					where(:risk_factor => "Critical")
 				end
 				
+				#
+				#
 				def high_risks
 					where(:risk_factor => "High")
 				end
 				
+				#
+				#
 				def medium_risks
 					where(:risk_factor => "Medium")
 				end
 				
+				#
+				#
 				def low_risks
 					where(:risk_factor => "Low")
 				end
 				
+				#
+				#
 				def none_risks
 					where(:risk_factor => "None")
 				end
 				
 				# Creates a graph based on the top plugins sorted by count
 				#
-				# 
-				# 
 				# @return Filename of the created graph
 				def top_by_count_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
