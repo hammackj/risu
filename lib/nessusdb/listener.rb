@@ -92,7 +92,6 @@ module NessusDB
 					@rh.name = attributes["name"]
 					@rh.save
 				when "tag"
-					#Ticket #35 fix
 					unless attributes["name"] =~ /(MS\d\d-\d\d\d)/
 					    @attr = if @valid_host_properties.keys.include?(attributes["name"])
 					            attributes["name"]
@@ -101,40 +100,6 @@ module NessusDB
 					        end
 					    puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n" if @attr.nil?    
 					end
-					
-				
-				#	@attr = ""
-				#	if attributes["name"] == "HOST_END"
-				#		@attr = "HOST_END"
-				#	elsif attributes["name"] == "mac-address"
-				#		@attr = "mac-address"
-				#	elsif attributes["name"] == "HOST_START"
-				#		@attr = "HOST_START"
-				#	elsif attributes["name"] == "operating-system"
-				#		@attr = "operating-system"
-					#elsif attributes["name"] == "host-ip"
-					#	@attr = "host-ip"
-					#elsif attributes["name"] == "host-fqdn"
-					#	@attr = "host-fqdn"
-					#elsif attributes["name"] == "netbios-name"
-					#	@attr = "netbios-name"
-				#	elsif attributes["name"] == "local-checks-proto"
-				#		@attr = "local-checks-proto"
-				#	elsif attributes["name"] == "smb-login-used"
-				#		@attr = "smb-login-used"
-					#elsif attributes["name"] == "ssh-auth-meth"
-					#	@attr = "ssh-auth-meth"
-					#elsif attributes["name"] == "ssh-login-used"
-					#	@attr = "ssh-login-used"
-					#elsif attributes["name"] == "pci-dss-compliance"
-					#	@attr = "pci-dss-compliance"
-					#elsif attributes["name"] == "pci-dss-compliance:"
-					#	@attr = "pci-dss-compliance:"
-					#elsif attributes["name"] =~ /(MS\d\d-\d\d\d)/
-					#	#Ignore useless data
-					#else
-					#	puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n"
-					#end
 				when "ReportItem"
 					@vals = Hash.new # have to clear this out or everything has the same references
 					@ri = @rh.items.create
@@ -234,42 +199,6 @@ module NessusDB
 					@plugin_selection.save
 				when "tag"
 					@rh.attributes = {@valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") } if @valid_host_properties.keys.include?(@attr) 
-				#	@rh.attributes = case @attr
-				#		when @valid_host_properties.keys.include?(@attr)
-				#			{ @valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") }
-				#		end
-						
-				#@rh.attributes = if @valid_host_properties.keys.include?(@attr) 
-				#{@valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") }
-									
-				#	if @attr == "HOST_END"
-				#		@rh.attributes = { :end => @vals["tag"] }
-				#	elsif @attr == "mac-address"
-				#		@rh.attributes = { :mac => @vals["tag"] }
-				#	elsif @attr == "HOST_START"
-				#		@rh.attributes = { :start => @vals["tag"].gsub("\n", ",") }
-				#	elsif @attr == "operating-system"
-				#		@rh.attributes = { :os => @vals["tag"] }
-				#	elsif @attr == "host-ip"
-				#		@rh.attributes = { :ip => @vals["tag"] }
-				#	elsif @attr == "host-fqdn"
-				#		@rh.attributes = { :fqdn => @vals["tag"] }
-				#	elsif @attr == "netbios-name"
-				#		@rh.attributes = { :netbios => @vals["tag"] }
-				#	elsif @attr == "local-checks-proto"
-				#		@rh.attributes = { :local_checks_proto => @vals["tag"] }
-				#	elsif @attr == "smb-login-used"
-				#		@rh.attributes = { :smb_login_used => @vals["tag"] }
-				#	elsif @attr == "ssh-auth-meth"
-				#		@rh.attributes = { :ssh_auth_meth => @vals["tag"] }
-				#	elsif @attr == "ssh-login-used"
-				#		@rh.attributes = { :ssh_login_used => @vals["tag"] }
-				#	elsif @attr == "pci-dss-compliance"
-				#		@rh.attributes = { :pci_dss_compliance => @vals["tag"] }
-					#elsif @attr == "pci-dss-compliance:"
-					#	@rh.attributes = { :pci_dss_compliance_ => @vals["tag"] }
-					#end
-
 					@rh.save
 				#We cannot handle the references in the same block as the rest of the ReportItem tag because
 				#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax
