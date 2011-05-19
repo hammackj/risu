@@ -3,20 +3,20 @@
 require "nessusdb"
 
 module NessusDB
-	
+
 	# NessusSaxListener
 	#
-	# 
+	#
 	# @author Jacob Hammack <jacob.hammack@hammackj.com>
 	class NessusSaxListener
 		include LibXML::XML::SaxParser::Callbacks
-	
+
 		# Sets up a array of all valid xml fields
 		#
-		# 
+		#
 		def initialize
 			@vals = Hash.new
-	
+
 			@valid_elements = Array["see_also", "cve", "ReportItem", "xref", "bid", "plugin_version", "risk_factor",
 				"description", "cvss_base_score", "solution", "item", "plugin_output", "tag", "synopsis", "plugin_modification_date",
 				"FamilyName", "FamilyItem", "Status", "vuln_publication_date", "ReportHost", "HostProperties", "preferenceName",
@@ -26,18 +26,43 @@ module NessusDB
 				"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
 				"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
 				"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
-				"plugin_type", "cpe", "MS11-030", "MS11-026", "MS11-034", "MS11-021", "MS11-029", "MS11-023", "MS11-022", "MS09-027", 
+				"plugin_type", "cpe", "MS11-030", "MS11-026", "MS11-034", "MS11-021", "MS11-029", "MS11-023", "MS11-022", "MS09-027",
 				"MS11-033", "MS11-019", "MS11-024", "MS11-031", "MS11-020", "MS11-018", "MS11-028", "MS11-032"]
+
+				# This makes adding new host properties really easy.
+				@valid_host_properties = {
+					"HOST_END" => :end ,
+					"mac-address" => :mac ,
+					"HOST_START" => :start ,
+					"operating-system" => :os,
+					"host-ip" => :ip ,
+					"host-fqdn" => :fqdn ,
+					"netbios-name" => :netbios ,
+					"local-checks-proto" => :local_checks_proto ,
+					"smb-login-used" => :smb_login_used ,
+					"ssh-auth-meth" => :ssh_auth_meth ,
+					"ssh-login-used" => :ssh_login_used ,
+					"pci-dss-compliance" => :pci_dss_compliance ,
+					"pci-dss-compliance:" => :pci_dss_compliance_ ,
+					"pcidss:compliance:failed" => :pcidss_compliance_failed,
+					"pcidss:compliance:passed" => :pcidss_compliance_passed,
+					"pcidss:deprecated_ssl" => :pcidss_deprecated_ssl,
+					"pcidss:expired_ssl_certificate" => :pcidss_expired_ssl_certificate,
+					"pcidss:high_risk_flaw" => :pcidss_high_risk_flaw,
+					"pcidss:medium_risk_flaw" => :pcidss_medium_risk_flaw,
+					"pcidss:reachable_db" => :pcidss_reachable_db,
+					"pcidss:www:xss" => :pcidss_www_xss
+				}
 		end
-	
+
 		# Callback for when the start of a xml element is reached
 		#
-		# @param element 
-		# @param attributes 
+		# @param element
+		# @param attributes
 		def on_start_element(element, attributes)
 			@tag = element
 			@vals[@tag] = ""
-				
+
 			if !@valid_elements.include?(element)
 				puts "New XML element detected: #{element}. Please report this to #{NessusDB::EMAIL}"
 			end
@@ -67,36 +92,49 @@ module NessusDB
 					@rh.name = attributes["name"]
 					@rh.save
 				when "tag"
-					@attr = ""
-					if attributes["name"] == "HOST_END"
-						@attr = "HOST_END"
-					elsif attributes["name"] == "mac-address"
-						@attr = "mac-address"
-					elsif attributes["name"] == "HOST_START"
-						@attr = "HOST_START"
-					elsif attributes["name"] == "operating-system"
-						@attr = "operating-system"
-					elsif attributes["name"] == "host-ip"
-						@attr = "host-ip"
-					elsif attributes["name"] == "host-fqdn"
-						@attr = "host-fqdn"
-					elsif attributes["name"] == "netbios-name"
-						@attr = "netbios-name"
-					elsif attributes["name"] == "local-checks-proto"
-						@attr = "local-checks-proto"
-					elsif attributes["name"] == "smb-login-used"
-						@attr = "smb-login-used" 
-					elsif attributes["name"] == "ssh-auth-meth"
-						@attr = "ssh-auth-meth"																
-					elsif attributes["name"] == "ssh-login-used"
-						@attr = "ssh-login-used"
-					elsif attributes["name"] == "pci-dss-compliance"
-						@attr = "pci-dss-compliance"
-					elsif attributes["name"] =~ /(MS\d\d-\d\d\d)/
-						#Ignore useless data
-					else	
-						puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n"
-					end		
+					#Ticket #35 fix
+					unless attributes["name"] =~ /(MS\d\d-\d\d\d)/
+					    @attr = if @valid_host_properties.keys.include?(attributes["name"])
+					            attributes["name"]
+					        else
+					            nil
+					        end
+					    puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n" if @attr.nil?    
+					end
+					
+				
+				#	@attr = ""
+				#	if attributes["name"] == "HOST_END"
+				#		@attr = "HOST_END"
+				#	elsif attributes["name"] == "mac-address"
+				#		@attr = "mac-address"
+				#	elsif attributes["name"] == "HOST_START"
+				#		@attr = "HOST_START"
+				#	elsif attributes["name"] == "operating-system"
+				#		@attr = "operating-system"
+					#elsif attributes["name"] == "host-ip"
+					#	@attr = "host-ip"
+					#elsif attributes["name"] == "host-fqdn"
+					#	@attr = "host-fqdn"
+					#elsif attributes["name"] == "netbios-name"
+					#	@attr = "netbios-name"
+				#	elsif attributes["name"] == "local-checks-proto"
+				#		@attr = "local-checks-proto"
+				#	elsif attributes["name"] == "smb-login-used"
+				#		@attr = "smb-login-used"
+					#elsif attributes["name"] == "ssh-auth-meth"
+					#	@attr = "ssh-auth-meth"
+					#elsif attributes["name"] == "ssh-login-used"
+					#	@attr = "ssh-login-used"
+					#elsif attributes["name"] == "pci-dss-compliance"
+					#	@attr = "pci-dss-compliance"
+					#elsif attributes["name"] == "pci-dss-compliance:"
+					#	@attr = "pci-dss-compliance:"
+					#elsif attributes["name"] =~ /(MS\d\d-\d\d\d)/
+					#	#Ignore useless data
+					#else
+					#	puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n"
+					#end
 				when "ReportItem"
 					@vals = Hash.new # have to clear this out or everything has the same references
 					@ri = @rh.items.create
@@ -105,20 +143,20 @@ module NessusDB
 					else
 						@plugin = NessusDB::Models::Plugin.find_or_create_by_id(attributes["pluginID"])
 					end
-				
+
 					@ri.port	= attributes["port"]
 					@ri.svc_name = attributes["svc_name"]
 					@ri.protocol = attributes["protocol"]
 					@ri.severity = attributes["severity"]
-				
-					@ri.plugin_id = @plugin.id			 
+
+					@ri.plugin_id = @plugin.id
 					@plugin.plugin_name = attributes["pluginName"]
 					@plugin.family_name = attributes["pluginFamily"]
 					@plugin.save
 					@ri.save
 			end
 		end
-	
+
 		# Called when the inner text of a element is reached
 		#
 		# @param text
@@ -129,38 +167,38 @@ module NessusDB
 				@vals[@tag] << text
 			end
 		end
-	
+
 		# Called when the end of the xml element is reached
 		#
 		# @param element
 		def on_end_element(element)
 			@tag = nil
 			case element
-				when "policyName"			
-					@policy.attributes = { 
-						:name => @vals["policyName"] 
-					} 
-				
+				when "policyName"
+					@policy.attributes = {
+						:name => @vals["policyName"]
+					}
+
 					@policy.save
 				when "policyComments"
-					@policy.attributes = { 
-						:comments => @vals["policyComments"] 
+					@policy.attributes = {
+						:comments => @vals["policyComments"]
 					}
-				
+
 					@policy.save
 				when "preference"
-					@sp.attributes = { 
-						:name => @vals["name"], 
+					@sp.attributes = {
+						:name => @vals["name"],
 						:value => @vals["value"]
 					}
 					@sp.save
-				
+
 					#This takes a really long time, there is about 34,000 pluginIDs in this
 					#field and it takes about 36 minutes to parse just this info =\
 					#lets prepopulate the plugins table with the known pluginid's
 					#if @vals["name"] == "plugin_set"
 					#	 @all_plugins = @vals["value"].split(";")
-					#	 
+					#
 					#	 @all_plugins.each { |p|
 					#			@plug = Plugin.find_or_create_by_id(p)
 					#			@plug.save
@@ -168,7 +206,7 @@ module NessusDB
 					#end
 				when "item"
 					@item.attributes = {
-						:plugin_name => @vals["pluginName"], 
+						:plugin_name => @vals["pluginName"],
 						:plugin_id => @vals["pluginId"],
 						:fullname => @vals["fullName"],
 						:preference_name => @vals["preferenceName"],
@@ -176,62 +214,73 @@ module NessusDB
 						:preference_values => @vals["preferenceValues"],
 						:selected_values => @vals["selectedValue"]
 					}
-				
+
 					@item.save
 				when "FamilyItem"
 					@family.attributes = {
 						:family_name => @vals["FamilyName"],
 						:status => @vals["Status"]
 					}
-				
+
 					@family.save
-				when "PluginItem"		 
+				when "PluginItem"
 					@plugin_selection.attributes = {
 						:plugin_id => @vals["PluginId"],
 						:plugin_name => @vals["PluginName"],
 						:family => @vals["Family"],
 						:status => @vals["Status"]
 					}
-				
+
 					@plugin_selection.save
-				when "tag"				
-					if @attr == "HOST_END"
-						@rh.attributes = { :end => @vals["tag"] } 
-					elsif @attr == "mac-address"
-						@rh.attributes = { :mac => @vals["tag"] }					
-					elsif @attr == "HOST_START"
-						@rh.attributes = { :start => @vals["tag"].gsub("\n", ",") }					
-					elsif @attr == "operating-system"
-						@rh.attributes = { :os => @vals["tag"] } 
-					elsif @attr == "host-ip"
-						@rh.attributes = { :ip => @vals["tag"] }					
-					elsif @attr == "host-fqdn"
-						@rh.attributes = { :fqdn => @vals["tag"] }
-					elsif @attr == "netbios-name"
-						@rh.attributes = { :netbios => @vals["tag"] }	 
-					elsif @attr == "local-checks-proto"
-						@rh.attributes = { :local_checks_proto => @vals["tag"] }	 
-					elsif @attr == "smb-login-used"
-						@rh.attributes = { :smb_login_used => @vals["tag"] }					
-					elsif @attr == "ssh-auth-meth"
-						@rh.attributes = { :ssh_auth_meth => @vals["tag"] }				
-					elsif @attr == "ssh-login-used"
-						@rh.attributes = { :ssh_login_used => @vals["tag"] } 
-					elsif @attr == "pci-dss-compliance"
-						@rh.attributes = { :pci_dss_compliance => @vals["tag"] }
-					end
-				
+				when "tag"
+					@rh.attributes = {@valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") } if @valid_host_properties.keys.include?(@attr) 
+				#	@rh.attributes = case @attr
+				#		when @valid_host_properties.keys.include?(@attr)
+				#			{ @valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") }
+				#		end
+						
+				#@rh.attributes = if @valid_host_properties.keys.include?(@attr) 
+				#{@valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") }
+									
+				#	if @attr == "HOST_END"
+				#		@rh.attributes = { :end => @vals["tag"] }
+				#	elsif @attr == "mac-address"
+				#		@rh.attributes = { :mac => @vals["tag"] }
+				#	elsif @attr == "HOST_START"
+				#		@rh.attributes = { :start => @vals["tag"].gsub("\n", ",") }
+				#	elsif @attr == "operating-system"
+				#		@rh.attributes = { :os => @vals["tag"] }
+				#	elsif @attr == "host-ip"
+				#		@rh.attributes = { :ip => @vals["tag"] }
+				#	elsif @attr == "host-fqdn"
+				#		@rh.attributes = { :fqdn => @vals["tag"] }
+				#	elsif @attr == "netbios-name"
+				#		@rh.attributes = { :netbios => @vals["tag"] }
+				#	elsif @attr == "local-checks-proto"
+				#		@rh.attributes = { :local_checks_proto => @vals["tag"] }
+				#	elsif @attr == "smb-login-used"
+				#		@rh.attributes = { :smb_login_used => @vals["tag"] }
+				#	elsif @attr == "ssh-auth-meth"
+				#		@rh.attributes = { :ssh_auth_meth => @vals["tag"] }
+				#	elsif @attr == "ssh-login-used"
+				#		@rh.attributes = { :ssh_login_used => @vals["tag"] }
+				#	elsif @attr == "pci-dss-compliance"
+				#		@rh.attributes = { :pci_dss_compliance => @vals["tag"] }
+					#elsif @attr == "pci-dss-compliance:"
+					#	@rh.attributes = { :pci_dss_compliance_ => @vals["tag"] }
+					#end
+
 					@rh.save
-				#We cannot handle the references in the same block as the rest of the ReportItem tag because 
-				#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax 
+				#We cannot handle the references in the same block as the rest of the ReportItem tag because
+				#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax
 				#parser. To solve this we do the references before the final plugin data
 				when "cve"
-					@cve = @plugin.references.create				
+					@cve = @plugin.references.create
 					@cve.reference_name = "cve"
 					@cve.value = @vals["cve"]
 					@cve.save
 				when "bid"
-					@bid = @plugin.references.create				
+					@bid = @plugin.references.create
 					@bid.reference_name = "bid"
 					@bid.value = @vals["bid"]
 					@bid.save
@@ -241,15 +290,15 @@ module NessusDB
 					@see_also.value = @vals["see_also"]
 					@see_also.save
 				when "xref"
-					@xref = @plugin.references.create				 
+					@xref = @plugin.references.create
 					@xref.reference_name = "xref"
 					@xref.value = @vals["xref"]
-					@xref.save				
-				when "ReportItem" 
+					@xref.save
+				when "ReportItem"
 					@ri.plugin_output = @vals["plugin_output"]
 					@ri.save
-				
-					@plugin.attributes = { 
+
+					@plugin.attributes = {
 						:solution => @vals["solution"],
 						:risk_factor => @vals["risk_factor"],
 						:description => @vals["description"],
@@ -272,7 +321,7 @@ module NessusDB
 						:cpe => @vals["cpe"]
 					}
 					@plugin.save
-			end	 
+			end
 		end
 	end
 end
