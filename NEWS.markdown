@@ -1,5 +1,17 @@
 # News
 
+#1.4.3 (May, 2011)
+- Added new PCI related HostProperties
+	- New HostProperties attribute: pci-dss-compliance:
+	- New HostProperties attribute: pcidss:compliance:failed
+	- New HostProperties attribute: pcidss:compliance:passed
+	- New HostProperties attribute: pcidss:deprecated_ssl
+	- New HostProperties attribute: pcidss:expired_ssl_certificate
+	- New HostProperties attribute: pcidss:high_risk_flaw
+	- New HostProperties attribute: pcidss:medium_risk_flaw
+	- New HostProperties attribute: pcidss:reachable_db
+	- New HostProperties attribute: pcidss:www:xss
+
 #1.4.2 (May 13, 2011)
 
 - Added a fix for all of the MSXX-XXX Host Properties tags that don't serve any purpose
