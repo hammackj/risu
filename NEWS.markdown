@@ -1,7 +1,10 @@
 # News
 
 #1.4.3 (May, 2011)
-- Added new PCI related HostProperties
+
+- Increased the verboseness of Error messages Ticket #29
+- Added named scopes off the Plugin class Ticket #34
+- Added new PCI related HostProperties Tocket #35
 	- New HostProperties attribute: pci-dss-compliance:
 	- New HostProperties attribute: pcidss:compliance:failed
 	- New HostProperties attribute: pcidss:compliance:passed
@@ -11,6 +14,7 @@
 	- New HostProperties attribute: pcidss:medium_risk_flaw
 	- New HostProperties attribute: pcidss:reachable_db
 	- New HostProperties attribute: pcidss:www:xss
+	
 
 #1.4.2 (May 13, 2011)
 
