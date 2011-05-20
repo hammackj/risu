@@ -37,8 +37,8 @@ module NessusDB
 		#
 		def parse
 			@parser = LibXML::XML::SaxParser.file @document
-    	@parser.callbacks = NessusSaxListener.new
-    	@parser.parse
+   		@parser.callbacks = NessusSaxListener.new
+   		@parser.parse
 		end
 		
 		# Fixes the ip field if nil and replaces it with the name if its an ip
@@ -57,7 +57,6 @@ module NessusDB
 					end
 				end
 			end
-		end
-		
+		end		
 	end
 end
