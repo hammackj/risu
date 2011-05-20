@@ -42,7 +42,7 @@ CoverMe.config do |c|
   c.project.root = "."
 
   # what files are you interested in coverage for:
-  #c.file_pattern /(#{CoverMe.config.project.root}\/lib\/.+\.rb)/i
+  c.file_pattern /(lib\/.+\.rb)/i
 
   # where do you want the HTML generated:
   #c.html_formatter.output_path #=File.join(CoverMe.config.project.root, 'coverage') (default)
