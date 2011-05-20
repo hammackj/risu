@@ -88,7 +88,7 @@ module NessusDB
 			end
 			
 			it "returns a graph Item.risks_by_service_graph" do
-				Item.risks_by_service_graph.class.should == StringIO
+				Item.risks_by_service_graph.should be_a_kind_of StringIO
 			end
 			
 			it "returns 0 for Item.ms_update" do
