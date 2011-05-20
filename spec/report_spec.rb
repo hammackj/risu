@@ -12,8 +12,8 @@ module NessusDB
 				printf "%s\n\n", @report.inspect
 			end
 			
-			it "should have a scan_date of 2011-05-13 17:52:18 -0500" do				
-				Report.scan_date.should == "2011-05-13 17:52:18 -0500"
+			it "should have a scan_date of Fri May 13 17:52:18 -0500 2011" do				
+				Report.scan_date.should == "Fri May 13 17:52:18 -0500 2011"
 			end
 		end
 	end
