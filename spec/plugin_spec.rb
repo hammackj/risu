@@ -12,7 +12,7 @@ module NessusDB
 				@low = Plugin.make(:risk_factor => "Low")
 				@none = Plugin.make(:risk_factor => "None")
 				
-				printf "%s\n%s\n%s\n%s\n%s\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect
+				printf "%s\n%s\n%s\n%s\n%s\n\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect
 							
 			end
 			
