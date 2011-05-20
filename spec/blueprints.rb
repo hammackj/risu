@@ -65,7 +65,7 @@ Item.blueprint do
 end
 
 Report.blueprint do
-	name { Faker::Lorem.words }
+	name { Faker::Lorem.sentence }
 	policy { Policy.make }
 end
 
