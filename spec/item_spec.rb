@@ -54,13 +54,29 @@ module NessusDB
 			it "returns 1 for Item.high_risks_unique.count" do
 				Item.high_risks_unique.all.count.should == 1
 			end
+			
+			it "returns 1 for Item.high_risks_unique_sorted.count" do
+				Item.high_risks_unique_sorted.all.count.should == 1
+			end
 
 			it "returns 1 for Item.medium_risks_unique.count" do
 				Item.medium_risks_unique.all.count.should == 1
 			end
+			
+			it "returns 1 for Item.medium_risks_unique_sorted.count" do
+				Item.medium_risks_unique_sorted.all.count.should == 1
+			end
 
 			it "returns 1 for Item.low_risks_unique.count" do
 				Item.low_risks_unique.all.count.should == 1
+			end
+			
+			it "returns 1 for Item.low_risks_unique_sorted.count" do
+				Item.low_risks_unique_sorted.all.count.should == 1
+			end
+			
+			it "returns 1 for Item.info_risks_unique_sorted.count" do
+				Item.info_risks_unique_sorted.all.count.should == 1
 			end
 			
 			it "returns 1 for Item.info_risks_unique.count" do
@@ -74,7 +90,14 @@ module NessusDB
 			it "returns a graph Item.risks_by_service_graph" do
 				Item.risks_by_service_graph.class.should == StringIO
 			end
-						
+			
+			it "returns 0 for Item.ms_update" do
+				Item.ms_update.all.count.should == 0
+			end
+			
+			it "returns 0 for Item.ms_patches" do
+				Item.ms_patches.all.count.should == 0
+			end						
 		end
 	end
 end
