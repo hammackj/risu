@@ -3,7 +3,9 @@ require "spec_helper"
 module NessusDB
 	describe NessusDocument do
 		before(:all) do
-			@doc = NessusDocument.new "test_data/nessus_report_local.nessus"									
+			@doc = NessusDocument.new "test_data/nessus_report_local.nessus"
+			@fail_doc = NessusDocument.new "test_data/fail.nessus"
+			@invalid_doc = NessusDocument.new "test_data/invalid_report.nessus"
 		end
 		
 		after(:all) do
@@ -24,10 +26,18 @@ module NessusDB
 			@doc.valid?.should == true
 		end
 		
+		it "should return false for NessusDocument.valid? when the document doesn't exist" do
+			@fail_doc.valid?.should == false
+		end
+		
+		it "should return false for NessusDocument.valid? when the document is invalid" do
+			@invalid_doc.valid?.should == false
+		end
+		
 		it "should return true for NessusDocument.parse" do				
 			@doc.parse.should == true
 		end
-		
+				
 		# @todo implement this
 		it "should return true for NessusDocument.fix_ips" do				
 			@doc.valid?.should == true
