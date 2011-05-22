@@ -1,10 +1,9 @@
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), '../lib'))
 
-
+require 'cover_me'
 require 'rspec'
 require 'nessusdb'
-require 'cover_me'
 require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
 @app = nil
@@ -42,7 +41,7 @@ CoverMe.config do |c|
   c.project.root = "."
 
   # what files are you interested in coverage for:
-  c.file_pattern /(lib\/.+\.rb)/i
+  c.file_pattern = /(lib\/.+\.rb)/i
 
   # where do you want the HTML generated:
   #c.html_formatter.output_path #=File.join(CoverMe.config.project.root, 'coverage') (default)
