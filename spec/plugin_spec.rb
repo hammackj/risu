@@ -12,35 +12,50 @@ module NessusDB
 				@low = Plugin.make(:risk_factor => "Low")
 				@none = Plugin.make(:risk_factor => "None")
 				
-				printf "%s\n%s\n%s\n%s\n%s\n\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect
-							
+				@item = Item.make(:plugin => Plugin.make(:id => 35362))
+				
+				printf "%s\n%s\n%s\n%s\n%s\n\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect							
+			end
+			
+			after(:all) do
+				Report.delete_all
+				Host.delete_all
+				Plugin.delete_all
+				Item.delete_all
+				FamilySelection.delete_all
+				IndividualPluginSelection.delete_all
+				PluginsPreference.delete_all
+				Policy.delete_all
+				Reference.delete_all
+				ServerPreference.delete_all
+				Version.delete_all
 			end
 			
 			it "should include critical,high, medium, low and info risks for Plugin.risks" do				
 				Plugin.risks.should include(@crit, @high, @med, @low, @none)
 			end
 			
-			it "returns 5 risks for Item.risks.count" do
+			it "returns 5 risks for Plugin.risks.count" do
 				Plugin.risks.count.should == 5
 			end
 
-			it "returns 1 risks for Item.high_risks.count" do
+			it "returns 1 risks for Plugin.high_risks.count" do
 				Plugin.high_risks.all.count.should == 1
 			end
 
-			it "returns 1 for Item.medium_risks.count" do
+			it "returns 1 for Plugin.medium_risks.count" do
 				Plugin.medium_risks.all.count.should == 1
 			end
 
-			it "returns 1 for Item.low_risks.count" do
+			it "returns 1 for Plugin.low_risks.count" do
 				Plugin.low_risks.all.count.should == 1
 			end
 			
-			it "returns 1 risks for Item.info_risks.count" do
+			it "returns 1 risks for Plugin.info_risks.count" do
 				Plugin.none_risks.all.count.should == 1
 			end			
 
-			it "returns a graph Item.top_by_count_graph" do
+			it "returns a graph Plugin.top_by_count_graph" do
 				Plugin.top_by_count_graph.class.should == StringIO
 			end
 		end
