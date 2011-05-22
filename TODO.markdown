@@ -2,6 +2,17 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
+## 1.4.3 (May)
+- Rename Project
+	- Possible Names
+		- ndb
+		- fender
+		- Euenos
+		- CentaurDB
+		- HydraDB
+- other os graph broken on large numbers of mac osx
+- Windows graph shows OS in legend not used in graph
+
 ## 1.5 (7/4/2011)
 - Clean up / Bug fixes before 2.0
 - Create rSpec tests for everything
@@ -34,6 +45,8 @@
 - Add Parser for V1 of the XML Format
 - Add Parser for OpenVas Output
 - Add Parser for SecurityCenter Output
+- Add Parser for Nexpose
+- Add Parser for Qualys
 - DSL for report creation to abstract the reports to have different output types
 - Provide more templates
 	- Virtual Machine Summary
