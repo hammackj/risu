@@ -44,7 +44,7 @@ end
 
 Plugin.blueprint do
 	id { rand(50000) + 1 }
-	plugin_name { Faker::Lorem.words }
+	plugin_name { Faker::Lorem.words(1) }
 	description { Faker::Lorem.paragraphs }
 	risk_factor { 0 }
 end
@@ -70,7 +70,7 @@ Report.blueprint do
 end
 
 Policy.blueprint do
-	name { Faker::Lorem.words }
+	name { Faker::Lorem.words(1) }
 	comments {Faker::Lorem.words(10) }
 end
 
