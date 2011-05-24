@@ -8,14 +8,12 @@
 		- ndb
 		- fender
 		- Euenos
-		- CentaurDB
-		- HydraDB
-- other os graph broken on large numbers of mac osx
-- Windows graph shows OS in legend not used in graph
+		- camara
+- Add a CVSS risk factor graph
 
 ## 1.5 (7/4/2011)
 - Clean up / Bug fixes before 2.0
-- Create rSpec tests for everything
+- Create rSpec tests for everything (100% code coverage goal)
 	- Parser tests
 	- application specs
 	- models tests
@@ -38,15 +36,8 @@
 	- Check to see that the xml is version 2
 		- Version 1 = NessusClientData
 		- Version 2 = NessusClientData_V2
-- Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
-- Move to ruby 1.9.x only support
-- Add Parser for NBE Format
-- Add Parser for NSR Format
-- Add Parser for V1 of the XML Format
-- Add Parser for OpenVas Output
-- Add Parser for SecurityCenter Output
-- Add Parser for Nexpose
-- Add Parser for Qualys
+
+
 - DSL for report creation to abstract the reports to have different output types
 - Provide more templates
 	- Virtual Machine Summary
@@ -57,6 +48,15 @@
 
 ## 1.6 (9/4/2011)
 - Remove rmagick
+- Move to ruby 1.9.x only support
+- Add Parser for NBE Format
+- Add Parser for NSR Format
+- Add Parser for V1 of the XML Format
+- Add Parser for OpenVas Output
+- Add Parser for SecurityCenter Output
+- Add Parser for Nexpose
+- Add Parser for Qualys
+- Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
 
 ## 2.0 (12/4/2011)
 - Rails FrontEnd to NessusDB
