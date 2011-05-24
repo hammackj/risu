@@ -11,8 +11,21 @@ module NessusDB
 				@low = Item.make(:severity => 1)
 				@info = Item.make(:severity => 0)
 
-				printf "%s\n%s\n%s\n%s\n\n", @high.inspect, @med.inspect, @low.inspect, @info.inspect
-
+				printf "\n%s\n%s\n%s\n%s\n", @high.inspect, @med.inspect, @low.inspect, @info.inspect
+			end
+			
+			after(:all) do
+				Report.delete_all
+				Host.delete_all
+				Plugin.delete_all
+				Item.delete_all
+				FamilySelection.delete_all
+				IndividualPluginSelection.delete_all
+				PluginsPreference.delete_all
+				Policy.delete_all
+				Reference.delete_all
+				ServerPreference.delete_all
+				Version.delete_all
 			end
 
 			it "should include high, medium, low and info risks for Item.risks.all" do
