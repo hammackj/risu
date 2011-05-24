@@ -12,9 +12,16 @@ module NessusDB
 				@low = Plugin.make(:risk_factor => "Low")
 				@none = Plugin.make(:risk_factor => "None")
 				
-				@item = Item.make(:plugin => Plugin.make(:id => 35362))
-				
-				printf "%s\n%s\n%s\n%s\n%s\n\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect							
+				@item1 = Item.make(:severity => 3, :plugin => Plugin.make(:id => 35362))
+				@item2 = Item.make(:severity => 3, :plugin => Plugin.make(:id => 34477))
+				@item3 = Item.make(:severity => 3, :plugin => Plugin.make(:id => 35635))
+				@item4 = Item.make(:severity => 3, :plugin => Plugin.make(:id => 21564))
+				@item5 = Item.make(:severity => 3, :plugin => Plugin.make(:id => 38664))
+				@item6 = Item.make(:severity => 3, :plugin => Plugin.make(:id => 42411))
+				@item7 = Item.make(:severity => 3, :plugin => Plugin.make())
+				@item8 = Item.make(:severity => 3, :plugin => Plugin.make(:plugin_name => "MS02-123: RANDOM"))
+		
+				printf "\n%s\n%s\n%s\n%s\n%s\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect			
 			end
 			
 			after(:all) do
