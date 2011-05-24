@@ -53,13 +53,27 @@ module NessusDB
 					where("os NOT LIKE '%Windows%'")
 				end
 
+				# Queries for hosts with a Windows NT based Operating System
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def os_windows_nt
+					where("os LIKE '%Windows NT%'")
+				end
+				
+				# Negation query for all hosts with a Windows NT based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def not_os_windows_nt
+					where("os NOT LIKE '%Windows NT%'")
+				end
+				
 				# Queries for hosts with a Windows 2000 based Operating System
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_2k
 					where("os LIKE '%Windows 2000%'")
 				end
-				
+							
 				# Negation query for all hosts with a Windows 2000 based Operating system
 				#
 				# @return [ActiveRecord::Relation] with the query results
@@ -139,7 +153,7 @@ module NessusDB
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_other
-					not_os_windows_7.not_os_windows_2k8.not_os_windows_vista.not_os_windows_2k3.not_os_windows_xp.not_os_windows_2k
+					not_os_windows_7.not_os_windows_2k8.not_os_windows_vista.not_os_windows_2k3.not_os_windows_xp.not_os_windows_2k.not_os_windows_nt
 				end
 				
 				# Queries for all hosts with a Linux based Operating system
@@ -240,7 +254,7 @@ module NessusDB
 					where("os NOT LIKE '%Mac OS X%'")
 				end
 
-				#
+				# Queries for all hosts with a Unknown Operating system
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def os_other
@@ -288,18 +302,21 @@ module NessusDB
 					cisco = Host.os_cisco.all.count
 					vxworks = Host.os_vxworks.all.count
 					esx = Host.os_vmware_esx.all.count
+					other = Host.os_other.all.count
 
-					g.data("Linux", linux) unless linux == nil
-					g.data("OSX", osx) unless osx == nil
-					g.data("FreeBSD", freebsd) unless freebsd == nil
-					g.data("NetBSD", netbsd) unless netbsd == nil
-					g.data("Cisco ISO", cisco) unless cisco == nil
-					g.data("VxWorks", vxworks) unless vxworks == nil
-					g.data("VMware", esx) unless esx == nil
+					g.data("Linux", linux) unless linux == 0
+					g.data("OSX", osx) unless osx == 0
+					g.data("FreeBSD", freebsd) unless freebsd == 0
+					g.data("NetBSD", netbsd) unless netbsd == 0
+					g.data("Cisco ISO", cisco) unless cisco == 0
+					g.data("VxWorks", vxworks) unless vxworks == 0
+					g.data("VMware", esx) unless esx == 0
+					g.data("Other", other) unless other == 0
 
-					Host.os_other.each do |host|
-						g.data(host.os, Host.where(:os => host.os).count) unless host.os == nil
-					end
+					#Creates very odd graphs
+					#Host.os_other.each do |host|
+					#	g.data(host.os, Host.where(:os => host.os).count) unless host.os == nil
+					#end
 
 					StringIO.new(g.to_blob)
 				end
@@ -316,21 +333,23 @@ module NessusDB
 						:background_colors => %w(white white)
 					}
 
+					nt = Host.os_windows_nt.all.count
 					w2k = Host.os_windows_2k.all.count
 					xp = Host.os_windows_xp.all.count
 					w2k3 = Host.os_windows_2k3.all.count
 					vista = Host.os_windows_vista.all.count
 					w2k8 = Host.os_windows_2k8.all.count
 					w7 = Host.os_windows_7.all.count
-					other = Host.os_windows.all.count
+					other = (Host.os_windows.os_windows_other).all.count
 
-					g.data("2000", w2k) unless w2k == nil
-					g.data("XP", xp) unless xp == nil
-					g.data("Server 2003", w2k3) unless w2k3 == nil
-					g.data("Vista", vista) unless vista == nil
-					g.data("Server 2008", w2k8) unless w2k8 == nil
-					g.data("7", w7) unless w7 == nil
-					g.data("Other Windows", other) unless other == nil
+					g.data("NT", nt) unless nt == 0
+					g.data("2000", w2k) unless w2k == 0
+					g.data("XP", xp) unless xp == 0
+					g.data("Server 2003", w2k3) unless w2k3 == 0
+					g.data("Vista", vista) unless vista == 0
+					g.data("Server 2008", w2k8) unless w2k8 == 0
+					g.data("7", w7) unless w7 == 0
+					g.data("Other Windows", other) unless other == 0
 
 					StringIO.new(g.to_blob)
 				end
