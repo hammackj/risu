@@ -6,7 +6,21 @@ module NessusDB
 			before(:all) do
 				@app = Application.new
 					
-				printf "%s\n\n", @app.inspect						
+				printf "\n%s\n\n", @app.inspect						
+			end
+			
+			after(:all) do
+				Report.delete_all
+				Host.delete_all
+				Plugin.delete_all
+				Item.delete_all
+				FamilySelection.delete_all
+				IndividualPluginSelection.delete_all
+				PluginsPreference.delete_all
+				Policy.delete_all
+				Reference.delete_all
+				ServerPreference.delete_all
+				Version.delete_all
 			end
 			
 			it "should create a config file for Application.create_config" do				
