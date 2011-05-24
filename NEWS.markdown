@@ -1,7 +1,10 @@
 # News
 
-#1.4.3 (May, 2011)
+#1.4.3 (May 23, 2011)
 
+**This is the last release under the NessusDB name, I received a legal notice to change the name. They gave me a few weeks to change the name but I do not have a new name yet. If you have any suggestions please submit them to jacob.hammack[@]hammackj.com**
+
+- Fixed small bug in Windows/Other OS graphs
 - Increased the verboseness of Error messages Ticket #29
 - Added named scopes off the Plugin class Ticket #34
 - Added new PCI related HostProperties Tocket #35
@@ -14,7 +17,7 @@
 	- New HostProperties attribute: pcidss:medium_risk_flaw
 	- New HostProperties attribute: pcidss:reachable_db
 	- New HostProperties attribute: pcidss:www:xss
-	
+- Added more unit tests 91.7% code coverage for testing at the moment. Not including templates.	
 
 #1.4.2 (May 13, 2011)
 
