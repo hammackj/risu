@@ -8,8 +8,26 @@ module NessusDB
 			before(:all) do
 				@host = Host.make(:ip => "10.0.0.1", :os => "Microsoft Windows XP Processional Service Pack 3")
 				@host1 = Host.make(:ip => "10.0.0.2", :os => "Linux Ubuntu 10.10")
+				
+				@item1 = Item.make(:severity => 3, :plugin => Plugin.make())
+				@item2 = Item.make(:severity => 3, :plugin => Plugin.make())
+				@item3 = Item.make(:severity => 3, :plugin => Plugin.make())
 						
-				printf "%s\n\n%s\n\n", @host.inspect, @host1.inspect
+				printf "\n%s\n\n%s\n\n", @host.inspect, @host1.inspect
+			end
+			
+			after(:all) do
+				Report.delete_all
+				Host.delete_all
+				Plugin.delete_all
+				Item.delete_all
+				FamilySelection.delete_all
+				IndividualPluginSelection.delete_all
+				PluginsPreference.delete_all
+				Policy.delete_all
+				Reference.delete_all
+				ServerPreference.delete_all
+				Version.delete_all
 			end
 			
 			it "returns 10.0.0.1 for Host.ip" do
