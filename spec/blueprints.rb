@@ -11,6 +11,24 @@ os_options << "Linux Ubuntu 10.10"
 os_options << "Windows Vista"
 os_options << "FreeBSD 7.0"
 os_options << "OpenBSD 1.0"
+os_options << "Windows 7"
+os_options << "Windows NT"
+os_options << "Microsoft Windows Server 2003"
+os_options << "Mac OS X 10.6"
+os_options << "Mac OS X 10.6.7"
+os_options << "Mac OS X 10.5"
+os_options << "OpenBSD 4.9"
+os_options << "OpenBSD 4.2"
+os_options << "OpenBSD 4.3"
+os_options << "OpenBSD 4.4"
+os_options << "OpenBSD 4.5"
+os_options << "OpenBSD 4.6"
+os_options << "Microsoft Windows XP Service Pack 1"
+os_options << "Microsoft Windows XP Service Pack 2"
+os_options << "Microsoft Windows XP Service Pack 3"
+os_options << "Microsoft Windows XP Service Pack 4"
+os_options << "Microsoft Windows Server 2003 Service Pack 1"
+os_options << "Microsoft Windows Server 2003 Service Pack 2"
 
 svc_options = Array.new
 svc_options << "www"
@@ -18,6 +36,9 @@ svc_options << "cifs"
 svc_options << "dns"
 svc_options << "ftp"
 svc_options << "mdns"
+svc_options << "dns"
+svc_options << "ssh"
+svc_options << "smtp"
 
 risks = Array.new
 risks << "Critical"
@@ -37,8 +58,8 @@ Sham.define do
 		end
 		md.to_a.each_slice(2).map(&:join).join(":")
 	}
-	os { os_options[rand(os_options.size)]}
-	svc { svc_options[rand(svc_options.size)] }
+	os(:unique => false) { os_options[rand(os_options.size)]}
+	svc(:unique => false) { svc_options[rand(svc_options.size)] }
 	risk_factor {risks[rand(risks.size)] }
 end
 
