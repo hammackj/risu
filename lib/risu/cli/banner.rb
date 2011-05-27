@@ -1,0 +1,26 @@
+# encoding: utf-8
+
+#Cool random banner stuff for the cli, based on the metasploit random banner stuff
+
+module Risu
+	module CLI
+		module Banner
+			Banners =
+				[
+'
+      _           
+ _ __(_)___ _   _ 
+| \'__| / __| | | |
+| |  | \__ \ |_| |
+|_|  |_|___/\__,_|
+                  
+
+'				
+				]
+
+			def self.to_s
+				Banners[rand(Banners.length)]
+			end
+		end
+	end
+end
