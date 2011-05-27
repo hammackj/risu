@@ -1,16 +1,16 @@
-# NessusDB
+# risu
 
-NessusDB is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
+Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
 
-Version 1.4.3 is the current release.
+Version 1.4.4 is the current release.
 
 ## Requirements
 
 ### Ruby
-NessusDB has been tested with ruby-1.8.7-p334, ruby-1.9.1-p431, ruby-1.9.2-p180. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
+Risu has been tested with ruby-1.8.7-p334, ruby-1.9.1-p431, ruby-1.9.2-p180. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
 
 ### RubyGems
-NessusDB relies heavily on RubyGems to install other dependencies I highly recommend using it. RubyGems is included by default in the Ruby 1.9 branches.
+Risu relies heavily on RubyGems to install other dependencies I highly recommend using it. RubyGems is included by default in the Ruby 1.9 branches.
 
 - libxml
 - rails
@@ -23,32 +23,32 @@ NessusDB relies heavily on RubyGems to install other dependencies I highly recom
 
 ## Developmental Requirements
 
-These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install nessusdb, If not this command will install them all:
+These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install risu, If not this command will install them all:
 
 	% gem install rmagick gruff prawn sham faker rspec rcov machinist yard mysql libxml-ruby rails sqlite3 logger yaml
 	
 **You my need sudo/root access depending on your system setup**
 
-Any database that ActiveRecord supports should work. NessusDB has been tested with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/). 
+Any database that ActiveRecord supports should work. Risu has been tested with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/). 
 
 ## Installation
 Installation is really easy just gem install!
 
-	% gem install nessusdb
+	% gem install risu
 
 ## Database Setup
 
-	% nessusdb --create-config
-	% $EDITOR nessusdb.cfg
-	% nessusdb --create-tables
+	% risu --create-config
+	% $EDITOR risu.cfg
+	% risu --create-tables
 
-1. Generate the nessusdb.cfg file.
-2. Edit the nessusdb.cfg file, filling in the variables as needed.
+1. Generate the risu.cfg file.
+2. Edit the risu.cfg file, filling in the variables as needed.
 3. Migrate the database schema.
 
 ## Parsing Nessus Output
 
-	% nessusdb report1.nessus [report2.nessus ...]
+	% risu report1.nessus [report2.nessus ...]
 
 1. Parse the files by passing their names on the command line.
 
@@ -59,23 +59,24 @@ The data can be viewed with a query browser available for your database. A Rails
 ## Generating Reports
 To generate a report please execute the following after the the data is parsed into the database.
 
-	% nessusdb -t "TEMPLATE_PATH" -o "REPORT_NAME.pdf"
+	% risu -t "TEMPLATE_PATH" -o "REPORT_NAME.pdf"
 	
-## NessusDB Console
+## Risu Console
 
-Using the NessusDB Console is just like using Rails. You can access all of the ActiveRecord models directly and pull specific data from each model. Like SQL only easier!
+Using the risu Console is just like using Rails. You can access all of the ActiveRecord models directly and pull specific data from each model. Like SQL only easier!
 
-	[hammackj@taco:~/Projects/public/nessusdb]$ ../bin/nessusdb --console
+	[hammackj@taco:~/Projects/public/risu]$ ../bin/risu --console
 
-	                                   _ _       
-	 _ __   ___  ___ ___ _   _ ___  __| | |__  
-	| '_ \ / _ \/ __/ __| | | / __|/ _` | '_ \ 
-	| | | |  __/\__ \__ \ |_| \__ \ (_| | |_) |
-	|_| |_|\___||___/___/\__,_|___/\__,_|_.__/ 
+	      _           
+	 _ __(_)___ _   _ 
+	| '__| / __| | | |
+	| |  | \__ \ |_| |
+	|_|  |_|___/\__,_|
 
-	NessusDB Console v1.4.2
+
+	risu Console v1.4.4
 	>> Host.first
-	=> #<NessusDB::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
+	=> #<Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 	
 ## Templates
 Several templates are included:
@@ -93,11 +94,11 @@ Several templates are included:
 11. cover_sheet.rb - a example coversheet report
 12. findings_host.rb - list of findings per host
 	
-The templates are located in the nessusdb/templates folder, where ever the gem was installed. On a typical Mac OSX install the path is:
+The templates are located in the risu/templates folder, where ever the gem was installed. On a typical Mac OSX install the path is:
 
 	[hammackj@taco:~]$ ruby -v
 	ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]
-	[hammackj@taco:~]$ l /Library/Ruby/Gems/1.8/gems/nessusdb-1.4.0/lib/nessusdb/templates/
+	[hammackj@taco:~]$ l /Library/Ruby/Gems/1.8/gems/risu-1.4.0/lib/risu/templates/
 	total 40
 	drwxr-xr-x  7 hammackj  admin   238B Oct 21 19:24 ./
 	drwxr-xr-x  8 hammackj  admin   272B Oct 21 19:24 ../
@@ -120,7 +121,7 @@ The templates are located in the nessusdb/templates folder, where ever the gem w
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested.
 
 # Issues
-If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/hammackj/nessusdb/issues).
+If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/hammackj/risu/issues).
 
 # Contact
 You can reach me at jacob[dot]hammack[at]hammackj[dot]com.
