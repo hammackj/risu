@@ -1,6 +1,6 @@
 require "spec_helper"
 
-module NessusDB
+module Risu
 	describe NessusDocument do
 		before(:all) do
 			@doc = NessusDocument.new "test_data/nessus_report_local.nessus"
