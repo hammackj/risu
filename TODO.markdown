@@ -5,7 +5,7 @@
 ## 1.4.4 (May)
 
 - Add a CVSS risk factor graph
-- Update Assets templates to use this if possible http://www.nessus.org/plugins/index.php?view=single&id=54615
+- Update Assets templates to use this if possible plugin: http://www.nessus.org/plugins/index.php?view=single&id=54615 for extra data
 
 ## 1.5 (7/4/2011)
 - Clean up / Bug fixes before 2.0
