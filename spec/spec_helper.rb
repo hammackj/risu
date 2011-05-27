@@ -3,7 +3,7 @@ $:.unshift(File.join(File.dirname(base), '../lib'))
 
 require 'cover_me'
 require 'rspec'
-require 'nessusdb'
+require 'risu'
 require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
 @app = nil
@@ -21,7 +21,7 @@ database:
 
 
 begin
-	@app = NessusDB::CLI::Application.new
+	@app = Risu::CLI::Application.new
 	@app.load_config(config, true)
 	@app.db_connect
 	@app.migrate(:down)
