@@ -1,6 +1,6 @@
 require "spec_helper"
 
-module NessusDB
+module Risu
 	module CLI
 		describe Application do
 			before(:all) do
