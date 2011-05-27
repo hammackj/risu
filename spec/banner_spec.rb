@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-module NessusDB
+module Risu
 	module CLI		
 		describe Banner do
 			before(:all) do
