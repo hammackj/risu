@@ -1,5 +1,12 @@
 # News
 
+#1.4.4 (May, 2011)
+
+- NessusDB has been renamed to risu
+- Fixed a bug in --create-config, where tabs were being inserted with spaces
+- Fixed a bug in load_config where the exception was not printed.
+
+
 #1.4.3 (May 23, 2011)
 
 **This is the last release under the NessusDB name, I received a legal notice to change the name. They gave me a few weeks to change the name but I do not have a new name yet. If you have any suggestions please submit them to jacob.hammack[@]hammackj.com**
@@ -43,9 +50,9 @@
 	- Simple list of findings by host, in findings_host.rb [Ticket #27]
 
 # 1.3.0 (March 4, 2011)
-**Command line options have changed slightly, run nessusdb -? for a full list of commands**
+**Command line options have changed slightly, run risu -? for a full list of commands**
 
-**The default config file name is now nessusdb.cfg**
+**The default config file name is now risu.cfg**
 
 - New templates
 	- Microsoft Patches Summary
@@ -61,7 +68,7 @@
 	- Cleaned up the graphs to be a little easier to read
 - Added significantly more error checking to the command line	application
 - Updated the config file format to handle all of the report generation options as well as the database configuration options
-- Added a command line option for passing it a config file to use instead of forcing the default ./nessusdb.cfg
+- Added a command line option for passing it a config file to use instead of forcing the default ./risu.cfg
 - Migrated to OptionParser Choice seems to be an abandoned gem with bugs
 - Updated all the Migration code to use the new AR3 format
 
@@ -105,7 +112,7 @@
 - Moved to prawn for pdf output
 - added templates for the new prawn output
 - added checks to warn when there are new xml tags
-- moved everything into the nessusdb executable
+- moved everything into the risu executable
 - cleaned up the code
 	
 # 0.6.5 (August 15, 2010)
