@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-module NessusDB
+module Risu
 	module Models		
 		describe Plugin do
 			before(:all) do
