@@ -1,18 +1,18 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 
 require 'rubygems' # not sure why...
-require "nessusdb"
+require "risu"
 require 'rake'
 require 'rspec/core/rake_task'
 
 task :build do
-  system "gem build nessusdb.gemspec"
+  system "gem build #{Risu::APP_NAME}.gemspec"
 end
 
 task :release => :build do
-  system "gem push nessusdb-#{NessusDB::VERSION}.gem"
+  system "gem push #{Risu::APP_NAME}-#{Risu::VERSION}.gem"
 
-	puts "Just released NessusDB v#{NessusDB::VERSION}. NessusDB is always available in RubyGems!"
+	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is always available in RubyGems!"
 end
 
 task :clean do
@@ -29,9 +29,5 @@ task :report do
 end
 
 RSpec::Core::RakeTask.new(:spec) do |t|
-	#t.spec_files = ["application_spec.rb", "item_spec.rb", "plugin_spec.rb", "banner_spec.rb", "host_spec.rb", "nessusdocument_spec.rb", "report_spec.rb"]
-Rake::Task['report'].invoke
-
-#  t.rcov = true
-#  t.rcov_opts = ['--exclude osx\/objc,gems\/,spec\/,features\/', 'specs']
+	Rake::Task['report'].invoke
 end
