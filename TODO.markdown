@@ -2,7 +2,7 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.4.4 (May)
+## 1.4.5 (May)
 
 - Add a CVSS risk factor graph
 - Update Assets templates to use this if possible plugin: http://www.nessus.org/plugins/index.php?view=single&id=54615 for extra data
