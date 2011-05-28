@@ -1,11 +1,10 @@
 # News
 
-#1.4.4 (May, 2011)
-
+#1.4.4 (May 28, 2011)
 - NessusDB has been renamed to risu
 - Fixed a bug in --create-config, where tabs were being inserted with spaces
 - Fixed a bug in load_config where the exception was not printed.
-
+- Added more banners to the console for fun
 
 #1.4.3 (May 23, 2011)
 
