@@ -10,3 +10,5 @@ if ActiveRecord::Base.connected? == true
 end
 
 require 'risu/base/template_base'
+require 'risu/base/template_manager'
+require 'risu/base/prawn_template'
