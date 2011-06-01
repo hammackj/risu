@@ -4,7 +4,7 @@ module NaslTidy
 			#
 			#
 			def initialize ()
-				@module_info = 
+				@template_info = 
 				{ 
 					:name => "assets", 
 					:author => "hammackj", 
