@@ -6,6 +6,7 @@ module Risu
 	GRAPH_WIDTH = 750
 	EMAIL = "jacob.hammack@hammackj.com"
 	CONFIG_FILE = "./risu.cfg"
+	USER_TEMPLATES_DIR = "~/.risu/templates/"
 end
 
 require 'active_record'
@@ -22,8 +23,6 @@ require 'mysql'
 require 'irb'
 
 require 'optparse'
-
-require 'risu/prawn_templater'
 
 require 'risu/base'
 require 'risu/cli'
