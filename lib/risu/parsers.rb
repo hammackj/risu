@@ -5,4 +5,5 @@ module Risu
 	end
 end
 
-#require 'risu/parsers/'
+require 'risu/parsers/nessus/nessus_document'
+require 'risu/parsers/nessus/nessus_sax_listener'
