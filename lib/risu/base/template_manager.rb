@@ -34,7 +34,7 @@ module Risu
 			    return false
 			  end
 
-			  if t.respond_to?(:run) == false
+			  if t.respond_to?(:render) == false
 			    return false
 			  end
 
