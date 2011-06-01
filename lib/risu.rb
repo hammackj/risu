@@ -27,7 +27,7 @@ if ActiveRecord::Base.connected? == true
 	require 'risu/schema'
 end
 
-require 'risu/listener'
+require 'risu/nessus_sax_listener'
 require 'risu/prawn_templater'
 require 'risu/nessusdocument'
 
