@@ -1,6 +1,6 @@
 module Risu
 	module Base
-		class ModuleManager
+		class TemplateManager
 			attr_accessor :registered_templates
 
 			#
@@ -15,14 +15,24 @@ module Risu
 			#
 			#
 			def load_templates(path)
-				base_dir = __FILE__.gsub("risu/base/template_manager.rb", "")
-			  Dir["#{base_dir + path}/**/*.rb"].each{ |x| load x }
+				begin
+					base_dir = __FILE__.gsub("risu/base/template_manager.rb", "")
+				  Dir["#{base_dir + path}/**/*.rb"].each do |x| 
+						begin
+							load x
+						rescue => e
+							next
+						end
+					end
 
-			  TemplateBase.possible_templates.each do |p|
-			    if validate(p) ==  true
-			      @registered_templates << p
-			    end
-			  end
+				  TemplateBase.possible_templates.each do |p|
+				    if validate(p) ==  true
+				      @registered_templates << p
+				    end
+				  end
+				rescue => e
+					puts "Bad plugin"
+				end
 			end
 
 			#
@@ -67,9 +77,9 @@ module Risu
 			#
 			#
 			def display_templates
-			  @registered_modules.each do |x| 
+			  @registered_templates.each do |x| 
 			      p = x.new
-			      printf "[*] Template: %s\n", p.template_info[:name]
+			      puts "[*] Template: #{p.template_info[:name]}\n", 
 			    end
 			end
 		end
