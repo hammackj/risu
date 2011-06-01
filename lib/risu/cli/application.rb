@@ -18,6 +18,9 @@ module Risu
 				@blacklist = {}
 
 				@options[:debug] = false
+				@options[:list_templates] = false
+				
+				@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 			end
 
 			# Creates a blank config file
@@ -193,12 +196,16 @@ module Risu
 						opt.separator('')
 						opt.separator("Reporting Options")
 
-						opt.on('-t','--template FILE','The filename of the template to use') do |option|
+						opt.on('-t', '--template FILE', 'The filename of the template to use') do |option|
 							@options[:template] = option
 						end
 
-						opt.on('-o','--output-file FILE','The filename to output the generated report to') do |option|
+						opt.on('-o', '--output-file FILE', 'The filename to output the generated report to') do |option|
 							@options[:output_file] = option
+						end
+						
+						opt.on('-l', '--list-templates', "Lists all of the templates available to #{APP_NAME}") do |option|
+							@options[:list_templates] = option
 						end
 
 						opt.separator('')
@@ -287,6 +294,12 @@ module Risu
 			#
 			def run
 				parse_options
+				
+				if @options[:list_templates]
+					@template_manager.display_templates
+					
+					exit
+				end
 
 				if @options[:debug] == true
 					puts "[*] Enabling Debug Mode"
