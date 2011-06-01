@@ -2,7 +2,7 @@
 
 module Risu
 	APP_NAME = "risu"
-	VERSION = "1.4.4"
+	VERSION = "1.5.0"
 	GRAPH_WIDTH = 750
 	EMAIL = "jacob.hammack@hammackj.com"
 	CONFIG_FILE = "./risu.cfg"
@@ -23,16 +23,12 @@ require 'irb'
 
 require 'optparse'
 
-if ActiveRecord::Base.connected? == true
-	require 'risu/schema'
-end
-
-require 'risu/nessus_sax_listener'
 require 'risu/prawn_templater'
-require 'risu/nessusdocument'
 
+require 'risu/base'
 require 'risu/cli'
 require 'risu/exceptions'
 require 'risu/models'
+require 'risu/parsers'
 
 include Risu::Models
