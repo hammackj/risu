@@ -50,15 +50,15 @@ module Risu
 				output.text "Graphs of key finding statistics", :style => :bold
 				output.text "\n\n\n"
 
-				cury = y
+				cury = output.y
 				image Item.risks_by_severity_graph, :width => 250, :at => [output.bounds.left, cury]
 				image Host.top_vuln_graph(10), :width => 250, :at => [output.bounds.right - 250, cury]
 				move_down 50
-				if (y <= 300) 
+				if (output.y <= 300) 
 				    output.start_new_page
 						move_down 75
 				end
-				cury = y
+				cury = output.y
 				image Item.risks_by_service_graph(10), :width => 250, :at => [output.bounds.left, cury]
 				image Host.other_os_graph, :width => 250, :at => [output.bounds.right - 250, cury]
 				move_down 250
@@ -66,7 +66,7 @@ module Risu
 				#    output.start_new_page
 				#		cury = y
 				#end
-				cury = y
+				cury = output.y
 				#move_down 550
 				image Host.windows_os_graph, :width => 250, :at => [output.bounds.left, cury]
 			end

@@ -17,7 +17,7 @@ module Risu
 			#
 			#
 			def render(output)
-				image "data/nessuslogo.jpg", :scale => 0.2, :position => :left, :vposition => :top
+				output.image "data/nessuslogo.jpg", :scale => 0.2, :position => :left, :vposition => :top
 
 				output.text "\n"
 				output.text "\n"
