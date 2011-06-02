@@ -39,4 +39,4 @@ echo "cover_sheet" &&
 ../bin/risu --config-file test.cfg -t cover_sheet -o cover_sheet.pdf &&
 
 echo "executive_summary" &&
-../bin/risu --config-file test.cfg -t executive_summary -o executive_summary.pdf
+../bin/risu --config-file test.cfg -t exec_summary_detailed -o exec_summary_detailed.pdf
