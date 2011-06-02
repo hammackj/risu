@@ -1,4 +1,4 @@
-module NaslTidy
+module Risu
 	module Modules
 		class CoverSheet < Risu::Base::TemplateBase
 			
@@ -16,7 +16,7 @@ module NaslTidy
 			
 			#
 			#
-			def render
+			def render(output)
 				image File.dirname(template) + "/data/nessuslogo.jpg", :scale => 0.2, :position => :left, :vposition => :top
 
 				text "\n"
