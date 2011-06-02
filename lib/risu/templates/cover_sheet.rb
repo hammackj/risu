@@ -17,6 +17,9 @@ module Risu
 			#
 			#
 			def render(output)
+				
+				puts File.expand_path(File.dirname(__FILE__))
+				
 				output.image "data/nessuslogo.jpg", :scale => 0.2, :position => :left, :vposition => :top
 
 				output.text "\n"
@@ -27,13 +30,15 @@ module Risu
 				output.text "\n"
 				output.text "\n"
 
-				output.font_size(24) { output.text Report.title, :align => :center }
+				output.font_size(24) do
+					output.text Report.title, :align => :center
+				end
 
-				output.font_size(18) { 
+				output.font_size(18) do
 				    output.text "Coversheet Example", :align => :center
 				    output.text "\n"
 				    output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				end
 
 				output.text "\n"
 				output.text "\n"
