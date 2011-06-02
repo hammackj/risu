@@ -53,15 +53,15 @@ module Risu
 				cury = output.y
 				output.image Item.risks_by_severity_graph, :width => 250, :at => [output.bounds.left, cury]
 				output.image Host.top_vuln_graph(10), :width => 250, :at => [output.bounds.right - 250, cury]
-				move_down 50
+				output.move_down 50
 				if (output.y <= 300) 
 				    output.start_new_page
-						move_down 75
+						output.move_down 75
 				end
 				cury = output.y
 				output.image Item.risks_by_service_graph(10), :width => 250, :at => [output.bounds.left, cury]
 				output.image Host.other_os_graph, :width => 250, :at => [output.bounds.right - 250, cury]
-				move_down 250
+				output.move_down 250
 				#if (y <= 300) 
 				#    output.start_new_page
 				#		cury = y
