@@ -1,26 +1,26 @@
 module Risu
 	module Modules
-		class Template < Risu::Base::TemplateBase
-			
+		class ExecutiveSummaryDetailed < Risu::Base::TemplateBase
+
 			#
 			#
 			def initialize ()
-				@template_info = 
-				{ 
-					:name => "exec_summary_detailed", 
-					:author => "Ed Davison <EDavison@getmns.com>", 
-					:version => "0.0.1", 
+				@template_info =
+				{
+					:name => "exec_summary_detailed",
+					:author => "Ed Davison <EDavison@getmns.com>",
+					:version => "0.0.1",
 					:description => "Generates a detailed executive summary report"
 				}
 			end
-			
+
 			#
 			#
 			def render(output)
 				output.font_size 10
-				font "Times-Roman"
+				output.font "Times-Roman"
 
-				image File.dirname(template) + "/data/nessuslogo.jpg", :scale => 1.0, :position => :left, :vposition => :top
+				output.image File.dirname(template) + "/data/nessuslogo.jpg", :scale => 1.0, :position => :left, :vposition => :top
 
 				output.text "\n"
 				output.text "\n"
@@ -30,9 +30,11 @@ module Risu
 				output.text "\n"
 				output.text "\n"
 
-				output.font_size(24) { output.text Report.title, :align => :center }
+				output.font_size(24) do
+					output.text Report.title, :align => :center
+				end
 
-				output.font_size(18) {
+				output.font_size(18) do
 					output.text "Executive Summary Report", :align => :center
 					output.text "\n"
 					output.text "This report was prepared by\n", :align => :center
@@ -41,7 +43,7 @@ module Risu
 					output.text "\n"
 					output.text "#{Report.scan_date}", :align => :center
 					output.text "\n"
-				}
+				end
 
 				output.text "\n"
 
@@ -72,7 +74,7 @@ module Risu
 				output.text "A total of #{Host.count} hosts were found and scanned for vulnerabities.\n"
 				output.text "\n"
 
-				output.text "There were #{Item.risks.count} risks found during this scan.	Of these, #{Item.high_risks.count} were High risk vulnerabilities.	High risk vulnerabilities require immediate attention to handle as they are relatively easy for attackers to exploit frequently resulting in full access to affected systems.	 There were #{Item.medium_risks.count} findings which were Medium risk.	 High risk vulnerabilities are harder to exploit and may not result in full control of the affected system and should be addressed rapidly and with priority.	 There were #{Item.low_risks.count} findings which were Low risk vulnerabilities.	 These risks usually let attackers gain information about your network making it easier for launching more advanced attacks and should be handled in a timely manner.	 And #{Item.info_risks.count} findings which were information findings.\n"
+				output.text "There were #{Item.risks.count} risks found during this scan. Of these, #{Item.high_risks.count} were High risk vulnerabilities.	High risk vulnerabilities require immediate attention to handle as they are relatively easy for attackers to exploit frequently resulting in full access to affected systems.	 There were #{Item.medium_risks.count} findings which were Medium risk.	 High risk vulnerabilities are harder to exploit and may not result in full control of the affected system and should be addressed rapidly and with priority.	 There were #{Item.low_risks.count} findings which were Low risk vulnerabilities.	 These risks usually let attackers gain information about your network making it easier for launching more advanced attacks and should be handled in a timely manner.	 And #{Item.info_risks.count} findings which were information findings.\n"
 				output.text "\n"
 
 				high_host_count = Item.where(:severity => 3).group(:host_id).all.count
@@ -167,7 +169,7 @@ module Risu
 				end unless results == nil
 
 				output.text "\n\n\n"
-				if (y <= 300)
+				if (output.y <= 300)
 						output.start_new_page
 						move_down 50
 				end
@@ -177,24 +179,24 @@ module Risu
 				output.text "\n"
 				output.text "\n"
 
-				cury = y
-				image Item.risks_by_severity_graph, :width => 250, :at => [output.bounds.left, cury]
-				image Host.top_vuln_graph(10), :width => 250, :at => [output.bounds.right - 250, cury]
-				move_down 225
-				if (y <= 300)
+				cury = output.y
+				output.image Item.risks_by_severity_graph, :width => 250, :at => [output.bounds.left, cury]
+				output.image Host.top_vuln_graph(10), :width => 250, :at => [output.bounds.right - 250, cury]
+				output.move_down 225
+				if (output.y <= 300)
 						output.start_new_page
-						move_down 50
+						output.move_down 50
 				end
-				cury = y
+				cury = output.y
 				image Item.risks_by_service_graph(10), :width => 250, :at => [output.bounds.left, cury]
 				image Host.other_os_graph, :width => 250, :at => [output.bounds.right - 250, cury]
 				move_down 225
 				if (y <= 300)
 						output.start_new_page
-						move_down 50
+						output.move_down 50
 				end
-				cury = y
-				image Host.windows_os_graph, :width => 250, :at => [output.bounds.left, cury]
+				cury = output.y
+				output.image Host.windows_os_graph, :width => 250, :at => [output.bounds.left, cury]
 
 				output.number_pages "<page> of <total>", :at => [output.bounds.right - 50, 0], :width => 150, :page_filter => :all
 			end
