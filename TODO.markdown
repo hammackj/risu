@@ -2,12 +2,9 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.4.5 (May)
-
+## 1.5 (7/1/2011)
 - Add a CVSS risk factor graph
 - Update Assets templates to use this if possible plugin: http://www.nessus.org/plugins/index.php?view=single&id=54615 for extra data
-
-## 1.5 (7/4/2011)
 - Clean up / Bug fixes before 2.0
 - Create rSpec tests for everything (100% code coverage goal)
 	- Parser tests
