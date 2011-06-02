@@ -1,4 +1,4 @@
-module NaslTidy
+module Risu
 	module Modules
 		class Template < Risu::Base::TemplateBase
 			
@@ -16,7 +16,7 @@ module NaslTidy
 			
 			#
 			#
-			def render
+			def render(output)
 				font_size 10
 				font "Times-Roman"
 
