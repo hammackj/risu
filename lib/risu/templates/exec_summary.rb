@@ -1,4 +1,4 @@
-module NaslTidy
+module Risu
 	module Modules
 		class ExecSummary < Risu::Base::TemplateBase
 			
@@ -16,7 +16,7 @@ module NaslTidy
 			
 			#
 			#
-			def render
+			def render(output)
 				text Report.classification, :align => :center
 				text "\n"
 
