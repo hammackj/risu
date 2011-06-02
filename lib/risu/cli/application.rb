@@ -7,6 +7,7 @@ module Risu
 		#
 		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Application
+			include Risu::Base
 			attr_accessor :database
 
 			#
@@ -339,8 +340,12 @@ module Risu
 				end
 
 				if @options[:template] != nil and @options[:output_file] != nil
-					if File.exists?(@options[:template]) == false
-						puts "[!] Template \"#{@options[:template]}\" does not exist. Please check the filename"
+					#if File.exists?(@options[:template]) == false
+					#	puts "[!] Template \"#{@options[:template]}\" does not exist. Please check the filename"
+					#	exit
+					#end
+					if @template_manager.find_template_by_name(@options[:template]) == nil
+						puts "[!] Template \"#{@options[:template]}\" does not exist. Please check the name"
 						exit
 					end
 
@@ -351,7 +356,11 @@ module Risu
 					@findings.company = @report["company"]
 					@findings.classification = @report["classification"]
 
-					template = PrawnTemplater.new(@options[:template], @findings, @options[:output_file])
+					#@template = PrawnTemplater.new(@options[:template], @findings, @options[:output_file])
+					
+#					puts "#{@template_manager.inspect}"
+					
+					template = Templater.new(@options[:template], @findings, @options[:output_file], @template_manager)
 					template.generate
 				end
 
@@ -384,7 +393,7 @@ module Risu
 							raise Risu::Exceptions::InvalidDocument, "[!] Document does not exist - #{file}"
 						end
 
-						doc = NessusDocument.new file
+						doc = Risu::Parsers::Nessus::NessusDocument.new file
 						if doc.valid? == true
 							doc.parse
 
