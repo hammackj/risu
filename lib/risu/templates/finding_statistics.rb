@@ -17,26 +17,26 @@ module Risu
 			#
 			#
 			def render(output)
-				text Report.classification, :align => :center
-				text "\n"
+				output.text Report.classification, :align => :center
+				output.text "\n"
 
-				font_size(22) { text Report.title, :align => :center }
-				font_size(18) {
-					text "Finding Statistics", :align => :center
-					text "\n"
-					text "This report was prepared by\n#{Report.author}", :align => :center
+				output.font_size(22) { output.text Report.title, :align => :center }
+				output.font_size(18) {
+					output.text "Finding Statistics", :align => :center
+					output.text "\n"
+					output.text "This report was prepared by\n#{Report.author}", :align => :center
 				}
 
-				text "\n\n\n"
+				output.text "\n\n\n"
 
-				text "Scan Date:", :style => :bold
-				text "#{Report.scan_date}"
-				text "\n"
+				output.text "Scan Date:", :style => :bold
+				output.text "#{Report.scan_date}"
+				output.text "\n"
 
 				headers = ["Number of hosts","Number of risks","High Risks", "Medium Risks", "Low Risks", "Info Risks"]
 				data = [Host.count, Item.risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count, Item.info_risks.count]
 
-				table([headers] + [data], :header => true, :width => bounds.width) do
+				output.table([headers] + [data], :header => true, :width => output.bounds.width) do
 					row(0).style(:font_style => :bold, :background_color => 'cccccc')
 					cells.borders = [:top, :bottom, :left, :right]
 				end

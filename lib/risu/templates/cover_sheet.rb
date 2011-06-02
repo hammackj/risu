@@ -17,48 +17,48 @@ module Risu
 			#
 			#
 			def render(output)
-				image File.dirname(template) + "/data/nessuslogo.jpg", :scale => 0.2, :position => :left, :vposition => :top
+				image "data/nessuslogo.jpg", :scale => 0.2, :position => :left, :vposition => :top
 
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
 
-				font_size(24) { text Report.title, :align => :center }
+				output.font_size(24) { output.text Report.title, :align => :center }
 
-				font_size(18) { 
-				    text "Coversheet Example", :align => :center
-				    text "\n"
-				    text "This report was prepared by\n#{Report.author}", :align => :center
+				output.font_size(18) { 
+				    output.text "Coversheet Example", :align => :center
+				    output.text "\n"
+				    output.text "This report was prepared by\n#{Report.author}", :align => :center
 				}
 
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
-				text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
+				output.text "\n"
 
-				text "Nessus is a Registered Trademark of Tenable Network Security, Inc."
+				output.text "Nessus is a Registered Trademark of Tenable Network Security, Inc."
 			end
 		end
 	end

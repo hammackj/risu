@@ -17,53 +17,53 @@ module Risu
 			#
 			#
 			def render(output)
-				text Report.classification, :align => :center
-				text "\n"
+				output.text Report.classification, :align => :center
+				output.text "\n"
 
-				font_size(22) { text Report.title, :align => :center }
-				font_size(18) { 
-					text "Findings Summary Report", :align => :center
-					text "\n"
-					text "This report was prepared by\n#{Report.author}", :align => :center
+				output.font_size(22) { output.text Report.title, :align => :center }
+				output.font_size(18) { 
+					output.text "Findings Summary Report", :align => :center
+					output.text "\n"
+					output.text "This report was prepared by\n#{Report.author}", :align => :center
 				}
 
-				text "\n\n\n"
+				output.text "\n\n\n"
 
 				Host.sorted.each do |host|
 					if host.items.high_risks_unique_sorted.all.size > 0 or host.items.medium_risks_unique_sorted.all.size > 0
-						font_size(20) { 
-							text "#{host.ip} - #{host.fqdn}", :style => :bold 
+						output.font_size(20) { 
+							output.text "#{host.ip} - #{host.fqdn}", :style => :bold 
 							}
 					end
 
 					if host.items.high_risks_unique_sorted.all.size > 0
-						font_size(18) { 
-							fill_color "FF0000"
-							text "High Findings", :style => :bold 
-							fill_color "000000"
+						output.font_size(18) { 
+							output.fill_color "FF0000"
+							output.text "High Findings", :style => :bold 
+							output.fill_color "000000"
 						}
 
 						host.items.high_risks_unique_sorted.each do |item|
 							name = Plugin.find_by_id(item.plugin_id).plugin_name
-							text "#{name}"
+							output.text "#{name}"
 						end
 					end
 
 					if host.items.medium_risks_unique_sorted.all.size > 0
-						font_size(18) { 
-							fill_color "FF8040"
-							text "Medium Findings", :style => :bold 
-							fill_color "000000"
+						output.font_size(18) { 
+							output.fill_color "FF8040"
+							output.text "Medium Findings", :style => :bold 
+							output.fill_color "000000"
 						}
 
 						host.items.medium_risks_unique_sorted.each do |item|
 							name = Plugin.find_by_id(item.plugin_id).plugin_name
-							text "#{name}"
+							output.text "#{name}"
 						end
 					end
 
 					if host.items.high_risks_unique_sorted.all.size > 0 or host.items.medium_risks_unique_sorted.all.size > 0
-						text "\n"
+						output.text "\n"
 					end
 				end
 

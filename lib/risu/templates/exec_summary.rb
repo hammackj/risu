@@ -17,58 +17,58 @@ module Risu
 			#
 			#
 			def render(output)
-				text Report.classification, :align => :center
-				text "\n"
+				output.text Report.classification, :align => :center
+				output.text "\n"
 
-				font_size(22) { text Report.title, :align => :center }
-				font_size(18) { 
-				    text "Executive Summary", :align => :center
-				    text "\n"
-				    text "This report was prepared by\n#{Report.author}", :align => :center
+				output.font_size(22) { output.text Report.title, :align => :center }
+				output.font_size(18) { 
+				    output.text "Executive Summary", :align => :center
+				    output.text "\n"
+				    output.text "This report was prepared by\n#{Report.author}", :align => :center
 				}
 
-				text "\n\n\n"
+				output.text "\n\n\n"
 
-				text "Scan Date:", :style => :bold
-				text "#{Report.scan_date}"
-				text "\n"
+				output.text "Scan Date:", :style => :bold
+				output.text "#{Report.scan_date}"
+				output.text "\n"
 
-				text "This report contains the results of a security audit performed on #{Report.scan_date}. It contains confidential information about the state of your network. Access to this information by unauthorized personnel may allow them to compromise your network.\n\n"
+				output.text "This report contains the results of a security audit performed on #{Report.scan_date}. It contains confidential information about the state of your network. Access to this information by unauthorized personnel may allow them to compromise your network.\n\n"
 
-				text "A total of #{Host.count} hosts were found and scanned for vulnerabities.\n\n"
+				output.text "A total of #{Host.count} hosts were found and scanned for vulnerabities.\n\n"
 
-				text "There were #{Item.risks.count} vulnerabilities found during this scan. Of these, #{Item.high_risks.count} were high vulnerabilities, #{Item.medium_risks.count} were medium vulnerabilities, #{Item.low_risks.count} were low vulnerabilities and #{Item.info_risks.count} were information findings.\n\n"
+				output.text "There were #{Item.risks.count} vulnerabilities found during this scan. Of these, #{Item.high_risks.count} were high vulnerabilities, #{Item.medium_risks.count} were medium vulnerabilities, #{Item.low_risks.count} were low vulnerabilities and #{Item.info_risks.count} were information findings.\n\n"
 
-				text "Scan Statistics", :style => :bold
-				text "\n"
+				output.text "Scan Statistics", :style => :bold
+				output.text "\n"
 
-				table([["Number of hosts","Number of risks","High Risks", "Medium Risks", "Low Risks", "Info Risks"], 
+				output.table([["Number of hosts","Number of risks","High Risks", "Medium Risks", "Low Risks", "Info Risks"], 
 				[Host.count, Item.risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count, Item.info_risks.count]], 
-				:cell_style => { :padding =>12 }, :width => bounds.width)
-				text "\n\n\n"
+				:cell_style => { :padding =>12 }, :width => output.bounds.width)
+				output.text "\n\n\n"
 
-				text "Graphs of key finding statistics", :style => :bold
-				text "\n\n\n"
+				output.text "Graphs of key finding statistics", :style => :bold
+				output.text "\n\n\n"
 
 				cury = y
-				image Item.risks_by_severity_graph, :width => 250, :at => [bounds.left, cury]
-				image Host.top_vuln_graph(10), :width => 250, :at => [bounds.right - 250, cury]
+				image Item.risks_by_severity_graph, :width => 250, :at => [output.bounds.left, cury]
+				image Host.top_vuln_graph(10), :width => 250, :at => [output.bounds.right - 250, cury]
 				move_down 50
 				if (y <= 300) 
-				    start_new_page
+				    output.start_new_page
 						move_down 75
 				end
 				cury = y
-				image Item.risks_by_service_graph(10), :width => 250, :at => [bounds.left, cury]
-				image Host.other_os_graph, :width => 250, :at => [bounds.right - 250, cury]
+				image Item.risks_by_service_graph(10), :width => 250, :at => [output.bounds.left, cury]
+				image Host.other_os_graph, :width => 250, :at => [output.bounds.right - 250, cury]
 				move_down 250
 				#if (y <= 300) 
-				#    start_new_page
+				#    output.start_new_page
 				#		cury = y
 				#end
 				cury = y
 				#move_down 550
-				image Host.windows_os_graph, :width => 250, :at => [bounds.left, cury]
+				image Host.windows_os_graph, :width => 250, :at => [output.bounds.left, cury]
 			end
 		end
 	end

@@ -1,33 +1,33 @@
 module Risu
 	module Modules
 		class TechnicalFindings < Risu::Base::TemplateBase
-			
+
 			#
 			#
 			def initialize ()
-				@template_info = 
-				{ 
-					:name => "technical_findings", 
-					:author => "hammackj", 
-					:version => "0.0.1", 
+				@template_info =
+				{
+					:name => "technical_findings",
+					:author => "hammackj",
+					:version => "0.0.1",
 					:description => "Generates a Technical Findings Report"
 				}
 			end
-			
+
 			#
 			#
 			def render(output)
-				text Report.classification, :align => :center
-				text "\n"
+				output.text Report.classification, :align => :center
+				output.text "\n"
 
-				font_size(22) { text Report.title, :align => :center }
-				font_size(18) {
-					text "High and Medium Findings", :align => :center
-					text "\n"
-					text "This report was prepared by\n#{Report.author}", :align => :center
+				output.font_size(22) { output.text Report.title, :align => :center }
+				output.font_size(18) {
+					output.text "High and Medium Findings", :align => :center
+					output.text "\n"
+					output.text "This report was prepared by\n#{Report.author}", :align => :center
 				}
 
-				text "\n\n\n"
+				output.text "\n\n\n"
 
 				#@todo Revamping blacklisting in 1.3
 				#blacklist_ip = "-"
@@ -40,13 +40,13 @@ module Risu
 
 				unique_risks.each do |h|
 					if h[:values].length > 1
-						font_size(20) {
-							fill_color h[:color]
-							text h[:title], :style => :bold
-							fill_color "000000"
-							}
+						output.font_size(20) do
+							output.fill_color h[:color]
+							output.text h[:title], :style => :bold
+							output.fill_color "000000"
+						end
 
-						text "\n"
+						output.text "\n"
 
 						h[:values].each do |f|
 
@@ -63,12 +63,14 @@ module Risu
 
 							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
-							font_size(16) { text "#{plugin.plugin_name}\n" }
+							output.font_size(16) do
+								output.text "#{plugin.plugin_name}\n"
+							end
 
 							if hosts.length > 1
-								text "Hosts", :style => :bold
+								output.text "Hosts", :style => :bold
 							else
-								text "Host", :style => :bold
+								output.text "Host", :style => :bold
 							end
 
 							hostlist = Array.new
@@ -79,60 +81,60 @@ module Risu
 								#end
 							end
 
-							text hostlist.join(', ')
+							output.text hostlist.join(', ')
 
 							if f.plugin_output != nil
-								text "\nPlugin output", :style => :bold
-								text f.plugin_output
+								output.text "\nPlugin output", :style => :bold
+								output.text f.plugin_output
 							end
 
 							if plugin.description != nil
-								text "\nDescription", :style => :bold
-								text plugin.description
+								output.text "\nDescription", :style => :bold
+								output.text plugin.description
 							end
 
 							if plugin.synopsis != nil
-								text "\nSynopsis", :style => :bold
-								text plugin.synopsis
+								output.text "\nSynopsis", :style => :bold
+								output.text plugin.synopsis
 							end
 
 							if plugin.cvss_base_score != nil
-								text "\nCVSS Base Score", :style => :bold
-								text plugin.cvss_base_score
+								output.text "\nCVSS Base Score", :style => :bold
+								output.text plugin.cvss_base_score
 							end
 
 							if plugin.exploit_available != nil
-								text "\nExploit Available", :style => :bold
+								output.text "\nExploit Available", :style => :bold
 
 								if plugin.exploit_available == "true"
-									text "Yes"
+									output.text "Yes"
 								else
-									text "No"
+									output.text "No"
 								end
 							end
 
 							if plugin.solution != nil
-								text "\nSolution", :style => :bold
-								text plugin.solution
+								output.text "\nSolution", :style => :bold
+								output.text plugin.solution
 							end
 
 							if references.size != 0
-								text "\nReferences", :style => :bold
-								references.each { |ref|
+								output.text "\nReferences", :style => :bold
+								references.each do |ref|
 									ref_text = sprintf "%s: %s\n", ref.reference_name, ref.value
-									text ref_text
-								}
-								text "\nNessus Plugin", :style => :bold
-								text "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{f.plugin_id}"
+									output.text ref_text
+								end
+								output.text "\nNessus Plugin", :style => :bold
+								output.text "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{f.plugin_id}"
 							end
-								text "\n"
+								output.text "\n"
 						end
 					end
 
-					start_new_page unless h[:values] == nil
+					output.start_new_page unless h[:values] == nil
 				end
 
-				number_pages "<page> of <total>", :at => [bounds.right - 75, 0], :width => 150, :page_filter => :all
+				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all
 
 			end
 		end
