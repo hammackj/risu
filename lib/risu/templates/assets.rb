@@ -1,6 +1,7 @@
 module NaslTidy
 	module Modules
 		class Assests < Risu::Base::TemplateBase
+			
 			#
 			#
 			def initialize ()
