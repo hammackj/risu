@@ -2,8 +2,9 @@ module Risu
 	module Base
   	#
 		#
-		class TemplateBase
+		class TemplateBase			
 	    @possible_templates = []
+	
 	    class << self
 	      attr_reader :possible_templates
 	    end
