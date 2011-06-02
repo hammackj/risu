@@ -20,7 +20,7 @@ module Risu
 				output.font_size 10
 				output.font "Times-Roman"
 
-				output.image File.dirname(template) + "/data/nessuslogo.jpg", :scale => 1.0, :position => :left, :vposition => :top
+				output.image "#{File.expand_path(File.dirname(__FILE__))}/data/nessuslogo.jpg", :scale => 1.0, :position => :left, :vposition => :top
 
 				output.text "\n"
 				output.text "\n"
@@ -188,10 +188,10 @@ module Risu
 						output.move_down 50
 				end
 				cury = output.y
-				image Item.risks_by_service_graph(10), :width => 250, :at => [output.bounds.left, cury]
-				image Host.other_os_graph, :width => 250, :at => [output.bounds.right - 250, cury]
-				move_down 225
-				if (y <= 300)
+				output.image Item.risks_by_service_graph(10), :width => 250, :at => [output.bounds.left, cury]
+				output.image Host.other_os_graph, :width => 250, :at => [output.bounds.right - 250, cury]
+				output.move_down 225
+				if (output.y <= 300)
 						output.start_new_page
 						output.move_down 50
 				end
