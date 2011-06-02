@@ -76,6 +76,19 @@ module Risu
 			
 			#
 			#
+			def find_template_by_name(name)
+				@registered_templates.each do |template|
+					t = template.new
+					if t.template_info[:name] == name
+						return t
+					end
+				end
+				
+				return nil
+			end
+			
+			#
+			#
 			def display_templates
 				puts "Available Templates"
 			  @registered_templates.each do |x| 
