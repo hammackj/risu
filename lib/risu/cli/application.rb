@@ -91,7 +91,7 @@ module Risu
 					end
 
 					ActiveRecord::Base.establish_connection(@database)
-					require 'risu/schema'
+					require 'risu/base/schema'
 					Schema.migrate(direction)
 
 					if direction == :up
