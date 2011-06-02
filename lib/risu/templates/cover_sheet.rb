@@ -16,11 +16,8 @@ module Risu
 			
 			#
 			#
-			def render(output)
-				
-				puts File.expand_path(File.dirname(__FILE__))
-				
-				output.image "data/nessuslogo.jpg", :scale => 0.2, :position => :left, :vposition => :top
+			def render(output)				
+				output.image "#{File.expand_path(File.dirname(__FILE__))}/data/nessuslogo.jpg", :scale => 0.2, :position => :left, :vposition => :top
 
 				output.text "\n"
 				output.text "\n"
