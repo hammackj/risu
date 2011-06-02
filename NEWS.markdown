@@ -1,5 +1,10 @@
 # News
 
+#1.5.0 (July 1, 2011)
+- Implemented an modular template system, **breaks all existing templates**.
+	- All templates are now implemented as Ruby classes this allows them to be dynamically loaded and removes the need to type the entire path to the template
+- Implemented OpenVAS xml parser
+
 #1.4.4 (May 28, 2011)
 - NessusDB has been renamed to risu
 - Fixed a bug in --create-config, where tabs were being inserted with spaces
