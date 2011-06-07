@@ -1,26 +1,26 @@
 # encoding: utf-8
 
 module Risu
-	
+
 	# Risu Schema
 	#
 	# @author Jacob Hammack <jacob.hammack@hammackj.com>
 	class Schema < ActiveRecord::Migration
 
 		# Creates all of the database tables required by the parser
-		# 
+		#
 		def self.up
 			create_table :policies do |t|
 				t.string :name
 				t.string :comments
 			end
-		
+
 			create_table :server_preferences do |t|
 				t.integer :policy_id
 				t.string :name
 				t.string :value
-			end		
-		
+			end
+
 			create_table :plugins_preferences do |t|
 				t.integer :policy_id
 				t.integer :plugin_id
@@ -36,13 +36,13 @@ module Risu
 				t.integer :policy_id
 				t.string :family_name
 				t.string :status
-			end		
-				
+			end
+
 			create_table :reports do |t|
 				t.integer :policy_id
 				t.string :name
 			end
-		
+
 			create_table :hosts do |t|
 				t.integer :report_id
 				t.string :name
@@ -66,7 +66,8 @@ module Risu
 				t.string :pcidss_high_risk_flaw
 				t.string :pcidss_medium_risk_flaw
 				t.string :pcidss_reachable_db
-				t.string :pcidss_www_xss				
+				t.string :pcidss_www_xss
+				t.string :system_type
 				t.text :notes
 			end
 
@@ -79,8 +80,8 @@ module Risu
 				t.string :protocol
 				t.integer :severity
 				t.boolean :verified
-			end 
-		
+			end
+
 			create_table :plugins do |t|
 				t.string :plugin_name
 				t.string :family_name
@@ -105,7 +106,7 @@ module Risu
 				t.text :synopsis
 				t.string :plugin_type
 			end
-			
+
 			create_table :individual_plugin_selections do |t|
 				t.string :policy_id
 				t.integer :plugin_id
@@ -113,18 +114,18 @@ module Risu
 				t.string :family
 				t.string :status
 			end
-		
+
 			create_table :references do |t|
 				t.integer :plugin_id
 				t.string :reference_name
 				t.string :value
 			end
-	
+
 			create_table :versions do |t|
 				t.string :version
 			end
 		end
-	
+
 		# Deletes all of the database tables created
 		#
 		def self.down

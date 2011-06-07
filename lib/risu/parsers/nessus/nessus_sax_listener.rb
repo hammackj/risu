@@ -51,25 +51,26 @@ module Risu
 							"pcidss:high_risk_flaw" => :pcidss_high_risk_flaw,
 							"pcidss:medium_risk_flaw" => :pcidss_medium_risk_flaw,
 							"pcidss:reachable_db" => :pcidss_reachable_db,
-							"pcidss:www:xss" => :pcidss_www_xss
+							"pcidss:www:xss" => :pcidss_www_xss,
+							"system-type" => :system_type
 						}
-				
+
 						@valid_ms_patches = {
 							"MS11-030" => :ms11_030,
-							"MS11-026" => :ms11_026, 
-							"MS11-034" => :ms11_034, 
-							"MS11-021" => :ms11_021, 
-							"MS11-029" => :ms11_029, 
-							"MS11-023" => :ms11_023, 
-							"MS11-022" => :ms11_022, 
+							"MS11-026" => :ms11_026,
+							"MS11-034" => :ms11_034,
+							"MS11-021" => :ms11_021,
+							"MS11-029" => :ms11_029,
+							"MS11-023" => :ms11_023,
+							"MS11-022" => :ms11_022,
 							"MS09-027" => :ms09_027,
-							"MS11-033" => :ms11_033, 
-							"MS11-019" => :ms11_019, 
-							"MS11-024" => :ms11_024, 
-							"MS11-031" => :ms11_031, 
-							"MS11-020" => :ms11_020, 
-							"MS11-018" => :ms11_018, 
-							"MS11-028" => :ms11_028, 
+							"MS11-033" => :ms11_033,
+							"MS11-019" => :ms11_019,
+							"MS11-024" => :ms11_024,
+							"MS11-031" => :ms11_031,
+							"MS11-020" => :ms11_020,
+							"MS11-018" => :ms11_018,
+							"MS11-028" => :ms11_028,
 							"MS11-032" => :ms11_032
 						}
 				end
@@ -112,12 +113,12 @@ module Risu
 							@rh.save
 						when "tag"
 							unless attributes["name"] =~ /(MS\d\d-\d\d\d)/
-							    @attr = if @valid_host_properties.keys.include?(attributes["name"])
-							            attributes["name"]
-							        else
-							            nil
-							        end
-							    puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n" if @attr.nil?    
+									@attr = if @valid_host_properties.keys.include?(attributes["name"])
+													attributes["name"]
+											else
+													nil
+											end
+									puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n" if @attr.nil?
 							end
 						when "ReportItem"
 							@vals = Hash.new # have to clear this out or everything has the same references
@@ -217,7 +218,7 @@ module Risu
 
 							@plugin_selection.save
 						when "tag"
-							@rh.attributes = {@valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") } if @valid_host_properties.keys.include?(@attr) 
+							@rh.attributes = {@valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") } if @valid_host_properties.keys.include?(@attr)
 							@rh.save
 						#We cannot handle the references in the same block as the rest of the ReportItem tag because
 						#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax
