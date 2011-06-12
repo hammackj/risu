@@ -61,6 +61,10 @@ Sham.define do
 	os(:unique => false) { os_options[rand(os_options.size)]}
 	svc(:unique => false) { svc_options[rand(svc_options.size)] }
 	risk_factor {risks[rand(risks.size)] }
+	netbios { Faker::Lorem.words(1) }
+	fqdn {
+		"#{netbios}.#{Faker::Lorem.words(1)}.com"
+	}
 end
 
 Plugin.blueprint do
@@ -75,8 +79,10 @@ Host.blueprint do
 	ip { name }
 	mac { Sham.mac }
 	os { Sham.os }
+	netbios { Sham.netbios }
+	fqdn { Sham.fqdn }
 end
-		
+	
 Item.blueprint do
 	port { Sham.port }
 	host { Host.make }
