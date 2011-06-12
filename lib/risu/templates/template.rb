@@ -17,7 +17,6 @@ module Risu
 			#
 			#
 			def render(output)
-
 			end
 		end
 	end
