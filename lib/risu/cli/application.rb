@@ -209,6 +209,12 @@ module Risu
 							@options[:list_templates] = option
 						end
 
+						opt.on('--create-template NAME', "Creates a template file in the ~/.risu/templates directory") do |option|
+							if File.exists?(option) == true
+								puts "[!] Template "
+							end
+						end
+
 						opt.separator('')
 						opt.separator('Configuration Options')
 
@@ -340,10 +346,6 @@ module Risu
 				end
 
 				if @options[:template] != nil and @options[:output_file] != nil
-					#if File.exists?(@options[:template]) == false
-					#	puts "[!] Template \"#{@options[:template]}\" does not exist. Please check the filename"
-					#	exit
-					#end
 					if @template_manager.find_template_by_name(@options[:template]) == nil
 						puts "[!] Template \"#{@options[:template]}\" does not exist. Please check the name"
 						exit
@@ -355,10 +357,6 @@ module Risu
 					@findings.title = @report["title"]
 					@findings.company = @report["company"]
 					@findings.classification = @report["classification"]
-
-					#@template = PrawnTemplater.new(@options[:template], @findings, @options[:output_file])
-					
-#					puts "#{@template_manager.inspect}"
 					
 					template = Templater.new(@options[:template], @findings, @options[:output_file], @template_manager)
 					template.generate
