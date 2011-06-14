@@ -64,7 +64,7 @@ module Risu
 					g.title = sprintf "Top %d High Findings By Plugin", Item.risks_by_plugin(limit).all.count
 					g.sort = false
 					g.theme = {
-						:colors => %w(red green blue orange yellow purple black grey brown pink),
+						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
 					}
 
