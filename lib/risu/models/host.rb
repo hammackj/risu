@@ -253,12 +253,20 @@ module Risu
 				def not_os_osx
 					where("os NOT LIKE '%Mac OS X%'")
 				end
+				
+				def os_aix
+					where("os LIKE '%AIX%'")
+				end
+				
+				def not_os_aix
+					where("os NOT LIKE '%AIX%'")
+				end
 
 				# Queries for all hosts with a Unknown Operating system
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def os_other
-					not_os_osx.not_os_linux.not_os_netbsd.not_os_freebsd.not_os_cisco.not_os_vxworks.not_os_vmware_esx.not_os_windows
+					not_os_osx.not_os_linux.not_os_netbsd.not_os_freebsd.not_os_cisco.not_os_vxworks.not_os_vmware_esx.not_os_windows.not_os_aix
 				end
 
 				# Generates a graph of the high and medium findings count per host
@@ -269,7 +277,7 @@ module Risu
 					g.title = sprintf "Top %d High/Medium Finding Count Per Host ", Item.risks_by_host(limit).all.count
 					g.sort = false
 					g.theme = {
-						:colors => %w(red green blue orange yellow purple black grey brown pink),
+						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
 					}
 
@@ -291,7 +299,7 @@ module Risu
 					g.title = "Other Operating Systems Percentage"
 					g.sort = false
 					g.theme = {
-						:colors => %w(red green blue orange yellow purple black grey brown pink),
+						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
 					}
 
@@ -302,6 +310,7 @@ module Risu
 					cisco = Host.os_cisco.all.count
 					vxworks = Host.os_vxworks.all.count
 					esx = Host.os_vmware_esx.all.count
+					aix = Host.os_aix.all.count
 					other = Host.os_other.all.count
 
 					g.data("Linux", linux) unless linux == 0
@@ -311,6 +320,7 @@ module Risu
 					g.data("Cisco ISO", cisco) unless cisco == 0
 					g.data("VxWorks", vxworks) unless vxworks == 0
 					g.data("VMware", esx) unless esx == 0
+					g.data("AIX", aix) unless aix == 0
 					g.data("Other", other) unless other == 0
 
 					#Creates very odd graphs
@@ -329,7 +339,7 @@ module Risu
 					g.title = "Windows Operating Systems By Percentage"
 					g.sort = false
 					g.theme = {
-						:colors => %w(red green blue orange yellow purple black grey brown pink),
+						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
 					}
 
@@ -353,6 +363,55 @@ module Risu
 
 					StringIO.new(g.to_blob)
 				end
+				
+				#
+				#
+				def unsupported_os_text
+					aix_text = unsupported_os_aix
+					win_text = unsupported_os_windows
+											
+					unsupported_os_text = "Several unsupported Operating Systems have been discovered on the network. " +
+					"These Operating System are no longer updated by the specific vendor. This operating systems should be " +
+					"updated and replaced as soon as possible.\n\n"
+					
+					unsupported_os_text << "#{win_text}\n" if win_text != ""
+					unsupported_os_text << "#{aix_text}\n" if aix_text != ""
+					unsupported_os_text << "\n"
+					
+					return unsupported_os_text
+				end
+				
+				def unsupported_os_windows
+					win_nt_text = ""
+					win_2000_text = ""
+					win_nt = Host.os_windows_nt
+					win_2000 = Host.os_windows_2k
+					
+					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
+					
+					win_nt_text = "Windows NT is an unsupported Operating System; Microsoft has stopped support as of June 2004. " +
+					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n" if win_nt.count >= 1
+					
+					win_2000_text = "Windows 2000 is an unsupported Operating System; Microsoft has stopped support as of June 2004. " +
+					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n" if win_2000.count >= 1 
+					
+					return "#{win_nt_text}#{win_2000_text}"
+					
+				end
+				
+				#
+				#
+				def unsupported_os_aix
+					text = ""
+					aix = Host.os_aix.where("OS LIKE 'AIX 5.%'")
+					
+					text = "AIX 5.x is an unsupported Operating System; IBM has stopped support as of April 2011. " +
+					"Please see http://www-03.ibm.com/systems/power/software/aix/ for more information " +
+					"about obtaining a newer supported version." if aix.count >= 1
+					
+					return text
+				end
+				
 			end
 		end
 	end
