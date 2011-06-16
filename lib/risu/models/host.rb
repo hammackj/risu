@@ -364,14 +364,14 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 				
-				#
+				# @todo add plural check
 				#
 				def unsupported_os_text
 					aix_text = unsupported_os_aix
 					win_text = unsupported_os_windows
 											
 					unsupported_os_text = "Several unsupported Operating Systems have been discovered on the network. " +
-					"These Operating System are no longer updated by the specific vendor. This operating systems should be " +
+					"These Operating System are no longer updated by the specific vendor. These operating systems should be " +
 					"updated and replaced as soon as possible.\n\n"
 					
 					unsupported_os_text << "#{win_text}\n" if win_text != ""
