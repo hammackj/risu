@@ -24,6 +24,7 @@
 	- Check to see that the xml is version 2
 		- Version 1 = NessusClientData
 		- Version 2 = NessusClientData_V2
+- Implemented OpenVAS xml parser
 
 
 - DSL for report creation to abstract the reports to have different output types
