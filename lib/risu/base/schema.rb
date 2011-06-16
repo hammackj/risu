@@ -124,6 +124,23 @@ module Risu
 			create_table :versions do |t|
 				t.string :version
 			end
+			
+			create_table :service_descriptions do |t|
+				t.string :name
+				t.integer :port
+				t.string :description
+			end
+			
+			ServiceDescription.create :name => "www", :description => ""
+			ServiceDescription.create :name => "cifs", :description => ""
+			ServiceDescription.create :name => "smb", :description => ""
+			ServiceDescription.create :name => "netbios-ns", :description => ""
+			ServiceDescription.create :name => "snmp", :description => ""
+			ServiceDescription.create :name => "ftp", :description => ""
+			ServiceDescription.create :name => "epmap", :description => ""
+			ServiceDescription.create :name => "ntp", :description => ""
+			ServiceDescription.create :name => "dce-rpc", :description => ""
+			ServiceDescription.create :name => "telnet", :description => ""
 		end
 
 		# Deletes all of the database tables created
