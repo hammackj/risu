@@ -3,7 +3,11 @@
 #1.5.0 (July 1, 2011)
 - Implemented an modular template system, **breaks all existing templates**.
 	- All templates are now implemented as Ruby classes this allows them to be dynamically loaded and removes the need to type the entire path to the template
-- Implemented OpenVAS xml parser
+- Updated the Severity Graph and added some auto generated text based on the graph percentages
+- Added some auto generated text for unsupported operating systems to put into a report.
+- Added AIX named_scopes on the Host model (os_aix and not_os_aix)
+- Unified the colors to be the same for all the graphs
+
 
 #1.4.4 (May 28, 2011)
 - NessusDB has been renamed to risu
