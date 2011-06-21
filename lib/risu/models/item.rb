@@ -145,7 +145,7 @@ module Risu
 				# @return [StringIO] Object containing the generated PNG image
 				def risks_by_service_graph(limit=10)
 					g = Gruff::Pie.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d Vulnerable Services", Item.risks_by_service(limit).all.count
+					g.title = sprintf "Top %d Services By Vulnerbility", Item.risks_by_service(limit).all.count
 					g.sort = false
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
@@ -160,7 +160,7 @@ module Risu
 				end
 				
 				def risks_by_service_graph_text
-					"This graph is a representation of the risks found by service. This graph can help " +
+					"This graph is a representation of the findings found by service. This graph can help " +
 					"understand what services are running on the network and if they are vulnerable, where " +
 					"the risks are and how they should be protected."
 					
@@ -192,7 +192,7 @@ module Risu
 					g.data("High", high, "red")
 					g.data("Medium", medium, "orange")
 					g.data("Low", low, "yellow")
-					g.data("Info", info, "blue")
+					g.data("Open Ports", info, "blue")
 
 					StringIO.new(g.to_blob)
 				end
@@ -241,26 +241,28 @@ module Risu
 							"This implies that only a handful of computers are missing patches, and the current patch management is working well."
 						when 6..20
 							"This implies that there is a minor patch management issue. If there is a patch management system, it should be checked for problems. " +
-							"Each host should also be inspect to be certain it can receive patches."
+							"Each host should also be inspected to be certain it can receive patches."
 						else
 							"This implies that there is a significant patch management problem on the network. Any patch management solutions should " +
-							"be inspected for issues and they should be correct as soon as possible. Each host should also be inspect to be certain it can receive patches."
+							"be inspected for issues and they should be correct as soon as possible. Each host should also be inspected to be certain it can receive patches."
 					end
 							
-					graph_text = "This bar graph is a representation of the risks by severity; the " +
+					graph_text = "This bar graph is a representation of the findings by severity; the " +
 					"graph shows that, overall, #{Report.title} has a #{adjective} handle on the patch " +
 					"management of the network.\n\n"
 					
-					graph_text += "The majority of the high risks were found on #{host_percent.round}% of the total assessed computers. #{percent_text}\n\n"
+					graph_text << "The majority of the high findings were found on #{host_percent.round}% of the total assessed computers. #{percent_text}\n\n"
 					
-					graph_text += "The systems with high vulnerbilities represent the largest threat to the network, " +
-					"so patching this group is paramount to the overall network security. It only takes one vulnerable system " +
+					graph_text << "The systems with high vulnerabilities represent the largest threat to the network, " +
+					"so patching this group is paramount to the overall network security. It only takes one high vulnerability " +
 					"to create a security incident.\n\n"
 					
-					graph_text += "Low and information risks represent the discovery of network services and open ports. " +
-					"These are used in conjunction with the high and medium risks to determine if computers and services " +
-					"are vulnerable.\n"
-
+					graph_text << "It should be noted that low findings and open ports represent the discovery "
+					graph_text << "of network services and open ports. Typically, these are not an indication of "
+					graph_text << "a serious problem and pose little to no threat. However, the correlation of "
+					graph_text << "data between the different severity levels could be used to determine degree "
+					graph_text << "of vulnerability for a given system.\n"
+					
 					return graph_text
 				end
 			end
