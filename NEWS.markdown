@@ -3,14 +3,17 @@
 #1.5.0 (July 1, 2011)
 - Implemented an modular template system, **breaks all existing templates**.
 	- All templates are now implemented as Ruby classes this allows them to be dynamically loaded and removes the need to type the entire path to the template
+	- This allows me to implement rendering systems that will be able to write pdf/html/rtf/csv in the future without having to have templates for each type
 - Updated the Severity Graph and added some auto generated text based on the graph percentages
+- Added a method to generate text for the other_os_graph
+- Added a method to generate text for the windows_os_graph
 - Added some auto generated text for unsupported operating systems to put into a report.
 - Added AIX named_scopes on the Host model (os_aix and not_os_aix)
 - Unified the colors to be the same for all the graphs
 
 
 #1.4.4 (May 28, 2011)
-- NessusDB has been renamed to risu
+- NessusDB has been renamed to risu, NessusDB gem now install risu and warns you.
 - Fixed a bug in --create-config, where tabs were being inserted with spaces
 - Fixed a bug in load_config where the exception was not printed.
 - Added more banners to the console for fun
