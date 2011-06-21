@@ -145,7 +145,7 @@ module Risu
 				# @return [StringIO] Object containing the generated PNG image
 				def risks_by_service_graph(limit=10)
 					g = Gruff::Pie.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d Services By Vulnerbility", Item.risks_by_service(limit).all.count
+					g.title = sprintf "Top %d Services By Vulnerability", Item.risks_by_service(limit).all.count
 					g.sort = false
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
