@@ -414,7 +414,6 @@ module Risu
 
 					unsupported_os_text << "#{win_text}" if win_text != ""
 					unsupported_os_text << "#{aix_text}" if aix_text != ""
-					unsupported_os_text << "\n"
 
 					return unsupported_os_text
 				end
@@ -427,10 +426,10 @@ module Risu
 
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
-					win_nt_text = "Windows NT is an unsupported sperating system, since Microsoft has stopped support as of June 2004. " +
+					win_nt_text = "Windows NT is an unsupported sperating system since Microsoft has stopped support as of June 2004. " +
 					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_nt.count >= 1
 
-					win_2000_text = "Windows 2000 is an unsupported operating system, since Microsoft has stopped support as of June 2004. " +
+					win_2000_text = "Windows 2000 is an unsupported operating system since Microsoft has stopped support as of June 2004. " +
 					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2000.count >= 1
 
 					return "#{win_nt_text}#{win_2000_text}"
@@ -443,7 +442,7 @@ module Risu
 					text = ""
 					aix = Host.os_aix.where("OS LIKE 'AIX 5.%'")
 
-					text = "AIX 5.x is an unsupported operating system, since IBM has stopped support as of April 2011. " +
+					text = "AIX 5.x is an unsupported operating system since IBM has stopped support as of April 2011. " +
 					"Please see http://www-03.ibm.com/systems/power/software/aix/ for more information " +
 					"about obtaining a newer supported version.\n\n" if aix.count >= 1
 
