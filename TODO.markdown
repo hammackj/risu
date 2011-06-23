@@ -2,11 +2,10 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.5 (7/1/2011)
-- Add a CVSS risk factor graph
-- Update Assets templates to use this if possible plugin: http://www.nessus.org/plugins/index.php?view=single&id=54615 for extra data
-- Clean up / Bug fixes before 2.0
-- Create rSpec tests for everything (100% code coverage goal)
+## 1.5 (7/4/2011)
+- Comment all named scope from 1.2
+- Clean up / Bug fixes
+- Create rSpec tests for everything (95%+ code coverage goal)
 	- Parser tests
 		- Add test for new xml element
 		- Add test for new host properties tag
@@ -14,38 +13,45 @@
 		- Add a failed load_config() test
 		- add test for load config from file
 		- add test for non existent config file
-- Create test fixtures
-- Comment all named scope from 1.2
-- Create a Nessus document generator, for testing the parser
-- 100% code coverage for testing
-- Rework the blacklisting stuff
-	- Add blacklisting to config
-- Add Schema checks to make sure the schema is compatible with the version of risu
-	- Check to see that the xml is version 2
-		- Version 1 = NessusClientData
-		- Version 2 = NessusClientData_V2
-- Implemented OpenVAS xml parser
+- Rework the blacklisting of plugins/hosts add to the config file
+- Check to see that the xml is version 2
+	- Version 1 = NessusClientData
+	- Version 2 = NessusClientData_V2
 
-
-- DSL for report creation to abstract the reports to have different output types
+##1.5.1 (8/4/2011) - Template work
 - Provide more templates
 	- Virtual Machine Summary
 	- Fix list Report?
+- Add a CVSS risk factor graph
+- Update Assets templates to use this if possible plugin: http://www.nessus.org/plugins/index.php?view=single&id=54615 for extra data
+- Sort Technical Findings Report by count/score
 - Add template validation and more error checking
 - Colorize the reports with better style
-- Sort Technical Findings Report by count/score	
+	
+##1.5.2 (9/4/2011) -Parser work
+- Add Schema checks to make sure the schema is compatible with the version of risu
+- Create a Nessus document generator, for testing the parser
 
-## 1.6 (9/4/2011)
-- Remove rmagick 
+#1.5.3 (10/4/2011) - Template Work
+- Implement different renderers
+	- pdf
+	- cvs
+	- html
+	- rtf
+- Abstract the api for prawn to support different renders
+- DSL for report creation to abstract the reports to have different output types
+
+## 1.6 (11/4/2011)
+- Remove rmagick (GRRRR!)
 - Move to ruby 1.9.2 only support
-- Add Parser for NBE Format
-- Add Parser for NSR Format
-- Add Parser for V1 of the XML Format
+- Add Parser for Nessus NBE Format
+- Add Parser for Nessus NSR Format
+- Add Parser for Nessus V1 of the XML Format
 - Add Parser for OpenVas Output
 - Add Parser for SecurityCenter Output
-- Add Parser for Nexpose
-- Add Parser for Qualys
+- Add Parser for Nexpose xml
+- Add Parser for Qualys xml
 - Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
 
-## 2.0 (12/4/2011)
+## 2.0 (?)
 - Rails FrontEnd to Risu
