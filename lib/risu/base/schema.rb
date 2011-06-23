@@ -157,6 +157,7 @@ module Risu
 			drop_table :plugins
 			drop_table :references
 			drop_table :versions
+			drop_table :service_descriptions
 		end
 
 	end
