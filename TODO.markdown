@@ -4,19 +4,34 @@
 
 ## 1.5 (7/4/2011)
 - Comment all named scope from 1.2
-- Clean up / Bug fixes
+- Clean up code
 - Create rSpec tests for everything (95%+ code coverage goal)
 	- Parser tests
 		- Add test for new xml element
 		- Add test for new host properties tag
-	- application specs
+	- Model Specs
+		- Report
+		- Item
+		- Host
+	- Application specs
 		- Add a failed load_config() test
 		- add test for load config from file
 		- add test for non existent config file
+	- Template specs
+		- Assets
+		- Coversheet
+		- exec summary
+		- executive summary(detailed)
+		- finding stats
+		- findings host
+		- findings summary
+		- findings summary with plugin id
+		- host summary
+		- ms patch summary
+		- ms update summary
+		- pci compliance
+		- tech findings
 - Rework the blacklisting of plugins/hosts add to the config file
-- Check to see that the xml is version 2
-	- Version 1 = NessusClientData
-	- Version 2 = NessusClientData_V2
 
 ##1.5.1 (8/4/2011) - Template work
 - Provide more templates
@@ -28,7 +43,7 @@
 - Add template validation and more error checking
 - Colorize the reports with better style
 	
-##1.5.2 (9/4/2011) -Parser work
+##1.5.2 (9/4/2011) - Parser work
 - Add Schema checks to make sure the schema is compatible with the version of risu
 - Create a Nessus document generator, for testing the parser
 
