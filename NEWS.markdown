@@ -10,6 +10,7 @@
 - Added some auto generated text for unsupported operating systems to put into a report.
 - Added AIX named_scopes on the Host model (os_aix and not_os_aix)
 - Unified the colors to be the same for all the graphs
+- Added validation of the XML files for Nessus Documents
 
 
 #1.4.4 (May 28, 2011)
