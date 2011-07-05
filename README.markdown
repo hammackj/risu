@@ -59,7 +59,7 @@ The data can be viewed with a query browser available for your database. A Rails
 ## Generating Reports
 To generate a report please execute the following after the the data is parsed into the database.
 
-	% risu -t "TEMPLATE_PATH" -o "REPORT_NAME.pdf"
+	% risu -t <TEMPLATE_NAME> -o "REPORT_NAME.pdf"
 	
 ## Risu Console
 
@@ -74,7 +74,7 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 	|_|  |_|___/\__,_|
 
 
-	risu Console v1.4.4
+	risu Console v1.4.5
 	>> Host.first
 	=> #<Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 	
@@ -100,7 +100,7 @@ Several templates are included:
 		template - template
 	[hammackj@taco:~/Projects/public/risu]$ 
 
-The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested.
+The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See 'template' for creating your own template.
 
 # Issues
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/hammackj/risu/issues).
