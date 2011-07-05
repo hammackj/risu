@@ -2,7 +2,7 @@
 
 module Risu
 	APP_NAME = "risu"
-	VERSION = "1.5.0"
+	VERSION = "1.4.5"
 	GRAPH_WIDTH = 750
 	EMAIL = "jacob.hammack@hammackj.com"
 	CONFIG_FILE = "./risu.cfg"

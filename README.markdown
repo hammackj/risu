@@ -2,7 +2,7 @@
 
 Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
 
-Version 1.4.4 is the current release.
+Version 1.4.5 is the current release.
 
 ## Requirements
 
@@ -81,42 +81,24 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 ## Templates
 Several templates are included:
 
-1. graphs.rb - several graphs written to disk as png's and as a complete pdf
-2. technical_findings.rb - a detailed pdf of the high and medium findings from the assessment
-3. finding_statistics.rb - this is a pdf summary of the assessment
-4. assets.rb - this is a summary of all the hosts found during the scan
-5. pci_compliance.rb - this generates of list of hosts that pass or failed pci/dss auditing
-6. exec_summary.rb - A sample executive summary report
-7. executive_summary.rb - A more detailed sample executive summary report
-8. findings_summary.rb - A summary of all the findings report
-9. ms_update_summary.rb - a summary of all the windows update enable hosts
-10. ms_patch_summary.rb - a summary of all the missing windows patches
-11. cover_sheet.rb - a example coversheet report
-12. findings_host.rb - list of findings per host
-	
-The templates are located in the risu/templates folder, where ever the gem was installed. On a typical Mac OSX install the path is:
-
-	[hammackj@taco:~]$ ruby -v
-	ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]
-	[hammackj@taco:~]$ l /Library/Ruby/Gems/1.8/gems/risu-1.4.0/lib/risu/templates/
-	total 40
-	drwxr-xr-x  7 hammackj  admin   238B Oct 21 19:24 ./
-	drwxr-xr-x  8 hammackj  admin   272B Oct 21 19:24 ../
-	-rw-r--r--   1 hammackj  staff   695B Mar  9 15:59 assets.rb
-	-rw-r--r--   1 hammackj  staff   691B Mar  9 15:59 cover_sheet.rb
-	drwxr-xr-x   3 hammackj  staff   102B Mar  9 15:59 data/
-	-rw-r--r--   1 hammackj  staff   2.0K Mar  9 15:59 exec_summary.rb
-	-rw-r--r--   1 hammackj  staff   6.7K Mar  9 15:59 executive_summary.rb
-	-rw-r--r--   1 hammackj  staff   724B Mar  9 15:59 finding_statistics.rb
-	-rw-r--r--@  1 hammackj  staff   1.2K Mar 17 14:55 findings_host.rb
-	-rw-r--r--   1 hammackj  staff   1.5K Mar  9 15:59 findings_summary.rb
-	-rw-r--r--   1 hammackj  staff   831B Mar  9 15:59 graphs.rb
-	-rw-r--r--   1 hammackj  staff   1.2K Mar  9 15:59 host_summary.rb
-	-rw-r--r--   1 hammackj  staff   663B Mar  9 15:59 ms_patch_summary.rb
-	-rw-r--r--   1 hammackj  staff   924B Mar  9 15:59 ms_update_summary.rb
-	-rw-r--r--   1 hammackj  staff   1.6K Mar  9 15:59 pci_compliance.rb
-	-rw-r--r--   1 hammackj  staff   2.8K Mar  9 15:59 technical_findings.rb
-	[hammackj@taco:~]$ 
+	[hammackj@taco:~/Projects/public/risu]$ ./bin/risu -l
+	Available Templates
+		assets - Generates a Assets Summary Report
+		cover_sheet - Generates a coversheet with a logo (Example Template)
+		exec_summary - Generates a simple executive summary.
+		exec_summary_detailed - Generates a detailed executive summary report
+		finding_statistics - Generates report finding statistics
+		findings_host - Generates a findings report by host
+		findings_summary - Generates a findings summary report
+		findings_summary_with_pluginid - Geneates a Findings Summary with Nessus Plugin ID
+		graphs - Generates a report with all the graphs in it
+		host_summary - Generates a Host Summary Report
+		ms_patch_summary - Generates a Microsoft Patch Summary Report
+		ms_update_summary - Generates a Microsoft Update Summary Report
+		pci_compliance - Generates a PCI Compliance Overview Report
+		technical_findings - Generates a Technical Findings Report
+		template - template
+	[hammackj@taco:~/Projects/public/risu]$ 
 
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested.
 
