@@ -12,7 +12,7 @@ end
 task :release => :build do
   system "gem push #{Risu::APP_NAME}-#{Risu::VERSION}.gem"
 
-	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is always available in RubyGems!"
+	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is always available in RubyGems! More information at http://hammackj.com/projects/risu/"
 end
 
 task :clean do
