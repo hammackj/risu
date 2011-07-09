@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Risu
 	module Models
 
@@ -112,7 +110,7 @@ module Risu
 
 				# Queries for all the high risks by plugin
 				#
-				# @todo update this
+				# @param limit Limits the result to a specific number, default 10
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_plugin(limit=10)
@@ -120,6 +118,8 @@ module Risu
 				end
 
 				# Queries for all the risks by host
+				#
+				# @param limit Limits the result to a specific number, default 10
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
@@ -142,6 +142,8 @@ module Risu
 
 				# Generates a Graph of all the risks by service
 				#
+				# @param limit Limits the result to a specific number, default 10
+				#
 				# @return [StringIO] Object containing the generated PNG image
 				def risks_by_service_graph(limit=10)
 					g = Gruff::Pie.new(GRAPH_WIDTH)
@@ -152,9 +154,9 @@ module Risu
 						:background_colors => %w(white white)
 					}
 
-					Item.risks_by_service(limit).all.each { |service|
+					Item.risks_by_service(limit).all.each do |service|
 						g.data(service.svc_name, Item.find(:all, :conditions => {:svc_name => service.svc_name}).count)
-					}
+					end
 
 					StringIO.new(g.to_blob)
 				end
