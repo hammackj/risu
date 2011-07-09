@@ -1,10 +1,9 @@
-# encoding: utf-8
-
 module Risu
 	module Base
 	end
 end
 
+#Remove this by 1.5 as it doesn't seem to be needed
 #if ActiveRecord::Base.connected? == true
 #	require 'risu/base/schema'
 #end
