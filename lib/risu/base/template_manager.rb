@@ -42,20 +42,15 @@ module Risu
 				end
 			end
 
+			# Validates that a template is a valid template
 			#
+			# @param template The template to validate
 			#
 			def validate(template)
 			  t = template.new
-
-			  if t == nil
-			    return false
-			  end
-
-			  if t.respond_to?(:render) == false
-			    return false
-			  end
-
-			  return true
+				
+				return false if t == nil
+			  return t.respond_to?(:render)
 			end
 
 			#
@@ -81,8 +76,11 @@ module Risu
 			  @templates.push(plugin)
 			end
 			
+			# Finds a template by its name
 			#
+			# @param name Name of the template to find
 			#
+			# @return the instance of the template or nil if not found
 			def find_template_by_name(name)
 				@registered_templates.each do |template|
 					t = template.new
@@ -94,7 +92,7 @@ module Risu
 				return nil
 			end
 			
-			#
+			# Displays a list of all the templates
 			#
 			def display_templates
 				puts "Available Templates"
