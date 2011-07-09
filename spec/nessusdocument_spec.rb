@@ -40,7 +40,7 @@ module Risu
 					@doc.parse.should == true
 				end
 				
-				# @todo implement this
+				# @todo implement this correctly and cal fix_ips
 				it "should return true for NessusDocument.fix_ips" do				
 					@doc.valid?.should == true
 				end
