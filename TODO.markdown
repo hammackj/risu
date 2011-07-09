@@ -6,8 +6,8 @@
 
 
 ## 1.5 (7/4/2011)
-- Comment all named scope from 1.2
-- Clean up code
+- Rework the blacklisting of plugins/hosts add to the config file
+- Complete comments for all existing code
 - Create rSpec tests for everything (95%+ code coverage goal)
 	- Parser tests
 		- Add test for new xml element
@@ -34,7 +34,6 @@
 		- ms update summary
 		- pci compliance
 		- tech findings
-- Rework the blacklisting of plugins/hosts add to the config file
 
 ##1.5.1 (8/4/2011) - Template work
 - Provide more templates
