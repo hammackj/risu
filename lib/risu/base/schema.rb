@@ -63,6 +63,8 @@ module Risu
 				t.string :pcidss_compliance_passed
 				t.string :pcidss_deprecated_ssl
 				t.string :pcidss_expired_ssl_certificate
+				t.string :pcidss_obsolete_operating_system
+				t.string :pcidss_dns_zone_transfer
 				t.string :pcidss_high_risk_flaw
 				t.string :pcidss_medium_risk_flaw
 				t.string :pcidss_reachable_db
