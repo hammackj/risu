@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Risu
 	APP_NAME = "risu"
 	VERSION = "1.4.6"
