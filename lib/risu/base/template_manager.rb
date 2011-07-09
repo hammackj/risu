@@ -3,21 +3,28 @@ module Risu
 		class TemplateManager
 			attr_accessor :registered_templates
 
+			# Creates new instance of TemplateManager
 			#
+			# @param path Path relative to the base_dir of risu
 			#
+			# @return New instance of the template manager with templates loaded.
 			def initialize (path)
 			  @registered_templates = Array.new
 				@templates = Array.new
 				
-				load_templates(path)
+				base_dir = __FILE__.gsub("risu/base/template_manager.rb", "")
+				
+				load_templates(base_dir + path)
+				load_templates(USER_TEMPLATES_DIR) if File.exists?(USER_TEMPLATES_DIR) && File.directory?(USER_TEMPLATES_DIR)
 			end
 
+			# Loads templates from a specific path
 			#
+			# @param path Path to templates to load
 			#
 			def load_templates(path)
 				begin
-					base_dir = __FILE__.gsub("risu/base/template_manager.rb", "")
-				  Dir["#{base_dir + path}/**/*.rb"].each do |x| 
+				  Dir["#{path}/**/*.rb"].each do |x| 
 						begin
 							load x
 						rescue => e
@@ -31,7 +38,7 @@ module Risu
 				    end
 				  end
 				rescue => e
-					puts "Bad plugin"
+					puts "[!] Invalid template path"
 				end
 			end
 
