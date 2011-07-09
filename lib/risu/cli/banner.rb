@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #Cool random banner stuff for the cli, based on the metasploit random banner stuff
 
 module Risu
