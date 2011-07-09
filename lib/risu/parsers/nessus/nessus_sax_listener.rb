@@ -52,7 +52,9 @@ module Risu
 							"pcidss:medium_risk_flaw" => :pcidss_medium_risk_flaw,
 							"pcidss:reachable_db" => :pcidss_reachable_db,
 							"pcidss:www:xss" => :pcidss_www_xss,
-							"system-type" => :system_type
+							"system-type" => :system_type,
+							"pcidss:obsolete_operating_system" => :pcidss_obsolete_operating_system,
+							"pcidss:dns_zone_transfer" => :pcidss_dns_zone_transfer
 						}
 
 						@valid_ms_patches = {
@@ -71,7 +73,9 @@ module Risu
 							"MS11-020" => :ms11_020,
 							"MS11-018" => :ms11_018,
 							"MS11-028" => :ms11_028,
-							"MS11-032" => :ms11_032
+							"MS11-032" => :ms11_032,
+							"MS040-016" => :ms040_016,
+							"MS08-50" => :ms08_50
 						}
 				end
 
