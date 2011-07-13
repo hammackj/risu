@@ -1,12 +1,10 @@
 # News
 
-#1.4.6 (July, 2011)
+#1.4.6 (July 12, 2011)
 - Added pcidss:dns_zone_transfer to the Nessus parser
 - Added pcidss:obsolete_operating_system to the Nessus parser
 - Removed warnings about several Microsoft patch tags, not sure what to do with them at the moment.
-- Added a user template directory. Risu will scan ~/.risu/templates for more templates.
-- 
-
+- Added a user template directory. Risu will scan ~/.risu/templates for user templates.
 
 #1.4.5 (July 4, 2011)
 - Implemented an modular template system, **breaks all existing templates**.
