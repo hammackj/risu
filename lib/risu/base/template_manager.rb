@@ -15,14 +15,14 @@ module Risu
 				base_dir = __FILE__.gsub("risu/base/template_manager.rb", "")
 				
 				load_templates(base_dir + path)
-				load_templates(USER_TEMPLATES_DIR) if File.exists?(USER_TEMPLATES_DIR) && File.directory?(USER_TEMPLATES_DIR)
+				load_templates(File.expand_path(USER_TEMPLATES_DIR)) if File.exists?(File.expand_path(USER_TEMPLATES_DIR)) && File.directory?(File.expand_path(USER_TEMPLATES_DIR))
 			end
 
 			# Loads templates from a specific path
 			#
 			# @param path Path to templates to load
 			#
-			def load_templates(path)
+			def load_templates(path)				
 				begin
 				  Dir["#{path}/**/*.rb"].each do |x| 
 						begin
@@ -34,7 +34,7 @@ module Risu
 
 				  TemplateBase.possible_templates.each do |p|
 				    if validate(p) ==  true
-				      @registered_templates << p
+				      @registered_templates << p if @registered_templates.include?(p) == false
 				    end
 				  end
 				rescue => e
@@ -73,7 +73,7 @@ module Risu
 			def register_template(plugin)
 			  load plugin
 
-			  @templates.push(plugin)
+			  @templates.push(plugin) if @templates.include?(plugin) == false
 			end
 			
 			# Finds a template by its name
