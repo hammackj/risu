@@ -2,10 +2,10 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.4.6
+## 1.4.7
 
 
-## 1.5 (7/4/2011)
+## 1.5 (8/4/2011)
 - Rework the blacklisting of plugins/hosts add to the config file
 - Complete comments for all existing code
 - Create rSpec tests for everything (95%+ code coverage goal)
@@ -35,7 +35,7 @@
 		- pci compliance
 		- tech findings
 
-##1.5.1 (8/4/2011) - Template work
+##1.5.1 (10/4/2011) - Template work
 - Provide more templates
 	- Virtual Machine Summary
 	- Fix list Report?
@@ -45,11 +45,11 @@
 - Add template validation and more error checking
 - Colorize the reports with better style
 	
-##1.5.2 (9/4/2011) - Parser work
+##1.5.2 (11/4/2011) - Parser work
 - Add Schema checks to make sure the schema is compatible with the version of risu
 - Create a Nessus document generator, for testing the parser
 
-#1.5.3 (10/4/2011) - Template Work
+#1.5.3 (12/4/2011) - Template Work
 - Implement different renderers
 	- pdf
 	- cvs
@@ -58,7 +58,7 @@
 - Abstract the api for prawn to support different renders
 - DSL for report creation to abstract the reports to have different output types
 
-## 1.6 (11/4/2011)
+## 1.6 (01/4/2012)
 - Remove rmagick (GRRRR!)
 - Move to ruby 1.9.2 only support
 - Add Parser for Nessus NBE Format
