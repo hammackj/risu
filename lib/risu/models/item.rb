@@ -164,7 +164,7 @@ module Risu
 				def risks_by_service_graph_text
 					"This graph is a representation of the findings found by service. This graph can help " +
 					"understand what services are running on the network and if they are vulnerable, where " +
-					"the risks are and how they should be protected."
+					"the risks are and how they should be protected.\n\n"
 					
 				end
 				
