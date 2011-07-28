@@ -3,7 +3,11 @@
 **Release dates are estimates, and features can be changed at any time.**
 
 ## 1.4.7
-
+- Make sure all classification headers are upcase
+- Ensure font sizes are standard in the templates
+- The font in tech findings could be 1 size smaller
+- Add a filtering system for lowering the rating of plugins based on config
+- Compact the data in tech findings to be more printer friendly
 
 ## 1.5 (8/4/2011)
 - Rework the blacklisting of plugins/hosts add to the config file
