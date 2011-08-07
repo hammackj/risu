@@ -9,6 +9,10 @@
 - Add a filtering system for lowering the rating of plugins based on config
 - Compact the data in tech findings to be more printer friendly
 
+- pcidss:directory_browsing
+- pcidss:known_credentials
+- pcidss:compromised_host:worm
+
 ## 1.5 (8/4/2011)
 - Rework the blacklisting of plugins/hosts add to the config file
 - Complete comments for all existing code
