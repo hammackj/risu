@@ -98,7 +98,7 @@ module Risu
 				puts "Available Templates"
 			  @registered_templates.each do |x| 
 			      p = x.new
-			      puts "\t#{p.template_info[:name]} - #{p.template_info[:description]}\n", 
+			      puts "\t#{p.template_info[:name]} - #{p.template_info[:description]}\n"
 			    end
 			end
 		end
