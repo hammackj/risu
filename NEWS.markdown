@@ -3,7 +3,6 @@
 #1.4.7 (August 13, 2011)
 - Fixed issue #39 Ruby 1.8.7 Syntax error reported by mlpotgieter 
 - Ruby 1.8.7 will no longer be supported in v1.5, please upgrade your ruby installs.
-- 
 
 #1.4.6 (July 12, 2011)
 - Added pcidss:dns_zone_transfer to the Nessus parser
