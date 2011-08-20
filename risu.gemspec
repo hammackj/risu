@@ -27,18 +27,18 @@ Gem::Specification.new do |s|
 	s.required_rubygems_version = ">= 1.6.0"
 	s.rubyforge_project	= "#{Risu::APP_NAME}"
 
-	s.add_development_dependency("rspec", "= 2.5.0")
-	s.add_development_dependency("rcov", ">= 0.9.9")
-	s.add_development_dependency("yard", ">= 0.6.4")
-	s.add_development_dependency("machinist", ">= 1.0.6")
-	s.add_development_dependency("sham", ">= 0.4.0")
-	s.add_development_dependency("faker", ">= 0.9.5")
+	s.add_development_dependency("rspec", ["~> 2.5.0"])
+	s.add_development_dependency("rcov", [">= 0.9.9"])
+	s.add_development_dependency("yard", [">= 0.6.4"])
+	s.add_development_dependency("machinist", [">= 1.0.6"])
+	s.add_development_dependency("sham", [">= 0.4.0"])
+	s.add_development_dependency("faker", [">= 0.9.5"])
 
-	s.add_dependency('rails', '>= 3.0.7')
-	s.add_dependency('libxml-ruby', '>= 1.1.4')
-	s.add_dependency('prawn', '>= 0.11.1')
-	s.add_dependency('gruff', '>= 0.3.6')
-	s.add_dependency('mysql', '>= 2.8.1')
-	s.add_dependency('rmagick', ">= 2.13.1")
-	s.add_dependency('sqlite3', ">= 1.3.3")
+	s.add_dependency('rails', ['>= 3.0.7'])
+	s.add_dependency('libxml-ruby', ['>= 1.1.4'])
+	s.add_dependency('prawn', ['>= 0.11.1'])
+	s.add_dependency('gruff', ['>= 0.3.6'])
+	s.add_dependency('mysql', ['>= 2.8.1'])
+	s.add_dependency('rmagick', [">= 2.13.1"])
+	s.add_dependency('sqlite3', [">= 1.3.3"])
 end
