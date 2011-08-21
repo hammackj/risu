@@ -56,27 +56,158 @@ module Risu
 							"pcidss:obsolete_operating_system" => :pcidss_obsolete_operating_system,
 							"pcidss:dns_zone_transfer" => :pcidss_dns_zone_transfer
 						}
-
-						@valid_ms_patches = {
-							"MS11-030" => :ms11_030,
-							"MS11-026" => :ms11_026,
-							"MS11-034" => :ms11_034,
-							"MS11-021" => :ms11_021,
-							"MS11-029" => :ms11_029,
-							"MS11-023" => :ms11_023,
-							"MS11-022" => :ms11_022,
-							"MS09-027" => :ms09_027,
-							"MS11-033" => :ms11_033,
-							"MS11-019" => :ms11_019,
-							"MS11-024" => :ms11_024,
-							"MS11-031" => :ms11_031,
-							"MS11-020" => :ms11_020,
-							"MS11-018" => :ms11_018,
-							"MS11-028" => :ms11_028,
-							"MS11-032" => :ms11_032,
-							"MS040-016" => :ms040_016,
-							"MS08-50" => :ms08_50
-						}
+						#@todo change this to an array and use a dynamic ms_patches table
+						@valid_ms_patches = [
+							"MS11-030",
+							"MS11-026",
+							"MS11-034",
+							"MS11-021",
+							"MS11-029",
+							"MS11-023",
+							"MS11-022",
+							"MS09-027",
+							"MS11-033",
+							"MS11-019",
+							"MS11-024",
+							"MS11-031",
+							"MS11-020",
+							"MS11-018",
+							"MS11-028",
+							"MS11-032",
+							"MS040-016",
+							"MS08-50",
+							"MS09-055",
+							"MS10-008",
+							"MS10-034",
+							"MS10-082",
+							"MS11-003",
+							"MS07-021",
+							"MS09-062",
+							"MS07-022",
+							"MS10-096",
+							"MS09-062",
+							"MS07-017",
+							"MS07-031",
+							"MS08-020",
+							"MS10-002",
+							"MS10-035",
+							"MS11-007",
+							"MS10-018",
+							"MS09-069",
+							"MS09-001",
+							"MS10-073",
+							"MS09-044",
+							"MS08-021",
+							"MS08-001",
+							"MS11-011",
+							"MS07-004",
+							"MS07-006",
+							"MS07-007",
+							"MS07-008",
+							"MS07-009",
+							"MS07-011",
+							"MS07-012",
+							"MS07-013",
+							"MS07-016",
+							"MS07-019",
+							"MS07-020",
+							"MS07-027",
+							"MS08-002",
+							"MS08-007",
+							"MS08-008",
+							"MS08-010",
+							"MS08-022",
+							"MS09-006",
+							"MS09-007",
+							"MS09-010",
+							"MS09-011",
+							"MS09-012",
+							"MS09-013",
+							"MS09-014",
+							"MS09-015",
+							"MS09-019",
+							"MS09-022",
+							"MS09-025",
+							"MS09-026",
+							"MS09-034",
+							"MS09-037",
+							"MS09-038",
+							"MS09-040",
+							"MS09-041",
+							"MS09-042",
+							"MS09-045",
+							"MS09-046",
+							"MS09-047",
+							"MS09-048",
+							"MS09-051",
+							"MS09-052",
+							"MS09-054",
+							"MS09-056",
+							"MS09-057",
+							"MS09-058",
+							"MS09-065",
+							"MS09-071",
+							"MS09-072",
+							"MS09-073",
+							"MS10-001",
+							"MS10-005",
+							"MS10-006",
+							"MS10-011",
+							"MS10-012",
+							"MS10-013",
+							"MS10-015",
+							"MS10-016",
+							"MS10-019",
+							"MS10-020",
+							"MS10-021",
+							"MS10-022",
+							"MS10-026",
+							"MS10-027",
+							"MS10-029",
+							"MS10-030",
+							"MS10-032",
+							"MS10-033",
+							"MS10-037",
+							"MS10-041",
+							"MS10-042",
+							"MS10-046",
+							"MS10-047",
+							"MS10-048",
+							"MS10-049",
+							"MS10-050",
+							"MS10-051",
+							"MS10-052",
+							"MS10-053",
+							"MS10-054",
+							"MS10-055",
+							"MS10-061",
+							"MS10-062",
+							"MS10-063",
+							"MS10-066",
+							"MS10-067",
+							"MS10-069",
+							"MS10-070",
+							"MS10-071",
+							"MS10-074",
+							"MS10-076",
+							"MS10-078",
+							"MS10-081",
+							"MS10-083",
+							"MS10-084",
+							"MS10-090",
+							"MS10-091",
+							"MS10-097",
+							"MS10-098",
+							"MS10-099",
+							"MS11-002",
+							"MS11-006",
+							"MS11-010",
+							"MS11-012",
+							"MS11-013",
+							"MS11-014",
+							"MS11-015",
+							"MS11-017"
+						]
 				end
 
 				# Callback for when the start of a xml element is reached
@@ -116,14 +247,23 @@ module Risu
 							@rh.name = attributes["name"]
 							@rh.save
 						when "tag"
-							unless attributes["name"] =~ /(MS\d\d-\d\d\d)/
-									@attr = if @valid_host_properties.keys.include?(attributes["name"])
-													attributes["name"]
-											else
-													nil
-											end
-									puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n" if @attr.nil?
+							@attr = nil
+
+							if attributes["name"] =~ /[M|m][S|s]\d{2}-\d{2,}/
+								@attr = if @valid_ms_patches.include?(attributes["name"])
+										attributes["name"]
+									else
+										nil
+									end
+							else
+								@attr = if @valid_host_properties.keys.include?(attributes["name"])
+										attributes["name"]
+									else
+										nil
+									end
 							end
+
+							puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n" if @attr.nil?
 						when "ReportItem"
 							@vals = Hash.new # have to clear this out or everything has the same references
 							@ri = @rh.items.create
@@ -222,8 +362,15 @@ module Risu
 
 							@plugin_selection.save
 						when "tag"
-							@rh.attributes = {@valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") } if @valid_host_properties.keys.include?(@attr)
-							@rh.save
+							if @attr =~ /[M|m][S|s]\d{2}-\d{2,}/
+								@patch = @rh.patches.create
+								@patch.name = @attr
+								@patch.value = @vals['tag']
+								@patch.save
+							else
+								@rh.attributes = {@valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") } if @valid_host_properties.keys.include?(@attr)
+								@rh.save
+							end if @attr != nil
 						#We cannot handle the references in the same block as the rest of the ReportItem tag because
 						#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax
 						#parser. To solve this we do the references before the final plugin data
