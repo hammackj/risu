@@ -133,6 +133,12 @@ module Risu
 				t.string :description
 			end
 			
+			create_table :patches do |t|
+				t.integer :host_id
+				t.string :name
+				t.string :value
+			end
+			
 			ServiceDescription.create :name => "www", :description => ""
 			ServiceDescription.create :name => "cifs", :description => ""
 			ServiceDescription.create :name => "smb", :description => ""
@@ -160,6 +166,7 @@ module Risu
 			drop_table :references
 			drop_table :versions
 			drop_table :service_descriptions
+			drop_table :patches
 		end
 
 	end
