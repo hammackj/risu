@@ -6,6 +6,7 @@ module Risu
 		class Host < ActiveRecord::Base
 			belongs_to :report
 			has_many :items
+			has_many :patches
 
 			class << self
 
