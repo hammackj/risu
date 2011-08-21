@@ -1,5 +1,12 @@
 # News
 
+#1.4.8 (August 21, 2011)
+- Fixed a gemspec dependency error reported by mlpotgieter
+- Fixed a parser error related to Microsoft Bulletins report by stevelodin
+- Added a Table for all host related patches, currently only has Microsoft Bulletins
+You can access it via `Host.first.patches` or `Patch.all`
+- Please report any missing tags that risu outputs to jacob[dot]hammackj[@]hammackj[.]com, I expect a ton of Microsoft Patch tags missing
+
 #1.4.7 (August 13, 2011)
 - Fixed issue #39 Ruby 1.8.7 Syntax error reported by mlpotgieter 
 - Ruby 1.8.7 will no longer be supported in v1.5, please upgrade your ruby installs.
