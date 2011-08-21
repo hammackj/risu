@@ -2,7 +2,7 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.4.7
+## 1.4.9
 - Make sure all classification headers are upcase
 - Ensure font sizes are standard in the templates
 - The font in tech findings could be 1 size smaller
@@ -12,6 +12,8 @@
 - pcidss:directory_browsing
 - pcidss:known_credentials
 - pcidss:compromised_host:worm
+- Add tests for Patch model
+-
 
 ## 1.5 (8/4/2011)
 - Rework the blacklisting of plugins/hosts add to the config file
@@ -52,6 +54,7 @@
 - Sort Technical Findings Report by count/score
 - Add template validation and more error checking
 - Colorize the reports with better style
+- Added TOC/Index to the technical findings report, issue 15
 	
 ##1.5.2 (11/4/2011) - Parser work
 - Add Schema checks to make sure the schema is compatible with the version of risu
@@ -77,6 +80,7 @@
 - Add Parser for Nexpose xml
 - Add Parser for Qualys xml
 - Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
+- Easier way to select the Scan to generate reports from
 
 ## 2.0 (?)
 - Rails FrontEnd to Risu
