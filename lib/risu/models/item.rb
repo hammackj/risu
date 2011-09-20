@@ -267,6 +267,63 @@ module Risu
 					
 					return graph_text
 				end
+				
+				def top_10_sorted_raw
+					raw = Item.where(:severity => 3).count(:all, :group => :plugin_id)
+					data = Array.new
+
+					raw.each do |vuln|
+						row = Array.new
+						plugin_id = vuln[0]
+						count = vuln[1]
+						
+						row.push(plugin_id)					
+						row.push(count)
+						data.push(row)
+					end	
+
+					data = data.sort do |a, b|
+						b[1] <=> a[1]
+					end
+					
+					return data
+				end
+				
+				def top_10_sorted
+					raw = Item.where(:severity => 3).count(:all, :group => :plugin_id)
+					data = Array.new
+
+					raw.each do |vuln|
+						row = Array.new
+						plugin_id = vuln[0]
+						count = vuln[1]
+
+						name = Plugin.find_by_id(plugin_id).plugin_name
+
+						row.push(name)					
+						row.push(count)
+						data.push(row)
+					end	
+
+					data = data.sort do |a, b|
+						b[1] <=> a[1]
+					end
+					
+					return data	
+				end
+				
+				def top_10_table(output)
+					headers = ["Description", "Count"]
+					header_widths = {0 => (output.bounds.width - 50), 1=> 50}
+
+					data = top_10_sorted
+
+					output.table([headers] + data[0..9], :header => true, :column_widths => header_widths, :width => output.bounds.width) do
+						row(0).style(:font_style => :bold, :background_color => 'cccccc')
+						cells.borders = [:top, :bottom, :left, :right]
+					end					
+				end
+				
 			end
 		end
 	end
