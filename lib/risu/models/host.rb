@@ -428,10 +428,10 @@ module Risu
 
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
-					win_nt_text = "Windows NT is an unsupported sperating system since Microsoft has stopped support as of June 2004. " +
+					win_nt_text = "Windows NT is an unsupported sperating system; Microsoft has stopped support as of June 2004. " +
 					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_nt.count >= 1
 
-					win_2000_text = "Windows 2000 is an unsupported operating system since Microsoft has stopped support as of June 2004. " +
+					win_2000_text = "Windows 2000 is an unsupported operating system; Microsoft has stopped support as of June 2004. " +
 					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2000.count >= 1
 
 					return "#{win_nt_text}#{win_2000_text}"
