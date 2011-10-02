@@ -1,5 +1,14 @@
 # News
 
+#1.4.9 (September 20, 2011)
+- Added a simple top10 vulnerability template table report
+- Added a detailed top10 vulnerability template like the technical_findings report just limited to the top10 vulnerabilities
+- API for the top10 vulnerabilities can be found on the Item model
+	- top_10_sorted_raw(), returns the top 10 vulnerabilities in an Array sorted in the form of [plugin_id, count]
+	- top_10_sorted(), returns the top 10 vulnerabilities in an Array sorted in the form of [name, count]
+	-top_10_table(output), inserts a table into the output parameter object with the top 10 data using the top_10_sorted() method
+-
+
 #1.4.8 (August 21, 2011)
 - Fixed a gemspec dependency error reported by mlpotgieter
 - Fixed a parser error related to Microsoft Bulletins report by stevelodin
