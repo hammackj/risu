@@ -161,14 +161,13 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 				
+				#@todo comment
 				def risks_by_service_graph_text
 					"This graph is a representation of the findings found by service. This graph can help " +
 					"understand what services are running on the network and if they are vulnerable, where " +
-					"the risks are and how they should be protected.\n\n"
-					
+					"the risks are and how they should be protected.\n\n"				
 				end
 				
-
 				# Generates a Graph of all the risks by severity
 				#
 				# @return [StringIO] Object containing the generated PNG image
@@ -208,23 +207,8 @@ module Risu
 					if high == nil then high = 0 end
 					if medium == nil then medium = 0 end
 						
-					percentage = high
-					
-					adjective = case percentage
-						when 0..5
-							"excellent"
-						when 6..10
-							"great"
-						when 11..20
-							"very good"
-						when 21..30
-							"good"
-						when 31..40
-							"fair"
-						else
-							"poor"
-					end
-					
+					#percentage = high
+										
 					hosts_with_high = Hash.new
 					
 					Item.high_risks.all.each do |item|
@@ -238,6 +222,21 @@ module Risu
 					
 					host_percent = (hosts_with_high.count.to_f / Host.all.count.to_f) * 100
 					
+					adjective = case host_percent
+						when 0..5
+							"excellent"
+						when 6..10
+							"great"
+						when 11..20
+							"very good"
+						when 21..30
+							"good"
+						when 31..40
+							"fair"
+						else
+							"poor"
+					end
+										
 					percent_text = case host_percent
 						when 0..5			
 							"This implies that only a handful of computers are missing patches, and the current patch management is working well."
@@ -256,7 +255,7 @@ module Risu
 					graph_text << "The majority of the high findings were found on #{host_percent.round}% of the total assessed computers. #{percent_text}\n\n"
 					
 					graph_text << "The systems with high vulnerabilities represent the largest threat to the network, " +
-					"so patching this group is paramount to the overall network security. It only takes one high vulnerability " +
+					"so patching this group is paramount to the overall network security. It only takes one vulnerability " +
 					"to create a security incident.\n\n"
 					
 					graph_text << "It should be noted that low findings and open ports represent the discovery "
