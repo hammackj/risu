@@ -359,10 +359,10 @@ module Risu
 					g.data("Server 2008", w2k8) if w2k8 >= 1
 					g.data("7", w7) if w7 >= 1
 					g.data("Other Windows", other) if other >= 1
-					
+
 					StringIO.new(g.to_blob)
 				end
-				
+
 				#
 				#
 				def windows_os_graph_text
@@ -374,21 +374,21 @@ module Risu
 					w2k8 = Host.os_windows_2k8.all.count
 					w7 = Host.os_windows_7.all.count
 					other = (Host.os_windows.os_windows_other).all.count
-					
-					windows_os_count = nt + w2k + xp + w2k3 + vista + w7 + w2k8
-					
+
+					windows_os_count = nt + w2k + xp + w2k3 + vista + w7 + w2k8 + other
+
 					nt_percent = (nt.to_f / windows_os_count.to_f) * 100
 					w2k_percent = (w2k.to_f / windows_os_count.to_f) * 100
 					xp_percent = (xp.to_f / windows_os_count.to_f) * 100
 					w2k3_percent = (w2k3.to_f / windows_os_count.to_f) * 100
 					vista_percent = (vista.to_f / windows_os_count.to_f) * 100
-					
+
 					w2k8_percent = (w2k8.to_f / windows_os_count.to_f) * 100
 					w7_percent = (w7.to_f / windows_os_count.to_f) * 100
-					
+
 					text = "This graph shows the percentage of the different Microsoft Windows based operating systems " +
 					"found on the #{Report.title} network.\n\n"
-					
+
 					text << "#{nt_percent.round.to_i}% of the network is Windows NT. " if nt_percent >= 1
 					text << "#{w2k_percent.round.to_i}% of the network is Windows 2000. " if w2k_percent >= 1
 					text << "#{xp_percent.round.to_i}% of the network is Windows XP. " if xp_percent >= 1
@@ -396,10 +396,10 @@ module Risu
 					text << "#{vista_percent.round.to_i}% of the network is Windows Vista. " if vista_percent >= 1
 					text << "#{w2k8_percent.round.to_i}% of the network is Windows Server 2008. " if w2k8_percent >= 1
 					text << "#{w7_percent.round.to_i}% of the network is Windows 7. " if w7_percent >= 1
-					
+
 					text << "\n\n" << unsupported_os_windows if nt > 0 or w2k > 0
-					
-					return text					
+
+					return text
 				end
 
 				# @todo add plural check
@@ -411,12 +411,12 @@ module Risu
 
 					unsupported_os_text = "Several unsupported operating systems were discovered on the network. " +
 					"These operating systems are no longer updated by the specific vendor. These operating systems should be " +
-					"updated and replaced as soon as possible.\n\n"
+					"updated and replaced as soon as possible. If possible, disconnected from the network until updated.\n\n"
 
 					unsupported_os_text << "#{win_text}" if win_text != ""
 					unsupported_os_text << "#{aix_text}" if aix_text != ""
 					unsupported_os_text << "#{freebsd_text}" if freebsd_text != ""
-					
+
 					return unsupported_os_text
 				end
 
@@ -450,16 +450,16 @@ module Risu
 
 					return text
 				end
-				
+
 				#
 				#
 				def unsupported_os_freebsd
 					text = ""
 					freebsd = Host.os_freebsd.where("OS LIKE 'FreeBSD 5.%'")
-					
-					text = "FreeBSD 5 support ended on 2008-05-31. Upgrade to FreeBSD 8.2 or 7.4. For more information, " + 
+
+					text = "FreeBSD 5 support ended on 2008-05-31. Upgrade to FreeBSD 8.2 or 7.4. For more information, " +
 					"see : http://www.freebsd.org/security/\n\n" if freebsd.count >= 1
-					
+
 					return text
 				end
 
@@ -483,19 +483,18 @@ module Risu
 					linux_percent = (linux.to_f / other_os_count.to_f) * 100
 					aix_percent = (aix.to_f / other_os_count.to_f) * 100
 					freebsd_percent = (freebsd.to_f / other_os_count.to_f) * 100
-					vmware_percent = (esx.to_f / other_os_count.to_f) * 100 
-					
+					vmware_percent = (esx.to_f / other_os_count.to_f) * 100
+
 					#todo add other os's here
-					
+
 
 					text << "#{linux_percent.to_i}% of the network is running an Linux based operating system. " if linux_percent >= 1
 					text << "#{aix_percent.to_i}% of the network is running an AIX based operating system. " if aix_percent >= 1
 					text << "#{freebsd_percent.to_i}% of the network is running an FreeBSD based operating system. " if freebsd_percent >= 1
 					text << "#{vmware_percent.to_i}% of the network is running an VMware based operating system. " if vmware_percent >= 1
-					
+
 					text << "\n\n"<< unsupported_os_aix if aix > 0
 					text << "\n\n" << unsupported_os_freebsd if freebsd > 0
-					
 
 					return text
 				end
