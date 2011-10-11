@@ -17,23 +17,26 @@ module Risu
 			#
 			#
 			def render(output)
-				output.text Report.classification, :align => :center
+				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 
-				output.font_size(22) { output.text Report.title, :align => :center }
-				output.font_size(18) { 
+				output.font_size(22) do 
+					output.text Report.title, :align => :center 
+				end
+				
+				output.font_size(18) do
 					output.text "Findings Summary Report", :align => :center
 					output.text "\n"
 					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				end
 
 				output.text "\n\n\n"
 
-				output.font_size(20) { 
+				output.font_size(20) do
 					output.fill_color "FF0000"
 					output.text "High Findings", :style => :bold 
 					output.fill_color "000000"
-				}
+				end
 
 				Item.high_risks_unique_sorted.each do |item|
 					name = Plugin.find_by_id(item.plugin_id).plugin_name
@@ -44,11 +47,11 @@ module Risu
 
 				output.start_new_page
 
-				output.font_size(20) { 
+				output.font_size(20) do
 					output.fill_color "FF8040"
 					output.text "Medium Findings", :style => :bold 
 					output.fill_color "000000"
-				}
+				end
 
 				Item.medium_risks_unique_sorted.each do |item|
 					name = Plugin.find_by_id(item.plugin_id).plugin_name
