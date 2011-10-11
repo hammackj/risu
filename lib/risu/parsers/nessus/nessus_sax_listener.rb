@@ -5,15 +5,14 @@ require 'risu'
 module Risu
 	module Parsers
 		module Nessus
+			
 			# NessusSaxListener
-			#
 			#
 			# @author Jacob Hammack <jacob.hammack@hammackj.com>
 			class NessusSaxListener
 				include LibXML::XML::SaxParser::Callbacks
 
 				# Sets up a array of all valid xml fields
-				#
 				#
 				def initialize
 					@vals = Hash.new
