@@ -225,13 +225,13 @@ module Risu
 					adjective = case host_percent
 						when 0..5
 							"excellent"
+						#when 6..10
+						#	"great"
 						when 6..10
-							"great"
-						when 11..20
 							"very good"
-						when 21..30
+						when 15..25
 							"good"
-						when 31..40
+						when 25..35
 							"fair"
 						else
 							"poor"
@@ -250,7 +250,13 @@ module Risu
 							
 					graph_text = "This bar graph is a representation of the findings by severity; the " +
 					"graph shows that, overall, #{Report.title} has a #{adjective} handle on the patch " +
-					"management of the network.\n\n"
+					"management of the network. "
+					
+					if adjective == "good" or adjective == "fair"
+						graph_text << "But improvements in patch management could be made to ensure an excellent rating."
+					end
+					
+					graph_text << "\n\n"
 					
 					graph_text << "The majority of the high findings were found on #{host_percent.round}% of the total assessed computers. #{percent_text}\n\n"
 					
@@ -267,8 +273,9 @@ module Risu
 					return graph_text
 				end
 				
+				#sqlite only @todo @fix
 				def top_10_sorted_raw
-					raw = Item.where(:severity => 3).count(:all, :group => :plugin_id)
+					raw = Item.joins(:plugin).where(:severity => 3).order("cast(plugins.cvss_base_score as real)").count(:all, :group => :plugin_id)
 					data = Array.new
 
 					raw.each do |vuln|
@@ -289,7 +296,8 @@ module Risu
 				end
 				
 				def top_10_sorted
-					raw = Item.where(:severity => 3).count(:all, :group => :plugin_id)
+					#raw = Item.where(:severity => 3).count(:all, :group => :plugin_id)
+					raw = Item.joins(:plugin).where(:severity => 3).order(:cvss_base_score).count(:all, :group => :plugin_id)
 					data = Array.new
 
 					raw.each do |vuln|
@@ -313,7 +321,7 @@ module Risu
 				
 				def top_10_table(output)
 					headers = ["Description", "Count"]
-					header_widths = {0 => (output.bounds.width - 50), 1=> 50}
+					header_widths = {0 => (output.bounds.width - 50), 1 => 50}
 
 					data = top_10_sorted
 
