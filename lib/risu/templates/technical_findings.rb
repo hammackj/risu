@@ -40,11 +40,13 @@ module Risu
 
 				unique_risks.each do |h|
 					if h[:values].length > 1
-						output.font_size(20) do
+						output.font_size(18) do
 							output.fill_color h[:color]
 							output.text h[:title], :style => :bold
 							output.fill_color "000000"
 						end
+						
+						output.font_size(10)
 
 						output.text "\n"
 
