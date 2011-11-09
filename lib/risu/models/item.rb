@@ -240,21 +240,27 @@ module Risu
 					percent_text = case host_percent
 						when 0..5			
 							"This implies that only a handful of computers are missing patches, and the current patch management is working well."
-						when 6..20
+						when 6..9
 							"This implies that there is a minor patch management issue. If there is a patch management system, it should be checked for problems. " +
+							"Each host should also be inspected to be certain it can receive patches."							
+						when 10..20
+							"This implies that there is a significant patch management issue. If there is a patch management system, it should be checked for problems. " +
 							"Each host should also be inspected to be certain it can receive patches."
 						else
-							"This implies that there is a significant patch management problem on the network. Any patch management solutions should " +
-							"be inspected for issues and they should be correct as soon as possible. Each host should also be inspected to be certain it can receive patches."
+							"This implies that there is a major patch management problem on the network. Any patch management solutions should " +
+							"be inspected for issues and they should be corrected as soon as possible. Each host should also be inspected to be certain it can receive patches."
 					end
 							
-					graph_text = "This bar graph is a representation of the findings by severity; the " +
-					"graph shows that, overall, #{Report.title} has a #{adjective} handle on the patch " +
-					"management of the network. "
+					#graph_text = "This bar graph is a representation of the findings by severity; the " +
+					#"graph shows that, overall, #{Report.title} has a #{adjective} handle on the patch " +
+					#"management of the network. "
 					
-					if adjective == "good" or adjective == "fair"
-						graph_text << "But improvements in patch management could be made to ensure an excellent rating."
-					end
+					graph_text = "This bar graph is a representation of the findings by severity; the " +
+					"graph shows that, Overall #{Report.title} needs to implement patch management and configuration management as a priority."
+					
+					#if adjective == "good" or adjective == "fair"
+					#	graph_text << "But improvements in patch management could be made to ensure an excellent rating."
+					#end
 					
 					graph_text << "\n\n"
 					
