@@ -273,8 +273,9 @@ module Risu
 				# @return [StringIO] Binary image object of the results
 				def top_vuln_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d High/Medium Finding Count Per Host ", Item.risks_by_host(limit).all.count
+					g.title = sprintf "Top 10 Hosts with Notable Findings Count"
 					g.sort = false
+					g.y_axis_increment = 1
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
@@ -282,9 +283,11 @@ module Risu
 
 					Item.risks_by_host(limit).all.each do |item|
 						ip = Host.find_by_id(item.host_id).name
-						count = Item.where(:host_id => item.host_id).where("severity IN (?)", [2,3]).count
-
-						g.data(ip, count)
+#						count = Item.where(:host_id => item.host_id).where("severity IN (?)", [2,3]).count
+						count = Item.where(:host_id => item.host_id).where(:severity => 3).count 
+						if count > 0
+							g.data(ip, count)
+						end
 					end
 
 					StringIO.new(g.to_blob)
