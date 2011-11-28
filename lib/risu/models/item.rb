@@ -123,7 +123,7 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => [3, 2]).group(:host_id).order("count_all DESC").limit(limit)
+					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => [3]).group(:host_id).order("count_all DESC").limit(limit)
 				end
 
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
@@ -199,7 +199,7 @@ module Risu
 				end
 
 				# @todo change Report.title to a real variable
-				#
+				# @todo rewite this
 				def risks_by_severity_graph_text
 					high = Item.high_risks.count
 					medium = Item.medium_risks.count
@@ -243,7 +243,10 @@ module Risu
 						when 6..9
 							"This implies that there is a minor patch management issue. If there is a patch management system, it should be checked for problems. " +
 							"Each host should also be inspected to be certain it can receive patches."							
-						when 10..20
+						when 10..15
+							"This implies that there is a substantial patch management issue. If there is a patch management system, it should be checked for problems. " +
+							"Each host should also be inspected to be certain it can receive patches."
+						when 16..20
 							"This implies that there is a significant patch management issue. If there is a patch management system, it should be checked for problems. " +
 							"Each host should also be inspected to be certain it can receive patches."
 						else
