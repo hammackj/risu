@@ -117,13 +117,15 @@ module Risu
 					select("items.*").select("count(*) as count_all").joins(:plugin).where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
 				end
 
-				# Queries for all the risks by host
+				# Queries for all the high risks by host
 				#
 				# @param limit Limits the result to a specific number, default 10
 				#
+				# @todo add high/med/low_risks_by_host functions
+				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => [3]).group(:host_id).order("count_all DESC").limit(limit)
+					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
 				end
 
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
