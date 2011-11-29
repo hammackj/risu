@@ -1,6 +1,6 @@
 # News
 
-#1.4.9 (September 20, 2011)
+#1.4.9 (December 20, 2011)
 - Added a simple top notable vulnerability template table report
 - Added a detailed top notable vulnerability template like the technical_findings report just limited to the top 10 vulnerabilities
 - API for the top 10 vulnerabilities can be found on the Item model
