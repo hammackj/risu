@@ -1,6 +1,6 @@
 # News
 
-#1.4.9 (December 20, 2011)
+#1.4.9 (December 8, 2011)
 - Added a simple top notable vulnerability template table report
 - Added a detailed top notable vulnerability template like the technical_findings report just limited to the top 10 vulnerabilities
 - API for the top 10 vulnerabilities can be found on the Item model
@@ -11,6 +11,8 @@
 	- pcidss:directory_browsing
 	- pcidss:known_credentials
 	- pcidss:compromised_host:worm
+- Item.risks_by_host now only returns High findings. New accessors for each level will be added for 1.5 with support for the next version of Nessus
+- Please report any missing tags that risu outputs to jacob[dot]hammackj[@]hammackj[.]com, I expect a ton of Microsoft Patch tags missing
 
 #1.4.8 (August 21, 2011)
 - Fixed a gemspec dependency error reported by mlpotgieter
