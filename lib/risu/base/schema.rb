@@ -69,6 +69,9 @@ module Risu
 				t.string :pcidss_medium_risk_flaw
 				t.string :pcidss_reachable_db
 				t.string :pcidss_www_xss
+				t.string :pcidss_directory_browsing
+				t.string :pcidss_known_credentials
+				t.string :pcidss_compromised_host_worm
 				t.string :system_type
 				t.text :notes
 			end
