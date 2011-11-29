@@ -51,6 +51,9 @@ module Risu
 							"pcidss:medium_risk_flaw" => :pcidss_medium_risk_flaw,
 							"pcidss:reachable_db" => :pcidss_reachable_db,
 							"pcidss:www:xss" => :pcidss_www_xss,
+							"pcidss:directory_browsing" => :pcidss_directory_browsing,
+							"pcidss:known_credentials" => :pcidss_known_credentials,
+							"pcidss:compromised_host:worm" => :pcidss_compromised_host_worm,
 							"system-type" => :system_type,
 							"pcidss:obsolete_operating_system" => :pcidss_obsolete_operating_system,
 							"pcidss:dns_zone_transfer" => :pcidss_dns_zone_transfer
