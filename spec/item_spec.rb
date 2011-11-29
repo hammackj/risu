@@ -56,8 +56,8 @@ module Risu
 				Item.risks_by_service(100000).all.count.should == 4
 			end
 
-			it "returns 2 risks for Item.risks_by_host" do
-				Item.risks_by_host(100000).all.count.should == 2
+			it "returns 1 risks for Item.risks_by_host" do
+				Item.risks_by_host(100000).all.count.should == 1
 			end
 
 			it "returns 1 risks for Item.risks_by_plugin" do
