@@ -11,7 +11,8 @@
 - Add tests for Patch model
 -
 
-## 1.5 (8/4/2011)
+## 1.5 (2/4/2012)
+- Nessus 5.0 compatible
 - Rework the blacklisting of plugins/hosts add to the config file
 - Complete comments for all existing code
 - Create rSpec tests for everything (95%+ code coverage goal)
