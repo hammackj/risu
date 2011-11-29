@@ -7,7 +7,10 @@
 	- top_10_sorted_raw(), returns the top 10 vulnerabilities in an Array sorted in the form of [plugin_id, count]
 	- top_10_sorted(), returns the top 10 vulnerabilities in an Array sorted in the form of [name, count]
 	-top_10_table(output), inserts a table into the output parameter object with the top 10 data using the top_10_sorted() method
-- 
+- Added 3 PCI related fields
+	- pcidss:directory_browsing
+	- pcidss:known_credentials
+	- pcidss:compromised_host:worm
 
 #1.4.8 (August 21, 2011)
 - Fixed a gemspec dependency error reported by mlpotgieter
