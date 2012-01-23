@@ -31,10 +31,10 @@ module Risu
 				ServerPreference.delete_all
 				Version.delete_all
 				
-				File.delete(@file_name) if File.exist?(@file_name)
+				#File.delete(@file_name) if File.exist?(@file_name)
 			end
 			
-			it 'should create assets.pdf on template creation' do
+			it 'should create assets.pdf on template creation' do				
 				@templater.generate
 				File.exist?(@file_name).should == true
 			end
