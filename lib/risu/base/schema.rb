@@ -72,6 +72,9 @@ module Risu
 				t.string :pcidss_directory_browsing
 				t.string :pcidss_known_credentials
 				t.string :pcidss_compromised_host_worm
+				t.string :pcidss_unprotected_mssql_db
+				t.string :pcidss_obsolete_software
+				t.string :pcidss_www_sql_injection
 				t.string :system_type
 				t.text :notes
 			end
@@ -110,6 +113,9 @@ module Risu
 				t.text :solution
 				t.text :synopsis
 				t.string :plugin_type
+				t.string :exploit_framework_exploithub
+				t.string :exploithub_sku
+				t.string :stig_severity
 			end
 
 			create_table :individual_plugin_selections do |t|
