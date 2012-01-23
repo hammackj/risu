@@ -2,7 +2,7 @@
 
 Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
 
-Version 1.4.5 is the current release.
+Version 1.4.9 is the current release.
 
 ## Requirements
 
@@ -10,7 +10,7 @@ Version 1.4.5 is the current release.
 Risu has been tested with ruby-1.8.7-p334, ruby-1.9.1-p431, ruby-1.9.2-p180. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
 
 ### RubyGems
-Risu relies heavily on RubyGems to install other dependencies I highly recommend using it. RubyGems is included by default in the Ruby 1.9 branches.
+Risu relies heavily on [RubyGems](http://rubygems.org/) to install other dependencies I highly recommend using it. RubyGems is included by default in the 1.9.x versions of [Ruby](http://ruby-lang.org/).
 
 - libxml
 - rails
@@ -74,7 +74,7 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 	|_|  |_|___/\__,_|
 
 
-	risu Console v1.4.5
+	risu Console v1.4.9
 	>> Host.first
 	=> #<Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 	
@@ -100,7 +100,10 @@ Several templates are included:
 		template - template
 	[hammackj@taco:~/Projects/public/risu]$ 
 
-The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See 'template' for creating your own template.
+The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See the 'template' example for creating your own template.
+
+# Contributing
+If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on [github](http://github.com/hammackj/risu) and make the changes in your fork and the submit a pull request to the project.
 
 # Issues
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/hammackj/risu/issues).
