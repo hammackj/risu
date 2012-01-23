@@ -2,7 +2,7 @@ module Risu
 	module Modules
 		class Template < Risu::Base::TemplateBase
 			
-			#
+			# Initializes the template loading metadata
 			#
 			def initialize ()
 				@template_info = 
@@ -14,9 +14,10 @@ module Risu
 				}
 			end
 			
-			#
+			# Called during the rendering process
 			#
 			def render(output)
+				output.text "Template"
 			end
 		end
 	end
