@@ -1,17 +1,28 @@
 # News
 
-#1.4.9 (December 8, 2011)
-- Added a simple top notable vulnerability template table report
-- Added a detailed top notable vulnerability template like the technical_findings report just limited to the top 10 vulnerabilities
+#1.4.9 (January 23, 2012)
+- Added a simple notable vulnerability template table report
+- Added a detailed notable vulnerability template like the technical_findings report just limited to the top vulnerabilities up to 10
 - API for the top 10 vulnerabilities can be found on the Item model
 	- top_10_sorted_raw(), returns the top 10 vulnerabilities in an Array sorted in the form of [plugin_id, count]
 	- top_10_sorted(), returns the top 10 vulnerabilities in an Array sorted in the form of [name, count]
-	-top_10_table(output), inserts a table into the output parameter object with the top 10 data using the top_10_sorted() method
-- Added 3 PCI related fields
+	- top_10_table(output), inserts a table into the output parameter object with the top 10 data using the top_10_sorted() method
+- All report template classification headers are forced upper case
+- Added 6 PCI related fields
 	- pcidss:directory_browsing
 	- pcidss:known_credentials
 	- pcidss:compromised_host:worm
+	- pcidss:unprotected_mssql_db
+	- pcidss:obsolete_software
+	- pcidss:www:sql_injection
+- Added New XML fields
+	- exploit_framework_exploithub
+	- exploithub_sku
+	- stig_severity
 - Item.risks_by_host now only returns High findings. New accessors for each level will be added for 1.5 with support for the next version of Nessus
+- Fixed a bug on the exec_summary_detailed detailed report
+- A quick reference for Microsoft findings can now be found in the Patch model,
+You are able to get host_id, name(patch name, ie MS01-001), value (plugin_id)
 - Please report any missing tags that risu outputs to jacob[dot]hammackj[@]hammackj[.]com, I expect a ton of Microsoft Patch tags missing
 
 #1.4.8 (August 21, 2011)
