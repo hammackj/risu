@@ -61,15 +61,13 @@ Sham.define do
 	os(:unique => false) { os_options[rand(os_options.size)]}
 	svc(:unique => false) { svc_options[rand(svc_options.size)] }
 	risk_factor {risks[rand(risks.size)] }
-	netbios { Faker::Lorem.words(1) }
-	fqdn {
-		"#{netbios}.#{Faker::Lorem.words(1)}.com"
-	}
+	netbios { Faker::Lorem.words(1).first }
+	fqdn { "#{netbios}.#{Faker::Lorem.words(1).first}.com" }
 end
 
 Plugin.blueprint do
 	id { rand(50000) + 1 }
-	plugin_name { Faker::Lorem.words(1) }
+	plugin_name { Faker::Lorem.words(1).first }
 	description { Faker::Lorem.paragraphs }
 	risk_factor { 0 }
 end
@@ -97,7 +95,7 @@ Report.blueprint do
 end
 
 Policy.blueprint do
-	name { Faker::Lorem.words(1) }
+	name { Faker::Lorem.words(1).first }
 	comments {Faker::Lorem.words(10) }
 end
 
