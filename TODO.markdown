@@ -2,18 +2,21 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.4.9
-- Make sure all report template classification headers are upcase
+## 1.4.10 (??)
 - Ensure font sizes are standard in the templates
 - The font in tech findings could be 1 size smaller
 - Add a filtering system for lowering the rating of plugins based on config
 - Compact the data in tech findings to be more printer friendly
 - Add tests for Patch model
--
+- Plugin reference accessors with auto text
+- finding summary coversheet looks odd
+- unsupported OS template
+- add list of unsupported os ip's accessor
+- detailed findings should be combined to save paper on printing
+- add more detailed pci templates
 
-## 1.5 (2/4/2012)
+## 1.5 (??)
 - Nessus 5.0 compatible
-- Rework the blacklisting of plugins/hosts add to the config file
 - Complete comments for all existing code
 - Create rSpec tests for everything (95%+ code coverage goal)
 	- Parser tests
@@ -42,7 +45,16 @@
 		- pci compliance
 		- tech findings
 
-##1.5.1 (10/4/2011) - Template work
+- CentOS 6 tutorial
+- Ubuntu latest tutorial
+- Implement the ability to filter data out of the report
+	- Filter on
+		- Host Mac Address
+		- Host IP
+		- Plugin ID
+		- 
+
+##1.5.1 (??) - Template work
 - Provide more templates
 	- Virtual Machine Summary
 	- Fix list Report?
@@ -53,11 +65,11 @@
 - Colorize the reports with better style
 - Added TOC/Index to the technical findings report, issue 15
 	
-##1.5.2 (11/4/2011) - Parser work
+##1.5.2 (??) - Parser work
 - Add Schema checks to make sure the schema is compatible with the version of risu
 - Create a Nessus document generator, for testing the parser
 
-#1.5.3 (12/4/2011) - Template Work
+#1.5.3 (??) - Template Work
 - Implement different renderers
 	- pdf
 	- cvs
@@ -66,7 +78,7 @@
 - Abstract the api for prawn to support different renders
 - DSL for report creation to abstract the reports to have different output types
 
-## 1.6 (01/4/2012)
+## 1.6 (??)
 - Remove rmagick (GRRRR!)
 - Move to ruby 1.9.2 only support
 - Add Parser for Nessus NBE Format
@@ -76,8 +88,8 @@
 - Add Parser for SecurityCenter Output
 - Add Parser for Nexpose xml
 - Add Parser for Qualys xml
-- Look at moving to nokogiri for xml parsing, current benchmarks so it faster than libxml-ruby; http://nokogiri.org
+- Look at moving to nokogiri for xml parsing; http://nokogiri.org
 - Easier way to select the Scan to generate reports from
 
-## 2.0 (?)
+## 2.0 (??)
 - Rails FrontEnd to Risu
