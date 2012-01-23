@@ -9,7 +9,7 @@ module Risu
 				{ 
 					:name => "cover_sheet", 
 					:author => "hammackj", 
-					:version => "0.0.1", 
+					:version => "0.0.2", 
 					:description => "Generates a coversheet with a logo (Example Template)"
 				}
 			end

@@ -7,7 +7,7 @@ module Risu
 			def initialize ()
 				@template_info = 
 				{ 
-					:name => "top_notable_detailed", 
+					:name => "notable_detailed", 
 					:author => "hammackj", 
 					:version => "0.0.3", 
 					:description => "Notable Vulnerabilities Detailed"

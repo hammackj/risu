@@ -17,18 +17,18 @@ module Risu
 			#
 			#
 			def render(output)
-				output.text Report.classification, :align => :center
+				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 
-				output.font_size(22) { 
+				output.font_size(22) do
 					output.text Report.title, :align => :center 
-				}
+				end
 				
-				output.font_size(18) { 
+				output.font_size(18) do
 					output.text "Networked Assets", :align => :center
 					output.text "\n"
 					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				end
 
 				output.text "\n\n"
 

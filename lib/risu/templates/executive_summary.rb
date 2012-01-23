@@ -9,7 +9,7 @@ module Risu
 				{
 					:name => "exec_summary_detailed",
 					:author => "Ed Davison <EDavison@getmns.com>",
-					:version => "0.0.1",
+					:version => "0.0.2",
 					:description => "Generates a detailed executive summary report"
 				}
 			end
@@ -171,7 +171,7 @@ module Risu
 				output.text "\n\n\n"
 				if (output.y <= 300)
 						output.start_new_page
-						move_down 50
+						output.move_down 50
 				end
 
 				output.text "Summary Graphs of Key Finding Statistics", :style => :bold

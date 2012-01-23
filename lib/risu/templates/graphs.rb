@@ -18,7 +18,7 @@ module Risu
 			#
 			#
 			def render(output)
-				output.text Report.classification, :align => :center
+				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 
 				output.font_size(24) do

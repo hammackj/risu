@@ -9,7 +9,7 @@ module Risu
 				{ 
 					:name => "exec_summary", 
 					:author => "hammackj", 
-					:version => "0.0.1", 
+					:version => "0.0.2", 
 					:description => "Generates a simple executive summary."
 				}
 			end
@@ -20,12 +20,15 @@ module Risu
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 
-				output.font_size(22) { output.text Report.title, :align => :center }
-				output.font_size(18) { 
+				output.font_size(22) do
+					output.text Report.title, :align => :center 
+				end
+				
+				output.font_size(18) do
 				    output.text "Executive Summary", :align => :center
 				    output.text "\n"
 				    output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				end
 
 				output.text "\n\n\n"
 

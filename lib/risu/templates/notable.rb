@@ -7,10 +7,10 @@ module Risu
 			def initialize ()
 				@template_info = 
 				{ 
-					:name => "top10", 
+					:name => "notable", 
 					:author => "hammackj", 
-					:version => "0.0.1", 
-					:description => "Top 10 Vulnerabilities"
+					:version => "0.0.2", 
+					:description => "Notable Vulnerabilities"
 				}
 			end
 			
@@ -25,7 +25,7 @@ module Risu
 				}
 				
 				output.font_size(18) {
-					output.text "Top 10 Vulnerabilities", :align => :center
+					output.text "Notable Vulnerabilities", :align => :center
 					output.text "\n"
 					output.text "This report was prepared by\n#{Report.author}", :align => :center
 				}
