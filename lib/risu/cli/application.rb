@@ -132,15 +132,11 @@ module Risu
 
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your config file"
-
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
-
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
 					puts "[!] Database adapter not found, please check your config file"
-
 					puts "#{anf.message}\n #{anf.backtrace}" if @options[:debug]
-
 					exit
 				rescue => e
 					puts "[!] Exception! #{e.message}\n #{e.backtrace}"
