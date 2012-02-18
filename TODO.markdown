@@ -2,23 +2,15 @@
 
 **Release dates are estimates, and features can be changed at any time.**
 
-## 1.4.10 (??)
-- Ensure font sizes are standard in the templates
-- The font in tech findings could be 1 size smaller
-- Add a filtering system for lowering the rating of plugins based on config
-- Compact the data in tech findings to be more printer friendly
-- Add tests for Patch model
-- Plugin reference accessors with auto text
-- finding summary coversheet looks odd
-- unsupported OS template
-- add list of unsupported os ip's accessor
-- detailed findings should be combined to save paper on printing
-- add more detailed pci templates
-
 ## 1.5 (??)
 - Nessus 5.0 compatible
+
+##1.5.1 (??) - 
+- bug report info collection option
+- template for rhs plugins
+- template for wsus plugins
 - Complete comments for all existing code
-- Create rSpec tests for everything (95%+ code coverage goal)
+- Create tests for everything (95%+ code coverage goal)
 	- Parser tests
 		- Add test for new xml element
 		- Add test for new host properties tag
@@ -44,7 +36,6 @@
 		- ms update summary
 		- pci compliance
 		- tech findings
-
 - CentOS 6 tutorial
 - Ubuntu latest tutorial
 - Implement the ability to filter data out of the report
@@ -52,9 +43,18 @@
 		- Host Mac Address
 		- Host IP
 		- Plugin ID
-		- 
-
-##1.5.1 (??) - Template work
+- Ensure font sizes are standard in the templates
+- The font in tech findings could be 1 size smaller
+- Add a filtering system for lowering the rating of plugins based on config
+- Compact the data in tech findings to be more printer friendly
+- Add tests for Patch model
+- Plugin reference accessors with auto text
+- finding summary coversheet looks odd
+- unsupported OS template
+- unsupported vs supported os graph
+- add list of unsupported os ip's accessor
+- detailed findings should be combined to save paper on printing
+- add more detailed pci templates
 - Provide more templates
 	- Virtual Machine Summary
 	- Fix list Report?
@@ -80,7 +80,7 @@
 
 ## 1.6 (??)
 - Remove rmagick (GRRRR!)
-- Move to ruby 1.9.2 only support
+- Move to ruby 1.9.3 only support
 - Add Parser for Nessus NBE Format
 - Add Parser for Nessus NSR Format
 - Add Parser for Nessus V1 of the XML Format
