@@ -1,5 +1,5 @@
 module Risu
-	module Modules
+	module Templates
 		class Top10 < Risu::Base::TemplateBase
 			
 			#

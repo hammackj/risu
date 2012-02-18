@@ -1,5 +1,5 @@
 module Risu
-	module Modules
+	module Templates
 		class ExecSummary < Risu::Base::TemplateBase
 			
 			#

@@ -1,5 +1,5 @@
 module Risu
-	module Modules
+	module Templates
 		class Template < Risu::Base::TemplateBase
 			
 			# Initializes the template loading metadata

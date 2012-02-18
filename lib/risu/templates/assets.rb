@@ -1,6 +1,6 @@
 module Risu
-	module Modules
-		class Assests < Risu::Base::TemplateBase
+	module Templates
+		class Assets < Risu::Base::TemplateBase
 			
 			#
 			#
@@ -14,6 +14,8 @@ module Risu
 				}
 			end
 			
+			
+			undef :render if method_defined? :render
 			#
 			#
 			def render(output)
