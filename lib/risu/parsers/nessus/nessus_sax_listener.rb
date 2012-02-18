@@ -26,8 +26,9 @@ module Risu
 						"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
 						"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
 						"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
-						"plugin_type", "cpe", "exploithub_sku", "exploit_framework_exploithub", "stig_severity"]
-						
+						"plugin_type", "cpe", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname",
+						"cwe","iava","msft", "osvdb", "owasp", "cert", "edb-id", "rhsa", "secunia", "suse"]
+												
 						# This makes adding new host properties really easy, except for the 
 						#MS patch numbers, this are handled differently.
 						@valid_host_properties = {
@@ -60,7 +61,8 @@ module Risu
 							"pcidss:dns_zone_transfer" => :pcidss_dns_zone_transfer,
 							"pcidss:unprotected_mssql_db" => :pcidss_unprotected_mssql_db,
 							"pcidss:obsolete_software" => :pcidss_obsolete_software,
-							"pcidss:www:sql_injection" => :pcidss_www_sql_injection
+							"pcidss:www:sql_injection" => :pcidss_www_sql_injection,
+							"fname" => :fname
 						}
 				end
 
@@ -250,6 +252,7 @@ module Risu
 							@xref.save
 						when "ReportItem"
 							@ri.plugin_output = @vals["plugin_output"]
+							@ri.plugin_name = @vals["plugin_name"]
 							@ri.save
 
 							@plugin.attributes = {
@@ -257,6 +260,7 @@ module Risu
 								:risk_factor => @vals["risk_factor"],
 								:description => @vals["description"],
 								:plugin_publication_date => @vals["plugin_publication_date"],
+								:plugin_modification_date => @vals["plugin_modification_date"],								
 								:synopsis => @vals["synopsis"],
 								:plugin_type => @vals["plugin_type"],
 								:cvss_vector => @vals["cvss_vector"],
@@ -275,7 +279,18 @@ module Risu
 								:cpe => @vals["cpe"],
 								:exploit_framework_exploithub => @vals["exploit_framework_exploithub"],
 								:exploithub_sku => @vals["exploithub_sku"],
-								:stig_severity => @vals["stig_severity"]								
+								:stig_severity => @vals["stig_severity"],
+								:fname => @vals["fname"],
+								:cwe => @vals["cwe"],
+								:iava => @vals["iava"],
+								:msft => @vals["msft"],
+								:osvdb => @vals["osvdb"],
+								:owasp => @vals["owasp"],
+								:cert => @vals["cert"],
+								:edb_id => @vals["edb-id"],
+								:rhsa => @vals["rhsa"],
+								:secunia => @vals["secunia"],
+								:suse => @vals["suse"]							
 							}
 							@plugin.save
 					end
