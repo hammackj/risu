@@ -59,7 +59,7 @@ module Risu
 				# @return Filename of the created graph
 				def top_by_count_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d High Findings By Plugin", Item.risks_by_plugin(limit).all.count
+					g.title = sprintf "Top %d Critical Findings By Plugin", Item.risks_by_plugin(limit).all.count
 					g.sort = false
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
@@ -80,7 +80,7 @@ module Risu
 							else
 								plugin_name = Plugin.find_by_id(plugin.plugin_id).plugin_name
 						end
-
+						
 						if plugin_name =~ /^(MS\d{2}-\d{3}):/
 							plugin_name = $1
 						end
