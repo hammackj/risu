@@ -14,9 +14,16 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks
-					where(:severity => [0,1,2,3])
+					where(:severity => [0,1,2,3,4])
 				end
 
+				# Queries for all the high risks in the database
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def critical_risks
+					where(:severity => 4)
+				end				
+				
 				# Queries for all the high risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
@@ -45,11 +52,25 @@ module Risu
 					where(:severity => 0)
 				end
 
+				# Queries for all the unique Critical risks in the database
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def critical_risks_unique
+					where(:severity => 4).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
+				end
+
 				# Queries for all the unique high risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_unique
 					where(:severity => 3).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
+				end
+
+				# Queries for all the unique Critical findings and sorts them by count
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def critical_risks_unique_sorted
+					select("items.*").select("count(*) as count_all").where(:severity => 4).group(:plugin_id).order("count_all DESC")
 				end
 
 				# Queries for all the unique high findings and sorts them by count
@@ -108,16 +129,16 @@ module Risu
 					select("items.*").select("count(*) as count_all").where("svc_name != 'unknown' and svc_name != 'general'").group(:svc_name).order("count_all DESC").limit(limit)
 				end
 
-				# Queries for all the high risks by plugin
+				# Queries for all the Critical risks by plugin
 				#
 				# @param limit Limits the result to a specific number, default 10
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_plugin(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:plugin).where("plugin_id != 1").where(:severity => 3).group(:plugin_id).order("count_all DESC").limit(limit)
+					select("items.*").select("count(*) as count_all").joins(:plugin).where("plugin_id != 1").where(:severity => 4).group(:plugin_id).order("count_all DESC").limit(limit)
 				end
 
-				# Queries for all the high risks by host
+				# Queries for all the Critical risks by host
 				#
 				# @param limit Limits the result to a specific number, default 10
 				#
@@ -125,7 +146,7 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
+					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
 				end
 
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
@@ -182,16 +203,19 @@ module Risu
 						:background_colors => %w(white white)
 					}
 
+					crit = Item.critical_risks.count
 					high = Item.high_risks.count
 					medium = Item.medium_risks.count
 					low = Item.low_risks.count
 					info = Item.info_risks.count
 					
+					if crit == nil then crit = 0 end
 					if high == nil then high = 0 end
 					if medium == nil then medium = 0 end
 					if low == nil then low = 0 end		
 					if info == nil then info = 0 end
 
+					g.data("Critical", crit, "purple")
 					g.data("High", high, "red")
 					g.data("Medium", medium, "orange")
 					g.data("Low", low, "yellow")
@@ -203,26 +227,28 @@ module Risu
 				# @todo change Report.title to a real variable
 				# @todo rewite this
 				def risks_by_severity_graph_text
-					high = Item.high_risks.count
-					medium = Item.medium_risks.count
+					#crit = Item.crit_risks.count
+					#high = Item.high_risks.count
+					#medium = Item.medium_risks.count
 					
-					if high == nil then high = 0 end
-					if medium == nil then medium = 0 end
+					#if crit == nil then crit = 0 end
+					#if high == nil then high = 0 end
+					#if medium == nil then medium = 0 end
 						
 					#percentage = high
 										
-					hosts_with_high = Hash.new
+					hosts_with_critical = Hash.new
 					
-					Item.high_risks.all.each do |item|
+					Item.critical_risks.all.each do |item|
 						ip = Host.find_by_id(item.host_id).name
-						if hosts_with_high[ip] == nil
-							hosts_with_high[ip] = 1
+						if hosts_with_critical[ip] == nil
+							hosts_with_critical[ip] = 1
 						end
 								
-						hosts_with_high[ip] = hosts_with_high[ip] + 1
+						hosts_with_critical[ip] = hosts_with_critical[ip] + 1
 					end
 					
-					host_percent = (hosts_with_high.count.to_f / Host.all.count.to_f) * 100
+					host_percent = (hosts_with_critical.count.to_f / Host.all.count.to_f) * 100
 					
 					adjective = case host_percent
 						when 0..5
@@ -286,7 +312,7 @@ module Risu
 				
 				#sqlite only @todo @fix
 				def top_10_sorted_raw
-					raw = Item.joins(:plugin).where(:severity => 3).order("cast(plugins.cvss_base_score as real)").count(:all, :group => :plugin_id)
+					raw = Item.joins(:plugin).where(:severity => 4).order("cast(plugins.cvss_base_score as real)").count(:all, :group => :plugin_id)
 					data = Array.new
 
 					raw.each do |vuln|
@@ -308,7 +334,7 @@ module Risu
 				
 				def top_10_sorted
 					#raw = Item.where(:severity => 3).count(:all, :group => :plugin_id)
-					raw = Item.joins(:plugin).where(:severity => 3).order(:cvss_base_score).count(:all, :group => :plugin_id)
+					raw = Item.joins(:plugin).where(:severity => 4).order(:cvss_base_score).count(:all, :group => :plugin_id)
 					data = Array.new
 
 					raw.each do |vuln|
