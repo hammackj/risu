@@ -1,6 +1,6 @@
 module Risu
 	APP_NAME = "risu"
-	VERSION = "1.4.9"
+	VERSION = "1.5.0"
 	GRAPH_WIDTH = 750
 	EMAIL = "jacob.hammack@hammackj.com"
 	CONFIG_FILE = "./risu.cfg"
@@ -27,5 +27,6 @@ require 'risu/cli'
 require 'risu/exceptions'
 require 'risu/models'
 require 'risu/parsers'
+require 'risu/renderers'
 
 include Risu::Models
