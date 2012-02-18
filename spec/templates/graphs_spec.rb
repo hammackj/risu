@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Risu
-	module Modules		
+	module Templates		
 		describe Graphs do
 			before(:all) do
 				@file_name = "/tmp/graphs.pdf"

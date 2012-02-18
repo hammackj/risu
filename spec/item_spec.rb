@@ -6,12 +6,13 @@ module Risu
 	module Models
 		describe Item do
 			before(:all) do
+				@crit = Item.make(:severity => 4)
 				@high = Item.make(:severity => 3)
 				@med = Item.make(:severity => 2)
 				@low = Item.make(:severity => 1)
 				@info = Item.make(:severity => 0)
 
-				printf "\n%s\n%s\n%s\n%s\n", @high.inspect, @med.inspect, @low.inspect, @info.inspect
+				printf "\n%s\n%s\n%s\n%s\n%s\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect
 			end
 			
 			after(:all) do
@@ -28,13 +29,17 @@ module Risu
 				Version.delete_all
 			end
 
-			it "should include high, medium, low and info risks for Item.risks.all" do
-				Item.risks.all.should include(@high, @med, @low, @info)
+			it "should include crit, high, medium, low and info risks for Item.risks.all" do
+				Item.risks.all.should include(@crit, @high, @med, @low, @info)
 			end
 
-			it "returns 4 risks for Item.risks.count" do
-				Item.risks.count.should == 4
+			it "returns 5 risks for Item.risks.count" do
+				Item.risks.count.should == 5
 			end
+
+			it "returns 1 risks for Item.critical_risks.count" do
+				Item.critical_risks.all.count.should == 1
+			end			
 
 			it "returns 1 risks for Item.high_risks.count" do
 				Item.high_risks.all.count.should == 1
@@ -52,8 +57,8 @@ module Risu
 				Item.info_risks.all.count.should == 1
 			end
 
-			it "returns 4 risks for Item.risks_by_service" do
-				Item.risks_by_service(100000).all.count.should == 4
+			it "returns 5 risks for Item.risks_by_service" do
+				Item.risks_by_service(100000).all.count.should == 5
 			end
 
 			it "returns 1 risks for Item.risks_by_host" do
@@ -64,12 +69,20 @@ module Risu
 				Item.risks_by_plugin(100000).all.count.should == 1
 			end
 
+			it "returns 1 for Item.critical_risks_unique.count" do
+				Item.critical_risks_unique.all.count.should == 1
+			end
+
 			it "returns 1 for Item.high_risks_unique.count" do
 				Item.high_risks_unique.all.count.should == 1
 			end
 
 			it "returns 1 for Item.high_risks_unique_sorted.count" do
 				Item.high_risks_unique_sorted.all.count.should == 1
+			end
+			
+			it "returns 1 for Item.critical_risks_unique_sorted.count" do
+				Item.critical_risks_unique_sorted.all.count.should == 1
 			end
 
 			it "returns 1 for Item.medium_risks_unique.count" do
@@ -96,10 +109,12 @@ module Risu
 				Item.info_risks_unique.all.count.should == 1
 			end
 
+			# @todo this test sucks
 			it "returns a graph Item.risks_by_severity_graph" do
 				Item.risks_by_severity_graph.class.should == StringIO
 			end
 
+			# @todo this test sucks
 			it "returns a graph Item.risks_by_service_graph" do
 				Item.risks_by_service_graph.should be_a_kind_of StringIO
 			end

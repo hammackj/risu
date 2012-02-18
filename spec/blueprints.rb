@@ -1,4 +1,3 @@
-
 require 'machinist/active_record'
 require 'sham'
 require 'faker'
@@ -80,7 +79,7 @@ Host.blueprint do
 	netbios { Sham.netbios }
 	fqdn { Sham.fqdn }
 end
-	
+
 Item.blueprint do
 	port { Sham.port }
 	host { Host.make }

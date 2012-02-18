@@ -1,7 +1,10 @@
+require 'simplecov'
+SimpleCov.start
+
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), '../lib'))
 
-require 'cover_me'
+#require 'cover_me'
 require 'rspec'
 require 'risu'
 require File.expand_path(File.dirname(__FILE__) + "/blueprints")
@@ -19,7 +22,6 @@ database:
   adapter: sqlite3
   database: test_data/test.db"
 
-
 begin
 	@app = Risu::CLI::Application.new
 	@app.load_config(config, true)
@@ -32,7 +34,7 @@ end
 
 RSpec.configure do |config|
 	config.before(:each) do 
-		Sham.reset 
+		#Sham.reset 
 	end
 	
 	config.after(:all) do
@@ -50,12 +52,12 @@ RSpec.configure do |config|
 	end
 end
 
-CoverMe.config do |c|
+#CoverMe.config do |c|
   # where is your project's root:
-  c.project.root = "."
+#  c.project.root = "."
 
   # what files are you interested in coverage for:
-  c.file_pattern = /(lib\/.+\.rb)/i
+#  c.file_pattern = /(lib\/.+\.rb)/i
 
   # where do you want the HTML generated:
   #c.html_formatter.output_path #=File.join(CoverMe.config.project.root, 'coverage') (default)
@@ -69,4 +71,4 @@ CoverMe.config do |c|
   #    end
   # end
   #}
-end
+#end

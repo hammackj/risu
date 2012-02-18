@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 module Risu
-	module Modules		
-		describe Assests do
+	module Templates		
+		describe Assets do
 			before(:all) do
 				@file_name = "/tmp/assets.pdf"
 				@template_manager = Risu::Base::TemplateManager.new "risu/templates"
