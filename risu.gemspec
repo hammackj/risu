@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), 'lib'))
 
