@@ -2,7 +2,7 @@
 
 Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
 
-Version 1.4.9 is the current release.
+Version 1.5.0 is the current release.
 
 ## Requirements
 
@@ -74,7 +74,7 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 	|_|  |_|___/\__,_|
 
 
-	risu Console v1.4.9
+	risu Console v1.5.0
 	>> Host.first
 	=> #<Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 	
@@ -110,3 +110,6 @@ If you have any problems, bugs or feature requests please use the [github issue 
 
 # Contact
 You can reach me at jacob[dot]hammack[at]hammackj[dot]com.
+
+You can also contact me on IRC as hammackj on irc.freenode.net, #risu 
+
