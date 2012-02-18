@@ -1,0 +1,85 @@
+crit:
+  port: 37483
+  host: host1
+  svc_name: Critical Service
+  severity: 4
+  plugin: critical_plugin
+#  plugin: <% ActiveRecord::Fixtures.identify(:critical) %>
+
+high:
+  port: 37484
+  host: host1
+  svc_name: High Service
+  severity: 3
+  plugin: high
+
+med:
+  port: 37485
+  host: host1
+  svc_name: Medium Service
+  severity: 2
+  plugin: medium
+
+low:
+  port: 37486
+  host: host1
+  svc_name: Low Service
+  severity: 1
+  plugin: low
+
+info:
+  port: 37487
+  host: host1
+  svc_name: Info Service
+  severity: 0
+  plugin: none
+  
+34477_item:
+  port: 37486
+  host: host1
+  svc_name: 34477 Service
+  severity: 4
+  plugin_id: 34477
+  
+21564_item:
+  port: 37486
+  host: host1
+  svc_name: 21564 Service
+  severity: 4
+  plugin_id: 21564  
+
+38664_item:
+  port: 38664
+  host: host1
+  svc_name: 38664 Service
+  severity: 4
+  plugin_id: 38664
+
+42411_item:
+  port: 42411
+  host: host1
+  svc_name: 42411 Service
+  severity: 4
+  plugin_id: 42411
+
+35362_item:
+  port: 35362
+  host: host1
+  svc_name: 35362 Service
+  severity: 4
+  plugin_id: 35362
+
+35635_item:
+  port: 35635
+  host: host1
+  svc_name: 35635 Service
+  severity: 4
+  plugin_id: 35635
+  
+msft_item:
+  port: 16049
+  host: host1
+  svc_name: smb
+  severity: 4
+  plugin: msft
+  plugin_name: "MS08-067: Ownage"
