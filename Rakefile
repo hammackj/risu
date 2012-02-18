@@ -3,7 +3,8 @@ $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require 'rubygems' # not sure why...
 require "risu"
 require 'rake'
-require 'rspec/core/rake_task'
+#require 'rspec/core/rake_task'
+require 'rake/testtask'
 
 task :build do
   system "gem build #{Risu::APP_NAME}.gemspec"
@@ -23,11 +24,17 @@ task :clean do
 	system "rm -rf coverage"
 end
 
-task :report do
-  require 'cover_me'
-  CoverMe.complete!
-end
+task :default => [:test_units]
 
-RSpec::Core::RakeTask.new(:spec) do |t|
-	Rake::Task['report'].invoke
-end
+
+Rake::TestTask.new("test_units") { |t|
+	t.libs << "test"
+  t.pattern = 'test/*/*_test.rb'
+  t.verbose = true
+}
+
+Rake::TestTask.new("test_functional") { |t|
+	t.libs << "test"
+  t.pattern = 'test/functional/*_test.rb'
+  t.verbose = true
+}
