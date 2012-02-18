@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Risu
 
 	# Risu Schema
@@ -87,6 +85,7 @@ module Risu
 				t.string :svc_name
 				t.string :protocol
 				t.integer :severity
+				t.string :plugin_name
 				t.boolean :verified
 			end
 
@@ -96,6 +95,7 @@ module Risu
 				t.text :description
 				t.string :plugin_version
 				t.datetime :plugin_publication_date
+				t.datetime :plugin_modification_date
 				t.datetime :vuln_publication_date
 				t.string :cpe
 				t.string :cvss_vector
@@ -116,6 +116,17 @@ module Risu
 				t.string :exploit_framework_exploithub
 				t.string :exploithub_sku
 				t.string :stig_severity
+				t.string :fname
+				t.string :cwe
+				t.string :iava
+				t.string :msft
+				t.string :osvdb
+				t.string :owasp
+				t.string :cert
+				t.string :edb_id
+				t.string :rhsa
+				t.string :secunia
+				t.string :suse
 			end
 
 			create_table :individual_plugin_selections do |t|
@@ -177,6 +188,5 @@ module Risu
 			drop_table :service_descriptions
 			drop_table :patches
 		end
-
 	end
 end
