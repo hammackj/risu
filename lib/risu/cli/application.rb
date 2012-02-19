@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Risu
 	module CLI
 
@@ -10,8 +8,8 @@ module Risu
 			include Risu::Base
 			attr_accessor :database
 
-			#
-			#
+			# Initalizes a CLI Application 
+			# 
 			def initialize
 				@options = {}
 				@database = {}
@@ -25,6 +23,10 @@ module Risu
 			end
 
 			# Creates a blank config file
+			#
+			# @todo does this need exception handling
+			#
+			# @param file Path to config file
 			#
 			def create_config(file=CONFIG_FILE)
 				File.open(file, 'w+') do |f|
@@ -41,15 +43,13 @@ module Risu
 					f.write("  username: \n")
 					f.write("  password: \n")
 					f.write("  timeout: \n\n")
-					#TODO blacklisting
-					#f.write("blacklist:\n")
-					#f.write("	ips: \n")
-					#f.write("	macs: \n")
-					#f.write("	plugins: \n\n")
 				end
 			end
 
 			# Loads the configuration file
+			#
+			# @param file Path to config file
+			# @param in_memory_config [Boolean] If the config is in memory
 			#
 			def load_config(file=CONFIG_FILE, in_memory_config=false)
 				if File.exists?(file) == true or in_memory_config == true
@@ -71,8 +71,6 @@ module Risu
 								@report[k] = "No #{k}"
 							end
 						end
-
-						#@blacklist = yaml["blacklist"]
 					rescue => e
 						puts "[!] Error loading config! - #{e.message}"
 						exit
@@ -85,6 +83,8 @@ module Risu
 
 			# Initiator for [ActiveRecord] migrations.
 			#
+			# @param direction [Symbol] :up or :down
+			#
 			def migrate(direction)
 				begin
 					if @database["adapter"] == nil
@@ -96,10 +96,13 @@ module Risu
 					Schema.migrate(direction)
 
 					if direction == :up
+						puts "[*] Creating tables"
 						ver = Version.create
 						ver.version = Risu::VERSION
 						ver.save
 					end
+					
+					puts "[*] Dropping tables" if direction == :down
 
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your config file"
@@ -117,7 +120,7 @@ module Risu
 				end
 			end
 
-			#
+			# Establishes an [ActiveRecord::Base] database connection
 			#
 			def db_connect
 				begin
@@ -133,18 +136,21 @@ module Risu
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your config file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
+					
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
 					puts "[!] Database adapter not found, please check your config file"
 					puts "#{anf.message}\n #{anf.backtrace}" if @options[:debug]
+					
 					exit
 				rescue => e
 					puts "[!] Exception! #{e.message}\n #{e.backtrace}"
 				end
 			end
 
+			# Tests the database connection
 			#
-			#
+			# @return [Boolean] True on successful, False on failure
 			def test_connection?
 				begin
 
@@ -162,6 +168,7 @@ module Risu
 
 			# Starts a console and executes anything in a block sent to it
 			#
+			# @param block Code block to transfer control
 			def consolize &block
 
 				yield
@@ -293,7 +300,8 @@ module Risu
 				end
 			end
 
-			#
+			# Main Application loop, handles all of the command line arguments and
+			#parsing of files on the command line
 			#
 			def run
 				parse_options
@@ -378,6 +386,7 @@ module Risu
 
 			# Handles the parsing of a single file
 			#
+			# @param file 
 			def parse_file file
 				begin
 						puts "[*] Parsing #{file}..."
@@ -392,7 +401,6 @@ module Risu
 							doc.parse
 
 							puts "[*] Fixing IP Address field"
-
 							doc.fix_ips
 
 						else
