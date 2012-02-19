@@ -1,6 +1,6 @@
-# encoding: utf-8
-
 require 'risu'
+
+ActiveRecord::Migration.verbose = false
 
 module Risu
 	module Parsers
@@ -16,8 +16,13 @@ module Risu
 				#
 				def initialize
 					@vals = Hash.new
+					
+					@valid_references = Array[
+						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft", 
+						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa", 
+						"owasp", "cwe"]
 
-					@valid_elements = Array["see_also", "cve", "ReportItem", "xref", "bid", "plugin_version", "risk_factor",
+					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
 						"description", "cvss_base_score", "solution", "item", "plugin_output", "tag", "synopsis", "plugin_modification_date",
 						"FamilyName", "FamilyItem", "Status", "vuln_publication_date", "ReportHost", "HostProperties", "preferenceName",
 						"preferenceValues", "preferenceType", "fullName", "pluginId", "pluginName", "selectedValue", "selectedValue",
@@ -26,9 +31,11 @@ module Risu
 						"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
 						"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
 						"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
-						"plugin_type", "cpe", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname",
-						"cwe","iava","msft", "osvdb", "owasp", "cert", "edb-id", "rhsa", "secunia", "suse"]
-												
+						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname",
+						]
+						
+						@valid_elements = @valid_elements + @valid_references
+																		
 						# This makes adding new host properties really easy, except for the 
 						#MS patch numbers, this are handled differently.
 						@valid_host_properties = {
@@ -68,8 +75,8 @@ module Risu
 
 				# Callback for when the start of a xml element is reached
 				#
-				# @param element
-				# @param attributes
+				# @param element XML element
+				# @param attributes Attributes for the XML element
 				def on_start_element(element, attributes)
 					@tag = element
 					@vals[@tag] = ""
@@ -229,27 +236,14 @@ module Risu
 							end if @attr != nil
 						#We cannot handle the references in the same block as the rest of the ReportItem tag because
 						#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax
-						#parser. To solve this we do the references before the final plugin data
-						when "cve"
-							@cve = @plugin.references.create
-							@cve.reference_name = "cve"
-							@cve.value = @vals["cve"]
-							@cve.save
-						when "bid"
-							@bid = @plugin.references.create
-							@bid.reference_name = "bid"
-							@bid.value = @vals["bid"]
-							@bid.save
-						when "see_also"
-							@see_also = @plugin.references.create
-							@see_also.reference_name = "see_also"
-							@see_also.value = @vals["see_also"]
-							@see_also.save
-						when "xref"
-							@xref = @plugin.references.create
-							@xref.reference_name = "xref"
-							@xref.value = @vals["xref"]
-							@xref.save
+						#parser. To solve this we do the references before the final plugin data, Valid references must be added 
+						#the @valid_reference array at the top to be parsed.
+						# *@valid_reference, does a 'when' on each element of the @valid_references array, pure magic
+						when *@valid_references
+							@ref = @plugin.references.create
+							@ref.reference_name = element
+							@ref.value = @vals["#{element}"]
+							@ref.save
 						when "ReportItem"
 							@ri.plugin_output = @vals["plugin_output"]
 							@ri.plugin_name = @vals["plugin_name"]
@@ -276,21 +270,10 @@ module Risu
 								:metasploit_name => @vals["metasploit_name"],
 								:exploit_framework_canvas => @vals["exploit_framework_canvas"],
 								:canvas_package => @vals["canvas_package"],
-								:cpe => @vals["cpe"],
 								:exploit_framework_exploithub => @vals["exploit_framework_exploithub"],
 								:exploithub_sku => @vals["exploithub_sku"],
 								:stig_severity => @vals["stig_severity"],
-								:fname => @vals["fname"],
-								:cwe => @vals["cwe"],
-								:iava => @vals["iava"],
-								:msft => @vals["msft"],
-								:osvdb => @vals["osvdb"],
-								:owasp => @vals["owasp"],
-								:cert => @vals["cert"],
-								:edb_id => @vals["edb-id"],
-								:rhsa => @vals["rhsa"],
-								:secunia => @vals["secunia"],
-								:suse => @vals["suse"]							
+								:fname => @vals["fname"]						
 							}
 							@plugin.save
 					end
