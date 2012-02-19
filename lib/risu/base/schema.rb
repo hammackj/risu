@@ -97,7 +97,6 @@ module Risu
 				t.datetime :plugin_publication_date
 				t.datetime :plugin_modification_date
 				t.datetime :vuln_publication_date
-				t.string :cpe
 				t.string :cvss_vector
 				t.string :cvss_base_score
 				t.string :cvss_temporal_score
@@ -117,16 +116,6 @@ module Risu
 				t.string :exploithub_sku
 				t.string :stig_severity
 				t.string :fname
-				t.string :cwe
-				t.string :iava
-				t.string :msft
-				t.string :osvdb
-				t.string :owasp
-				t.string :cert
-				t.string :edb_id
-				t.string :rhsa
-				t.string :secunia
-				t.string :suse
 			end
 
 			create_table :individual_plugin_selections do |t|
