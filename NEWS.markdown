@@ -7,31 +7,30 @@
 	- Added critical to the Risks by Severity Graph
 	- Everything that used High as its data now uses Critical
 	- The new methods also have associated tests.
-
 - Updated the Plugin model to be compatible with Nessus 5.0
 	- Added critical_risks()
-
-
 - Added New tags
 	- Plugin Model
 		- fname
-		- cwe
-		- iava
-		- msft
-		- osvdb
-		- owasp
-		- cert
-		- edb_id
-		- rhsa
-		- secunia
-		- suse
 	- Item Model
 		- plugin_name
-
+- Added new Methods to the Reference class for accessing references easier
+	- cve
+	- cpe
+	- cwe
+	- iava
+	- msft
+	- osvdb
+	- owasp
+	- cert
+	- edb_id
+	- rhsa
+	- secunia
+	- suse
+	
 - New Templates
-	- ms_wsus_findings: Takes the plugin_output from plugin ####pluginid### 
-
-- Removed rspec/machinst/sham/faker/rcov from the development requirements and moved to the standard rails testing framework
+	- ms_wsus_findings: Takes the plugin_output from plugin ####pluginid### (Plugin Not live yet)
+- Added test::unit tests for most of the specs
 
 #1.4.9 (January 23, 2012)
 - Added a simple notable vulnerability template table report
