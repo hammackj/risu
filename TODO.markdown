@@ -6,6 +6,8 @@
 - Nessus 5.0 compatible
 
 ##1.5.1 (??) - 
+- stig report
+- migration error handling
 - bug report info collection option
 - template for rhs plugins
 - template for wsus plugins
