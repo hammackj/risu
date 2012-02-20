@@ -26,7 +26,7 @@ begin
 	@app = Risu::CLI::Application.new
 	@app.load_config(config, true)
 	@app.db_connect
-	@app.migrate(:down) if File.exist?("test_data/test.db") == false
+	@app.migrate(:down) if File.exist?("test_data/test.db") == true
 	@app.migrate(:up)
 rescue => e
 	puts "[!] #{e.message}\n#{e.backtrace}\n\n"
