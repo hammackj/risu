@@ -10,7 +10,7 @@ module Risu
 					:name => "stig_findings_summary", 
 					:author => "hammackj", 
 					:version => "0.0.1", 
-					:description => "template"
+					:description => "DISA Stig findings summary report"
 				}
 				
 				@output = nil
@@ -24,12 +24,15 @@ module Risu
 				@output.text Report.classification.upcase, :align => :center
 				@output.text "\n"
 
-				@output.font_size(22) { @output.text Report.title, :align => :center }
-				@output.font_size(18) {
+				@output.font_size(22) do 
+					@output.text Report.title, :align => :center
+				end
+				
+				@output.font_size(18) do
 					@output.text "Stig Findings Summary", :align => :center
 					@output.text "\n"
 					@output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				end
 
 				@output.text "\n\n\n"
 			end
@@ -88,6 +91,7 @@ module Risu
 				ref.each do |r|
 					ref_string << r.value + ", "
 				end
+				
 				ref_string.chomp!(", ")
 			end
 			
