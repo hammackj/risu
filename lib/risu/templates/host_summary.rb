@@ -9,7 +9,7 @@ module Risu
 				{ 
 					:name => "host_summary", 
 					:author => "hammackj", 
-					:version => "0.0.1", 
+					:version => "0.0.2", 
 					:description => "Generates a Host Summary Report"
 				}
 			end
@@ -31,13 +31,14 @@ module Risu
 
 				results = Array.new
 
-				headers = ["Hostname", "Total", "High", "Medium", "Low", "Info"]
-				header_widths = {0 => 137, 1 => 75, 2 => 75, 3 => 75, 4 => 75, 5 => 75}
+				headers = ["Hostname", "Total", "Critical", "High", "Medium", "Low", "Info"]
+				header_widths = {0 => 140, 1 => 62, 2 => 62, 3 => 62, 4 => 62, 5 => 62, 6 => 62}
 
 				Host.sorted.each do |host|
 					row = Array.new
 
 					total  = Item.risks.where(:host_id => host.id).count
+					crit = Item.critical_risks.where(:host_id => host.id).count
 					high = Item.high_risks.where(:host_id => host.id).count
 					medium = Item.medium_risks.where(:host_id => host.id).count
 					low = Item.low_risks.where(:host_id => host.id).count
@@ -45,6 +46,7 @@ module Risu
 
 					row.push(host.name)
 					row.push(total)
+					row.push(crit)
 					row.push(high)
 					row.push(medium)
 					row.push(low)
@@ -57,6 +59,8 @@ module Risu
 					row(0).style(:font_style => :bold, :background_color => 'D0D0D0')
 					cells.borders = [:top, :bottom, :left, :right]
 				end
+				
+				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all
 			end
 		end
 	end
