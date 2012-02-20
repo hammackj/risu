@@ -10,7 +10,7 @@ rvm:
   - rbx-19mode
 
 gemfile:
-  - risu.gemspec
+  - Gemfile.ci
 
 notifications:
   email:

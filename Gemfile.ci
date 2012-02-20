@@ -1,0 +1,12 @@
+gem "rails"
+gem "libxml-ruby"
+gem "prawn"
+gem "gruff"
+gem "mysql"
+gem "rmagick"
+gem "sqlite3"
+
+gem "rspec", "2.5.0"
+gem "machinist", "1.0.6"
+gem "sham", "0.4.0"
+gem "faker", "0.9.5"
