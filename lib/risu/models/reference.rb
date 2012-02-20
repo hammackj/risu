@@ -12,69 +12,69 @@ module Risu
 				# Queries all unique CVEs
 				#
 				def cve
-					where(:reference_name => "cve").uniq
+					where(:reference_name => "cve").select('DISTINCT value')
 				end
 				
 				# Queries all unique CPE
 				#
 				def cpe
-					where(:reference_name => "cpe").uniq
+					where(:reference_name => "cpe").select('DISTINCT value')
 				end
 				
 				# Queries all unique BID
 				#
 				def bid
-					where(:reference_name => "bid").uniq
+					where(:reference_name => "bid").select('DISTINCT value')
 				end
 				
 				# Queries all unique see_also
 				#
 				def see_also
-					where(:reference_name => "see_also").uniq
+					where(:reference_name => "see_also").select('DISTINCT value')
 				end
 				
 				def iava
-					where(:reference_name => "iava").uniq
+					where(:reference_name => "iava").select('DISTINCT value')
 				end
 				
 				def msft
-					where(:reference_name => "msft").uniq
+					where(:reference_name => "msft").select('DISTINCT value')
 				end
 				
 				def osvdb
-					where(:reference_name => "osvdb").uniq
+					where(:reference_name => "osvdb").select('DISTINCT value')
 				end
 				
 				def cert
-					where(:reference_name => "cert").uniq
+					where(:reference_name => "cert").select('DISTINCT value')
 				end
 				
 				def edbid
-					where(:reference_name => "edb-id").uniq
+					where(:reference_name => "edb-id").select('DISTINCT value')
 				end
 				
 				def rhsa
-					where(:reference_name => "rhsa").uniq
+					where(:reference_name => "rhsa").select('DISTINCT value')
 				end
 				
 				def secunia
-					where(:reference_name => "secunia").uniq
+					where(:reference_name => "secunia").select('DISTINCT value')
 				end
 				
 				def suse
-					where(:reference_name => "suse").uniq
+					where(:reference_name => "suse").select('DISTINCT value')
 				end
 				
 				def dsa
-					where(:reference_name => "dsa").uniq
+					where(:reference_name => "dsa").select('DISTINCT value')
 				end
 				
 				def owasp
-					where(:reference_name => "owasp").uniq
+					where(:reference_name => "owasp").select('DISTINCT value')
 				end
 				
 				def cwe
-					where(:reference_name => "cwe").uniq
+					where(:reference_name => "cwe").select('DISTINCT value')
 				end					
 			end
 		end
