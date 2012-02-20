@@ -14,9 +14,9 @@ module Risu
 				@report.company = "None"
 				@report.classification = "None"
 				
-				#@host = Host.make
-				#@host1 = Host.make
-				make_report_with_hosts()
+				@item1 = Item.make(:severity => 4, :plugin => Plugin.make, :host => Host.make)
+				@item2 = Item.make(:severity => 3, :plugin => Plugin.make, :host => Host.make)
+				@item3 = Item.make(:severity => 3, :plugin => Plugin.make, :host => Host.make)
 			end
 			
 			after(:all) do

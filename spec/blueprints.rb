@@ -99,11 +99,3 @@ Policy.blueprint do
 	name { Faker::Lorem.words(1).first }
 	comments {Faker::Lorem.words(10) }
 end
-
-def make_report_with_hosts(attributes ={})
-	Report.make(attributes) do
-		5.times do 
-			Report.hosts.make
-		end
-	end
-end

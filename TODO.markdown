@@ -82,6 +82,13 @@
 - Add template validation and more error checking
 - Colorize the reports with better style
 - Added TOC/Index to the technical findings report, issue 15
+- Category I
+	- Vulnerabilities that allow an attacker immediate access into amachine, allow superuser access, or bypass a firewall.These can lead to the immediate compromise of the web serverallowing the attacker to take complete control of the web serverand associated operating system, which can then be used as aresource to control other systems in your network.Some examples would be the running of unsupported software,anonymous access to privledge accounts, and the presence of sample applications installed on the web server.
+- Category II
+	- Vulnerabilities aide the ability of an attacker to gain access into amachine, compromise sensitive data, or bypass a firewall.These will lead to the eventual compromise of the web serverallowing the attacker to manipulate the content or server settingson the web server and have access to other systems in yournetwork.Some examples would be trust relationships with unauthorizedseparate enclaves, non compliance with appropriate hostoperating system security controls, and the non compliance withthe IAVM program.
+- Category III
+	- Vulnerabilities that impact the security posture of the system andif configured, will improve the overall security of asset.These could result in the degradation of service, compromise of information, and in some cases lead to unauthorized access to thesystem.Some examples would be untrained staff, development tools on aproduction environment, and the uncontrolled release of information to the web server.
+
 	
 ##1.5.2 (??) - Parser work
 - Add Schema checks to make sure the schema is compatible with the version of risu
