@@ -3,7 +3,7 @@ $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require 'rubygems' # not sure why...
 require "risu"
 require 'rake'
-#require 'rspec/core/rake_task'
+require 'rspec/core/rake_task'
 require 'rake/testtask'
 
 task :build do
@@ -24,8 +24,11 @@ task :clean do
 	system "rm -rf coverage"
 end
 
-task :default => [:test_units]
+task :default => [:spec]
 
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = './spec/**/*_spec.rb'
+end
 
 Rake::TestTask.new("test_units") { |t|
 	t.libs << "test"
