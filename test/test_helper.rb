@@ -16,10 +16,10 @@ require 'risu'
 
 config = 
 "report:
-  author: 
-  title: 
-  company: 
-  classification: 
+  author: TEST
+  title: TEST
+  company: TEST
+  classification: TEST
 
 database:
   adapter: sqlite3
