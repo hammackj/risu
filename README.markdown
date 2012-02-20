@@ -111,8 +111,6 @@ If you have any problems, bugs or feature requests please use the [github issue 
 #Donations
 I have received several requests for a method to donate to the project. You can use the following Paypal donation link; if you are interested in donating to the Risu Project. Your donations are welcome and help the development of Risu.
 
-<br />
-
 <a href='http://www.pledgie.com/campaigns/16810'><img alt='Click here to lend your support to: Risu and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/16810.png?skin_name=chrome' border='0' /></a>
 
 # Contact
