@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Risu
 	module Templates		
-		describe TechnicalFindings do
+		describe StigFindingsSummary do
 			before(:all) do
 				@file_name = "/tmp/stig_findings_summary.pdf"
 				@template_manager = Risu::Base::TemplateManager.new "risu/templates"
@@ -38,6 +38,13 @@ module Risu
 				@templater.generate
 				File.exist?(@file_name).should == true
 			end
+			
+			it "should have an MD5 of 347539f69c0c4ec573373762e14bf283 after creation" do
+				if File.exist?(@file_name) == true
+					require 'digest/md5'
+					Digest::MD5.hexdigest(File.read(@file_name)).should == "347539f69c0c4ec573373762e14bf283"
+				end
+			end			
 		end
 	end
 end

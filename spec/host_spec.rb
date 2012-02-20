@@ -13,7 +13,7 @@ module Risu
 				@item2 = Item.make(:severity => 3, :plugin => Plugin.make())
 				@item3 = Item.make(:severity => 3, :plugin => Plugin.make())
 						
-				printf "\n%s\n\n%s\n\n", @host.inspect, @host1.inspect
+				#printf "\n%s\n\n%s\n\n", @host.inspect, @host1.inspect
 			end
 			
 			after(:all) do
