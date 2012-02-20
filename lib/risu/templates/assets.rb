@@ -14,8 +14,7 @@ module Risu
 				}
 			end
 			
-			
-			undef :render if method_defined? :render
+			#undef :render if method_defined? :render
 			#
 			#
 			def render(output)
