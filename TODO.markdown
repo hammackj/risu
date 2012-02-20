@@ -5,11 +5,21 @@
 ## 1.5 (??)
 - Nessus 5.0 compatible
 
-##1.5.1 (??) - 
+##1.5.1 (??) -
+- clean up old plugins, some are nasty
+- Fix list report
+	- by host ordered by risk
+		- vulnerability name
+		- first cve
+		- Host
+		- vuln name     |   cve
+		- vuln name     |   cve	
+- add findings by host report 
+- ms_wsus_findings: Takes the plugin_output from plugin ####pluginid### 
 - windows policy report
 - stig pie graph for cat 1 / 2 /3
 - move all pci related host properties to their own table
-- stig report
+- stig detailed report
 - migration error handling
 - bug report info collection option
 - template for rhs plugins
