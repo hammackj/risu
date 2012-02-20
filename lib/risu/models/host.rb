@@ -319,7 +319,7 @@ module Risu
 					g.data("OSX", osx) unless osx == 0
 					g.data("FreeBSD", freebsd) unless freebsd == 0
 					g.data("NetBSD", netbsd) unless netbsd == 0
-					g.data("Cisco ISO", cisco) unless cisco == 0
+					g.data("Cisco IOS", cisco) unless cisco == 0
 					g.data("VxWorks", vxworks) unless vxworks == 0
 					g.data("VMware", esx) unless esx == 0
 					g.data("AIX", aix) unless aix == 0
