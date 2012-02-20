@@ -1,6 +1,6 @@
 # News
 
-#1.5.0 ()
+#1.5.0 (February 20, 2012)
 - Updated the Item model to be compatible with Nessus 5.0
 	- Added critical_risks()
 	- Added critical_risks_unique()
@@ -31,7 +31,6 @@
 	- stigs_severity_graph()
 	- stig_findings()
 	- all_risks_unique_sorted() from [aeriff] on github
-	-
 - New Templates
 	- stig_findings_summary - Quick summary of all the stig related findings by severity
 - Template Updates
@@ -43,7 +42,7 @@
 	- host_summary - added critical risks
 	- graphs - added stig graph
 	- host_summary - added critical risks and page numbers
-	-
+	- Misc changes in other templates
 - Added test::unit tests for most of the specs
 
 #1.4.9 (January 23, 2012)
