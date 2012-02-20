@@ -223,6 +223,39 @@ module Risu
 
 					StringIO.new(g.to_blob)
 				end
+				
+				#
+				#
+				def stig_findings(categeory="I")
+					where('plugin_id IN (:plugins)', :plugins => Plugin.where(:stig_severity => categeory).select(:id)).order("severity DESC")
+				end
+				
+				# Generates a Graph of all the risks by severity
+				#
+				# @return [StringIO] Object containing the generated PNG image
+				def stigs_severity_graph
+					g = Gruff::Bar.new(GRAPH_WIDTH)
+					g.title = "Stigs By Severity"
+					g.sort = false
+					g.theme = {
+						:colors => %w(purple red orange yellow blue green black grey brown pink),
+						:background_colors => %w(white white)
+					}
+
+					i = Item.stig_findings("I")
+					ii = Item.stig_findings("II")
+					iii = Item.stig_findings("III")
+					
+					if i == nil then i = 0 end
+					if ii == nil then ii = 0 end
+					if iii == nil then iii = 0 end
+
+					g.data("Cat I", crit, "purple")
+					g.data("Cat II", high, "red")
+					g.data("Cat III", medium, "orange")
+
+					StringIO.new(g.to_blob)
+				end				
 
 				# @todo change Report.title to a real variable
 				# @todo rewite this
