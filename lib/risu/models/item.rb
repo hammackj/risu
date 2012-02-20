@@ -242,17 +242,17 @@ module Risu
 						:background_colors => %w(white white)
 					}
 
-					i = Item.stig_findings("I")
-					ii = Item.stig_findings("II")
-					iii = Item.stig_findings("III")
+					i = Item.stig_findings("I").count
+					ii = Item.stig_findings("II").count
+					iii = Item.stig_findings("III").count
 					
 					if i == nil then i = 0 end
 					if ii == nil then ii = 0 end
 					if iii == nil then iii = 0 end
 
-					g.data("Cat I", crit, "purple")
-					g.data("Cat II", high, "red")
-					g.data("Cat III", medium, "orange")
+					g.data("Cat I", i, "purple")
+					g.data("Cat II", ii, "red")
+					g.data("Cat III", iii, "orange")
 
 					StringIO.new(g.to_blob)
 				end				
