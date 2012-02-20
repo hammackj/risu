@@ -31,7 +31,7 @@ module Risu
 				ServerPreference.delete_all
 				Version.delete_all
 				
-				#File.delete(@file_name) if File.exist?(@file_name)
+				File.delete(@file_name) if File.exist?(@file_name)
 			end
 			
 			it "should create #{@file_name} on template creation" do
