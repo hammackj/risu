@@ -26,7 +26,7 @@ begin
 	@app = Risu::CLI::Application.new
 	@app.load_config(config, true)
 	@app.db_connect
-	@app.migrate(:down)
+	@app.migrate(:down) if File.exist?("test_data/test.db") == false
 	@app.migrate(:up)
 rescue => e
 	puts "[!] #{e.message}\n#{e.backtrace}\n\n"
@@ -49,6 +49,8 @@ RSpec.configure do |config|
 		Reference.delete_all
 		ServerPreference.delete_all
 		Version.delete_all
+		
+#		File.delete("test_data/test.db") if File.exist?("test_data/test.db")
 	end
 end
 
