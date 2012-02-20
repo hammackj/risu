@@ -1,6 +1,6 @@
 module Risu
 	module Templates
-		class Top10Detailed < Risu::Base::TemplateBase
+		class NotableDetailed < Risu::Base::TemplateBase
 			
 			#
 			#
