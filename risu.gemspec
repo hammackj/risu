@@ -39,4 +39,5 @@ Gem::Specification.new do |s|
 	s.add_dependency('mysql', ['>= 2.8.1'])
 	s.add_dependency('rmagick', [">= 2.13.1"])
 	s.add_dependency('sqlite3', [">= 1.3.3"])
+	s.add_dependency('simplecov', [">= 0.5.4"])
 end
