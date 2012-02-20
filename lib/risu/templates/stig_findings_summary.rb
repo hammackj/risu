@@ -15,11 +15,9 @@ module Risu
 				
 				@output = nil
 			end
-			
-			def find_stig_findings(categeory="I")
-				Item.where('plugin_id IN (:plugins)', :plugins => Plugin.where(:stig_severity => categeory).select(:id)).order("severity DESC")
-			end
-			
+
+			#
+			#
 			def header
 				@output.text Report.classification.upcase, :align => :center
 				@output.text "\n"
@@ -55,8 +53,15 @@ module Risu
 				return host_string.chomp!(", ")
 			end
 			
-			def stig_findings(categeory="I")
-				stigs = find_stig_findings(categeory).group(:plugin_id)
+			# Generates stig finding text for 
+			#
+			# @param categeory I/II/III for each stig severity
+			def stig_findings_text(categeory="I")
+				if categeory != "I" || categeory != "II" || categeory != "III"
+					return
+				end
+				
+				stigs = Item.stig_findings(categeory).group(:plugin_id)
 				
 				stigs.each do |stig|	
 					@output.text "#{stig.plugin_name}", :size => 16
@@ -104,21 +109,21 @@ module Risu
 
 				header
 				
-				if find_stig_findings("I").count > 0
+				if Item.stig_findings("I").count > 0
 					@output.text "<color rgb='551A8B'>Category I Findings</color>", :size => 18, :style => :bold, :inline_format => true
-					stig_findings("I")
+					stig_findings_text("I")
 				end 
 				
-				if find_stig_findings("II").count > 0
+				if Item.stig_findings("II").count > 0
 					@output.start_new_page
 					@output.text "<color rgb='FF0000'>Category II Findings</color>", :size => 18, :style => :bold, :inline_format => true
-					stig_findings("II")
+					stig_findings_text("II")
 				end 
 				
-				if find_stig_findings("III").count > 0
+				if Item.stig_findings("III").count > 0
 					@output.start_new_page
 					@output.text "<color rgb='FF8040'>Category III Findings</color>", :size => 18, :style => :bold, :inline_format => true
-					stig_findings("III")
+					stig_findings_text("III")
 				end
 				
 				@output.number_pages "<page> of <total>", :at => [@output.bounds.right - 75, 0], :width => 150, :page_filter => :all
