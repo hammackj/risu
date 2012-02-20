@@ -33,46 +33,68 @@ module Risu
 					where(:reference_name => "see_also").select('DISTINCT value')
 				end
 				
+				# Queries all unique IAVA
+				#
 				def iava
 					where(:reference_name => "iava").select('DISTINCT value')
 				end
 				
+				# Queries all unique MSFT
+				#
 				def msft
 					where(:reference_name => "msft").select('DISTINCT value')
 				end
 				
+				# Queries all unique OSvdb
+				#
 				def osvdb
 					where(:reference_name => "osvdb").select('DISTINCT value')
 				end
 				
+				# Queries all unqiue cert refs
+				#
 				def cert
 					where(:reference_name => "cert").select('DISTINCT value')
 				end
 				
+				#
+				#
 				def edbid
 					where(:reference_name => "edb-id").select('DISTINCT value')
 				end
 				
+				#
+				#
 				def rhsa
 					where(:reference_name => "rhsa").select('DISTINCT value')
 				end
 				
+				#
+				#
 				def secunia
 					where(:reference_name => "secunia").select('DISTINCT value')
 				end
 				
+				#
+				#
 				def suse
 					where(:reference_name => "suse").select('DISTINCT value')
 				end
 				
+				#
+				#
 				def dsa
 					where(:reference_name => "dsa").select('DISTINCT value')
 				end
 				
+				#
+				#
 				def owasp
 					where(:reference_name => "owasp").select('DISTINCT value')
 				end
 				
+				#
+				#
 				def cwe
 					where(:reference_name => "cwe").select('DISTINCT value')
 				end					
