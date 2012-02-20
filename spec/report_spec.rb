@@ -9,12 +9,13 @@ module Risu
 				@report = Report.make
 				@report.hosts.make(:start => "Fri May 13 17:52:18 2011")
 					
-				printf "%s\n\n", @report.inspect
+#				printf "%s\n\n", @report.inspect
 			end
 			
 			it "should have a scan_date of Fri May 13 17:52:18 -0500 2011" do
 				date = Report.scan_date
-				
+
+				#@todo drop ruby < 1.9.3
 				#Ruby 1.8.7 and 1.9.2 return different date formats
 				if date == "Fri May 13 17:52:18 -0500 2011"
 					date.should == "Fri May 13 17:52:18 -0500 2011"
