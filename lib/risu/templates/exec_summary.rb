@@ -40,13 +40,27 @@ module Risu
 
 				output.text "A total of #{Host.count} hosts were found and scanned for vulnerabities.\n\n"
 
-				output.text "There were #{Item.risks.count} vulnerabilities found during this scan. Of these, #{Item.high_risks.count} were high vulnerabilities, #{Item.medium_risks.count} were medium vulnerabilities, #{Item.low_risks.count} were low vulnerabilities and #{Item.info_risks.count} were information findings.\n\n"
+				output.text "There were #{Item.risks.count} vulnerabilities found during this scan. Of these, #{Item.critical_risks.count} were critical vulnerabilities,#{Item.high_risks.count} were high vulnerabilities, #{Item.medium_risks.count} were medium vulnerabilities, #{Item.low_risks.count} were low vulnerabilities and #{Item.info_risks.count} were information findings.\n\n"
 
 				output.text "Scan Statistics", :style => :bold
 				output.text "\n"
 
-				output.table([["Number of hosts","Number of risks","High Risks", "Medium Risks", "Low Risks", "Info Risks"], 
-				[Host.count, Item.risks.count, Item.high_risks.count, Item.medium_risks.count, Item.low_risks.count, Item.info_risks.count]], 
+				output.table([[
+					"Number of hosts", 
+					"Number of risks",
+					"Critical Risks",
+					"High Risks",
+					"Medium Risks",
+					"Low Risks",
+					"Info Risks"], 
+				[
+					Host.count, 
+					Item.risks.count,
+					Item.critical_risks.count,
+					Item.high_risks.count, 
+					Item.medium_risks.count, 
+					Item.low_risks.count, 
+					Item.info_risks.count]], 
 				:cell_style => { :padding =>12 }, :width => output.bounds.width)
 				output.text "\n\n\n"
 
@@ -72,6 +86,7 @@ module Risu
 				cury = output.y
 				#move_down 550
 				output.image Host.windows_os_graph, :width => 250, :at => [output.bounds.left, cury]
+				output.image Item.stigs_severity_graph, :width => 250, :at => [output.bounds.right - 250, cury]
 			end
 		end
 	end
