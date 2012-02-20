@@ -103,7 +103,7 @@ end
 def make_report_with_hosts(attributes ={})
 	Report.make(attributes) do
 		5.times do 
-			report.hosts.make
+			Report.hosts.make
 		end
 	end
 end
