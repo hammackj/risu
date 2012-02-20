@@ -9,7 +9,7 @@ module Risu
 				{
 					:name => "technical_findings",
 					:author => "hammackj",
-					:version => "0.0.1",
+					:version => "0.0.2",
 					:description => "Generates a Technical Findings Report"
 				}
 			end
@@ -22,28 +22,24 @@ module Risu
 
 				output.font_size(22) { output.text Report.title, :align => :center }
 				output.font_size(18) {
-					output.text "High and Medium Findings", :align => :center
+					output.text "Critical and High Findings", :align => :center
 					output.text "\n"
 					output.text "This report was prepared by\n#{Report.author}", :align => :center
 				}
 
 				output.text "\n\n\n"
 
-				#@todo Revamping blacklisting in 1.3
-				#blacklist_ip = "-"
-				#blacklist_host_id = Host.where(:ip => blacklist_ip)
-				#.where("host_id != (?)", blacklist_host_id)
-
 				unique_risks = Array.new
+				unique_risks << Hash[:title => "Criical Findings", :color => "9B30FF", :values => Item.critical_risks_unique]
 				unique_risks << Hash[:title => "High Findings", :color => "FF0000", :values => Item.high_risks_unique]
-				unique_risks << Hash[:title => "Medium Findings", :color => "FF8040", :values => Item.medium_risks_unique]
+#				unique_risks << Hash[:title => "Medium Findings", :color => "FF8040", :values => Item.medium_risks_unique]
 
 				unique_risks.each do |h|
 					if h[:values].length > 1
 						output.font_size(18) do
-							output.fill_color h[:color]
-							output.text h[:title], :style => :bold
-							output.fill_color "000000"
+#							output.fill_color h[:color]
+							output.text h[:title], :style => :bold, :color => h[:color]
+#							output.fill_color "000000"
 						end
 						
 						output.font_size(10)
@@ -54,14 +50,6 @@ module Risu
 
 							hosts = Item.where(:plugin_id => f.plugin_id)
 							plugin = Plugin.find_by_id(f.plugin_id)
-
-							#Check if vuln is just on the blacklisted
-							#if hosts.count == 1
-							# if hosts.first.host_id == blacklist_host_id.first.id
-							#		next
-							# end
-							#end
-
 
 							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
