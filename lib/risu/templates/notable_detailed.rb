@@ -9,7 +9,7 @@ module Risu
 				{ 
 					:name => "notable_detailed", 
 					:author => "hammackj", 
-					:version => "0.0.3", 
+					:version => "0.0.4", 
 					:description => "Notable Vulnerabilities Detailed"
 				}
 			end
@@ -20,15 +20,15 @@ module Risu
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 
-				output.font_size(22) { 
+				output.font_size(22) do
 					output.text Report.title, :align => :center 
-				}
+				end
 				
-				output.font_size(18) {
+				output.font_size(18) do
 					output.text "Notable Vulnerabilities", :align => :center
 					output.text "\n"
 					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				end
 
 				output.text "\n\n\n"
 				
@@ -41,7 +41,7 @@ module Risu
 				data = Item.top_10_sorted_raw
 				
 				unique_risks = Array.new
-				unique_risks << Hash[:title => "High Findings", :color => "FF0000", :values => Item.top_10_sorted_raw[0..9]]
+				unique_risks << Hash[:title => "Notable Findings", :color => "9B30FF", :values => Item.top_10_sorted_raw[0..9]]
 				counter = 1
 				
 				unique_risks.each do |h|
