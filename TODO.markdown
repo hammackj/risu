@@ -6,6 +6,8 @@
 - Nessus 5.0 compatible
 
 ##1.5.1 (??) - 
+- stig pie graph for cat 1 / 2 /3
+- move all pci related host properties to their own table
 - stig report
 - migration error handling
 - bug report info collection option
