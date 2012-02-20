@@ -48,7 +48,7 @@ risks << "None"
 
 Sham.define do
 	ip { "#{rand(255)}.#{rand(255)}.#{rand(255)}.#{rand(255)}" }
-	date {"2011-#{rand(12) + 1}-28 19:11:25.000000"}
+	date {"#{rand(3000)}-#{rand(12) + 1}-#{rand(31)} #{rand(24)}:#{rand(60)}:#{rand(60)}.000000"}
 	port { "#{rand(65000)}" }
 	mac { 
 		chars = (0..9).to_a + ('A'..'F').to_a 
