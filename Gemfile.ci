@@ -12,7 +12,7 @@ gem "rmagick"
 gem "sqlite3"
 gem "simplecov"
 
-gem "rspec", "2.5.0"
+gem "rspec", "2.8.0"
 gem "machinist", "1.0.6"
 gem "sham", "1.0.2"
 gem "faker", "1.0.1"

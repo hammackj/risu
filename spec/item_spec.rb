@@ -12,7 +12,7 @@ module Risu
 				@low = Item.make(:severity => 1)
 				@info = Item.make(:severity => 0)
 
-				printf "\n%s\n%s\n%s\n%s\n%s\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect
+				#printf "\n%s\n%s\n%s\n%s\n%s\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect
 			end
 			
 			after(:all) do
