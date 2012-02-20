@@ -54,6 +54,10 @@ module Risu
 				output.start_new_page
 
 				output.image Host.windows_os_graph, :width => 500, :height => 375, :position => :center
+
+				output.start_new_page
+
+				output.image Item.stigs_severity_graph, :width => 500, :height => 375, :position => :center
 			end
 		end
 	end
