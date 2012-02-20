@@ -13,7 +13,7 @@
 	- Plugin Model
 		- fname
 	- Item Model
-		- plugin_name
+		- plugin_name (Not all plugins seem to support this XML struct yet, maybe nil at times; might add a fix up post processing like ips)
 - Added new Methods to the Reference class for accessing references easier
 	- cve
 	- cpe
@@ -27,9 +27,21 @@
 	- rhsa
 	- secunia
 	- suse
-	
+- Added new methods to the Item class
+	- stigs_severity_graph()
+	- stig_findings()
 - New Templates
-	- ms_wsus_findings: Takes the plugin_output from plugin ####pluginid### (Plugin Not live yet)
+	- stig_findings_summary - Quick summary of all the stig related findings by severity
+- Template Updates
+	- technical_findings - Added critical risks
+	- exec_summary - added critical risks and a stig graph
+	- findings_host - added critical and lowered the font sizes a bunch
+	- notable_detailed - added critical and changed header to Notable
+	- exec_summary_detailed - added critical risks
+	- host_summary - added critical risks
+	- graphs - added stig graph
+	- host_summary - added critical risks and page numbers
+	-
 - Added test::unit tests for most of the specs
 
 #1.4.9 (January 23, 2012)
