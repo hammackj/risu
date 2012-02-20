@@ -33,6 +33,19 @@ module Risu
 				output.text "\n\n\n"
 
 				output.font_size(20) do
+					output.fill_color "551A8B"
+					output.text "Critical Findings", :style => :bold 
+					output.fill_color "000000"
+				end
+
+				Item.critical_risks_unique_sorted.each do |item|
+					name = Plugin.find_by_id(item.plugin_id).plugin_name
+					count = Item.where(:plugin_id => item.plugin_id).count
+
+					output.text "#{count} - #{name}"
+				end
+
+				output.font_size(20) do
 					output.fill_color "FF0000"
 					output.text "High Findings", :style => :bold 
 					output.fill_color "000000"
