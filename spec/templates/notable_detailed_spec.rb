@@ -14,8 +14,9 @@ module Risu
 				@report.company = "None"
 				@report.classification = "None"
 				
-				@host = Host.make
-				@host1 = Host.make
+				#@host = Host.make
+				#@host1 = Host.make
+				make_report_with_hosts()
 			end
 			
 			after(:all) do
@@ -37,6 +38,13 @@ module Risu
 			it "should create #{@file_name} on template creation" do				
 				@templater.generate
 				File.exist?(@file_name).should == true
+			end
+			
+			it "should have an MD5 of ceaf7cc7ec6b77b00f412c9cee8ae45d after creation" do
+				if File.exist?(@file_name) == true
+					require 'digest/md5'
+					Digest::MD5.hexdigest(File.read(@file_name)).should == "ceaf7cc7ec6b77b00f412c9cee8ae45d"
+				end
 			end
 		end
 	end

@@ -19,7 +19,7 @@ module Risu
 				@item7 = Item.make(:severity => 3, :plugin => Plugin.make())
 				@item8 = Item.make(:severity => 3, :plugin => Plugin.make(:plugin_name => "MS02-123: RANDOM"))
 		
-				printf "\n%s\n%s\n%s\n%s\n%s\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect			
+				#printf "\n%s\n%s\n%s\n%s\n%s\n", @crit.inspect, @high.inspect, @med.inspect, @low.inspect, @info.inspect			
 			end
 			
 			after(:all) do

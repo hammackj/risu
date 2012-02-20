@@ -6,7 +6,7 @@ module Risu
 			before(:all) do
 				@app = Application.new
 					
-				printf "\n%s\n\n", @app.inspect						
+				#printf "\n%s\n\n", @app.inspect						
 			end
 			
 			after(:all) do
