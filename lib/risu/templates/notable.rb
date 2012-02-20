@@ -42,4 +42,3 @@ module Risu
 		end
 	end
 end
-
