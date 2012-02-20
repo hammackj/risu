@@ -30,6 +30,8 @@
 - Added new methods to the Item class
 	- stigs_severity_graph()
 	- stig_findings()
+	- all_risks_unique_sorted() from [aeriff] on github
+	-
 - New Templates
 	- stig_findings_summary - Quick summary of all the stig related findings by severity
 - Template Updates
