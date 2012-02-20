@@ -48,6 +48,7 @@ risks << "None"
 
 Sham.define do
 	ip { "#{rand(255)}.#{rand(255)}.#{rand(255)}.#{rand(255)}" }
+	date {"2011-#{rand(12) + 1}-28 19:11:25.000000"}
 	port { "#{rand(65000)}" }
 	mac { 
 		chars = (0..9).to_a + ('A'..'F').to_a 
@@ -78,6 +79,7 @@ Host.blueprint do
 	os { Sham.os }
 	netbios { Sham.netbios }
 	fqdn { Sham.fqdn }
+	start {Sham.date}
 end
 
 Item.blueprint do
