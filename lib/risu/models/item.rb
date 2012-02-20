@@ -389,6 +389,12 @@ module Risu
 					return data	
 				end
 				
+				# Returns a prawn pdf table for the top 10 notable findings
+				#
+				# @todo change this method to return a array/table and let the template render it
+				# @todo rename to notable_table also
+				#
+				# @param output device to write the table to
 				def top_10_table(output)
 					headers = ["Description", "Count"]
 					header_widths = {0 => (output.bounds.width - 50), 1 => 50}
@@ -398,7 +404,14 @@ module Risu
 					output.table([headers] + data[0..9], :header => true, :column_widths => header_widths, :width => output.bounds.width) do
 						row(0).style(:font_style => :bold, :background_color => 'cccccc')
 						cells.borders = [:top, :bottom, :left, :right]
-					end					
+					end			
+				end
+				
+				# Queries for all unique risks and sorts them by count
+				# 
+				# @return [ActiveRecord::Relation] with the query results
+				def all_risks_unique_sorted
+				    select("items.*").select("count(*) as count_all").group(:plugin_id).order("count_all DESC")
 				end
 				
 			end
