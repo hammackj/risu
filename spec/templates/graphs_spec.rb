@@ -34,7 +34,7 @@ module Risu
 				File.delete(@file_name) if File.exist?(@file_name)
 			end
 			
-			it 'should create assets.pdf on template creation' do
+			it "should create #{@file_name} on template creation" do
 				@templater.generate
 				File.exist?(@file_name).should == true
 			end

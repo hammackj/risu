@@ -126,6 +126,16 @@ module Risu
 			it "returns 0 for Item.ms_patches" do
 				Item.ms_patches.all.count.should == 0
 			end
+			
+			it "should have a length of for Item.risks_by_service_graph_text" do
+				Item.risks_by_service_graph_text.length.should == 220
+			end
+			
+			it "should have a length of for Item.risks_by_severity_graph_text" do
+				Item.risks_by_severity_graph_text.length.should == 1034
+			end
+			
+			
 		end
 	end
 end

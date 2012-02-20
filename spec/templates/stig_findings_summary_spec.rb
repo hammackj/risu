@@ -2,11 +2,11 @@ require 'spec_helper'
 
 module Risu
 	module Templates		
-		describe Assets do
+		describe TechnicalFindings do
 			before(:all) do
-				@file_name = "/tmp/assets.pdf"
+				@file_name = "/tmp/stig_findings_summary.pdf"
 				@template_manager = Risu::Base::TemplateManager.new "risu/templates"
-				@templater = Risu::Base::Templater.new("assets", Report, @file_name, @template_manager)
+				@templater = Risu::Base::Templater.new("stig_findings_summary", Report, @file_name, @template_manager)
 				
 				@report = Report
 				@report.title = "Rspec Test"
@@ -31,7 +31,7 @@ module Risu
 				ServerPreference.delete_all
 				Version.delete_all
 				
-				#File.delete(@file_name) if File.exist?(@file_name)
+				File.delete(@file_name) if File.exist?(@file_name)
 			end
 			
 			it "should create #{@file_name} on template creation" do
