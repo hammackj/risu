@@ -7,5 +7,8 @@ rvm:
   - jruby-19mode # JRuby in 1.9 mode
   - rbx-18mode
   - rbx-19mode
-# uncomment this line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+script: rspec spec
+notifications:
+  email:
+    - jacob.hammack@hammackj.com
+  irc: "irc.freenode.org#risu"
