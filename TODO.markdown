@@ -6,6 +6,7 @@
 - Nessus 5.0 compatible
 
 ##1.5.1 (??) -
+- display ruby and gems version in -v
 - clean up tests move to fixtures
 - hash all template results to make sure templates are being created correctly
 
