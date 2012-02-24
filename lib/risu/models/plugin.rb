@@ -80,7 +80,7 @@ module Risu
 							else
 								plugin_name = Plugin.find_by_id(plugin.plugin_id).plugin_name
 						end
-						
+
 						if plugin_name =~ /^(MS\d{2}-\d{3}):/
 							plugin_name = $1
 						end
