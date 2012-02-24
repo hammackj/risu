@@ -396,13 +396,19 @@ module Risu
 							raise Risu::Exceptions::InvalidDocument, "[!] Document does not exist - #{file}"
 						end
 
-						doc = Risu::Parsers::Nessus::NessusDocument.new file
-						if doc.valid? == true
-							doc.parse
+						nessus_doc = Risu::Parsers::Nessus::NessusDocument.new file
+						nexpose_doc = Risu::Parsers::Nexpose::NexposeDocument.new file
+							
+						if nessus_doc.valid? == true
+							nessus_doc.parse
 
 							puts "[*] Fixing IP Address field"
-							doc.fix_ips
+							nessus_doc.fix_ips
+						elsif nexpose_doc.valid? == true
+							nexpose_doc.parse
 
+							puts "[*] Fixing IP Address field"
+							nexpose_doc.fix_ips
 						else
 							raise Risu::Exceptions::InvalidDocument, "[!] Invalid Document - #{file}"
 						end
