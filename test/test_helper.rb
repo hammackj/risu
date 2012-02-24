@@ -1,3 +1,4 @@
+#require 'cover_me'
 require 'simplecov'
 SimpleCov.start
 
@@ -7,7 +8,6 @@ $:.unshift(File.join(File.dirname(base), '../lib'))
 require 'rails'
 require 'rails/test_help'
 require 'test/unit'
-
 require 'active_record'
 require 'active_record/fixtures'
 require "active_support"
@@ -41,5 +41,5 @@ rescue => e
 end
 
 class ActiveSupport::TestCase
- # fixtures :all
+
 end
