@@ -24,8 +24,8 @@ class TechnicalFindingsTemplateTest < ActiveSupport::TestCase
 		assert File.exist?(@file_name) == true
 	end
 	
-	test "should have an MD5 of 39743ac03e9085e9e0242803e9b3fae0 after creation" do
+	test "should have an MD5 of 044fc88a8729ae5d02ec6409dc78f7bf after creation" do
 		require 'digest/md5'
-		assert Digest::MD5.hexdigest(File.read(@file_name)) == "39743ac03e9085e9e0242803e9b3fae0", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
+		assert Digest::MD5.hexdigest(File.read(@file_name)) == "044fc88a8729ae5d02ec6409dc78f7bf", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
 	end
 end
