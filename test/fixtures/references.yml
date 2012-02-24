@@ -1,0 +1,4 @@
+reference_1:
+  plugin_id: 99999
+  reference_name: "CVE"
+  value: "2011-1234"

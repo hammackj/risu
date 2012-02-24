@@ -1,63 +1,72 @@
 critical_plugin:
+  id: 99999
   plugin_name: Critical Plugin
   description: This is a Critical finding!
   risk_factor: Critical
+  synopsis: "A Critical Plugin for testing"
   cvss_base_score: 10
+  exploit_available: true
+  solution: "Patch this critical plugin"
   
-high:
+high_plugin:
+  id: 99998
   plugin_name: High Plugin
   description: This is a High finding!
   risk_factor: High
   cvss_base_score: 8
   
-medium:
+medium_plugin:
+  id: 99997
   plugin_name: Medium Plugin
   description: This is a Medium finding!
   risk_factor: Medium
   cvss_base_score: 5  
 
-low:
+low_plugin:
+  id: 99996
   plugin_name: Low Plugin
   description: This is a Low finding!
   risk_factor: Low
   cvss_base_score: 2  
   
-none:
+none_plugin:
+  id: 99995  
   plugin_name: None Plugin
   description: This is a None finding!
   risk_factor: None    
   cvss_base_score: 0
 
+msft_plugin:
+  id: 99994
+  plugin_name: "MS12-001: Microsoft Windows SMB Vulnerabilities"
+  risk_factor: Critical
+
 35362:
   id: 35362
-  plugin_name: "test:tester:testing"
+  plugin_name: "MS09-001: Microsoft Windows SMB Vulnerabilities Remote Code Execution (958687) (uncredentialed check)"
   risk_factor: Critical
 
 34477:
   id: 34477
-  plugin_name: "test:tester:testing"
+  plugin_name: "MS08-067: Microsoft Windows Server Service Crafted RPC Request Handling Remote Code Execution (958644) (uncredentialed check)"
   risk_factor: Critical  
 
 21564:
   id: 21564
-  plugin_name: "test:tester:testing"
+  plugin_name: VNC Security Type Enforcement Failure Remote Authentication Bypass
   risk_factor: Critical
 
 38664:
   id: 38664
-  plugin_name: "test:tester:testing"
+  plugin_name: Intel Common Base Agent CreateProcessA() Function Remote Command Execution
   risk_factor: Critical
 
 42411:
   id: 42411
-  plugin_name: "test:tester:testing"
+  plugin_name: Microsoft Windows SMB Shares Unprivileged Access
   risk_factor: Critical  
 
 35635:
   id: 35635
-  plugin_name: "test:tester:testing"
-  risk_factor: Critical
-
-msft:
-  plugin_name: "MS08-067: Ownage"
+  plugin_name: "MS09-004: Vulnerability in Microsoft SQL Server Could Allow Remote Code Execution (959420) (uncredentialed check)"
   risk_factor: Critical
