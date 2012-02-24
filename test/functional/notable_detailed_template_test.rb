@@ -26,6 +26,6 @@ class NotableDetailedTemplateTest < ActiveSupport::TestCase
 
 	test "should have an MD5 of 1ab82956bcc06748817e67cd548d27b5 after creation" do
 		require 'digest/md5'
-		Digest::MD5.hexdigest(File.read(@file_name)).should == "1ab82956bcc06748817e67cd548d27b5"
+		assert Digest::MD5.hexdigest(File.read(@file_name)) == "28889e1175f526017431e83392c438ec", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
 	end	
 end

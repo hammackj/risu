@@ -29,8 +29,8 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.risks_by_service(100000).all.count == 12, "GOT #{Item.risks_by_service(100000).all.count}"
 	end
 
-	test "returns 1 risks for Item.risks_by_host" do
-		assert Item.risks_by_host(100000).all.count == 1, "GOT #{Item.risks_by_host(100000).all.count}"
+	test "returns 2 risks for Item.risks_by_host" do
+		assert Item.risks_by_host(100000).all.count == 2, "GOT #{Item.risks_by_host(100000).all.count}"
 	end
 
 	test "returns 8 risks for Item.risks_by_plugin" do
