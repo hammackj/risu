@@ -1,4 +1,3 @@
-#require 'cover_me'
 require 'simplecov'
 SimpleCov.start
 
