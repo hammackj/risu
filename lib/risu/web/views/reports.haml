@@ -1,0 +1,9 @@
+%h1 Reports
+%table
+	- Report.all.each do |report|
+		%tr
+			%td 
+				%a{:href => url("/report/#{report.id}")}= report.name
+
+%p 
+%a{:href => url("/index")} Back to Index

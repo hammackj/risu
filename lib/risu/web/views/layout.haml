@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title Risu Web GUI
+    %link(rel="stylesheet" href="/css/layout.css")
+    %script{:type => "text/javascript",
+            :src  => "/js/js-class.js"}
+    %script{:type => "text/javascript",
+            :src  => "/js/excanvas.js"}  
+    %script{:type => "text/javascript",
+            :src  => "/js/bluff-min.js"}
+  %body
+    #wrapper
+      = haml :header
+      #page
+        #content
+          = yield
+        %br{:style => "clear:both;"}
+      footer

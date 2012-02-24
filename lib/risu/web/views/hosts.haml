@@ -1,0 +1,10 @@
+%h1 Hosts
+%table
+	- Host.all.each do |host|
+		%tr
+			%td 
+				%a{:href => url("/host/#{host.id}")}= host.name
+			%td= host.os
+
+%p 
+%a{:href => url("/reports")} Back to Reports
