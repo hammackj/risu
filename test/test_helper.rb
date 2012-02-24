@@ -28,7 +28,7 @@ begin
 	@app = Risu::CLI::Application.new
 	@app.load_config(config, true)
 	@app.db_connect
-	@app.migrate(:down) if File.exist?("test_data/test.db") == true
+	File.delete(@file_name) if File.exist?("test_data/test.db")
 	@app.migrate(:up)
 	
 	fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
