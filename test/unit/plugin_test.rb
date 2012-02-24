@@ -23,7 +23,7 @@ class PluginTest < ActiveSupport::TestCase
 
 	test "returns 1 risks for Plugin.info_risks.count" do
 		assert Plugin.none_risks.all.count == 1
-	end			
+	end
 
 	test "returns a graph Plugin.top_by_count_graph" do		
 		assert Plugin.top_by_count_graph.class == StringIO
