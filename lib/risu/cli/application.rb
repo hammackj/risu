@@ -103,7 +103,11 @@ module Risu
 					end
 					
 					puts "[*] Dropping tables" if direction == :down
-
+					
+				#@todo temp hack, fix this by checking the schema on up/down for exiting data
+				rescue SQLite3::SQLException => sqlitex
+					puts "#{sqlitex.message}\n #{sqlitex.backtrace}" if @options[:debug]
+					continue
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your config file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
