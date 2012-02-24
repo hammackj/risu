@@ -284,7 +284,7 @@ module Risu
 					Item.risks_by_host(limit).all.each do |item|
 						ip = Host.find_by_id(item.host_id).name
 #						count = Item.where(:host_id => item.host_id).where("severity IN (?)", [2,3]).count
-						count = Item.where(:host_id => item.host_id).where(:severity => 3).count 
+						count = Item.where(:host_id => item.host_id).where(:severity => 4).count 
 						if count > 0
 							g.data(ip, count)
 						end
@@ -500,6 +500,22 @@ module Risu
 					text << "\n\n" << unsupported_os_freebsd if freebsd > 0
 
 					return text
+				end
+				
+				#
+				#
+				def top_n_vulnerable(n)
+					hosts = Item.risks_by_host(Host.all.count).count					
+					hosts = hosts.sort_by {|k, v| v}
+					hosts.reverse!
+					
+					i = 0
+					hosts[0...n].each do |host_id, count| 
+						hosts[i] = Host.where(:id => host_id)
+						i = i + 1
+					end
+					
+					hosts[0...n]
 				end
 			end
 		end
