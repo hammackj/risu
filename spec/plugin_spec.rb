@@ -36,33 +36,33 @@ module Risu
 				Version.delete_all
 			end
 			
-			it "should include critical,high, medium, low and info risks for Plugin.risks" do				
-				Plugin.risks.should include(@crit, @high, @med, @low, @none)
-			end
+#			it "should include critical,high, medium, low and info risks for Plugin.risks" do				
+#				Plugin.risks.should include(@crit, @high, @med, @low, @none)
+#			end
 			
-			it "returns 5 risks for Plugin.risks.count" do
-				Plugin.risks.count.should == 5
-			end
+#			it "returns 5 risks for Plugin.risks.count" do
+#				Plugin.risks.count.should == 5
+#			end
 
-			it "returns 1 risks for Plugin.high_risks.count" do
-				Plugin.high_risks.all.count.should == 1
-			end
+#			it "returns 1 risks for Plugin.high_risks.count" do
+#				Plugin.high_risks.all.count.should == 1
+#			end
 
-			it "returns 1 for Plugin.medium_risks.count" do
-				Plugin.medium_risks.all.count.should == 1
-			end
+#			it "returns 1 for Plugin.medium_risks.count" do
+#				Plugin.medium_risks.all.count.should == 1
+#			end
 
-			it "returns 1 for Plugin.low_risks.count" do
-				Plugin.low_risks.all.count.should == 1
-			end
+#			it "returns 1 for Plugin.low_risks.count" do
+#				Plugin.low_risks.all.count.should == 1
+#			end
 			
-			it "returns 1 risks for Plugin.info_risks.count" do
-				Plugin.none_risks.all.count.should == 1
-			end			
+#			it "returns 1 risks for Plugin.info_risks.count" do
+#				Plugin.none_risks.all.count.should == 1
+#			end			
 
-			it "returns a graph Plugin.top_by_count_graph" do
-				Plugin.top_by_count_graph.class.should == StringIO
-			end
+#			it "returns a graph Plugin.top_by_count_graph" do
+#				Plugin.top_by_count_graph.class.should == StringIO
+#			end
 		end
 	end
 end
