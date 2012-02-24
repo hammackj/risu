@@ -22,4 +22,10 @@ class CoverSheetTemplateTest < ActiveSupport::TestCase
 		@templater.generate
 		assert File.exist?(@file_name) == true
 	end
+	
+	test "should have an MD5 of 2aadff33f0bcfbecb56275e94c2f70c1 after creation" do
+		@templater.generate if !File.exist?(@file_name)
+		require 'digest/md5'
+		assert Digest::MD5.hexdigest(File.read(@file_name)) == "2aadff33f0bcfbecb56275e94c2f70c1", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
+	end
 end
