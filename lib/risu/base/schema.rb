@@ -88,7 +88,7 @@ module Risu
 				t.string :plugin_name
 				t.boolean :verified
 			end
-
+			
 			create_table :plugins do |t|
 				t.string :plugin_name
 				t.string :family_name
@@ -148,6 +148,13 @@ module Risu
 				t.string :value
 			end
 			
+			#Index's
+			add_index :items, :host_id
+			add_index :items, :plugin_id
+			add_index :references, :plugin_id
+			
+			#Default data for service descriptions
+			#Unused atm, might be better to use a yaml file tho..
 			ServiceDescription.create :name => "www", :description => ""
 			ServiceDescription.create :name => "cifs", :description => ""
 			ServiceDescription.create :name => "smb", :description => ""
