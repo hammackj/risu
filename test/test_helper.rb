@@ -22,13 +22,13 @@ config =
 
 database:
   adapter: sqlite3
-  database: test_data/test.db"
+  database: test.db"
 
 begin
+	File.delete(@file_name) if File.exist?("test.db")
 	@app = Risu::CLI::Application.new
 	@app.load_config(config, true)
 	@app.db_connect
-	File.delete(@file_name) if File.exist?("test_data/test.db")
 	@app.migrate(:up)
 	
 	fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
