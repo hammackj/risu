@@ -1,6 +1,8 @@
 # News
 
 #1.5.1 ()
+- Initial release of a web gui for viewing data
+  - access via risu --web-gui
 - Host Model
   - top_n_vulnerable(n)
   - risks_by_host(n); updated the query critical instead of high
