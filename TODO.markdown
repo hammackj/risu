@@ -57,12 +57,14 @@
 ###Core
 - In the -v, --version option display the version of ruby and the version of rubygems
 - migration error handling
+  - catch mysql/sqlite/postgres errors during up/down
 - bug report info collection option
 - Complete comments for all existing code
 - create an api determining vulnerability % based on the network
 - create an api for creating a vulnerability score per host to show a risk %
 - More text generation from graphs
 - pdf bookmarks
+- add postgres and test it
 
 ###Parsers
 - move all pci related host properties to their own table
