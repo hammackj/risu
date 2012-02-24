@@ -1,5 +1,12 @@
 # News
 
+#1.5.1 ()
+- Host Model
+  - top_n_vulnerable(n)
+  - risks_by_host(n); updated the query critical instead of high
+
+
+  
 #1.5.0 (February 20, 2012)
 - Updated the Item model to be compatible with Nessus 5.0
 	- Added critical_risks()
