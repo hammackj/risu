@@ -36,4 +36,36 @@ class HostTest < ActiveSupport::TestCase
 	test "returns a graph Host.windows_os_graph" do
 		assert Host.windows_os_graph.class == StringIO
 	end		
+	
+	test "returns 163 for Host.windows_os_graph_text.length" do
+		assert Host.windows_os_graph_text.length == 163, "GOT #{Host.windows_os_graph_text.length}"
+	end
+
+	test "returns 0 for Host.unsupported_os_windows.length" do
+		assert Host.unsupported_os_windows.length == 0, "GOT #{Host.unsupported_os_windows.length}"
+	end
+	
+	test "returns 275 for Host.unsupported_os_text.length" do
+		assert Host.unsupported_os_text.length == 275, "GOT #{Host.unsupported_os_text.length}"
+	end
+	
+	test "returns 0 for Host.unsupported_os_aix.length" do
+		assert Host.unsupported_os_aix.length == 0, "GOT #{Host.unsupported_os_aix.length}"
+	end
+		
+	test "returns 0 for Host.unsupported_os_freebsd.length" do
+		assert Host.unsupported_os_freebsd.length == 0, "GOT #{Host.unsupported_os_freebsd.length}"
+	end
+	
+	test "returns 186 for Host.other_os_graph_text.length" do
+		assert Host.other_os_graph_text.length == 186, "GOT #{Host.other_os_graph_text.length}"
+	end
+
+	test "should return 2 for Host.top_n_vulnerable(2)" do
+		assert Host.top_n_vulnerable(2).count == 2, "GOT #{Host.top_n_vulnerable(8).count}"
+	end
+	
+	test "should return 2 for Host.top_n_vulnerable(10)" do
+		assert Host.top_n_vulnerable(10).count == 2, "GOT #{Host.top_n_vulnerable(8).count}"
+	end
 end
