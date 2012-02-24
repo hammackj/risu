@@ -5,7 +5,7 @@ critical_plugin:
   risk_factor: Critical
   synopsis: "A Critical Plugin for testing"
   cvss_base_score: 10
-  exploit_available: true
+  exploit_available: "true"
   solution: "Patch this critical plugin"
   
 high_plugin:
