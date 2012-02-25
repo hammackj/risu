@@ -29,3 +29,5 @@ class NotableDetailedTemplateTest < ActiveSupport::TestCase
 		assert Digest::MD5.hexdigest(File.read(@file_name)) == "ca170f534913a0f9db79c931d9d56cf2", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
 	end	
 end
+
+#23c852872357f2808479275461cac1f3
