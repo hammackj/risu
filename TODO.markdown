@@ -2,15 +2,16 @@
 
 **Release dates and roadmap are estimates, and features can be changed at any time.**
 
-#Bugs
-- Notable reports show an incorrect number, maybe fixed already.
-
+#**Bugs**
+- Notable reports show an incorrect number, might be fixed already.
 
 #Roadmap
 
 ##1.5.1 (April 1, 2012) -
 - Simple Sinatra based database viewer
 - 100% Code coverage for all unit testing
+- Nexpose Detailed xml parsing
+- Nexpose Simple xml parsing
 
 ##1.5.2 (May, 1 2012) - Filtering Magic
 - Add a filtering system for lowering the rating of plugins based on config
@@ -27,7 +28,7 @@
 
 #1.5.3 (June 1, 2012) - Rendering 
 - Ruby 1.8.x will no longer be officially supported.
-- Official support for ruby 1.9.3 only
+- Official support for ruby 1.9.3+ only (Due to rails v4)
 - Implement different renderers
 	- pdf
 	- cvs

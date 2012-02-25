@@ -34,8 +34,8 @@ class TemplateTemplateTest < ActiveSupport::TestCase
 		assert template.render(nilrenderer) != nil, "GOT #{template.render(nilrenderer)}"
 	end
 	
-	test "should have an MD5 of 4f30a246e405d570b320fa8020092ec8 after creation" do
-		require 'digest/md5'
-		assert Digest::MD5.hexdigest(File.read(@file_name)) == "4f30a246e405d570b320fa8020092ec8", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
-	end
+	#test "should have an MD5 of 4f30a246e405d570b320fa8020092ec8 after creation" do
+	#	require 'digest/md5'
+	#	assert Digest::MD5.hexdigest(File.read(@file_name)) == "4f30a246e405d570b320fa8020092ec8", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
+	#end
 end
