@@ -1,4 +1,74 @@
 reference_1:
   plugin_id: 99999
-  reference_name: "CVE"
+  reference_name: "cve"
+  value: "2011-1234"
+  
+reference_2:
+  plugin_id: 99999
+  reference_name: "cpe"
+  value: "2011-1234"
+  
+reference_3:
+  plugin_id: 99999
+  reference_name: "bid"
+  value: "2011-1234"
+
+reference_4:
+  plugin_id: 99999
+  reference_name: "see_also"
+  value: "2011-1234"
+  
+reference_5:
+  plugin_id: 99999
+  reference_name: "iava"
+  value: "2011-1234"
+  
+reference_6:
+  plugin_id: 99999
+  reference_name: "msft"
+  value: "2011-1234"
+
+reference_7:
+  plugin_id: 99999
+  reference_name: "osvdb"
+  value: "2011-1234" 
+
+reference_8:
+  plugin_id: 99999
+  reference_name: "cert"
+  value: "2011-1234"
+  
+reference_9:
+  plugin_id: 99999
+  reference_name: "edb-id"
+  value: "2011-1234"
+  
+reference_10:
+  plugin_id: 99999
+  reference_name: "rhsa"
+  value: "2011-1234"
+  
+reference_11:
+  plugin_id: 99999
+  reference_name: "secunia"
+  value: "2011-1234"
+  
+reference_12:
+  plugin_id: 99999
+  reference_name: "suse"
+  value: "2011-1234"
+
+reference_13:
+  plugin_id: 99999
+  reference_name: "dsa"
+  value: "2011-1234"
+
+reference_14:
+  plugin_id: 99999
+  reference_name: "owasp"
+  value: "2011-1234"
+
+reference_15:
+  plugin_id: 99999
+  reference_name: "cwe"
   value: "2011-1234"
