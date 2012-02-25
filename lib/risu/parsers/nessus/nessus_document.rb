@@ -16,21 +16,30 @@ module Risu
 				#
 				# @return [Boolean] True if valid, False if invalid
 				def valid?
+					parser = nil
+					
 					if File.exist?(@document)
-						@parser = LibXML::XML::Parser.file @document
-						doc = @parser.parse
-
-						if doc.root.name == nil
-							return false
-						end
-				
-						if doc.root.name == "NessusClientData_v2"
-							return true
-						elsif doc.root.name == "NessusClientData"
-							return false
-						else
-							return false
-						end
+						parser = LibXML::XML::Parser.file @document
+					elsif @document.class == "String"
+						parser = LibXML::XML::Parser.string @document
+					else
+						return false
+					end
+	
+					if parser == nil
+						return false
+					end
+						
+					doc = parser.parse			
+					
+					if doc.root.name == nil
+						return false
+					end
+			
+					if doc.root.name == "NessusClientData_v2"
+						return true
+					elsif doc.root.name == "NessusClientData"
+						return false
 					else
 						return false
 					end

@@ -9,21 +9,7 @@ module Risu
 					@fail_doc = NessusDocument.new "test_data/fail.nessus"
 					@invalid_doc = NessusDocument.new "test_data/invalid_report.nessus"
 				end
-		
-				after(:all) do
-					Report.delete_all
-					Host.delete_all
-					Plugin.delete_all
-					Item.delete_all
-					FamilySelection.delete_all
-					IndividualPluginSelection.delete_all
-					PluginsPreference.delete_all
-					Policy.delete_all
-					Reference.delete_all
-					ServerPreference.delete_all
-					Version.delete_all
-				end
-		
+				
 				it "should return true for NessusDocument.valid?" do				
 					@doc.valid?.should == true
 				end
