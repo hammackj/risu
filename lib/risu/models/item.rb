@@ -255,21 +255,11 @@ module Risu
 					g.data("Cat III", iii, "orange")
 
 					StringIO.new(g.to_blob)
-				end				
-
-				# @todo change Report.title to a real variable
-				# @todo rewite this
-				def risks_by_severity_graph_text
-					#crit = Item.crit_risks.count
-					#high = Item.high_risks.count
-					#medium = Item.medium_risks.count
-					
-					#if crit == nil then crit = 0 end
-					#if high == nil then high = 0 end
-					#if medium == nil then medium = 0 end
-						
-					#percentage = high
-										
+				end
+				
+				# @todo comment
+				#
+				def calculate_vulnerable_host_percent
 					hosts_with_critical = Hash.new
 					
 					Item.critical_risks.all.each do |item|
@@ -282,45 +272,59 @@ module Risu
 					end
 					
 					host_percent = (hosts_with_critical.count.to_f / Host.all.count.to_f) * 100
-					
-					adjective = case host_percent
+				end
+				
+				# @todo comments
+				#
+				def ajective_for_risk_text risk_percent
+					adjective = case risk_percent
 						when 0..5
 							"excellent"
-						#when 6..10
-						#	"great"
 						when 6..10
-							"very good"
-						when 15..25
+							"great"
+						when 11..15
 							"good"
-						when 25..35
+						when 16..20
 							"fair"
 						else
 							"poor"
 					end
-										
-					percent_text = case host_percent
+				end
+				
+				# @todo comments
+				#
+				def risk_text risk_percent
+					percent_text = case risk_percent
 						when 0..5			
 							"This implies that only a handful of computers are missing patches, and the current patch management is working well."
-						when 6..9
+						when 6..10
 							"This implies that there is a minor patch management issue. If there is a patch management system, it should be checked for problems. " +
 							"Each host should also be inspected to be certain it can receive patches."							
-						when 10..15
+						when 11..15
 							"This implies that there is a substantial patch management issue. If there is a patch management system, it should be checked for problems. " +
 							"Each host should also be inspected to be certain it can receive patches."
 						when 16..20
 							"This implies that there is a significant patch management issue. If there is a patch management system, it should be checked for problems. " +
 							"Each host should also be inspected to be certain it can receive patches."
 						else
-							"This implies that there is a major patch management problem on the network. Any patch management solutions should " +
+							"This implies that there is a critical patch management problem on the network. Any patch management solutions should " +
 							"be inspected for issues and they should be corrected as soon as possible. Each host should also be inspected to be certain it can receive patches."
 					end
-							
-					#graph_text = "This bar graph is a representation of the findings by severity; the " +
-					#"graph shows that, overall, #{Report.title} has a #{adjective} handle on the patch " +
-					#"management of the network. "
+				end
+
+				# @todo change Report.title to a real variable
+				# @todo rewite this
+				def risks_by_severity_graph_text
+					host_percent = calculate_vulnerable_host_percent()
+					adjective = ajective_for_risk_text(host_percent)
+					risk_text = risk_text(host_percent)	
 					
 					graph_text = "This bar graph is a representation of the findings by severity; the " +
-					"graph shows that, Overall #{Report.title} needs to implement patch management and configuration management as a priority."
+					"graph shows that, overall, #{Report.title} has a #{adjective} handle on the patch " +
+					"management of the network. "
+					
+					#graph_text = "This bar graph is a representation of the findings by severity; the " +
+					#{}"graph shows that, Overall #{Report.title} needs to implement patch management and configuration management as a priority."
 					
 					#if adjective == "good" or adjective == "fair"
 					#	graph_text << "But improvements in patch management could be made to ensure an excellent rating."
@@ -328,9 +332,9 @@ module Risu
 					
 					graph_text << "\n\n"
 					
-					graph_text << "The majority of the high findings were found on #{host_percent.round}% of the total assessed computers. #{percent_text}\n\n"
+					graph_text << "The majority of the critical findings were found on #{host_percent.round}% of the total assessed computers. #{risk_text}\n\n"
 					
-					graph_text << "The systems with high vulnerabilities represent the largest threat to the network, " +
+					graph_text << "The systems with critical vulnerabilities represent the largest threat to the network, " +
 					"so patching this group is paramount to the overall network security. It only takes one vulnerability " +
 					"to create a security incident.\n\n"
 					
