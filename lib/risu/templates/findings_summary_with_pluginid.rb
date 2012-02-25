@@ -10,7 +10,7 @@ module Risu
 					:name => "findings_summary_with_pluginid", 
 					:author => "hammackj", 
 					:version => "0.0.2", 
-					:description => "Geneates a Findings Summary with Nessus Plugin ID"
+					:description => "Generates a Findings Summary with Nessus Plugin ID"
 				}
 			end
 			
