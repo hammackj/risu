@@ -22,10 +22,10 @@ config =
 
 database:
   adapter: sqlite3
-  database: test.db"
+  database: test_data/test.db"
 
 begin
-	File.delete(@file_name) if File.exist?("test.db")
+	File.delete("test_data/test.db") if File.exist?("test_data/test.db")
 	@app = Risu::CLI::Application.new
 	@app.load_config(config, true)
 	@app.db_connect
