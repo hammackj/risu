@@ -148,7 +148,7 @@ module Risu
 				t.string :value
 			end
 			
-			#Index's for speed
+			#Index's for speed increases
 			add_index :items, :host_id
 			add_index :items, :plugin_id
 			add_index :references, :plugin_id
