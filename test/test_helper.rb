@@ -13,6 +13,7 @@ require "active_support"
 
 require 'risu'
 
+def setup_test_database
 config = 
 "report:
   author: TEST
@@ -24,11 +25,19 @@ database:
   adapter: sqlite3
   database: test_data/test.db"
 
-begin
+begin	
 	File.delete("test_data/test.db") if File.exist?("test_data/test.db")
+			
 	@app = Risu::CLI::Application.new
 	@app.load_config(config, true)
 	@app.db_connect
+	
+	@app.migrate(:up)
+	
+	if !ActiveRecord::Base.connection.tables.empty?
+		Risu::Base::Schema.migrate(:down)
+	end
+	
 	@app.migrate(:up)
 	
 	fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
@@ -38,6 +47,9 @@ begin
 rescue => e
 	puts "[!] #{e.message}\n#{e.backtrace}\n\n"
 end
+end
+
+setup_test_database()
 
 class ActiveSupport::TestCase
 
