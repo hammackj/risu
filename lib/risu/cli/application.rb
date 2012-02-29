@@ -86,7 +86,7 @@ module Risu
 			# @param direction [Symbol] :up or :down
 			#
 			def migrate(direction)
-				begin
+				begin					
 					if @database["adapter"] == nil
 						return false, "[!] Invalid database adapter, please check your config file"
 					end
