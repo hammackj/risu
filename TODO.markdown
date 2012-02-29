@@ -29,6 +29,7 @@
 #1.5.3 (June 1, 2012) - Rendering 
 - Ruby 1.8.x will no longer be officially supported.
 - Official support for ruby 1.9.3+ only (Due to rails v4)
+- Look at moving to nokogiri for xml parsing; http://nokogiri.org if its faster
 - Implement different renderers
 	- pdf
 	- cvs
@@ -48,7 +49,6 @@
 - Add Parser for SecurityCenter Output
 - Add Parser for Nexpose xml
 - Add Parser for Qualys xml
-- Look at moving to nokogiri for xml parsing; http://nokogiri.org if its faster
 - Easier way to select the Scan to generate reports from
 
 ## 2.0 (??)
@@ -66,6 +66,7 @@
 - More text generation from graphs
 - pdf bookmarks
 - add postgres and test it
+- rewrite the application class
 
 ###Parsers
 - move all pci related host properties to their own table
@@ -130,6 +131,23 @@
 - Added TOC/Index to the technical findings report, issue 15
 - More text blocks for various plugins services
 - finish implementation of service descriptions
+- outstanding/very good/good/improvement needed/unsatisfactory
+- report type rtf
+  Per host
+    - scan time start/end
+    - remote host info is/netbios/name/dns/ip/mac
+- All types of reports nessus does
+  -vuln by host
+    -hosts.each
+      - host.items.each
+        - name
+        - synopsis
+        - description
+        - solution
+        - risk
+        - reference
+        - ports
+        - plugin output
 
 ###Testing
 - Move all tests to use Fixtures
