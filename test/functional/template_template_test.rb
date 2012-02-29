@@ -29,7 +29,7 @@ class TemplateTemplateTest < ActiveSupport::TestCase
 	
 	test 'Template render should' do
 		nilrenderer = Risu::Renderers::NilRenderer.new
-		template = Risu::Templates::Assets.new
+		template = Risu::Templates::Template.new
 		data = template.render(nilrenderer)
 		assert template.render(nilrenderer) != nil, "GOT #{template.render(nilrenderer)}"
 	end
