@@ -6,7 +6,10 @@
 - Host Model
   - top_n_vulnerable(n)
   - risks_by_host(n); updated the query critical instead of high
-
+- Item Model
+  - ajective_for_risk_text
+  - risk_text
+  - calculate_vulnerable_host_percent
 
   
 #1.5.0 (February 20, 2012)
