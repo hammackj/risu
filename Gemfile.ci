@@ -11,4 +11,5 @@ gem "mysql"
 gem "rmagick"
 gem "sqlite3"
 gem "simplecov"
-
+gem "sinatra"
+gem "haml"
