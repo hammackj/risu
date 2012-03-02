@@ -1,10 +1,26 @@
 %h1 Hosts
 %table
-	- Host.all.each do |host|
+	%tr
+		%td IP
+		%td OS
+		%td Critical
+		%td High
+		%td Medium
+		%td Low
+		%td Open Ports
+		%td %
+
+	- Risu::Models::Host.all.each do |host|
 		%tr
 			%td 
 				%a{:href => url("/host/#{host.id}")}= host.name
-			%td= host.os
+			%td= host.os.split(",")[0] if host.os != nil
+			%td= host.items.critical_risks.count
+			%td= host.items.high_risks.count
+			%td= host.items.medium_risks.count
+			%td= host.items.low_risks.count
+			%td= host.items.info_risks.count
+			%td %
 
 %p 
 %a{:href => url("/reports")} Back to Reports
