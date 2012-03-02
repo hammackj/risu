@@ -1,8 +1,9 @@
 # News
 
-#1.5.1 ()
+#1.5.1 (April 1, 2012)
 - Initial release of a web gui for viewing data
-  - access via risu --web-gui
+  - Enabled via risu --webgui
+	- Browse to http://localhost:8969 to view it
 - Host Model
   - top_n_vulnerable(n)
   - risks_by_host(n); updated the query critical instead of high
@@ -10,7 +11,7 @@
   - ajective_for_risk_text
   - risk_text
   - calculate_vulnerable_host_percent
-
+- Lots of unit tests to speed release cycles
   
 #1.5.0 (February 20, 2012)
 - Updated the Item model to be compatible with Nessus 5.0
