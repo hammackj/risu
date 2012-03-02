@@ -19,11 +19,15 @@ require 'prawn/layout'
 require 'stringio'
 require 'mysql'
 require 'irb'
+require 'sinatra'
+require 'haml'
+
 
 require 'optparse'
 
 require 'risu/base'
 require 'risu/cli'
+require 'risu/web'
 require 'risu/exceptions'
 require 'risu/models'
 require 'risu/parsers'
