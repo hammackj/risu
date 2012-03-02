@@ -282,6 +282,10 @@ module Risu
 						opt.on('--console', 'Starts an ActiveRecord console into the configured database') do |option|
 							@options[:console] = option
 						end
+						
+						opt.on('--webgui', 'Starts an local webserver for viewing the database') do |option|
+							@options[:webgui] = option
+						end
 
 						opt.on_tail("-?", "--help", "Show this message") do
 							puts opt.to_s + "\n"
@@ -333,6 +337,11 @@ module Risu
 						puts Risu::CLI::Banner
 						puts "#{APP_NAME} Console v#{VERSION}"
 					end
+					exit
+				end
+				
+				if @options[:webgui] != nil
+					Risu::Web::Application.run!
 					exit
 				end
 
