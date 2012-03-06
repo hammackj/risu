@@ -1,8 +1,11 @@
 module Risu
 	module Web
 		class Application < Sinatra::Base
+			set :bind, 'localhost'
 			set :port, 8969
 			set :haml, :format => :html5
+			set :environment, :production
+			puts "Risu Web Interface at http://localhost:8969/"
 
 			get '/' do	
 				haml :index
