@@ -517,6 +517,18 @@ module Risu
 					
 					hosts[0...n]
 				end
+				
+				def unique_hosts_with_critical
+					hosts = Item.critical_risks_by_host(Host.all.count).count					
+					hosts = hosts.sort_by {|k, v| v}
+					hosts.reverse!
+				end
+				
+				def unique_hosts_with_high
+					hosts = Item.high_risks_by_host(Host.all.count).count					
+					hosts = hosts.sort_by {|k, v| v}
+					hosts.reverse!
+				end
 			end
 		end
 	end
