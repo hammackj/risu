@@ -341,6 +341,7 @@ module Risu
 				end
 				
 				if @options[:webgui] != nil
+					puts "Risu Web Interface at http://localhost:8969/"
 					Risu::Web::Application.run!
 					exit
 				end
