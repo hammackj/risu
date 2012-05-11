@@ -148,6 +148,14 @@ module Risu
 				def risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
 				end
+				
+				def critical_risks_by_host(limit=10)
+					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
+				end
+				
+				def high_risks_by_host(limit=10)
+					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
+				end
 
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
 				#
@@ -262,7 +270,7 @@ module Risu
 				def calculate_vulnerable_host_percent
 					hosts_with_critical = Hash.new
 					
-					Item.critical_risks.all.each do |item|
+					(Item.critical_risks.all + Item.high_risks.all).each do |item|
 						ip = Host.find_by_id(item.host_id).name
 						if hosts_with_critical[ip] == nil
 							hosts_with_critical[ip] = 1
@@ -293,14 +301,14 @@ module Risu
 				
 				# @todo comments
 				#
-				def risk_text risk_percent
+				def risk_text risk_percent					
 					percent_text = case risk_percent
-						when 0..5			
+						when 0..5.99
 							"This implies that only a handful of computers are missing patches, and the current patch management is working well."
-						when 6..10
+						when 6..10.99
 							"This implies that there is a minor patch management issue. If there is a patch management system, it should be checked for problems. " +
 							"Each host should also be inspected to be certain it can receive patches."							
-						when 11..15
+						when 11..15.99
 							"This implies that there is a substantial patch management issue. If there is a patch management system, it should be checked for problems. " +
 							"Each host should also be inspected to be certain it can receive patches."
 						when 16..20
