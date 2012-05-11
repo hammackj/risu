@@ -88,7 +88,6 @@
 - Add a CVSS risk factor graph
 - security risk graph
 
-
 ###Reports / Templates
 - SANS TOP XX report
 - add (hostname) to reports
@@ -179,6 +178,9 @@
 		- pci compliance
 		- tech findings
 - Add tests for Patch model
+
+###Web GUI
+- Move to http://twitter.github.com/bootstrap/index.html for the web gui
 
 ###Marketing
 - CentOS 6 setup Tutorial
