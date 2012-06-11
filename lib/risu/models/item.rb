@@ -227,7 +227,7 @@ module Risu
 					g.data("High", high, "red")
 					g.data("Medium", medium, "orange")
 					g.data("Low", low, "yellow")
-					g.data("Open Ports", info, "blue")
+					g.data("Informational", info, "blue")
 
 					StringIO.new(g.to_blob)
 				end
