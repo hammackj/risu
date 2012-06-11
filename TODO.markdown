@@ -7,11 +7,18 @@
 
 #Roadmap
 
-##1.5.1 (April 1, 2012) -
+##1.5.1 (Aug, 2012) -
+- Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
 - Simple Sinatra based database viewer
 - 100% Code coverage for all unit testing
 - Nexpose Detailed xml parsing
 - Nexpose Simple xml parsing
+- cisco tags
+- icsa tag
+- list scan in database via cli
+- generate report based on scan_id/report id
+- finding summary: crit/high spacing
+- page kerning?
 
 ##1.5.2 (May, 1 2012) - Filtering Magic
 - Add a filtering system for lowering the rating of plugins based on config
