@@ -112,8 +112,8 @@ module Risu
 						when "tag"
 							@attr = nil
 
-							if attributes["name"] =~ /[M|m][S|s]\d{2}-\d{2,}/
-								@attr = if attributes["name"] =~ /[M|m][S|s]\d{2}-\d{2,}/
+							if attributes["name"] =~ /[M|m][S|s]\d{2,}-\d{2,}/
+								@attr = if attributes["name"] =~ /[M|m][S|s]\d{2,}-\d{2,}/
 										attributes["name"]
 									else
 										nil
