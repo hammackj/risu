@@ -73,6 +73,7 @@ module Risu
 					t.string :pcidss_unprotected_mssql_db
 					t.string :pcidss_obsolete_software
 					t.string :pcidss_www_sql_injection
+					t.string :pcidss_backup_files
 					t.string :system_type
 					t.text :notes
 				end
