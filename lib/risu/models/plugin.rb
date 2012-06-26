@@ -61,6 +61,9 @@ module Risu
 					g = Gruff::Bar.new(GRAPH_WIDTH)
 					g.title = sprintf "Top %d Critical Findings By Plugin", Item.risks_by_plugin(limit).all.count
 					g.sort = false
+					if g.marker_count == 0
+						g.marker_count = 1
+					end
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
