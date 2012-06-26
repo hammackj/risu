@@ -275,6 +275,9 @@ module Risu
 					g = Gruff::Bar.new(GRAPH_WIDTH)
 					g.title = sprintf "Top 10 Hosts with Notable Findings Count"
 					g.sort = false
+					if g.marker_count == 0
+						g.marker_count = 1
+					end
 					g.y_axis_increment = 1
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
@@ -300,6 +303,9 @@ module Risu
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = "Other Operating Systems Percentage"
 					g.sort = false
+					if g.marker_count == 0
+						g.marker_count = 1
+					end
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
@@ -340,6 +346,9 @@ module Risu
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = "Windows Operating Systems By Percentage"
 					g.sort = false
+					if g.marker_count == 0
+						g.marker_count = 1
+					end
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
