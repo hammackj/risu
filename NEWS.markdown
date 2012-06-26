@@ -11,7 +11,10 @@
   - ajective_for_risk_text
   - risk_text
   - calculate_vulnerable_host_percent
-- Lots of unit tests to speed release cycles
+- Lots of unit tests added along with travis-ci
+- New Tags
+	- pcidss_backup_files added to the Host Model
+	
   
 #1.5.0 (February 20, 2012)
 - Updated the Item model to be compatible with Nessus 5.0
