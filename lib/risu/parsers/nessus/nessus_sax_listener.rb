@@ -69,6 +69,7 @@ module Risu
 							"pcidss:unprotected_mssql_db" => :pcidss_unprotected_mssql_db,
 							"pcidss:obsolete_software" => :pcidss_obsolete_software,
 							"pcidss:www:sql_injection" => :pcidss_www_sql_injection,
+							"pcidss:backup_files" => :pcidss_backup_files,
 							"fname" => :fname
 						}
 				end
