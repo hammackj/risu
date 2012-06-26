@@ -180,6 +180,9 @@ module Risu
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = sprintf "Top %d Services By Vulnerability", Item.risks_by_service(limit).all.count
 					g.sort = false
+					if g.marker_count == 0
+						g.marker_count = 1
+					end
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
@@ -206,6 +209,9 @@ module Risu
 					g = Gruff::Bar.new(GRAPH_WIDTH)
 					g.title = "Risks By Severity"
 					g.sort = false
+					if g.marker_count == 0
+						g.marker_count = 1
+					end
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
@@ -245,6 +251,9 @@ module Risu
 					g = Gruff::Bar.new(GRAPH_WIDTH)
 					g.title = "Stigs By Severity"
 					g.sort = false
+					if g.marker_count == 0
+						g.marker_count = 1
+					end
 					g.theme = {
 						:colors => %w(purple red orange yellow blue green black grey brown pink),
 						:background_colors => %w(white white)
