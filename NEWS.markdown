@@ -11,6 +11,9 @@
   - adjective_for_risk_text
   - risk_text
   - calculate_vulnerable_host_percent
+- References Model
+	- added iavb method
+	- added iavt method
 - Lots of unit tests added along with travis-ci
 - New Tags
 	- pcidss_backup_files added to the Host Model
