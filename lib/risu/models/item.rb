@@ -149,10 +149,12 @@ module Risu
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
 				end
 				
+				# @todo comment
 				def critical_risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
 				end
 				
+				# @todo comment
 				def high_risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
 				end
@@ -239,7 +241,7 @@ module Risu
 				end
 				
 				#
-				#
+				# @todo comment
 				def stig_findings(categeory="I")
 					where('plugin_id IN (:plugins)', :plugins => Plugin.where(:stig_severity => categeory).select(:id)).order("severity DESC")
 				end
