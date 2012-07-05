@@ -330,7 +330,7 @@ module Risu
 				end
 
 				# @todo change Report.title to a real variable
-				# @todo rewite this
+				# @todo rewrite this
 				def risks_by_severity_graph_text
 					host_percent = calculate_vulnerable_host_percent()
 					adjective = ajective_for_risk_text(host_percent)
