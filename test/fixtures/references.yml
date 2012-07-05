@@ -2,12 +2,12 @@ reference_1:
   plugin_id: 99999
   reference_name: "cve"
   value: "2011-1234"
-  
+
 reference_2:
   plugin_id: 99999
   reference_name: "cpe"
   value: "2011-1234"
-  
+
 reference_3:
   plugin_id: 99999
   reference_name: "bid"
@@ -17,12 +17,12 @@ reference_4:
   plugin_id: 99999
   reference_name: "see_also"
   value: "2011-1234"
-  
+
 reference_5:
   plugin_id: 99999
   reference_name: "iava"
   value: "2011-1234"
-  
+
 reference_6:
   plugin_id: 99999
   reference_name: "msft"
@@ -31,28 +31,28 @@ reference_6:
 reference_7:
   plugin_id: 99999
   reference_name: "osvdb"
-  value: "2011-1234" 
+  value: "2011-1234"
 
 reference_8:
   plugin_id: 99999
   reference_name: "cert"
   value: "2011-1234"
-  
+
 reference_9:
   plugin_id: 99999
   reference_name: "edb-id"
   value: "2011-1234"
-  
+
 reference_10:
   plugin_id: 99999
   reference_name: "rhsa"
   value: "2011-1234"
-  
+
 reference_11:
   plugin_id: 99999
   reference_name: "secunia"
   value: "2011-1234"
-  
+
 reference_12:
   plugin_id: 99999
   reference_name: "suse"
@@ -71,4 +71,14 @@ reference_14:
 reference_15:
   plugin_id: 99999
   reference_name: "cwe"
+  value: "2011-1234"
+
+reference_16:
+  plugin_id: 99999
+  reference_name: "iavb"
+  value: "2011-1234"
+
+reference_17:
+  plugin_id: 99999
+  reference_name: "iavt"
   value: "2011-1234"
