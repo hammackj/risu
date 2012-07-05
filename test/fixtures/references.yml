@@ -82,3 +82,8 @@ reference_17:
   plugin_id: 99999
   reference_name: "iavt"
   value: "2011-1234"
+
+reference_18:
+  plugin_id: 99999
+  reference_name: "cisco-sa"
+  value: "2011-1234"
