@@ -22,8 +22,8 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks
 					where(:severity => 4)
-				end				
-				
+				end
+
 				# Queries for all the high risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
@@ -148,12 +148,12 @@ module Risu
 				def risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
 				end
-				
+
 				# @todo comment
 				def critical_risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
 				end
-				
+
 				# @todo comment
 				def high_risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
@@ -196,14 +196,14 @@ module Risu
 
 					StringIO.new(g.to_blob)
 				end
-				
+
 				#@todo comment
 				def risks_by_service_graph_text
 					"This graph is a representation of the findings found by service. This graph can help " +
 					"understand what services are running on the network and if they are vulnerable, where " +
-					"the risks are and how they should be protected.\n\n"				
+					"the risks are and how they should be protected.\n\n"
 				end
-				
+
 				# Generates a Graph of all the risks by severity
 				#
 				# @return [StringIO] Object containing the generated PNG image
@@ -211,9 +211,7 @@ module Risu
 					g = Gruff::Bar.new(GRAPH_WIDTH)
 					g.title = "Risks By Severity"
 					g.sort = false
-					if g.marker_count == 0
-						g.marker_count = 1
-					end
+					g.marker_count = 1
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
@@ -224,11 +222,11 @@ module Risu
 					medium = Item.medium_risks.count
 					low = Item.low_risks.count
 					info = Item.info_risks.count
-					
+
 					if crit == nil then crit = 0 end
 					if high == nil then high = 0 end
 					if medium == nil then medium = 0 end
-					if low == nil then low = 0 end		
+					if low == nil then low = 0 end
 					if info == nil then info = 0 end
 
 					g.data("Critical", crit, "purple")
@@ -239,13 +237,13 @@ module Risu
 
 					StringIO.new(g.to_blob)
 				end
-				
+
 				#
 				# @todo comment
 				def stig_findings(categeory="I")
 					where('plugin_id IN (:plugins)', :plugins => Plugin.where(:stig_severity => categeory).select(:id)).order("severity DESC")
 				end
-				
+
 				# Generates a Graph of all the risks by severity
 				#
 				# @return [StringIO] Object containing the generated PNG image
@@ -264,7 +262,7 @@ module Risu
 					i = Item.stig_findings("I").count
 					ii = Item.stig_findings("II").count
 					iii = Item.stig_findings("III").count
-					
+
 					if i == nil then i = 0 end
 					if ii == nil then ii = 0 end
 					if iii == nil then iii = 0 end
@@ -275,24 +273,24 @@ module Risu
 
 					StringIO.new(g.to_blob)
 				end
-				
+
 				# @todo comment
 				#
 				def calculate_vulnerable_host_percent
 					hosts_with_critical = Hash.new
-					
+
 					(Item.critical_risks.all + Item.high_risks.all).each do |item|
 						ip = Host.find_by_id(item.host_id).name
 						if hosts_with_critical[ip] == nil
 							hosts_with_critical[ip] = 1
 						end
-								
+
 						hosts_with_critical[ip] = hosts_with_critical[ip] + 1
 					end
-					
+
 					host_percent = (hosts_with_critical.count.to_f / Host.all.count.to_f) * 100
 				end
-				
+
 				# @todo comments
 				#
 				def ajective_for_risk_text risk_percent
@@ -309,16 +307,16 @@ module Risu
 							"poor"
 					end
 				end
-				
+
 				# @todo comments
 				#
-				def risk_text risk_percent					
+				def risk_text risk_percent
 					percent_text = case risk_percent
 						when 0..5.99
 							"This implies that only a handful of computers are missing patches, and the current patch management is working well."
 						when 6..10.99
 							"This implies that there is a minor patch management issue. If there is a patch management system, it should be checked for problems. " +
-							"Each host should also be inspected to be certain it can receive patches."							
+							"Each host should also be inspected to be certain it can receive patches."
 						when 11..15.99
 							"This implies that there is a substantial patch management issue. If there is a patch management system, it should be checked for problems. " +
 							"Each host should also be inspected to be certain it can receive patches."
@@ -336,36 +334,36 @@ module Risu
 				def risks_by_severity_graph_text
 					host_percent = calculate_vulnerable_host_percent()
 					adjective = ajective_for_risk_text(host_percent)
-					risk_text = risk_text(host_percent)	
-					
+					risk_text = risk_text(host_percent)
+
 					graph_text = "This bar graph is a representation of the findings by severity; the " +
 					"graph shows that, overall, #{Report.title} has a #{adjective} handle on the patch " +
 					"management of the network. "
-					
+
 					#graph_text = "This bar graph is a representation of the findings by severity; the " +
 					#{}"graph shows that, Overall #{Report.title} needs to implement patch management and configuration management as a priority."
-					
+
 					#if adjective == "good" or adjective == "fair"
 					#	graph_text << "But improvements in patch management could be made to ensure an excellent rating."
 					#end
-					
+
 					graph_text << "\n\n"
-					
+
 					graph_text << "The majority of the critical findings were found on #{host_percent.round}% of the total assessed computers. #{risk_text}\n\n"
-					
+
 					graph_text << "The systems with critical vulnerabilities represent the largest threat to the network, " +
 					"so patching this group is paramount to the overall network security. It only takes one vulnerability " +
 					"to create a security incident.\n\n"
-					
+
 					graph_text << "It should be noted that low findings and open ports represent the discovery "
 					graph_text << "of network services and open ports. Typically, these are not an indication of "
 					graph_text << "a serious problem and pose little to no threat. However, the correlation of "
 					graph_text << "data between the different severity levels could be used to determine degree "
 					graph_text << "of vulnerability for a given system.\n"
-					
+
 					return graph_text
 				end
-				
+
 				#sqlite only @todo @fix
 				def top_10_sorted_raw
 					raw = Item.joins(:plugin).where(:severity => 4).order("cast(plugins.cvss_base_score as real)").count(:all, :group => :plugin_id)
@@ -375,19 +373,19 @@ module Risu
 						row = Array.new
 						plugin_id = vuln[0]
 						count = vuln[1]
-						
-						row.push(plugin_id)					
+
+						row.push(plugin_id)
 						row.push(count)
 						data.push(row)
-					end	
+					end
 
 					data = data.sort do |a, b|
 						b[1] <=> a[1]
 					end
-					
+
 					return data
 				end
-				
+
 				def top_10_sorted
 					#raw = Item.where(:severity => 3).count(:all, :group => :plugin_id)
 					raw = Item.joins(:plugin).where(:severity => 4).order(:cvss_base_score).count(:all, :group => :plugin_id)
@@ -400,18 +398,18 @@ module Risu
 
 						name = Plugin.find_by_id(plugin_id).plugin_name
 
-						row.push(name)					
+						row.push(name)
 						row.push(count)
 						data.push(row)
-					end	
+					end
 
 					data = data.sort do |a, b|
 						b[1] <=> a[1]
 					end
-					
-					return data	
+
+					return data
 				end
-				
+
 				# Returns a prawn pdf table for the top 10 notable findings
 				#
 				# @todo change this method to return a array/table and let the template render it
@@ -427,16 +425,16 @@ module Risu
 					output.table([headers] + data[0..9], :header => true, :column_widths => header_widths, :width => output.bounds.width) do
 						row(0).style(:font_style => :bold, :background_color => 'cccccc')
 						cells.borders = [:top, :bottom, :left, :right]
-					end			
+					end
 				end
-				
+
 				# Queries for all unique risks and sorts them by count
-				# 
+				#
 				# @return [ActiveRecord::Relation] with the query results
 				def all_risks_unique_sorted
 				    select("items.*").select("count(*) as count_all").group(:plugin_id).order("count_all DESC")
 				end
-				
+
 			end
 		end
 	end
