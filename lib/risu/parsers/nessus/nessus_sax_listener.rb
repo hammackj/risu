@@ -5,7 +5,7 @@ ActiveRecord::Migration.verbose = false
 module Risu
 	module Parsers
 		module Nessus
-			
+
 			# NessusSaxListener
 			#
 			# @author Jacob Hammack <jacob.hammack@hammackj.com>
@@ -16,11 +16,11 @@ module Risu
 				#
 				def initialize
 					@vals = Hash.new
-					
+
 					@valid_references = Array[
-						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft", 
-						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa", 
-						"owasp", "cwe"]
+						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft",
+						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
+						"owasp", "cwe", "iadb", "iavt"]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
 						"description", "cvss_base_score", "solution", "item", "plugin_output", "tag", "synopsis", "plugin_modification_date",
@@ -33,10 +33,10 @@ module Risu
 						"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
 						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname",
 						]
-						
+
 						@valid_elements = @valid_elements + @valid_references
-																		
-						# This makes adding new host properties really easy, except for the 
+
+						# This makes adding new host properties really easy, except for the
 						#MS patch numbers, this are handled differently.
 						@valid_host_properties = {
 							"HOST_END" => :end,
@@ -237,7 +237,7 @@ module Risu
 							end if @attr != nil
 						#We cannot handle the references in the same block as the rest of the ReportItem tag because
 						#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax
-						#parser. To solve this we do the references before the final plugin data, Valid references must be added 
+						#parser. To solve this we do the references before the final plugin data, Valid references must be added
 						#the @valid_reference array at the top to be parsed.
 						# *@valid_reference, does a 'when' on each element of the @valid_references array, pure magic
 						when *@valid_references
@@ -255,7 +255,7 @@ module Risu
 								:risk_factor => @vals["risk_factor"],
 								:description => @vals["description"],
 								:plugin_publication_date => @vals["plugin_publication_date"],
-								:plugin_modification_date => @vals["plugin_modification_date"],								
+								:plugin_modification_date => @vals["plugin_modification_date"],
 								:synopsis => @vals["synopsis"],
 								:plugin_type => @vals["plugin_type"],
 								:cvss_vector => @vals["cvss_vector"],
@@ -274,7 +274,7 @@ module Risu
 								:exploit_framework_exploithub => @vals["exploit_framework_exploithub"],
 								:exploithub_sku => @vals["exploithub_sku"],
 								:stig_severity => @vals["stig_severity"],
-								:fname => @vals["fname"]						
+								:fname => @vals["fname"]
 							}
 							@plugin.save
 					end
