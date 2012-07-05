@@ -1,6 +1,6 @@
 # News
 
-#1.5.1 (April 1, 2012)
+#1.5.1 (July 1, 2012)
 - Initial release of a web gui for viewing data
   - Enabled via risu --webgui
 	- Browse to http://localhost:8969 to view it
@@ -8,14 +8,16 @@
   - top_n_vulnerable(n)
   - risks_by_host(n); updated the query critical instead of high
 - Item Model
-  - ajective_for_risk_text
+  - adjective_for_risk_text
   - risk_text
   - calculate_vulnerable_host_percent
 - Lots of unit tests added along with travis-ci
 - New Tags
 	- pcidss_backup_files added to the Host Model
-	
-  
+	- iavb added as a reference
+	- iavt added as a reference
+
+
 #1.5.0 (February 20, 2012)
 - Updated the Item model to be compatible with Nessus 5.0
 	- Added critical_risks()
@@ -94,7 +96,7 @@ You can access it via `Host.first.patches` or `Patch.all`
 - Please report any missing tags that risu outputs to jacob[dot]hammackj[@]hammackj[.]com, I expect a ton of Microsoft Patch tags missing
 
 #1.4.7 (August 13, 2011)
-- Fixed issue #39 Ruby 1.8.7 Syntax error reported by mlpotgieter 
+- Fixed issue #39 Ruby 1.8.7 Syntax error reported by mlpotgieter
 - Ruby 1.8.7 will no longer be supported in v1.5, please upgrade your ruby installs.
 
 #1.4.6 (July 12, 2011)
@@ -139,7 +141,7 @@ You can access it via `Host.first.patches` or `Patch.all`
 	- New HostProperties attribute: pcidss:medium_risk_flaw
 	- New HostProperties attribute: pcidss:reachable_db
 	- New HostProperties attribute: pcidss:www:xss
-- Added more unit tests 91.7% code coverage for testing at the moment. Not including templates.	
+- Added more unit tests 91.7% code coverage for testing at the moment. Not including templates.
 
 #1.4.2 (May 13, 2011)
 
@@ -192,7 +194,7 @@ You can access it via `Host.first.patches` or `Patch.all`
 
 # 1.2.0 (February 13, 2011)
 **This update breaks all existing templates, included templates are updated**
-	
+
 - Preformed tons code clean up
 - Fixed a ton of typos
 - Removed the Findings class, please use the named scopes on each ActiveRecord object now
@@ -207,10 +209,10 @@ You can access it via `Host.first.patches` or `Patch.all`
 - Added a simple PCI/DSS compliance report template (Requires Nessus Professional Feed for the plugin)
 - Updated the parser to take into account the new fields
 	- HostProperties attribute: pci-dss-compliance
-	- New XML element: exploitability_ease. 
+	- New XML element: exploitability_ease.
 	- New XML element: cvss_temporal_vector.
 	- New XML element: exploit_framework_core.
-	- New XML element: cvss_temporal_score. 
+	- New XML element: cvss_temporal_score.
 	- New XML element: exploit_available.
 	- New XML element: exploit_framework_metasploit.
 	- New XML element: metasploit_name
@@ -218,17 +220,17 @@ You can access it via `Host.first.patches` or `Patch.all`
 	- New XML element: canvas_package
 - Updated technical findings template to account for the new exploitability values
 - Fixed a bug with the way I was blacklisting the scan box
-	
+
 # 1.0.0 (October 8, 2010)
 - Cleaned up more code
 - Fixed a Mysql error for when the tables do not exist.
-	
+
 # 0.6.6 (October 4, 2010)
 - Moved to prawn for pdf output
 - added templates for the new prawn output
 - added checks to warn when there are new xml tags
 - moved everything into the risu executable
 - cleaned up the code
-	
+
 # 0.6.5 (August 15, 2010)
 - Initial public release
