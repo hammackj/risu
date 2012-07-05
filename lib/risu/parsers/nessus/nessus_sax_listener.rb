@@ -20,7 +20,7 @@ module Risu
 					@valid_references = Array[
 						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft",
 						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
-						"owasp", "cwe", "iadb", "iavt"]
+						"owasp", "cwe", "iadb", "iavt", "cisco-sa"]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
 						"description", "cvss_base_score", "solution", "item", "plugin_output", "tag", "synopsis", "plugin_modification_date",
