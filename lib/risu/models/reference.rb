@@ -51,7 +51,7 @@ module Risu
 					where(:reference_name => "osvdb").select('DISTINCT value')
 				end
 
-				# Queries all unqiue cert refs
+				# Queries all unique cert refs
 				#
 				def cert
 					where(:reference_name => "cert").select('DISTINCT value')
@@ -109,6 +109,12 @@ module Risu
 				#
 				def iavt
 					where(:reference_name => "iavt").select('DISTINCT value')
+				end
+
+				#
+				#
+				def cisco_sa
+					where(:reference_name => "cisco_sa").select('DISTINCT value')
 				end
 			end
 		end
