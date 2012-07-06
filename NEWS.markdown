@@ -1,6 +1,6 @@
 # News
 
-#1.5.1 (July 1, 2012)
+#1.5.1 (August 1, 2012)
 - Initial release of a web gui for viewing data
   - Enabled via risu --webgui
 	- Browse to http://localhost:8969 to view it
@@ -18,6 +18,7 @@
 	- added cisco_bug_id method
 	- added ics_alert method
 - Lots of unit tests added along with travis-ci
+- Fixed a divided by zero bug on all graphs related to Gruff on Ruby 1.9.3
 - New Tags
 	- pcidss_backup_files added to the Host Model
 	- iavb added as a reference
@@ -25,7 +26,9 @@
 	- cisco-sa as a reference
 	- cisco-bug-id as a reference
 	- ics-alert as a reference
-
+- Known Issues
+	- Sqlite3 is really slow when parsing, This seems to be a known Sqlite issue.
+		I recommend using Mysql for the time being as the default database.
 
 #1.5.0 (February 20, 2012)
 - Updated the Item model to be compatible with Nessus 5.0
