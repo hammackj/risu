@@ -9,7 +9,7 @@ module Risu
 				{
 					:name => "technical_findings",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:description => "Generates a Technical Findings Report"
 				}
 			end
@@ -30,7 +30,7 @@ module Risu
 				output.text "\n\n\n"
 
 				unique_risks = Array.new
-				unique_risks << Hash[:title => "Criical Findings", :color => "9B30FF", :values => Item.critical_risks_unique]
+				unique_risks << Hash[:title => "Critical Findings", :color => "9B30FF", :values => Item.critical_risks_unique]
 				unique_risks << Hash[:title => "High Findings", :color => "FF0000", :values => Item.high_risks_unique]
 #				unique_risks << Hash[:title => "Medium Findings", :color => "FF8040", :values => Item.medium_risks_unique]
 
@@ -41,7 +41,7 @@ module Risu
 							output.text h[:title], :style => :bold
 							output.fill_color "000000"
 						end
-						
+
 						output.font_size(10)
 
 						output.text "\n"
