@@ -122,7 +122,7 @@ module Risu
 					select("items.*").select("count(*) as count_all").where(:severity => 0).group(:plugin_id).order("count_all DESC")
 				end
 
-				# Queries for all the risks grouped by service type, used for the Vulnerbilities by Service graph
+				# Queries for all the risks grouped by service type, used for the Vulnerabilities by Service graph
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_service(limit=10)
@@ -142,19 +142,25 @@ module Risu
 				#
 				# @param limit Limits the result to a specific number, default 10
 				#
-				# @todo add high/med/low_risks_by_host functions
-				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
 				end
 
-				# @todo comment
+				# Queries for all the Critical risks by host
+				#
+				# @param limit Limits the result to a specific number, default 10
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
 				end
 
-				# @todo comment
+				# Queries for all the High risks by host
+				#
+				# @param limit Limits the result to a specific number, default 10
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_by_host(limit=10)
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
 				end
@@ -195,7 +201,9 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 
-				#@todo comment
+				# Generates text for the Risks by Service graph
+				#
+				# @return [String] Text based on the Risks by Service graph
 				def risks_by_service_graph_text
 					"This graph is a representation of the findings found by service. This graph can help " +
 					"understand what services are running on the network and if they are vulnerable, where " +
@@ -236,10 +244,13 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 
+				# Queries for all DISA Stig findings by category
 				#
-				# @todo comment
-				def stig_findings(categeory="I")
-					where('plugin_id IN (:plugins)', :plugins => Plugin.where(:stig_severity => categeory).select(:id)).order("severity DESC")
+				# @param category The DISA Stig category I, II, III
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def stig_findings(category="I")
+					where('plugin_id IN (:plugins)', :plugins => Plugin.where(:stig_severity => category).select(:id)).order("severity DESC")
 				end
 
 				# Generates a Graph of all the risks by severity
