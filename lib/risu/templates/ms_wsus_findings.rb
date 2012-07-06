@@ -1,19 +1,19 @@
 module Risu
 	module Templates
 		class MSWSUSFindingsTemplate < Risu::Base::TemplateBase
-			
+
 			# Initializes the template loading metadata
 			#
 			def initialize ()
-				@template_info = 
-				{ 
-					:name => "ms_wsus_findings", 
-					:author => "hammackj", 
-					:version => "0.0.1", 
+				@template_info =
+				{
+					:name => "ms_wsus_findings",
+					:author => "hammackj",
+					:version => "0.0.1",
 					:description => "Generates a report based on the findings of the Patch Management: WSUS Report plugin"
 				}
 			end
-			
+
 			# Called during the rendering process
 			#
 			def render(output)
@@ -28,23 +28,23 @@ module Risu
 				}
 
 				output.text "\n\n\n"
-				
+
 				output.font_size 12
-				
-				results = Item.where(:plugin_id => 999980)
-				
+
+				results = Item.where(:plugin_id => 58133)
+
 				results.each do |item|
 					if item.plugin_output == nil
 						next
 					end
-					
+
 					if item.plugin_output =~ /This system is not managed by or has not yet reported to the WSUS server./
 						next
 					end
-					
+
 					item.plugin_output.scan(/\+ WSUS Computer Information \r?\n?\r?\n?\r?\n?    FQDN : (.*)\r?\n?    IP Address : (.*)\r?\n?    Last Sync Time : (.*)\r?\n?    Last Reported Status : (.*)\r?\n?    Last Sync Result : (.*)$/).each do
 						|fqdn, ip, last_sync_time, last_reported_status, last_sync_result|
-						
+
 						output.text "Host: #{ip} (#{fqdn})"
 						output.text "Last Sync Time: #{last_sync_time}"
 						output.text "Last Reported Status: #{last_reported_status}"
@@ -52,10 +52,10 @@ module Risu
 					end
 
 					output.text "\n"
-					
-					output.font_size 10				
-					
-					item.plugin_output.scan(/^\d* :(.*)\n    Patch State : (.*)\n    Microsoft KB : (.*)\n    severity : (.*)\n    Bulletin Date : (.*)\n    Patch Link : (.*)\n    Description : (.*)\n\r?\n?/).each do 
+
+					output.font_size 10
+
+					item.plugin_output.scan(/^\d* :(.*)\n    Patch State : (.*)\n    Microsoft KB : (.*)\n    severity : (.*)\n    Bulletin Date : (.*)\n    Patch Link : (.*)\n    Description : (.*)\n\r?\n?/).each do
 						|name, patch_state, kb, severity, date, link, description|
 						output.text "Name: #{name}"
 						output.text "State: #{patch_state}"
