@@ -1,16 +1,34 @@
-%canvas#example{:height => "300", :width => "400"}
-:javascript
-  var g = new Bluff.Line('example', '400x300');
-  g.title = 'My Graph';
-  g.tooltips = true;
+%h1 Items
+%table
+  %tr
+    %td
+      %b IP
+    %td
+      %b OS
+    %td
+      %b Critical
+    %td
+      %b High
+    %td
+      %b Medium
+    %td
+      %b Low
+    %td
+      %b Open Ports
+    %td
+      %b %
 
-  g.theme_37signals();
+  - Risu::Models::Item.all.each do |item|
+    %tr
+      %td
+        %a{:href => url("/host/#{host.id}")}= item.host_id
+      %td= host.os.split(",")[0] if host.os != nil
+      %td= host.items.critical_risks.count
+      %td= host.items.high_risks.count
+      %td= host.items.medium_risks.count
+      %td= host.items.low_risks.count
+      %td= host.items.info_risks.count
+      %td %
 
-  g.data("Apples", [1, 2, 3, 4, 4, 3]);
-  g.data("Oranges", [4, 8, 7, 9, 8, 9]);
-  g.data("Watermelon", [2, 3, 1, 5, 6, 8]);
-  g.data("Peaches", [9, 9, 10, 8, 7, 9]);
-
-  g.labels = {0: '2003', 2: '2004', 4: '2005'};
-
-  g.draw();
+%p
+%a{:href => url("/reports")} Back to Reports
