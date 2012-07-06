@@ -11,9 +11,8 @@
 - Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
 - Simple Sinatra based database viewer
 
-
-
 ##1.5.2 (May, 1 2012) - Filtering Magic
+- add high/med/low_risks_by_host functions Item Model
 - Do all the @todo / @fix  items!
 - Add a filtering system for lowering the rating of plugins based on config
 	- Implement the ability to filter data out of the report
