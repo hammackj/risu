@@ -7,7 +7,9 @@
 				%li
 					%a{:href => url("/host/#{host.id}")}= host.name
 					= "- #{host.items.critical_risks.count} Critical Risks"
-				
+
+		%br
+
 		%h2 Top 5 Vulnerabilities
 
 		- Item.top_10_sorted[0...5].each do |item, count|
@@ -19,22 +21,28 @@
 
 		%table
 			%tr
-				%td Hosts
-				%td Critical
-				%td High
-				%td Medium
-				%td Low
-				%td Info
+				%td
+					%b Hosts
+				%td
+					%b Critical
+				%td
+					%b High
+				%td
+					%b Medium
+				%td
+					%b Low
+				%td
+					%b Info
 			%tr
 				%td= "#{Host.all.count}"
 				%td= "#{Item.critical_risks.all.count}"
 				%td= "#{Item.high_risks.all.count}"
-				%td= "#{Item.medium_risks.all.count}"				 
+				%td= "#{Item.medium_risks.all.count}"
 				%td= "#{Item.low_risks.all.count}"
 				%td= "#{Item.info_risks.all.count}"
 
 		%p
-		
+
 		%canvas#risks{:height => "300", :width => "400"}
 		:javascript
 			var g = new Bluff.Bar('risks', '400x300');
@@ -45,13 +53,13 @@
 					colors: ["purple", "red", "orange", "yellow", "blue", "green", "grey", "brown", "pink", "black"],
 					background_colors: ['white', 'white']
 				});
-			
+
 			crit = #{Item.critical_risks.count};
 			high = #{Item.high_risks.count};
 			medium = #{Item.medium_risks.count};
 			low = #{Item.low_risks.count};
 			info = #{Item.info_risks.count};
-				
+
 			g.data("Critical", crit, "purple");
 			g.data("High", high, "red");
 			g.data("Medium", medium, "orange");
@@ -61,4 +69,4 @@
 			g.draw();
 
 
-		
+
