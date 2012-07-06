@@ -285,7 +285,7 @@ module Risu
 					Item.risks_by_host(limit).all.each do |item|
 						ip = Host.find_by_id(item.host_id).name
 #						count = Item.where(:host_id => item.host_id).where("severity IN (?)", [2,3]).count
-						count = Item.where(:host_id => item.host_id).where(:severity => 4).count 
+						count = Item.where(:host_id => item.host_id).where(:severity => 4).count
 						if count > 0
 							g.data(ip, count)
 						end
@@ -301,9 +301,7 @@ module Risu
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = "Other Operating Systems Percentage"
 					g.sort = false
-					if g.marker_count == 0
-						g.marker_count = 1
-					end
+					g.marker_count = 1
 					g.theme = {
 						:colors => %w(red orange yellow blue green purple black grey brown pink),
 						:background_colors => %w(white white)
@@ -506,31 +504,31 @@ module Risu
 
 					return text
 				end
-				
+
 				#
 				#
 				def top_n_vulnerable(n)
-					hosts = Item.risks_by_host(Host.all.count).count					
+					hosts = Item.risks_by_host(Host.all.count).count
 					hosts = hosts.sort_by {|k, v| v}
 					hosts.reverse!
-					
+
 					i = 0
-					hosts[0...n].each do |host_id, count| 
+					hosts[0...n].each do |host_id, count|
 						hosts[i] = Host.where(:id => host_id)
 						i = i + 1
 					end
-					
+
 					hosts[0...n]
 				end
-				
+
 				def unique_hosts_with_critical
-					hosts = Item.critical_risks_by_host(Host.all.count).count					
+					hosts = Item.critical_risks_by_host(Host.all.count).count
 					hosts = hosts.sort_by {|k, v| v}
 					hosts.reverse!
 				end
-				
+
 				def unique_hosts_with_high
-					hosts = Item.high_risks_by_host(Host.all.count).count					
+					hosts = Item.high_risks_by_host(Host.all.count).count
 					hosts = hosts.sort_by {|k, v| v}
 					hosts.reverse!
 				end
