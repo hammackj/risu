@@ -1,5 +1,4 @@
 %h1 Host Details
-
 %table
   %tr
     %td Report:
@@ -7,20 +6,20 @@
   %tr
     %td Name:
     %td= @host.name
-  %tr    
+  %tr
     %td OS:
     %td= @host.os
-  %tr   
-    %td Mac: 
+  %tr
+    %td Mac:
     %td= @host.mac
-  %tr   
+  %tr
     %td  Host Scan Start Time:
     %td= @host.start
   %tr
-    %td Host Scan End Time:      
+    %td Host Scan End Time:
     %td= @host.end
   %tr
-    %td IP Address:   
+    %td IP Address:
     %td= @host.ip
   %tr
     %td FQDN:
@@ -32,8 +31,17 @@
     %td System Type:
     %td= @host.system_type
   %tr
-    %td Notes: 
+    %td Notes:
     %td= @host.notes
 
-%p 
-%a{:href => url("/hosts")} Back to Hosts
+%h1 Findings
+%h2 Critical Risks
+- @host.items.critical_risks.each do |item|
+  %p= "#{item.plugin_name}"
+
+%h2 High Risks
+- @host.items.high_risks.each do |item|
+  %p= "#{item.plugin_name}"
+
+%p
+  %a{:href => url("/hosts")} Back to Hosts
