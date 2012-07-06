@@ -14,11 +14,17 @@
 - References Model
 	- added iavb method
 	- added iavt method
+	- added cisco_sa method
+	- added cisco_bug_id method
+	- added ics_alert method
 - Lots of unit tests added along with travis-ci
 - New Tags
 	- pcidss_backup_files added to the Host Model
 	- iavb added as a reference
 	- iavt added as a reference
+	- cisco-sa as a reference
+	- cisco-bug-id as a reference
+	- ics-alert as a reference
 
 
 #1.5.0 (February 20, 2012)
