@@ -4,7 +4,7 @@ class ReportTest < ActiveSupport::TestCase
 	test "should have a scan_date of Fri May 13 17:52:18 -0500 2011" do
 		date = Report.scan_date
 
-		# @todo test under 1.9.3 and remove the others, only support 1.9.3+
+		# Test under 1.9.3 and remove the others, only support 1.9.3+
 		#Ruby 1.8.7 and 1.9.2 return different date formats
 		if date == "Fri May 13 17:52:18 -0500 2011"
 			assert date == "Fri May 13 17:52:18 -0500 2011"
