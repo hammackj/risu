@@ -10,17 +10,11 @@
 ##1.5.1 (Aug, 2012) -
 - Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
 - Simple Sinatra based database viewer
-- 100% Code coverage for all unit testing
-- Nexpose Detailed xml parsing
-- Nexpose Simple xml parsing
-- cisco tags
-- icsa tag
-- list scan in database via cli
-- generate report based on scan_id/report id
-- finding summary: crit/high spacing
-- page kerning?
+
+
 
 ##1.5.2 (May, 1 2012) - Filtering Magic
+- Do all the @todo / @fix  items!
 - Add a filtering system for lowering the rating of plugins based on config
 	- Implement the ability to filter data out of the report
 		- Filter on
@@ -32,8 +26,15 @@
 		- Add filtered api, to use the filters
 			- Option 1: eg critical_risks_filtered()
 			- Option 2: eg critical_risks(:filtered => true)
+- Nexpose Detailed xml parsing
+- Nexpose Simple xml parsing
+- list scan in database via cli
+- generate report based on scan_id/report id
+- finding summary: crit/high spacing
+- page kerning?
+- 100% Code coverage for all unit testing
 
-#1.5.3 (June 1, 2012) - Rendering 
+#1.5.3 (June 1, 2012) - Rendering
 - Ruby 1.8.x will no longer be officially supported.
 - Official support for ruby 1.9.3+ only (Due to rails v4)
 - Look at moving to nokogiri for xml parsing; http://nokogiri.org if its faster
@@ -59,7 +60,7 @@
 - Easier way to select the Scan to generate reports from
 
 ## 2.0 (??)
-- 
+-
 
 ##List of things TODO
 ###Core
@@ -105,8 +106,8 @@
 		- Host
 		- vuln name     |   cve
 		- vuln name     |   cve
-- add findings by host report 
-- ms_wsus_findings: Takes the plugin_output from plugin ####pluginid### 
+- add findings by host report
+- ms_wsus_findings: Takes the plugin_output from plugin ####pluginid###
 - windows policy report
 - clean up old templates, some are nasty
 - stig detailed report
