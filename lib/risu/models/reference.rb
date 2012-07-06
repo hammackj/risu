@@ -116,6 +116,18 @@ module Risu
 				def cisco_sa
 					where(:reference_name => "cisco_sa").select('DISTINCT value')
 				end
+
+				#
+				#
+				def ics_alert
+					where(:reference_name => "ics-alert").select('DISTINCT value')
+				end
+
+				#
+				#
+				def cisco_bug_id
+					where(:reference_name => "cisco-bug-id").select('DISTINCT value')
+				end
 			end
 		end
 	end
