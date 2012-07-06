@@ -26,6 +26,8 @@
 	- cisco-sa as a reference
 	- cisco-bug-id as a reference
 	- ics-alert as a reference
+- Spell-checked all of the templates and fixed some spelling issues
+- Added a template for the WSUS Patch Management Report Nessus Plugin ID: 58133
 - Known Issues
 	- Sqlite3 is really slow when parsing, This seems to be a known Sqlite issue.
 		I recommend using Mysql for the time being as the default database.
