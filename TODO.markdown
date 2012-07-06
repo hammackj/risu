@@ -1,6 +1,6 @@
 # TODO
 
-**Release dates and roadmap are estimates, and features can be changed at any time.**
+**Release dates and road map are estimates, and features can be changed at any time.**
 
 #**Bugs**
 - Notable reports show an incorrect number, might be fixed already.
