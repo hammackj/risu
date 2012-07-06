@@ -73,4 +73,12 @@ class ReferenceTest < ActiveSupport::TestCase
 		assert Reference.cisco_sa != nil, "GOT #{Reference.cisco_sa}"
 	end
 
+	test "should return a ics_alert for Reference.ics_alert" do
+		assert Reference.ics_alert != nil, "GOT #{Reference.ics_alert}"
+	end
+
+	test "should return a cisco_bug_id for Reference.cisco_bug_id" do
+		assert Reference.cisco_bug_id != nil, "GOT #{Reference.cisco_bug_id}"
+	end
+
 end
