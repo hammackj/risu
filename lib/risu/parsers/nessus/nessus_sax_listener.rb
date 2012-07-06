@@ -20,7 +20,9 @@ module Risu
 					@valid_references = Array[
 						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft",
 						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
-						"owasp", "cwe", "iadb", "iavt", "cisco-sa"]
+						"owasp", "cwe", "iadb", "iavt", "cisco-sa", "ics-alert",
+						"cisco-bug-id"
+					]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
 						"description", "cvss_base_score", "solution", "item", "plugin_output", "tag", "synopsis", "plugin_modification_date",
@@ -32,7 +34,7 @@ module Risu
 						"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
 						"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
 						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname",
-						]
+					]
 
 						@valid_elements = @valid_elements + @valid_references
 
