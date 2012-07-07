@@ -30,6 +30,7 @@
 	- cisco)sr as a reference
 - Spell-checked all of the templates and fixed some spelling issues
 - Added a template for the WSUS Patch Management Report Nessus Plugin ID: 58133
+- In the -v, --version option displays the version of ruby and the version of rubygems
 - Thank you to everyone that has submitted new tags/bug reports/etc
 - Also Thank you for all the kind words related to the tool also.
 - Known Issues
