@@ -28,6 +28,8 @@
 	- ics-alert as a reference
 - Spell-checked all of the templates and fixed some spelling issues
 - Added a template for the WSUS Patch Management Report Nessus Plugin ID: 58133
+- Thank you to everyone that has submitted new tags/bug reports/etc
+- Also Thank you for all the kind words related to the tool also.
 - Known Issues
 	- Sqlite3 is really slow when parsing, This seems to be a known Sqlite issue.
 		I recommend using Mysql for the time being as the default database.
