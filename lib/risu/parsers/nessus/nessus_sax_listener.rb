@@ -21,7 +21,7 @@ module Risu
 						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft",
 						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
 						"owasp", "cwe", "iadb", "iavt", "cisco-sa", "ics-alert",
-						"cisco-bug-id"
+						"cisco-bug-id", "cisco-sr"
 					]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",

@@ -88,12 +88,17 @@ reference_18:
   reference_name: "cisco-sa"
   value: "2011-1234"
 
-reference_18:
+reference_19:
   plugin_id: 99999
   reference_name: "ics-alert"
   value: "2011-1234"
 
-reference_18:
+reference_20:
   plugin_id: 99999
   reference_name: "cisco-bug-id"
+  value: "2011-1234"
+
+reference_21:
+  plugin_id: 99999
+  reference_name: "cisco-sr"
   value: "2011-1234"
