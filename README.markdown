@@ -1,8 +1,8 @@
 # risu
 
-Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification. 
+Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
-Version 1.5.1 is the current release.
+Version **1.5.1** is the current release.
 
 ## Requirements
 
@@ -14,7 +14,7 @@ Risu relies heavily on [RubyGems](http://rubygems.org/) to install other depende
 
 - libxml
 - rails
-- yaml 
+- yaml
 - logger
 - rmagick
 - gruff
@@ -26,10 +26,10 @@ Risu relies heavily on [RubyGems](http://rubygems.org/) to install other depende
 These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install risu, If not this command will install them all:
 
 	% gem install rmagick gruff prawn yard mysql libxml-ruby rails sqlite3 logger yaml
-	
+
 **You my need sudo/root access depending on your system setup**
 
-Any database that ActiveRecord supports should work. Risu has been tested with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/). 
+Any database that ActiveRecord supports should work. Risu has been tested with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/).
 
 ## Installation
 Installation is really easy just gem install!
@@ -60,15 +60,15 @@ The data can be viewed with a query browser available for your database. A Rails
 To generate a report please execute the following after the the data is parsed into the database.
 
 	% risu -t <TEMPLATE_NAME> -o "REPORT_NAME.pdf"
-	
+
 ## Risu Console
 
 Using the risu Console is just like using Rails. You can access all of the ActiveRecord models directly and pull specific data from each model. Like SQL only easier!
 
 	[hammackj@taco:~/Projects/public/risu]$ ../bin/risu --console
 
-	      _           
-	 _ __(_)___ _   _ 
+	      _
+	 _ __(_)___ _   _
 	| '__| / __| | | |
 	| |  | \__ \ |_| |
 	|_|  |_|___/\__,_|
@@ -77,7 +77,7 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 	risu Console v1.5.1
 	>> Host.first
 	=> #<Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
-	
+
 ## Templates
 Several templates are included:
 
@@ -102,7 +102,7 @@ Several templates are included:
   	stig_findings_summary - DISA Stig findings summary report
   	technical_findings - Generates a Technical Findings Report
   	template - template
-	[hammackj@taco:/tmp]$ 
+	[hammackj@taco:/tmp]$
 
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See the 'template' example for creating your own template.
 
@@ -120,5 +120,5 @@ I have received several requests for a method to donate to the project. You can 
 # Contact
 You can reach me at jacob[dot]hammack[at]hammackj[dot]com.
 
-You can also contact me on IRC as hammackj on irc.freenode.net, #risu 
+You can also contact me on IRC as hammackj on irc.freenode.net, #risu
 
