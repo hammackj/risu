@@ -16,6 +16,7 @@
 	- added iavt method
 	- added cisco_sa method
 	- added cisco_bug_id method
+	- added cisco_sr method
 	- added ics_alert method
 - Lots of unit tests added along with travis-ci
 - Fixed a divided by zero bug on all graphs related to Gruff on Ruby 1.9.3
@@ -26,6 +27,7 @@
 	- cisco-sa as a reference
 	- cisco-bug-id as a reference
 	- ics-alert as a reference
+	- cisco)sr as a reference
 - Spell-checked all of the templates and fixed some spelling issues
 - Added a template for the WSUS Patch Management Report Nessus Plugin ID: 58133
 - Thank you to everyone that has submitted new tags/bug reports/etc

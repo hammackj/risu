@@ -8,8 +8,8 @@ module Risu
 			include Risu::Base
 			attr_accessor :database
 
-			# Initalizes a CLI Application 
-			# 
+			# Initalizes a CLI Application
+			#
 			def initialize
 				@options = {}
 				@database = {}
@@ -18,7 +18,7 @@ module Risu
 
 				@options[:debug] = false
 				@options[:list_templates] = false
-				
+
 				@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 			end
 
@@ -86,7 +86,7 @@ module Risu
 			# @param direction [Symbol] :up or :down
 			#
 			def migrate(direction)
-				begin					
+				begin
 					if @database["adapter"] == nil
 						return false, "[!] Invalid database adapter, please check your config file"
 					end
@@ -101,9 +101,9 @@ module Risu
 						ver.version = Risu::VERSION
 						ver.save
 					end
-					
+
 					puts "[*] Dropping tables" if direction == :down
-					
+
 				#@todo temp hack, fix this by checking the schema on up/down for exiting data
 				rescue SQLite3::SQLException => sqlitex
 					puts "#{sqlitex.message}\n #{sqlitex.backtrace}" if @options[:debug]
@@ -140,12 +140,12 @@ module Risu
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your config file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
-					
+
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
 					puts "[!] Database adapter not found, please check your config file"
 					puts "#{anf.message}\n #{anf.backtrace}" if @options[:debug]
-					
+
 					exit
 				rescue => e
 					puts "[!] Exception! #{e.message}\n #{e.backtrace}"
@@ -211,7 +211,7 @@ module Risu
 						opt.on('-o', '--output-file FILE', 'The filename to output the generated report to') do |option|
 							@options[:output_file] = option
 						end
-						
+
 						opt.on('-l', '--list-templates', "Lists all of the templates available to #{APP_NAME}") do |option|
 							@options[:list_templates] = option
 						end
@@ -271,7 +271,7 @@ module Risu
 						opt.separator 'Other Options'
 
 						opt.on_tail('-v', '--version', "Shows application version information") do
-							puts "#{APP_NAME} - #{VERSION}"
+							puts "#{APP_NAME}: #{VERSION}\nRuby Version: #{RUBY_VERSION}\nRubygems Version: #{Gem::VERSION}"
 							exit
 						end
 
@@ -282,8 +282,8 @@ module Risu
 						opt.on('--console', 'Starts an ActiveRecord console into the configured database') do |option|
 							@options[:console] = option
 						end
-						
-						opt.on('--webgui', 'Starts an local webserver for viewing the database') do |option|
+
+						opt.on('--webgui', 'Starts an local web server for viewing the database') do |option|
 							@options[:webgui] = option
 						end
 
@@ -313,10 +313,10 @@ module Risu
 			#
 			def run
 				parse_options
-				
+
 				if @options[:list_templates]
 					@template_manager.display_templates
-					
+
 					exit
 				end
 
@@ -339,7 +339,7 @@ module Risu
 					end
 					exit
 				end
-				
+
 				if @options[:webgui] != nil
 					puts "Risu Web Interface at http://localhost:8969/"
 					Risu::Web::Application.run!
@@ -375,7 +375,7 @@ module Risu
 					@findings.title = @report["title"]
 					@findings.company = @report["company"]
 					@findings.classification = @report["classification"]
-					
+
 					template = Templater.new(@options[:template], @findings, @options[:output_file], @template_manager)
 					template.generate
 				end
@@ -400,7 +400,7 @@ module Risu
 
 			# Handles the parsing of a single file
 			#
-			# @param file 
+			# @param file
 			def parse_file file
 				begin
 						puts "[*] Parsing #{file}..."
@@ -412,7 +412,7 @@ module Risu
 
 						nessus_doc = Risu::Parsers::Nessus::NessusDocument.new file
 						nexpose_doc = Risu::Parsers::Nexpose::NexposeDocument.new file
-							
+
 						if nessus_doc.valid? == true
 							nessus_doc.parse
 
