@@ -56,6 +56,7 @@
 - Add Parser for SecurityCenter Output
 - Add Parser for Nexpose xml
 - Add Parser for Qualys xml
+- Add Parser for Nmpa XML?
 - Easier way to select the Scan to generate reports from
 
 ## 2.0 (??)
@@ -63,7 +64,6 @@
 
 ##List of things TODO
 ###Core
-- In the -v, --version option display the version of ruby and the version of rubygems
 - migration error handling
   - catch mysql/sqlite/postgres errors during up/down
 - bug report info collection option
@@ -188,6 +188,7 @@
 
 ###Web GUI
 - Move to http://twitter.github.com/bootstrap/index.html for the web gui
+- move to risu-web gem
 
 ###Marketing
 - CentOS 6 setup Tutorial
