@@ -33,7 +33,7 @@ module Risu
 						"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
 						"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
 						"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
-						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname",
+						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname", "always_run"
 					]
 
 						@valid_elements = @valid_elements + @valid_references
@@ -71,8 +71,7 @@ module Risu
 							"pcidss:unprotected_mssql_db" => :pcidss_unprotected_mssql_db,
 							"pcidss:obsolete_software" => :pcidss_obsolete_software,
 							"pcidss:www:sql_injection" => :pcidss_www_sql_injection,
-							"pcidss:backup_files" => :pcidss_backup_files,
-							"fname" => :fname
+							"pcidss:backup_files" => :pcidss_backup_files
 						}
 				end
 
@@ -276,7 +275,8 @@ module Risu
 								:exploit_framework_exploithub => @vals["exploit_framework_exploithub"],
 								:exploithub_sku => @vals["exploithub_sku"],
 								:stig_severity => @vals["stig_severity"],
-								:fname => @vals["fname"]
+								:fname => @vals["fname"],
+								:always_run => @vals["always_run"]
 							}
 							@plugin.save
 					end
