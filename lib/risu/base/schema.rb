@@ -89,7 +89,7 @@ module Risu
 					t.string :plugin_name
 					t.boolean :verified
 				end
-			
+
 				create_table :plugins do |t|
 					t.string :plugin_name
 					t.string :family_name
@@ -117,6 +117,7 @@ module Risu
 					t.string :exploithub_sku
 					t.string :stig_severity
 					t.string :fname
+					t.string :always_run
 				end
 
 				create_table :individual_plugin_selections do |t|
@@ -136,24 +137,24 @@ module Risu
 				create_table :versions do |t|
 					t.string :version
 				end
-			
+
 				create_table :service_descriptions do |t|
 					t.string :name
 					t.integer :port
 					t.string :description
 				end
-			
+
 				create_table :patches do |t|
 					t.integer :host_id
 					t.string :name
 					t.string :value
 				end
-			
+
 				#Index's for speed increases
 				add_index :items, :host_id
 				add_index :items, :plugin_id
 				add_index :references, :plugin_id
-			
+
 				#Default data for service descriptions
 				#@todo Unused atm, might be better to use a yaml file tho..
 				ServiceDescription.create :name => "www", :description => ""
