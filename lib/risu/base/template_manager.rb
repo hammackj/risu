@@ -26,8 +26,6 @@ module Risu
 				begin
 				  Dir["#{path}/**/*.rb"].each do |x|
 						begin
-							#load x
-							#puts "#{x}"
 							require x
 						rescue => e
 							next
@@ -54,29 +52,6 @@ module Risu
 				return false if t == nil
 			  return t.respond_to?(:render)
 			end
-
-			#DEAD CODE @todo
-			#
-			#def find_plugins(file_name)
-			#	Dir.new("#{file_name}").each do |file|
-			#		next if file.match(/^\.+/)
-			#		path = "#{file_name}/#{file}"
-			#
-			#		if  FileTest.directory?("#{path}")
-			#			list("#{path}")
-			#		else
-			#			self.register_template path
-			#		end
-			#	end
-			#end
-
-			# DEAD CODE @todo
-			#
-			#def register_template(plugin)
-			#  load plugin
-			#
-			#  @templates.push(plugin) if @templates.include?(plugin) == false
-			#end
 
 			# Finds a template by its name
 			#
