@@ -11,9 +11,9 @@ module Risu
 			def initialize (path)
 			  @registered_templates = Array.new
 				@templates = Array.new
-				
+
 				base_dir = __FILE__.gsub("risu/base/template_manager.rb", "")
-				
+
 				load_templates(base_dir + path)
 				load_templates(File.expand_path(USER_TEMPLATES_DIR)) if File.exists?(File.expand_path(USER_TEMPLATES_DIR)) && File.directory?(File.expand_path(USER_TEMPLATES_DIR))
 			end
@@ -22,11 +22,13 @@ module Risu
 			#
 			# @param path Path to templates to load
 			#
-			def load_templates(path)				
+			def load_templates(path)
 				begin
-				  Dir["#{path}/**/*.rb"].each do |x| 
+				  Dir["#{path}/**/*.rb"].each do |x|
 						begin
-							load x
+							#load x
+							#puts "#{x}"
+							require x
 						rescue => e
 							next
 						end
@@ -48,34 +50,34 @@ module Risu
 			#
 			def validate(template)
 			  t = template.new
-				
+
 				return false if t == nil
 			  return t.respond_to?(:render)
 			end
 
+			#DEAD CODE @todo
 			#
+			#def find_plugins(file_name)
+			#	Dir.new("#{file_name}").each do |file|
+			#		next if file.match(/^\.+/)
+			#		path = "#{file_name}/#{file}"
 			#
-			def find_plugins(file_name)
-				Dir.new("#{file_name}").each do |file|
-					next if file.match(/^\.+/)
-					path = "#{file_name}/#{file}"
+			#		if  FileTest.directory?("#{path}")
+			#			list("#{path}")
+			#		else
+			#			self.register_template path
+			#		end
+			#	end
+			#end
 
-					if  FileTest.directory?("#{path}")
-						list("#{path}")
-					else
-						self.register_template path
-					end
-				end
-			end
-
+			# DEAD CODE @todo
 			#
+			#def register_template(plugin)
+			#  load plugin
 			#
-			def register_template(plugin)
-			  load plugin
+			#  @templates.push(plugin) if @templates.include?(plugin) == false
+			#end
 
-			  @templates.push(plugin) if @templates.include?(plugin) == false
-			end
-			
 			# Finds a template by its name
 			#
 			# @param name Name of the template to find
@@ -88,15 +90,15 @@ module Risu
 						return t
 					end
 				end
-				
+
 				return nil
 			end
-			
+
 			# Displays a list of all the templates
 			#
 			def display_templates
 				puts "Available Templates"
-			  @registered_templates.each do |x| 
+			  @registered_templates.each do |x|
 			      p = x.new
 			      puts "\t#{p.template_info[:name]} - #{p.template_info[:description]}\n"
 			    end
@@ -104,8 +106,3 @@ module Risu
 		end
 	end
 end
-
-
-
-
-
