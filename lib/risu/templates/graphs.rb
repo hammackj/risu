@@ -34,10 +34,12 @@ module Risu
 				output.start_new_page
 
 				output.image Item.risks_by_severity_graph, :width => 500, :height => 375, :position => :center
+				output.text Item.risks_by_severity_graph_text
 
 				output.start_new_page
 
 				output.image Item.risks_by_service_graph(10), :width => 500, :height => 375, :position => :center
+				output.text Item.risks_by_service_graph_text
 
 				output.start_new_page
 
@@ -50,10 +52,12 @@ module Risu
 				output.start_new_page
 
 				output.image Host.other_os_graph, :width => 500, :height => 375, :position => :center
+				output.text Host.other_os_graph_text
 
 				output.start_new_page
 
 				output.image Host.windows_os_graph, :width => 500, :height => 375, :position => :center
+				output.text Host.windows_os_graph_text
 
 				output.start_new_page
 
