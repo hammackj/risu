@@ -84,5 +84,4 @@ class ReferenceTest < ActiveSupport::TestCase
 	test "should return a cisco_sr for Reference.cisco_sr" do
 		assert Reference.cisco_sr != nil, "GOT #{Reference.cisco_sr}"
 	end
-
 end
