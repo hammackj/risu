@@ -5,35 +5,37 @@ critical_plugin:
   risk_factor: Critical
   synopsis: "A Critical Plugin for testing"
   cvss_base_score: 10
-  exploit_available: "true"
+  exploit_available: "false"
   solution: "Patch this critical plugin"
-  
+
 high_plugin:
   id: 99998
   plugin_name: High Plugin
   description: This is a High finding!
   risk_factor: High
+  exploit_available: "true"
   cvss_base_score: 8
-  
+
 medium_plugin:
   id: 99997
   plugin_name: Medium Plugin
   description: This is a Medium finding!
   risk_factor: Medium
-  cvss_base_score: 5  
+  exploit_available: "false"
+  cvss_base_score: 5
 
 low_plugin:
   id: 99996
   plugin_name: Low Plugin
   description: This is a Low finding!
   risk_factor: Low
-  cvss_base_score: 2  
-  
+  cvss_base_score: 2
+
 none_plugin:
-  id: 99995  
+  id: 99995
   plugin_name: None Plugin
   description: This is a None finding!
-  risk_factor: None    
+  risk_factor: None
   cvss_base_score: 0
 
 msft_plugin:
@@ -45,11 +47,13 @@ msft_plugin:
   id: 35362
   plugin_name: "MS09-001: Microsoft Windows SMB Vulnerabilities Remote Code Execution (958687) (uncredentialed check)"
   risk_factor: Critical
+  exploit_available: "true"
 
 34477:
   id: 34477
   plugin_name: "MS08-067: Microsoft Windows Server Service Crafted RPC Request Handling Remote Code Execution (958644) (uncredentialed check)"
-  risk_factor: Critical  
+  risk_factor: Critical
+  exploit_available: "false"
 
 21564:
   id: 21564
@@ -64,7 +68,7 @@ msft_plugin:
 42411:
   id: 42411
   plugin_name: Microsoft Windows SMB Shares Unprivileged Access
-  risk_factor: Critical  
+  risk_factor: Critical
 
 35635:
   id: 35635
