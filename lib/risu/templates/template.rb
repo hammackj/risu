@@ -2,14 +2,14 @@ module Risu
 	module Templates
 		class Template < Risu::Base::TemplateBase
 
-			# Initializes the template loading metadata
+			# Initializes the template loading meta data
 			#
 			def initialize ()
 				@template_info =
 				{
 					:name => "template",
 					:author => "hammackj",
-					:version => "0.0.1",
+					:version => "0.0.2",
 					:description => "template"
 				}
 			end
@@ -18,6 +18,7 @@ module Risu
 			#
 			def render(output)
 				output.text "Template"
+				output.start_new_page
 			end
 		end
 	end
