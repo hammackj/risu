@@ -61,6 +61,4 @@ Gem::Specification.new do |s|
 	s.add_dependency('mysql', ['>= 2.8.1'])
 	s.add_dependency('rmagick', [">= 2.13.1"])
 	s.add_dependency('sqlite3', [">= 1.3.3"])
-	s.add_dependency('sinatra', [">= 1.3.2"])
-	s.add_dependency('haml', [">= 3.1.4"])
 end
