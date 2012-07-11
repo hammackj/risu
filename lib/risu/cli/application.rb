@@ -335,7 +335,6 @@ module Risu
 
 				if @options[:list_templates]
 					@template_manager.display_templates
-
 					exit
 				end
 
@@ -414,6 +413,7 @@ module Risu
 			# Handles the parsing of a single file
 			#
 			# @param file The to parse
+			#
 			def parse_file file
 				begin
 						puts "[*] Parsing #{file}..."
