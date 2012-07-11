@@ -1,9 +1,6 @@
 # News
 
 #1.5.1 (August 1, 2012)
-- Initial release of a web gui for viewing data
-  - Enabled via risu --webgui
-	- Browse to http://localhost:8969 to view it
 - Host Model
   - top_n_vulnerable(n)
   - risks_by_host(n); updated the query critical instead of high
