@@ -48,11 +48,11 @@ module Risu
 				@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 			end
 
-			# Creates a blank config file
+			# Creates a blank configuration file
 			#
 			# @todo does this need exception handling
 			#
-			# @param file Path to config file
+			# @param file Path to configuration file
 			#
 			def create_config(file=CONFIG_FILE)
 				File.open(file, 'w+') do |f|
@@ -74,8 +74,8 @@ module Risu
 
 			# Loads the configuration file
 			#
-			# @param file Path to config file
-			# @param in_memory_config [Boolean] If the config is in memory
+			# @param file Path to configuration file
+			# @param in_memory_config [Boolean] If the configuration is in memory
 			#
 			def load_config(file=CONFIG_FILE, in_memory_config=false)
 				if File.exists?(file) == true or in_memory_config == true
@@ -98,11 +98,11 @@ module Risu
 							end
 						end
 					rescue => e
-						puts "[!] Error loading config! - #{e.message}"
+						puts "[!] Error loading configuration! - #{e.message}"
 						exit
 					end
 				else
-					puts "[!] Config file does not exist!"
+					puts "[!] Configuration file does not exist!"
 					exit
 				end
 			end
@@ -114,7 +114,7 @@ module Risu
 			def migrate(direction)
 				begin
 					if @database["adapter"] == nil
-						return false, "[!] Invalid database adapter, please check your config file"
+						return false, "[!] Invalid database adapter, please check your configuration file"
 					end
 
 					ActiveRecord::Base.establish_connection(@database)
@@ -130,17 +130,17 @@ module Risu
 
 					puts "[*] Dropping tables" if direction == :down
 
-				#@todo temp hack, fix this by checking the schema on up/down for exiting data
+				#@todo temp hack, fix this by checking the schema on :up or :down for exiting data
 				rescue SQLite3::SQLException => sqlitex
 					puts "#{sqlitex.message}\n #{sqlitex.backtrace}" if @options[:debug]
 					continue
 				rescue ActiveRecord::AdapterNotSpecified => ans
-					puts "[!] Database adapter not found, please check your config file"
+					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
 
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
-					puts "[!] Database adapter not found, please check your config file"
+					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
 
 					exit
@@ -157,19 +157,19 @@ module Risu
 					if @database["adapter"] == nil
 						puts "[!] #{@database['adapter']}" if @options[:debug]
 
-						return false, "[!] Invalid database adapter, please check your config file"
+						return false, "[!] Invalid database adapter, please check your configuration file"
 					end
 
 					ActiveRecord::Base.establish_connection(@database)
 					ActiveRecord::Base.connection
 
 				rescue ActiveRecord::AdapterNotSpecified => ans
-					puts "[!] Database adapter not found, please check your config file"
+					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
 
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
-					puts "[!] Database adapter not found, please check your config file"
+					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{anf.message}\n #{anf.backtrace}" if @options[:debug]
 
 					exit
@@ -261,13 +261,13 @@ module Risu
 							end
 						end
 
-						opt.on('--create-config-file [FILE]',"Creates a config file in the current directory with the specified name, Default is #{CONFIG_FILE}") do |option|
+						opt.on('--create-config-file [FILE]',"Creates a configuration file in the current directory with the specified name, Default is #{CONFIG_FILE}") do |option|
 							if option == nil
 								option = CONFIG_FILE
 							end
 
 							if File.exists?(option) == true
-								puts "[!] Config file already exists; If you wish to over-write this file please delete it."
+								puts "[!] Configuration file already exists; If you wish to over-write this file please delete it."
 							else
 								if option == nil
 									create_config
@@ -308,10 +308,6 @@ module Risu
 
 						opt.on('--console', 'Starts an ActiveRecord console into the configured database') do |option|
 							@options[:console] = option
-						end
-
-						opt.on('--webgui', 'Starts an local web server for viewing the database') do |option|
-							@options[:webgui] = option
 						end
 
 						opt.on_tail("-?", "--help", "Show this message") do
@@ -364,12 +360,6 @@ module Risu
 						puts Risu::CLI::Banner
 						puts "#{APP_NAME} Console v#{VERSION}"
 					end
-					exit
-				end
-
-				if @options[:webgui] != nil
-					puts "Risu Web Interface at http://localhost:8969/"
-					Risu::Web::Application.run!
 					exit
 				end
 
@@ -427,7 +417,7 @@ module Risu
 
 			# Handles the parsing of a single file
 			#
-			# @param file
+			# @param file The to parse
 			def parse_file file
 				begin
 						puts "[*] Parsing #{file}..."
@@ -456,7 +446,7 @@ module Risu
 
 						printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
 				rescue Interrupt => i
-					puts "[!] Parse cancelled!"
+					puts "[!] Parse canceled!"
 					exit(1)
 				rescue Mysql::Error => m
 					if m.errno == 1146
