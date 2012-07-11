@@ -1,6 +1,6 @@
 # risu
 
-Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a  [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
+Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
 Version **1.5.1** is the current release.
 
@@ -65,7 +65,7 @@ To generate a report please execute the following after the the data is parsed i
 
 Using the risu Console is just like using Rails. You can access all of the ActiveRecord models directly and pull specific data from each model. Like SQL only easier!
 
-	[hammackj@taco:~/Projects/public/risu]$ ../bin/risu --console
+	$ risu --console
 
 	      _
 	 _ __(_)___ _   _
@@ -81,7 +81,7 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 ## Templates
 Several templates are included:
 
-	[hammackj@taco:/tmp]$ risu -l
+	$ risu -l
   Available Templates
   	assets - Generates a Assets Summary Report
   	cover_sheet - Generates a coversheet with a logo (Example Template)
@@ -102,7 +102,7 @@ Several templates are included:
   	stig_findings_summary - DISA Stig findings summary report
   	technical_findings - Generates a Technical Findings Report
   	template - template
-	[hammackj@taco:/tmp]$
+	$
 
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See the 'template' example for creating your own template.
 
