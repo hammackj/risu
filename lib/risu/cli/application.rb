@@ -34,7 +34,7 @@ module Risu
 			include Risu::Base
 			attr_accessor :database
 
-			# Initalizes a CLI Application
+			# Initializes a CLI Application
 			#
 			def initialize
 				@options = {}
@@ -242,11 +242,12 @@ module Risu
 							@options[:list_templates] = option
 						end
 
-						opt.on('--create-template NAME', "Creates a template file in the ~/.risu/templates directory") do |option|
-							if File.exists?(option) == true
-								puts "[!] Template "
-							end
-						end
+						# @todo THIS NO WORK
+						#opt.on('--create-template NAME', "Creates a template file in the ~/.risu/templates directory") do |option|
+						#	if File.exists?(option) == true
+						#		puts "[!] Template "
+						#	end
+						#end
 
 						opt.separator('')
 						opt.separator('Configuration Options')
