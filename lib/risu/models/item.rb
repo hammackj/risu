@@ -29,7 +29,6 @@ module Risu
 
 		# Item Model
 		#
-		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Item < ActiveRecord::Base
 			belongs_to :host
 			belongs_to :plugin

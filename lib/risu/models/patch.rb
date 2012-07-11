@@ -29,7 +29,6 @@ module Risu
 
 		# Version Model for the DB
 		#
-		# @author Jacob Hammack
 		class Patch < ActiveRecord::Base
 			belongs_to :host
 		end

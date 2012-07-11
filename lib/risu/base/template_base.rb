@@ -36,9 +36,10 @@ module Risu
 				attr_reader :possible_templates
 			end
 
-			# Accessor for template metadata
+			# Accessors for template meta-data
 			#
-			# @return [Hash] Containing template metadata
+			# @return [Hash] Containing template meta-data
+			#
 			attr_accessor :template_info
 
 			#	 Adds any class that inherits from [TemplateBase] into an [Array] of

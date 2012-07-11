@@ -29,7 +29,6 @@ module Risu
 
 		# Reference Model
 		#
-		# @author Jacob Hammack
 		class Reference < ActiveRecord::Base
 		  has_many :plugins
 

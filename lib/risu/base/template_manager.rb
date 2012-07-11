@@ -26,6 +26,7 @@
 
 module Risu
 	module Base
+
 		class TemplateManager
 			attr_accessor :registered_templates
 
@@ -34,6 +35,7 @@ module Risu
 			# @param path Path relative to the base_dir of risu
 			#
 			# @return New instance of the template manager with templates loaded.
+			#
 			def initialize (path)
 			  @registered_templates = Array.new
 				@templates = Array.new

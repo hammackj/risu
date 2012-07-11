@@ -29,7 +29,6 @@ module Risu
 
 		# Policy Model
 		#
-		# @author Jacob Hammack
 		class Policy < ActiveRecord::Base
 		  has_many :family_selections
 		  has_many :individual_plugin_selections

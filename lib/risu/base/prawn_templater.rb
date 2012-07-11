@@ -26,15 +26,16 @@
 
 module Risu
 	module Base
-		# Templater class for generating a report from a erb template
+
+		# Templater class for generating a report from a ERB template
 		#
-		# @author Jacob Hammack
 		class PrawnTemplater
 			attr_accessor :template, :template_source, :findings, :output_file
 
-			# Setups of the Templater class initalizing all of the variables
+			# Setups of the Templater class initializing all of the variables
 			#
 			# @return [PrawnTemplater] New Instance
+			#
 			def initialize(template, findings, output)
 				@template = template
 				@findings = findings
@@ -43,9 +44,10 @@ module Risu
 				@template_source = File.new(@template).read
 			end
 
-			# Generates a report based on the erb template
+			# Generates a report based on the ERB template
 			#
-			# @return [String] html output of the erb template
+			# @return [String] HTML output of the ERB template
+			#
 			def generate
 				begin
 					source = @template_source

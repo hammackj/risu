@@ -29,7 +29,6 @@ module Risu
 
 		# Report Model
 		#
-		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Report < ActiveRecord::Base
 		  has_many :hosts
 		  belongs_to :policy

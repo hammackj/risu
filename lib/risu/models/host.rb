@@ -26,9 +26,9 @@
 
 module Risu
 	module Models
+
 		# Host Model
 		#
-		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Host < ActiveRecord::Base
 			belongs_to :report
 			has_many :items

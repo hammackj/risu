@@ -26,9 +26,9 @@
 
 module Risu
 	module Base
-		# Risu Schema
+
+		# Risu database Schema
 		#
-		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Schema < ActiveRecord::Migration
 
 			# Creates all of the database tables required by the parser

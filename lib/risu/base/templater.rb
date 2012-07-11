@@ -26,9 +26,9 @@
 
 module Risu
 	module Base
+
 		# Templater class for generating a report from a ERB template
 		#
-		# @author Jacob Hammack
 		class Templater
 			attr_accessor :template, :template_manager, :findings, :output_file
 

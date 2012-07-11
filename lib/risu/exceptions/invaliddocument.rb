@@ -26,6 +26,9 @@
 
 module Risu
 	module Exceptions
+
+		# Exception class for an invalid document
+		#
 		class InvalidDocument < StandardError
 
 		end

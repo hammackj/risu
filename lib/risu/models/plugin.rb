@@ -29,7 +29,6 @@ module Risu
 
 		# Plugin Model
 		#
-		# @author Jacob Hammack
 		class Plugin < ActiveRecord::Base
 			has_many :items
 			belongs_to :family
