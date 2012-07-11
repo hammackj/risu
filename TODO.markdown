@@ -183,10 +183,6 @@
 		- tech findings
 - Add tests for Patch model
 
-###Web GUI
-- Move to http://twitter.github.com/bootstrap/index.html for the web gui
-- move to risu-web gem
-
 ###Marketing
 - CentOS 6 setup Tutorial
 - Debian 6 setup Tutorial
