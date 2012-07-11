@@ -185,9 +185,8 @@
 
 ###Marketing
 - CentOS 6 setup Tutorial
-- Debian 6 setup Tutorial
 - Backtrack5 r2 setup Tutorial
-- Ubuntu 11.10 setup Tutorial
+- Ubuntu LTS setup Tutorial
 - Presentation on Risu
 
 ####Website
