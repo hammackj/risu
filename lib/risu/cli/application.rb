@@ -29,7 +29,6 @@ module Risu
 
 		# Application class for Risu
 		#
-		# @author Jacob Hammack <jacob.hammack@hammackj.com>
 		class Application
 			include Risu::Base
 			attr_accessor :database
@@ -137,12 +136,10 @@ module Risu
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
-
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
 					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
-
 					exit
 				rescue => e
 					puts "[!] Exception! #{e.message}\n#{e.backtrace}"
@@ -166,12 +163,10 @@ module Risu
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
-
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
 					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{anf.message}\n #{anf.backtrace}" if @options[:debug]
-
 					exit
 				rescue => e
 					puts "[!] Exception! #{e.message}\n #{e.backtrace}"
@@ -199,6 +194,7 @@ module Risu
 			# Starts a console and executes anything in a block sent to it
 			#
 			# @param block Code block to transfer control
+			#
 			def consolize &block
 
 				yield
