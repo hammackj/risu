@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
 	s.version = Risu::VERSION
 	s.homepage = "http://www.hammackj.com/projects/risu"
 	s.summary = "#{Risu::APP_NAME}"
-	s.description = "#{Risu::APP_NAME} is a Nessus .nessus xml parser and report generation tool"
+	s.description = "#{Risu::APP_NAME} is a Nessus .nessus XML parser and report generation tool"
 	s.license = "BSD"
 
 	s.author = "Jacob Hammack"
