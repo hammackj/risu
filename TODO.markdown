@@ -5,13 +5,10 @@
 #**Bugs**
 - Notable reports show an incorrect number, might be fixed already.
 
-#Roadmap
+#Road map
 
-##1.5.1 (Aug, 2012) -
+##1.5.2 (Oct, 1 2012) - Filtering Magic
 - Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
-- Simple Sinatra based database viewer
-
-##1.5.2 (May, 1 2012) - Filtering Magic
 - add high/med/low_risks_by_host functions Item Model
 - Do all the @todo / @fix  items!
 - Add a filtering system for lowering the rating of plugins based on config
