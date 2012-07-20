@@ -1,6 +1,15 @@
 # News
 
-#1.5.1 (August 1, 2012)
+#1.5.2 ()
+- New Parsed Tags
+	- vmsa
+	- cert-vu
+- Model Changes
+	- Reference Model
+		- Added vmsa() method
+		- Added cert_vu() method
+
+#1.5.1 (July 10, 2012)
 - Host Model
   - top_n_vulnerable(n)
   - risks_by_host(n); updated the query critical instead of high
@@ -24,7 +33,7 @@
 	- cisco-sa as a reference
 	- cisco-bug-id as a reference
 	- ics-alert as a reference
-	- cisco)sr as a reference
+	- cisco-sr as a reference
 	- always_run added to the Item Model (Related to a Registry Svc Check)
 - Spell-checked all of the templates and fixed some spelling issues
 - Added a template for the WSUS Patch Management Report Nessus Plugin ID: 58133
