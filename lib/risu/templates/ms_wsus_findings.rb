@@ -28,7 +28,7 @@ module Risu
 	module Templates
 		class MSWSUSFindingsTemplate < Risu::Base::TemplateBase
 
-			# Initializes the template loading metadata
+			# Initializes the template loading meta-data
 			#
 			def initialize ()
 				@template_info =
