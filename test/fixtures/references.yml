@@ -102,3 +102,13 @@ reference_21:
   plugin_id: 99999
   reference_name: "cisco-sr"
   value: "2011-1234"
+
+reference_22:
+  plugin_id: 99999
+  reference_name: "cert-vu"
+  value: "889195"
+
+reference_23:
+  plugin_id: 99999
+  reference_name: "vmsa"
+  value: "2012-0009"
