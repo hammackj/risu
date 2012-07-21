@@ -24,42 +24,42 @@
 #OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
-module Risu
-	module Base
+# module Risu
+# 	module Base
 
-		# Templater class for generating a report from a ERB template
-		#
-		class PrawnTemplater
-			attr_accessor :template, :template_source, :findings, :output_file
+# 		# Templater class for generating a report from a ERB template
+# 		#
+# 		class PrawnTemplater
+# 			attr_accessor :template, :template_source, :findings, :output_file
 
-			# Setups of the Templater class initializing all of the variables
-			#
-			# @return [PrawnTemplater] New Instance
-			#
-			def initialize(template, findings, output)
-				@template = template
-				@findings = findings
-				@output_file = output
+# 			# Setups of the Templater class initializing all of the variables
+# 			#
+# 			# @return [PrawnTemplater] New Instance
+# 			#
+# 			def initialize(template, findings, output)
+# 				@template = template
+# 				@findings = findings
+# 				@output_file = output
 
-				@template_source = File.new(@template).read
-			end
+# 				@template_source = File.new(@template).read
+# 			end
 
-			# Generates a report based on the ERB template
-			#
-			# @return [String] HTML output of the ERB template
-			#
-			def generate
-				begin
-					source = @template_source
-					template = @template
-					Prawn::Document.generate(@output_file, :margin => [75, 50, 75, 50]) do
-						font_size 12
-						eval source
-					end
-				rescue => e
-					puts "Error: #{e.message} \n #{e.backtrace.join("\n\t")}\n"
-				end
-			end
-		end
-	end
-end
+# 			# Generates a report based on the ERB template
+# 			#
+# 			# @return [String] HTML output of the ERB template
+# 			#
+# 			def generate
+# 				begin
+# 					source = @template_source
+# 					template = @template
+# 					Prawn::Document.generate(@output_file, :margin => [75, 50, 75, 50]) do
+# 						font_size 12
+# 						eval source
+# 					end
+# 				rescue => e
+# 					puts "Error: #{e.message} \n #{e.backtrace.join("\n\t")}\n"
+# 				end
+# 			end
+# 		end
+# 	end
+# end
