@@ -20,7 +20,7 @@ high:
   svc_name: High Service
   severity: 3
   plugin_id: 99998
-  
+
 med:
   port: 37485
   host_id: 1
@@ -48,20 +48,20 @@ msft_item:
   svc_name: smb
   severity: 4
   plugin_id: 99994
-  
+
 34477_item:
   port: 37486
   host_id: 1
   svc_name: 34477 Service
   severity: 4
   plugin_id: 34477
-  
+
 21564_item:
   port: 37486
   host_id: 1
   svc_name: 21564 Service
   severity: 4
-  plugin_id: 21564  
+  plugin_id: 21564
 
 38664_item:
   port: 38664
