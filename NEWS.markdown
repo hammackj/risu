@@ -158,7 +158,7 @@ You can access it via `Host.first.patches` or `Patch.all`
 - Fixed small bug in Windows/Other OS graphs
 - Increased the verboseness of Error messages Ticket #29
 - Added named scopes off the Plugin class Ticket #34
-- Added new PCI related HostProperties Tocket #35
+- Added new PCI related HostProperties Ticket #35
 	- New HostProperties attribute: pci-dss-compliance:
 	- New HostProperties attribute: pcidss:compliance:failed
 	- New HostProperties attribute: pcidss:compliance:passed
