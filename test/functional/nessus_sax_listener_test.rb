@@ -24,15 +24,15 @@
 #OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require 'test_helper'
+# require 'test_helper'
 
-class NessusSaxListenerTest < ActiveSupport::TestCase
+# class NessusSaxListenerTest < ActiveSupport::TestCase
 
-	def setup
-		@app = Risu::CLI::Application.new
-	end
+# 	def setup
+# 		@app = Risu::CLI::Application.new
+# 	end
 
-	test "" do
-	end
+# 	#test "" do
+# 	#end
 
-end
+# end
