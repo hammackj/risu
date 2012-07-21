@@ -104,7 +104,6 @@
 		- vuln name     |   cve
 		- vuln name     |   cve
 - add findings by host report
-- ms_wsus_findings: Takes the plugin_output from plugin ####pluginid###
 - windows policy report
 - clean up old templates, some are nasty
 - stig detailed report
@@ -114,7 +113,7 @@
 	- Category II
 		- Vulnerabilities aide the ability of an attacker to gain access into a machine, compromise sensitive data, or bypass a firewall.These will lead to the eventual compromise of the web server allowing the attacker to manipulate the content or server settings on the web server and have access to other systems in your network.Some examples would be trust relationships with unauthorized separate enclaves, non compliance with appropriate host operating system security controls, and the non compliance with the IAVM program.
 	- Category III
-		- Vulnerabilities that impact the security posture of the system and if configured, will improve the overall security of asset.These could result in the degradation of service, compromise of information, and in some cases lead to unauthorized access to thesystem.Some examples would be untrained staff, development tools on a production environment, and the uncontrolled release of information to the web server.
+		- Vulnerabilities that impact the security posture of the system and if configured, will improve the overall security of asset.These could result in the degradation of service, compromise of information, and in some cases lead to unauthorized access to the system. Some examples would be untrained staff, development tools on a production environment, and the uncontrolled release of information to the web server.
 - template for rhs plugins
 - template for wsus plugins
 - Update Assets templates to use this if possible plugin: http://www.nessus.org/plugins/index.php?view=single&id=54615 for extra data
@@ -158,7 +157,7 @@
 - hash all template results to make sure templates are being created correctly
 - Create tests for everything (95%+ code coverage goal)
 	- Parser tests
-		- Add test for new xml element
+		- Add test for new XML element
 		- Add test for new host properties tag
 	- Model Specs
 		- Report
