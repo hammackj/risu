@@ -24,10 +24,10 @@
 #OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require 'test_helper'
+#require 'test_helper'
 
-class PolicyTest < ActiveSupport::TestCase
+#class PolicyTest < ActiveSupport::TestCase
 	#test "" do
 	#	assert true
 	#end
-end
+#end
