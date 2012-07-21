@@ -27,9 +27,8 @@
 module Risu
 	module Parsers
 		module Nessus
-			# A Object to represet the Nessus xml file in memory
+			# A Object to represents the Nessus XML file in memory
 			#
-			# @author Jacob Hammack <jacob.hammack@hammackj.com>
 			class NessusDocument
 
 				# Creates a instance of the NessusDocument class
@@ -52,19 +51,15 @@ module Risu
 						return false
 					end
 
-					if parser == nil
-						return false
-					end
-
 					doc = parser.parse
 
 					if doc.root.name == nil
 						return false
 					end
 
-					if doc.root.name == "NessusClientData_v2"
+					if doc.root.name == "NessusClientData_v2" #.nessus v2
 						return true
-					elsif doc.root.name == "NessusClientData"
+					elsif doc.root.name == "NessusClientData" #.nessus v1
 						return false
 					else
 						return false
