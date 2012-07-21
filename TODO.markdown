@@ -7,10 +7,13 @@
 
 #Road map
 
-##1.5.2 (Oct, 1 2012) - Filtering Magic
+##1.5.2 (Sep, 1 2012) - Minor changes
+- Host accessor for .ip_list to list all the IPS
 - Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
 - add high/med/low_risks_by_host functions Item Model
 - Do all the @todo / @fix  items!
+
+#1.5.3 (June 1, 2012) - Filtering Magic / Rendering
 - Add a filtering system for lowering the rating of plugins based on config
 	- Implement the ability to filter data out of the report
 		- Filter on
@@ -29,17 +32,15 @@
 - finding summary: crit/high spacing
 - page kerning?
 - 100% Code coverage for all unit testing
-
-#1.5.3 (June 1, 2012) - Rendering
 - Ruby 1.8.x will no longer be officially supported.
 - Official support for ruby 1.9.3+ only (Due to rails v4)
-- Look at moving to nokogiri for xml parsing; http://nokogiri.org if its faster
-- Implement different renderers
+- Look at moving to Nokogiri for xml parsing; http://nokogiri.org if its faster
+- Implement different renderer's
 	- pdf
-	- cvs
+	- csv
 	- html
 	- rtf
-	- openoffice xml
+	- OpenOffice.org xml
 - Abstract the api for prawn to support different renders
 - DSL for report creation to abstract the reports to have different output types
 - Language abstraction for text generation
@@ -51,9 +52,9 @@
 - Add Parser for Nessus V1 of the XML Format
 - Add Parser for OpenVas Output
 - Add Parser for SecurityCenter Output
-- Add Parser for Nexpose xml
-- Add Parser for Qualys xml
-- Add Parser for Nmpa XML?
+- Add Parser for Nexpose XML
+- Add Parser for Qualys XML
+- Add Parser for Nmap XML?
 - Easier way to select the Scan to generate reports from
 
 ## 2.0 (??)
