@@ -110,4 +110,12 @@ class ReferenceTest < ActiveSupport::TestCase
 	test "should return a cisco_sr for Reference.cisco_sr" do
 		assert Reference.cisco_sr != nil, "GOT #{Reference.cisco_sr}"
 	end
+
+	test "should return a cert_vu for Reference.cert_vu" do
+		assert Reference.cert_vu != nil, "GOT #{Reference.cert_vu}"
+	end
+
+	test "should return a vmsa for Reference.vmsa" do
+		assert Reference.vmsa != nil, "GOT #{Reference.vmsa}"
+	end
 end
