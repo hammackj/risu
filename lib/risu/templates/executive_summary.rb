@@ -209,11 +209,7 @@ module Risu
 					cells.borders = [:top, :bottom, :left, :right]
 				end unless results == nil
 
-				output.text "\n\n\n"
-				if (output.y <= 300)
-						output.start_new_page
-						output.move_down 50
-				end
+				output.start_new_page
 
 				output.text "Summary Graphs of Key Finding Statistics", :style => :bold
 				output.text "\n\n\n"
@@ -223,6 +219,7 @@ module Risu
 				cury = output.y
 				output.image Item.risks_by_severity_graph, :width => 250, :at => [output.bounds.left, cury]
 				output.image Host.top_vuln_graph(10), :width => 250, :at => [output.bounds.right - 250, cury]
+
 				output.move_down 225
 				if (output.y <= 300)
 						output.start_new_page
