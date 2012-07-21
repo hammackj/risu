@@ -24,7 +24,7 @@
 #OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require 'risu'
+#require 'risu'
 
 ActiveRecord::Migration.verbose = false
 
@@ -34,11 +34,10 @@ module Risu
 
 			# NessusSaxListener
 			#
-			# @author Jacob Hammack <jacob.hammack@hammackj.com>
 			class NessusSaxListener
 				include LibXML::XML::SaxParser::Callbacks
 
-				# Sets up a array of all valid xml fields
+				# Sets up a array of all valid XML fields
 				#
 				def initialize
 					@vals = Hash.new
@@ -46,8 +45,8 @@ module Risu
 					@valid_references = Array[
 						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft",
 						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
-						"owasp", "cwe", "iadb", "iavt", "cisco-sa", "ics-alert",
-						"cisco-bug-id", "cisco-sr"
+						"owasp", "cwe", "iavb", "iavt", "cisco-sa", "ics-alert",
+						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa"
 					]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
@@ -80,6 +79,7 @@ module Risu
 							"ssh-login-used" => :ssh_login_used,
 							"pci-dss-compliance" => :pci_dss_compliance,
 							"pci-dss-compliance:" => :pci_dss_compliance_ , #I think this is a Tenable bug~
+							"system-type" => :system_type,
 							"pcidss:compliance:failed" => :pcidss_compliance_failed,
 							"pcidss:compliance:passed" => :pcidss_compliance_passed,
 							"pcidss:deprecated_ssl" => :pcidss_deprecated_ssl,
@@ -91,7 +91,6 @@ module Risu
 							"pcidss:directory_browsing" => :pcidss_directory_browsing,
 							"pcidss:known_credentials" => :pcidss_known_credentials,
 							"pcidss:compromised_host:worm" => :pcidss_compromised_host_worm,
-							"system-type" => :system_type,
 							"pcidss:obsolete_operating_system" => :pcidss_obsolete_operating_system,
 							"pcidss:dns_zone_transfer" => :pcidss_dns_zone_transfer,
 							"pcidss:unprotected_mssql_db" => :pcidss_unprotected_mssql_db,
@@ -101,7 +100,7 @@ module Risu
 						}
 				end
 
-				# Callback for when the start of a xml element is reached
+				# Callback for when the start of a XML element is reached
 				#
 				# @param element XML element
 				# @param attributes Attributes for the XML element
@@ -188,7 +187,7 @@ module Risu
 					end
 				end
 
-				# Called when the end of the xml element is reached
+				# Called when the end of the XML element is reached
 				#
 				# @param element
 				def on_end_element(element)
@@ -215,7 +214,7 @@ module Risu
 
 							#This takes a really long time, there is about 34,000 pluginIDs in this
 							#field and it takes about 36 minutes to parse just this info =\
-							#lets prepopulate the plugins table with the known pluginid's
+							#lets pre-populate the plugins table with the known plugin_id's
 							#if @vals["name"] == "plugin_set"
 							#	 @all_plugins = @vals["value"].split(";")
 							#
