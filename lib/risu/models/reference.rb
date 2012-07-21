@@ -159,6 +159,18 @@ module Risu
 				def cisco_sr
 					where(:reference_name => "cisco-sr").select('DISTINCT value')
 				end
+
+				#
+				#
+				def cert_vu
+					where(:reference_name => "cert-vu").select('DISTINCT value')
+				end
+
+				#
+				#
+				def vmsa
+					where(:reference_name => "vmsa").select('DISTINCT value')
+				end
 			end
 		end
 	end
