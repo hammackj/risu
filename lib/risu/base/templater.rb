@@ -56,7 +56,8 @@ module Risu
 						t.render(output) unless t == nil
 					end
 				rescue => e
-					puts "Error: #{e.message} \n #{e.backtrace.join("\n\t")}\n"
+					raise unless Rails.env.production?
+					puts "Templater Error: #{e.message} \n #{e.backtrace.join("\n\t")}\n"
 				end
 			end
 		end
