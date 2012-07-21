@@ -68,10 +68,6 @@ class BadTemplateTest < ActiveSupport::TestCase
 		@report.author = "hammackj"
 		@report.company = "None"
 		@report.classification = "None"
-
-
-		#@nilrenderer = Risu::Renderers::NilRenderer.new
-
 	end
 
 	def teardown
