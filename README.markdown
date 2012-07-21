@@ -74,7 +74,7 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 	|_|  |_|___/\__,_|
 
 
-	risu Console v1.5.1
+	risu Console v1.5.2
 	>> Host.first
 	=> #<Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 
@@ -83,25 +83,25 @@ Several templates are included:
 
 	$ risu -l
   Available Templates
-  	assets - Generates a Assets Summary Report
-  	cover_sheet - Generates a coversheet with a logo (Example Template)
-  	exec_summary - Generates a simple executive summary.
-  	exec_summary_detailed - Generates a detailed executive summary report
-  	finding_statistics - Generates report finding statistics
-  	findings_host - Generates a findings report by host
-  	findings_summary - Generates a findings summary report
-  	findings_summary_with_pluginid - Generates a Findings Summary with Nessus Plugin ID
-  	graphs - Generates a report with all the graphs in it
-  	host_summary - Generates a Host Summary Report
-  	ms_patch_summary - Generates a Microsoft Patch Summary Report
-  	ms_update_summary - Generates a Microsoft Update Summary Report
-  	ms_wsus_findings - Generates a report based on the findings of the Patch Management: WSUS Report plugin
-  	notable - Notable Vulnerabilities
-  	notable_detailed - Notable Vulnerabilities Detailed
-  	pci_compliance - Generates a PCI Compliance Overview Report
-  	stig_findings_summary - DISA Stig findings summary report
-  	technical_findings - Generates a Technical Findings Report
-  	template - template
+    stig_findings_summary - DISA Stig findings summary report
+    pci_compliance - Generates a PCI Compliance Overview Report
+    technical_findings - Generates a Technical Findings Report
+    ms_patch_summary - Generates a Microsoft Patch Summary Report
+    findings_summary_with_pluginid - Generates a Findings Summary with Nessus Plugin ID
+    findings_host - Generates a findings report by host
+    exec_summary - Generates a simple executive summary.
+    finding_statistics - Generates report finding statistics
+    graphs - Generates a report with all the graphs in it
+    findings_summary - Generates a findings summary report
+    assets - Generates a Assets Summary Report
+    cover_sheet - Generates a coversheet with a logo (Example Template)
+    notable_detailed - Notable Vulnerabilities Detailed
+    ms_update_summary - Generates a Microsoft Update Summary Report
+    template - template
+    notable - Notable Vulnerabilities
+    ms_wsus_findings - Generates a report based on the findings of the Patch Management: WSUS Report plugin
+    exec_summary_detailed - Generates a detailed executive summary report
+    host_summary - Generates a Host Summary Report
 	$
 
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See the 'template' example for creating your own template.
@@ -111,11 +111,6 @@ If you would like to contribute templates/bug fixes/etc to risu. The easiest way
 
 # Issues
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/hammackj/risu/issues).
-
-#Donations
-I have received several requests for a method to donate to the project. You can use the following Paypal donation link; if you are interested in donating to the Risu Project. Your donations are welcome and help the development of Risu.
-
-<a href='http://www.pledgie.com/campaigns/16810'><img alt='Click here to lend your support to: Risu and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/16810.png?skin_name=chrome' border='0' /></a>
 
 # Contact
 You can reach me at jacob[dot]hammack[at]hammackj[dot]com.
