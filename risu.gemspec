@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
 	s.executables = "#{Risu::APP_NAME}"
 	s.require_paths = ["lib"]
 	s.has_rdoc = 'yard'
-	s.extra_rdoc_files = ["README.markdown", "LICENSE", "NEWS.markdown", "TODO.markdown", "KNOWNISSUES.markdown"]
+	s.extra_rdoc_files = ["README.markdown", "LICENSE", "NEWS.markdown", "TODO.markdown"]
 
 	s.required_rubygems_version = ">= 1.6.0"
 	s.rubyforge_project	= "#{Risu::APP_NAME}"
