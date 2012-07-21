@@ -88,7 +88,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black grey brown pink),
+						:colors => %w(red orange yellow blue green purple black gray brown pink),
 						:background_colors => %w(white white)
 					}
 
