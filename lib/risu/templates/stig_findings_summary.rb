@@ -28,14 +28,14 @@ module Risu
 	module Templates
 		class StigFindingsSummary < Risu::Base::TemplateBase
 
-			# Initializes the template loading metadata
+			# Initializes the template loading meta-data
 			#
 			def initialize ()
 				@template_info =
 				{
 					:name => "stig_findings_summary",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:description => "DISA Stig findings summary report"
 				}
 
@@ -79,9 +79,9 @@ module Risu
 				return host_string.chomp!(", ")
 			end
 
-			# Generates stig finding text for
+			# Generates STIG finding text for
 			#
-			# @param category I/II/III for each stig severity
+			# @param category I/II/III for each STIG severity
 			def stig_findings_text(category="I")
 				if category != "I" || category != "II" || category != "III"
 					return
