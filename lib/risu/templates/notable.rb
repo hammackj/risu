@@ -28,7 +28,7 @@ module Risu
 	module Templates
 		class Top10 < Risu::Base::TemplateBase
 
-			#
+			# @todo comments
 			#
 			def initialize ()
 				@template_info =
@@ -40,7 +40,7 @@ module Risu
 				}
 			end
 
-			#
+			# @todo comments
 			#
 			def render(output)
 				output.text Report.classification.upcase, :align => :center
