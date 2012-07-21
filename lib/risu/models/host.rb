@@ -279,10 +279,12 @@ module Risu
 					where("os NOT LIKE '%Mac OS X%'")
 				end
 
+				#@todo comment
 				def os_aix
 					where("os LIKE '%AIX%'")
 				end
 
+				#@todo comment
 				def not_os_aix
 					where("os NOT LIKE '%AIX%'")
 				end
@@ -302,9 +304,8 @@ module Risu
 					g.title = sprintf "Top 10 Hosts with Notable Findings Count"
 					g.sort = false
 					g.marker_count = 1
-					g.y_axis_increment = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black grey brown pink),
+						:colors => %w(red orange yellow blue green purple black gray brown pink),
 						:background_colors => %w(white white)
 					}
 
@@ -370,7 +371,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black grey brown pink),
+						:colors => %w(red orange yellow blue green purple black gray brown pink),
 						:background_colors => %w(white white)
 					}
 
@@ -395,7 +396,7 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 
-				#
+				#@todo comment
 				#
 				def windows_os_graph_text
 					nt = Host.os_windows_nt.all.count
@@ -452,6 +453,7 @@ module Risu
 					return unsupported_os_text
 				end
 
+				# @todo comments
 				def unsupported_os_windows
 					win_nt_text = ""
 					win_2000_text = ""
@@ -460,7 +462,7 @@ module Risu
 
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
-					win_nt_text = "Windows NT is an unsupported sperating system; Microsoft has stopped support as of June 2004. " +
+					win_nt_text = "Windows NT is an unsupported operating system; Microsoft has stopped support as of June 2004. " +
 					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_nt.count >= 1
 
 					win_2000_text = "Windows 2000 is an unsupported operating system; Microsoft has stopped support as of June 2004. " +
@@ -470,8 +472,7 @@ module Risu
 
 				end
 
-				#
-				#
+				# @todo comments
 				def unsupported_os_aix
 					text = ""
 					aix = Host.os_aix.where("OS LIKE 'AIX 5.%'")
@@ -483,8 +484,7 @@ module Risu
 					return text
 				end
 
-				#
-				#
+				# @todo comments
 				def unsupported_os_freebsd
 					text = ""
 					freebsd = Host.os_freebsd.where("OS LIKE 'FreeBSD 5.%'")
@@ -495,6 +495,7 @@ module Risu
 					return text
 				end
 
+				# @todo comments
 				#turn the os counts into blocks
 				def other_os_graph_text
 					text = "This graph shows the percentage of the different Non-Windows based operating systems " +
@@ -519,7 +520,6 @@ module Risu
 
 					#todo add other os's here
 
-
 					text << "#{linux_percent.to_i}% of the network is running an Linux based operating system. " if linux_percent >= 1
 					text << "#{aix_percent.to_i}% of the network is running an AIX based operating system. " if aix_percent >= 1
 					text << "#{freebsd_percent.to_i}% of the network is running an FreeBSD based operating system. " if freebsd_percent >= 1
@@ -531,8 +531,7 @@ module Risu
 					return text
 				end
 
-				#
-				#
+				# @todo comments
 				def top_n_vulnerable(n)
 					hosts = Item.risks_by_host(Host.all.count).count
 					hosts = hosts.sort_by {|k, v| v}
@@ -547,12 +546,14 @@ module Risu
 					hosts[0...n]
 				end
 
+				# @todo comments
 				def unique_hosts_with_critical
 					hosts = Item.critical_risks_by_host(Host.all.count).count
 					hosts = hosts.sort_by {|k, v| v}
 					hosts.reverse!
 				end
 
+				# @todo comments
 				def unique_hosts_with_high
 					hosts = Item.high_risks_by_host(Host.all.count).count
 					hosts = hosts.sort_by {|k, v| v}
