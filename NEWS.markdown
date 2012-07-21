@@ -8,6 +8,7 @@
 	- Reference Model
 		- Added vmsa() method
 		- Added cert_vu() method
+- A few typos and spelling errors corrected
 
 #1.5.1 (July 10, 2012)
 - Host Model
