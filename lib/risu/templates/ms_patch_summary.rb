@@ -58,9 +58,7 @@ module Risu
 				Item.ms_patches.each do |item|
 					host = Host.find_by_id(item.host_id)
 
-					if host == nil
-						next
-					end
+					next if host == nil
 
 					if host.name != nil
 						output.text "Host:", :style => :bold

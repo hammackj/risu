@@ -1,9 +1,9 @@
 # Copyright (c) 2010-2012 Arxopia LLC.
 # All rights reserved.
-
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-
+#
 #     * Redistributions of source code must retain the above copyright
 #       notice, this list of conditions and the following disclaimer.
 #     * Redistributions in binary form must reproduce the above copyright
@@ -12,7 +12,7 @@
 #     * Neither the name of the Arxopia LLC nor the names of its contributors
 #     	may be used to endorse or promote products derived from this software
 #     	without specific prior written permission.
-
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -35,7 +35,6 @@ module Risu
 			# @param path Path relative to the base_dir of risu
 			#
 			# @return New instance of the template manager with templates loaded.
-			#
 			def initialize (path)
 			  @registered_templates = Array.new
 				@templates = Array.new
@@ -49,7 +48,6 @@ module Risu
 			# Loads templates from a specific path
 			#
 			# @param path Path to templates to load
-			#
 			def load_templates(path)
 				begin
 				  Dir["#{path}/**/*.rb"].each do |x|
@@ -72,8 +70,11 @@ module Risu
 
 			# Validates that a template is a valid template
 			#
+			# @todo look at refactoring this to valid?(template)
+			#
 			# @param template The template to validate
 			#
+			# @return [Boolean] If the template is valid
 			def validate(template)
 			  t = template.new
 
@@ -97,8 +98,7 @@ module Risu
 				return nil
 			end
 
-			# Displays a list of all the templates
-			#
+			# Displays a list of all the templates to STDOUT
 			def display_templates
 				puts "Available Templates"
 			  @registered_templates.each do |x|

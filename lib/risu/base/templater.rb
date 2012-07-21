@@ -35,7 +35,6 @@ module Risu
 			# Setups of the Templater class initializing all of the variables
 			#
 			# @return [Templater] New Instance
-			#
 			def initialize(template, findings, output, template_manager)
 				@template = template
 				@findings = findings

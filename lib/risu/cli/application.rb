@@ -1,9 +1,9 @@
 # Copyright (c) 2010-2012 Arxopia LLC.
 # All rights reserved.
-
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-
+#
 #     * Redistributions of source code must retain the above copyright
 #       notice, this list of conditions and the following disclaimer.
 #     * Redistributions in binary form must reproduce the above copyright
@@ -12,7 +12,7 @@
 #     * Neither the name of the Arxopia LLC nor the names of its contributors
 #     	may be used to endorse or promote products derived from this software
 #     	without specific prior written permission.
-
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -52,7 +52,6 @@ module Risu
 			# @todo does this need exception handling
 			#
 			# @param file Path to configuration file
-			#
 			def create_config(file=CONFIG_FILE)
 				File.open(file, 'w+') do |f|
 					f.write("report:\n")
@@ -75,7 +74,6 @@ module Risu
 			#
 			# @param file Path to configuration file
 			# @param in_memory_config [Boolean] If the configuration is in memory
-			#
 			def load_config(file=CONFIG_FILE, in_memory_config=false)
 				if File.exists?(file) == true or in_memory_config == true
 					begin
@@ -109,7 +107,6 @@ module Risu
 			# Initiator for [ActiveRecord] migrations.
 			#
 			# @param direction [Symbol] :up or :down
-			#
 			def migrate(direction)
 				begin
 					if @database["adapter"] == nil
@@ -148,6 +145,7 @@ module Risu
 			end
 
 			# Establishes an [ActiveRecord::Base] database connection
+			# @todo better comments
 			#
 			def db_connect
 				begin
