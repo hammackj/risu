@@ -7,6 +7,7 @@ critical_plugin:
   cvss_base_score: 10
   exploit_available: "false"
   solution: "Patch this critical plugin"
+  stig_severity: I
 
 high_plugin:
   id: 99998
@@ -15,6 +16,7 @@ high_plugin:
   risk_factor: High
   exploit_available: "true"
   cvss_base_score: 8
+  stig_severity: II
 
 medium_plugin:
   id: 99997
@@ -23,6 +25,7 @@ medium_plugin:
   risk_factor: Medium
   exploit_available: "false"
   cvss_base_score: 5
+  stig_severity: III
 
 low_plugin:
   id: 99996
