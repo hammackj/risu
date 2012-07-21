@@ -82,26 +82,26 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 Several templates are included:
 
 	$ risu -l
-  Available Templates
-    stig_findings_summary - DISA Stig findings summary report
-    pci_compliance - Generates a PCI Compliance Overview Report
-    technical_findings - Generates a Technical Findings Report
-    ms_patch_summary - Generates a Microsoft Patch Summary Report
-    findings_summary_with_pluginid - Generates a Findings Summary with Nessus Plugin ID
-    findings_host - Generates a findings report by host
-    exec_summary - Generates a simple executive summary.
-    finding_statistics - Generates report finding statistics
-    graphs - Generates a report with all the graphs in it
-    findings_summary - Generates a findings summary report
-    assets - Generates a Assets Summary Report
-    cover_sheet - Generates a coversheet with a logo (Example Template)
-    notable_detailed - Notable Vulnerabilities Detailed
-    ms_update_summary - Generates a Microsoft Update Summary Report
-    template - template
-    notable - Notable Vulnerabilities
-    ms_wsus_findings - Generates a report based on the findings of the Patch Management: WSUS Report plugin
-    exec_summary_detailed - Generates a detailed executive summary report
-    host_summary - Generates a Host Summary Report
+    Available Templates
+        stig_findings_summary - DISA Stig findings summary report
+        pci_compliance - Generates a PCI Compliance Overview Report
+        technical_findings - Generates a Technical Findings Report
+        ms_patch_summary - Generates a Microsoft Patch Summary Report
+        findings_summary_with_pluginid - Generates a Findings Summary with Nessus Plugin ID
+        findings_host - Generates a findings report by host
+        exec_summary - Generates a simple executive summary.
+        finding_statistics - Generates report finding statistics
+        graphs - Generates a report with all the graphs in it
+        findings_summary - Generates a findings summary report
+        assets - Generates a Assets Summary Report
+        cover_sheet - Generates a coversheet with a logo (Example Template)
+        notable_detailed - Notable Vulnerabilities Detailed
+        ms_update_summary - Generates a Microsoft Update Summary Report
+        template - template
+        notable - Notable Vulnerabilities
+        ms_wsus_findings - Generates a report based on the findings of the Patch Management: WSUS Report plugin
+        exec_summary_detailed - Generates a detailed executive summary report
+        host_summary - Generates a Host Summary Report
 	$
 
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See the 'template' example for creating your own template.
@@ -116,4 +116,3 @@ If you have any problems, bugs or feature requests please use the [github issue 
 You can reach me at jacob[dot]hammack[at]hammackj[dot]com.
 
 You can also contact me on IRC as hammackj on irc.freenode.net, #risu
-
