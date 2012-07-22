@@ -59,9 +59,4 @@ class AssetsTemplateTest < ActiveSupport::TestCase
 		data = template.render(nilrenderer)
 		assert template.render(nilrenderer) != nil, "GOT #{template.render(nilrenderer)}"
 	end
-
-	#test "should have an MD5 of 457ea68139a70675970040c147b7837d after creation" do
-	#	require 'digest/md5'
-	#	assert Digest::MD5.hexdigest(File.read(@file_name)) == "457ea68139a70675970040c147b7837d", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
-	#end
 end

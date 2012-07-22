@@ -59,20 +59,4 @@ class StigFindingsSummaryTest < ActiveSupport::TestCase
 		data = template.render(nilrenderer)
 		assert template.render(nilrenderer) != nil, "GOT #{template.render(nilrenderer)}"
 	end
-
-	#test "should have an MD5 of 457ea68139a70675970040c147b7837d after creation" do
-	#	require 'digest/md5'
-	#	assert Digest::MD5.hexdigest(File.read(@file_name)) == "457ea68139a70675970040c147b7837d", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
-	#end
-
-	test "should have an MD5 of '' after creation" do
-		require 'digest/md5'
-
-		digest = Digest::MD5.new
-		File.open(@file_name) do |f|
-			digest.update(f.read(1024))
-		end
-
-		assert digest.hexdigest == "de60f9084d6beb81d7b41d772ee2482f", "GOT #{digest.hexdigest}"
-	end
 end

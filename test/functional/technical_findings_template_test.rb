@@ -49,15 +49,4 @@ class TechnicalFindingsTemplateTest < ActiveSupport::TestCase
 	test "should create #{@filename} on template creation" do
 		assert File.exist?(@file_name) == true
 	end
-
-	test "should have an MD5 of '7a059b3203fb6db8c1031518a651a6ff' after creation" do
-		require 'digest/md5'
-
-		digest = Digest::MD5.new
-		File.open(@file_name) do |f|
-			digest.update(f.read(1024))
-		end
-
-		assert digest.hexdigest == "7a059b3203fb6db8c1031518a651a6ff", "GOT #{digest.hexdigest}"
-	end
 end
