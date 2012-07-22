@@ -1,6 +1,6 @@
 # Copyright (c) 2010-2012 Arxopia LLC.
 # All rights reserved.
-
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
 
@@ -12,7 +12,7 @@
 #     * Neither the name of the Arxopia LLC nor the names of its contributors
 #     	may be used to endorse or promote products derived from this software
 #     	without specific prior written permission.
-
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -50,8 +50,8 @@ class TechnicalFindingsTemplateTest < ActiveSupport::TestCase
 		assert File.exist?(@file_name) == true
 	end
 
-	#test "should have an MD5 of 044fc88a8729ae5d02ec6409dc78f7bf after creation" do
-	#	require 'digest/md5'
-	#	assert Digest::MD5.hexdigest(File.read(@file_name)) == "044fc88a8729ae5d02ec6409dc78f7bf", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
-	#end
+	test "should have an MD5 of db256ea3faaa1b55ba86d95630f98e52 after creation" do
+		require 'digest/md5'
+		assert Digest::MD5.hexdigest(File.read(@file_name)) == "db256ea3faaa1b55ba86d95630f98e52", "GOT #{Digest::MD5.hexdigest(File.read(@file_name))}"
+	end
 end
