@@ -8,6 +8,8 @@
 	- Reference Model
 		- Added vmsa() method
 		- Added cert_vu() method
+- Switched from the 'mysql' gem to the 'mysql2' gem for better rails3 support with mysql databases
+- Fixed Ticket #57, which had a sqlite specific query, breaking the query on MySql. Reported by Drew Brunson
 - A few typos and spelling errors corrected
 
 #1.5.1 (July 10, 2012)
