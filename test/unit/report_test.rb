@@ -28,7 +28,7 @@ require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
 	test "should have a scan_date of Fri May 13 17:52:18 -0500 2011" do
-		assert_instance_of Time, Report.scan_date.class, "GOT #{Report.scan_date.class}"
+		assert_instance_of Time, Report.scan_date, "GOT #{Report.scan_date.class}"
 		assert Report.scan_date.strftime("%a %B %d, %Y") == "Fri May 13, 2011", "GOT #{Report.scan_date.strftime("%a %B %d, %Y")}"
 
 	end
