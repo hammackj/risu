@@ -1,9 +1,9 @@
 # Copyright (c) 2010-2012 Arxopia LLC.
 # All rights reserved.
-
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-
+#
 #     * Redistributions of source code must retain the above copyright
 #       notice, this list of conditions and the following disclaimer.
 #     * Redistributions in binary form must reproduce the above copyright
@@ -12,7 +12,7 @@
 #     * Neither the name of the Arxopia LLC nor the names of its contributors
 #     	may be used to endorse or promote products derived from this software
 #     	without specific prior written permission.
-
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,17 +28,9 @@ require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
 	test "should have a scan_date of Fri May 13 17:52:18 -0500 2011" do
+		assert_instance_of Time, Report.scan_date.class, "GOT #{Report.scan_date.class}"
 		assert Report.scan_date.strftime("%a %B %d, %Y") == "Fri May 13, 2011", "GOT #{Report.scan_date.strftime("%a %B %d, %Y")}"
 
-		# Test under 1.9.3 and remove the others, only support 1.9.3+
-		#Ruby 1.8.7 and 1.9.2 return different date formats
-		#if date == "Fri May 13 17:52:18 -0500 2011"
-			#assert date == "Fri May 13 17:52:18 -0500 2011", "GOT #{date}"
-		#elsif date == "2011-05-13 17:52:18 -0500" #1.8.7
-		#	assert date == "2011-05-13 17:52:18 -0500"
-		#end
-
-		#2011-05-13 17:52:18 +0000
 	end
 
 	test "Report.scanner_nessus_ratings_text length should be 1527" do
