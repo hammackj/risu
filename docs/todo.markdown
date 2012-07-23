@@ -7,11 +7,8 @@
 
 #Road map
 
-##1.5.2 (Sep, 1 2012) - Minor changes
-
-
-#1.5.3 (June 1, 2012) - Filtering Magic / Rendering
-- Host accessor for .ip_list to list all the IPS
+#1.6 (??) - Filtering Magic / Rendering
+- Host accessors for .ip_list to list all the IPS
 - Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
 - add high/med/low_risks_by_host functions Item Model
 - Do all the @todo / @fix  items!
@@ -46,7 +43,7 @@
 - DSL for report creation to abstract the reports to have different output types
 - Language abstraction for text generation
 
-## 1.6 (??) - Additional Parsers
+## 1.7 (??) - Additional Parsers
 - Remove rmagick (GRRRR!)
 - Add Parser for Nessus NBE Format
 - Add Parser for Nessus NSR Format
