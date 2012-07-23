@@ -108,7 +108,7 @@
 - stig detailed report
 	-http://www.scribd.com/doc/3752867/6/Vulnerability-Severity-Code-Definitions
 	- Category I
-		- Vulnerabilities that allow an attacker immediate access into a machine, allow superuser access, or bypass a firewall.These can lead to the immediate compromise of the web serverallowing the attacker to take complete control of the web server and associated operating system, which can then be used as aresource to control other systems in your network.Some examples would be the running of unsupported software, anonymous access to privledge accounts, and the presence of sample applications installed on the web server.
+		- Vulnerabilities that allow an attacker immediate access into a machine, allow superuser access, or bypass a firewall.These can lead to the immediate compromise of the web server allowing the attacker to take complete control of the web server and associated operating system, which can then be used as a resource to control other systems in your network.Some examples would be the running of unsupported software, anonymous access to privledge accounts, and the presence of sample applications installed on the web server.
 	- Category II
 		- Vulnerabilities aide the ability of an attacker to gain access into a machine, compromise sensitive data, or bypass a firewall.These will lead to the eventual compromise of the web server allowing the attacker to manipulate the content or server settings on the web server and have access to other systems in your network.Some examples would be trust relationships with unauthorized separate enclaves, non compliance with appropriate host operating system security controls, and the non compliance with the IAVM program.
 	- Category III
