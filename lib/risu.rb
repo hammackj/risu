@@ -43,7 +43,7 @@ require 'gruff'
 require 'prawn'
 require 'prawn/layout'
 require 'stringio'
-require 'mysql'
+require 'mysql2'
 require 'irb'
 
 require 'optparse'
