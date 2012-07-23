@@ -58,7 +58,7 @@ Gem::Specification.new do |s|
 	s.add_dependency('libxml-ruby', ['>= 1.1.4'])
 	s.add_dependency('prawn', ['>= 0.11.1'])
 	s.add_dependency('gruff', ['>= 0.3.6'])
-	s.add_dependency('mysql', ['>= 2.8.1'])
+	s.add_dependency('mysql2', ['>= 0.3.11'])
 	s.add_dependency('rmagick', [">= 2.13.1"])
 	s.add_dependency('sqlite3', [">= 1.3.3"])
 end
