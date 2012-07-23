@@ -4,12 +4,14 @@
 
 #**Bugs**
 - Notable reports show an incorrect number, might be fixed already.
+- Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
 
 #Road map
 
 #1.6 (??) - Filtering Magic / Rendering
 - Host accessors for .ip_list to list all the IPS
-- Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
+- list scan in database via cli
+- generate report based on scan_id/report id
 - add high/med/low_risks_by_host functions Item Model
 - Do all the @todo / @fix  items!
 - Add a filtering system for lowering the rating of plugins based on config
@@ -23,16 +25,15 @@
 		- Add filtered api, to use the filters
 			- Option 1: eg critical_risks_filtered()
 			- Option 2: eg critical_risks(:filtered => true)
-- Nexpose Detailed xml parsing
-- Nexpose Simple xml parsing
-- list scan in database via cli
-- generate report based on scan_id/report id
+
 - finding summary: crit/high spacing
 - page kerning?
 - 100% Code coverage for all unit testing
 - Ruby 1.8.x will no longer be officially supported.
 - Official support for ruby 1.9.3+ only (Due to rails v4)
 - Look at moving to Nokogiri for xml parsing; http://nokogiri.org if its faster
+
+## 1.6.5 (??) - Rendering
 - Implement different renderer's
 	- pdf
 	- csv
@@ -50,7 +51,7 @@
 - Add Parser for Nessus V1 of the XML Format
 - Add Parser for OpenVas Output
 - Add Parser for SecurityCenter Output
-- Add Parser for Nexpose XML
+- Add Parser for Nexpose XML [Simple, Detailed]
 - Add Parser for Qualys XML
 - Add Parser for Nmap XML?
 - Easier way to select the Scan to generate reports from
@@ -151,9 +152,7 @@
         - plugin output
 
 ###Testing
-- Move all tests to use Fixtures
-- hash all template results to make sure templates are being created correctly
-- Create tests for everything (95%+ code coverage goal)
+- Create tests for everything (95%+ code coverage goal, 82% Current)
 	- Parser tests
 		- Add test for new XML element
 		- Add test for new host properties tag
