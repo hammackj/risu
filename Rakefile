@@ -48,10 +48,21 @@ task :clean do
 	system "rm -rf coverage"
 end
 
-task :default => [:test]
+task :default => [:test_sqlite]
 
-Rake::TestTask.new("test") { |t|
+task :test_sqlite do
+	ENV['RISU_TEST_ENV'] = "sqlite"
+	Rake::Task['run_tests'].invoke
+end
+
+task :test_mysql do
+	ENV['RISU_TEST_ENV'] = "mysql"
+	Rake::Task['run_tests'].invoke
+end
+
+
+Rake::TestTask.new("run_tests") do |t|
 	t.libs << "test"
   t.pattern = 'test/*/*_test.rb'
   t.verbose = true
-}
+end
