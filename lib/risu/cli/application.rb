@@ -442,7 +442,7 @@ module Risu
 				rescue Interrupt => i
 					puts "[!] Parse canceled!"
 					exit(1)
-				rescue Mysql::Error => m
+				rescue Mysql2::Error => m
 					if m.errno == 1146
 						puts "[!] Error: Tables were not created. Please run #{Risu::APP_NAME} --create-tables"
 						exit(1)
