@@ -19,13 +19,13 @@ Risu relies heavily on [RubyGems](http://rubygems.org/) to install other depende
 - rmagick
 - gruff
 - prawn
-- mysql
+- mysql2
 
 ## Developmental Requirements
 
 These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install risu, If not this command will install them all:
 
-	% gem install rmagick gruff prawn yard mysql libxml-ruby rails sqlite3 logger yaml
+	% gem install rmagick gruff prawn yard mysql2 libxml-ruby rails sqlite3 logger yaml
 
 **You my need sudo/root access depending on your system setup**
 
