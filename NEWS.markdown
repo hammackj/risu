@@ -9,6 +9,7 @@
 		- Added vmsa() method
 		- Added cert_vu() method
 - Switched from the 'mysql' gem to the 'mysql2' gem for better rails3 support with mysql databases
+	- Note: **This means you need to specify mysql2 as the database adapter**
 - Fixed Ticket #57, which had a sqlite specific query, breaking the query on MySql. Reported by Drew Brunson
 - A few typos and spelling errors corrected
 
