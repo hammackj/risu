@@ -396,9 +396,18 @@ module Risu
 					return graph_text
 				end
 
-				#sqlite only @todo @fix
+				# @todo comment
 				def top_10_sorted_raw
-					raw = Item.joins(:plugin).where(:severity => 4).order("cast(plugins.cvss_base_score as real)").count(:all, :group => :plugin_id)
+					raw = nil
+
+					if ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /sqlite/
+						raw = Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS REAL)").count(:all, :group => :plugin_id)
+					elsif ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /mysql/
+						raw = Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS DECIMAL(2,2))").count(:all, :group => :plugin_id)
+					else
+						raw = Item.joins(:plugin).where(:severity => 4).order(:plugins.cvss_base_score).count(:all, :group => :plugin_id)
+					end
+
 					data = Array.new
 
 					raw.each do |vuln|
