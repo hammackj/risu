@@ -1,9 +1,9 @@
 # Copyright (c) 2010-2012 Arxopia LLC.
 # All rights reserved.
-
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-
+#
 #     * Redistributions of source code must retain the above copyright
 #       notice, this list of conditions and the following disclaimer.
 #     * Redistributions in binary form must reproduce the above copyright
@@ -12,7 +12,7 @@
 #     * Neither the name of the Arxopia LLC nor the names of its contributors
 #     	may be used to endorse or promote products derived from this software
 #     	without specific prior written permission.
-
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -40,7 +40,7 @@ require "active_support"
 require 'risu'
 
 def setup_test_database
-config =
+config_sqlite =
 "report:
   author: TEST
   title: TEST
@@ -51,28 +51,52 @@ database:
   adapter: sqlite3
   database: test_data/test.db"
 
-begin
-	File.delete("test_data/test.db") if File.exist?("test_data/test.db")
+config_mysql =
+"report:
+  author: TEST
+  title: TEST
+  company: TEST
+  classification: TEST
 
-	@app = Risu::CLI::Application.new
-	@app.load_config(config, true)
-	@app.db_connect
+database:
+  adapter: mysql2
+  database: risu_test
+  host: 10.69.69.20
+  username: risu
+  password: risurisu2012"
 
-	@app.migrate(:up)
 
-	if !ActiveRecord::Base.connection.tables.empty?
-		Risu::Base::Schema.migrate(:down)
+	begin
+		File.delete("test_data/test.db") if File.exist?("test_data/test.db")
+
+		@app = Risu::CLI::Application.new
+
+		if ENV['RISU_TEST_ENV'] == 'sqlite'
+			puts "[*] Testing Sqlite"
+			@app.load_config(config_sqlite, true)
+		elsif ENV['RISU_TEST_ENV'] == 'mysql'
+			puts "[*] Testing MySql"
+			@app.load_config(config_mysql, true)
+		else
+			puts "[!] Unable to read RISU_TEST_ENV variable."
+			exit
+		end
+
+		@app.db_connect
+
+		if !ActiveRecord::Base.connection.tables.empty?
+			@app.migrate(:down)
+		end
+
+		@app.migrate(:up)
+
+		fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
+		fixtures.each do |fixture_file|
+			ActiveRecord::Fixtures.create_fixtures('test/fixtures', File.basename(fixture_file, '.*'))
+		end
+	rescue => e
+		puts "[!] #{e.message}\n#{e.backtrace}\n\n"
 	end
-
-	@app.migrate(:up)
-
-	fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
-	fixtures.each do |fixture_file|
-		ActiveRecord::Fixtures.create_fixtures('test/fixtures', File.basename(fixture_file, '.*'))
-	end
-rescue => e
-	puts "[!] #{e.message}\n#{e.backtrace}\n\n"
-end
 end
 
 setup_test_database()
