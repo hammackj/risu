@@ -41,7 +41,7 @@ module Risu
 				#@scan_date = Host.where("start is not null").first[:start].to_s
 				#
 				def scan_date
-					Host.where("start is not null").first[:start]
+					Host.where("start IS NOT NULL").first[:start]
 				end
 
 				#
