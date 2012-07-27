@@ -9,6 +9,9 @@
 #Road map
 
 #1.6 (??) - Filtering Magic / Rendering
+
+- make reference report as paragraph instead of a list to save paper
+	- also address the duplicated xref and references
 - Host accessors for .ip_list to list all the IPS
 - list scan in database via cli
 - generate report based on scan_id/report id
@@ -22,7 +25,7 @@
 			- Plugin ID
 			- Host id
 		- Arbitrary number of filters
-		- Add filtered api, to use the filters
+		- Add filtered API, to use the filters
 			- Option 1: eg critical_risks_filtered()
 			- Option 2: eg critical_risks(:filtered => true)
 
@@ -54,6 +57,7 @@
 - Add Parser for Nexpose XML [Simple, Detailed]
 - Add Parser for Qualys XML
 - Add Parser for Nmap XML?
+- Add Parser for SAINT XML
 - Easier way to select the Scan to generate reports from
 
 ## 2.0 (??)
@@ -71,6 +75,10 @@
 - pdf bookmarks
 - add postgres and test it
 - rewrite the application class
+- check the config file for \t
+- add create template option
+- better integration with mysql/post/sqlite
+-
 
 ###Parsers
 - move all pci related host properties to their own table
@@ -80,6 +88,9 @@
 
 ###Models
 - Plugin reference accessors with auto text
+- add hosts with crit/high/med/low quieries
+- add ibm to the os named_scopes
+
 
 ###Graphs
 - most common os graph
@@ -91,8 +102,29 @@
 - unsupported vs supported os graph
 - Add a CVSS risk factor graph
 - security risk graph
+- detailed linux graph
+- detailed windows graph
+-  uniform graph colors
+- vuln count by host graph top 10 vulns
+
 
 ###Reports / Templates
+- web server statics report (plugin id)
+- virtual machine stats report (20094)
+- add pdf bookmarks to reports
+- talking point report
+- add netbios name to IPs (hostname)
+- add table of contents on the tech findings template
+- better exec template
+	- intro
+			-over view
+			- details of major findings (3-5)
+	- scope
+	- impact of threats (generalized)
+	- graphs
+-
+- MS AV errors (52544)
+- MS Pending Reboot report (35453)
 - SANS TOP XX report
 - add (hostname) to reports
 - Fix list report
@@ -125,15 +157,15 @@
 	- Fix list Report?
 	- Compact the data in tech findings to be more printer friendly
 	- finding summary coversheet looks odd
-	- unsupported OS template
-	- add list of unsupported os ip's accessor
-	- detailed findings should be combined to save paper on printing
+	- [TEMPLATE] unsupported OS template
+	- [API] add list of unsupported os ip's accessors
+	- [TEMPLATE] detailed findings should be combined to save paper on printing
 	- Sort Technical Findings Report by count/score
 	- Add template validation and more error checking
 - Added TOC/Index to the technical findings report, issue 15
 - More text blocks for various plugins services
 - finish implementation of service descriptions
-- outstanding/very good/good/improvement needed/unsatisfactory
+- outstanding / very good / good / improvement needed / unsatisfactory
 - report type rtf
   Per host
     - scan time start/end
@@ -189,3 +221,8 @@
 ####Website
 - Increase the readability of the site some
 - Bold the current version info
+
+####Documention
+- add hacking doc
+- config file docs
+-
