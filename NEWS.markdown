@@ -12,6 +12,7 @@
 	- Note: **This means you need to specify mysql2 as the database adapter**
 - Fixed Ticket #57, which had a sqlite specific query, breaking the query on MySql. Reported by Drew Brunson
 - A few typos and spelling errors corrected
+- Added some PRAGMA's that might speed up SQLite3 usage. If it is still to slow (on insert) It is recommended to use MySQL.
 
 #1.5.1 (July 10, 2012)
 - Host Model
