@@ -1,6 +1,6 @@
 # News
 
-#1.5.2 ()
+#1.5.2 (July 30, 2012)
 - New Parsed Tags
 	- vmsa
 	- cert-vu
