@@ -9,7 +9,6 @@
 #Road map
 
 #1.6 (??) - Filtering Magic / Rendering
-
 - make reference report as paragraph instead of a list to save paper
 	- also address the duplicated xref and references
 - Host accessors for .ip_list to list all the IPS
@@ -36,7 +35,7 @@
 - Official support for ruby 1.9.3+ only (Due to rails v4)
 - Look at moving to Nokogiri for xml parsing; http://nokogiri.org if its faster
 
-## 1.6.5 (??) - Rendering
+## 1.7 (??) - Rendering
 - Implement different renderer's
 	- pdf
 	- csv
@@ -47,7 +46,7 @@
 - DSL for report creation to abstract the reports to have different output types
 - Language abstraction for text generation
 
-## 1.7 (??) - Additional Parsers
+## 1.8 (??) - Additional Parsers
 - Remove rmagick (GRRRR!)
 - Add Parser for Nessus NBE Format
 - Add Parser for Nessus NSR Format
@@ -78,7 +77,6 @@
 - check the config file for \t
 - add create template option
 - better integration with mysql/post/sqlite
--
 
 ###Parsers
 - move all pci related host properties to their own table
@@ -90,7 +88,6 @@
 - Plugin reference accessors with auto text
 - add hosts with crit/high/med/low quieries
 - add ibm to the os named_scopes
-
 
 ###Graphs
 - most common os graph
@@ -104,7 +101,7 @@
 - security risk graph
 - detailed linux graph
 - detailed windows graph
--  uniform graph colors
+- uniform graph colors
 - vuln count by host graph top 10 vulns
 
 
@@ -183,7 +180,7 @@
         - ports
         - plugin output
 
-###Testing
+### Testing
 - Create tests for everything (95%+ code coverage goal, 82% Current)
 	- Parser tests
 		- Add test for new XML element
@@ -212,17 +209,16 @@
 		- tech findings
 - Add tests for Patch model
 
-###Marketing
+### Marketing
 - CentOS 6 setup Tutorial
 - Backtrack5 r2 setup Tutorial
 - Ubuntu LTS setup Tutorial
 - Presentation on Risu
 
-####Website
+#### Website
 - Increase the readability of the site some
 - Bold the current version info
 
-####Documention
+#### Documentation
 - add hacking doc
 - config file docs
--
