@@ -60,7 +60,6 @@ task :test_mysql do
 	Rake::Task['run_tests'].invoke
 end
 
-
 Rake::TestTask.new("run_tests") do |t|
 	t.libs << "test"
   t.pattern = 'test/*/*_test.rb'
