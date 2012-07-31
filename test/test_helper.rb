@@ -51,6 +51,8 @@ database:
   adapter: sqlite3
   database: test_data/test.db"
 
+#database: \":memory:\""
+
 config_mysql =
 "report:
   author: TEST
