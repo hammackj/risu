@@ -156,8 +156,16 @@ module Risu
 					end
 
 					ActiveRecord::Base.establish_connection(@database)
-					ActiveRecord::Base.connection
+					connection = ActiveRecord::Base.connection
 
+					if @database["adapter"] =~ /sqlite/
+						connection.execute("PRAGMA default_synchronous=OFF;")
+						connection.execute("PRAGMA synchronous=OFF;")
+						connection.execute("PRAGMA journal_mode=OFF;")
+						#connection.execute("PRAGMA wal_autocheckpoint=10000;")
+					end
+
+					connection
 				rescue ActiveRecord::AdapterNotSpecified => ans
 					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
