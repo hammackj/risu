@@ -71,4 +71,8 @@ Rake::TestTask.new("run_tests") do |t|
   t.verbose = true
 end
 
-
+task :merge do
+	system "git checkout master"
+	system "get merge #{Risu::VERSION}"
+	system "git push"
+end
