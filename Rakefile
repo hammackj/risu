@@ -35,7 +35,12 @@ task :build do
   system "gem build #{Risu::APP_NAME}.gemspec"
 end
 
-task :release => :build do
+task :tag_and_bag do
+	system "git tag -a v#{Risu::VERSION} -m 'version #{Risu::VERSION}'"
+	system "git push --tags"
+end
+
+task :release => [:tag_and_bag, :build] do
   system "gem push #{Risu::APP_NAME}-#{Risu::VERSION}.gem"
 	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is an Nessus XML parser/database. More information at http://hammackj.com/projects/risu/"
 end
@@ -66,7 +71,4 @@ Rake::TestTask.new("run_tests") do |t|
   t.verbose = true
 end
 
-task :tag_and_bag do
-	system "git tag -a v#{Risu::VERSION} -m 'version #{Risu::VERSION}"
-	system "git push --tags"
-end
+
