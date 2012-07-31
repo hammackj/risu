@@ -42,10 +42,6 @@ The gems for mysql and rmagick will fail to build if these are not installed.
 ### Backtrack
 	sudo apt-get install ruby1.8-dev libzip1 libzip-dev libxml2-dev libxml2 libmysqlclient-dev imagemagick libmagickwand3 libmagick9-dev
 
-
 ## Sqlite
 
 Sqlite is a great database to use as a light weight solution. I use Sqlite for all of my assessments. Setting it up on various platforms can be tricky, so here are some examples for what is required to set it up.
-
-
-
