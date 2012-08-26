@@ -24,8 +24,6 @@
 #OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#require 'risu'
-
 ActiveRecord::Migration.verbose = false
 
 module Risu
@@ -33,12 +31,10 @@ module Risu
 		module Nessus
 
 			# NessusSaxListener
-			#
 			class NessusSaxListener
 				include LibXML::XML::SaxParser::Callbacks
 
 				# Sets up a array of all valid XML fields
-				#
 				def initialize
 					@vals = Hash.new
 
@@ -58,7 +54,9 @@ module Risu
 						"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
 						"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
 						"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
-						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname", "always_run"
+						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname", "always_run",
+						"cm:compliance-info", "cm:compliance-actual-value", "cm:compliance-check-id", "cm:compliance-policy-value",
+						"cm:compliance-audit-file", "cm:compliance-check-name", "cm:compliance-result", "cm:compliance-output"
 					]
 
 						@valid_elements = @valid_elements + @valid_references
@@ -274,6 +272,15 @@ module Risu
 						when "ReportItem"
 							@ri.plugin_output = @vals["plugin_output"]
 							@ri.plugin_name = @vals["plugin_name"]
+							@ri.cm_compliance_info = @vals["cm:compliance-info"]
+							@ri.cm_compliance_actual_value = @vals["cm:compliance-actual-value"]
+							@ri.cm_compliance_check_id = @vals["cm:compliance-check-id"]
+							@ri.cm_compliance_policy_value= @vals["cm:compliance-policy-value"]
+							@ri.cm_compliance_audit_file = @vals["cm:compliance-audit-file"]
+							@ri.cm_compliance_check_name = @vals["cm:compliance-check-name"]
+							@ri.cm_compliance_result = @vals["cm:compliance-result"]
+							@ri.cm_compliance_output = @vals["cm:compliance-output"]
+
 							@ri.save
 
 							@plugin.attributes = {
