@@ -53,8 +53,6 @@ task :clean do
 	system "rm -rf coverage"
 end
 
-task :default => [:test_sqlite]
-
 task :test_sqlite do
 	ENV['RISU_TEST_ENV'] = "sqlite"
 	Rake::Task['run_tests'].invoke
@@ -76,3 +74,5 @@ task :merge do
 	system "get merge #{Risu::VERSION}"
 	system "git push"
 end
+
+task :default => [:test_sqlite]
