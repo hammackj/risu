@@ -1,5 +1,23 @@
 # News
 
+#1.5.3 ()
+- New Parsed Tags
+	- cm_compliance_info
+	- cm_compliance_actual_value
+	- cm_compliance_check_id
+	- cm_compliance_policy_value
+	- cm_compliance_audit_file
+	- cm_compliance_check_name
+	- cm_compliance_result
+	- cm_compliance_output
+- Model Changes
+	- Host
+		- Added os_windows_98
+		- Added os_not_windows_98
+		- Added os_windows_95
+		- Added os_not_windows_95
+		- Updated the unsupported operation systems text to take into account these operation systems
+
 #1.5.2 (July 30, 2012)
 - New Parsed Tags
 	- vmsa
