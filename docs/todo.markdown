@@ -5,14 +5,28 @@
 #**Bugs**
 - Notable reports show an incorrect number, might be fixed already.
 - Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
+/home/hammackj/.rvm/gems/ruby-1.9.2-p320/gems/risu-1.5.2/lib/risu/cli/application.rb:130:in `rescue in migrate': uninitialized constant Risu::CLI::Application::SQLite3 (NameError)
+	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/gems/risu-1.5.2/lib/risu/cli/application.rb:111:in `migrate'
+	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/gems/risu-1.5.2/lib/risu/cli/application.rb:380:in `run'
+	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/gems/risu-1.5.2/bin/risu:38:in `<top (required)>'
+	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/bin/risu:19:in `load'
+	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/bin/risu:19:in `<main>'
+	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/bin/ruby_noexec_wrapper:14:in `eval'
+	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/bin/ruby_noexec_wrapper:14:in `<main>'
 
 #Road map
 
 #1.6 (??) - Filtering Magic / Rendering
-- make reference report as paragraph instead of a list to save paper
+- **make reference report as paragraph instead of a list to save paper**
 	- also address the duplicated xref and references
 - Host accessors for .ip_list to list all the IPS
+- error check connection fail on the console to mysql
 - list scan in database via cli
+- add a way to generate reports from the cli
+- add a way to spawn mysql/psql shell to the database
+- add tables for the OS data
+- rewrite text for risks by severity
+
 - generate report based on scan_id/report id
 - add high/med/low_risks_by_host functions Item Model
 - Do all the @todo / @fix  items!
@@ -27,6 +41,7 @@
 		- Add filtered API, to use the filters
 			- Option 1: eg critical_risks_filtered()
 			- Option 2: eg critical_risks(:filtered => true)
+			- ALLOW CIDR BASED RANGES
 
 - finding summary: crit/high spacing
 - page kerning?
@@ -106,6 +121,7 @@
 
 
 ###Reports / Templates
+- Reports for mobile information
 - web server statics report (plugin id)
 - virtual machine stats report (20094)
 - add pdf bookmarks to reports
@@ -119,7 +135,6 @@
 	- scope
 	- impact of threats (generalized)
 	- graphs
--
 - MS AV errors (52544)
 - MS Pending Reboot report (35453)
 - SANS TOP XX report
