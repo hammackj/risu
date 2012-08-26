@@ -114,6 +114,14 @@ module Risu
 					t.integer :severity
 					t.string :plugin_name
 					t.boolean :verified
+					t.string :cm_compliance_info
+					t.string :cm_compliance_actual_value
+					t.string :cm_compliance_check_id
+					t.string :cm_compliance_policy_value
+					t.string :cm_compliance_audit_file
+					t.string :cm_compliance_check_name
+					t.string :cm_compliance_result
+					t.string :cm_compliance_output
 				end
 
 				create_table :plugins do |t|
