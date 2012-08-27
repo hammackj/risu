@@ -486,15 +486,15 @@ module Risu
 					win_98_text = ""
 					win_nt_text = ""
 					win_2000_text = ""
-					win_95 = Host.os.windows_95
-					win_98 = Host.os.windows_98
+					win_95 = Host.os_windows_95
+					win_98 = Host.os_windows_98
 					win_nt = Host.os_windows_nt
 					win_2000 = Host.os_windows_2k
 
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
 					win_95_text = "Windows 95 is an unsupported operating system; Microsoft has stopped support as of December 2001. " +
-					"Please see http://en.wikipedia.org/wiki/Windows_95 for more information.\n\n" if win_98.count >= 1
+					"Please see http://en.wikipedia.org/wiki/Windows_95 for more information.\n\n" if win_95.count >= 1
 
 					win_98_text = "Windows 98 is an unsupported operating system; Microsoft has stopped support as of July 2006. " +
 					"Please see http://support.microsoft.com/gp/lifean18 for more information.\n\n" if win_98.count >= 1
@@ -505,8 +505,7 @@ module Risu
 					win_2000_text = "Windows 2000 is an unsupported operating system; Microsoft has stopped support as of June 2004. " +
 					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2000.count >= 1
 
-					return "#{win_nt_text}#{win_2000_text}"
-
+					return "#{win_95_text}#{win_98_text}#{win_nt_text}#{win_2000_text}"
 				end
 
 				# @todo comments
