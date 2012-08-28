@@ -28,7 +28,6 @@ module Risu
 	module Models
 
 		# FamilySelection Model
-		#
 		class FamilySelection < ActiveRecord::Base
 		  belongs_to :policy
 		end
