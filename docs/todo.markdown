@@ -122,6 +122,11 @@
 
 
 ###Reports / Templates
+- Unsupported OS report
+	- <= XP SP1 = oct 10, 2006
+	- XP SP2 = July 13, 2010
+	- Vista SP0 = APril 13, 2010
+	- Vista SP1 = July 12, 2011
 - Reports based on audit data
 - Reports for mobile information
 - web server statics report (plugin id)

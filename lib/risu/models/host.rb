@@ -524,7 +524,7 @@ module Risu
 					win_2000_text = "Windows 2000 is an unsupported operating system; Microsoft has stopped support as of July 2010. " +
 					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2000.count >= 1
 
-					return "#{win_95_text}#{win_98_text}#{win_nt_text}#{win_2000_text}"
+					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}"
 				end
 
 				# @todo comments
