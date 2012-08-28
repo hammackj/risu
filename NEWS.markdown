@@ -1,6 +1,6 @@
 # News
 
-#1.5.3 ()
+#1.5.3 (August 27, 2012)
 - New Parsed Tags
 	- cm_compliance_info
 	- cm_compliance_actual_value
@@ -13,10 +13,12 @@
 - Model Changes
 	- Host
 		- Added os_windows_98
-		- Added os_not_windows_98
+		- Added not_os_windows_98
 		- Added os_windows_95
-		- Added os_not_windows_95
-		- Updated the unsupported operation systems text to take into account these operation systems
+		- Added not_os_windows_95
+		- Added os_windows_me
+		- Added not_os_windows_me
+		- Updated the unsupported operating systems text to take into account these operating systems
 
 #1.5.2 (July 30, 2012)
 - New Parsed Tags
