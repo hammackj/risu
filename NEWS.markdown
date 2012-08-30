@@ -1,6 +1,6 @@
 # News
 
-#1.5.3 (August 27, 2012)
+#1.5.3 (August 29, 2012)
 - New Parsed Tags
 	- cm_compliance_info
 	- cm_compliance_actual_value
