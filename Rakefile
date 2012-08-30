@@ -71,7 +71,7 @@ end
 
 task :merge do
 	system "git checkout master"
-	system "get merge #{Risu::VERSION}"
+	system "git merge #{Risu::VERSION}"
 	system "git push"
 end
 
