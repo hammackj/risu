@@ -48,9 +48,10 @@ module Risu
 					template_manager = @template_manager
 
 					Prawn::Document.generate(@output_file, :margin => [75, 50, 75, 50]) do |output|
-						output.font_size 12
+						output.font_size 10
 						t = template_manager.find_template_by_name(template)
 						t = t.class.new
+						t.output = output
 						t.render(output) unless t == nil
 					end
 				rescue => e
