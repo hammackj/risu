@@ -26,16 +26,16 @@
 
 module Risu
 	module Templates
-		class NotableDetailed < Risu::Base::TemplateBase
+		class NotableTemplateDetailed < Risu::Base::TemplateBase
+			include TemplateHelper
 
-			#
-			#
+			#Creates an instance of the [NotableTemplateDetailed] class and initializes its meta-data
 			def initialize ()
 				@template_info =
 				{
 					:name => "notable_detailed",
 					:author => "hammackj",
-					:version => "0.0.4",
+					:version => "0.0.5",
 					:description => "Notable Vulnerabilities Detailed"
 				}
 			end
@@ -43,26 +43,20 @@ module Risu
 			#
 			#
 			def render(output)
-				output.text Report.classification.upcase, :align => :center
-				output.text "\n"
+				@output.text Report.classification.upcase, :align => :center
+				@output.text "\n"
 
-				output.font_size(22) do
-					output.text Report.title, :align => :center
-				end
+				report_title Report.title
+				report_subtitle "Notable Vulnerabilities"
+				report_author "This report was prepared by\n#{Report.author}"
 
-				output.font_size(18) do
-					output.text "Notable Vulnerabilities", :align => :center
-					output.text "\n"
-					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				end
+				@output.text "\n\n\n"
 
-				output.text "\n\n\n"
+				@output.text "Scan Date:", :style => :bold
+				@output.text "#{Report.scan_date}"
+				@output.text "\n"
 
-				output.text "Scan Date:", :style => :bold
-				output.text "#{Report.scan_date}"
-				output.text "\n"
-
-				output.font_size(10)
+				@output.font_size(10)
 
 				data = Item.top_10_sorted_raw
 
@@ -72,7 +66,7 @@ module Risu
 
 				unique_risks.each do |h|
 					if h[:values].length > 1
-						output.text "\n"
+						@output.text "\n"
 
 						h[:values].each do |f|
 							plugin_id = f[0]
@@ -83,77 +77,72 @@ module Risu
 
 							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
-							output.font_size(16) do
-								output.text "#{counter}: #{plugin.plugin_name}\n"
-							end
+							heading2 "#{counter}: #{plugin.plugin_name}\n"
 
 							if hosts.length > 1
-								output.text "Hosts", :style => :bold
+								@output.text "Hosts", :style => :bold
 							else
-								output.text "Host", :style => :bold
+								@output.text "Host", :style => :bold
 							end
 
 							hostlist = Array.new
 							hosts.each do |host|
 								h = Host.find_by_id(host.host_id)
-								hostlist << h.name
+								hostlist << "#{h.name} (#{h.fqdn})"
 							end
 
-							output.text hostlist.join(', ')
+							@output.text hostlist.join(', ')
 
 							#if item.plugin_output != nil
-							#	output.text "\nPlugin output", :style => :bold
-							#	output.text f.plugin_output
+							#	@output.text "\nPlugin output", :style => :bold
+							#	@output.text f.plugin_output
 							#end
 
 							if plugin.description != nil
-								output.text "\nDescription", :style => :bold
-								output.text plugin.description
+								@output.text "\nDescription", :style => :bold
+								@output.text plugin.description
 							end
 
 							if plugin.synopsis != nil
-								output.text "\nSynopsis", :style => :bold
-								output.text plugin.synopsis
+								@output.text "\nSynopsis", :style => :bold
+								@output.text plugin.synopsis
 							end
 
 							if plugin.cvss_base_score != nil
-								output.text "\nCVSS Base Score", :style => :bold
-								output.text plugin.cvss_base_score
+								@output.text "\nCVSS Base Score", :style => :bold
+								@output.text plugin.cvss_base_score
 							end
 
 							if plugin.exploit_available != nil
-								output.text "\nExploit Available", :style => :bold
+								@output.text "\nExploit Available", :style => :bold
 
 								if plugin.exploit_available == "true"
-									output.text "Yes"
+									@output.text "Yes"
 								else
-									output.text "No"
+									@output.text "No"
 								end
 							end
 
 							if plugin.solution != nil
-								output.text "\nSolution", :style => :bold
-								output.text plugin.solution
+								@output.text "\nSolution", :style => :bold
+								@output.text plugin.solution
 							end
 
 							if references.size != 0
-								output.text "\nReferences", :style => :bold
-								references.each do |ref|
-									ref_text = sprintf "%s: %s\n", ref.reference_name, ref.value
-									output.text ref_text
-								end
-								output.text "\nNessus Plugin", :style => :bold
-								output.text "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin_id}"
+								@output.text "\nReferences", :style => :bold
+								@output.text plugin.references.reference_string, :inline_format => true
+								@output.text "<b>nessus_plugin</b>: http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin_id}", :inline_format => true
 							end
-							output.text "\n"
+
+							@output.text "\n"
 							counter += 1
 						end
 					end
 
-					output.start_new_page unless h[:values] == nil
+					@output.start_new_page unless h[:values] == nil
 				end
 
-				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all
+				@output.number_pages "<page> of <total>", :at => [@output.bounds.right - 75, 0], :width => 150, :page_filter => :all
 			end
 		end
 	end
