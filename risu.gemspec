@@ -33,13 +33,13 @@ require 'risu'
 Gem::Specification.new do |s|
 	s.name = "#{Risu::APP_NAME}"
 	s.version = Risu::VERSION
-	s.homepage = "http://www.hammackj.com/projects/risu"
+	s.homepage = "http://www.arxopia.com/projects/risu"
 	s.summary = "#{Risu::APP_NAME}"
 	s.description = "#{Risu::APP_NAME} is a Nessus .nessus XML parser and report generation tool"
 	s.license = "BSD"
 
 	s.author = "Jacob Hammack"
-	s.email = "jacob.hammack@hammackj.com"
+	s.email = "risu@arxopia.com"
 
 	s.files	= Dir['[A-Z]*'] + Dir['lib/**/*'] + ['risu.gemspec']
 	s.bindir = "bin"
