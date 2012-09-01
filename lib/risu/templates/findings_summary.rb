@@ -41,7 +41,6 @@ module Risu
 			end
 
 			#
-			#
 			def render(output)
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
