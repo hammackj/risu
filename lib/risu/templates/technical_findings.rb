@@ -26,16 +26,16 @@
 
 module Risu
 	module Templates
-		class TechnicalFindings < Risu::Base::TemplateBase
+		class TechnicalFindingsTemplate < Risu::Base::TemplateBase
+			include TemplateHelper
 
-			#
-			#
+			#Creates an instance of the [TechnicalFindingsTemplate] class and initializes its meta-data
 			def initialize ()
 				@template_info =
 				{
 					:name => "technical_findings",
 					:author => "hammackj",
-					:version => "0.0.3",
+					:version => "0.0.4",
 					:description => "Generates a Technical Findings Report"
 				}
 			end
@@ -46,29 +46,24 @@ module Risu
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 
-				output.font_size(22) { output.text Report.title, :align => :center }
-				output.font_size(18) {
-					output.text "Critical and High Findings", :align => :center
-					output.text "\n"
-					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				report_title Report.title
+				report_subtitle "Critical and High Findings"
+				report_author "This report was prepared by\n#{Report.author}"
 
 				output.text "\n\n\n"
 
 				unique_risks = Array.new
 				unique_risks << Hash[:title => "Critical Findings", :color => "9B30FF", :values => Item.critical_risks_unique]
 				unique_risks << Hash[:title => "High Findings", :color => "FF0000", :values => Item.high_risks_unique]
-#				unique_risks << Hash[:title => "Medium Findings", :color => "FF8040", :values => Item.medium_risks_unique]
 
-				unique_risks.each do |h|
+				unique_risks.each_with_index do |h, index|
 					if h[:values].length > 1
+
 						output.font_size(18) do
 							output.fill_color h[:color]
 							output.text h[:title], :style => :bold
 							output.fill_color "000000"
 						end
-
-						output.font_size(10)
 
 						output.text "\n"
 
@@ -91,9 +86,9 @@ module Risu
 
 							hostlist = Array.new
 							hosts.each do |host|
-								h = Host.find_by_id(host.host_id)
+								ho = Host.find_by_id(host.host_id)
 								#if h.id != blacklist_host_id.first.id
-									hostlist << h.name
+									hostlist << "#{ho.name} (#{ho.fqdn})"
 								#end
 							end
 
@@ -110,48 +105,44 @@ module Risu
 							end
 
 							if plugin.synopsis != nil
-								output.text "\nSynopsis", :style => :bold
-								output.text plugin.synopsis
+								@output.text "\nSynopsis", :style => :bold
+								@output.text plugin.synopsis
 							end
 
 							if plugin.cvss_base_score != nil
-								output.text "\nCVSS Base Score", :style => :bold
-								output.text plugin.cvss_base_score
+								@output.text "\nCVSS Base Score", :style => :bold
+								@output.text plugin.cvss_base_score
 							end
 
 							if plugin.exploit_available != nil
-								output.text "\nExploit Available", :style => :bold
+								@output.text "\nExploit Available", :style => :bold
 
 								if plugin.exploit_available == "true"
-									output.text "Yes"
+									@output.text "Yes"
 								else
-									output.text "No"
+									@output.text "No"
 								end
 							end
 
 							if plugin.solution != nil
-								output.text "\nSolution", :style => :bold
-								output.text plugin.solution
+								@output.text "\nSolution", :style => :bold
+								@output.text plugin.solution
 							end
 
 							if references.size != 0
-								output.text "\nReferences", :style => :bold
-								references.each do |ref|
-									ref_text = sprintf "%s: %s\n", ref.reference_name, ref.value
-									output.text ref_text
-								end
-								output.text "\nNessus Plugin", :style => :bold
-								output.text "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{f.plugin_id}"
+								@output.text "\nReferences", :style => :bold
+								@output.text plugin.references.reference_string, :inline_format => true
+								@output.text "<b>nessus_plugin</b>: http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin.id}", :inline_format => true
 							end
-								output.text "\n"
+
+							output.text "\n"
 						end
 					end
 
-					output.start_new_page unless h[:values] == nil
+					@output.start_new_page if unique_risks[index+1] != nil
 				end
 
 				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all
-
 			end
 		end
 	end
