@@ -10,7 +10,7 @@ gemfile:
 
 notifications:
   email:
-    - jacob.hammack@hammackj.com
+    - risu@arxopia.com
   irc: "irc.freenode.org#risu"
 
 before_install:
