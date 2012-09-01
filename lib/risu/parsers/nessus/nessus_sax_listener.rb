@@ -151,7 +151,7 @@ module Risu
 									end
 							end
 
-							puts "New HostProperties attribute: #{attributes["name"]}. Please report this to jacob.hammack@hammackj.com\n" if @attr.nil?
+							puts "New HostProperties attribute: #{attributes["name"]}. Please report this to #{Risu::EMAIL}\n" if @attr.nil?
 						when "ReportItem"
 							@vals = Hash.new # have to clear this out or everything has the same references
 							@ri = @rh.items.create
