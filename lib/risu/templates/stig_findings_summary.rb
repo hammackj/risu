@@ -35,7 +35,7 @@ module Risu
 				{
 					:name => "stig_findings_summary",
 					:author => "hammackj",
-					:version => "0.0.3",
+					:version => "0.0.4",
 					:description => "DISA Stig findings summary report"
 				}
 
@@ -129,9 +129,9 @@ module Risu
 			# Called during the rendering process
 			#
 			def render(output)
-				@output = output
+				#@output = output
 
-				@output.font_size 10
+				#@output.font_size 10
 
 				header
 
