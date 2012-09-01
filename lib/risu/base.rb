@@ -32,3 +32,4 @@ end
 require 'risu/base/template_base'
 require 'risu/base/template_manager'
 require 'risu/base/templater'
+require 'risu/base/template_helper'
