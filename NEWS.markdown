@@ -1,7 +1,42 @@
 # News
 
 # 1.6 (November 1, 2012)
+***Official support for Ruby versions less than 1.9.3 has been dropped due to Rails 4***
+
+- Changed all branding to Arxopia LLC. instead of myself for legal protection, Nothing changes the project will always be open source and free (as in cost)
 - Fixed several missing requires for Sqlite3 and Rails
+- Default font size is now 10pt
+- Added TemplateHelper mixin for templates to use. Currently it adds the following methods to each template it is included in:
+	- report_title(title) #font size 24 + bold + center
+	- report_subtitle(title) #font size 18 + bold + center
+	- report_author(author) #font size 24 + bold + center
+	- heading1 #font size 24 + bold
+	- heading2 #font size 18 + bold
+	- heading3 #font size 14 + bold
+	- heading4 #font size 12 + bold
+	- heading5 #font size 10 + bold
+	- heading6 #font size 8 + bold
+- Models
+	- Reference Model
+		- Added methods
+			- reference_string #Returns a full string of all the references
+			- reference_string_by(type) #Returns a string of all the references by type, Where type is the output of a Reference.type(ex. Reference.cve)
+	- Host Model
+		- Added methods
+			- ip_list #Generates a list of hosts from the database
+- Templates
+	- notable
+		- cleaned up to use the new TemplateHelper mixin
+	- notable_detailed
+		- cleaned up to use the new TemplateHelper mixin
+		- the new reference helpers
+		- host names are now show with ip addresses
+	- technical_findings
+		- cleaned up to use the new TemplateHelper mixin
+		- new reference helpers
+		- also fixed a bug with a trailing blank page
+		- host names are now show with ip addresses
+
 
 #1.5.3 (August 29, 2012)
 - New Parsed Tags
