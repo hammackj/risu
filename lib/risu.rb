@@ -26,9 +26,9 @@
 
 module Risu
 	APP_NAME = "risu"
-	VERSION = "1.5.3"
+	VERSION = "1.6.0"
 	GRAPH_WIDTH = 750
-	EMAIL = "jacob.hammack@hammackj.com"
+	EMAIL = "risu@arxopia.com"
 	CONFIG_FILE = "./risu.cfg"
 	USER_TEMPLATES_DIR = "~/.risu/templates/"
 end
@@ -46,6 +46,7 @@ require 'prawn/layout'
 require 'stringio'
 require 'mysql2'
 require 'irb'
+require 'sqlite3'
 
 require 'optparse'
 
