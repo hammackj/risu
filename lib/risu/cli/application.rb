@@ -28,13 +28,11 @@ module Risu
 	module CLI
 
 		# Application class for Risu
-		#
 		class Application
 			include Risu::Base
 			attr_accessor :database
 
 			# Initializes a CLI Application
-			#
 			def initialize
 				@options = {}
 				@database = {}
@@ -146,7 +144,6 @@ module Risu
 
 			# Establishes an [ActiveRecord::Base] database connection
 			# @todo better comments
-			#
 			def db_connect
 				begin
 					if @database["adapter"] == nil
@@ -200,7 +197,6 @@ module Risu
 			# Starts a console and executes anything in a block sent to it
 			#
 			# @param block Code block to transfer control
-			#
 			def consolize &block
 
 				yield
@@ -222,12 +218,11 @@ module Risu
 				end
 			end
 
-			# Parses all the command line
-			#
+			# Parses all the command line options
 			def parse_options
 				begin
 					opts = OptionParser.new do |opt|
-						opt.banner =	"#{APP_NAME} v#{VERSION}\nJacob Hammack\nhttp://www.hammackj.com\n\n"
+						opt.banner =	"#{APP_NAME} v#{VERSION}\nJacob Hammack\nhttp://www.arxopia.com\n\n"
 						opt.banner << "Usage: #{APP_NAME} [options] [files_to_parse]"
 						opt.separator('')
 						opt.separator("Reporting Options")
@@ -335,7 +330,6 @@ module Risu
 
 			# Main Application loop, handles all of the command line arguments and
 			#parsing of files on the command line
-			#
 			def run
 				parse_options
 
@@ -419,7 +413,6 @@ module Risu
 			# Handles the parsing of a single file
 			#
 			# @param file The to parse
-			#
 			def parse_file file
 				begin
 						puts "[*] Parsing #{file}..."
