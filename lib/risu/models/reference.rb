@@ -28,11 +28,45 @@ module Risu
 	module Models
 
 		# Reference Model
-		#
 		class Reference < ActiveRecord::Base
 		  has_many :plugins
 
 			class << self
+
+				#Generates a full string of all the references
+				#
+				# @returns [String] of all the references with in-line formatting for
+				# direct output to the report
+				def reference_string
+					reference_names = ["cve", "cpe", "bid", "see_also", "iava", "msft",
+						"osvdb", "cert", "edbid", "rhsa", "secunia", "suse", "dsa",
+						"owasp", "cwe", "iavb", "iavt", "cisco_sa", "ics_alert",
+						"cisco_bug_id", "cisco_sr", "cert_vu", "vmsa"]
+
+					ref_string = ""
+
+					reference_names.each do |type|
+						ref = reference_string_by self.send(type)
+
+						ref_string << "<b>#{type}</b>: #{ref}\n" if ref.length != 0
+					end
+
+					ref_string
+				end
+
+				# Generates a string of all the references of the specified type
+				#
+				# @param type Result of a [Reference] model reference accessors
+				#
+				# @return [String] containing all references of type comma separated
+				def reference_string_by type
+					rstring = []
+					type.each do |ref|
+						rstring << ref.value
+					end
+
+					rstring.join(", ")
+				end
 
 				# Queries all unique CVEs
 				#
