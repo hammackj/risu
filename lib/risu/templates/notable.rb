@@ -26,35 +26,31 @@
 
 module Risu
 	module Templates
-		class Top10 < Risu::Base::TemplateBase
+		class NotableTemplate < Risu::Base::TemplateBase
+			include TemplateHelper
 
-			# @todo comments
-			#
+			#Creates an instance of the [NotableTemplate] class and initializes its meta-data
 			def initialize ()
 				@template_info =
 				{
 					:name => "notable",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:description => "Notable Vulnerabilities"
 				}
 			end
 
-			# @todo comments
-			#
+			# Renders a Notable Findings Report
 			def render(output)
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 
-				output.font_size(22) {
-					output.text Report.title, :align => :center
-				}
+				report_title Report.title
+				report_subtitle "Notable Vulnerabilities"
 
-				output.font_size(18) {
-					output.text "Notable Vulnerabilities", :align => :center
-					output.text "\n"
+				output.font_size(14) do
 					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				end
 
 				output.text "\n\n\n"
 
