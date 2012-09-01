@@ -30,6 +30,8 @@ module Risu
 		# Base template class, all report templates must be a subclass of this.
 		#
 		class TemplateBase
+			attr_accessor :output
+
 			@possible_templates = []
 
 			class << self
