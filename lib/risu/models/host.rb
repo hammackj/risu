@@ -63,6 +63,15 @@ module Risu
 					return hosts
 				end
 
+				# Generates a list of hosts from the database
+				#
+				# @return [String] of hosts \n delimited
+				def ip_list
+					hosts = Host.where("ip is not NULL").order("ip").all
+
+					hosts.join("\n")
+				end
+
 				# Queries for hosts with a Windows based Operating System
 				#
 				# @return [ActiveRecord::Relation] with the query results
