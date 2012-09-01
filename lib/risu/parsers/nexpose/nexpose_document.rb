@@ -27,9 +27,8 @@
 module Risu
 	module Parsers
 		module Nexpose
+
 			# A Object to represent the Nexpose xml file in memory
-			#
-			# @author Jacob Hammack <jacob.hammack@hammackj.com>
 			class NexposeDocument
 
 				# Creates a instance of the NexposeDocument class
@@ -61,7 +60,6 @@ module Risu
 				end
 
 				# Invokes the SAX parser on the XML document
-				#
 				def parse
 					@parser = LibXML::XML::SaxParser.file @document
 					@parser.callbacks = SimpleNexpose.new
@@ -69,7 +67,6 @@ module Risu
 				end
 
 				# Fixes the ip field if nil and replaces it with the name if its an ip
-				#
 				def fix_ips
 					@hosts = Host.all
 

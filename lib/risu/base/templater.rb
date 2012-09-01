@@ -28,7 +28,6 @@ module Risu
 	module Base
 
 		# Templater class for generating a report from a ERB template
-		#
 		class Templater
 			attr_accessor :template, :template_manager, :findings, :output_file
 
@@ -43,7 +42,6 @@ module Risu
 			end
 
 			# Generates a report based on the ERB template
-			#
 			def generate
 				begin
 					template = @template

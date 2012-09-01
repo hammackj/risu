@@ -33,6 +33,7 @@ module Risu
 	USER_TEMPLATES_DIR = "~/.risu/templates/"
 end
 
+require 'rails'
 require 'active_record'
 require "active_support"
 require 'libxml'
