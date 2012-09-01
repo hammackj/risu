@@ -4,15 +4,6 @@
 
 #**Bugs**
 - Notable reports show an incorrect number, might be fixed already.
-- Fix SQLite3 issue where it has to wait for the OS to write every insert.(MAJOR SPEED ISSUE)
-/home/hammackj/.rvm/gems/ruby-1.9.2-p320/gems/risu-1.5.2/lib/risu/cli/application.rb:130:in `rescue in migrate': uninitialized constant Risu::CLI::Application::SQLite3 (NameError)
-	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/gems/risu-1.5.2/lib/risu/cli/application.rb:111:in `migrate'
-	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/gems/risu-1.5.2/lib/risu/cli/application.rb:380:in `run'
-	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/gems/risu-1.5.2/bin/risu:38:in `<top (required)>'
-	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/bin/risu:19:in `load'
-	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/bin/risu:19:in `<main>'
-	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/bin/ruby_noexec_wrapper:14:in `eval'
-	from /home/hammackj/.rvm/gems/ruby-1.9.2-p320/bin/ruby_noexec_wrapper:14:in `<main>'
 
 #Road map
 
