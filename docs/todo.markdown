@@ -24,6 +24,12 @@
 - finding summary: crit/high spacing
 - MS AV errors (52544)
 - MS Pending Reboot report (35453)
+- filter (uncredentialed check) from the title of MS vulns and put it in the body as a true/false kind of field
+	- remove KB # also
+- findings by host report
+- unsupported OS first paragraph pluralization
+- remove ms patches from notable findings
+- add missing ms patch section
 
 - generate report based on scan_id/report id
 - add high/med/low_risks_by_host functions Item Model
