@@ -396,17 +396,25 @@ module Risu
 					return graph_text
 				end
 
+				#
+				def notable_order_by_cvss_raw
+					if ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /sqlite/
+						return Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS REAL)").count(:all, :group => :plugin_id)
+					elsif ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /mysql/
+						return Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS DECIMAL(2,2))").count(:all, :group => :plugin_id)
+					else
+						return Item.joins(:plugin).where(:severity => 4).order(:plugins.cvss_base_score).count(:all, :group => :plugin_id)
+					end
+				end
+
+				#
+				def scrub_plugin_name (name)
+					return name.gsub("(remote check)", "").gsub("(uncredentialed check)", "").gsub(/(\(\d.*\))/, "")
+				end
+
 				# @todo comment
 				def top_10_sorted_raw
-					raw = nil
-
-					if ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /sqlite/
-						raw = Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS REAL)").count(:all, :group => :plugin_id)
-					elsif ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /mysql/
-						raw = Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS DECIMAL(2,2))").count(:all, :group => :plugin_id)
-					else
-						raw = Item.joins(:plugin).where(:severity => 4).order(:plugins.cvss_base_score).count(:all, :group => :plugin_id)
-					end
+					raw = notable_order_by_cvss_raw
 
 					data = Array.new
 
@@ -428,8 +436,7 @@ module Risu
 				end
 
 				def top_10_sorted
-					#raw = Item.where(:severity => 3).count(:all, :group => :plugin_id)
-					raw = Item.joins(:plugin).where(:severity => 4).order(:cvss_base_score).count(:all, :group => :plugin_id)
+					raw = notable_order_by_cvss_raw
 					data = Array.new
 
 					raw.each do |vuln|
@@ -437,7 +444,7 @@ module Risu
 						plugin_id = vuln[0]
 						count = vuln[1]
 
-						name = Plugin.find_by_id(plugin_id).plugin_name
+						name = scrub_plugin_name(Plugin.find_by_id(plugin_id).plugin_name)
 
 						row.push(name)
 						row.push(count)
