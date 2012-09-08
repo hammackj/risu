@@ -69,7 +69,7 @@ module Risu
 
 						h[:values].each do |f|
 
-							hosts = Item.where(:plugin_id => f.plugin_id)
+							hosts = Item.where(:plugin_id => f.plugin_id).group(:host_id)
 							plugin = Plugin.find_by_id(f.plugin_id)
 
 							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
@@ -88,7 +88,9 @@ module Risu
 							hosts.each do |host|
 								ho = Host.find_by_id(host.host_id)
 								#if h.id != blacklist_host_id.first.id
-									hostlist << "#{ho.name} (#{ho.fqdn})"
+									host_string = "#{ho.name}"
+									host_string << " (#{ho.fqdn})" if ho.fqdn != nil
+									hostlist << host_string
 								#end
 							end
 
@@ -101,7 +103,7 @@ module Risu
 
 							if plugin.description != nil
 								output.text "\nDescription", :style => :bold
-								output.text plugin.description
+								output.text plugin.description.gsub(/[ ]{2,}/, " "), :inline_format => true
 							end
 
 							if plugin.synopsis != nil
@@ -132,7 +134,8 @@ module Risu
 							if references.size != 0
 								@output.text "\nReferences", :style => :bold
 								@output.text plugin.references.reference_string, :inline_format => true
-								@output.text "<b>nessus_plugin</b>: http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin.id}", :inline_format => true
+								plugin_url = "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin.id}"
+								@output.text "<b>nessus_plugin</b>: #{plugin_url}", :inline_format => true, :link => plugin_url
 							end
 
 							output.text "\n"
