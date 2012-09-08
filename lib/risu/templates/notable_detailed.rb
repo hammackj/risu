@@ -56,8 +56,6 @@ module Risu
 				@output.text "#{Report.scan_date}"
 				@output.text "\n"
 
-				@output.font_size(10)
-
 				data = Item.top_10_sorted_raw
 
 				unique_risks = Array.new
@@ -71,13 +69,13 @@ module Risu
 						h[:values].each do |f|
 							plugin_id = f[0]
 
-							hosts = Item.where(:plugin_id => plugin_id)
+							hosts = Item.where(:plugin_id => plugin_id).group(:host_id)
 							item = Item.where(:plugin_id => plugin_id)
 							plugin = Plugin.find_by_id(plugin_id)
 
 							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
-							heading2 "#{counter}: #{plugin.plugin_name}\n"
+							heading3 "#{counter}: #{Item.scrub_plugin_name(plugin.plugin_name)}\n"
 
 							if hosts.length > 1
 								@output.text "Hosts", :style => :bold
@@ -88,7 +86,9 @@ module Risu
 							hostlist = Array.new
 							hosts.each do |host|
 								h = Host.find_by_id(host.host_id)
-								hostlist << "#{h.name} (#{h.fqdn})"
+								host_string = "#{h.name}"
+								host_string << " (#{h.fqdn})" if h.fqdn != nil
+								hostlist << host_string
 							end
 
 							@output.text hostlist.join(', ')
@@ -100,7 +100,7 @@ module Risu
 
 							if plugin.description != nil
 								@output.text "\nDescription", :style => :bold
-								@output.text plugin.description
+								@output.text plugin.description.gsub(/[ ]{2,}/, " ")
 							end
 
 							if plugin.synopsis != nil
