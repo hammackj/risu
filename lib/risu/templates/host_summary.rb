@@ -27,15 +27,15 @@
 module Risu
 	module Templates
 		class HostSummary < Risu::Base::TemplateBase
+			include TemplateHelper
 
-			#
 			#
 			def initialize ()
 				@template_info =
 				{
 					:name => "host_summary",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:description => "Generates a Host Summary Report"
 				}
 			end
@@ -43,22 +43,23 @@ module Risu
 			#
 			#
 			def render(output)
-				output.text Report.classification.upcase, :align => :center
-				output.text "\n"
+				@output.text Report.classification.upcase, :align => :center
+				@output.text "\n"
 
-				output.font_size(22) { output.text Report.title, :align => :center }
-				output.font_size(18) {
-					output.text "Host Summary Report", :align => :center
-					output.text "\n"
-					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				report_title Report.title
+				report_subtitle "Host Summary Report"
+				report_author "This report was prepared by\n#{Report.author}"
 
-				output.text "\n\n\n"
+				@output.text "\n\n\n"
+
+				@output.text "Scan Date:", :style => :bold
+				@output.text "#{Report.scan_date}"
+				@output.text "\n"
 
 				results = Array.new
 
 				headers = ["Hostname", "Total", "Critical", "High", "Medium", "Low", "Info"]
-				header_widths = {0 => 140, 1 => 62, 2 => 62, 3 => 62, 4 => 62, 5 => 62, 6 => 62}
+				header_widths = {0 => 230, 1 => 46, 2 => 46, 3 => 46, 4 => 47, 5 => 46, 6 => 46}
 
 				Host.sorted.each do |host|
 					row = Array.new
@@ -70,7 +71,10 @@ module Risu
 					low = Item.low_risks.where(:host_id => host.id).count
 					info = Item.info_risks.where(:host_id => host.id).count
 
-					row.push(host.name)
+					host_name = host.name
+					host_name = "#{host.name} (#{host.netbios})" if host.netbios != nil
+
+					row.push(host_name)
 					row.push(total)
 					row.push(crit)
 					row.push(high)
