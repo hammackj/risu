@@ -53,8 +53,8 @@ module Risu
 				output.text "\n\n\n"
 
 				unique_risks = Array.new
-				unique_risks << Hash[:title => "Critical Findings", :color => "9B30FF", :values => Item.critical_risks_unique]
-				unique_risks << Hash[:title => "High Findings", :color => "FF0000", :values => Item.high_risks_unique]
+				unique_risks << Hash[:title => "Critical Findings", :color => "9B30FF", :values => Item.critical_risks_unique] if Item.critical_risks_unique.all.size != 0
+				unique_risks << Hash[:title => "High Findings", :color => "FF0000", :values => Item.high_risks_unique] if Item.high_risks_unique.all.size != 0
 
 				unique_risks.each_with_index do |h, index|
 					if h[:values].length > 1
