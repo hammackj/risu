@@ -29,26 +29,34 @@ module Risu
 		module TemplateHelper
 
 			#
-			def report_title title
+			def report_classification classification=Report.classification.upcase, newline=true
+				@output.font_size(12) do
+					@output.text classification, :align => :center
+					@output.text "\n" if newline
+				end
+			end
+
+			#
+			def report_title title, newline=false
 				@output.font_size(24) do
 					@output.text title, :align => :center
-					@output.text "\n"
+					@output.text "\n" if newline
 				end
 			end
 
 			#
-			def report_subtitle title
+			def report_subtitle title, newline=false
 				@output.font_size(18) do
 					@output.text title, :align => :center
-					@output.text "\n"
+					@output.text "\n" if newline
 				end
 			end
 
 			#
-			def report_author author
+			def report_author author, newline=false
 				@output.font_size(14) do
 					@output.text author, :align => :center
-					@output.text "\n"
+					@output.text "\n" if newline
 				end
 			end
 
