@@ -586,10 +586,10 @@ module Risu
 
 					#todo add other os's here
 
-					text << "#{linux_percent.to_i}% of the network is running an Linux based operating system. " if linux_percent >= 1
-					text << "#{aix_percent.to_i}% of the network is running an AIX based operating system. " if aix_percent >= 1
-					text << "#{freebsd_percent.to_i}% of the network is running an FreeBSD based operating system. " if freebsd_percent >= 1
-					text << "#{vmware_percent.to_i}% of the network is running an VMware based operating system. " if vmware_percent >= 1
+					text << "#{linux_percent.to_i}% of the non-windows network is running an Linux based operating system. " if linux_percent >= 1
+					text << "#{aix_percent.to_i}% of the non-windows network is running an AIX based operating system. " if aix_percent >= 1
+					text << "#{freebsd_percent.to_i}% of the non-windows network is running an FreeBSD based operating system. " if freebsd_percent >= 1
+					text << "#{vmware_percent.to_i}% of the non-windows network is running an VMware based operating system. " if vmware_percent >= 1
 
 					text << "\n\n"<< unsupported_os_aix if aix > 0
 					text << "\n\n" << unsupported_os_freebsd if freebsd > 0
