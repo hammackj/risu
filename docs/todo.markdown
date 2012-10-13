@@ -8,6 +8,9 @@
 #Road map
 
 #1.6 (??) - Filtering Magic / Rendering
+- add windows 8 to Host
+- add windows 2012 to Host
+- graph text is misleading
 - create an api determining vulnerability % based on the network
 - create an api for creating a vulnerability score per host to show a risk %
 - error check connection fail on the console to mysql
@@ -18,7 +21,7 @@
 - add a way to generate reports from the cli
 - add a way to spawn mysql/psql shell to the database
 - add tables for the OS data
-- rewrite text for risks by severity
+
 - prompt for password?
 - add postgres support and test it
 - finding summary: crit/high spacing
@@ -48,6 +51,7 @@
 			- Option 2: eg critical_risks(:filtered => true)
 			- ALLOW CIDR BASED RANGES
 - 100% Code coverage for all unit testing
+- rewrite text for risks by severity
 
 ## 1.7 (??)
 - Implement different renderer's
