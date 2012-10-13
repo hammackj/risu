@@ -7,9 +7,10 @@
 - Fixed several missing requires for Sqlite3 and Rails
 - Default font size is now 10pt
 - Added TemplateHelper mixin for templates to use. Currently it adds the following methods to each template it is included in:
-	- report_title(title) #font size 24 + bold + center
-	- report_subtitle(title) #font size 18 + bold + center
-	- report_author(author) #font size 24 + bold + center
+	- report_title(title, newline=false) #font size 24 + bold + center
+	- report_subtitle(title, newline=false) #font size 18 + bold + center
+	- report_author(author, newline=false) #font size 24 + bold + center
+	- report_classification(classification=Report.classification.upcase, newline=true)
 	- heading1 #font size 24 + bold
 	- heading2 #font size 18 + bold
 	- heading3 #font size 14 + bold
@@ -24,6 +25,7 @@
 	- Host Model
 		- Added methods
 			- ip_list #Generates a list of hosts from the database
+		- Changed the wording `other_os_graph_text` to indicate that its just a percentage of the non windows computers
 - Templates
 	- notable
 		- cleaned up to use the new TemplateHelper mixin
