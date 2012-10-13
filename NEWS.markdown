@@ -39,7 +39,6 @@
 		- also fixed a bug with a trailing blank page
 		- host names are now show with ip addresses
 
-
 #1.5.3 (August 29, 2012)
 - New Parsed Tags
 	- cm_compliance_info

@@ -84,7 +84,7 @@ class HostTest < ActiveSupport::TestCase
 	end
 
 	test "returns 186 for Host.other_os_graph_text.length" do
-		assert Host.other_os_graph_text.length == 186, "GOT #{Host.other_os_graph_text.length}"
+		assert Host.other_os_graph_text.length == 198, "GOT #{Host.other_os_graph_text.length}"
 	end
 
 	test "should return 2 for Host.top_n_vulnerable(2)" do
