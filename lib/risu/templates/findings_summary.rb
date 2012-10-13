@@ -83,8 +83,6 @@ module Risu
 					output.text "#{count} - #{name}"
 				end
 
-				output.start_new_page
-
 				output.font_size(20) do
 					output.fill_color "FF8040"
 					output.text "Medium Findings", :style => :bold
@@ -97,8 +95,6 @@ module Risu
 
 					output.text "#{count} - #{name}"
 				end
-
-				output.start_new_page
 
 				output.font_size(20) {
 					output.fill_color "0000FF"
