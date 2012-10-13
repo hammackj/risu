@@ -7,7 +7,7 @@
 
 #Road map
 
-#1.6 (??) - Filtering Magic / Rendering
+#1.6 (November 1, 2012) - 
 - add windows 8 to Host
 - add windows 2012 to Host
 - graph text is misleading
@@ -17,12 +17,12 @@
 - migration error handling
   - catch mysql/sqlite/postgres errors during up/down
   - better integration with mysql/post/sqlite
-- list scan in database via cli
-- add a way to generate reports from the cli
-- add a way to spawn mysql/psql shell to the database
-- add tables for the OS data
-
-- prompt for password?
+- CLI
+	- list scan in database via cli
+	- add a way to generate reports from the cli
+	- add a way to spawn mysql/psql shell to the database
+	- add tables for the OS data
+	- prompt for password?
 - add postgres support and test it
 - finding summary: crit/high spacing
 - MS AV errors (52544)
@@ -33,11 +33,11 @@
 - unsupported OS first paragraph pluralization
 - remove ms patches from notable findings
 - add missing ms patch section
-
 - generate report based on scan_id/report id
 - add high/med/low_risks_by_host functions Item Model
 - Do all the @todo / @fix  items!
 
+## 1.7 (??)
 - Add a filtering system for lowering the rating of plugins based on config
 	- Implement the ability to filter data out of the report
 		- Filter on
@@ -52,8 +52,6 @@
 			- ALLOW CIDR BASED RANGES
 - 100% Code coverage for all unit testing
 - rewrite text for risks by severity
-
-## 1.7 (??)
 - Implement different renderer's
 	- pdf
 	- csv
@@ -78,9 +76,6 @@
 - Add Parser for Nmap XML?
 - Add Parser for SAINT XML
 - Easier way to select the Scan to generate reports from
-
-## 2.0 (??)
--
 
 ##List of things TODO
 ###Core

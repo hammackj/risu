@@ -3,9 +3,9 @@
 # 1.6 (November 1, 2012)
 ***Official support for Ruby versions less than 1.9.3 has been dropped due to Rails 4***
 
-- Changed all branding to Arxopia LLC. instead of myself for legal protection, Nothing changes the project will always be open source and free (as in cost)
+- Changed all branding to Arxopia LLC. instead of myself for legal protection, **Nothing changes** the project will always be open source and free (as in cost)
 - Fixed several missing requires for Sqlite3 and Rails
-- Default font size is now 10pt
+- Default template font size is now 10pt
 - Added TemplateHelper mixin for templates to use. Currently it adds the following methods to each template it is included in:
 	- report_title(title, newline=false) #font size 24 + bold + center
 	- report_subtitle(title, newline=false) #font size 18 + bold + center
