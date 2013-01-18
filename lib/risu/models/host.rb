@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2012 Arxopia LLC.
+# Copyright (c) 2010-2013 Arxopia LLC.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -495,6 +495,11 @@ module Risu
 					unsupported_os_text = "Several unsupported operating systems were discovered on the network. " +
 					"These operating systems are no longer updated by the specific vendor. These operating systems should be " +
 					"updated and replaced as soon as possible. If possible, disconnected from the network until updated.\n\n"
+
+					#If all the text is nil just return nil
+					if aix_text == "" && win_text == "" && freebsd_text == ""
+						return nil
+					end
 
 					unsupported_os_text << "#{win_text}" if win_text != ""
 					unsupported_os_text << "#{aix_text}" if aix_text != ""
