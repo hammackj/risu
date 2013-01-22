@@ -72,7 +72,7 @@ class HostTest < ActiveSupport::TestCase
 	end
 
 	test "returns 275 for Host.unsupported_os_text.length" do
-		assert Host.unsupported_os_text.length == 275, "GOT #{Host.unsupported_os_text.length}"
+		assert Host.unsupported_os_text == nil, "GOT #{Host.unsupported_os_text}"
 	end
 
 	test "returns 0 for Host.unsupported_os_aix.length" do
