@@ -60,44 +60,44 @@ module Risu
 						"cm:compliance-audit-file", "cm:compliance-check-name", "cm:compliance-result", "cm:compliance-output"
 					]
 
-						@valid_elements = @valid_elements + @valid_references
+					@valid_elements = @valid_elements + @valid_references
 
-						# This makes adding new host properties really easy, except for the
-						#MS patch numbers, this are handled differently.
-						@valid_host_properties = {
-							"HOST_END" => :end,
-							"mac-address" => :mac,
-							"HOST_START" => :start,
-							"operating-system" => :os,
-							"host-ip" => :ip,
-							"host-fqdn" => :fqdn,
-							"netbios-name" => :netbios,
-							"local-checks-proto" => :local_checks_proto,
-							"smb-login-used" => :smb_login_used,
-							"ssh-auth-meth" => :ssh_auth_meth,
-							"ssh-login-used" => :ssh_login_used,
-							"pci-dss-compliance" => :pci_dss_compliance,
-							"pci-dss-compliance:" => :pci_dss_compliance_ , #I think this is a Tenable bug~
-							"system-type" => :system_type,
-							"bios-uuid" => :bios_uuid,
-							"pcidss:compliance:failed" => :pcidss_compliance_failed,
-							"pcidss:compliance:passed" => :pcidss_compliance_passed,
-							"pcidss:deprecated_ssl" => :pcidss_deprecated_ssl,
-							"pcidss:expired_ssl_certificate" => :pcidss_expired_ssl_certificate,
-							"pcidss:high_risk_flaw" => :pcidss_high_risk_flaw,
-							"pcidss:medium_risk_flaw" => :pcidss_medium_risk_flaw,
-							"pcidss:reachable_db" => :pcidss_reachable_db,
-							"pcidss:www:xss" => :pcidss_www_xss,
-							"pcidss:directory_browsing" => :pcidss_directory_browsing,
-							"pcidss:known_credentials" => :pcidss_known_credentials,
-							"pcidss:compromised_host:worm" => :pcidss_compromised_host_worm,
-							"pcidss:obsolete_operating_system" => :pcidss_obsolete_operating_system,
-							"pcidss:dns_zone_transfer" => :pcidss_dns_zone_transfer,
-							"pcidss:unprotected_mssql_db" => :pcidss_unprotected_mssql_db,
-							"pcidss:obsolete_software" => :pcidss_obsolete_software,
-							"pcidss:www:sql_injection" => :pcidss_www_sql_injection,
-							"pcidss:backup_files" => :pcidss_backup_files
-						}
+					# This makes adding new host properties really easy, except for the
+					#MS patch numbers, this are handled differently.
+					@valid_host_properties = {
+						"HOST_END" => :end,
+						"mac-address" => :mac,
+						"HOST_START" => :start,
+						"operating-system" => :os,
+						"host-ip" => :ip,
+						"host-fqdn" => :fqdn,
+						"netbios-name" => :netbios,
+						"local-checks-proto" => :local_checks_proto,
+						"smb-login-used" => :smb_login_used,
+						"ssh-auth-meth" => :ssh_auth_meth,
+						"ssh-login-used" => :ssh_login_used,
+						"pci-dss-compliance" => :pci_dss_compliance,
+						"pci-dss-compliance:" => :pci_dss_compliance_ , #I think this is a Tenable bug~
+						"system-type" => :system_type,
+						"bios-uuid" => :bios_uuid,
+						"pcidss:compliance:failed" => :pcidss_compliance_failed,
+						"pcidss:compliance:passed" => :pcidss_compliance_passed,
+						"pcidss:deprecated_ssl" => :pcidss_deprecated_ssl,
+						"pcidss:expired_ssl_certificate" => :pcidss_expired_ssl_certificate,
+						"pcidss:high_risk_flaw" => :pcidss_high_risk_flaw,
+						"pcidss:medium_risk_flaw" => :pcidss_medium_risk_flaw,
+						"pcidss:reachable_db" => :pcidss_reachable_db,
+						"pcidss:www:xss" => :pcidss_www_xss,
+						"pcidss:directory_browsing" => :pcidss_directory_browsing,
+						"pcidss:known_credentials" => :pcidss_known_credentials,
+						"pcidss:compromised_host:worm" => :pcidss_compromised_host_worm,
+						"pcidss:obsolete_operating_system" => :pcidss_obsolete_operating_system,
+						"pcidss:dns_zone_transfer" => :pcidss_dns_zone_transfer,
+						"pcidss:unprotected_mssql_db" => :pcidss_unprotected_mssql_db,
+						"pcidss:obsolete_software" => :pcidss_obsolete_software,
+						"pcidss:www:sql_injection" => :pcidss_www_sql_injection,
+						"pcidss:backup_files" => :pcidss_backup_files
+					}
 				end
 
 				# Callback for when the start of a XML element is reached
