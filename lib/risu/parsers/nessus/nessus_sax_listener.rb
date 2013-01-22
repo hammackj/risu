@@ -42,7 +42,7 @@ module Risu
 						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft",
 						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
 						"owasp", "cwe", "iavb", "iavt", "cisco-sa", "ics-alert",
-						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa", "apple-sa",
+						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa", "apple-sa", 
 						"icsa", "cert-cc"
 					]
 
