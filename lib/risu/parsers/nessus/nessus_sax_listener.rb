@@ -42,7 +42,8 @@ module Risu
 						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft",
 						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
 						"owasp", "cwe", "iavb", "iavt", "cisco-sa", "ics-alert",
-						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa"
+						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa", "apple-sa",
+						"icsa", "cert-cc"
 					]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
@@ -78,6 +79,7 @@ module Risu
 							"pci-dss-compliance" => :pci_dss_compliance,
 							"pci-dss-compliance:" => :pci_dss_compliance_ , #I think this is a Tenable bug~
 							"system-type" => :system_type,
+							"bios-uuid" => :bios_uuid,
 							"pcidss:compliance:failed" => :pcidss_compliance_failed,
 							"pcidss:compliance:passed" => :pcidss_compliance_passed,
 							"pcidss:deprecated_ssl" => :pcidss_deprecated_ssl,
@@ -139,16 +141,16 @@ module Risu
 
 							if attributes["name"] =~ /[M|m][S|s]\d{2,}-\d{2,}/
 								@attr = if attributes["name"] =~ /[M|m][S|s]\d{2,}-\d{2,}/
-										attributes["name"]
-									else
-										nil
-									end
+									attributes["name"]
+								else
+									nil
+								end
 							else
 								@attr = if @valid_host_properties.keys.include?(attributes["name"])
-										attributes["name"]
-									else
-										nil
-									end
+									attributes["name"]
+								else
+									nil
+								end
 							end
 
 							puts "New HostProperties attribute: #{attributes["name"]}. Please report this to #{Risu::EMAIL}\n" if @attr.nil?

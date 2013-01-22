@@ -99,6 +99,7 @@ module Risu
 					t.string :pcidss_www_sql_injection
 					t.string :pcidss_backup_files
 					t.string :system_type
+					t.string :bios_uuid
 					t.text :notes
 				end
 
