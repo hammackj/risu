@@ -8,6 +8,7 @@
 #Road map
 
 #1.6 (November 1, 2012) - 
+- complience plugins xml parser test?
 - add windows 8 to Host
 - add windows 2012 to Host
 - graph text is misleading
@@ -17,6 +18,7 @@
 - migration error handling
   - catch mysql/sqlite/postgres errors during up/down
   - better integration with mysql/post/sqlite
+  - catch mysql cannot connect exception
 - CLI
 	- list scan in database via cli
 	- add a way to generate reports from the cli
@@ -37,6 +39,7 @@
 	- add missing ms patch section
 - add high/med/low_risks_by_host functions Item Model
 - Do all the @todo / @fix  items!
+- add scanner info at a table plugin #19506
 
 ## 1.7 (??)
 - Add a filtering system for lowering the rating of plugins based on config
