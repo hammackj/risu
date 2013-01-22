@@ -27,6 +27,7 @@
 module Risu
 	module Templates
 		class ExecSummary < Risu::Base::TemplateBase
+			include TemplateHelper
 
 			#
 			#
@@ -35,7 +36,7 @@ module Risu
 				{
 					:name => "exec_summary",
 					:author => "hammackj",
-					:version => "0.0.3",
+					:version => "0.0.4",
 					:description => "Generates a simple executive summary."
 				}
 			end
@@ -46,15 +47,9 @@ module Risu
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 
-				output.font_size(22) do
-					output.text Report.title, :align => :center
-				end
-
-				output.font_size(18) do
-				    output.text "Executive Summary", :align => :center
-				    output.text "\n"
-				    output.text "This report was prepared by\n#{Report.author}", :align => :center
-				end
+				report_title Report.title
+				report_subtitle "Executive Summary"
+				report_author "This report was prepared by\n#{Report.author}"
 
 				output.text "\n\n\n"
 
@@ -97,20 +92,16 @@ module Risu
 				output.image Item.risks_by_severity_graph, :width => 250, :at => [output.bounds.left, cury]
 				output.image Host.top_vuln_graph(10), :width => 250, :at => [output.bounds.right - 250, cury]
 				output.move_down 50
-				if (output.y <= 300)
-				    output.start_new_page
-						output.move_down 75
-				end
+
+				output.start_new_page
+				
 				cury = output.y
 				output.image Item.risks_by_service_graph(10), :width => 250, :at => [output.bounds.left, cury]
 				output.image Host.other_os_graph, :width => 250, :at => [output.bounds.right - 250, cury]
 				output.move_down 250
-				#if (y <= 300)
-				#    output.start_new_page
-				#		cury = y
-				#end
+
 				cury = output.y
-				#move_down 550
+
 				output.image Host.windows_os_graph, :width => 250, :at => [output.bounds.left, cury]
 				output.image Item.stigs_severity_graph, :width => 250, :at => [output.bounds.right - 250, cury]
 			end
