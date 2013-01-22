@@ -48,17 +48,17 @@ Gem::Specification.new do |s|
 	s.has_rdoc = 'yard'
 	s.extra_rdoc_files = ["README.markdown", "LICENSE", "NEWS.markdown"]
 
-	s.required_rubygems_version = ">= 1.6.0"
+	s.required_rubygems_version = ">= 1.8.24"
 	s.rubyforge_project	= "#{Risu::APP_NAME}"
 
-	s.add_development_dependency("simplecov", [">= 0.9.9"])
-	s.add_development_dependency("yard", [">= 0.6.4"])
+	s.add_development_dependency("simplecov", [">= 0.7.1"])
+	s.add_development_dependency("yard", [">= 0.8.3"])
 
-	s.add_dependency('rails', ['>= 3.0.7'])
-	s.add_dependency('libxml-ruby', ['>= 1.1.4'])
-	s.add_dependency('prawn', ['>= 0.11.1'])
-	s.add_dependency('gruff', ['>= 0.3.6'])
+	s.add_dependency('rails', ['>= 3.2.11'])
+	s.add_dependency('libxml-ruby', ['>= 2.4.0'])
+	s.add_dependency('prawn', ['>= 0.12.0'])
+	s.add_dependency('gruff', ['>= 0.3.7'])
 	s.add_dependency('mysql2', ['>= 0.3.11'])
 	s.add_dependency('rmagick', [">= 2.13.1"])
-	s.add_dependency('sqlite3', [">= 1.3.3"])
+	s.add_dependency('sqlite3', [">= 1.3.7"])
 end
