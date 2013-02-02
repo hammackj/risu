@@ -1,6 +1,6 @@
 # News
 
-# 1.6 (November 1, 2012)
+# 1.6 (2013)
 ***Official support for Ruby versions less than 1.9.3 has been dropped due to Rails 4***
 
 - Changed all branding to Arxopia LLC. instead of myself for legal protection, **Nothing changes** the project will always be open source and free (as in cost)
@@ -26,6 +26,12 @@
 		- Added methods
 			- ip_list #Generates a list of hosts from the database
 		- Changed the wording `other_os_graph_text` to indicate that its just a percentage of the non windows computers
+		- Added 'bios_uuid' Property
+	- Reference Model
+		- Added cert-cc, apple-sa, icsa references
+	- Plugin Model
+		- cvss_base_score is now a float in the schema, this change should be transparent
+			- When assigning to it, the value is converted to a float and when retrieving it, it is converted to a string.
 - Templates
 	- notable
 		- cleaned up to use the new TemplateHelper mixin
