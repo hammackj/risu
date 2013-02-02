@@ -185,6 +185,17 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.high_risks_by_host.all.count == 1, "GOT #{Item.high_risks_by_host.all.count}"
 	end
 
+	test "notable_order_by_cvss_raw.count" do
+		assert Item.notable_order_by_cvss_raw.count == 8, "GOT #{Item.notable_order_by_cvss_raw.count}"
+	end
+
+	test "return 21564 for Item.notable_order_by_cvss_raw.keys.first" do
+		assert Item.notable_order_by_cvss_raw.keys.first == 21564, "GOT #{Item.notable_order_by_cvss_raw.keys.first}"
+	end
+
+	test "return 99999 for Item.notable_order_by_cvss_raw.keys.last" do
+		assert Item.notable_order_by_cvss_raw.keys.last == 99999, "GOT #{Item.notable_order_by_cvss_raw.keys.last}"
+	end
 end
 
 
