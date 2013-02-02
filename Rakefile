@@ -32,7 +32,7 @@ require 'rake'
 require 'rake/testtask'
 
 task :build do
-  system "gem build #{Risu::APP_NAME}.gemspec"
+	system "gem build #{Risu::APP_NAME}.gemspec"
 end
 
 task :tag_and_bag do
@@ -41,7 +41,7 @@ task :tag_and_bag do
 end
 
 task :release => [:tag_and_bag, :build] do
-  system "gem push #{Risu::APP_NAME}-#{Risu::VERSION}.gem"
+ 	system "gem push #{Risu::APP_NAME}-#{Risu::VERSION}.gem"
 	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is an Nessus XML parser/database. More information at http://arxopia.com/projects/risu/"
 end
 
@@ -65,8 +65,8 @@ end
 
 Rake::TestTask.new("run_tests") do |t|
 	t.libs << "test"
-  t.pattern = 'test/*/*_test.rb'
-  t.verbose = true
+	t.pattern = 'test/*/*_test.rb'
+	t.verbose = true
 end
 
 task :merge do
