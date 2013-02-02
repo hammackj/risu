@@ -7,7 +7,7 @@
 
 #Road map
 
-#1.6 (November 1, 2012) - 
+#1.6 () - 
 - complience plugins xml parser test?
 - add windows 8 to Host
 - add windows 2012 to Host
@@ -98,7 +98,7 @@
 - Add Schema checks to make sure the schema is compatible with the version of risu
 
 ###Models
-- add hosts with crit/high/med/low quieries
+- add hosts with crit/high/med/low queries
 - add ibm to the os named_scopes
 
 ###Graphs
@@ -107,7 +107,7 @@
 - most common services graph
 - most common vuln category
 - # hosts by severity
-- stig bar graph for cat 1 / 2 /3
+- stig bar graph for cat 1 / 2 / 3
 - unsupported vs supported os graph
 - Add a CVSS risk factor graph
 - security risk graph
@@ -115,6 +115,7 @@
 - detailed windows graph
 - uniform graph colors
 - vuln count by host graph top 10 vulns
+- generate a graph matirx like exec summary detailed
 
 ###Reports / Templates
 - Unsupported OS report
