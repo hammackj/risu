@@ -132,7 +132,8 @@ module Risu
 					t.datetime :plugin_modification_date
 					t.datetime :vuln_publication_date
 					t.string :cvss_vector
-					t.string :cvss_base_score
+					#t.string :cvss_base_score
+					t.float :cvss_base_score
 					t.string :cvss_temporal_score
 					t.string :cvss_temporal_vector
 					t.string :exploitability_ease
