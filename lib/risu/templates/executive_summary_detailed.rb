@@ -220,22 +220,13 @@ module Risu
 				output.image Item.risks_by_severity_graph, :width => 250, :at => [output.bounds.left, cury]
 				output.image Host.top_vuln_graph(10), :width => 250, :at => [output.bounds.right - 250, cury]
 
-				output.move_down 225
-				if (output.y <= 300)
-						output.start_new_page
-						output.move_down 50
-				end
 				cury = output.y
 				output.image Item.risks_by_service_graph(10), :width => 250, :at => [output.bounds.left, cury]
 				output.image Host.other_os_graph, :width => 250, :at => [output.bounds.right - 250, cury]
 				output.move_down 225
-				if (output.y <= 300)
-						output.start_new_page
-						output.move_down 50
-				end
+
 				cury = output.y
 				output.image Host.windows_os_graph, :width => 250, :at => [output.bounds.left, cury]
-
 				output.number_pages "<page> of <total>", :at => [output.bounds.right - 50, 0], :width => 150, :page_filter => :all
 			end
 		end
