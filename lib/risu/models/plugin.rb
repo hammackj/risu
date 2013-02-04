@@ -35,6 +35,14 @@ module Risu
 			has_many :references
 			has_many :individual_plugin_selections
 
+			def cvss_base_score=(cvss_base_score)
+				write_attribute(:cvss_base_score, cvss_base_score.to_f)
+			end
+
+			def cvss_base_score
+				read_attribute(:cvss_base_score).to_s
+			end
+
 			class << self
 
 				# Queries for all risks based on Plugin.risk_factor
