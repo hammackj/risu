@@ -397,14 +397,19 @@ module Risu
 				end
 
 				#
+				#def notable_order_by_cvss_raw_old
+				#	if ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /sqlite/
+				#		return Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS REAL)").count(:all, :group => :plugin_id)
+				#	elsif ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /mysql/
+				#		return Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS DECIMAL(2,2))").count(:all, :group => :plugin_id)
+				#	else
+				#		return Item.joins(:plugin).where(:severity => 4).order(:plugins.cvss_base_score).count(:all, :group => :plugin_id)
+				#	end
+				#end
+
+				# @todo
 				def notable_order_by_cvss_raw
-					if ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /sqlite/
-						return Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS REAL)").count(:all, :group => :plugin_id)
-					elsif ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /mysql/
-						return Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS DECIMAL(2,2))").count(:all, :group => :plugin_id)
-					else
-						return Item.joins(:plugin).where(:severity => 4).order(:plugins.cvss_base_score).count(:all, :group => :plugin_id)
-					end
+					return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").count(:all, :group => :plugin_id)
 				end
 
 				#
