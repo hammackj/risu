@@ -294,7 +294,7 @@ module Risu
 								:synopsis => @vals["synopsis"],
 								:plugin_type => @vals["plugin_type"],
 								:cvss_vector => @vals["cvss_vector"],
-								:cvss_base_score => @vals["cvss_base_score"],
+								:cvss_base_score => @vals["cvss_base_score"].to_f,
 								:vuln_publication_date => @vals["vuln_publication_date"],
 								:plugin_version => @vals["plugin_version"],
 								:cvss_temporal_score => @vals["cvss_temporal_score"],
