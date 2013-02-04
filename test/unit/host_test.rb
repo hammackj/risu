@@ -98,4 +98,28 @@ class HostTest < ActiveSupport::TestCase
 	test "should return 1 for Host.unique_hosts_with_high" do
 		assert Host.unique_hosts_with_high.count == 1, "GOT #{Host.unique_hosts_with_high.count}"
 	end
+
+	test "should return a String of ips for Host.ip_list" do
+		assert Host.ip_list.class == String, "GOT #{Host.ip_list.class}"
+	end
+
+	test "should return a list of String of 17 length for Host.ip_list" do
+		assert Host.ip_list.length == 17, "GOT #{Host.ip_list.length}"
+	end
+
+	test "should build an array of 2 ips for Host.ip_list.split(\"\\n\")" do
+		assert Host.ip_list.split("\n").count == 2, "GOT #{Host.ip_list.split("\n").count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_98" do
+		assert Host.not_os_windows_98.count == 2 , "GOT #{Host.not_os_windows_98.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_me" do
+		assert Host.not_os_windows_me.count == 2 , "GOT #{Host.not_os_windows_me.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_95" do
+		assert Host.not_os_windows_95.count == 2 , "GOT #{Host.not_os_windows_95.count}"
+	end
 end
