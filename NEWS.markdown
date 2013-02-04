@@ -24,14 +24,19 @@
 			- reference_string_by(type) #Returns a string of all the references by type, Where type is the output of a Reference.type(ex. Reference.cve)
 	- Host Model
 		- Added methods
-			- ip_list #Generates a list of hosts from the database
+			- ip_list #Generates a list of hosts from the database, returns a string \n delimited
+			- unsupported_os? #Checks to see if there was any unsupported OS in the scan
 		- Changed the wording `other_os_graph_text` to indicate that its just a percentage of the non windows computers
 		- Added 'bios_uuid' Property
+		- Added 
 	- Reference Model
 		- Added cert-cc, apple-sa, icsa references
 	- Plugin Model
 		- cvss_base_score is now a float in the schema, this change should be transparent
 			- When assigning to it, the value is converted to a float and when retrieving it, it is converted to a string.
+	- Item Model
+		- Rewrote the notable_order_by_cvss_raw
+
 - Templates
 	- notable
 		- cleaned up to use the new TemplateHelper mixin
