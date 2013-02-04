@@ -36,7 +36,7 @@ module Risu
 				{
 					:name => "exec_summary",
 					:author => "hammackj",
-					:version => "0.0.4",
+					:version => "0.0.5",
 					:description => "Generates a simple executive summary."
 				}
 			end
