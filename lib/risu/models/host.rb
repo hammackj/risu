@@ -42,7 +42,7 @@ module Risu
 				# if blacklist_host_id == nil
 				#		where("id != ?", blacklist_host_id).count
 				# else
-			 #		count
+			 	#	count
 				# end
 				#end
 
@@ -67,9 +67,14 @@ module Risu
 				#
 				# @return [String] of hosts \n delimited
 				def ip_list
+					ips = Array.new
 					hosts = Host.where("ip is not NULL").order("ip").all
 
-					hosts.join("\n")
+					hosts.each do |host|
+						ips << host.ip if host.ip != nil
+					end
+
+					ips.join("\n")
 				end
 
 				# Queries for hosts with a Windows based Operating System
@@ -485,9 +490,26 @@ module Risu
 					return text
 				end
 
+				def unsupported_os?
+					aix_text = unsupported_os_aix
+					win_text = unsupported_os_windows
+					freebsd_text = unsupported_os_freebsd
+
+					#If all the text is nil just return nil
+					if aix_text == "" && win_text == "" && freebsd_text == ""
+						return false
+					end
+
+					return true
+				end
+
 				# @todo add plural check
 				#
 				def unsupported_os_text
+					if !unsupported_os?
+						return nil
+					end
+
 					aix_text = unsupported_os_aix
 					win_text = unsupported_os_windows
 					freebsd_text = unsupported_os_freebsd
@@ -495,11 +517,6 @@ module Risu
 					unsupported_os_text = "Several unsupported operating systems were discovered on the network. " +
 					"These operating systems are no longer updated by the specific vendor. These operating systems should be " +
 					"updated and replaced as soon as possible. If possible, disconnected from the network until updated.\n\n"
-
-					#If all the text is nil just return nil
-					if aix_text == "" && win_text == "" && freebsd_text == ""
-						return nil
-					end
 
 					unsupported_os_text << "#{win_text}" if win_text != ""
 					unsupported_os_text << "#{aix_text}" if aix_text != ""
@@ -521,7 +538,6 @@ module Risu
 					win_nt = Host.os_windows_nt
 					#win_2000 = Host.os_windows_2k
 					win_2000 = Plugin.where(:plugin_name => "Microsoft Windows 2000 Unsupported Installation Detection")
-
 
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
