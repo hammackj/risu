@@ -35,7 +35,7 @@ module Risu
 				{
 					:name => "technical_findings",
 					:author => "hammackj",
-					:version => "0.0.4",
+					:version => "0.0.5",
 					:description => "Generates a Technical Findings Report"
 				}
 			end
