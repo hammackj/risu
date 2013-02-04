@@ -63,7 +63,7 @@ config_mysql =
 database:
   adapter: mysql2
   database: risu_test
-  host: 10.69.69.20
+  host: localhost
   username: risu
   password: risurisu2012"
 
