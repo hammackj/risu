@@ -43,7 +43,7 @@ module Risu
 						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
 						"owasp", "cwe", "iavb", "iavt", "cisco-sa", "ics-alert",
 						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa", "apple-sa", 
-						"icsa", "cert-cc"
+						"icsa", "cert-cc", "msvr"
 					]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
