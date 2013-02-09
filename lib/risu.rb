@@ -47,6 +47,7 @@ require 'stringio'
 require 'mysql2'
 require 'irb'
 require 'sqlite3'
+require 'nokogiri'
 
 require 'optparse'
 
