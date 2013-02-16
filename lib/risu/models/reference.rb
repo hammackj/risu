@@ -41,7 +41,7 @@ module Risu
 					reference_names = ["cve", "cpe", "bid", "see_also", "iava", "msft",
 						"osvdb", "cert", "edbid", "rhsa", "secunia", "suse", "dsa",
 						"owasp", "cwe", "iavb", "iavt", "cisco_sa", "ics_alert",
-						"cisco_bug_id", "cisco_sr", "cert_vu", "vmsa"]
+						"cisco_bug_id", "cisco_sr", "cert_vu", "vmsa", "cert_cc"]
 
 					ref_string = ""
 
@@ -205,6 +205,12 @@ module Risu
 				def vmsa
 					where(:reference_name => "vmsa").select('DISTINCT value')
 				end
+
+				#
+				#
+				def cert_cc
+					where(:reference_name => "cert-cc").select('DISTINCT value')
+				end				
 			end
 		end
 	end
