@@ -26,22 +26,63 @@
 
  require 'test_helper'
 
-#"<?xml version="1.0" ?>
-#	<NessusClientData_v2>
-		#<Policy></Policy>
-
-		#<item></item>
-#
-
-#
-
  class NessusSaxListenerTest < ActiveSupport::TestCase
+ 	include Risu::Models
 
- 	def setup
- 		@app = Risu::CLI::Application.new
+ 	#exapand this
+ 	def build_nessus_xml property, value
+		builder = Nokogiri::XML::Builder.new do |xml|
+			xml.NessusClientData_v2 do
+				xml.Policy do
+					xml.policyName "Everything"
+					xml.policyComments ""
+
+					xml.Preferences do
+						xml.ServerPreferences do
+							xml.preference do
+								xml.name "max_simult_tcp_sessions"
+								xml.value "unlimited"
+							end
+						end
+					end
+				end
+
+				xml.Report(:name => "Reportname") do
+					xml.ReportHost(:name => "69.69.69.69") do
+						xml.HostProperties do
+							xml.tag(:name => "#{property}") do
+								xml.text "#{value}"
+							end
+
+							xml.tag(:name => "host-ip") do
+								xml.text "69.69.69.69"
+							end
+						end
+
+						xml.ReportItem(:port => "88", :svc_name => "kerberos?", :protocol => "tcp", :severity => "0", :pluginName => "", :pluginFamily => "") do
+							xml.xref "MSFT:MS00-000"
+						end
+					end
+				end
+			end
+		end
+
+ 		builder.to_xml
  	end
 
- 	#test "" do
- 	#end
+ 	def setup
+  		xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
+ 		@parser = LibXML::XML::SaxParser.string xml
+		@parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
+		@parser.parse		
+ 	end
+
+ 	test "return 2011-07-07 14:49:31 -0500 for Host.where(:name => '69.69.69.69').first.end" do
+		assert Host.where(:name => "69.69.69.69").first.end == "2011-07-07 14:49:31 -0500", "GOT #{Host.where(:name => "69.69.69.69").first.end}"
+ 	end
+
+ 	test "return 1 Item for Host 69.69.69.69" do
+ 		assert Host.where(:name => "69.69.69.69").first.items.count == 1, "GOT #{Host.where(:name => "69.69.69.69").first.items.count}"
+ 	end
 
  end
