@@ -39,8 +39,7 @@ require "active_support"
 
 require 'risu'
 
-def setup_test_database
-config_sqlite =
+@config_sqlite =
 "report:
   author: TEST
   title: TEST
@@ -51,9 +50,20 @@ database:
   adapter: sqlite3
   database: test_data/test.db"
 
+@config_parser_sqlite =
+"report:
+  author: TEST
+  title: TEST
+  company: TEST
+  classification: TEST
+
+database:
+  adapter: sqlite3
+  database: test_data/parser_test.db"
+
 #database: \":memory:\""
 
-config_mysql =
+@config_mysql =
 "report:
   author: TEST
   title: TEST
@@ -67,18 +77,34 @@ database:
   username: risu
   password: risurisu2012"
 
+@config_parser_mysql =
+"report:
+  author: TEST
+  title: TEST
+  company: TEST
+  classification: TEST
+
+database:
+  adapter: mysql2
+  database: risu_parser_test
+  host: localhost
+  username: risu
+  password: risurisu2012"
+
+def setup_test_database
 
 	begin
 		File.delete("test_data/test.db") if File.exist?("test_data/test.db")
+		File.delete("test_data/parser_test.db") if File.exist?("test_data/parser_test.db")
 
 		@app = Risu::CLI::Application.new
 
 		if ENV['RISU_TEST_ENV'] == 'sqlite'
 			puts "[*] Testing Sqlite"
-			@app.load_config(config_sqlite, true)
+			@app.load_config(@config_sqlite, true)
 		elsif ENV['RISU_TEST_ENV'] == 'mysql'
 			puts "[*] Testing MySql"
-			@app.load_config(config_mysql, true)
+			@app.load_config(@config_mysql, true)
 		else
 			puts "[!] Unable to read RISU_TEST_ENV variable."
 			exit
