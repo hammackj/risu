@@ -35,94 +35,45 @@ module Risu
 				{
 					:name => "findings_summary",
 					:author => "hammackj",
-					:version => "0.0.1",
+					:version => "0.0.2",
 					:description => "Generates a findings summary report"
 				}
 			end
 
 			#
+			# @todo comment
+			#
+			def print_risk_summary(risks, text, color)
+				@output.font_size(20) do
+					@output.fill_color color
+					@output.text text, :style => :bold
+					@output.fill_color "000000"
+				end
+
+				risks.each do |item|
+					name = Plugin.find_by_id(item.plugin_id).plugin_name
+					count = Item.where(:plugin_id => item.plugin_id).count
+
+					@output.text "#{count} - #{name}"
+				end				
+			end
+
+			#
+			# @todo comment
+			#
 			def render(output)
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 
-				output.font_size(22) do
-					output.text Report.title, :align => :center
-				end
-
-				output.font_size(18) do
-					output.text "Findings Summary Report", :align => :center
-					output.text "\n"
-					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				end
-
+				report_title Report.title
+				report_subtitle "Findings Summary Report"
+				report_author "This report was prepared by\n#{Report.author}"
 				output.text "\n\n\n"
 
-				output.font_size(20) do
-					output.fill_color "551A8B"
-					output.text "Critical Findings", :style => :bold
-					output.fill_color "000000"
-				end
-
-				Item.critical_risks_unique_sorted.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
-
-					output.text "#{count} - #{name}"
-				end
-
-				output.font_size(20) do
-					output.fill_color "FF0000"
-					output.text "High Findings", :style => :bold
-					output.fill_color "000000"
-				end
-
-				Item.high_risks_unique_sorted.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
-
-					output.text "#{count} - #{name}"
-				end
-
-				output.font_size(20) do
-					output.fill_color "FF8040"
-					output.text "Medium Findings", :style => :bold
-					output.fill_color "000000"
-				end
-
-				Item.medium_risks_unique_sorted.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
-
-					output.text "#{count} - #{name}"
-				end
-
-				output.font_size(20) {
-					output.fill_color "0000FF"
-					output.text "Low Findings", :style => :bold
-					output.fill_color "000000"
-				}
-
-				Item.low_risks_unique_sorted.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
-
-					output.text "#{count} - #{name}"
-				end
-
-				#Provides nothing
-				#output.font_size(20) {
-				#	output.fill_color "008000"
-				#	output.text "Low Findings", :style => :bold
-				#	output.fill_color "000000"
-				#}
-				#
-				#Item.low_risks_unique_sorted.each do |item|
-				#	name = Plugin.find_by_id(item.plugin_id).plugin_name
-				#	count = Item.where(:plugin_id => item.plugin_id).count
-				#
-				#	output.text "#{count} - #{name}"
-				#end
-
+				print_risk_summary(Item.critical_risks_unique_sorted, "Critical Findings", "551A8B")
+				print_risk_summary(Item.high_risks_unique_sorted, "High Findings", "FF0000")
+				print_risk_summary(Item.medium_risks_unique_sorted, "Medium Findings", "FF8040")
+				print_risk_summary(Item.low_risks_unique_sorted, "Low Findings", "0000FF")
 			end
 		end
 	end
