@@ -210,6 +210,24 @@ module Risu
 				#
 				def cert_cc
 					where(:reference_name => "cert-cc").select('DISTINCT value')
+				end
+
+				#
+				#
+				def apple_sa
+					where(:reference_name => "apple-sa").select('DISTINCT value')
+				end
+				
+				#
+				#
+				def icsa
+					where(:reference_name => "icsa").select('DISTINCT value')
+				end
+
+				#
+				#
+				def msvr
+					where(:reference_name => "msvr").select('DISTINCT value')
 				end				
 			end
 		end
