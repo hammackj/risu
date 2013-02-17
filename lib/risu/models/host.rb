@@ -486,6 +486,7 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 
+				#
 				#@todo comment
 				#
 				def windows_os_graph_text
