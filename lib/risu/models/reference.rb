@@ -41,7 +41,9 @@ module Risu
 					reference_names = ["cve", "cpe", "bid", "see_also", "iava", "msft",
 						"osvdb", "cert", "edbid", "rhsa", "secunia", "suse", "dsa",
 						"owasp", "cwe", "iavb", "iavt", "cisco_sa", "ics_alert",
-						"cisco_bug_id", "cisco_sr", "cert_vu", "vmsa", "cert_cc"]
+						"cisco_bug_id", "cisco_sr", "cert_vu", "vmsa", "cert_cc",
+						"msvr", "apple_sa", "icsa"
+					]
 
 					ref_string = ""
 
@@ -116,43 +118,43 @@ module Risu
 					where(:reference_name => "cert").select('DISTINCT value')
 				end
 
-				#
+				# Queries all unique edbid refs
 				#
 				def edbid
 					where(:reference_name => "edb-id").select('DISTINCT value')
 				end
 
-				#
+				# Queries all unique rhsa refs
 				#
 				def rhsa
 					where(:reference_name => "rhsa").select('DISTINCT value')
 				end
 
-				#
+				# Queries all unique secunia refs
 				#
 				def secunia
 					where(:reference_name => "secunia").select('DISTINCT value')
 				end
 
-				#
+				# Queries all unique suse refs
 				#
 				def suse
 					where(:reference_name => "suse").select('DISTINCT value')
 				end
 
-				#
+				# Queries all unique dsa refs
 				#
 				def dsa
 					where(:reference_name => "dsa").select('DISTINCT value')
 				end
 
-				#
+				# Queries all unique owasp refs
 				#
 				def owasp
 					where(:reference_name => "owasp").select('DISTINCT value')
 				end
 
-				#
+				# Queries all unique cwe refs
 				#
 				def cwe
 					where(:reference_name => "cwe").select('DISTINCT value')
