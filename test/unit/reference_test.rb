@@ -118,4 +118,21 @@ class ReferenceTest < ActiveSupport::TestCase
 	test "should return a vmsa for Reference.vmsa" do
 		assert Reference.vmsa != nil, "GOT #{Reference.vmsa}"
 	end
+
+	test "should return a cert_cc for Reference.cert_cc" do
+		assert Reference.cert_cc != nil, "GOT #{Reference.cert_cc}"
+	end
+
+	test "should return a apple_sa for Reference.apple_sa" do
+		assert Reference.apple_sa != nil, "GOT #{Reference.apple_sa}"
+	end
+
+	test "should return a icsa for Reference.icsa" do
+		assert Reference.icsa != nil, "GOT #{Reference.icsa}"
+	end
+
+	test "should return a msvr for Reference.msvr" do
+		assert Reference.msvr != nil, "GOT #{Reference.msvr}"
+	end
+
 end
