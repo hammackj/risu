@@ -61,7 +61,11 @@ module Risu
 			end
 
 			#
-			def report_text(text, options = {})
+			def text(text, options = {})
+				if text == nil
+					text = ""
+				end
+				
 				@output.text text, options
 			end
 
