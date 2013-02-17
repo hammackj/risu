@@ -27,9 +27,8 @@
 module Risu
 	module Templates
 		class MSPatchSummary < Risu::Base::TemplateBase
+			include TemplateHelper
 
-			#
-			#
 			def initialize ()
 				@template_info =
 				{
@@ -40,20 +39,15 @@ module Risu
 				}
 			end
 
-			#
-			#
 			def render(output)
-				output.text Report.classification.upcase, :align => :center
-				output.text "\n"
+				report_text Report.classification.upcase, :align => :center
+				report_text "\n"
 
-				output.font_size(22) { output.text Report.title, :align => :center }
-				output.font_size(18) {
-					output.text "Missing Microsoft Patch Summary", :align => :center
-					output.text "\n"
-					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				report_title Report.title
+				report_subtitle "Missing Microsoft Patch Summary"
+				report_author "This report was prepared by\n#{Report.author}"
 
-				output.text "\n\n\n"
+				report_text "\n\n\n"
 
 				Item.ms_patches.each do |item|
 					host = Host.find_by_id(item.host_id)
@@ -61,24 +55,23 @@ module Risu
 					next if host == nil
 
 					if host.name != nil
-						output.text "Host:", :style => :bold
-						output.text host.name
+						report_text "Host:", :style => :bold
+						report_text host.name
 					end
 
 					if host.os != nil
-						output.text "OS:", :style => :bold
-						output.text host.os
+						report_text "OS:", :style => :bold
+						report_text host.os
 					end
 
 					if host.mac != nil
-						output.text "Mac:", :style => :bold
-						output.text host.mac
+						report_text "Mac:", :style => :bold
+						report_text host.mac
 					end
-					output.text "\n"
-					output.text item.plugin_output
-					output.text "\n"
+					report_text "\n"
+					report_text item.plugin_output
+					report_text "\n"
 				end
-
 			end
 		end
 	end
