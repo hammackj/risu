@@ -29,7 +29,6 @@ module Risu
 		class TechnicalFindingsTemplate < Risu::Base::TemplateBase
 			include TemplateHelper
 
-			#Creates an instance of the [TechnicalFindingsTemplate] class and initializes its meta-data
 			def initialize ()
 				@template_info =
 				{
@@ -40,17 +39,15 @@ module Risu
 				}
 			end
 
-			#
-			#
 			def render(output)
-				output.text Report.classification.upcase, :align => :center
-				output.text "\n"
+				report_text Report.classification.upcase, :align => :center
+				report_text "\n"
 
 				report_title Report.title
 				report_subtitle "Critical and High Findings"
 				report_author "This report was prepared by\n#{Report.author}"
 
-				output.text "\n\n\n"
+				report_text "\n\n\n"
 
 				unique_risks = Array.new
 				unique_risks << Hash[:title => "Critical Findings", :color => "9B30FF", :values => Item.critical_risks_unique] if Item.critical_risks_unique.all.size != 0
@@ -61,11 +58,11 @@ module Risu
 
 						output.font_size(18) do
 							output.fill_color h[:color]
-							output.text h[:title], :style => :bold
+							report_text h[:title], :style => :bold
 							output.fill_color "000000"
 						end
 
-						output.text "\n"
+						report_text "\n"
 
 						h[:values].each do |f|
 
@@ -75,13 +72,13 @@ module Risu
 							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
 							output.font_size(16) do
-								output.text "#{plugin.plugin_name}\n"
+								report_text "#{plugin.plugin_name}\n"
 							end
 
 							if hosts.length > 1
-								output.text "Hosts", :style => :bold
+								report_text "Hosts", :style => :bold
 							else
-								output.text "Host", :style => :bold
+								report_text "Host", :style => :bold
 							end
 
 							hostlist = Array.new
@@ -94,55 +91,55 @@ module Risu
 								#end
 							end
 
-							output.text hostlist.join(', ')
+							report_text hostlist.join(', ')
 
 							if f.plugin_output != nil
-								output.text "\nPlugin output", :style => :bold
-								output.text f.plugin_output
+								report_text "\nPlugin output", :style => :bold
+								report_text f.plugin_output
 							end
 
 							if plugin.description != nil
-								output.text "\nDescription", :style => :bold
-								output.text plugin.description.gsub(/[ ]{2,}/, " "), :inline_format => true
+								report_text "\nDescription", :style => :bold
+								report_text plugin.description.gsub(/[ ]{2,}/, " "), :inline_format => true
 							end
 
 							if plugin.synopsis != nil
-								@output.text "\nSynopsis", :style => :bold
-								@output.text plugin.synopsis
+								report_text "\nSynopsis", :style => :bold
+								report_text plugin.synopsis
 							end
 
 							if plugin.cvss_base_score != nil
-								@output.text "\nCVSS Base Score", :style => :bold
-								@output.text plugin.cvss_base_score
+								report_text "\nCVSS Base Score", :style => :bold
+								report_text plugin.cvss_base_score
 							end
 
 							if plugin.exploit_available != nil
-								@output.text "\nExploit Available", :style => :bold
+								report_text "\nExploit Available", :style => :bold
 
 								if plugin.exploit_available == "true"
-									@output.text "Yes"
+									report_text "Yes"
 								else
-									@output.text "No"
+									report_text "No"
 								end
 							end
 
 							if plugin.solution != nil
-								@output.text "\nSolution", :style => :bold
-								@output.text plugin.solution
+								report_text "\nSolution", :style => :bold
+								report_text plugin.solution
 							end
 
 							if references.size != 0
-								@output.text "\nReferences", :style => :bold
-								@output.text plugin.references.reference_string, :inline_format => true
+								report_text "\nReferences", :style => :bold
+								report_text plugin.references.reference_string, :inline_format => true
 								plugin_url = "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin.id}"
-								@output.text "<b>nessus_plugin</b>: #{plugin_url}", :inline_format => true, :link => plugin_url
+								report_text "<b>nessus_plugin</b>: #{plugin_url}", :inline_format => true, :link => plugin_url
 							end
 
-							output.text "\n"
+							report_text "\n"
 						end
 					end
 
-					@output.start_new_page if unique_risks[index+1] != nil
+					output.start_new_page if unique_risks[index+1] != nil
 				end
 
 				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all
