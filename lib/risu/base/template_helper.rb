@@ -61,6 +61,11 @@ module Risu
 			end
 
 			#
+			def report_text(text, options = {})
+				@output.text text, options
+			end
+
+			#
 			def heading1 title
 				@output.font_size(24) do
 					@output.text title, :style => :bold
