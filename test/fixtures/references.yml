@@ -112,3 +112,23 @@ reference_23:
   plugin_id: 99999
   reference_name: "vmsa"
   value: "2012-0009"
+
+reference_24:
+  plugin_id: 99999
+  reference_name: "cert-cc"
+  value: "2012-0009"
+
+reference_25:
+  plugin_id: 99999
+  reference_name: "apple_sa"
+  value: "2012-0009"
+
+reference_26:
+  plugin_id: 99999
+  reference_name: "icsa"
+  value: "2012-0009"
+
+reference_27:
+  plugin_id: 99999
+  reference_name: "msvr"
+  value: "2012-0009"
