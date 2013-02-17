@@ -117,6 +117,8 @@ def setup_test_database
 		end
 
 		@app.migrate(:up)
+    @app.migrate(:down)
+    @app.migrate(:up)
 
 		fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
 		fixtures.each do |fixture_file|
