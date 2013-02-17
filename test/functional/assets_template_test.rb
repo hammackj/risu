@@ -33,15 +33,12 @@ class AssetsTemplateTest < ActiveSupport::TestCase
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 
 		@report = Report
-		@report.title = "Function Test"
+		@report.title = "Assets Template Test"
 		@report.author = "hammackj"
 		@report.company = "None"
 		@report.classification = "None"
 
 		@templater = Risu::Base::Templater.new("assets", Report, @file_name, @template_manager)
-
-		@nilrenderer = Risu::Renderers::NilRenderer.new
-		@template = Risu::Templates::Assets.new
 		@templater.generate
 	end
 
@@ -51,12 +48,5 @@ class AssetsTemplateTest < ActiveSupport::TestCase
 
 	test 'should create assets.pdf on template creation' do
 		assert File.exist?(@file_name) == true
-	end
-
-	test 'Template render should' do
-		nilrenderer = Risu::Renderers::NilRenderer.new
-		template = Risu::Templates::Assets.new
-		data = template.render(nilrenderer)
-		assert template.render(nilrenderer) != nil, "GOT #{template.render(nilrenderer)}"
 	end
 end
