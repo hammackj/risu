@@ -210,8 +210,25 @@ module Risu
 					where("os LIKE '%Windows Server 2008%'")
 				end
 
+				# Negation query for all hosts with a Windows Server 2008 based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_2k8
 					where("os NOT LIKE '%Windows Server 2008%'")
+				end
+
+				# Queries for hosts with a Windows Server 2012 based Operating System
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def os_windows_2k12
+					where("os LIKE '%Windows Server 2012%'")
+				end
+
+				# Negation query for all hosts with a Windows Server 2012 based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def not_os_windows_2k12
+					where("os NOT LIKE '%Windows Server 2012%'")
 				end
 
 				# Queries for hosts with a Windows 7 based Operating System
@@ -228,12 +245,26 @@ module Risu
 					where("os NOT LIKE '%Windows 7%'")
 				end
 
+				# Queries for hosts with a Windows 8 based Operating System
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def os_windows_8
+					where("os LIKE '%Windows 8%'")
+				end
+
+				# Negation query for all hosts with a Windows 8 based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def not_os_windows_8
+					where("os NOT LIKE '%Windows 8%'")
+				end				
+
 				# Queries for hosts with a Windows Operating System that are not 2000,
 				# XP, 2003, Vista, 2008 or 7
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_other
-					not_os_windows_7.not_os_windows_2k8.not_os_windows_vista.not_os_windows_2k3.not_os_windows_xp.not_os_windows_2k.not_os_windows_nt
+					not_os_windows_2k12.not_os_windows_8.not_os_windows_7.not_os_windows_2k8.not_os_windows_vista.not_os_windows_2k3.not_os_windows_xp.not_os_windows_2k.not_os_windows_nt
 				end
 
 				# Queries for all hosts with a Linux based Operating system
@@ -436,7 +467,9 @@ module Risu
 					w2k3 = Host.os_windows_2k3.all.count
 					vista = Host.os_windows_vista.all.count
 					w2k8 = Host.os_windows_2k8.all.count
+					w2k12 = Host.os_windows_2k12.all.count
 					w7 = Host.os_windows_7.all.count
+					w8 = Host.os_windows_8.all.count
 					other = (Host.os_windows.os_windows_other).all.count
 
 					g.data("NT", nt) if nt >= 1
@@ -445,7 +478,9 @@ module Risu
 					g.data("Server 2003", w2k3) if w2k3 >= 1
 					g.data("Vista", vista) if vista >= 1
 					g.data("Server 2008", w2k8) if w2k8 >= 1
+					g.data("Server 2012", w2k12) if w2k12 >= 1
 					g.data("7", w7) if w7 >= 1
+					g.data("8", w8) if w8 >= 1					
 					g.data("Other Windows", other) if other >= 1
 
 					StringIO.new(g.to_blob)
@@ -460,10 +495,12 @@ module Risu
 					w2k3 = Host.os_windows_2k3.all.count
 					vista = Host.os_windows_vista.all.count
 					w2k8 = Host.os_windows_2k8.all.count
+					w2k12 = Host.os_windows_2k12.all.count
 					w7 = Host.os_windows_7.all.count
+					w8 = Host.os_windows_8.all.count
 					other = (Host.os_windows.os_windows_other).all.count
 
-					windows_os_count = nt + w2k + xp + w2k3 + vista + w7 + w2k8 + other
+					windows_os_count = nt + w2k + xp + w2k3 + vista + w7 + w8 + w2k8 + w2k12 + other
 
 					nt_percent = (nt.to_f / windows_os_count.to_f) * 100
 					w2k_percent = (w2k.to_f / windows_os_count.to_f) * 100
@@ -473,6 +510,8 @@ module Risu
 
 					w2k8_percent = (w2k8.to_f / windows_os_count.to_f) * 100
 					w7_percent = (w7.to_f / windows_os_count.to_f) * 100
+					w8_percent = (w8.to_f / windows_os_count.to_f) * 100
+					w2k12_percent = (w2k12.to_f / windows_os_count.to_f) * 100
 
 					text = "This graph shows the percentage of the different Microsoft Windows based operating systems " +
 					"found on the #{Report.title} network.\n\n"
@@ -484,12 +523,17 @@ module Risu
 					text << "#{vista_percent.round.to_i}% of the network is Windows Vista. " if vista_percent >= 1
 					text << "#{w2k8_percent.round.to_i}% of the network is Windows Server 2008. " if w2k8_percent >= 1
 					text << "#{w7_percent.round.to_i}% of the network is Windows 7. " if w7_percent >= 1
+					text << "#{w8_percent.round.to_i}% of the network is Windows 8. " if w8_percent >= 1
+					text << "#{w2k12_percent.round.to_i}% of the network is Windows Server 20012. " if w2k12_percent >= 1
 
 					text << "\n\n" << unsupported_os_windows if nt > 0 or w2k > 0
 
 					return text
 				end
 
+				# 
+				# @todo comments
+				#
 				def unsupported_os?
 					aix_text = unsupported_os_aix
 					win_text = unsupported_os_windows
@@ -618,7 +662,9 @@ module Risu
 					return text
 				end
 
+				#
 				# @todo comments
+				#
 				def top_n_vulnerable(n)
 					hosts = Item.risks_by_host(Host.all.count).count
 					hosts = hosts.sort_by {|k, v| v}
@@ -633,14 +679,18 @@ module Risu
 					hosts[0...n]
 				end
 
+				#
 				# @todo comments
+				#
 				def unique_hosts_with_critical
 					hosts = Item.critical_risks_by_host(Host.all.count).count
 					hosts = hosts.sort_by {|k, v| v}
 					hosts.reverse!
 				end
 
+				#
 				# @todo comments
+				#
 				def unique_hosts_with_high
 					hosts = Item.high_risks_by_host(Host.all.count).count
 					hosts = hosts.sort_by {|k, v| v}
