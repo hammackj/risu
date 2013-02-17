@@ -190,6 +190,24 @@ module Risu
 					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
 				end
 
+				# Queries for all the Medium risks by host
+				#
+				# @param limit Limits the result to a specific number, default 10
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def medium_risks_by_host(limit=10)
+					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 2).group(:host_id).order("count_all DESC").limit(limit)
+				end
+
+				# Queries for all the Low risks by host
+				#
+				# @param limit Limits the result to a specific number, default 10
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def low_risks_by_host(limit=10)
+					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 1).group(:host_id).order("count_all DESC").limit(limit)
+				end
+
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
 				#
 				# @return [ActiveRecord::Relation] with the query results
@@ -306,6 +324,7 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 
+				#
 				# @todo comment
 				#
 				def calculate_vulnerable_host_percent
@@ -323,6 +342,7 @@ module Risu
 					host_percent = (hosts_with_critical.count.to_f / Host.all.count.to_f) * 100
 				end
 
+				#
 				# @todo comments
 				#
 				def ajective_for_risk_text risk_percent
@@ -340,6 +360,7 @@ module Risu
 					end
 				end
 
+				#
 				# @todo comments
 				#
 				def risk_text risk_percent
@@ -397,27 +418,22 @@ module Risu
 				end
 
 				#
-				#def notable_order_by_cvss_raw_old
-				#	if ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /sqlite/
-				#		return Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS REAL)").count(:all, :group => :plugin_id)
-				#	elsif ActiveRecord::Base.connection.instance_values["config"][:adapter] =~ /mysql/
-				#		return Item.joins(:plugin).where(:severity => 4).order("CAST(plugins.cvss_base_score AS DECIMAL(2,2))").count(:all, :group => :plugin_id)
-				#	else
-				#		return Item.joins(:plugin).where(:severity => 4).order(:plugins.cvss_base_score).count(:all, :group => :plugin_id)
-				#	end
-				#end
-
-				# @todo
+				# @todo comment
+				#
 				def notable_order_by_cvss_raw
 					return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").count(:all, :group => :plugin_id)
 				end
 
 				#
+				# @todo comment
+				#
 				def scrub_plugin_name (name)
 					return name.gsub("(remote check)", "").gsub("(uncredentialed check)", "").gsub(/(\(\d.*\))/, "")
 				end
 
+				#
 				# @todo comment
+				#
 				def top_10_sorted_raw
 					raw = notable_order_by_cvss_raw
 
@@ -440,6 +456,9 @@ module Risu
 					return data
 				end
 
+				#
+				# @todo comment
+				#
 				def top_10_sorted
 					raw = notable_order_by_cvss_raw
 					data = Array.new
