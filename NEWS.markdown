@@ -6,11 +6,12 @@
 - Changed all branding to Arxopia LLC. instead of myself for legal protection, **Nothing changes** the project will always be open source and free (as in cost)
 - Fixed several missing requires for Sqlite3 and Rails
 - Default template font size is now 10pt
-- Added TemplateHelper mixin for templates to use. Currently it adds the following methods to each template it is included in:
+- Added TemplateHelper mixin for templates to use. The goal is to abstract Prawn in-line code out of the templates over the next few releases to allow for dynamic output to different formats.Currently it adds the following methods to each template it is included in:
 	- report_title(title, newline=false) #font size 24 + bold + center
 	- report_subtitle(title, newline=false) #font size 18 + bold + center
 	- report_author(author, newline=false) #font size 24 + bold + center
 	- report_classification(classification=Report.classification.upcase, newline=true)
+	- report_text(text, options={})
 	- heading1 #font size 24 + bold
 	- heading2 #font size 18 + bold
 	- heading3 #font size 14 + bold
@@ -26,6 +27,10 @@
 		- Added methods
 			- ip_list #Generates a list of hosts from the database, returns a string \n delimited
 			- unsupported_os? #Checks to see if there was any unsupported OS in the scan
+			- os_windows_8
+			- not_os_windows_8
+			- os_windows_2k12
+			- not_is_windows_2k12
 		- Changed the wording `other_os_graph_text` to indicate that its just a percentage of the non windows computers
 		- Added 'bios_uuid' Property 
 	- Reference Model
@@ -37,19 +42,35 @@
 		- cvss_base_score is now a float in the schema, this change should be transparent
 			- When assigning to it, the value is converted to a float and when retrieving it, it is converted to a string.
 	- Item Model
+		- Added methods
+			- medium_risks_by_host
+			- low_risks_by_host
 		- Rewrote the notable_order_by_cvss_raw
 - Templates
 	- notable
-		- cleaned up to use the new TemplateHelper mixin
+		- cleaned up and updated to use the TemplateHelper mixin
 	- notable_detailed
-		- cleaned up to use the new TemplateHelper mixin
+		- cleaned up and updated to use the TemplateHelper mixin
 		- the new reference helpers
 		- host names are now show with ip addresses
 	- technical_findings
-		- cleaned up to use the new TemplateHelper mixin
+		- cleaned up and updated to use the TemplateHelper mixin
 		- new reference helpers
 		- also fixed a bug with a trailing blank page
 		- host names are now show with ip addresses
+	- findings_summary
+		- cleaned up and updated to use the TemplateHelper mixin
+		- simplified the repeated code
+	- ms_patch_summary
+		- cleaned up and updated to use the TemplateHelper mixin
+	- pci_compliance
+		- cleaned up and updated to use the TemplateHelper mixin
+- Wiki Pages
+	- New page for installing on Fedora []
+	- New page for installing on CentOS []
+	- New page for installing on Gentoo []
+	- New page for installing on ArchLinux []
+
 
 #1.5.3 (August 29, 2012)
 - New Parsed Tags
