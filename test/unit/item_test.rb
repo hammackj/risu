@@ -185,6 +185,14 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.high_risks_by_host.all.count == 1, "GOT #{Item.high_risks_by_host.all.count}"
 	end
 
+	test "return 1 for Item.medium_risks_by_host.all.count" do
+		assert Item.medium_risks_by_host.all.count == 1, "GOT #{Item.medium_risks_by_host.all.count}"
+	end
+
+	test "return 1 for Item.low_risks_by_host.all.count" do
+		assert Item.low_risks_by_host.all.count == 1, "GOT #{Item.low_risks_by_host.all.count}"
+	end
+
 	test "notable_order_by_cvss_raw.count" do
 		assert Item.notable_order_by_cvss_raw.count == 8, "GOT #{Item.notable_order_by_cvss_raw.count}"
 	end
@@ -197,12 +205,3 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.notable_order_by_cvss_raw.keys.last == 99999, "GOT #{Item.notable_order_by_cvss_raw.keys.last}"
 	end
 end
-
-
-# @todo need to rework this one
-#			test "should include crit, high, medium, low and info risks for Item.risks.all" do
-#				assert Item.risks.allinclude(@crit, @high, @med, @low, @info)
-#			end
-
-
-
