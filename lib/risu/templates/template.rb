@@ -27,6 +27,7 @@
 module Risu
 	module Templates
 		class Template < Risu::Base::TemplateBase
+			include TemplateHelper
 
 			# Initializes the template loading meta data
 			#
@@ -35,7 +36,7 @@ module Risu
 				{
 					:name => "template",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:description => "template"
 				}
 			end
@@ -43,7 +44,7 @@ module Risu
 			# Called during the rendering process
 			#
 			def render(output)
-				output.text "Template"
+				text "Template"
 				output.start_new_page
 			end
 		end
