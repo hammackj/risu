@@ -9,8 +9,6 @@
 
 #1.6 () - 
 - complience plugins xml parser test?
-- add windows 8 to Host
-- add windows 2012 to Host
 - graph text is misleading
 - create an api determining vulnerability % based on the network
 - create an api for creating a vulnerability score per host to show a risk %
@@ -30,6 +28,14 @@
 - finding summary: crit/high spacing
 - filter (uncredentialed check) from the title of MS vulns and put it in the body as a true/false kind of field
 	- remove KB # also
+- Do all the @todo / @fix  items!
+- add scanner info at a table plugin #19506
+
+## 1.7 (??)
+- Test Data
+	- test data for Item.ms_patches
+	- test data for References need real reference, for regex check
+	- 
 - Templates
 	- MS AV errors (52544)
 	- MS Pending Reboot report (35453)
@@ -37,11 +43,6 @@
 	- unsupported OS first paragraph pluralization
 	- remove ms patches from notable findings
 	- add missing ms patch section
-- add high/med/low_risks_by_host functions Item Model
-- Do all the @todo / @fix  items!
-- add scanner info at a table plugin #19506
-
-## 1.7 (??)
 - Add a filtering system for lowering the rating of plugins based on config
 	- Implement the ability to filter data out of the report
 		- Filter on
@@ -138,7 +139,6 @@
 	- scope
 	- impact of threats (generalized)
 	- graphs
-
 - SANS TOP XX report
 - Fix list report
 	- by host ordered by risk
@@ -226,7 +226,6 @@
 - Add tests for Patch model
 
 ### Marketing
-- CentOS 6 setup Tutorial
 - Backtrack5 r2 setup Tutorial
 - Ubuntu LTS setup Tutorial
 - Presentation on Risu
