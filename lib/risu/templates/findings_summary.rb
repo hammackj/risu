@@ -27,9 +27,8 @@
 module Risu
 	module Templates
 		class FindingsSummary < Risu::Base::TemplateBase
+			include TemplateHelper
 
-			#
-			#
 			def initialize ()
 				@template_info =
 				{
@@ -40,9 +39,6 @@ module Risu
 				}
 			end
 
-			#
-			# @todo comment
-			#
 			def print_risk_summary(risks, text, color)
 				@output.font_size(20) do
 					@output.fill_color color
@@ -58,9 +54,6 @@ module Risu
 				end				
 			end
 
-			#
-			# @todo comment
-			#
 			def render(output)
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
