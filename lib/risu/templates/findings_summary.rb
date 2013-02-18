@@ -50,18 +50,18 @@ module Risu
 					name = Plugin.find_by_id(item.plugin_id).plugin_name
 					count = Item.where(:plugin_id => item.plugin_id).count
 
-					@output.text "#{count} - #{name}"
+					text "#{count} - #{name}"
 				end				
 			end
 
 			def render(output)
-				output.text Report.classification.upcase, :align => :center
-				output.text "\n"
+				text Report.classification.upcase, :align => :center
+				text "\n"
 
 				report_title Report.title
 				report_subtitle "Findings Summary Report"
 				report_author "This report was prepared by\n#{Report.author}"
-				output.text "\n\n\n"
+				text "\n\n\n"
 
 				print_risk_summary(Item.critical_risks_unique_sorted, "Critical Findings", "551A8B")
 				print_risk_summary(Item.high_risks_unique_sorted, "High Findings", "FF0000")
