@@ -40,14 +40,14 @@ module Risu
 			end
 
 			def render(output)
-				report_text Report.classification.upcase, :align => :center
-				report_text "\n"
+				text Report.classification.upcase, :align => :center
+				text "\n"
 
 				report_title Report.title
 				report_subtitle "PCI / DSS Compliance Overview"
 				report_author "This report was prepared by\n#{Report.author}"
 
-				report_text "\n\n\n"
+				text "\n\n\n"
 
 				@hosts_count = Host.find(:all, :conditions => ["pci_dss_compliance is not null"]).count
 				@hosts_passed = Host.find(:all, :conditions => ["pci_dss_compliance like 'passed'"])
@@ -57,9 +57,9 @@ module Risu
 					output.text "Summary\n", :style => :bold
 				end
 
-				report_text "Of #{@hosts_count} total hosts, #{@hosts_passed.count} passed and #{@hosts_failed.count} failed."
+				text "Of #{@hosts_count} total hosts, #{@hosts_passed.count} passed and #{@hosts_failed.count} failed."
 
-				report_text "\n\n"
+				text "\n\n"
 
 				if @hosts_passed.length > 0
 					output.font_size(20) do
@@ -71,7 +71,7 @@ module Risu
 					output.text "\n"
 
 					@hosts_passed.each do |host|
-						report_text "#{host.ip} / #{host.fqdn} - passed\n"
+						text "#{host.ip} / #{host.fqdn} - passed\n"
 					end unless @hosts_passed == nil
 
 					output.start_new_page
@@ -84,7 +84,7 @@ module Risu
 						output.fill_color "000000"
 					end
 
-					report_text "\n"
+					text "\n"
 
 					@hosts_failed.each do |host|
 						host_id = host.id
@@ -97,7 +97,7 @@ module Risu
 						output.text "Plugin Output:\n", :style => :bold
 						output.text "#{item.plugin_output}\n"
 
-						report_text "\n"
+						text "\n"
 
 					end unless @hosts_failed == nil
 
