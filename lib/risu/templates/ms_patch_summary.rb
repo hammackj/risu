@@ -40,14 +40,14 @@ module Risu
 			end
 
 			def render(output)
-				report_text Report.classification.upcase, :align => :center
-				report_text "\n"
+				text Report.classification.upcase, :align => :center
+				text "\n"
 
 				report_title Report.title
 				report_subtitle "Missing Microsoft Patch Summary"
 				report_author "This report was prepared by\n#{Report.author}"
 
-				report_text "\n\n\n"
+				text "\n\n\n"
 
 				Item.ms_patches.each do |item|
 					host = Host.find_by_id(item.host_id)
@@ -55,22 +55,22 @@ module Risu
 					next if host == nil
 
 					if host.name != nil
-						report_text "Host:", :style => :bold
-						report_text host.name
+						text "Host:", :style => :bold
+						text host.name
 					end
 
 					if host.os != nil
-						report_text "OS:", :style => :bold
-						report_text host.os
+						text "OS:", :style => :bold
+						text host.os
 					end
 
 					if host.mac != nil
-						report_text "Mac:", :style => :bold
-						report_text host.mac
+						text "Mac:", :style => :bold
+						text host.mac
 					end
-					report_text "\n"
-					report_text item.plugin_output
-					report_text "\n"
+					text "\n"
+					text item.plugin_output
+					text "\n"
 				end
 			end
 		end
