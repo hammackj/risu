@@ -65,12 +65,13 @@
 		- cleaned up and updated to use the TemplateHelper mixin
 	- pci_compliance
 		- cleaned up and updated to use the TemplateHelper mixin
+	- template
+		- cleaned up and updated to use the TemplateHelper mixin
 - Wiki Pages
 	- New page for installing on Fedora []
 	- New page for installing on CentOS []
 	- New page for installing on Gentoo []
 	- New page for installing on ArchLinux []
-
 
 #1.5.3 (August 29, 2012)
 - New Parsed Tags

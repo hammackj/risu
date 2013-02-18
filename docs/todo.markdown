@@ -7,11 +7,10 @@
 
 #Road map
 
-#1.6 () - 
-- complience plugins xml parser test?
-- graph text is misleading
-- create an api determining vulnerability % based on the network
-- create an api for creating a vulnerability score per host to show a risk %
+##1.6 () - 
+
+## 1.7 (??)
+- complacence plugins xml parser test?
 - error check connection fail on the console to mysql
 - migration error handling
   - catch mysql/sqlite/postgres errors during up/down
@@ -24,18 +23,19 @@
 	- add tables for the OS data
 	- prompt for password?
 	- generate report based on scan_id/report id
-- add postgres support and test it
 - finding summary: crit/high spacing
 - filter (uncredentialed check) from the title of MS vulns and put it in the body as a true/false kind of field
 	- remove KB # also
+- add postgres support and test it
+- graph text is misleading
+- create an api determining vulnerability % based on the network
+- create an api for creating a vulnerability score per host to show a risk %
 - Do all the @todo / @fix  items!
+	- 
 - add scanner info at a table plugin #19506
-
-## 1.7 (??)
 - Test Data
 	- test data for Item.ms_patches
 	- test data for References need real reference, for regex check
-	- 
 - Templates
 	- MS AV errors (52544)
 	- MS Pending Reboot report (35453)
