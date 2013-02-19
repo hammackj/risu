@@ -78,11 +78,10 @@
  	end
 
  	test "return 2011-07-07 14:49:31 -0500 for Host.where(:name => '69.69.69.69').first.end" do
-		assert Host.where(:name => "69.69.69.69").first.end == "2011-07-07 14:49:31 -0500", "GOT #{Host.where(:name => "69.69.69.69").first.end}"
+		assert Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d") == "20110707", "GOT #{Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d")}"
  	end
 
  	test "return 1 Item for Host 69.69.69.69" do
  		assert Host.where(:name => "69.69.69.69").first.items.count == 1, "GOT #{Host.where(:name => "69.69.69.69").first.items.count}"
  	end
-
  end
