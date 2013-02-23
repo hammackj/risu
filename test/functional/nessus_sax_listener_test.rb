@@ -29,7 +29,7 @@
  class NessusSaxListenerTest < ActiveSupport::TestCase
  	include Risu::Models
 
- 	#exapand this
+ 	#Expand this to cover the entire Nessus xml spec
  	def build_nessus_xml property, value
 		builder = Nokogiri::XML::Builder.new do |xml|
 			xml.NessusClientData_v2 do
