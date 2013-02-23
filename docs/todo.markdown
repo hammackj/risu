@@ -31,7 +31,6 @@
 - create an api determining vulnerability % based on the network
 - create an api for creating a vulnerability score per host to show a risk %
 - Do all the @todo / @fix  items!
-	- 
 - add scanner info at a table plugin #19506
 - Test Data
 	- test data for Item.ms_patches
