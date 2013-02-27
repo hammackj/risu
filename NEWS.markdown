@@ -72,10 +72,10 @@
 	- template
 		- cleaned up and updated to use the TemplateHelper mixin
 - Wiki Pages
-	- New page for installing on Fedora []
-	- New page for installing on CentOS []
-	- New page for installing on Gentoo []
-	- New page for installing on ArchLinux []
+	- New page for installing on [Fedora](https://github.com/arxopia/risu/wiki/Fedora-Installation-Guide)
+	- New page for installing on [CentOS](https://github.com/arxopia/risu/wiki/CentOS-Installation-Guide)
+	- New page for installing on [Gentoo](https://github.com/arxopia/risu/wiki/Gentoo-Installation-Guide)
+	- New page for installing on [ArchLinux](https://github.com/arxopia/risu/wiki/Arch-Linux-Install-Guide)
 
 #1.5.3 (August 29, 2012)
 - New Parsed Tags
