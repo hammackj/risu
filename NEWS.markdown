@@ -3,7 +3,7 @@
 # 1.6 (2013)
 ***Official support for Ruby versions less than 1.9.3 has been dropped due to Rails 4***
 
-- Changed all branding to Arxopia LLC. instead of myself for legal protection, **Nothing changes** the project will always be open source and free (as in cost)
+- Changed all copyright to Arxopia LLC. instead of myself for legal protection, **Nothing changes** the project will always be open source and free (as in cost)
 - Fixed several missing requires for Sqlite3 and Rails
 - Default template font size is now 10pt
 - Added TemplateHelper mixin for templates to use. The goal is to abstract Prawn in-line code out of the templates over the next few releases to allow for dynamic output to different formats.Currently it adds the following methods to each template it is included in:
