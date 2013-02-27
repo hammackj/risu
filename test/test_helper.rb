@@ -91,6 +91,8 @@ database:
   username: risu
   password: risurisu2012"
 
+  @app = nil
+
 def setup_test_database
 
 	begin
@@ -127,6 +129,15 @@ def setup_test_database
 	rescue => e
 		puts "[!] #{e.message}\n#{e.backtrace}\n\n"
 	end
+end
+
+def debug_console
+  @app = Risu::CLI::Application.new
+  @app.consolize do
+    #puts Risu::CLI::Banner
+    #puts "#{APP_NAME} Console v#{VERSION}"
+  end
+  exit
 end
 
 setup_test_database()
