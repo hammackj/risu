@@ -1,6 +1,8 @@
 # News
 
-# 1.6 (2013)
+#1.6.1 ()
+
+# 1.6 (Feburary 27, 2013)
 ***Official support for Ruby versions less than 1.9.3 has been dropped due to Rails 4***
 
 - Changed all copyright to Arxopia LLC. instead of myself for legal protection, **Nothing changes** the project will always be open source and free (as in cost)
