@@ -35,7 +35,9 @@
 			xml.NessusClientData_v2 do
 				xml.Policy do
 					xml.policyName "Everything"
-					xml.policyComments ""
+					xml.policyComments "comments..."
+					xml.policyOwner "Someone"
+					xml.visibility "shared"
 
 					xml.Preferences do
 						xml.ServerPreferences do
@@ -57,10 +59,24 @@
 							xml.tag(:name => "host-ip") do
 								xml.text "69.69.69.69"
 							end
+
+							xml.tag(:name => "traceroute-hop-0") do
+								xml.text "69.69.69.67"
+							end
+
+							xml.tag(:name => "traceroute-hop-1") do
+								xml.text "69.69.69.68"
+							end	
+
+							xml.tag(:name => "traceroute-hop-2") do
+								xml.text "69.69.69.70"
+							end																					
 						end
 
-						xml.ReportItem(:port => "88", :svc_name => "kerberos?", :protocol => "tcp", :severity => "0", :pluginName => "", :pluginFamily => "") do
+						xml.ReportItem(:port => "88", :svc_name => "kerberos?", :protocol => "tcp", :severity => "0", :pluginName => "Test Plugin", :pluginFamily => "Test Family", :pluginID =>"999999") do
 							xml.xref "MSFT:MS00-000"
+							xml.xref "cert-cc:CA-1997-22"
+							xml.send(:"cert-cc", "CA-1997-22") 
 						end
 					end
 				end
@@ -84,4 +100,36 @@
  	test "return 1 Item for Host 69.69.69.69" do
  		assert Host.where(:name => "69.69.69.69").first.items.count == 1, "GOT #{Host.where(:name => "69.69.69.69").first.items.count}"
  	end
+
+ 	test "return CA-1997-22 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => cert-cc).first.value" do
+ 		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "cert-cc").first.value == "CA-1997-22", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "cert-cc").first.value}"
+ 	end
+
+ 	test "return Everything for Policy.last.name" do
+ 		assert Policy.last.name == "Everything", "GOT #{Policy.last.name}"
+ 	end
+
+ 	test "return Comments... for Policy.last.comments" do
+ 		assert Policy.last.comments == "comments...", "GOT #{Policy.last.comments}"
+ 	end
+
+ 	test "return Someone for Policy.last.owner" do
+ 		assert Policy.last.owner == "Someone", "GOT #{Policy.last.owner}"
+ 	end
+
+ 	test "return shared for Policy.last.visibility" do
+ 		assert Policy.last.visibility == "shared", "GOT #{Policy.last.visibility}"
+ 	end
+
+ 	test "return 10.69.69.67 for Host.where(:name => 69.69.69.69).first.traceroute_hop_0" do
+ 		assert Host.where(:name => "69.69.69.69").first.traceroute_hop_0 == "69.69.69.67", "GOT #{Host.where(:name => "69.69.69.69").first.traceroute_hop_0}"
+ 	end
+
+ 	test "return 10.69.69.68 for Host.where(:name => 69.69.69.69).first.traceroute_hop_1" do
+ 		assert Host.where(:name => "69.69.69.69").first.traceroute_hop_1 == "69.69.69.68", "GOT #{Host.where(:name => "69.69.69.69").first.traceroute_hop_1}"
+ 	end
+ 	
+ 	test "return 10.69.69.70 for Host.where(:name => 69.69.69.69).first.traceroute_hop_2" do
+ 		assert Host.where(:name => "69.69.69.69").first.traceroute_hop_2 == "69.69.69.70", "GOT #{Host.where(:name => "69.69.69.69").first.traceroute_hop_2}"
+ 	end 	
  end
