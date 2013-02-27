@@ -45,6 +45,7 @@
 		- Added methods
 			- medium_risks_by_host
 			- low_risks_by_host
+			- plugin
 		- Rewrote the notable_order_by_cvss_raw
 - Templates
 	- notable
