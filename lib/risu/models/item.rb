@@ -507,6 +507,9 @@ module Risu
 				    select("items.*").select("count(*) as count_all").group(:plugin_id).order("count_all DESC")
 				end
 
+				def plugin
+					Plugin.where(:id => Item.first.attributes["plugin_id"])
+				end
 			end
 		end
 	end
