@@ -35,6 +35,8 @@ module Risu
 				create_table :policies do |t|
 					t.string :name
 					t.string :comments
+					t.string :owner
+					t.string :visibility
 				end
 
 				create_table :server_preferences do |t|
@@ -100,6 +102,9 @@ module Risu
 					t.string :pcidss_backup_files
 					t.string :system_type
 					t.string :bios_uuid
+					t.string :traceroute_hop_0
+					t.string :traceroute_hop_1
+					t.string :traceroute_hop_2
 					t.text :notes
 				end
 
@@ -132,7 +137,6 @@ module Risu
 					t.datetime :plugin_modification_date
 					t.datetime :vuln_publication_date
 					t.string :cvss_vector
-					#t.string :cvss_base_score
 					t.float :cvss_base_score
 					t.string :cvss_temporal_score
 					t.string :cvss_temporal_vector
