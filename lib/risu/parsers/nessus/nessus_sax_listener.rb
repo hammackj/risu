@@ -57,13 +57,15 @@ module Risu
 						"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
 						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname", "always_run",
 						"cm:compliance-info", "cm:compliance-actual-value", "cm:compliance-check-id", "cm:compliance-policy-value",
-						"cm:compliance-audit-file", "cm:compliance-check-name", "cm:compliance-result", "cm:compliance-output"
+						"cm:compliance-audit-file", "cm:compliance-check-name", "cm:compliance-result", "cm:compliance-output", "policyOwner",
+						"visibility"
 					]
 
 					@valid_elements = @valid_elements + @valid_references
 
 					# This makes adding new host properties really easy, except for the
 					#MS patch numbers, this are handled differently.
+					# @todo this needs to become a sql hash table with accessors for the common ones
 					@valid_host_properties = {
 						"HOST_END" => :end,
 						"mac-address" => :mac,
@@ -96,7 +98,10 @@ module Risu
 						"pcidss:unprotected_mssql_db" => :pcidss_unprotected_mssql_db,
 						"pcidss:obsolete_software" => :pcidss_obsolete_software,
 						"pcidss:www:sql_injection" => :pcidss_www_sql_injection,
-						"pcidss:backup_files" => :pcidss_backup_files
+						"pcidss:backup_files" => :pcidss_backup_files,
+						"traceroute-hop-0" => :traceroute_hop_0,
+						"traceroute-hop-1" => :traceroute_hop_1,
+						"traceroute-hop-2" => :traceroute_hop_2
 					}
 				end
 
@@ -197,14 +202,26 @@ module Risu
 							@policy.attributes = {
 								:name => @vals["policyName"]
 							}
-
 							@policy.save
+
 						when "policyComments"
 							@policy.attributes = {
 								:comments => @vals["policyComments"]
 							}
-
 							@policy.save
+
+						when "policyOwner"
+							@policy.attributes = {
+								:owner => @vals["policyOwner"]
+							}
+							@policy.save
+
+						when "visibility"
+							@policy.attributes = {
+								:visibility => @vals["visibility"]
+							}
+							@policy.save
+
 						when "preference"
 							@sp.attributes = {
 								:name => @vals["name"],
