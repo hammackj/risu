@@ -7,7 +7,7 @@ Version **1.6.0** is the current release.
 ## Requirements
 
 ### Ruby
-Risu has been tested with ruby-1.8.7-p334, ruby-1.9.2-p180, ruby-1.9.3-p125. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
+Risu has been tested with ruby-1.9.3-p392 and ruby-2.0.0-p0. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
 
 ### RubyGems
 Risu relies heavily on [RubyGems](http://rubygems.org/) to install other dependencies I highly recommend using it. RubyGems is included by default in the 1.9.x versions of [Ruby](http://ruby-lang.org/).
@@ -20,12 +20,13 @@ Risu relies heavily on [RubyGems](http://rubygems.org/) to install other depende
 - gruff
 - prawn
 - mysql2
+- nokogiri
 
 ## Developmental Requirements
 
 These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install risu, If not this command will install them all:
 
-	% gem install rmagick gruff prawn yard mysql2 libxml-ruby rails sqlite3 logger yaml
+	% gem install rmagick gruff prawn yard mysql2 libxml-ruby rails sqlite3 logger yaml nokogiri
 
 **You my need sudo/root access depending on your system setup**
 
