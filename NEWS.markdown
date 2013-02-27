@@ -47,6 +47,9 @@
 			- low_risks_by_host
 			- plugin
 		- Rewrote the notable_order_by_cvss_raw
+- Schema Changes
+	- Added owner and visibility to the Policy Table
+	- Added traceroute_hop_0-2 to the Host Properties
 - Templates
 	- notable
 		- cleaned up and updated to use the TemplateHelper mixin
