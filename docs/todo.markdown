@@ -8,6 +8,7 @@
 #Road map
 
 ## 1.7 (??)
+- redo project page on arxopia/project/risu
 - Update HostProperties to become a sql hash table with accessors for the common ones
 - Do all the @todo / @fix  items!
 - complacence plugins xml parser test?
