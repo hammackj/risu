@@ -3,13 +3,13 @@
 **Release dates and road map are estimates, and features can be changed at any time.**
 
 #**Bugs**
-*** Notable reports show an incorrect number, might be fixed already. ***
+*** OS's with 2000 or XP can be misidentified by Nessus showing both host messing up some of the graphs. ***
 
 #Road map
 
-##1.6 () - 
-
 ## 1.7 (??)
+- Update HostProperties to become a sql hash table with accessors for the common ones
+- Do all the @todo / @fix  items!
 - complacence plugins xml parser test?
 - error check connection fail on the console to mysql
 - migration error handling
@@ -30,7 +30,6 @@
 - graph text is misleading
 - create an api determining vulnerability % based on the network
 - create an api for creating a vulnerability score per host to show a risk %
-- Do all the @todo / @fix  items!
 - add scanner info at a table plugin #19506
 - Test Data
 	- test data for Item.ms_patches
@@ -68,22 +67,11 @@
 - Look at moving to Nokogiri for xml parsing; http://nokogiri.org if its faster
 - page kerning?
 
-## 1.8 (??) - Additional Parsers
-- Remove rmagick (GRRRR!)
-- Add Parser for Nessus NBE Format
-- Add Parser for Nessus NSR Format
-- Add Parser for Nessus V1 of the XML Format
-- Add Parser for OpenVas Output
-- Add Parser for SecurityCenter Output
-- Add Parser for Nexpose XML [Simple, Detailed]
-- Add Parser for Qualys XML
-- Add Parser for Nmap XML?
-- Add Parser for SAINT XML
-- Easier way to select the Scan to generate reports from
 
 ##List of things TODO
 ###Core
 - bug report info collection option
+- Remove rmagick (GRRRR!)
 - Complete comments for all existing code
 - More text generation from graphs
 - pdf bookmarks
@@ -96,6 +84,15 @@
 - Nexpose SimpleXML parser
 - Create a Nessus document generator, for testing the parser
 - Add Schema checks to make sure the schema is compatible with the version of risu
+- Add Parser for Nessus NBE Format
+- Add Parser for Nessus NSR Format
+- Add Parser for Nessus V1 of the XML Format
+- Add Parser for OpenVas Output
+- Add Parser for SecurityCenter Output
+- Add Parser for Nexpose XML [Simple, Detailed]
+- Add Parser for Qualys XML
+- Add Parser for Nmap XML?
+- Add Parser for SAINT XML
 
 ###Models
 - add hosts with crit/high/med/low queries
@@ -118,6 +115,7 @@
 - generate a graph matirx like exec summary detailed
 
 ###Reports / Templates
+- Easier way to select the Scan to generate reports from
 - Unsupported OS report
 	- <= XP SP1 = oct 10, 2006
 	- XP SP2 = July 13, 2010
@@ -196,7 +194,7 @@
         - plugin output
 
 ### Testing
-- Create tests for everything (95%+ code coverage goal, 82% Current)
+- Create tests for everything (95%+ code coverage goal, 85% Current)
 	- Parser tests
 		- Add test for new XML element
 		- Add test for new host properties tag
