@@ -1,6 +1,6 @@
 # News
 
-#1.6.1 (March, 2013)
+#1.6.1 (March 1, 2013)
 - Models
 	- Reference Model
 		- Added usn
@@ -9,7 +9,7 @@
 		- The table is name / value for each property
 		- All netstat / traceroute tags will be in this new table there can be up to 65k entries for each protocol and 255 traceroute entries per host
 
-# 1.6 (Feburary 27, 2013)
+# 1.6 (February 27, 2013)
 ***Official support for Ruby versions less than 1.9.3 has been dropped due to Rails 4***
 
 - Changed all copyright to Arxopia LLC. instead of myself for legal protection, **Nothing changes** the project will always be open source and free (as in cost)
