@@ -34,7 +34,7 @@ module Risu
 				{
 					:name => "pci_compliance",
 					:author => "hammackj",
-					:version => "0.0.4",
+					:version => "0.0.5",
 					:description => "Generates a PCI Compliance Overview Report"
 				}
 			end
@@ -49,9 +49,12 @@ module Risu
 
 				text "\n\n\n"
 
-				@hosts_count = Host.find(:all, :conditions => ["pci_dss_compliance is not null"]).count
-				@hosts_passed = Host.find(:all, :conditions => ["pci_dss_compliance like 'passed'"])
-				@hosts_failed = Host.find(:all, :conditions => ["pci_dss_compliance like 'failed'"])
+				#@hosts_count = Host.find(:all, :conditions => ["pci_dss_compliance is not null"]).count
+				@hosts_count = HostProperty.where(:name => "pci_dss_compliance").count
+				#@hosts_passed = Host.find(:all, :conditions => ["pci_dss_compliance like 'passed'"])
+				@hosts_passed = HostProperty.where(:name => "pci_dss_compliance").where(:value => "passed")
+				#@hosts_failed = Host.find(:all, :conditions => ["pci_dss_compliance like 'failed'"])
+				@hosts_failed = HostProperty.where(:name => "pci_dss_compliance").where(:value => "failed")
 
 				output.font_size(20) do
 					output.text "Summary\n", :style => :bold
