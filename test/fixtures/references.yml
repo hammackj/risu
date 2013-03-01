@@ -132,3 +132,8 @@ reference_27:
   plugin_id: 99999
   reference_name: "msvr"
   value: "2012-0009"
+
+reference_28:
+  plugin_id: 99999
+  reference_name: "usn"
+  value: "USN:1752-1"
