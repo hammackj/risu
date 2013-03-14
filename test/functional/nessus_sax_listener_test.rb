@@ -76,7 +76,9 @@
 						xml.ReportItem(:port => "88", :svc_name => "kerberos?", :protocol => "tcp", :severity => "0", :pluginName => "Test Plugin", :pluginFamily => "Test Family", :pluginID =>"999999") do
 							xml.xref "MSFT:MS00-000"
 							xml.xref "cert-cc:CA-1997-22"
-							xml.send(:"cert-cc", "CA-1997-22") 
+							xml.send(:"cert-cc", "CA-1997-22")
+							xml.xref "USN:1752-1"
+							xml.send(:"usn", "USN:1752-1")
 						end
 					end
 				end
@@ -105,6 +107,10 @@
  		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "cert-cc").first.value == "CA-1997-22", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "cert-cc").first.value}"
  	end
 
+ 	test "return USN:1752-1 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => usn).first.value" do
+ 		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value == "USN:1752-1", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value}"
+ 	end 	
+
  	test "return Everything for Policy.last.name" do
  		assert Policy.last.name == "Everything", "GOT #{Policy.last.name}"
  	end
@@ -121,15 +127,15 @@
  		assert Policy.last.visibility == "shared", "GOT #{Policy.last.visibility}"
  	end
 
- 	test "return 10.69.69.67 for Host.where(:name => 69.69.69.69).first.traceroute_hop_0" do
- 		assert Host.where(:name => "69.69.69.69").first.traceroute_hop_0 == "69.69.69.67", "GOT #{Host.where(:name => "69.69.69.69").first.traceroute_hop_0}"
+ 	test "return 10.69.69.67 for Host.where(:name => 69.69.69.69)...traceroute_hop_0" do
+ 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value == "69.69.69.67", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value}"
  	end
 
- 	test "return 10.69.69.68 for Host.where(:name => 69.69.69.69).first.traceroute_hop_1" do
- 		assert Host.where(:name => "69.69.69.69").first.traceroute_hop_1 == "69.69.69.68", "GOT #{Host.where(:name => "69.69.69.69").first.traceroute_hop_1}"
+ 	test "return 10.69.69.68 for Host.where(:name => 69.69.69.69)...traceroute_hop_1" do
+ 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value == "69.69.69.68", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value}"
  	end
  	
- 	test "return 10.69.69.70 for Host.where(:name => 69.69.69.69).first.traceroute_hop_2" do
- 		assert Host.where(:name => "69.69.69.69").first.traceroute_hop_2 == "69.69.69.70", "GOT #{Host.where(:name => "69.69.69.69").first.traceroute_hop_2}"
+ 	test "return 10.69.69.70 for Host.where(:name => 69.69.69.69)...traceroute_hop_2" do
+		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value == "69.69.69.70", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value}"
  	end 	
  end

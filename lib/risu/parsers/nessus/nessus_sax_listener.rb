@@ -43,7 +43,18 @@ module Risu
 						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
 						"owasp", "cwe", "iavb", "iavt", "cisco-sa", "ics-alert",
 						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa", "apple-sa", 
-						"icsa", "cert-cc", "msvr"
+						"icsa", "cert-cc", "msvr", "usn"
+					]
+
+					@valid_host_properties = Array[
+						"HOST_END", "mac-address", "HOST_START", "operating-system", "host-ip", "host-fqdn", "netbios-name", 
+						"local-checks-proto", "smb-login-used", "ssh-auth-meth", "ssh-login-used", "pci-dss-compliance", 
+						"pci-dss-compliance:", "system-type", "bios-uuid", "pcidss:compliance:failed", "pcidss:compliance:passed", 
+						"pcidss:deprecated_ssl", "pcidss:expired_ssl_certificate", "pcidss:high_risk_flaw", "pcidss:medium_risk_flaw", 
+						"pcidss:reachable_db", "pcidss:www:xss", "pcidss:directory_browsing", "pcidss:known_credentials", 
+						"pcidss:compromised_host:worm", "pcidss:obsolete_operating_system", "pcidss:dns_zone_transfer", 
+						"pcidss:unprotected_mssql_db", "pcidss:obsolete_software", "pcidss:www:sql_injection", "pcidss:backup_files", 
+						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2"
 					]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
@@ -63,45 +74,15 @@ module Risu
 
 					@valid_elements = @valid_elements + @valid_references
 
-					# This makes adding new host properties really easy, except for the
-					#MS patch numbers, this are handled differently.
-					# @todo this needs to become a sql hash table with accessors for the common ones
-					@valid_host_properties = {
+					# These are the more commonly used host properties, mapping them here to store in the host table
+					@host_properties_mapping = {
 						"HOST_END" => :end,
 						"mac-address" => :mac,
 						"HOST_START" => :start,
 						"operating-system" => :os,
 						"host-ip" => :ip,
 						"host-fqdn" => :fqdn,
-						"netbios-name" => :netbios,
-						"local-checks-proto" => :local_checks_proto,
-						"smb-login-used" => :smb_login_used,
-						"ssh-auth-meth" => :ssh_auth_meth,
-						"ssh-login-used" => :ssh_login_used,
-						"pci-dss-compliance" => :pci_dss_compliance,
-						"pci-dss-compliance:" => :pci_dss_compliance_ , #I think this is a Tenable bug~
-						"system-type" => :system_type,
-						"bios-uuid" => :bios_uuid,
-						"pcidss:compliance:failed" => :pcidss_compliance_failed,
-						"pcidss:compliance:passed" => :pcidss_compliance_passed,
-						"pcidss:deprecated_ssl" => :pcidss_deprecated_ssl,
-						"pcidss:expired_ssl_certificate" => :pcidss_expired_ssl_certificate,
-						"pcidss:high_risk_flaw" => :pcidss_high_risk_flaw,
-						"pcidss:medium_risk_flaw" => :pcidss_medium_risk_flaw,
-						"pcidss:reachable_db" => :pcidss_reachable_db,
-						"pcidss:www:xss" => :pcidss_www_xss,
-						"pcidss:directory_browsing" => :pcidss_directory_browsing,
-						"pcidss:known_credentials" => :pcidss_known_credentials,
-						"pcidss:compromised_host:worm" => :pcidss_compromised_host_worm,
-						"pcidss:obsolete_operating_system" => :pcidss_obsolete_operating_system,
-						"pcidss:dns_zone_transfer" => :pcidss_dns_zone_transfer,
-						"pcidss:unprotected_mssql_db" => :pcidss_unprotected_mssql_db,
-						"pcidss:obsolete_software" => :pcidss_obsolete_software,
-						"pcidss:www:sql_injection" => :pcidss_www_sql_injection,
-						"pcidss:backup_files" => :pcidss_backup_files,
-						"traceroute-hop-0" => :traceroute_hop_0,
-						"traceroute-hop-1" => :traceroute_hop_1,
-						"traceroute-hop-2" => :traceroute_hop_2
+						"netbios-name" => :netbios
 					}
 				end
 
@@ -143,6 +124,7 @@ module Risu
 							@rh.save
 						when "tag"
 							@attr = nil
+							@hp = @rh.host_properties.create
 
 							if attributes["name"] =~ /[M|m][S|s]\d{2,}-\d{2,}/
 								@attr = if attributes["name"] =~ /[M|m][S|s]\d{2,}-\d{2,}/
@@ -151,14 +133,17 @@ module Risu
 									nil
 								end
 							else
-								@attr = if @valid_host_properties.keys.include?(attributes["name"])
+								@attr = if @valid_host_properties.include?(attributes["name"])
 									attributes["name"]
 								else
 									nil
 								end
 							end
 
-							puts "New HostProperties attribute: #{attributes["name"]}. Please report this to #{Risu::EMAIL}\n" if @attr.nil?
+							if attributes["name"] !~ /(netstat-(?:established|listen)-(?:tcp|udp)\d+-\d+)/ && attributes["name"] !~ /traceroute-hop-\d+/
+								#puts attributes["name"]
+								puts "New HostProperties attribute: #{attributes["name"]}. Please report this to #{Risu::EMAIL}\n" if @attr.nil?
+							end
 						when "ReportItem"
 							@vals = Hash.new # have to clear this out or everything has the same references
 							@ri = @rh.items.create
@@ -168,7 +153,7 @@ module Risu
 								@plugin = Risu::Models::Plugin.find_or_create_by_id(attributes["pluginID"])
 							end
 
-							@ri.port	= attributes["port"]
+							@ri.port = attributes["port"]
 							@ri.svc_name = attributes["svc_name"]
 							@ri.protocol = attributes["protocol"]
 							@ri.severity = attributes["severity"]
@@ -275,8 +260,13 @@ module Risu
 								@patch.value = @vals['tag']
 								@patch.save
 							else
-								@rh.attributes = {@valid_host_properties[@attr] => @vals["tag"].gsub("\n", ",") } if @valid_host_properties.keys.include?(@attr)
+								@rh.attributes = {@host_properties_mapping[@attr] => @vals["tag"].gsub("\n", ",") } if @host_properties_mapping.keys.include?(@attr)
 								@rh.save
+
+								@hp.name = @attr
+								@hp.value = @vals['tag']
+								@hp.save
+
 							end if @attr != nil
 						#We cannot handle the references in the same block as the rest of the ReportItem tag because
 						#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax

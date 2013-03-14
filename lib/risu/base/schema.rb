@@ -77,35 +77,13 @@ module Risu
 					t.string :ip
 					t.string :fqdn
 					t.string :netbios
-					t.string :local_checks_proto
-					t.string :smb_login_used
-					t.string :ssh_auth_meth
-					t.string :ssh_login_used
-					t.string :pci_dss_compliance
-					t.string :pci_dss_compliance_
-					t.string :pcidss_compliance_failed
-					t.string :pcidss_compliance_passed
-					t.string :pcidss_deprecated_ssl
-					t.string :pcidss_expired_ssl_certificate
-					t.string :pcidss_obsolete_operating_system
-					t.string :pcidss_dns_zone_transfer
-					t.string :pcidss_high_risk_flaw
-					t.string :pcidss_medium_risk_flaw
-					t.string :pcidss_reachable_db
-					t.string :pcidss_www_xss
-					t.string :pcidss_directory_browsing
-					t.string :pcidss_known_credentials
-					t.string :pcidss_compromised_host_worm
-					t.string :pcidss_unprotected_mssql_db
-					t.string :pcidss_obsolete_software
-					t.string :pcidss_www_sql_injection
-					t.string :pcidss_backup_files
-					t.string :system_type
-					t.string :bios_uuid
-					t.string :traceroute_hop_0
-					t.string :traceroute_hop_1
-					t.string :traceroute_hop_2
 					t.text :notes
+				end
+
+				create_table :host_properties do |t|
+					t.integer :host_id
+					t.string :name
+					t.string :value
 				end
 
 				create_table :items do |t|
@@ -223,6 +201,7 @@ module Risu
 				drop_table :versions
 				drop_table :service_descriptions
 				drop_table :patches
+				drop_table :host_properties
 			end
 		end
 	end

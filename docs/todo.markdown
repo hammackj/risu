@@ -9,7 +9,6 @@
 
 ## 1.7 (??)
 - redo project page on arxopia/project/risu
-- Update HostProperties to become a sql hash table with accessors for the common ones
 - Do all the @todo / @fix  items!
 - complacence plugins xml parser test?
 - error check connection fail on the console to mysql
@@ -67,7 +66,6 @@
 - Language abstraction for text generation
 - Look at moving to Nokogiri for xml parsing; http://nokogiri.org if its faster
 - page kerning?
-
 
 ##List of things TODO
 ###Core

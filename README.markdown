@@ -2,7 +2,7 @@
 
 Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
-Version **1.6.0** is the current release.
+Version **1.6.1** is the current release.
 
 ## Requirements
 
@@ -22,6 +22,11 @@ Risu relies heavily on [RubyGems](http://rubygems.org/) to install other depende
 - mysql2
 - nokogiri
 
+## Installation
+Installation is really easy just gem install!
+
+    % gem install risu
+
 ## Developmental Requirements
 
 These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install risu, If not this command will install them all:
@@ -31,11 +36,6 @@ These are all available through [RubyGems](http://rubygems.org/). The should be 
 **You my need sudo/root access depending on your system setup**
 
 Any database that ActiveRecord supports should work. Risu has been tested with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/).
-
-## Installation
-Installation is really easy just gem install!
-
-	% gem install risu
 
 ## Database Setup
 

@@ -25,37 +25,12 @@
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	APP_NAME = "risu"
-	VERSION = "1.6.2"
-	GRAPH_WIDTH = 750
-	EMAIL = "risu@arxopia.com"
-	CONFIG_FILE = "./risu.cfg"
-	USER_TEMPLATES_DIR = "~/.risu/templates/"
+	module Models
+
+		# HostProperty Model
+		#
+		class HostProperty < ActiveRecord::Base
+			belongs_to :host
+		end
+	end
 end
-
-require 'rails'
-require 'active_record'
-require "active_support"
-require 'libxml'
-require 'logger'
-require 'ipaddr'
-require 'yaml'
-require 'gruff'
-require 'prawn'
-require 'prawn/layout'
-require 'stringio'
-require 'mysql2'
-require 'irb'
-require 'sqlite3'
-require 'nokogiri'
-
-require 'optparse'
-
-require 'risu/base'
-require 'risu/cli'
-require 'risu/exceptions'
-require 'risu/models'
-require 'risu/parsers'
-require 'risu/renderers'
-
-include Risu::Models

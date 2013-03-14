@@ -135,4 +135,8 @@ class ReferenceTest < ActiveSupport::TestCase
 		assert Reference.msvr != nil, "GOT #{Reference.msvr}"
 	end
 
+	test "should return a usn for Reference.usn" do
+		assert Reference.usn != nil, "GOT #{Reference.usn}"
+	end	
+
 end

@@ -32,6 +32,7 @@ module Risu
 			belongs_to :report
 			has_many :items
 			has_many :patches
+			has_many :host_properties
 
 			class << self
 

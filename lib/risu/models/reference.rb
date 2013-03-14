@@ -230,7 +230,13 @@ module Risu
 				#
 				def msvr
 					where(:reference_name => "msvr").select('DISTINCT value')
-				end				
+				end
+
+				#
+				#
+				def usn
+					where(:reference_name => "usn").select('DISTINCT value')
+				end	
 			end
 		end
 	end
