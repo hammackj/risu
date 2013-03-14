@@ -1,7 +1,7 @@
 # News
 
 #1.6.2 (March 13, 2013)
-- pci_compliance template - Correct a bug that prevented it from working. Reported by jkordish
+- pci_compliance template - Correct a bug that prevented it from working. Reported by [jkordish]
 - Added Report.extra to contain any extra risu.config yaml settings to be passed to a report
 	- Check for nil before using it!
 	- It will contain all tags in the report: section of the config file
