@@ -27,7 +27,6 @@
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), 'lib'))
 
-require 'rubygems'
 require 'risu'
 
 Gem::Specification.new do |s|

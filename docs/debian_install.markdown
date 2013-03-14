@@ -26,7 +26,7 @@ To test and see if the install run the following command
 You should see output like the following:
 
 	% risu -v
-	risu: 1.5.1
+	risu: 1.6.2
 	Ruby Version: 1.9.2
 	Rubygems Version: 1.8.24
 
