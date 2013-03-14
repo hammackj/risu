@@ -50,11 +50,11 @@ module Risu
 				text "\n\n\n"
 
 				#@hosts_count = Host.find(:all, :conditions => ["pci_dss_compliance is not null"]).count
-				@hosts_count = HostProperty.where(:name => "pci_dss_compliance").count
+				@hosts_count = HostProperty.where(:name => "pci-dss-compliance").count
 				#@hosts_passed = Host.find(:all, :conditions => ["pci_dss_compliance like 'passed'"])
-				@hosts_passed = HostProperty.where(:name => "pci_dss_compliance").where(:value => "passed")
+				@hosts_passed = HostProperty.where(:name => "pci-dss-compliance").where(:value => "passed")
 				#@hosts_failed = Host.find(:all, :conditions => ["pci_dss_compliance like 'failed'"])
-				@hosts_failed = HostProperty.where(:name => "pci_dss_compliance").where(:value => "failed")
+				@hosts_failed = HostProperty.where(:name => "pci-dss-compliance").where(:value => "failed")
 
 				output.font_size(20) do
 					output.text "Summary\n", :style => :bold
@@ -73,7 +73,8 @@ module Risu
 
 					output.text "\n"
 
-					@hosts_passed.each do |host|
+					@hosts_passed.each do |host_prop|
+						host = host_prop.host
 						text "#{host.ip} / #{host.fqdn} - passed\n"
 					end unless @hosts_passed == nil
 
@@ -89,8 +90,9 @@ module Risu
 
 					text "\n"
 
-					@hosts_failed.each do |host|
-						host_id = host.id
+					@hosts_failed.each do |host_prop|
+						host_id = host_prop.host_id
+						host = host_prop.host
 						plugin = Plugin.find(:first, :conditions => { :id => 33929 })
 						item = Item.find(:first, :conditions => { :host_id => host_id, :plugin_id => plugin.id })
 

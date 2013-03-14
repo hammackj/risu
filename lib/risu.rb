@@ -26,7 +26,7 @@
 
 module Risu
 	APP_NAME = "risu"
-	VERSION = "1.6.1"
+	VERSION = "1.6.2"
 	GRAPH_WIDTH = 750
 	EMAIL = "risu@arxopia.com"
 	CONFIG_FILE = "./risu.cfg"
