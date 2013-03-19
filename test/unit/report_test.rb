@@ -35,6 +35,6 @@ class ReportTest < ActiveSupport::TestCase
 
 	test "Report.scanner_nessus_ratings_text length should be 1537" do
 		Report.company = ""
-		assert Report.scanner_nessus_ratings_text.length == 1537., "GOT #{Report.scanner_nessus_ratings_text.length}"
+		assert Report.scanner_nessus_ratings_text.length == 1537, "GOT #{Report.scanner_nessus_ratings_text.length}"
 	end
 end
