@@ -7,6 +7,12 @@
 
 #Road map
 
+##1.6.3
+- Documents
+	- Template Tutorial
+	- Updating tutorial
+	-
+
 ## 1.7 (??)
 - redo project page on arxopia/project/risu
 - Do all the @todo / @fix  items!
