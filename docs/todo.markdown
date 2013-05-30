@@ -8,13 +8,16 @@
 #Road map
 
 ##1.6.3
+- Patch roll up
+- nessus 5.2 support
+- techfindings report each host for plugin output
+- redo project page on arxopia/project/risu
 - Documents
 	- Template Tutorial
 	- Updating tutorial
 	-
 
 ## 1.7 (??)
-- redo project page on arxopia/project/risu
 - Do all the @todo / @fix  items!
 - complacence plugins xml parser test?
 - error check connection fail on the console to mysql
