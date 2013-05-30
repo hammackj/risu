@@ -89,6 +89,7 @@ module Risu
 				create_table :items do |t|
 					t.integer :host_id
 					t.integer :plugin_id
+					t.integer :attachment_id
 					t.text :plugin_output
 					t.integer :port
 					t.string :svc_name
@@ -134,6 +135,7 @@ module Risu
 					t.string :stig_severity
 					t.string :fname
 					t.string :always_run
+					t.string :script_version
 				end
 
 				create_table :individual_plugin_selections do |t|
@@ -148,6 +150,14 @@ module Risu
 					t.integer :plugin_id
 					t.string :reference_name
 					t.string :value
+				end
+
+				create_table :attachments do |t|
+					t.integer :item_id
+					t.string :name
+					t.string :type
+					t.string :ahash
+					t.text :value
 				end
 
 				create_table :versions do |t|
@@ -166,23 +176,23 @@ module Risu
 					t.string :value
 				end
 
-				#Index's for speed increases
+				#Index's for speed increases, possibly have these apply after parsing @todo
 				add_index :items, :host_id
 				add_index :items, :plugin_id
 				add_index :references, :plugin_id
 
 				#Default data for service descriptions
 				#@todo Unused ATM, might be better to use a yaml file tho..
-				ServiceDescription.create :name => "www", :description => ""
-				ServiceDescription.create :name => "cifs", :description => ""
-				ServiceDescription.create :name => "smb", :description => ""
-				ServiceDescription.create :name => "netbios-ns", :description => ""
-				ServiceDescription.create :name => "snmp", :description => ""
-				ServiceDescription.create :name => "ftp", :description => ""
-				ServiceDescription.create :name => "epmap", :description => ""
-				ServiceDescription.create :name => "ntp", :description => ""
-				ServiceDescription.create :name => "dce-rpc", :description => ""
-				ServiceDescription.create :name => "telnet", :description => ""
+				# ServiceDescription.create :name => "www", :description => ""
+				# ServiceDescription.create :name => "cifs", :description => ""
+				# ServiceDescription.create :name => "smb", :description => ""
+				# ServiceDescription.create :name => "netbios-ns", :description => ""
+				# ServiceDescription.create :name => "snmp", :description => ""
+				# ServiceDescription.create :name => "ftp", :description => ""
+				# ServiceDescription.create :name => "epmap", :description => ""
+				# ServiceDescription.create :name => "ntp", :description => ""
+				# ServiceDescription.create :name => "dce-rpc", :description => ""
+				# ServiceDescription.create :name => "telnet", :description => ""
 			end
 
 			# Deletes all of the database tables created
@@ -202,6 +212,7 @@ module Risu
 				drop_table :service_descriptions
 				drop_table :patches
 				drop_table :host_properties
+				drop_table :attachments
 			end
 		end
 	end

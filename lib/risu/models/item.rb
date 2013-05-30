@@ -32,6 +32,7 @@ module Risu
 		class Item < ActiveRecord::Base
 			belongs_to :host
 			belongs_to :plugin
+			has_many :attachments
 
 			class << self
 

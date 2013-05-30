@@ -42,19 +42,23 @@ module Risu
 						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft",
 						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
 						"owasp", "cwe", "iavb", "iavt", "cisco-sa", "ics-alert",
-						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa", "apple-sa", 
+						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa", "apple-sa",
 						"icsa", "cert-cc", "msvr", "usn"
 					]
 
 					@valid_host_properties = Array[
-						"HOST_END", "mac-address", "HOST_START", "operating-system", "host-ip", "host-fqdn", "netbios-name", 
-						"local-checks-proto", "smb-login-used", "ssh-auth-meth", "ssh-login-used", "pci-dss-compliance", 
-						"pci-dss-compliance:", "system-type", "bios-uuid", "pcidss:compliance:failed", "pcidss:compliance:passed", 
-						"pcidss:deprecated_ssl", "pcidss:expired_ssl_certificate", "pcidss:high_risk_flaw", "pcidss:medium_risk_flaw", 
-						"pcidss:reachable_db", "pcidss:www:xss", "pcidss:directory_browsing", "pcidss:known_credentials", 
-						"pcidss:compromised_host:worm", "pcidss:obsolete_operating_system", "pcidss:dns_zone_transfer", 
-						"pcidss:unprotected_mssql_db", "pcidss:obsolete_software", "pcidss:www:sql_injection", "pcidss:backup_files", 
-						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2"
+						"HOST_END", "mac-address", "HOST_START", "operating-system", "host-ip", "host-fqdn", "netbios-name",
+						"local-checks-proto", "smb-login-used", "ssh-auth-meth", "ssh-login-used", "pci-dss-compliance",
+						"pci-dss-compliance:", "system-type", "bios-uuid", "pcidss:compliance:failed", "pcidss:compliance:passed",
+						"pcidss:deprecated_ssl", "pcidss:expired_ssl_certificate", "pcidss:high_risk_flaw", "pcidss:medium_risk_flaw",
+						"pcidss:reachable_db", "pcidss:www:xss", "pcidss:directory_browsing", "pcidss:known_credentials",
+						"pcidss:compromised_host:worm", "pcidss:obsolete_operating_system", "pcidss:dns_zone_transfer",
+						"pcidss:unprotected_mssql_db", "pcidss:obsolete_software", "pcidss:www:sql_injection", "pcidss:backup_files",
+						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2", "operating-system-unsupported"
+					]
+
+					@valid_host_properties_regex = Array[
+						"patch-summary-cve-num", "patch-summary-cves", "patch-summary-txt"
 					]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
@@ -69,7 +73,7 @@ module Risu
 						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname", "always_run",
 						"cm:compliance-info", "cm:compliance-actual-value", "cm:compliance-check-id", "cm:compliance-policy-value",
 						"cm:compliance-audit-file", "cm:compliance-check-name", "cm:compliance-result", "cm:compliance-output", "policyOwner",
-						"visibility"
+						"visibility", "script_version", "attachment"
 					]
 
 					@valid_elements = @valid_elements + @valid_references
@@ -128,10 +132,21 @@ module Risu
 
 							if attributes["name"] =~ /[M|m][S|s]\d{2,}-\d{2,}/
 								@attr = if attributes["name"] =~ /[M|m][S|s]\d{2,}-\d{2,}/
-									attributes["name"]
-								else
-									nil
-								end
+											attributes["name"]
+										else
+											nil
+										end
+							#Ugly as fuck.
+							elsif attributes['name'] =~ /patch-summary-cve-num/ ||
+								attributes['name'] =~ /patch-summary-cves/ ||
+								attributes['name'] =~ /patch-summary-txt/
+								@attr = if attributes["name"] =~ /patch-summary-cve-num/ ||
+								attributes['name'] =~ /patch-summary-cves/ ||
+								attributes['name'] =~ /patch-summary-txt/
+											attributes["name"]
+										else
+											nil
+										end
 							else
 								@attr = if @valid_host_properties.include?(attributes["name"])
 									attributes["name"]
@@ -140,7 +155,9 @@ module Risu
 								end
 							end
 
-							if attributes["name"] !~ /(netstat-(?:established|listen)-(?:tcp|udp)\d+-\d+)/ && attributes["name"] !~ /traceroute-hop-\d+/
+							# implicit nil check?
+							if attributes["name"] !~ /(netstat-(?:established|listen)-(?:tcp|udp)\d+-\d+)/ &&
+								attributes["name"] !~ /traceroute-hop-\d+/
 								#puts attributes["name"]
 								puts "New HostProperties attribute: #{attributes["name"]}. Please report this to #{Risu::EMAIL}\n" if @attr.nil?
 							end
@@ -163,6 +180,11 @@ module Risu
 							@plugin.family_name = attributes["pluginFamily"]
 							@plugin.save
 							@ri.save
+						when "attachment"
+							@attachment = @ri.attachments.create
+							@attachment.name = attributes['name']
+							@attachment.type = attributes['type']
+							@attachment.save
 					end
 				end
 
@@ -317,9 +339,15 @@ module Risu
 								:exploithub_sku => @vals["exploithub_sku"],
 								:stig_severity => @vals["stig_severity"],
 								:fname => @vals["fname"],
-								:always_run => @vals["always_run"]
+								:always_run => @vals["always_run"],
+								:script_version => @vals["script_version"]
 							}
 							@plugin.save
+						when "attachment"
+							@attachment.attributes = {
+								:ahash => @vals['attachment']
+							}
+							@attachment.save
 					end
 				end
 			end
