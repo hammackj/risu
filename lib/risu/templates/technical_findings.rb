@@ -34,7 +34,7 @@ module Risu
 				{
 					:name => "technical_findings",
 					:author => "hammackj",
-					:version => "0.0.5",
+					:version => "0.0.6",
 					:description => "Generates a Technical Findings Report"
 				}
 			end
@@ -54,7 +54,7 @@ module Risu
 				unique_risks << Hash[:title => "High Findings", :color => "FF0000", :values => Item.high_risks_unique] if Item.high_risks_unique.all.size != 0
 
 				unique_risks.each_with_index do |h, index|
-					if h[:values].length > 1
+					if h[:values].length > 0
 
 						output.font_size(18) do
 							output.fill_color h[:color]
