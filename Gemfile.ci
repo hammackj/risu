@@ -1,7 +1,7 @@
 source :rubygems
-source "http://rubygems.org"
+source "https://rubygems.org"
 source :rubyforge
-source "http://gems.rubyforge.org"
+source "https://gems.rubyforge.org"
 
 gem "rails"
 gem "libxml-ruby"
