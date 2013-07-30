@@ -53,7 +53,7 @@ Gem::Specification.new do |s|
 	s.add_development_dependency("simplecov", [">= 0.7.1"])
 	s.add_development_dependency("yard", [">= 0.8.3"])
 
-	s.add_dependency('rails', ['>= 3.2.11'])
+	s.add_dependency('rails', ['>= 4.0.0'])
 	s.add_dependency('libxml-ruby', ['>= 2.4.0'])
 	s.add_dependency('prawn', ['>= 0.12.0'])
 	s.add_dependency('gruff', ['>= 0.3.7'])
