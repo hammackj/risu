@@ -7,6 +7,16 @@
 
 #Road map
 
+
+New HostProperties attribute: patch-summary-total-cves.
+New XML element detected: attachment.
+New XML element detected: script_version.
+patch-summary-cve-num-5b6146bd3f7ba12ccde1b9c636459b1f
+patch-summary-cves-5b6146bd3f7ba12ccde1b9c636459b1f
+patch-summary-txt-5b6146bd3f7ba12ccde1b9c636459b1f
+
+
+
 ##1.6.3
 - Patch roll up
 - nessus 5.2 support
