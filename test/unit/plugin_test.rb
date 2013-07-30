@@ -32,23 +32,23 @@ class PluginTest < ActiveSupport::TestCase
 	end
 
 	test "returns 8 risks for Plugin.critical_risks.count" do
-		assert Plugin.critical_risks.all.count == 8, "GOT #{Plugin.critical_risks.all.count}"
+		assert Plugin.critical_risks.to_a.count == 8, "GOT #{Plugin.critical_risks.to_a.count}"
 	end
 
 	test "returns 1 risks for Plugin.high_risks.count" do
-		assert Plugin.high_risks.all.count == 1
+		assert Plugin.high_risks.to_a.count == 1
 	end
 
 	test "returns 1 for Plugin.medium_risks.count" do
-		assert Plugin.medium_risks.all.count == 1
+		assert Plugin.medium_risks.to_a.count == 1
 	end
 
 	test "returns 1 for Plugin.low_risks.count" do
-		assert Plugin.low_risks.all.count == 1
+		assert Plugin.low_risks.to_a.count == 1
 	end
 
 	test "returns 1 risks for Plugin.info_risks.count" do
-		assert Plugin.none_risks.all.count == 1
+		assert Plugin.none_risks.to_a.count == 1
 	end
 
 	test "returns a graph Plugin.top_by_count_graph" do
