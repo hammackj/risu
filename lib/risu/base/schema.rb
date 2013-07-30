@@ -42,7 +42,7 @@ module Risu
 				create_table :server_preferences do |t|
 					t.integer :policy_id
 					t.string :name
-					t.string :value
+					t.text :value, :limit => 4294967295
 				end
 
 				create_table :plugins_preferences do |t|
@@ -83,7 +83,7 @@ module Risu
 				create_table :host_properties do |t|
 					t.integer :host_id
 					t.string :name
-					t.string :value
+					t.text :value, :limit => 4294967295
 				end
 
 				create_table :items do |t|
@@ -149,7 +149,7 @@ module Risu
 				create_table :references do |t|
 					t.integer :plugin_id
 					t.string :reference_name
-					t.string :value
+					t.text :value, :limit => 4294967295
 				end
 
 				create_table :attachments do |t|
