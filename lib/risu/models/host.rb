@@ -51,7 +51,7 @@ module Risu
 				#
 				# @return [Array] With all the Ip's in sorted order
 				def sorted
-					hosts = Host.where("ip is not NULL").order("ip").all
+					hosts = Host.where("ip is not NULL").order("ip").to_a
 
 					#Sort the ips in natural order.
 					hosts.sort! do |a,b|
@@ -258,7 +258,7 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_8
 					where("os NOT LIKE '%Windows 8%'")
-				end				
+				end
 
 				# Queries for hosts with a Windows Operating System that are not 2000,
 				# XP, 2003, Vista, 2008 or 7
@@ -396,7 +396,7 @@ module Risu
 						:background_colors => %w(white white)
 					}
 
-					Item.risks_by_host(limit).all.each do |item|
+					Item.risks_by_host(limit).to_a.each do |item|
 						ip = Host.find_by_id(item.host_id).name
 #						count = Item.where(:host_id => item.host_id).where("severity IN (?)", [2,3]).count
 						count = Item.where(:host_id => item.host_id).where(:severity => 4).count
@@ -421,15 +421,15 @@ module Risu
 						:background_colors => %w(white white)
 					}
 
-					linux = Host.os_linux.all.count
-					osx = Host.os_osx.all.count
-					freebsd = Host.os_freebsd.all.count
-					netbsd = Host.os_netbsd.all.count
-					cisco = Host.os_cisco.all.count
-					vxworks = Host.os_vxworks.all.count
-					esx = Host.os_vmware_esx.all.count
-					aix = Host.os_aix.all.count
-					other = Host.os_other.all.count
+					linux = Host.os_linux.to_a.count
+					osx = Host.os_osx.to_a.count
+					freebsd = Host.os_freebsd.to_a.count
+					netbsd = Host.os_netbsd.to_a.count
+					cisco = Host.os_cisco.to_a.count
+					vxworks = Host.os_vxworks.to_a.count
+					esx = Host.os_vmware_esx.to_a.count
+					aix = Host.os_aix.to_a.count
+					other = Host.os_other.to_a.count
 
 					g.data("Linux", linux) unless linux == 0
 					g.data("OSX", osx) unless osx == 0
@@ -462,16 +462,16 @@ module Risu
 						:background_colors => %w(white white)
 					}
 
-					nt = Host.os_windows_nt.all.count
-					w2k = Host.os_windows_2k.all.count
-					xp = Host.os_windows_xp.all.count
-					w2k3 = Host.os_windows_2k3.all.count
-					vista = Host.os_windows_vista.all.count
-					w2k8 = Host.os_windows_2k8.all.count
-					w2k12 = Host.os_windows_2k12.all.count
-					w7 = Host.os_windows_7.all.count
-					w8 = Host.os_windows_8.all.count
-					other = (Host.os_windows.os_windows_other).all.count
+					nt = Host.os_windows_nt.to_a.count
+					w2k = Host.os_windows_2k.to_a.count
+					xp = Host.os_windows_xp.to_a.count
+					w2k3 = Host.os_windows_2k3.to_a.count
+					vista = Host.os_windows_vista.to_a.count
+					w2k8 = Host.os_windows_2k8.to_a.count
+					w2k12 = Host.os_windows_2k12.to_a.count
+					w7 = Host.os_windows_7.to_a.count
+					w8 = Host.os_windows_8.to_a.count
+					other = (Host.os_windows.os_windows_other).to_a.count
 
 					g.data("NT", nt) if nt >= 1
 					g.data("2000", w2k) if w2k >= 1
@@ -481,7 +481,7 @@ module Risu
 					g.data("Server 2008", w2k8) if w2k8 >= 1
 					g.data("Server 2012", w2k12) if w2k12 >= 1
 					g.data("7", w7) if w7 >= 1
-					g.data("8", w8) if w8 >= 1					
+					g.data("8", w8) if w8 >= 1
 					g.data("Other Windows", other) if other >= 1
 
 					StringIO.new(g.to_blob)
@@ -491,16 +491,16 @@ module Risu
 				#@todo comment
 				#
 				def windows_os_graph_text
-					nt = Host.os_windows_nt.all.count
-					w2k = Host.os_windows_2k.all.count
-					xp = Host.os_windows_xp.all.count
-					w2k3 = Host.os_windows_2k3.all.count
-					vista = Host.os_windows_vista.all.count
-					w2k8 = Host.os_windows_2k8.all.count
-					w2k12 = Host.os_windows_2k12.all.count
-					w7 = Host.os_windows_7.all.count
-					w8 = Host.os_windows_8.all.count
-					other = (Host.os_windows.os_windows_other).all.count
+					nt = Host.os_windows_nt.to_a.count
+					w2k = Host.os_windows_2k.to_a.count
+					xp = Host.os_windows_xp.to_a.count
+					w2k3 = Host.os_windows_2k3.to_a.count
+					vista = Host.os_windows_vista.to_a.count
+					w2k8 = Host.os_windows_2k8.to_a.count
+					w2k12 = Host.os_windows_2k12.to_a.count
+					w7 = Host.os_windows_7.to_a.count
+					w8 = Host.os_windows_8.to_a.count
+					other = (Host.os_windows.os_windows_other).to_a.count
 
 					windows_os_count = nt + w2k + xp + w2k3 + vista + w7 + w8 + w2k8 + w2k12 + other
 
@@ -533,7 +533,7 @@ module Risu
 					return text
 				end
 
-				# 
+				#
 				# @todo comments
 				#
 				def unsupported_os?
@@ -634,15 +634,15 @@ module Risu
 					text = "This graph shows the percentage of the different Non-Windows based operating systems " +
 					"found on the #{Report.title} network.\n\n"
 
-					linux = Host.os_linux.all.count
-					osx = Host.os_osx.all.count
-					freebsd = Host.os_freebsd.all.count
-					netbsd = Host.os_netbsd.all.count
-					cisco = Host.os_cisco.all.count
-					vxworks = Host.os_vxworks.all.count
-					esx = Host.os_vmware_esx.all.count
-					aix = Host.os_aix.all.count
-					other = Host.os_other.all.count
+					linux = Host.os_linux.to_a.count
+					osx = Host.os_osx.to_a.count
+					freebsd = Host.os_freebsd.to_a.count
+					netbsd = Host.os_netbsd.to_a.count
+					cisco = Host.os_cisco.to_a.count
+					vxworks = Host.os_vxworks.to_a.count
+					esx = Host.os_vmware_esx.to_a.count
+					aix = Host.os_aix.to_a.count
+					other = Host.os_other.to_a.count
 
 					other_os_count = linux + osx + freebsd + netbsd + cisco + vxworks + esx + aix + other
 
@@ -668,7 +668,7 @@ module Risu
 				# @todo comments
 				#
 				def top_n_vulnerable(n)
-					hosts = Item.risks_by_host(Host.all.count).count
+					hosts = Item.risks_by_host(Host.to_a.count).count
 					hosts = hosts.sort_by {|k, v| v}
 					hosts.reverse!
 
