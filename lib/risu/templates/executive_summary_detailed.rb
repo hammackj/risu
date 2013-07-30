@@ -117,11 +117,11 @@ module Risu
 				output.text "There were #{Item.risks.count} risks found during this scan. Of these, #{Item.high_risks.count} were High risk vulnerabilities.	High risk vulnerabilities require immediate attention to handle as they are relatively easy for attackers to exploit frequently resulting in full access to affected systems.	 There were #{Item.medium_risks.count} findings which were Medium risk.	 High risk vulnerabilities are harder to exploit and may not result in full control of the affected system and should be addressed rapidly and with priority.	 There were #{Item.low_risks.count} findings which were Low risk vulnerabilities.	 These risks usually let attackers gain information about your network making it easier for launching more advanced attacks and should be handled in a timely manner.	 And #{Item.info_risks.count} findings which were information findings.\n"
 				output.text "\n"
 
-				crit_host_count = Item.where(:severity => 4).group(:host_id).all.count
-				high_host_count = Item.where(:severity => 3).group(:host_id).all.count
-				medium_host_count = Item.where(:severity => 2).group(:host_id).all.count
-				low_host_count = Item.where(:severity => 1).group(:host_id).all.count
-				info_host_count = Item.where(:severity => 0).group(:host_id).all.count
+				crit_host_count = Item.where(:severity => 4).group(:host_id).count
+				high_host_count = Item.where(:severity => 3).group(:host_id).count
+				medium_host_count = Item.where(:severity => 2).group(:host_id).count
+				low_host_count = Item.where(:severity => 1).group(:host_id).count
+				info_host_count = Item.where(:severity => 0).group(:host_id).count
 
 				output.text "There were #{crit_host_count} hosts with Critical risk vulnerabilities, #{high_host_count} hosts with High risk vulnerabilities, #{medium_host_count} hosts with Medium risk vulnerabilities, #{low_host_count} hosts with Low risk vulnerabilities and #{info_host_count} hosts with information findings."
 				output.text "\n"
@@ -139,7 +139,11 @@ module Risu
 					row = Array.new
 
 					plugin = Plugin.find_by_id(vuln.plugin_id)
-					plug = Item.find(:all, :conditions => {:plugin_id => vuln.plugin_id})
+					#rails3
+					#plug = Item.find(:all, :conditions => {:plugin_id => vuln.plugin_id})
+					#rails4
+					plug = Item.all.where(:plugin_id => vuln.plugin_id)
+
 					#output.text "#{plug.count} - #{plugin.plugin_name}"
 
 					row.push(plug.count)
@@ -196,7 +200,10 @@ module Risu
 					row = Array.new
 
 					#plugin = Plugin.find_by_id(service.plugin_id)
-					svc = Item.find(:all, :conditions => {:svc_name => service.svc_name})
+					#rails3
+					#svc = Item.find(:all, :conditions => {:svc_name => service.svc_name})
+					svc = Item.all.where(:svc_name => service.svc_name)
+
 					#output.text "#{svc.count} - #{service.svc_name}"
 
 					row.push(svc.count)
