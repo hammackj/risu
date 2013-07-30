@@ -124,7 +124,7 @@ def setup_test_database
 
 		fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
 		fixtures.each do |fixture_file|
-			ActiveRecord::Fixtures.create_fixtures('test/fixtures', File.basename(fixture_file, '.*'))
+			ActiveRecord::FixtureSet.create_fixtures('test/fixtures', File.basename(fixture_file, '.*'))
 		end
 	rescue => e
 		puts "[!] #{e.message}\n#{e.backtrace}\n\n"
