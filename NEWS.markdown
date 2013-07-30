@@ -1,7 +1,11 @@
 # News
 
-#1.6.3 (April)
-- Minor cleanup
+#1.7.0 (August)
+- Rails 4.0 compatibility, backwards compatibility doesn't exist.
+- Schema
+	- Changed size of ServerPreferences.value to text instead of string.
+	- Changed size of HostProperties.value to text instead of string.
+	- Changed size of References.value to text instead of string.
 
 #1.6.2 (March 13, 2013)
 - pci_compliance template - Correct a bug that prevented it from working. Reported by [jkordish]
@@ -50,11 +54,11 @@
 			- os_windows_2k12
 			- not_is_windows_2k12
 		- Changed the wording `other_os_graph_text` to indicate that its just a percentage of the non windows computers
-		- Added 'bios_uuid' Property 
+		- Added 'bios_uuid' Property
 	- Reference Model
-		- Added cert-cc, 
+		- Added cert-cc,
 		- Added apple-sa
-		- Added icsa 
+		- Added icsa
 		- Added msvr
 	- Plugin Model
 		- cvss_base_score is now a float in the schema, this change should be transparent
