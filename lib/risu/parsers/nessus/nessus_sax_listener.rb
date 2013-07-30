@@ -165,9 +165,9 @@ module Risu
 							@vals = Hash.new # have to clear this out or everything has the same references
 							@ri = @rh.items.create
 							if attributes["pluginID"] == "0"
-								@plugin = Risu::Models::Plugin.find_or_create_by_id(1)
+								@plugin = Risu::Models::Plugin.find_or_create_by(:id => 1)
 							else
-								@plugin = Risu::Models::Plugin.find_or_create_by_id(attributes["pluginID"])
+								@plugin = Risu::Models::Plugin.find_or_create_by(:id => attributes["pluginID"])
 							end
 
 							@ri.port = attributes["port"]
