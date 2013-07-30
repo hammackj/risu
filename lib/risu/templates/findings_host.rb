@@ -58,7 +58,7 @@ module Risu
 				output.text "\n\n\n"
 
 				Host.sorted.each do |host|
-					if host.items.high_risks_unique_sorted.all.size > 0 or host.items.medium_risks_unique_sorted.all.size > 0
+					if host.items.high_risks_unique_sorted.to_a.count > 0 or host.items.medium_risks_unique_sorted.to_a.count > 0
 						output.font_size(16) do
 
 							host_string = "#{host.ip}"
@@ -68,7 +68,7 @@ module Risu
 						end
 					end
 
-					if host.items.critical_risks_unique_sorted.all.size > 0
+					if host.items.critical_risks_unique_sorted.to_a.count > 0
 						output.font_size(12) do
 							output.fill_color "551A8B"
 							output.text "Critical Findings", :style => :bold
@@ -81,7 +81,7 @@ module Risu
 						end
 					end
 
-					if host.items.high_risks_unique_sorted.all.size > 0
+					if host.items.high_risks_unique_sorted.to_a.count > 0
 						output.font_size(12) {
 							output.fill_color "FF0000"
 							output.text "High Findings", :style => :bold
@@ -94,7 +94,7 @@ module Risu
 						end
 					end
 
-					if host.items.medium_risks_unique_sorted.all.size > 0
+					if host.items.medium_risks_unique_sorted.to_a.count > 0
 						output.font_size(12) {
 							output.fill_color "FF8040"
 							output.text "Medium Findings", :style => :bold
@@ -107,7 +107,7 @@ module Risu
 						end
 					end
 
-					if host.items.high_risks_unique_sorted.all.size > 0 or host.items.medium_risks_unique_sorted.all.size > 0
+					if host.items.high_risks_unique_sorted.to_a.count > 0 or host.items.medium_risks_unique_sorted.to_a > 0
 						output.text "\n"
 					end
 				end
