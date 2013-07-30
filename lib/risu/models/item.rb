@@ -230,7 +230,7 @@ module Risu
 				# @return [StringIO] Object containing the generated PNG image
 				def risks_by_service_graph(limit=10)
 					g = Gruff::Pie.new(GRAPH_WIDTH)
-					g.title = sprintf "Top %d Services By Vulnerability", Item.risks_by_service(limit).all.count
+					g.title = sprintf "Top %d Services By Vulnerability", Item.risks_by_service(limit).to_a.count
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
@@ -238,8 +238,8 @@ module Risu
 						:background_colors => %w(white white)
 					}
 
-					Item.risks_by_service(limit).all.each do |service|
-						g.data(service.svc_name, Item.find(:all, :conditions => {:svc_name => service.svc_name}).count)
+					Item.risks_by_service(limit).to_a.each do |service|
+						g.data(service.svc_name, Item.all.where(:svc_name => service.svc_name).count)
 					end
 
 					StringIO.new(g.to_blob)
@@ -271,19 +271,19 @@ module Risu
 					high = Item.high_risks.count
 					medium = Item.medium_risks.count
 					low = Item.low_risks.count
-					info = Item.info_risks.count
+					#info = Item.info_risks.count
 
 					if crit == nil then crit = 0 end
 					if high == nil then high = 0 end
 					if medium == nil then medium = 0 end
 					if low == nil then low = 0 end
-					if info == nil then info = 0 end
+					#if info == nil then info = 0 end
 
 					g.data("Critical", crit, "purple")
 					g.data("High", high, "red")
 					g.data("Medium", medium, "orange")
 					g.data("Low", low, "yellow")
-					g.data("Informational", info, "blue")
+					#g.data("Informational", info, "blue")
 
 					StringIO.new(g.to_blob)
 				end
@@ -331,7 +331,7 @@ module Risu
 				def calculate_vulnerable_host_percent
 					hosts_with_critical = Hash.new
 
-					(Item.critical_risks.all + Item.high_risks.all).each do |item|
+					(Item.critical_risks.to_a + Item.high_risks.to_a).each do |item|
 						ip = Host.find_by_id(item.host_id).name
 						if hosts_with_critical[ip] == nil
 							hosts_with_critical[ip] = 1
@@ -340,7 +340,7 @@ module Risu
 						hosts_with_critical[ip] = hosts_with_critical[ip] + 1
 					end
 
-					host_percent = (hosts_with_critical.count.to_f / Host.all.count.to_f) * 100
+					host_percent = (hosts_with_critical.count.to_f / Host.count.to_f) * 100
 				end
 
 				#
