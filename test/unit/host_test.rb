@@ -83,8 +83,8 @@ class HostTest < ActiveSupport::TestCase
 		assert Host.unsupported_os_freebsd.length == 0, "GOT #{Host.unsupported_os_freebsd.length}"
 	end
 
-	test "returns 186 for Host.other_os_graph_text.length" do
-		assert Host.other_os_graph_text.length == 198, "GOT #{Host.other_os_graph_text.length}"
+	test "returns 199 for Host.other_os_graph_text.length" do
+		assert Host.other_os_graph_text.length == 199, "GOT #{Host.other_os_graph_text.length}"
 	end
 
 	test "should return 2 for Host.top_n_vulnerable(2)" do
