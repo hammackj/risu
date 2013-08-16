@@ -34,7 +34,7 @@ module Risu
 			def self.up
 				create_table :policies do |t|
 					t.string :name
-					t.string :comments
+					t.text :comments
 					t.string :owner
 					t.string :visibility
 				end

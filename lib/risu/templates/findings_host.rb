@@ -107,7 +107,7 @@ module Risu
 						end
 					end
 
-					if host.items.high_risks_unique_sorted.to_a.count > 0 or host.items.medium_risks_unique_sorted.to_a > 0
+					if host.items.high_risks_unique_sorted.to_a.count > 0 or host.items.medium_risks_unique_sorted.to_a.count > 0
 						output.text "\n"
 					end
 				end

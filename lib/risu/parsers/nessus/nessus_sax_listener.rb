@@ -54,7 +54,7 @@ module Risu
 						"pcidss:reachable_db", "pcidss:www:xss", "pcidss:directory_browsing", "pcidss:known_credentials",
 						"pcidss:compromised_host:worm", "pcidss:obsolete_operating_system", "pcidss:dns_zone_transfer",
 						"pcidss:unprotected_mssql_db", "pcidss:obsolete_software", "pcidss:www:sql_injection", "pcidss:backup_files",
-						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2", "operating-system-unsupported"
+						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2", "operating-system-unsupported", "patch-summary-total-cves"
 					]
 
 					@valid_host_properties_regex = Array[
@@ -73,7 +73,7 @@ module Risu
 						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname", "always_run",
 						"cm:compliance-info", "cm:compliance-actual-value", "cm:compliance-check-id", "cm:compliance-policy-value",
 						"cm:compliance-audit-file", "cm:compliance-check-name", "cm:compliance-result", "cm:compliance-output", "policyOwner",
-						"visibility", "script_version", "attachment"
+						"visibility", "script_version", "attachment", "policy_comments"
 					]
 
 					@valid_elements = @valid_elements + @valid_references
@@ -99,7 +99,7 @@ module Risu
 					@vals[@tag] = ""
 
 					if !@valid_elements.include?(element)
-						puts "New XML element detected: #{element}. Please report this to #{Risu::EMAIL}"
+						puts "New XML element detected: #{element}. Please report this at https://github.com/arxopia/risu/issues/new or via email to #{Risu::EMAIL}"
 					end
 
 					case element
@@ -159,7 +159,7 @@ module Risu
 							if attributes["name"] !~ /(netstat-(?:established|listen)-(?:tcp|udp)\d+-\d+)/ &&
 								attributes["name"] !~ /traceroute-hop-\d+/
 								#puts attributes["name"]
-								puts "New HostProperties attribute: #{attributes["name"]}. Please report this to #{Risu::EMAIL}\n" if @attr.nil?
+								puts "New HostProperties attribute: #{attributes["name"]}. Please report this at https://github.com/arxopia/risu/issues/new or via email to #{Risu::EMAIL}\n" if @attr.nil?
 							end
 						when "ReportItem"
 							@vals = Hash.new # have to clear this out or everything has the same references
@@ -214,6 +214,12 @@ module Risu
 						when "policyComments"
 							@policy.attributes = {
 								:comments => @vals["policyComments"]
+							}
+							@policy.save
+
+						when "policy_comments"
+							@policy.attributes = {
+								:comments => @vals["policy_comments"]
 							}
 							@policy.save
 
