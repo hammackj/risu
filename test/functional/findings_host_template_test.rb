@@ -31,13 +31,14 @@ class FindingsHostTemplateTest < ActiveSupport::TestCase
 	def setup
 		@file_name = "/tmp/findings_host.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
-		@templater = Risu::Base::Templater.new("findings_host", Report, @file_name, @template_manager)
 
 		@report = Report
 		@report.title = "Function Test"
 		@report.author = "hammackj"
 		@report.company = "None"
 		@report.classification = "None"
+
+		@templater = Risu::Base::Templater.new("findings_host", Report, @file_name, @template_manager)
 	end
 
 	def teardown

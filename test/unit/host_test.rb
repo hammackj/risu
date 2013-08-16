@@ -36,19 +36,19 @@ class HostTest < ActiveSupport::TestCase
 	end
 
 	test "returns 1 for Host.os_windows" do
-		assert_equal Host.os_windows.all.count, 1
+		assert_equal Host.os_windows.to_a.count, 1
 	end
 
 	test "returns 1 for Host.os_windows_xp" do
-		assert_equal Host.os_windows_xp.all.count, 1
+		assert_equal Host.os_windows_xp.to_a.count, 1
 	end
 
 	test "returns 0 for Host.os_other" do
-		assert_equal Host.os_other.all.count, 0
+		assert_equal Host.os_other.to_a.count, 0
 	end
 
 	test "returns 1 for Host.os_linux" do
-		assert_equal Host.os_linux.all.count, 1
+		assert_equal Host.os_linux.to_a.count, 1
 	end
 
 	test "returns a StringIO object from Host.top_vuln_graph" do

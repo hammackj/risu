@@ -110,7 +110,7 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks_unique
-					where(:severity => 2).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
+					where(:severity => 2).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
 				end
 
 				# Queries for all the unique medium findings and sorts them by count
@@ -124,7 +124,7 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def low_risks_unique
-					where(:severity => 1).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
+					where(:severity => 1).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
 				end
 
 				# Queries for all the unique low findings and sorts them by count
@@ -138,7 +138,8 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def info_risks_unique
-					where(:severity => 0).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
+					#where(:severity => 0).joins(:plugin).order(:cvss_base_score).group(:plugin_id)
+					where(:severity => 0).joins(:plugin).order("plugins.cvss_base_score").group(:plugin_id)
 				end
 
 				# Queries for all the unique info findings and sorts them by count
@@ -418,11 +419,19 @@ module Risu
 					return graph_text
 				end
 
+				def risk_percent_rounded_text
+					"#{calculate_vulnerable_host_percent().round}%"
+				end
+
 				#
 				# @todo comment
 				#
 				def notable_order_by_cvss_raw
-					return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").count(:all, :group => :plugin_id)
+
+					#MIGHT NOT BE CORRECT @TODO
+
+					#return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").count(:all, :group => :plugin_id)
+					return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
 				end
 
 				#
