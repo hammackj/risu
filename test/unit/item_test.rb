@@ -207,7 +207,7 @@ class ItemTest < ActiveSupport::TestCase
 	# 	assert Item.notable_order_by_cvss_raw.keys.sort.last == 99999, "GOT #{Item.notable_order_by_cvss_raw.keys.sort.last}"
 	# end
 
-	test "return 99999 for Item.first.plugin.id" do
+	test "return 42411 for Item.first.plugin.id" do
 		assert Item.first.plugin.id == 42411, "GOT #{Item.first.plugin.id}"
 	end
 end
