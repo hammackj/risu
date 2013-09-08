@@ -326,22 +326,13 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 
+				# Calculates a vulnerable host percent based on Critical and High findings
+				# (unique_vuln_crit_high_count / host_count) * 100
 				#
-				# @todo comment
-				#
+				# @return [FixNum] Percentage of vulnerable hosts
 				def calculate_vulnerable_host_percent
-					hosts_with_critical = Hash.new
-
-					(Item.critical_risks.to_a + Item.high_risks.to_a).each do |item|
-						ip = Host.find_by_id(item.host_id).name
-						if hosts_with_critical[ip] == nil
-							hosts_with_critical[ip] = 1
-						end
-
-						hosts_with_critical[ip] = hosts_with_critical[ip] + 1
-					end
-
-					host_percent = (hosts_with_critical.count.to_f / Host.count.to_f) * 100
+					unique_hosts_with_critical_and_hight = Host.unique_hosts_with_critical.count + Host.unique_hosts_with_high.count
+					host_percent = (unique_hosts_with_critical_and_hight.to_f / Host.count.to_f) * 100
 				end
 
 				#
