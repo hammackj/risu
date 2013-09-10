@@ -7,17 +7,19 @@
 
 #Road map
 
-
-New HostProperties attribute: patch-summary-total-cves.
-New XML element detected: attachment.
-New XML element detected: script_version.
-patch-summary-cve-num-5b6146bd3f7ba12ccde1b9c636459b1f
-patch-summary-cves-5b6146bd3f7ba12ccde1b9c636459b1f
-patch-summary-txt-5b6146bd3f7ba12ccde1b9c636459b1f
-
-
-
-##1.6.3
+## 1.7 (??)
+- test for Item.notable_order_by_cvss_raw
+	- ensure order is correct
+- create template -n --new-template cli option
+- Malware report template
+	Malware plugin ids =
+	64687, APT1 malware
+	64788, Bit9 signed malware
+	59275, Malicious Process Detection plugin
+	59641, Malicious process detection: unwanted software
+	52670, Website link malware
+	66391, Linux/Cdorked.A backdoor
+- malware infection report
 - Patch roll up
 - nessus 5.2 support
 - techfindings report each host for plugin output
@@ -25,9 +27,6 @@ patch-summary-txt-5b6146bd3f7ba12ccde1b9c636459b1f
 - Documents
 	- Template Tutorial
 	- Updating tutorial
-	-
-
-## 1.7 (??)
 - Do all the @todo / @fix  items!
 - complacence plugins xml parser test?
 - error check connection fail on the console to mysql
@@ -131,6 +130,7 @@ patch-summary-txt-5b6146bd3f7ba12ccde1b9c636459b1f
 - uniform graph colors
 - vuln count by host graph top 10 vulns
 - generate a graph matirx like exec summary detailed
+- malware infection graph
 
 ###Reports / Templates
 - Easier way to select the Scan to generate reports from
