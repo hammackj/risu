@@ -331,8 +331,8 @@ module Risu
 				#
 				# @return [FixNum] Percentage of vulnerable hosts
 				def calculate_vulnerable_host_percent
-					unique_hosts_with_critical_and_hight = Host.unique_hosts_with_critical.count + Host.unique_hosts_with_high.count
-					host_percent = (unique_hosts_with_critical_and_hight.to_f / Host.count.to_f) * 100
+					unique_hosts_with_critical_and_high = Host.unique_hosts_with_critical.count + Host.unique_hosts_with_high.count
+					host_percent = (unique_hosts_with_critical_and_high.to_f / Host.count.to_f) * 100
 				end
 
 				#
