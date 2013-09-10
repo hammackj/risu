@@ -6,7 +6,7 @@
 - Schema
 	- Changed size of ServerPreferences.value to text instead of string. Pull Request from [alanjones]
 	- Changed size of HostProperties.value to text instead of string. Pull Request from [alanjones]
-	- Changed size of References.value to text instead of string. Pull Request from [alanjones ]
+	- Changed size of References.value to text instead of string. Pull Request from [alanjones]
 - Models
 	- Policy Model
 		- Added policy_comments
@@ -17,8 +17,12 @@
 		- Added patch-summary-txt-{HASH}
 	- Plugin Model
 		- Added script_version
+		- Added d2_elliot_name
+		- Added exploit_framework_d2_elliot
 	- Attachment Model ***NEW***
 		- New Model for attachment metadata
+- Templates
+	- Added initial malicious process detection template based on plugin #59275, it is rough at the moment but good for viewing all the findings.
 - Wiki
 	- New page for installing on [Kali Linux](https://github.com/arxopia/risu/wiki/Kali-Linux-Risu-Installation-Guide)
 
