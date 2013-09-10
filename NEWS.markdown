@@ -1,11 +1,26 @@
 # News
 
-#1.7.0 (August)
-- Rails 4.0 compatibility, backwards compatibility doesn't exist.
+#1.6.3 (August)
+- Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
+- Support for Ruby less than 1.9.3 also doesn't exist
 - Schema
-	- Changed size of ServerPreferences.value to text instead of string.
-	- Changed size of HostProperties.value to text instead of string.
-	- Changed size of References.value to text instead of string.
+	- Changed size of ServerPreferences.value to text instead of string. Pull Request from [alanjones]
+	- Changed size of HostProperties.value to text instead of string. Pull Request from [alanjones]
+	- Changed size of References.value to text instead of string. Pull Request from [alanjones ]
+- Models
+	- Policy Model
+		- Added policy_comments
+	- HostProperty Model
+		- Added patch-summary-total-cves
+		- Added patch-summary-cve-num-{HASH}
+		- Added patch-summary-cves-{HASH}
+		- Added patch-summary-txt-{HASH}
+	- Plugin Model
+		- Added script_version
+	- Attachment Model ***NEW***
+		- New Model for attachment metadata
+- Wiki
+	- New page for installing on [Kali Linux](https://github.com/arxopia/risu/wiki/Kali-Linux-Risu-Installation-Guide)
 
 #1.6.2 (March 13, 2013)
 - pci_compliance template - Correct a bug that prevented it from working. Reported by [jkordish]
