@@ -8,6 +8,8 @@ critical_plugin:
   exploit_available: "false"
   solution: "Patch this critical plugin"
   stig_severity: I
+  exploit_framework_d2_elliot: true
+  d2_elliot_name: "Sample Exploit Name"
 
 high_plugin:
   id: 99998

@@ -136,6 +136,8 @@ module Risu
 					t.string :fname
 					t.string :always_run
 					t.string :script_version
+					t.string :d2_elliot_name
+					t.string :exploit_framework_d2_elliot
 				end
 
 				create_table :individual_plugin_selections do |t|

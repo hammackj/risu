@@ -54,4 +54,12 @@ class PluginTest < ActiveSupport::TestCase
 	test "returns a graph Plugin.top_by_count_graph" do
 		assert Plugin.top_by_count_graph.class == StringIO
 	end
+
+	test "returns 1 risk for Plugin.where(:exploit_framework_d2_elliot =>true).count" do
+		assert Plugin.where(:exploit_framework_d2_elliot => true).count == 1, "GOT #{Plugin.where(:exploit_framework_d2_elliot => true).count}"
+	end
+
+	test "returns 1 risk for Plugin.where(:d2_elliot_name => 'Sample Exploit Name').count" do
+		assert Plugin.where(:d2_elliot_name => "Sample Exploit Name").count == 1, "GOT #{Plugin.where(:d2_elliot_name => "Sample Exploit Name").count}"
+	end
 end
