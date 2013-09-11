@@ -105,6 +105,7 @@ module Risu
 					t.string :cm_compliance_check_name
 					t.string :cm_compliance_result
 					t.string :cm_compliance_output
+					t.integer :real_severity
 				end
 
 				create_table :plugins do |t|
@@ -138,6 +139,7 @@ module Risu
 					t.string :script_version
 					t.string :d2_elliot_name
 					t.string :exploit_framework_d2_elliot
+					t.boolean :rollup
 				end
 
 				create_table :individual_plugin_selections do |t|
