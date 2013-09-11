@@ -41,6 +41,7 @@ module Risu
 
 				@options[:debug] = false
 				@options[:list_templates] = false
+				@options[:rollup] = false
 
 				@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 			end
@@ -224,6 +225,13 @@ module Risu
 					opts = OptionParser.new do |opt|
 						opt.banner =	"#{APP_NAME} v#{VERSION}\nJacob Hammack\nhttp://www.arxopia.com\n\n"
 						opt.banner << "Usage: #{APP_NAME} [options] [files_to_parse]"
+						opt.separator('')
+						opt.separator("Parse Options")
+
+						opt.on('-r', '--rollup-findings', 'Rolls up findings into 1 per host') do |option|
+							@options[:rollup] = option
+						end
+
 						opt.separator('')
 						opt.separator("Reporting Options")
 
@@ -411,36 +419,52 @@ module Risu
 				end
 			end
 
+			def process_rollups
+				puts @options[:rollup].inspect
+
+				if @options[:rollup] != false
+
+					puts "[*] Rolling up common vulnerabilities!"
+
+					#Clean up java patches
+					puts "\t[*] Rolling up Oracle Java vulnerabilities"
+					java = Risu::Parsers::Nessus::Rollups::Java.new
+					java.clean_up()
+				end
+			end
+
 			# Handles the parsing of a single file
 			#
 			# @param file The to parse
 			def parse_file file
 				begin
-						puts "[*] Parsing #{file}..."
-						tstart = Time.new
+					puts "[*] Parsing #{file}..."
+					tstart = Time.new
 
-						if File.exists?(file) == false
-							raise Risu::Exceptions::InvalidDocument, "[!] Document does not exist - #{file}"
-						end
+					if File.exists?(file) == false
+						raise Risu::Exceptions::InvalidDocument, "[!] Document does not exist - #{file}"
+					end
 
-						nessus_doc = Risu::Parsers::Nessus::NessusDocument.new file
-						nexpose_doc = Risu::Parsers::Nexpose::NexposeDocument.new file
+					nessus_doc = Risu::Parsers::Nessus::NessusDocument.new file
+					nexpose_doc = Risu::Parsers::Nexpose::NexposeDocument.new file
 
-						if nessus_doc.valid? == true
-							nessus_doc.parse
+					if nessus_doc.valid? == true
+						nessus_doc.parse
 
-							puts "[*] Fixing IP Address field"
-							nessus_doc.fix_ips
-						elsif nexpose_doc.valid? == true
-							nexpose_doc.parse
+						puts "[*] Fixing IP Address field"
+						nessus_doc.fix_ips
+					elsif nexpose_doc.valid? == true
+						nexpose_doc.parse
 
-							puts "[*] Fixing IP Address field"
-							nexpose_doc.fix_ips
-						else
-							raise Risu::Exceptions::InvalidDocument, "[!] Invalid Document - #{file}"
-						end
+						puts "[*] Fixing IP Address field"
+						nexpose_doc.fix_ips
+					else
+						raise Risu::Exceptions::InvalidDocument, "[!] Invalid Document - #{file}"
+					end
 
-						printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
+					process_rollups()
+
+					printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
 				rescue Interrupt => i
 					puts "[!] Parse canceled!"
 					exit(1)
