@@ -65,6 +65,8 @@ module Risu
 				  end
 				rescue => e
 					puts "[!] Invalid template path"
+					#puts e.inspect
+  					#puts e.backtrace
 				end
 			end
 
