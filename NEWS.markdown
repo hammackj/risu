@@ -1,6 +1,6 @@
 # News
 
-#1.6.3 (August)
+#1.6.3 (September)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
 - Support for Ruby less than 1.9.3 also doesn't exist
 - Schema
@@ -21,13 +21,14 @@
 		- Added exploit_framework_d2_elliot
 	- Attachment Model ***NEW***
 		- New Model for attachment metadata
+			- Please note this is just the hash of the attachment, the real attachment is not in the .nessus file.
 - Templates
 	- Added initial malicious process detection template based on plugin #59275, it is rough at the moment but good for viewing all the findings.
 - Wiki
 	- New page for installing on [Kali Linux](https://github.com/arxopia/risu/wiki/Kali-Linux-Risu-Installation-Guide)
 
 #1.6.2 (March 13, 2013)
-- pci_compliance template - Correct a bug that prevented it from working. Reported by [jkordish]
+- pci_compliance template - Corrected a bug that prevented it from working. Reported by [jkordish]
 - Added Report.extra to contain any extra risu.config yaml settings to be passed to a report
 	- Check for nil before using it!
 	- It will contain all tags in the report: section of the config file
