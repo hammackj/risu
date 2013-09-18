@@ -56,7 +56,7 @@ require 'risu/cli'
 require 'risu/exceptions'
 require 'risu/models'
 require 'risu/parsers'
-require 'risu/parsers/nessus/rollups'
+require 'risu/parsers/nessus/postprocess'
 require 'risu/renderers'
 
 include Risu::Models
