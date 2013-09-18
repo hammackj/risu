@@ -8,6 +8,8 @@
 #Road map
 
 ## 1.7 (??)
+- ability to query for all remote/local checks and build a report off that
+- concept of template specific settings in the template file
 - test for Item.notable_order_by_cvss_raw
 	- ensure order is correct
 - create template -n --new-template cli option
