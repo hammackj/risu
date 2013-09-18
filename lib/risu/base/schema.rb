@@ -78,6 +78,7 @@ module Risu
 					t.string :fqdn
 					t.string :netbios
 					t.text :notes
+					t.integer :risk_score
 				end
 
 				create_table :host_properties do |t|
@@ -106,6 +107,7 @@ module Risu
 					t.string :cm_compliance_result
 					t.string :cm_compliance_output
 					t.integer :real_severity
+					t.integer :risk_score
 				end
 
 				create_table :plugins do |t|
@@ -140,6 +142,7 @@ module Risu
 					t.string :d2_elliot_name
 					t.string :exploit_framework_d2_elliot
 					t.boolean :rollup
+					t.integer :risk_score
 				end
 
 				create_table :individual_plugin_selections do |t|
