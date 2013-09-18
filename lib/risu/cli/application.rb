@@ -228,8 +228,8 @@ module Risu
 						opt.separator('')
 						opt.separator("Parse Options")
 
-						opt.on('-r', '--rollup-findings', 'Rolls up findings into 1 per host') do |option|
-							@options[:rollup] = option
+						opt.on('--post-process', 'Preform post processing on the data') do |option|
+							@options[:post_process] = option
 						end
 
 						opt.separator('')
@@ -419,17 +419,22 @@ module Risu
 				end
 			end
 
-			def process_rollups
-				puts @options[:rollup].inspect
+			# Preforms PostProcessing on the dataset
+			#
+			def process_post_processing
+				if @options[:post_process] != false
 
-				if @options[:rollup] != false
+					puts "[*] Preforming Post Processing"
 
-					puts "[*] Rolling up common vulnerabilities!"
+					#Calculate all RiskScores
+					puts "\t[*] Calculating RiskScore for all vulnerabilities"
+					score = Risu::Parsers::Nessus::PostProcess::RiskScore.new
+					score.run()
 
 					#Clean up java patches
 					puts "\t[*] Rolling up Oracle Java vulnerabilities"
-					java = Risu::Parsers::Nessus::Rollups::Java.new
-					java.clean_up()
+					java = Risu::Parsers::Nessus::PostProcess::Java.new
+					java.run()
 				end
 			end
 
@@ -462,7 +467,7 @@ module Risu
 						raise Risu::Exceptions::InvalidDocument, "[!] Invalid Document - #{file}"
 					end
 
-					process_rollups()
+					process_post_processing()
 
 					printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
 				rescue Interrupt => i
