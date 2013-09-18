@@ -24,8 +24,12 @@
 			- Please note this is just the hash of the attachment, the real attachment is not in the .nessus file.
 - Templates
 	- Added initial malicious process detection template based on plugin #59275, it is rough at the moment but good for viewing all the findings.
+	- Added initial Top 25 template for showing an overfiew of the vulns and their RiskScore
 - Wiki
 	- New page for installing on [Kali Linux](https://github.com/arxopia/risu/wiki/Kali-Linux-Risu-Installation-Guide)
+- Post Processing
+	- Started to develop a method for doing post processing on all the findings
+		- Initial RiskScore plugin to calculate a risk score for Plugins / Findings / Hosts
 
 #1.6.2 (March 13, 2013)
 - pci_compliance template - Corrected a bug that prevented it from working. Reported by [jkordish]
