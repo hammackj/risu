@@ -27,7 +27,7 @@
 	- Added initial Top 25 template for showing an overfiew of the vulns and their RiskScore
 - Wiki
 	- New page for installing on [Kali Linux](https://github.com/arxopia/risu/wiki/Kali-Linux-Risu-Installation-Guide)
-- Post Processing
+- Post Processing (Alpha Support)
 	- Started to develop a method for doing post processing on all the findings
 		- Initial RiskScore plugin to calculate a risk score for Plugins / Findings / Hosts
 
