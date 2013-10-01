@@ -1,6 +1,6 @@
 # News
 
-#1.6.3 (September)
+#1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
 - Support for Ruby less than 1.9.3 also doesn't exist
 - Schema
@@ -20,11 +20,11 @@
 		- Added d2_elliot_name
 		- Added exploit_framework_d2_elliot
 	- Attachment Model ***NEW***
-		- New Model for attachment metadata
+		- New Model for attachment meta-data
 			- Please note this is just the hash of the attachment, the real attachment is not in the .nessus file.
 - Templates
-	- Added initial malicious process detection template based on plugin #59275, it is rough at the moment but good for viewing all the findings.
-	- Added initial Top 25 template for showing an overfiew of the vulns and their RiskScore
+	- Added initial malicious process detection template based on plugin #59275,
+		it is rough at the moment but good for viewing all the findings.
 - Wiki
 	- New page for installing on [Kali Linux](https://github.com/arxopia/risu/wiki/Kali-Linux-Risu-Installation-Guide)
 - Post Processing (Alpha Support)
