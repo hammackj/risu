@@ -432,9 +432,9 @@ module Risu
 					score.run()
 
 					#Clean up java patches
-					puts "\t[*] Rolling up Oracle Java vulnerabilities"
-					java = Risu::Parsers::Nessus::PostProcess::Java.new
-					java.run()
+					#puts "\t[*] Rolling up Oracle Java vulnerabilities"
+					#java = Risu::Parsers::Nessus::PostProcess::Java.new
+					#java.run()
 				end
 			end
 
