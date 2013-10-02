@@ -24,7 +24,8 @@
 			- Please note this is just the hash of the attachment, the real attachment is not in the .nessus file.
 - Templates
 	- Added initial malicious process detection template based on plugin #59275,
-		it is rough at the moment but good for viewing all the findings.
+		it is rough at the moment but good for viewing all the findings. It requires
+		that local checks were run, for the plugin to fire during the Nessus scan.
 - Wiki
 	- New page for installing on [Kali Linux](https://github.com/arxopia/risu/wiki/Kali-Linux-Risu-Installation-Guide)
 - Post Processing (Alpha Support)
