@@ -7,7 +7,14 @@
 
 #Road map
 
-## 1.7 (??)
+## 1.7.0
+New XML element detected: glsa.
+New XML element detected: exploited_by_malware.
+New HostProperties attribute: pcidss:insecure_http_methods.
+New XML element detected: freebsd.
+New XML element detected: compliance.
+
+## 1.7.x (??)
 - ability to query for all remote/local checks and build a report off that
 - concept of template specific settings in the template file
 - test for Item.notable_order_by_cvss_raw
@@ -87,8 +94,8 @@
 - Look at moving to Nokogiri for xml parsing; http://nokogiri.org if its faster
 - page kerning?
 
-##List of things TODO
-###Core
+## Ideas
+### Core
 - bug report info collection option
 - Remove rmagick (GRRRR!)
 - Complete comments for all existing code
@@ -98,7 +105,7 @@
 - check the config file for \t
 - add create template option
 
-###Parsers
+### Parsers
 - move all pci related host properties to their own table
 - Nexpose SimpleXML parser
 - Create a Nessus document generator, for testing the parser
