@@ -1,0 +1,11 @@
+source "https://rubygems.org"
+
+gem "rails"
+gem "libxml-ruby"
+gem "prawn"
+gem "gruff"
+gem "mysql2"
+gem "rmagick"
+gem "sqlite3"
+gem "simplecov"
+gem "nokogiri"
