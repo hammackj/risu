@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2013 Arxopia LLC.
+# Copyright (c) 2010-2014 Arxopia LLC.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,8 @@ require 'rails/test_help'
 require 'test/unit'
 require 'active_record'
 require 'active_record/fixtures'
-require "active_support"
+require 'active_support'
+require 'tmpdir'
 
 require 'risu'
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2013 Arxopia LLC.
+# Copyright (c) 2010-2014 Arxopia LLC.
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@ require 'test_helper'
 class ExecSummaryTemplateTest < ActiveSupport::TestCase
 
 	def setup
-		@file_name = "/tmp/exec_summary.pdf"
+		@file_name = "#{Dir.tmpdir}/exec_summary.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 		@templater = Risu::Base::Templater.new("exec_summary", Report, @file_name, @template_manager)
 
