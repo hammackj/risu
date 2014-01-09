@@ -7,3 +7,5 @@ doc/
 *.cfg
 coverage.data
 coverage/
+.bundle/
+Gemfile.lock

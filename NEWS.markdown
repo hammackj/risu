@@ -1,5 +1,8 @@
 # News
 
+#1.7.0
+- Update Copyrights
+
 #1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
 - Support for Ruby less than 1.9.3 also doesn't exist
