@@ -31,4 +31,3 @@ You should see output like the following:
 	risu: 1.7.0
 	Ruby Version: 2.1.0
 	Rubygems Version: 2.2.0
-
