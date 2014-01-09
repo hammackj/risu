@@ -1,7 +1,13 @@
 # News
 
-#1.7.0
-- Update Copyrights
+#1.7.0 ()
+- Update Copyrights to 2014
+- Wiki
+	- New page for installing on [OSX]((https://github.com/arxopia/risu/wiki/OSX-Installation-Guide)
+- Models
+	- HostProperty Model
+		- Added pcidss:insecure_http_methods
+	-
 
 #1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
