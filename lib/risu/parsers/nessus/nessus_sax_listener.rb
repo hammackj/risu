@@ -54,7 +54,8 @@ module Risu
 						"pcidss:reachable_db", "pcidss:www:xss", "pcidss:directory_browsing", "pcidss:known_credentials",
 						"pcidss:compromised_host:worm", "pcidss:obsolete_operating_system", "pcidss:dns_zone_transfer",
 						"pcidss:unprotected_mssql_db", "pcidss:obsolete_software", "pcidss:www:sql_injection", "pcidss:backup_files",
-						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2", "operating-system-unsupported", "patch-summary-total-cves"
+						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2", "operating-system-unsupported", "patch-summary-total-cves",
+						"pcidss:insecure_http_methods"
 					]
 
 					@valid_host_properties_regex = Array[
@@ -99,7 +100,7 @@ module Risu
 					@vals[@tag] = ""
 
 					if !@valid_elements.include?(element)
-						puts "New XML element detected: #{element}. Please report this at https://github.com/arxopia/risu/issues/new or via email to #{Risu::EMAIL}"
+						puts "New XML element detected: #{element}. Please report this at #{Risu::GITHUB}/issues/new or via email to #{Risu::EMAIL}"
 					end
 
 					case element
@@ -159,7 +160,7 @@ module Risu
 							if attributes["name"] !~ /(netstat-(?:established|listen)-(?:tcp|udp)\d+-\d+)/ &&
 								attributes["name"] !~ /traceroute-hop-\d+/
 								#puts attributes["name"]
-								puts "New HostProperties attribute: #{attributes["name"]}. Please report this at https://github.com/arxopia/risu/issues/new or via email to #{Risu::EMAIL}\n" if @attr.nil?
+								puts "New HostProperties attribute: #{attributes["name"]}. Please report this at #{Risu::GITHUB}/issues/new or via email to #{Risu::EMAIL}\n" if @attr.nil?
 							end
 						when "ReportItem"
 							@vals = Hash.new # have to clear this out or everything has the same references
