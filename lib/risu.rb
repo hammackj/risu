@@ -28,6 +28,7 @@ module Risu
 	APP_NAME = "risu"
 	VERSION = "1.7.0"
 	GRAPH_WIDTH = 750
+	GITHUB = "http://github.com/arxopia.com/risu"
 	EMAIL = "risu@arxopia.com"
 	CONFIG_FILE = "./risu.cfg"
 	USER_TEMPLATES_DIR = "~/.risu/templates/"
