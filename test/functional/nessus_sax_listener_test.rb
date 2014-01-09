@@ -70,7 +70,11 @@
 
 							xml.tag(:name => "traceroute-hop-2") do
 								xml.text "69.69.69.70"
-							end																					
+							end
+
+							xml.tag(:name => "pcidss:insecure_http_methods") do
+								xml.text "GET"
+							end																			
 						end
 
 						xml.ReportItem(:port => "88", :svc_name => "kerberos?", :protocol => "tcp", :severity => "0", :pluginName => "Test Plugin", :pluginFamily => "Test Family", :pluginID =>"999999") do
@@ -137,5 +141,9 @@
  	
  	test "return 10.69.69.70 for Host.where(:name => 69.69.69.69)...traceroute_hop_2" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value == "69.69.69.70", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value}"
- 	end 	
+ 	end
+
+ 	test "return GET for Host.where(:name => 69.69.69.69)...pcidss:insecure_http_methods" do
+		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value == "GET", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value}"
+ 	end
  end
