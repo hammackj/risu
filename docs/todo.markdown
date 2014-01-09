@@ -10,7 +10,6 @@
 ## 1.7.0
 New XML element detected: glsa.
 New XML element detected: exploited_by_malware.
-New HostProperties attribute: pcidss:insecure_http_methods.
 New XML element detected: freebsd.
 New XML element detected: compliance.
 
