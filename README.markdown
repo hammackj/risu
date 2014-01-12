@@ -1,5 +1,9 @@
 # risu
 
+[![Gem Version](https://badge.fury.io/rb/risu.png)](http://badge.fury.io/rb/risu)
+
+[![Build Status](https://travis-ci.org/arxopia/risu.png?branch=1.7.0)](https://travis-ci.org/arxopia/risu)
+
 Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
 Version **1.6.3** is the current release.
