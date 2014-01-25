@@ -6,7 +6,7 @@
 
 Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
-Version **1.6.3** is the current release.
+Version **1.7.0** is the current release.
 
 ## Requirements
 
@@ -79,7 +79,7 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 	|_|  |_|___/\__,_|
 
 
-	risu Console v1.6.2
+	risu Console v1.7.0
 	>> Host.first
 	=> #<Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.arxopia.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 
@@ -116,6 +116,9 @@ If you would like to contribute templates/bug fixes/etc to risu. The easiest way
 
 # Issues
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/arxopia/risu/issues).
+
+# Donations / tips
+Feel free to donate or tip to BTC: 1Cfd5G6rJmSBrNcTHxEgE4uYgH7XZJPY7Z
 
 # Contact
 You can reach me at risu[at]arxopia[dot]com.
