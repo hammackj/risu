@@ -32,7 +32,7 @@ require 'risu'
 Gem::Specification.new do |s|
 	s.name = "#{Risu::APP_NAME}"
 	s.version = Risu::VERSION
-	s.homepage = "http://www.arxopia.com/projects/risu"
+	s.homepage = "https://github.com/arxopia/risu"
 	s.summary = "#{Risu::APP_NAME}"
 	s.description = "#{Risu::APP_NAME} is a Nessus .nessus XML parser and report generation tool"
 	s.license = "BSD"

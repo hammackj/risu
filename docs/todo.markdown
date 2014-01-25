@@ -12,6 +12,7 @@ New XML element detected: glsa.
 New XML element detected: exploited_by_malware.
 New XML element detected: freebsd.
 New XML element detected: compliance.
+New XML element detected: exploited_by_malware. 
 
 ## 1.7.x (??)
 - ability to query for all remote/local checks and build a report off that
