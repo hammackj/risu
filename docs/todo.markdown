@@ -8,13 +8,13 @@
 #Road map
 
 ## 1.7.0
+exploitablity matrix for tech findings
 New XML element detected: glsa.
-New XML element detected: exploited_by_malware.
 New XML element detected: freebsd.
 New XML element detected: compliance.
-New XML element detected: exploited_by_malware. 
 
 ## 1.7.x (??)
+- move project page on arxopia/project/risu to hammackj/risu
 - ability to query for all remote/local checks and build a report off that
 - concept of template specific settings in the template file
 - test for Item.notable_order_by_cvss_raw
@@ -32,7 +32,6 @@ New XML element detected: exploited_by_malware.
 - Patch roll up
 - nessus 5.2 support
 - techfindings report each host for plugin output
-- redo project page on arxopia/project/risu
 - Documents
 	- Template Tutorial
 	- Updating tutorial
