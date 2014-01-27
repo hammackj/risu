@@ -83,6 +83,7 @@
 							xml.send(:"cert-cc", "CA-1997-22")
 							xml.xref "USN:1752-1"
 							xml.send(:"usn", "USN:1752-1")
+							xml.exploited_by_malware("true")
 						end
 					end
 				end
@@ -146,4 +147,8 @@
  	test "return GET for Host.where(:name => 69.69.69.69)...pcidss:insecure_http_methods" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value == "GET", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value}"
  	end
+
+ 	test "return 2 for Plugin.where(:exploited_by_malware => 'true').count" do
+		assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
+ 	end 	
  end

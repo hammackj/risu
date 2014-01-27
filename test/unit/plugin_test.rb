@@ -62,4 +62,8 @@ class PluginTest < ActiveSupport::TestCase
 	test "returns 1 risk for Plugin.where(:d2_elliot_name => 'Sample Exploit Name').count" do
 		assert Plugin.where(:d2_elliot_name => "Sample Exploit Name").count == 1, "GOT #{Plugin.where(:d2_elliot_name => "Sample Exploit Name").count}"
 	end
+
+	test "return 2 risk for Plugin.where(:exploited_by_malware => 'true').count" do
+		assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
+	end
 end

@@ -74,7 +74,8 @@ module Risu
 						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname", "always_run",
 						"cm:compliance-info", "cm:compliance-actual-value", "cm:compliance-check-id", "cm:compliance-policy-value",
 						"cm:compliance-audit-file", "cm:compliance-check-name", "cm:compliance-result", "cm:compliance-output", "policyOwner",
-						"visibility", "script_version", "attachment", "policy_comments", "d2_elliot_name", "exploit_framework_d2_elliot"
+						"visibility", "script_version", "attachment", "policy_comments", "d2_elliot_name", "exploit_framework_d2_elliot",
+						"exploited_by_malware"
 					]
 
 					@valid_elements = @valid_elements + @valid_references
@@ -347,7 +348,8 @@ module Risu
 								:stig_severity => @vals["stig_severity"],
 								:fname => @vals["fname"],
 								:always_run => @vals["always_run"],
-								:script_version => @vals["script_version"]
+								:script_version => @vals["script_version"],
+								:exploited_by_malware => @vals["exploited_by_malware"]
 							}
 							@plugin.save
 						when "attachment"

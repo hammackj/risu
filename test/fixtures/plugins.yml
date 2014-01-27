@@ -10,6 +10,7 @@ critical_plugin:
   stig_severity: I
   exploit_framework_d2_elliot: true
   d2_elliot_name: "Sample Exploit Name"
+  exploited_by_malware: 'true'
 
 high_plugin:
   id: 99998
