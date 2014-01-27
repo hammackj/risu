@@ -7,7 +7,8 @@
 - Models
 	- HostProperty Model
 		- Added pcidss:insecure_http_methods
-	-
+	- Plugin
+		- Added exploited_by_malware
 
 #1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs

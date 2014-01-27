@@ -141,6 +141,7 @@ module Risu
 					t.string :script_version
 					t.string :d2_elliot_name
 					t.string :exploit_framework_d2_elliot
+					t.string :exploited_by_malware
 					t.boolean :rollup
 					t.integer :risk_score
 				end
