@@ -33,4 +33,5 @@ module Risu
 end
 
 require 'risu/parsers/nessus/postprocess/java'
+require 'risu/parsers/nessus/postprocess/adobe_reader'
 require 'risu/parsers/nessus/postprocess/risk_score'

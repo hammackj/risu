@@ -432,9 +432,14 @@ module Risu
 					score.run()
 
 					#Clean up java patches
-					#puts "\t[*] Rolling up Oracle Java vulnerabilities"
-					#java = Risu::Parsers::Nessus::PostProcess::Java.new
-					#java.run()
+					puts "\t[*] Rolling up Oracle Java vulnerabilities"
+					java = Risu::Parsers::Nessus::PostProcess::Java.new
+					java.run()
+
+					#Clean up adobe reader
+					puts "\t[*] Rolling up Adobe Reader vulnerabilities"
+					ar = Risu::Parsers::Nessus::PostProcess::AdobeReader.new
+					ar.run()
 				end
 			end
 
