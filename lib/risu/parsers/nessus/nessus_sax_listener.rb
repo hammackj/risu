@@ -55,11 +55,11 @@ module Risu
 						"pcidss:compromised_host:worm", "pcidss:obsolete_operating_system", "pcidss:dns_zone_transfer",
 						"pcidss:unprotected_mssql_db", "pcidss:obsolete_software", "pcidss:www:sql_injection", "pcidss:backup_files",
 						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2", "operating-system-unsupported", "patch-summary-total-cves",
-						"pcidss:insecure_http_methods"
+						"pcidss:insecure_http_methods", "cpe-0", "cpe-1", "cpe-2", "cpe-3"
 					]
 
 					@valid_host_properties_regex = Array[
-						"patch-summary-cve-num", "patch-summary-cves", "patch-summary-txt"
+						"patch-summary-cve-num", "patch-summary-cves", "patch-summary-txt", "cpe-\d+"
 					]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
@@ -138,13 +138,15 @@ module Risu
 										else
 											nil
 										end
-							#Ugly as fuck.
+							#Ugly as fuck. Really this needs to be rewritten. Fuck.
 							elsif attributes['name'] =~ /patch-summary-cve-num/ ||
 								attributes['name'] =~ /patch-summary-cves/ ||
-								attributes['name'] =~ /patch-summary-txt/
+								attributes['name'] =~ /patch-summary-txt/ ||
+								attributes['name'] =~ /cpe-\d+/
 								@attr = if attributes["name"] =~ /patch-summary-cve-num/ ||
 								attributes['name'] =~ /patch-summary-cves/ ||
-								attributes['name'] =~ /patch-summary-txt/
+								attributes['name'] =~ /patch-summary-txt/ ||
+								attributes['name'] =~ /cpe-\d+/
 											attributes["name"]
 										else
 											nil
