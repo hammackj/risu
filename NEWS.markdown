@@ -7,8 +7,11 @@
 - Models
 	- HostProperty Model
 		- Added pcidss:insecure_http_methods
+		- Added cpe-XXX, where XXX is a digit of the number of CPE found for that host.
 	- Plugin
 		- Added exploited_by_malware
+- Experimental Post Processing for Java and Adobe Reader plugins
+	- Sums up the findings and removes the duplicates.
 
 #1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
