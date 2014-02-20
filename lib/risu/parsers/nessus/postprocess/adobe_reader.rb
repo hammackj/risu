@@ -28,11 +28,14 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class AdobeReader
+				class AdobeReader < PostProcess
 
 					#
 					def initialize
-						@reader_plugins = [
+						@plugin_id = -99998
+						@plugin_name = "Upgrade to the latest Adobe Reader"
+						@item_name = "Upgrade to the latest Adobe Reader"
+						@plugin_ids = [
 							30200, #Adobe Reader < 7.1.0 / 8.1.2 Multiple Vulnerabilities
 							33256, #Adobe Reader < 7.1.0 / 8.1.2 SU1 Unspecified JavaScript Method Handling Arbitrary Code Execution
 							34695, #Adobe Reader < 8.1.3 / 9.0 Multiple Vulnerabilities
@@ -56,178 +59,190 @@ module Risu
 						]
 					end
 
-					#NOTE:
-					#looks like its working
-					def newest_reader_plugin
-						newest = DateTime.new(0001, 01, 01)
-						newest_plugin = nil
+					# #NOTE:
+					# #looks like its working
+					# def newest_reader_plugin
+					# 	newest = DateTime.new(0001, 01, 01)
+					# 	newest_plugin = nil
 
-						@reader_plugins.each do |id|
-							plugin = Plugin.find_by_id(id)
+					# 	@reader_plugins.each do |id|
+					# 		plugin = Plugin.find_by_id(id)
 
-							if plugin == nil || plugin.plugin_modification_date == nil
-								next
-							end
+					# 		if plugin == nil || plugin.plugin_modification_date == nil
+					# 			next
+					# 		end
 
-							if plugin.plugin_modification_date >= newest
-								newest = plugin.plugin_modification_date if plugin.plugin_modification_date != nil
-								newest_plugin = plugin
-							end
-						end
+					# 		if plugin.plugin_modification_date >= newest
+					# 			newest = plugin.plugin_modification_date if plugin.plugin_modification_date != nil
+					# 			newest_plugin = plugin
+					# 		end
+					# 	end
 
-						return newest_plugin
-					end
+					# 	return newest_plugin
+					# end
 
-					# Creates a rollup plugin based on the newest Adobe Reader
-					#
-					def create_plugin
+					# # Creates a rollup plugin based on the newest Adobe Reader
+					# #
+					# def create_plugin
 
-						plugin = Plugin.find_by_id(-99998)
+					# 	plugin = Plugin.find_by_id(@plugin_id)
 
-						newest_plugin = newest_reader_plugin()
+					# 	newest_plugin = newest_reader_plugin()
 
-						if newest_plugin == nil
-							return
-						end
+					# 	if newest_plugin == nil
+					# 		return
+					# 	end
 
-						if plugin == nil
-							plugin = Plugin.new
-						end
+					# 	if plugin == nil
+					# 		plugin = Plugin.new
+					# 	end
 
-							plugin.id = -99999
-							plugin.plugin_name = "Upgrade to the latest Adobe Reader"
-							plugin.family_name = "Risu Rollup Plugins"
-							plugin.description = newest_plugin.description || ""
-							plugin.plugin_version = newest_plugin.plugin_version || ""
-							plugin.plugin_publication_date = newest_plugin.plugin_publication_date
-							plugin.plugin_modification_date = newest_plugin.plugin_modification_date
-							plugin.vuln_publication_date = newest_plugin.vuln_publication_date
-							plugin.cvss_vector = newest_plugin.cvss_vector || ""
-							plugin.cvss_base_score = newest_plugin.cvss_base_score
-							plugin.cvss_temporal_score = newest_plugin.cvss_temporal_score
-							plugin.cvss_temporal_vector = newest_plugin.cvss_temporal_vector
-							plugin.risk_factor = newest_plugin.risk_factor
-							plugin.solution = newest_plugin.solution
-							plugin.synopsis = newest_plugin.synopsis
-							plugin.plugin_type = "Rollup"
-							plugin.rollup = true
+					# 		plugin.id = @plugin_id
+					# 		plugin.plugin_name = "Upgrade to the latest Adobe Reader"
+					# 		plugin.family_name = "Risu Rollup Plugins"
+					# 		plugin.description = newest_plugin.description || ""
+					# 		plugin.plugin_version = newest_plugin.plugin_version || ""
+					# 		plugin.plugin_publication_date = newest_plugin.plugin_publication_date
+					# 		plugin.plugin_modification_date = newest_plugin.plugin_modification_date
+					# 		plugin.vuln_publication_date = newest_plugin.vuln_publication_date
+					# 		plugin.cvss_vector = newest_plugin.cvss_vector || ""
+					# 		plugin.cvss_base_score = newest_plugin.cvss_base_score
+					# 		plugin.cvss_temporal_score = newest_plugin.cvss_temporal_score
+					# 		plugin.cvss_temporal_vector = newest_plugin.cvss_temporal_vector
+					# 		plugin.risk_factor = newest_plugin.risk_factor
+					# 		plugin.solution = newest_plugin.solution
+					# 		plugin.synopsis = newest_plugin.synopsis
+					# 		plugin.plugin_type = "Rollup"
+					# 		plugin.rollup = true
 
-						plugin.save
-					end
+					# 	plugin.save
+					# end
 
-					#
-					def create_item(host_id, severity)
-						item = Item.new
+					# #
+					# def create_item(host_id, severity)
+					# 	item = Item.new
 
-							item.host_id = host_id
-							item.plugin_id = -99998
-							item.plugin_output = nil
-							item.port = 0
-							item.severity = severity
-							item.plugin_name = "Upgrade to the latest Adobe Reader"
+					# 		item.host_id = host_id
+					# 		item.plugin_id = @plugin_id
+					# 		item.plugin_output = nil
+					# 		item.port = 0
+					# 		item.severity = severity
+					# 		item.plugin_name = "Upgrade to the latest Adobe Reader"
 
-						item.save
-					end
+					# 	item.save
+					# end
 
-					#
-					def has_reader_findings
-						@reader_plugins.each do |plugin_id|
-							if Item.where(:plugin_id => plugin_id)
-								return true
-							end
-						end
+					# #
+					# def has_reader_findings
+					# 	@reader_plugins.each do |plugin_id|
+					# 		if Item.where(:plugin_id => plugin_id)
+					# 			return true
+					# 		end
+					# 	end
 
-						return false
-					end
+					# 	return false
+					# end
 
-					def has_host_reader_findings (host_id)
-						@reader_plugins.each do |plugin_id|
-							if Item.where(:plugin_id => plugin_id).where(:host_id => host_id).count >= 1
-								return true
-							end
-						end
+					# def has_host_reader_findings (host_id)
+					# 	@reader_plugins.each do |plugin_id|
+					# 		if Item.where(:plugin_id => plugin_id).where(:host_id => host_id).count >= 1
+					# 			return true
+					# 		end
+					# 	end
 
-						return false
-					end
+					# 	return false
+					# end
 
-					#
-					def calculate_severity current_severity, severity
-						#record highest severity for all of the rolled up
-						if severity == 4
-							return 4
-						elsif severity == 3 && current_severity != 4
-							return 3
-						elsif severity == 2 && current_severity != 4 && current_severity != 3
-							return 2
-						end
-					end
+					# #
+					# def calculate_severity current_severity, severity
+					# 	#record highest severity for all of the rolled up
+					# 	# if severity == 4
+					# 	# 	return 4
+					# 	# elsif severity == 3 && current_severity != 4
+					# 	# 	return 3
+					# 	# elsif severity == 2 && current_severity != 4 && current_severity != 3
+					# 	# 	return 2
+					# 	# #else
+					# 	# #	return 1
+					# 	# end
 
-					#
-					def run
-						if !has_reader_findings()
-							return
-						end
+					# 	if severity >= current_severity
+					# 		return severity
+					# 	else
+					# 		return current_severity
+					# 	end
+					# end
 
-						#Create the dummy plugin
-						create_plugin()
+					# #
+					# def run
+					# 	if !has_reader_findings()
+					# 		return
+					# 	end
 
-						Host.all.each do |host|
-							if !has_host_reader_findings(host.id)
-								next
-							end
+					# 	#Create the dummy plugin
+					# 	create_plugin()
 
-							finding_severity = 0
+					# 	Host.all.each do |host|
+					# 		if !has_host_reader_findings(host.id)
+					# 			next
+					# 		end
 
-							@reader_plugins.each do |plugin_id|
-								Item.where(:plugin_id => plugin_id).each do |item|
-									severity = item.severity
-									item.real_severity = severity
-									item.severity = -1
-									item.save
+					# 		puts "Found host with reader finding #{host.ip}"
 
-									finding_severity = calculate_severity(finding_severity, severity)
-								end
-							end
+					# 		finding_severity = 0
 
-							create_item(host.id, finding_severity)
-						end
+					# 		@reader_plugins.each do |plugin_id|
+					# 			Item.where(:plugin_id => plugin_id).each do |item|
+					# 				severity = item.severity
+					# 				item.real_severity = severity
+					# 				item.severity = -1
+					# 				item.save
+
+					# 				finding_severity = calculate_severity(finding_severity, severity)
+					# 			end
+					# 		end
+
+					# 		puts "#{finding_severity}"
+
+					# 		create_item(host.id, finding_severity)
+					# 	end
 
 
-						# @host_list = Hash.new
+					# 	# @host_list = Hash.new
 
-						# #Set all plugins
-						# @reader_plugins.each do |plugin_id|
-						# 	@current_severity = "None"
+					# 	# #Set all plugins
+					# 	# @reader_plugins.each do |plugin_id|
+					# 	# 	@current_severity = "None"
 
-						# 	Item.where(:plugin_id => plugin_id).each do |item|
-						# 		severity = item.severity
-						# 		item.real_severity = severity
-						# 		item.severity = -1
-						# 		item.save
+					# 	# 	Item.where(:plugin_id => plugin_id).each do |item|
+					# 	# 		severity = item.severity
+					# 	# 		item.real_severity = severity
+					# 	# 		item.severity = -1
+					# 	# 		item.save
 
-						# 		#record highest severity for all of the rolled up
-						# 		if severity == 4
-						# 			@current_severity = 4
-						# 		elsif severity == 3 && @current_severity != 4
-						# 			@current_severity = 3
-						# 		elsif severity == 2 && @current_severity != 4 && @current_severity != 3
-						# 			@current_severity = 2
-						# 		end
+					# 	# 		#record highest severity for all of the rolled up
+					# 	# 		if severity == 4
+					# 	# 			@current_severity = 4
+					# 	# 		elsif severity == 3 && @current_severity != 4
+					# 	# 			@current_severity = 3
+					# 	# 		elsif severity == 2 && @current_severity != 4 && @current_severity != 3
+					# 	# 			@current_severity = 2
+					# 	# 		end
 
-						# 		@host_list[item.host_id] = @current_severity
+					# 	# 		@host_list[item.host_id] = @current_severity
 
-						# 	end
-						# end
+					# 	# 	end
+					# 	# end
 
-						# #Create the rollup plugin
-						# create_plugin()
+					# 	# #Create the rollup plugin
+					# 	# create_plugin()
 
-						# #Create 1 finding for each host, flagged with the highest severity for that host
-						# @host_list.keys.each do |host_id|
-						# 	create_item(host_id, @host_list[host_id])
-						# end
+					# 	# #Create 1 finding for each host, flagged with the highest severity for that host
+					# 	# @host_list.keys.each do |host_id|
+					# 	# 	create_item(host_id, @host_list[host_id])
+					# 	# end
 
-					end
+					# end
 				end
 			end
 		end
