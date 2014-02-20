@@ -8,7 +8,10 @@
 #Road map
 
 ## 1.7.0
+Make post processing cli flag instead of parse time 
+default creds blurb
 exploitablity matrix for tech findings
+import db export from Nessus
 New XML element detected: glsa.
 New XML element detected: freebsd.
 New XML element detected: compliance.
