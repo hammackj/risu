@@ -440,6 +440,11 @@ module Risu
 					puts "\t[*] Rolling up Adobe Reader vulnerabilities"
 					ar = Risu::Parsers::Nessus::PostProcess::AdobeReader.new
 					ar.run()
+
+					#Clean up Flash Player
+					puts "\t[*] Rolling up FlashPlayer vulnerabilities"
+					fp = Risu::Parsers::Nessus::PostProcess::FlashPlayer.new
+					fp.run()					
 				end
 			end
 
