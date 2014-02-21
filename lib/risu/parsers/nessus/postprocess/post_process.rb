@@ -64,7 +64,7 @@ module Risu
 					#
 					def create_plugin
 
-						plugin = Plugin.find_by_id(-99998)
+						plugin = Plugin.find_by_id(@plugin_id)
 
 						newest_plugin = newest_reader_plugin()
 
@@ -76,7 +76,7 @@ module Risu
 							plugin = Plugin.new
 						end
 
-						plugin.id = -99998
+						plugin.id = @plugin_id
 						plugin.plugin_name = @plugin_name
 						plugin.family_name = "Risu Rollup Plugins"
 						plugin.description = newest_plugin.description || ""
@@ -155,7 +155,7 @@ module Risu
 								next
 							end
 
-							puts "Found host with reader finding #{host.ip}"
+							#puts "Found host with reader finding #{host.ip}"
 
 							finding_severity = 0
 
@@ -170,7 +170,7 @@ module Risu
 								end
 							end
 
-							puts "#{finding_severity}"
+							#puts "#{finding_severity}"
 
 							create_item(host.id, finding_severity)
 						end
