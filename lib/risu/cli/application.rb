@@ -444,7 +444,12 @@ module Risu
 					#Clean up Flash Player
 					puts "\t[*] Rolling up FlashPlayer vulnerabilities"
 					fp = Risu::Parsers::Nessus::PostProcess::FlashPlayer.new
-					fp.run()					
+					fp.run()
+
+					#Clean up Serv-U
+					puts "\t[*] Rolling up Serv-U vulnerabilities"
+					su = Risu::Parsers::Nessus::PostProcess::ServU.new
+					su.run()										
 				end
 			end
 

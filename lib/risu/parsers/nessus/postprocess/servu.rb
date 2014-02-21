@@ -25,16 +25,26 @@
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	module Nessus
-		module PostProcess
+	module Parsers
+		module Nessus
+			module PostProcess
+				class ServU < PostProcess
 
+					#
+					def initialize
+						@plugin_id = -99996
+						@plugin_name = "Upgrade to the latest Serv-U"
+						@item_name = "Upgrade to the latest Serv-U"
+						@plugin_ids = [
+							36035, #Serv-U < 8.0.0.1 Multiple Vulnerabilities (DoS, Traversal)
+							41980, #Serv-U < 9.0.0.1
+							48435, #Serv-U < 10.2.0.0
+							69060, #Serv-U < 14.0.2.0 FTP Server SSL Renegotiation DoS
+							71863  #Serv-U FTP Server < 15.0.0.0 Multiple Security Vulnerabilities
+						]
+					end
+				end
+			end
 		end
 	end
 end
-
-require 'risu/parsers/nessus/postprocess/post_process'
-require 'risu/parsers/nessus/postprocess/java'
-require 'risu/parsers/nessus/postprocess/adobe_reader'
-require 'risu/parsers/nessus/postprocess/flash_player'
-require 'risu/parsers/nessus/postprocess/servu'
-require 'risu/parsers/nessus/postprocess/risk_score'
