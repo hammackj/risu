@@ -8,13 +8,15 @@
 #Road map
 
 ## 1.7.0
+New XML element detected: glsa.
+New XML element detected: freebsd.
 Make post processing cli flag instead of parse time 
+nfs shares to share section
 default creds blurb
 exploitablity matrix for tech findings
 import db export from Nessus
-New XML element detected: glsa.
-New XML element detected: freebsd.
-New XML element detected: compliance.
+configuration management
+nfs shares to share section
 
 ## 1.7.x (??)
 - move project page on arxopia/project/risu to hammackj/risu
