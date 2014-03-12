@@ -62,8 +62,7 @@ module Risu
 
 				text "\n\n\n"
 
-				text "Verify each finding. The compliance audits only look for exact matches. For example, if the policy \
-value for minimum password length is 8, and the actual value is 10, this finding can be ignored."
+				text "Verify each finding. The compliance audits only look for exact matches. For example, if the policy value for minimum password length is 8, and the actual value is 10, this finding can be ignored."
 
 				text "\n\n\n"
 
