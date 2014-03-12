@@ -75,7 +75,7 @@ module Risu
 						"cm:compliance-info", "cm:compliance-actual-value", "cm:compliance-check-id", "cm:compliance-policy-value",
 						"cm:compliance-audit-file", "cm:compliance-check-name", "cm:compliance-result", "cm:compliance-output", "policyOwner",
 						"visibility", "script_version", "attachment", "policy_comments", "d2_elliot_name", "exploit_framework_d2_elliot",
-						"exploited_by_malware"
+						"exploited_by_malware", "compliance"
 					]
 
 					@valid_elements = @valid_elements + @valid_references
@@ -351,7 +351,8 @@ module Risu
 								:fname => @vals["fname"],
 								:always_run => @vals["always_run"],
 								:script_version => @vals["script_version"],
-								:exploited_by_malware => @vals["exploited_by_malware"]
+								:exploited_by_malware => @vals["exploited_by_malware"],
+								:compliance => @vals["compliance"]
 							}
 							@plugin.save
 						when "attachment"
