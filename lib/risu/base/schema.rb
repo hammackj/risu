@@ -144,6 +144,7 @@ module Risu
 					t.string :exploited_by_malware
 					t.boolean :rollup
 					t.integer :risk_score
+					t.string :compliance
 				end
 
 				create_table :individual_plugin_selections do |t|
