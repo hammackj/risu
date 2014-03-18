@@ -2,7 +2,7 @@
 
 **Release dates and road map are estimates, and features can be changed at any time.**
 
-#**Bugs**
+# Bugs
 *** OS's with 2000 or XP can be misidentified by Nessus showing both host messing up some of the graphs. ***
 
 #Road map
@@ -17,6 +17,7 @@ exploitablity matrix for tech findings
 import db export from Nessus
 configuration management
 nfs shares to share section
+optional report prefix in cfg
 
 ## 1.7.x (??)
 - move project page on arxopia/project/risu to hammackj/risu
