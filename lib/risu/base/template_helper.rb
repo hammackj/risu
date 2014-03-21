@@ -110,6 +110,13 @@ module Risu
 					@output.text title, :style => :bold
 				end
 			end
+
+			def table headers, header_widths, data
+				@output.table([headers] + data, :header => true, :column_widths => header_widths, :row_colors => ['ffffff', 'E5E5E5']) do
+					row(0).style(:font_style => :bold, :background_color => 'D0D0D0')
+					cells.borders = [:top, :bottom, :left, :right]
+				end
+			end
 		end
 	end
 end
