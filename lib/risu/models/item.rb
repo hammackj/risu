@@ -335,10 +335,12 @@ module Risu
 					host_percent = (unique_hosts_with_critical_and_high.to_f / Host.count.to_f) * 100
 				end
 
+				# Based on the risk_percent returns a adjective representative
 				#
-				# @todo comments
+				# @param risk_percent Calculated percentage of risk based on {Item::calculate_vulnerable_host_percent}
 				#
-				def ajective_for_risk_text risk_percent
+				# @return [String] Textual representation of the risk_percent
+				def adjective_for_risk_text risk_percent
 					adjective = case risk_percent
 						when 0..5
 							"excellent"
@@ -353,9 +355,11 @@ module Risu
 					end
 				end
 
+				# Builds a sentence based on the risk_percent to describe the risk
 				#
-				# @todo comments
-				#
+				# @param risk_percent Calculated percentage of risk based on {Item::calculate_vulnerable_host_percent}
+				# 
+				# @return [String] Sentence describing the implied significance of the risk_percent
 				def risk_text risk_percent
 					percent_text = case risk_percent
 						when 0..5.99
@@ -379,7 +383,7 @@ module Risu
 				# @todo rewrite this
 				def risks_by_severity_graph_text
 					host_percent = calculate_vulnerable_host_percent()
-					adjective = ajective_for_risk_text(host_percent)
+					adjective = adjective_for_risk_text(host_percent)
 					risk_text = risk_text(host_percent)
 
 					graph_text = "This bar graph is a representation of the findings by severity; the " +
@@ -508,6 +512,9 @@ module Risu
 				    select("items.*").select("count(*) as count_all").group(:plugin_id).order("count_all DESC")
 				end
 
+				# Returns the plugin that this [Item] belongs to
+				#
+				# @return [Plugin] the that this [Item] references
 				def plugin
 					Plugin.where(:id => Item.first.attributes["plugin_id"])
 				end
