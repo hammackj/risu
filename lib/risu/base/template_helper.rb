@@ -117,6 +117,10 @@ module Risu
 					cells.borders = [:top, :bottom, :left, :right]
 				end
 			end
+
+			def new_page
+				@output.start_new_page
+			end
 		end
 	end
 end
