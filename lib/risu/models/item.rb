@@ -429,16 +429,17 @@ module Risu
 					return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
 				end
 
-				#
-				# @todo comment
-				#
+				# Scrubs a plugin_name to remove all pointless data
+				# 
+				# @return [String] Scrubbed plugin name
 				def scrub_plugin_name (name)
 					return name.gsub("(remote check)", "").gsub("(uncredentialed check)", "").gsub(/(\(\d.*\))/, "")
 				end
 
-				#
-				# @todo comment
-				#
+				# Returns an array of plugin_id and plugin_name for the top 10
+				# findings unsorted
+				# 
+				# @return [Array] Unsorted top 10 findings
 				def top_10_sorted_raw
 					raw = notable_order_by_cvss_raw
 
@@ -461,9 +462,10 @@ module Risu
 					return data
 				end
 
-				#
-				# @todo comment
-				#
+				# Returns an array of plugin_id and plugin_name for the top 10
+				# findings sorted by CVSS score
+				# 
+				# @return [Array] Sorted top 10 findings
 				def top_10_sorted
 					raw = notable_order_by_cvss_raw
 					data = Array.new
@@ -530,7 +532,7 @@ module Risu
 					findings.each do |item|
 						plugin = Plugin.where(:id => item.plugin_id).first
 
-						name = plugin.plugin_name
+						name = scrub_plugin_name(plugin.plugin_name)
 						total = Item.where(:plugin_id => item.plugin_id).count
 						core = if plugin.exploit_framework_core == "true" then "Yes" else nil end
 						metasploit = if plugin.exploit_framework_metasploit == "true" then "Yes" else nil end
