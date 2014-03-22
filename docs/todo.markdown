@@ -8,24 +8,37 @@
 #Road map
 
 ## 1.7.0
-New XML element detected: glsa.
-New XML element detected: freebsd.
-Make post processing cli flag instead of parse time 
-nfs shares to share section
-default creds blurb
-exploitablity matrix for tech findings
-import db export from Nessus
-configuration management
-nfs shares to share section
-optional report prefix in cfg
+- Generate talking points report
+	- Summary of the findings / report
+	- top bad hosts
+	- Shares with keywords in the output
+	- 
+- create template -n --new-template cli option, guided INPUT name, author, description via stdin then generate valid template
+- Ability to load templates for the current working directory
+- New XML element detected: glsa.
+- New XML element detected: freebsd.
+- Make post processing cli flag instead of parse time 
+- nfs shares to share section
+- default creds blurb
+	- 39364
+	- 33852
+	- 11454
+	- 51369
+	- 26918
+	- 
+- exploitablity matrix for tech findings
+- configuration management
+- nfs shares to share section
+- optional report prefix in cfg
+- Patch roll up
 
 ## 1.7.x (??)
+- Parse summary # hosts, time / etc
 - move project page on arxopia/project/risu to hammackj/risu
 - ability to query for all remote/local checks and build a report off that
 - concept of template specific settings in the template file
 - test for Item.notable_order_by_cvss_raw
 	- ensure order is correct
-- create template -n --new-template cli option
 - Malware report template
 	Malware plugin ids =
 	64687, APT1 malware
@@ -35,8 +48,7 @@ optional report prefix in cfg
 	52670, Website link malware
 	66391, Linux/Cdorked.A backdoor
 - malware infection report
-- Patch roll up
-- nessus 5.2 support
+- Nessus 5.2 support
 - techfindings report each host for plugin output
 - Documents
 	- Template Tutorial
@@ -115,9 +127,7 @@ optional report prefix in cfg
 - Nexpose SimpleXML parser
 - Create a Nessus document generator, for testing the parser
 - Add Schema checks to make sure the schema is compatible with the version of risu
-- Add Parser for Nessus NBE Format
-- Add Parser for Nessus NSR Format
-- Add Parser for Nessus V1 of the XML Format
+- Add Parser for Nessus SQLite Database Format
 - Add Parser for OpenVas Output
 - Add Parser for SecurityCenter Output
 - Add Parser for Nexpose XML [Simple, Detailed]
