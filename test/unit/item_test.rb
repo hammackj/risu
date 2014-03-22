@@ -137,24 +137,24 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.calculate_vulnerable_host_percent == 150, "GOT #{Item.calculate_vulnerable_host_percent}"
 	end
 
-	test "return excellent for Item.ajective_for_risk_text(1)" do
-		assert Item.ajective_for_risk_text(1) == "excellent", "GOT #{Item.ajective_for_risk_text(1)}"
+	test "return excellent for Item.adjective_for_risk_text(1)" do
+		assert Item.adjective_for_risk_text(1) == "excellent", "GOT #{Item.adjective_for_risk_text(1)}"
 	end
 
-	test "return good for Item.ajective_for_risk_text(6)" do
-		assert Item.ajective_for_risk_text(6) == "great", "GOT #{Item.ajective_for_risk_text(6)}"
+	test "return good for Item.adjective_for_risk_text(6)" do
+		assert Item.adjective_for_risk_text(6) == "great", "GOT #{Item.adjective_for_risk_text(6)}"
 	end
 
-	test "return excellent for Item.ajective_for_risk_text(12)" do
-		assert Item.ajective_for_risk_text(12) == "good", "GOT #{Item.ajective_for_risk_text(12)}"
+	test "return excellent for Item.adjective_for_risk_text(12)" do
+		assert Item.adjective_for_risk_text(12) == "good", "GOT #{Item.adjective_for_risk_text(12)}"
 	end
 
-	test "return excellent for Item.ajective_for_risk_text(17)" do
-		assert Item.ajective_for_risk_text(17) == "fair", "GOT #{Item.ajective_for_risk_text(17)}"
+	test "return excellent for Item.adjective_for_risk_text(17)" do
+		assert Item.adjective_for_risk_text(17) == "fair", "GOT #{Item.adjective_for_risk_text(17)}"
 	end
 
-	test "return excellent for Item.ajective_for_risk_text(30)" do
-		assert Item.ajective_for_risk_text(30) == "poor", "GOT #{Item.ajective_for_risk_text(30)}"
+	test "return excellent for Item.adjective_for_risk_text(30)" do
+		assert Item.adjective_for_risk_text(30) == "poor", "GOT #{Item.adjective_for_risk_text(30)}"
 	end
 
 	test "return 116 for Item.risk_text(1).length" do
