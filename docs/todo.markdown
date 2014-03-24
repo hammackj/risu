@@ -8,27 +8,24 @@
 #Road map
 
 ## 1.7.0
+- New XML element detected: glsa.
+- New XML element detected: freebsd.
 - Generate talking points report
 	- Summary of the findings / report
 	- top bad hosts
 	- Shares with keywords in the output
-	- 
 - create template -n --new-template cli option, guided INPUT name, author, description via stdin then generate valid template
 - Ability to load templates for the current working directory
-- New XML element detected: glsa.
-- New XML element detected: freebsd.
 - Make post processing cli flag instead of parse time 
-- nfs shares to share section
-- default creds blurb
+- NFS shares to share section
+- Default creds blurb
 	- 39364
 	- 33852
 	- 11454
 	- 51369
 	- 26918
-	- 
-- exploitablity matrix for tech findings
 - configuration management
-- nfs shares to share section
+- NFS shares to share section
 - optional report prefix in cfg
 - Patch roll up
 
@@ -49,7 +46,7 @@
 	66391, Linux/Cdorked.A backdoor
 - malware infection report
 - Nessus 5.2 support
-- techfindings report each host for plugin output
+- tech findings report each host for plugin output
 - Documents
 	- Template Tutorial
 	- Updating tutorial
