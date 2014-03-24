@@ -21,8 +21,8 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
 	module Templates
@@ -42,15 +42,11 @@ module Risu
 
 			# Renders a Notable Findings Report
 			def render(output)
-				output.text Report.classification.upcase, :align => :center
-				output.text "\n"
+				report_classification
 
 				report_title Report.title
 				report_subtitle "Notable Vulnerabilities"
-
-				output.font_size(14) do
-					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				end
+				report_author "This report was prepared by\n#{Report.author}"
 
 				output.text "\n\n\n"
 
@@ -59,7 +55,6 @@ module Risu
 				output.text "\n"
 
 				Item.top_10_table(output)
-
 			end
 		end
 	end
