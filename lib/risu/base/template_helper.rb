@@ -1,4 +1,4 @@
-# Copyright (c) 2012 Arxopia LLC.
+# Copyright (c) 2012-2014 Arxopia LLC.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -21,8 +21,8 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
 	module Templates
@@ -111,6 +111,7 @@ module Risu
 				end
 			end
 
+			#
 			def table headers, header_widths, data
 				@output.table([headers] + data, :header => true, :column_widths => header_widths, :row_colors => ['ffffff', 'E5E5E5']) do
 					row(0).style(:font_style => :bold, :background_color => 'D0D0D0')
@@ -118,6 +119,7 @@ module Risu
 				end
 			end
 
+			#
 			def new_page
 				@output.start_new_page
 			end
