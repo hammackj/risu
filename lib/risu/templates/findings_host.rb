@@ -1,9 +1,9 @@
 # Copyright (c) 2010-2014 Arxopia LLC.
 # All rights reserved.
-
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-
+#
 #     * Redistributions of source code must retain the above copyright
 #       notice, this list of conditions and the following disclaimer.
 #     * Redistributions in binary form must reproduce the above copyright
@@ -12,7 +12,7 @@
 #     * Neither the name of the Arxopia LLC nor the names of its contributors
 #     	may be used to endorse or promote products derived from this software
 #     	without specific prior written permission.
-
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -27,6 +27,7 @@
 module Risu
 	module Templates
 		class FindingsHost < Risu::Base::TemplateBase
+			include TemplateHelper
 
 			#
 			#
@@ -35,7 +36,7 @@ module Risu
 				{
 					:name => "findings_host",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:description => "Generates a findings report by host"
 				}
 			end
@@ -43,23 +44,19 @@ module Risu
 			#
 			#
 			def render(output)
-				output.font_size 10
+				@output.font_size 10
 
-				output.text Report.classification.upcase, :align => :center
-				output.text "\n"
+				report_classification
 
-				output.font_size(22) { output.text Report.title, :align => :center }
-				output.font_size(18) {
-					output.text "Findings Summary by Host Report", :align => :center
-					output.text "\n"
-					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				}
+				report_title Report.title
+				report_subtitle "Findings Summary by Host Report"
+				report_author "This report was prepared by\n#{Report.author}"
 
-				output.text "\n\n\n"
+				@output.text "\n\n\n"
 
 				Host.sorted.each do |host|
 					if host.items.high_risks_unique_sorted.to_a.count > 0 or host.items.medium_risks_unique_sorted.to_a.count > 0
-						output.font_size(16) do
+						@output.font_size(16) do
 
 							host_string = "#{host.ip}"
 							host_string << " (#{host.fqdn})" if host.fqdn != nil
@@ -69,7 +66,7 @@ module Risu
 					end
 
 					if host.items.critical_risks_unique_sorted.to_a.count > 0
-						output.font_size(12) do
+						@output.font_size(12) do
 							output.fill_color "551A8B"
 							output.text "Critical Findings", :style => :bold
 							output.fill_color "000000"
@@ -82,7 +79,7 @@ module Risu
 					end
 
 					if host.items.high_risks_unique_sorted.to_a.count > 0
-						output.font_size(12) {
+						@output.font_size(12) {
 							output.fill_color "FF0000"
 							output.text "High Findings", :style => :bold
 							output.fill_color "000000"
@@ -95,7 +92,7 @@ module Risu
 					end
 
 					if host.items.medium_risks_unique_sorted.to_a.count > 0
-						output.font_size(12) {
+						@output.font_size(12) {
 							output.fill_color "FF8040"
 							output.text "Medium Findings", :style => :bold
 							output.fill_color "000000"
@@ -108,7 +105,7 @@ module Risu
 					end
 
 					if host.items.high_risks_unique_sorted.to_a.count > 0 or host.items.medium_risks_unique_sorted.to_a.count > 0
-						output.text "\n"
+						@output.text "\n"
 					end
 				end
 
