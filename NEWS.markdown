@@ -1,6 +1,6 @@
 # News
 
-#1.7.0 ()
+#1.7.0 (April ??, 2014)
 - Update Copyrights to 2014
 - Wiki
 	- New page for installing on [OSX]((https://github.com/arxopia/risu/wiki/OSX-Installation-Guide)
@@ -21,7 +21,7 @@
 - Templates
 	- Added "Failed compliance audits" template [abenson]
 	- Added "Exploitablity Summary Report" template
-	-
+	- Added "Talking Points Report" template
 	- Template Helper
 		- Added a table method to generate a table in 1 line of code
 		- Added a new_page method to create a page break in the report
