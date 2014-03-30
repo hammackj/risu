@@ -8,28 +8,48 @@
 #Road map
 
 ## 1.7.0
-- New XML element detected: glsa.
-- New XML element detected: freebsd.
-- Generate talking points report
-	- Summary of the findings / report
-	- top bad hosts
-	- Shares with keywords in the output
-- create template -n --new-template cli option, guided INPUT name, author, description via stdin then generate valid template
-- Ability to load templates for the current working directory
+- Host
+	- Hosts with Critical / High order by count
 - Make post processing cli flag instead of parse time 
-- NFS shares to share section
+- Item
+	- search_plugin_output (keyword)
+- Shares
+	- Item
+		- Anonymous SMB count
+		- Anonymous FTP count
+		- Anonymous NFS count
+		- Anonymous SMB text
+		- Anonymous FTP text
+		- Anonymous NFS text		
+	- Text for describing these 3 findings with counts
 - Default creds blurb
 	- 39364
 	- 33852
 	- 11454
 	- 51369
 	- 26918
+- New XML element detected: glsa.
+- New XML element detected: freebsd.
+- create template -n --new-template cli option, guided INPUT name, author, description via stdin then generate valid template
+- Ability to load templates for the current working directory
 - configuration management
-- NFS shares to share section
 - optional report prefix in cfg
 - Patch roll up
 
 ## 1.7.x (??)
+- findings_host_detailed template
+  -vuln by host
+    -hosts.each
+      - host.items.each
+        - name
+        - synopsis
+        - description
+        - solution
+        - risk
+        - reference
+        - ports
+        - plugin output
+- Service Descriptions
 - Parse summary # hosts, time / etc
 - move project page on arxopia/project/risu to hammackj/risu
 - ability to query for all remote/local checks and build a report off that
@@ -44,6 +64,7 @@
 	59641, Malicious process detection: unwanted software
 	52670, Website link malware
 	66391, Linux/Cdorked.A backdoor
+	XXXXX, Conficker Worm Detection (uncredentialed check)
 - malware infection report
 - Nessus 5.2 support
 - tech findings report each host for plugin output
@@ -96,17 +117,16 @@
 			- ALLOW CIDR BASED RANGES
 - 100% Code coverage for all unit testing
 - rewrite text for risks by severity
+- Abstract the api for prawn to support different renders
+- DSL for report creation to abstract the reports to have different output types
+- Language abstraction for text generation
+- Look at moving to Nokogiri for xml parsing; http://nokogiri.org if its faster
 - Implement different renderer's
 	- pdf
 	- csv
 	- html
 	- rtf
 	- OpenOffice.org xml
-- Abstract the api for prawn to support different renders
-- DSL for report creation to abstract the reports to have different output types
-- Language abstraction for text generation
-- Look at moving to Nokogiri for xml parsing; http://nokogiri.org if its faster
-- page kerning?
 
 ## Ideas
 ### Core
@@ -170,7 +190,7 @@
 - add table of contents on the tech findings template
 - better exec template
 	- intro
-			-over view
+			- over view
 			- details of major findings (3-5)
 	- scope
 	- impact of threats (generalized)
@@ -219,18 +239,6 @@
   Per host
     - scan time start/end
     - remote host info is/netbios/name/dns/ip/mac
-- All types of reports nessus does
-  -vuln by host
-    -hosts.each
-      - host.items.each
-        - name
-        - synopsis
-        - description
-        - solution
-        - risk
-        - reference
-        - ports
-        - plugin output
 
 ### Testing
 - Create tests for everything (95%+ code coverage goal, 85% Current)
