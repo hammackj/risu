@@ -4,6 +4,8 @@
 
 # Bugs
 *** OS's with 2000 or XP can be misidentified by Nessus showing both host messing up some of the graphs. ***
+- http://stackoverflow.com/questions/19040932/rmagick-complaining-about-libmagickcore-5-dylib-not-found-in-osx
+
 
 #Road map
 
@@ -65,6 +67,7 @@
 	52670, Website link malware
 	66391, Linux/Cdorked.A backdoor
 	XXXXX, Conficker Worm Detection (uncredentialed check)
+	70767,
 - malware infection report
 - Nessus 5.2 support
 - tech findings report each host for plugin output
