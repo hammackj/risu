@@ -130,7 +130,7 @@ module Risu
 					t.string :canvas_package
 					t.string :exploit_available
 					t.string :risk_factor
-					t.text :solution
+					t.longblob :solution
 					t.text :synopsis
 					t.string :plugin_type
 					t.string :exploit_framework_exploithub
