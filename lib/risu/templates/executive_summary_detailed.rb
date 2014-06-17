@@ -114,19 +114,19 @@ module Risu
 				output.text "A total of #{Host.count} hosts were found and scanned for vulnerabilities.\n"
 				output.text "\n"
 
-				output.text "There were #{Item.risks.count} risks found during this scan. Of these, #{Item.high_risks.count} were High risk vulnerabilities.	High risk vulnerabilities require immediate attention to handle as they are relatively easy for attackers to exploit frequently resulting in full access to affected systems.	 There were #{Item.medium_risks.count} findings which were Medium risk.	 High risk vulnerabilities are harder to exploit and may not result in full control of the affected system and should be addressed rapidly and with priority.	 There were #{Item.low_risks.count} findings which were Low risk vulnerabilities.	 These risks usually let attackers gain information about your network making it easier for launching more advanced attacks and should be handled in a timely manner.	 And #{Item.info_risks.count} findings which were information findings.\n"
+				output.text "There were #{Item.risks.count} risks found during this scan. Of these, #{Item.high_risks.count} were High risk vulnerabilities. High risk vulnerabilities require immediate attention to handle as they are relatively easy for attackers to exploit frequently resulting in full access to affected systems.	 There were #{Item.medium_risks.count} findings which were Medium risk.	 High risk vulnerabilities are harder to exploit and may not result in full control of the affected system and should be addressed rapidly and with priority. There were #{Item.low_risks.count} findings which were Low risk vulnerabilities. These risks usually let attackers gain information about your network making it easier for launching more advanced attacks and should be handled in a timely manner. And #{Item.info_risks.count} findings which were information findings.\n"
 				output.text "\n"
 
-				crit_host_count = Item.where(:severity => 4).group(:host_id).count
-				high_host_count = Item.where(:severity => 3).group(:host_id).count
-				medium_host_count = Item.where(:severity => 2).group(:host_id).count
-				low_host_count = Item.where(:severity => 1).group(:host_id).count
-				info_host_count = Item.where(:severity => 0).group(:host_id).count
+				crit_host_count = Item.where(:severity => 4).group(:host_id).count.count
+				high_host_count = Item.where(:severity => 3).group(:host_id).count.count
+				medium_host_count = Item.where(:severity => 2).group(:host_id).count.count
+				low_host_count = Item.where(:severity => 1).group(:host_id).count.count
+				info_host_count = Item.where(:severity => 0).group(:host_id).count.count
 
 				output.text "There were #{crit_host_count} hosts with Critical risk vulnerabilities, #{high_host_count} hosts with High risk vulnerabilities, #{medium_host_count} hosts with Medium risk vulnerabilities, #{low_host_count} hosts with Low risk vulnerabilities and #{info_host_count} hosts with information findings."
 				output.text "\n"
 
-				output.text "The following output.table shows the top 5 vulnerabilities that were found.	These are the most important vulnerabilities to address as they represent a sizable footprint for an attacker to exploit in an attempt to compromise.\n"
+				output.text "The following output.table shows the top 5 vulnerabilities that were found. These are the most important vulnerabilities to address as they represent a sizable footprint for an attacker to exploit in an attempt to compromise.\n"
 				output.text "\n"
 
 				results = Array.new
