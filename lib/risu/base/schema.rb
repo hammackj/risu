@@ -113,7 +113,7 @@ module Risu
 				create_table :plugins do |t|
 					t.string :plugin_name
 					t.string :family_name
-					t.text :description
+					t.text :description, limit: 4294967295
 					t.string :plugin_version
 					t.datetime :plugin_publication_date
 					t.datetime :plugin_modification_date
@@ -130,8 +130,8 @@ module Risu
 					t.string :canvas_package
 					t.string :exploit_available
 					t.string :risk_factor
-					t.longblob :solution
-					t.text :synopsis
+					t.text :solution, limit: 4294967295
+					t.text :synopsis, limit: 4294967295
 					t.string :plugin_type
 					t.string :exploit_framework_exploithub
 					t.string :exploithub_sku
