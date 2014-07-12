@@ -3,7 +3,7 @@
 ## Step 1: System Pre-requirements
 A few system packages need to be installed before we can install the risu gem. These packages include packages that [RVM](https://rvm.io/) recommends to have installed also. Select Yes to any extra packages it adds. As root execute the following:
 
-	# emerge libiconv readline zlib openssl curl git libyaml sqlite libxslt libtool gcc autoconf automake bison m4
+	# emerge -qav libiconv readline zlib openssl curl git libyaml sqlite libxslt libtool gcc autoconf automake bison m4
 
 ## Step 2: Install RVM
 Follow the instructions [here](https://rvm.io/rvm/install/) to setup a working RVM environment. The following is a quick list of commands to install it, check the site for the latest. As your user run the following:
