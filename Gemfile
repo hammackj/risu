@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "rails"
 gem "libxml-ruby"
-gem "prawn"
+gem "prawn", '=0.12.0'
 gem "gruff"
 gem "mysql2"
 gem "rmagick"
