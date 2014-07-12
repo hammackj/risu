@@ -134,7 +134,7 @@ class ItemTest < ActiveSupport::TestCase
 	end
 
 	test "return 100% for Item.calculate_vulnerable_host_percent" do
-		assert Item.calculate_vulnerable_host_percent == 150, "GOT #{Item.calculate_vulnerable_host_percent}"
+		assert Item.calculate_vulnerable_host_percent == 100, "GOT #{Item.calculate_vulnerable_host_percent}"
 	end
 
 	test "return excellent for Item.adjective_for_risk_text(1)" do
