@@ -698,6 +698,24 @@ module Risu
 					hosts = hosts.sort_by {|k, v| v}
 					hosts.reverse!
 				end
+
+				# @todo
+				def unique_hosts_with_critical_and_high_count
+					hosts = Array.new
+					crit = Item.critical_risks_by_host(Host.all.count)
+
+					crit.each do |item|
+						hosts.push(item.host_id)
+					end
+
+					high = Item.high_risks_by_host(Host.all.count)
+
+					high.each do |item|
+						hosts.push(item.host_id)
+					end
+
+					hosts.uniq.count
+				end
 			end
 		end
 	end
