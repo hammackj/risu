@@ -53,6 +53,9 @@ module Risu
 				unique_risks << Hash[:title => "Critical Findings", :color => "9B30FF", :values => Item.critical_risks_unique] if Item.critical_risks_unique.to_a.size != 0
 				unique_risks << Hash[:title => "High Findings", :color => "FF0000", :values => Item.high_risks_unique] if Item.high_risks_unique.to_a.size != 0
 
+#				unique_risks << Hash[:title => "Medium Findings", :color => "FF8040", :values => Item.medium_risks_unique_sorted] if Item.medium_risks_unique_sorted.to_a.size != 0
+#				unique_risks << Hash[:title => "Low Findings", :color => "0000FF", :values => Item.low_risks_unique_sorted] if Item.low_risks_unique_sorted.to_a.size != 0
+
 				unique_risks.each_with_index do |h, index|
 					if h[:values].length > 0
 
