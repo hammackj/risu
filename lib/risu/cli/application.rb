@@ -41,7 +41,7 @@ module Risu
 
 				@options[:debug] = false
 				@options[:list_templates] = false
-				@options[:rollup] = false
+				@options[:post_process] = false
 
 				@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 			end
@@ -422,7 +422,7 @@ module Risu
 			# Preforms PostProcessing on the dataset
 			#
 			def process_post_processing
-				if @options[:post_process] != false
+				if @options[:post_process] == true
 
 					puts "[*] Preforming Post Processing"
 
