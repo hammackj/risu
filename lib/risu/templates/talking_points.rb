@@ -55,12 +55,11 @@ module Risu
 				@output.text "\n"
 
 				# Number of hosts / score
-				#@output.text "There were #{Host.count} hosts identified, containing #{Item.critical_risks.to_a.count + Item.high_risks.to_a.count} critical and high risks findings. Of those there were #{Item.critical_risks.to_a.count} Critical risks, and #{Item.high_risks.to_a.count} High risks. 
+				@output.text "There were #{Host.count} hosts identified, containing #{Item.critical_risks.to_a.count + Item.high_risks.to_a.count} critical and high risks findings. Of those there were #{Item.critical_risks.to_a.count} Critical risks, and #{Item.high_risks.to_a.count} High risks."
 
-				#were discovered on #{Host.unique_hosts_with_critical.count + Host.unique_hosts_with_high.count
-				#{Item.risk_percent_rounded_text} of the total assessed computers were found to have an critical or high finding."
+				@output.text "These critical and highs were discovered on #{unique_hosts_with_critical_and_high_count} unique hosts. #{Item.risk_percent_rounded_text} of the total assessed computers were found to have an critical or high finding."
 
-				#need vulnerable host count
+				# @todo need vulnerable host count
 
 				@output.text "\n\n\n"
 
