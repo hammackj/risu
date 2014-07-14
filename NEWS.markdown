@@ -14,6 +14,7 @@
 	- Item
 		- Added exploitablity_matrix method, returns and formatted array of findings based on parameters.
 - Experimental Post Processing, Sums up the findings and removes the duplicates. This allows for cleaner reports.
+	- Use of the --post-process command line option will turn this on and off
 	- Java Plugins
 	- Adobe Reader plugins
 	- Flash Player plugins
