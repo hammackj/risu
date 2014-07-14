@@ -10,9 +10,12 @@
 #Road map
 
 ## 1.7.0
+
+## 1.7.x (??)
+- Make PostProcessing Plugins like templates
+- Make Templates read the current directory also
 - Host
 	- Hosts with Critical / High order by count
-- Make post processing cli flag instead of parse time 
 - Item
 	- search_plugin_output (keyword)
 - Shares
@@ -36,9 +39,7 @@
 - Ability to load templates for the current working directory
 - configuration management
 - optional report prefix in cfg
-- Patch roll up
-
-## 1.7.x (??)
+- Speed of parsing / etc
 - findings_host_detailed template
   -vuln by host
     -hosts.each
