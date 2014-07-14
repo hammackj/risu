@@ -145,6 +145,7 @@ module Risu
 					t.boolean :rollup
 					t.integer :risk_score
 					t.string :compliance
+					t.string :root_cause
 				end
 
 				create_table :individual_plugin_selections do |t|
