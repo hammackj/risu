@@ -12,10 +12,11 @@
 		- Added exploited_by_malware
 		- Added compliance
 		- Added root_cause; This is a custom field which will be manually filled over time with the root_cause of
-			the vulnerability, this data will be inserted with a post-processing plugin
+			the vulnerability, this data will be inserted with a post-processing plug-in
 	- Item
 		- Added exploitablity_matrix method, returns and formatted array of findings based on parameters.
-- Experimental Post Processing, Sums up the findings and removes the duplicates. This allows for cleaner reports.
+- _Experimental Post Processing_, Sums up the findings and removes the duplicates. This allows for cleaner 
+	authenticated reports. Very experimental at the moment will open it up to be plug-ins in the future.
 	- Use of the --post-process command line option will turn this on and off
 	- Java Plugins
 	- Adobe Reader plugins
