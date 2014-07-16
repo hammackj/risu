@@ -449,7 +449,13 @@ module Risu
 					#Clean up Serv-U
 					puts "\t[*] Rolling up Serv-U vulnerabilities"
 					su = Risu::Parsers::Nessus::PostProcess::ServU.new
-					su.run()										
+					su.run()
+
+					#Clean up Root Causes
+					puts "\t[*] Updating Root Causes"
+					rc = Risu::Parsers::Nessus::PostProcess::RootCauses.new
+					rc.run()	
+
 				end
 			end
 
