@@ -81,7 +81,7 @@ module Risu
 								risk_score = risk_score + item.risk_score
 							end
 
-							#weighting goes here
+							#@todo weighting goes here
 
 							host.risk_score = risk_score
 							host.save
