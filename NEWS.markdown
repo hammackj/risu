@@ -22,10 +22,12 @@
 	- Adobe Reader plugins
 	- Flash Player plugins
 	- Serv-U plugins
+	- RootCause processing, this adds a subjective root cause to every plugin that I have seen / had to time do.
 - Templates
 	- Added "Failed compliance audits" template [abenson]
 	- Added "Exploitablity Summary Report" template
 	- Added "Talking Points Report" template
+	- Added "Missing Root Cause Report" template
 	- Template Helper
 		- Added a table method to generate a table in 1 line of code
 		- Added a new_page method to create a page break in the report
