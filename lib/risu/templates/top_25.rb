@@ -75,9 +75,9 @@ module Risu
 
 
 					if plugin.exploitability_ease == "Exploits are available"
-						exploitability = "T"
+						exploitability = "Yes"
 					else
-						exploitability = "F"
+						exploitability = "No"
 					end
 
 					assets = 0
