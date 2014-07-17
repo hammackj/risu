@@ -417,6 +417,8 @@ module Risu
 						next
 					end
 				end
+
+				process_post_processing
 			end
 
 			# Preforms PostProcessing on the dataset
@@ -487,8 +489,6 @@ module Risu
 					else
 						raise Risu::Exceptions::InvalidDocument, "[!] Invalid Document - #{file}"
 					end
-
-					process_post_processing()
 
 					printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
 				rescue Interrupt => i
