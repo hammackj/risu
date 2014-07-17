@@ -39,6 +39,7 @@ module Risu
 					:name => "bad_template",
 					:author => "hammackj",
 					:version => "0.0.1",
+					:renderer => "PDF",
 					:description => "template"
 				}
 			end
