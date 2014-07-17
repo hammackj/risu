@@ -14,6 +14,7 @@
 ## 1.7.x (??)
 - Make PostProcessing Plugins like templates
 - Make Templates read the current directory also
+- Output CSV
 - Host
 	- Hosts with Critical / High order by count
 - Item
@@ -245,7 +246,7 @@
     - remote host info is/netbios/name/dns/ip/mac
 
 ### Testing
-- Create tests for everything (95%+ code coverage goal, 85% Current)
+- Create tests for everything (95%+ code coverage goal, % Current)
 	- Parser tests
 		- Add test for new XML element
 		- Add test for new host properties tag
