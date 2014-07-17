@@ -47,13 +47,27 @@ module Risu
 					template = @template
 					template_manager = @template_manager
 
-					Prawn::Document.generate(@output_file, :margin => [75, 50, 75, 50]) do |output|
-						output.font_size 10
-						t = template_manager.find_template_by_name(template)
-						t = t.class.new
-						t.output = output
-						t.render(output) unless t == nil
+					t = template_manager.find_template_by_name(template)
+					t = t.class.new
+
+					if t.template_info[:renderer] == "CSV"
+						Risu::Renderers::CSVRenderer.generate(@output_file) do |output|
+							t = template_manager.find_template_by_name(template)
+							t = t.class.new
+							t.output = output
+							t.render(output) unless t == nil
+						end
+					elsif t.template_info[:renderer] == "PDF"
+						Prawn::Document.generate(@output_file, :margin => [75, 50, 75, 50]) do |output|
+							output.font_size 10
+							t = template_manager.find_template_by_name(template)
+							t = t.class.new
+							t.output = output
+							t.render(output) unless t == nil
+						end		
 					end
+
+
 				rescue => e
 					raise unless Rails.env.production?
 					puts "Templater Error: #{e.message} \n #{e.backtrace.join("\n\t")}\n"
