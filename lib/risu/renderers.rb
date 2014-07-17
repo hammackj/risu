@@ -30,3 +30,5 @@ module Risu
 end
 
 require 'risu/renderers/nilrenderer'
+require 'risu/renderers/csvrenderer'
+require 'risu/renderers/pdfrenderer'
