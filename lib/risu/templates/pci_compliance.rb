@@ -34,7 +34,8 @@ module Risu
 				{
 					:name => "pci_compliance",
 					:author => "hammackj",
-					:version => "0.0.5",
+					:version => "0.0.6",
+					:renderer => "PDF",
 					:description => "Generates a PCI Compliance Overview Report"
 				}
 			end

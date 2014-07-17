@@ -35,7 +35,8 @@ module Risu
 				{
 					:name => "ms_wsus_findings",
 					:author => "hammackj",
-					:version => "0.0.1",
+					:version => "0.0.2",
+					:renderer => "PDF",
 					:description => "Generates a report based on the findings of the Patch Management: WSUS Report plugin"
 				}
 			end

@@ -35,7 +35,8 @@ module Risu
 				{
 					:name => "ms_update_summary",
 					:author => "hammackj",
-					:version => "0.0.1",
+					:version => "0.0.2",
+					:renderer => "PDF",
 					:description => "Generates a Microsoft Update Summary Report"
 				}
 			end

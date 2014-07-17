@@ -35,6 +35,7 @@ module Risu
 					:name => "cover_sheet",
 					:author => "hammackj",
 					:version => "0.0.3",
+					:renderer => "PDF",
 					:description => "Generates a coversheet with a logo (Example Template)"
 				}
 			end

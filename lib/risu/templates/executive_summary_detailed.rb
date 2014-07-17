@@ -36,6 +36,7 @@ module Risu
 					:name => "exec_summary_detailed",
 					:author => "Ed Davison <EDavison@getmns.com>",
 					:version => "0.0.4",
+					:renderer => "PDF",
 					:description => "Generates a detailed executive summary report"
 				}
 			end

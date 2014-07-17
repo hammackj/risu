@@ -34,7 +34,8 @@ module Risu
 				{
 					:name => "assets",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
+					:renderer => "PDF",
 					:description => "Generates a Assets Summary Report"
 				}
 			end

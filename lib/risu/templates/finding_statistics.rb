@@ -36,6 +36,7 @@ module Risu
 					:name => "finding_statistics",
 					:author => "hammackj",
 					:version => "0.0.1",
+					:renderer => "PDF",
 					:description => "Generates report finding statistics"
 				}
 			end

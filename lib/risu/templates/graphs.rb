@@ -35,7 +35,8 @@ module Risu
 				{
 					:name => "graphs",
 					:author => "hammackj",
-					:version => "0.0.1",
+					:version => "0.0.2",
+					:renderer => "PDF",
 					:description => "Generates a report with all the graphs in it",
 					:scanner => "Nessus"
 				}

@@ -36,6 +36,7 @@ module Risu
 					:name => "missing_root_causes",
 					:author => "hammackj",
 					:version => "0.0.1",
+					:renderer => "PDF",
 					:description => "Generates a Report of all the findings without a root cause"
 				}
 			end

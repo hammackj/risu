@@ -36,6 +36,7 @@ module Risu
 					:name => "host_summary",
 					:author => "hammackj",
 					:version => "0.0.3",
+					:renderer => "PDF",
 					:description => "Generates a Host Summary Report"
 				}
 			end

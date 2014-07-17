@@ -37,6 +37,7 @@ module Risu
 					:name => "findings_host",
 					:author => "hammackj",
 					:version => "0.0.3",
+					:renderer => "PDF",
 					:description => "Generates a findings report by host"
 				}
 			end

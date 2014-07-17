@@ -35,7 +35,8 @@ module Risu
 				{
 					:name => "notable",
 					:author => "hammackj",
-					:version => "0.0.3",
+					:version => "0.0.4",
+					:renderer => "PDF",
 					:description => "Notable Vulnerabilities"
 				}
 			end

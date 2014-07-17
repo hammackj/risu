@@ -35,6 +35,7 @@ module Risu
 					:name => "malicious_process_detection",
 					:author => "hammackj",
 					:version => "0.0.1",
+					:renderer => "PDF",
 					:description => "Generates a Malicious Process Detection Report"
 				}
 			end

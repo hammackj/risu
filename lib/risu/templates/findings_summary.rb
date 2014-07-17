@@ -35,6 +35,7 @@ module Risu
 					:name => "findings_summary",
 					:author => "hammackj",
 					:version => "0.0.2",
+					:renderer => "PDF",
 					:description => "Generates a findings summary report"
 				}
 			end

@@ -36,7 +36,8 @@ module Risu
 				{
 					:name => "failed_audits",
 					:author => "abenson",
-					:version => "0.0.1",
+					:version => "0.0.2",
+					:renderer => "PDF",
 					:description => "Failed Audit Checks"
 				}
 			end

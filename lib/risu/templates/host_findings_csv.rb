@@ -26,27 +26,41 @@
 
 module Risu
 	module Templates
-		class Template < Risu::Base::TemplateBase
-			include TemplateHelper
+		class HostFindingsCSV < Risu::Base::TemplateBase
 
-			# Initializes the template loading meta data
+			# 
 			#
 			def initialize ()
 				@template_info =
 				{
-					:name => "template",
+					:name => "host_findings_csv",
 					:author => "hammackj",
-					:version => "0.0.4",
-					:renderer => "PDF",
-					:description => "template"
+					:version => "0.0.1",
+					:renderer => "CSV",
+					:description => "Generates a findings report by host and outputs to CSV"
+
 				}
 			end
 
-			# Called during the rendering process
+			# Writes out a CSV block for the risks passed.
+			# @param risks, A query from the Plugin model of the risks
+			#
+			def csv risks
+				risks.order(:cvss_base_score).each do |plugin|
+					items = Item.where(:plugin_id => plugin.id)
+
+					items.each do |item|
+						host = Host.where(:id => item.host_id).first
+
+						@output.text "#{host.ip}, #{item.plugin_name}, #{item.severity}"
+					end
+				end				
+			end
+
+			#
 			#
 			def render(output)
-				text "Template"
-				output.start_new_page
+				csv Plugin.critical_risks
 			end
 		end
 	end
