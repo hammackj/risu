@@ -14,7 +14,6 @@
 ## 1.7.x (??)
 - Make PostProcessing Plugins like templates
 - Make Templates read the current directory also
-- Output CSV
 - Host
 	- Hosts with Critical / High order by count
 - Item
@@ -120,7 +119,6 @@
 			- Option 1: eg critical_risks_filtered()
 			- Option 2: eg critical_risks(:filtered => true)
 			- ALLOW CIDR BASED RANGES
-- 100% Code coverage for all unit testing
 - rewrite text for risks by severity
 - Abstract the api for prawn to support different renders
 - DSL for report creation to abstract the reports to have different output types
