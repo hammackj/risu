@@ -23,11 +23,16 @@
 	- Flash Player plugins
 	- Serv-U plugins
 	- RootCause processing, this adds a subjective root cause to every plugin that I have seen / had to time do.
+- Renderers
+	- Added support for CSV output check out the host_findings_csv.rb template for an example of how to do it
 - Templates
+	- Added host_findings_csv.rb template
 	- Added "Failed compliance audits" template [abenson]
 	- Added "Exploitablity Summary Report" template
 	- Added "Talking Points Report" template
 	- Added "Missing Root Cause Report" template
+	- Templates must now specify their renderer :renderer => "PDF" or :renderer => "CSV" in the template_info section. This
+		will break all templates until it is added.
 	- Template Helper
 		- Added a table method to generate a table in 1 line of code
 		- Added a new_page method to create a page break in the report
