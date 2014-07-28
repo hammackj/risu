@@ -578,12 +578,14 @@ module Risu
 					win_me_text = ""
 					win_nt_text = ""
 					win_2000_text = ""
+					win_xp_text = ""
 					win_95 = Host.os_windows_95
 					win_98 = Host.os_windows_98
 					win_me = Host.os_windows_me
 					win_nt = Host.os_windows_nt
 					#win_2000 = Host.os_windows_2k
 					win_2000 = Plugin.where(:plugin_name => "Microsoft Windows 2000 Unsupported Installation Detection")
+					win_xp = Plugin.where(:plugin_name => "Microsoft Windows XP Unsupported Installation Detection")
 
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
@@ -602,7 +604,10 @@ module Risu
 					win_2000_text = "Windows 2000 is an unsupported operating system; Microsoft has stopped support as of July 2010. " +
 					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2000.count >= 1
 
-					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}"
+					win_xp_text = "Windows XP is an unsupported operating system; Microsoft has stopped support as of April 2014. " +
+					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_xp.count >= 1
+
+					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}"
 				end
 
 				# @todo comments
