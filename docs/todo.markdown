@@ -14,6 +14,7 @@
 ## 1.7.x (??)
 - Make PostProcessing Plugins like templates
 - Make Templates read the current directory also
+- Template arguments
 - Host
 	- Hosts with Critical / High order by count
 - Item
