@@ -125,6 +125,34 @@ module Risu
 
 					StringIO.new(g.to_blob)
 				end
+
+				def root_cause_graph
+					g = Gruff::Pie.new(GRAPH_WIDTH)
+					g.title = sprintf "Vulnerability Root Cause"
+					g.sort = false
+					g.marker_count = 1
+					g.theme = {
+						:colors => %w(red orange yellow blue green purple black gray brown pink),
+						:background_colors => %w(white white)
+					}
+
+					g.data('Vendor Patch', Plugin.where(:root_cause => 'Vendor Patch').count)
+					g.data('Vendor Support', Plugin.where(:root_cause => 'Vendor Support').count)
+					g.data('Configuration', Plugin.where(:root_cause => 'Configuration').count)
+
+					StringIO.new(g.to_blob)					
+				end
+
+				def root_cause_graph_text
+					graph_text = "This graph shows the basic root cause of a vulnerability, the data is broken up into " +
+					"three categories. Vendor Patch, Vendor Support and Configuration.\n\n"
+
+					graph_text << "Vendor Patch represents vulnerabilities from missing patches. IE missing Microsoft patches.\n"
+					graph_text << "Vendor Support represents vulnerabilities caused by the lack of vendor support. IE unsupported software.\n"
+					graph_text << "Configuration represents vulnerabilities caused by misconfiguration of software or hardware. IE default passwords.\n\n"
+
+					return graph_text
+				end
 			end
 		end
 	end
