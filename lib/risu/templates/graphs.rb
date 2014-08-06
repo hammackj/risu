@@ -89,6 +89,11 @@ module Risu
 				output.start_new_page
 
 				output.image Item.stigs_severity_graph, :width => 500, :height => 375, :position => :center
+
+				output.start_new_page
+
+				output.image Plugin.root_cause_graph, :width => 500, :height => 375, :position => :center
+				output.text Plugin.root_cause_graph_text
 			end
 		end
 	end
