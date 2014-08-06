@@ -26,8 +26,8 @@
 	- openSSH
 	- openSSL
 
-
 ## 1.7.x (??)
+- move project page on arxopia/project/risu to hammackj/risu
 - Make PostProcessing Plugins like templates
 - Make Templates read the current directory also
 - Template arguments
@@ -50,7 +50,6 @@
 	- 11454
 	- 51369
 	- 26918
-
 - create template -n --new-template cli option, guided INPUT name, author, description via stdin then generate valid template
 - Ability to load templates for the current working directory
 - configuration management
@@ -70,7 +69,6 @@
         - plugin output
 - Service Descriptions
 - Parse summary # hosts, time / etc
-- move project page on arxopia/project/risu to hammackj/risu
 - ability to query for all remote/local checks and build a report off that
 - concept of template specific settings in the template file
 - test for Item.notable_order_by_cvss_raw
