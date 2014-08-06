@@ -10,14 +10,21 @@
 #Road map
 
 ## 1.7.0
-New HostProperties attribute: LastUnauthenticatedResults. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
-New HostProperties attribute: Credentialed_Scan. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
-New HostProperties attribute: policy-used. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
-New HostProperties attribute: cpe-4. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
-New HostProperties attribute: cpe-3. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
-New HostProperties attribute: cpe-2. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
-New HostProperties attribute: cpe-1. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
-New HostProperties attribute: cpe-0. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
+- New HostProperties attribute: LastUnauthenticatedResults.
+- New HostProperties attribute: Credentialed_Scan.
+- New HostProperties attribute: policy-used.
+- New HostProperties attribute: cpe-4.
+- New HostProperties attribute: cpe-3.
+- New HostProperties attribute: cpe-2.
+- New HostProperties attribute: cpe-1.
+- New HostProperties attribute: cpe-0.
+- New XML element detected: glsa.
+- New XML element detected: freebsd.
+
+- Roll ups needed
+	- PHP
+	- openSSH
+	- openSSL
 
 
 ## 1.7.x (??)
@@ -43,8 +50,7 @@ New HostProperties attribute: cpe-0. Please report this at https://github.com/ar
 	- 11454
 	- 51369
 	- 26918
-- New XML element detected: glsa.
-- New XML element detected: freebsd.
+
 - create template -n --new-template cli option, guided INPUT name, author, description via stdin then generate valid template
 - Ability to load templates for the current working directory
 - configuration management
