@@ -10,6 +10,15 @@
 #Road map
 
 ## 1.7.0
+New HostProperties attribute: LastUnauthenticatedResults. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
+New HostProperties attribute: Credentialed_Scan. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
+New HostProperties attribute: policy-used. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
+New HostProperties attribute: cpe-4. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
+New HostProperties attribute: cpe-3. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
+New HostProperties attribute: cpe-2. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
+New HostProperties attribute: cpe-1. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
+New HostProperties attribute: cpe-0. Please report this at https://github.com/arxopia/risu/issues/new or via email to risu@arxopia.com
+
 
 ## 1.7.x (??)
 - Make PostProcessing Plugins like templates
