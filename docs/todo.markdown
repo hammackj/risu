@@ -10,6 +10,7 @@
 #Road map
 
 ## 1.7.0
+- move project page on arxopia/project/risu to hammackj/risu
 - New HostProperties attribute: LastUnauthenticatedResults.
 - New HostProperties attribute: Credentialed_Scan.
 - New HostProperties attribute: policy-used.
@@ -27,7 +28,6 @@
 	- openSSL
 
 ## 1.7.x (??)
-- move project page on arxopia/project/risu to hammackj/risu
 - Make PostProcessing Plugins like templates
 - Make Templates read the current directory also
 - Template arguments
