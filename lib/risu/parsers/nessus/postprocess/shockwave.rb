@@ -25,14 +25,30 @@
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	module Base
+	module Parsers
+		module Nessus
+			module PostProcess
+				class Shockwave < Risu::Base::PostProcessBase
+
+					#
+					def initialize
+						@info =
+						{
+							:description => "Shockwave Player Patch Rollup",
+							:plugin_id => -99991,
+							:plugin_name => "Upgrade to the latest Shockwave Player",
+							:item_name => "Upgrade to the latest Shockwave Player",
+							:plugin_ids => [
+								72435,
+								72983,
+								42369,
+								51936,
+								71342,
+							]
+						}
+					end
+				end
+			end
+		end
 	end
 end
-
-require 'risu/base/template_base'
-require 'risu/base/template_manager'
-require 'risu/base/templater'
-require 'risu/base/template_helper'
-
-require 'risu/base/post_process_base'
-require 'risu/base/post_process_manager'

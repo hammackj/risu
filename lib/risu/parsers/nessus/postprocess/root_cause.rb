@@ -28,10 +28,16 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class RootCauses
+				class RootCauses < Risu::Base::PostProcessBase
 
 					#
 					def initialize
+						@info =
+						{
+							:description => "Root Cause Mapper",
+							:plugin_id => 0
+						}
+
 						@plugins_to_cause = {
 							22194 => "Vendor Patch",
 							34477 => "Vendor Patch",
@@ -73,9 +79,32 @@ module Risu
 							49690 => "Vendor Patch",
 							59644 => "Vendor Patch",
 							70216 => "Vendor Patch",
+							-99999 => "Vendor Patch",
+							-99998 => "Vendor Patch",
+							-99995 => "Vendor Patch",
+							24712 => "Vendor Patch",
+							25371 => "Vendor Patch",
+							-99997 => "Vendor Patch",
+							-99994 => "Vendor Patch",
+							-99992 => "Vendor Patch",
+							-99991 => "Vendor Patch",
+							-99989 => "Vendor Patch",
+							55976 => "Vendor Patch",
+							58597 => "Vendor Patch",
+							58848 => "Vendor Patch",
+							73984 => "Vendor Patch",
+							10043 => "Vendor Patch",
+
 
 							33850 => "Vendor Support",
 							34460 => "Vendor Support",
+							73182 => "Vendor Support",
+							47709 => "Vendor Support",
+							56710 => "Vendor Support",
+							48762 => "Vendor Support",
+							62758 => "Vendor Support",
+							72704 => "Vendor Support",
+							48761 => "Vendor Support",
 
 							49071 => "Configuration",
 							41028 => "Configuration",
@@ -90,7 +119,11 @@ module Risu
 							26920 => "Configuration",
 							26919 => "Configuration",
 							51368 => "Configuration",
-
+							63155 => "Configuration",
+							65057 => "Configuration",
+							51192 => "Configuration",
+							63478 => "Configuration",
+							10079 => "Configuration",
 						}
 					end
 

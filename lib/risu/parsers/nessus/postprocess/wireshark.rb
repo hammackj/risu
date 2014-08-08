@@ -25,14 +25,37 @@
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	module Base
+	module Parsers
+		module Nessus
+			module PostProcess
+				class Wireshark < Risu::Base::PostProcessBase
+
+					#
+					def initialize
+						@info =
+						{
+							:description => "Wireshark Patch Rollups",
+							:plugin_id => -99992,
+							:plugin_name => "Upgrade to the latest Wireshark",
+							:item_name => "Upgrade to the latest Wireshark",
+							:plugin_ids => [
+								61572,
+								64361,
+								65253,
+								66543,
+								65254,
+								66544,
+								72941,
+								66895,
+								69104,
+								69880,
+								70763,
+								71520,
+							]
+						}
+					end
+				end
+			end
+		end
 	end
 end
-
-require 'risu/base/template_base'
-require 'risu/base/template_manager'
-require 'risu/base/templater'
-require 'risu/base/template_helper'
-
-require 'risu/base/post_process_base'
-require 'risu/base/post_process_manager'

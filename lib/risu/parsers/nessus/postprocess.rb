@@ -32,10 +32,16 @@ module Risu
 	end
 end
 
-require 'risu/parsers/nessus/postprocess/post_process'
-require 'risu/parsers/nessus/postprocess/java'
-require 'risu/parsers/nessus/postprocess/adobe_reader'
-require 'risu/parsers/nessus/postprocess/flash_player'
-require 'risu/parsers/nessus/postprocess/servu'
-require 'risu/parsers/nessus/postprocess/risk_score'
-require 'risu/parsers/nessus/postprocess/root_cause'
+#require 'risu/parsers/nessus/postprocess/post_process'
+# require 'risu/parsers/nessus/postprocess/java'
+# require 'risu/parsers/nessus/postprocess/adobe_reader'
+# require 'risu/parsers/nessus/postprocess/flash_player'
+# require 'risu/parsers/nessus/postprocess/servu'
+# require 'risu/parsers/nessus/postprocess/openssh'
+# require 'risu/parsers/nessus/postprocess/adobe_air'
+# require 'risu/parsers/nessus/postprocess/wireshark'
+# require 'risu/parsers/nessus/postprocess/oracle_database'
+# require 'risu/parsers/nessus/postprocess/shockwave'
+#require 'risu/parsers/nessus/postprocess/risk_score'
+#require 'risu/parsers/nessus/postprocess/root_cause'
+#require 'risu/parsers/nessus/postprocess/google_chrome'

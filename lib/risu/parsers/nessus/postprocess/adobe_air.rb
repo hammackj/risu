@@ -25,14 +25,56 @@
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	module Base
+	module Parsers
+		module Nessus
+			module PostProcess
+				class AdobeAir < Risu::Base::PostProcessBase
+
+					#
+					def initialize
+						@info = 
+						{
+							:description => "Adobe Air Patch Rollup",
+							:plugin_id => -99994,
+							:plugin_name => "Upgrade to the latest Adobe Air",
+							:item_name => "Upgrade to the latest Adobe Air",
+							:plugin_ids => [
+								52755,
+								53474,
+								55805,
+								55806,
+								66444,
+								66871,
+								69865,
+								70214,
+								70857,
+								71350,
+								71947,
+								71950,
+								73432,
+								73993,
+								74430,
+								73432,
+								73993,
+								74430,
+								58537,
+								59425,
+								61624,
+								62835,
+								62479,
+								63449,
+								64583,
+								65218,
+								65909,
+								66444,
+								66871,
+							]
+
+						}
+
+					end
+				end
+			end
+		end
 	end
 end
-
-require 'risu/base/template_base'
-require 'risu/base/template_manager'
-require 'risu/base/templater'
-require 'risu/base/template_helper'
-
-require 'risu/base/post_process_base'
-require 'risu/base/post_process_manager'

@@ -28,10 +28,15 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class RiskScore
+				class RiskScore < Risu::Base::PostProcessBase
 
 					#
 					def initialize
+						@info =
+						{
+							:description => "RiskScore Calculator",
+							:plugin_id => 0
+						}						
 					end
 
 					# Calculates the RiskScore for a Item which is == to the Plugin's

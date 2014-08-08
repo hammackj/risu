@@ -21,18 +21,32 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	module Base
+	module Parsers
+		module Nessus
+			module PostProcess
+				class CoreFTP < Risu::Base::PostProcessBase
+
+					#
+					def initialize
+						@info =
+						{
+							:description => "CoreFTP Patch Rollup",
+							:plugin_id => -99989,
+							:plugin_name => "Upgrade to the latest CoreFTP",
+							:item_name => "Upgrade to the latest CoreFTP",
+							:plugin_ids => [
+								65789,
+								70656,
+								59243
+							]								
+						}
+					end
+				end
+			end
+		end
 	end
 end
-
-require 'risu/base/template_base'
-require 'risu/base/template_manager'
-require 'risu/base/templater'
-require 'risu/base/template_helper'
-
-require 'risu/base/post_process_base'
-require 'risu/base/post_process_manager'

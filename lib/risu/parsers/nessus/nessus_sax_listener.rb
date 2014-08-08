@@ -55,11 +55,12 @@ module Risu
 						"pcidss:compromised_host:worm", "pcidss:obsolete_operating_system", "pcidss:dns_zone_transfer",
 						"pcidss:unprotected_mssql_db", "pcidss:obsolete_software", "pcidss:www:sql_injection", "pcidss:backup_files",
 						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2", "operating-system-unsupported", "patch-summary-total-cves",
-						"pcidss:insecure_http_methods", "cpe-0", "cpe-1", "cpe-2", "cpe-3"
+						"pcidss:insecure_http_methods", "LastUnauthenticatedResults", "LastAuthenticatedResults", "cpe-0", "cpe-1", 
+						"cpe-2", "cpe-3", "Credentialed_Scan", "policy-used"
 					]
 
 					@valid_host_properties_regex = Array[
-						"patch-summary-cve-num", "patch-summary-cves", "patch-summary-txt", "cpe-\d+"
+						"patch-summary-cve-num", "patch-summary-cves", "patch-summary-txt", "cpe-\d+", "KB\d+"
 					]
 
 					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
@@ -142,11 +143,13 @@ module Risu
 							elsif attributes['name'] =~ /patch-summary-cve-num/ ||
 								attributes['name'] =~ /patch-summary-cves/ ||
 								attributes['name'] =~ /patch-summary-txt/ ||
-								attributes['name'] =~ /cpe-\d+/
+								attributes['name'] =~ /cpe-\d+/ ||
+								attributes['name'] =~ /KB\d+/
 								@attr = if attributes["name"] =~ /patch-summary-cve-num/ ||
 								attributes['name'] =~ /patch-summary-cves/ ||
 								attributes['name'] =~ /patch-summary-txt/ ||
-								attributes['name'] =~ /cpe-\d+/
+								attributes['name'] =~ /cpe-\d+/ ||
+								attributes['name'] =~ /KB\d+/
 											attributes["name"]
 										else
 											nil
@@ -160,9 +163,7 @@ module Risu
 							end
 
 							# implicit nil check?
-							if attributes["name"] !~ /(netstat-(?:established|listen)-(?:tcp|udp)\d+-\d+)/ &&
-								attributes["name"] !~ /traceroute-hop-\d+/
-								#puts attributes["name"]
+							if attributes["name"] !~ /(netstat-(?:established|listen)-(?:tcp|udp)\d+-\d+)/ && attributes["name"] !~ /traceroute-hop-\d+/
 								puts "New HostProperties attribute: #{attributes["name"]}. Please report this at #{Risu::GITHUB}/issues/new or via email to #{Risu::EMAIL}\n" if @attr.nil?
 							end
 						when "ReportItem"

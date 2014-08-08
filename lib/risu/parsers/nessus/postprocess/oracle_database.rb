@@ -25,14 +25,44 @@
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	module Base
+	module Parsers
+		module Nessus
+			module PostProcess
+				class OracleDatabase < Risu::Base::PostProcessBase
+
+					#
+					def initialize
+						@info =
+						{					
+							:description => "Oracle Database Patch Rollup",
+							:plugin_id => -99993,
+							:plugin_name => "Upgrade to the latest Oracle Database",
+							:item_name => "Upgrade to the latest Oracle Database",
+							:plugin_ids => [
+								45625,
+								56051,
+								56052,
+								56053,
+								56056,
+								56066,
+								50652,
+								47718,
+								45626,
+								51573,
+								53897,
+								56054,
+								56055,
+								56057,
+								56058,
+								56060,
+								56064,
+								56065,
+								
+							]
+						}
+					end
+				end
+			end
+		end
 	end
 end
-
-require 'risu/base/template_base'
-require 'risu/base/template_manager'
-require 'risu/base/templater'
-require 'risu/base/template_helper'
-
-require 'risu/base/post_process_base'
-require 'risu/base/post_process_manager'

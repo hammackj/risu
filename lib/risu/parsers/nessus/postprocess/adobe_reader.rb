@@ -28,35 +28,55 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class AdobeReader < PostProcess
+				class AdobeReader < Risu::Base::PostProcessBase
 
 					#
 					def initialize
-						@plugin_id = -99998
-						@plugin_name = "Upgrade to the latest Adobe Reader"
-						@item_name = "Upgrade to the latest Adobe Reader"
-						@plugin_ids = [
-							30200, #Adobe Reader < 7.1.0 / 8.1.2 Multiple Vulnerabilities
-							33256, #Adobe Reader < 7.1.0 / 8.1.2 SU1 Unspecified JavaScript Method Handling Arbitrary Code Execution
-							34695, #Adobe Reader < 8.1.3 / 9.0 Multiple Vulnerabilities
-							35821, #Adobe Reader < 9.1 / 8.1.4 / 7.1.1 Multiple Vulnerabilities
-							38746, #Adobe Reader getAnnots() JavaScript Method PDF Handling Memory Corruption (APSB09-06)
-							39355, #Adobe Reader < 9.1.2 / 8.1.6 / 7.1.3 Multiple Vulnerabilities
-							42120, #Adobe Reader < 9.2 / 8.1.7 / 7.1.4  Multiple Vulnerabilities (APSB09-15)
-							43876, #Adobe Reader < 9.3 / 8.2  Multiple Vulnerabilities (APSB10-02)
-							44644, #Adobe Reader < 9.3.1 / 8.2.1  Multiple Vulnerabilities (APSB10-07)
-							45505, #Adobe Reader < 9.3.2 / 8.2.2  Multiple Vulnerabilities (APSB10-09)
-							47165, #Adobe Reader < 9.3.3 / 8.2.3  Multiple Vulnerabilities (APSB10-15)
-							48375, #Adobe Reader < 9.3.4 / 8.2.4  Multiple Vulnerabilities (APSB10-17)
-							49173, #Adobe Reader < 9.4 / 8.2.5 Multiple Vulnerabilities (APSB10-21)
-							50614, #Adobe Reader < 9.4.1 Multiple Vulnerabilities (APSB10-28)
-							51925, #Adobe Reader < 10.0.1 / 9.4.2 / 8.2.6 Multiple Vulnerabilities (APSB11-03)
-							55144, #Adobe Reader < 10.1 / 9.4.5 / 8.3 Multiple Vulnerabilities (APSB11-16)
-							56198, #Adobe Reader < 10.1.1 / 9.4.6 / 8.3.1 Multiple Vulnerabilities (APSB11-21, APSB11-24)
-							56213, #Adobe Reader Unsupported Version Detection
-							66517, #Adobe Reader Enabled in Browser (Internet Explorer)
-							66542  #JavaScript Enabled in Adobe Reader
-						]
+						@info =
+						{
+							:description => "Adobe Reader Patch Rollup",
+							:plugin_id => -99998,
+							:plugin_name => "Upgrade to the latest Adobe Reader",
+							:item_name => "Upgrade to the latest Adobe Reader",
+							:plugin_ids => [
+								30200,
+								33256,
+								34695,
+								35821,
+								38746,
+								39355,
+								42120,
+								43876,
+								44644,
+								45505,
+								47165,
+								48375,
+								49173,
+								50614,
+								51925,
+								55144,
+								56198,
+								56213,
+								66517,
+								66542,
+								74012,
+								58683,
+								61562,
+								63454,
+								64786,
+								66410,
+								69846,
+								71947,
+								57043,
+								57484,
+								24002,
+								23776,
+								23975,
+								52672,
+								53451,
+								
+							]
+						}
 					end
 				end
 			end

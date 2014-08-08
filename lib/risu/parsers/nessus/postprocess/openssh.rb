@@ -25,14 +25,42 @@
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	module Base
+	module Parsers
+		module Nessus
+			module PostProcess
+				class OpenSSH < Risu::Base::PostProcessBase
+
+					#
+					def initialize
+						@info = 
+						{
+							:description => "OpenSSH Patch Rollup",
+							:plugin_id => -99995,
+							:plugin_name => "Upgrade to the latest OpenSSH",
+							:item_name => "Upgrade to the latest OpenSSH",
+							:plugin_ids => [
+								11837,
+								17702,
+								44077,
+								44078,
+								44065,
+								31737,
+								44074,
+								44076,
+								44079,
+								19592,
+								44075,
+								53841,
+								44080,
+								74326,
+								44077,
+								44078,
+								
+							]
+						}
+					end
+				end
+			end
+		end
 	end
 end
-
-require 'risu/base/template_base'
-require 'risu/base/template_manager'
-require 'risu/base/templater'
-require 'risu/base/template_helper'
-
-require 'risu/base/post_process_base'
-require 'risu/base/post_process_manager'

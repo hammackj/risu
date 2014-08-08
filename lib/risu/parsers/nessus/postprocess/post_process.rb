@@ -28,10 +28,11 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class PostProcess
+				class PostProcess #< Risu::Base::PostProcessBase
 
 					#
 					def initialize
+						@name = ""
 						@plugin_id = -1
 						@plugin_ids = []
 						@plugin_name = ""

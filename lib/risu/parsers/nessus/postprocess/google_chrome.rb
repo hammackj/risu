@@ -25,14 +25,28 @@
 #OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	module Base
+	module Parsers
+		module Nessus
+			module PostProcess
+				class GoogleChrome < Risu::Base::PostProcessBase
+
+					#
+					def initialize
+						@info = 
+						{
+							:description => "Google Chrome Patch Rollup",
+							:plugin_id => -99990,
+							:plugin_name => "Upgrade to the latest Google Chrome",
+							:item_name => "Upgrade to the latest Google Chrome",
+							:plugin_ids => [
+								74434,
+								76581,
+
+							]
+						}
+					end
+				end
+			end
+		end
 	end
 end
-
-require 'risu/base/template_base'
-require 'risu/base/template_manager'
-require 'risu/base/templater'
-require 'risu/base/template_helper'
-
-require 'risu/base/post_process_base'
-require 'risu/base/post_process_manager'
