@@ -28,7 +28,6 @@ module Risu
 	module Models
 
 		# Report Model
-		#
 		class Report < ActiveRecord::Base
 		  has_many :hosts
 		  belongs_to :policy
