@@ -30,13 +30,9 @@ module Risu
 		# Base template class, all report templates must be a subclass of this.
 		#
 		class TemplateBase
+			
+			# @todo comment
 			attr_accessor :output
-
-			@possible_templates = []
-
-			class << self
-				attr_reader :possible_templates
-			end
 
 			# Accessors for template meta-data
 			#
@@ -44,7 +40,13 @@ module Risu
 			#
 			attr_accessor :template_info
 
-			#	 Adds any class that inherits from [TemplateBase] into an [Array] of
+			@possible_templates = []
+
+			class << self
+				attr_reader :possible_templates
+			end
+
+			# Adds any class that inherits from [TemplateBase] into an [Array] of
 			# possible templates for further validation.
 			#
 			def self.inherited(child)
