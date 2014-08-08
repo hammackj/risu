@@ -235,7 +235,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black grey brown pink),
+						:colors => Risu::GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
@@ -264,7 +264,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black grey brown pink),
+						:colors => Risu::GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
@@ -280,10 +280,15 @@ module Risu
 					if low == nil then low = 0 end
 					#if info == nil then info = 0 end
 
-					g.data("Critical", crit, "purple")
-					g.data("High", high, "red")
-					g.data("Medium", medium, "orange")
-					g.data("Low", low, "yellow")
+					g.data("Critical", crit)
+					g.data("High", high)
+					g.data("Medium", medium)
+					g.data("Low", low)
+
+					# g.data("Critical", crit, "purple")
+					# g.data("High", high, "red")
+					# g.data("Medium", medium, "orange")
+					# g.data("Low", low, "yellow")
 					#g.data("Informational", info, "blue")
 
 					StringIO.new(g.to_blob)
@@ -307,7 +312,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(purple red orange yellow blue green black grey brown pink),
+						:colors => Risu::GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
@@ -319,9 +324,9 @@ module Risu
 					if ii == nil then ii = 0 end
 					if iii == nil then iii = 0 end
 
-					g.data("Cat I", i, "purple")
-					g.data("Cat II", ii, "red")
-					g.data("Cat III", iii, "orange")
+					g.data("Cat I", i)
+					g.data("Cat II", ii)
+					g.data("Cat III", iii)
 
 					StringIO.new(g.to_blob)
 				end
