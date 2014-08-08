@@ -392,7 +392,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black gray brown pink),
+						:colors => Risu::GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
@@ -408,6 +408,28 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 
+				#
+				# @todo comments
+				#
+				def other_os_graph_has_data?
+
+					linux = Host.os_linux.to_a.count
+					osx = Host.os_osx.to_a.count
+					freebsd = Host.os_freebsd.to_a.count
+					netbsd = Host.os_netbsd.to_a.count
+					cisco = Host.os_cisco.to_a.count
+					vxworks = Host.os_vxworks.to_a.count
+					esx = Host.os_vmware_esx.to_a.count
+					aix = Host.os_aix.to_a.count
+					other = Host.os_other.to_a.count
+
+					if linux == 0 && osx == 0 && freebsd == 0 && cisco == 0 && vxworks == 0 && esx == 0 && aix == 0 && other == 0
+						return false
+					else
+						return true
+					end
+				end
+
 				# Graphs the percentage of other "non Windows" Operating Systems
 				#
 				# @return [StringIO] Binary image object of the results
@@ -417,7 +439,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black grey brown pink),
+						:colors => Risu::GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
@@ -458,7 +480,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black gray brown pink),
+						:colors => Risu::GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
