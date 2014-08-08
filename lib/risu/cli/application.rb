@@ -44,6 +44,7 @@ module Risu
 				@options[:post_process] = false
 
 				@template_manager = Risu::Base::TemplateManager.new "risu/templates"
+				@postprocess_manager = Risu::Base::PostProcessManager.new "risu/parsers/nessus/postprocess"
 			end
 
 			# Creates a blank configuration file
@@ -243,8 +244,12 @@ module Risu
 							@options[:output_file] = option
 						end
 
-						opt.on('-l', '--list-templates', "Lists all of the templates available to #{APP_NAME}") do |option|
+						opt.on('--list-templates', "Lists all of the templates available to #{APP_NAME}") do |option|
 							@options[:list_templates] = option
+						end
+
+						opt.on('--list-post-process', "Lists all of the post processors available to #{APP_NAME}") do |option|
+							@options[:list_postprocesses] = option
 						end
 
 						# @todo THIS NO WORK
@@ -346,6 +351,11 @@ module Risu
 					exit
 				end
 
+				if @options[:list_postprocesses]
+					@postprocess_manager.display_postprocesses
+					exit
+				end
+
 				if @options[:debug] == true
 					puts "[*] Enabling Debug Mode"
 				end
@@ -428,36 +438,11 @@ module Risu
 
 					puts "[*] Preforming Post Processing"
 
-					#Calculate all RiskScores
-					puts "\t[*] Calculating RiskScore for all vulnerabilities"
-					score = Risu::Parsers::Nessus::PostProcess::RiskScore.new
-					score.run()
-
-					#Clean up java patches
-					puts "\t[*] Rolling up Oracle Java vulnerabilities"
-					java = Risu::Parsers::Nessus::PostProcess::Java.new
-					java.run()
-
-					#Clean up adobe reader
-					puts "\t[*] Rolling up Adobe Reader vulnerabilities"
-					ar = Risu::Parsers::Nessus::PostProcess::AdobeReader.new
-					ar.run()
-
-					#Clean up Flash Player
-					puts "\t[*] Rolling up FlashPlayer vulnerabilities"
-					fp = Risu::Parsers::Nessus::PostProcess::FlashPlayer.new
-					fp.run()
-
-					#Clean up Serv-U
-					puts "\t[*] Rolling up Serv-U vulnerabilities"
-					su = Risu::Parsers::Nessus::PostProcess::ServU.new
-					su.run()
-
-					#Clean up Root Causes
-					puts "\t[*] Updating Root Causes"
-					rc = Risu::Parsers::Nessus::PostProcess::RootCauses.new
-					rc.run()	
-
+					@postprocess_manager.registered_postprocesses.each do |p|
+						#p = post.new
+						puts "\t[*] Running #{p.info[:description]}"
+						p.run()
+					end
 				end
 			end
 
