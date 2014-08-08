@@ -96,7 +96,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black gray brown pink),
+						:colors => Risu::GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
@@ -132,7 +132,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => %w(red orange yellow blue green purple black gray brown pink),
+						:colors => Risu::GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
