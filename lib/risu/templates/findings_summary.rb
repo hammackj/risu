@@ -34,7 +34,7 @@ module Risu
 				{
 					:name => "findings_summary",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:renderer => "PDF",
 					:description => "Generates a findings summary report"
 				}
@@ -42,7 +42,7 @@ module Risu
 
 			def print_risk_summary(risks, text, color)
 				@output.font_size(20) do
-					@output.fill_color color
+					@output.fill_color color.gsub('#', '')
 					@output.text text, :style => :bold
 					@output.fill_color "000000"
 				end
@@ -64,10 +64,11 @@ module Risu
 				report_author "This report was prepared by\n#{Report.author}"
 				text "\n\n\n"
 
-				print_risk_summary(Item.critical_risks_unique_sorted, "Critical Findings", "551A8B")
-				print_risk_summary(Item.high_risks_unique_sorted, "High Findings", "FF0000")
-				print_risk_summary(Item.medium_risks_unique_sorted, "Medium Findings", "FF8040")
-				print_risk_summary(Item.low_risks_unique_sorted, "Low Findings", "0000FF")
+				print_risk_summary(Item.critical_risks_unique_sorted, "Critical Findings", Risu::GRAPH_COLORS[0])
+				print_risk_summary(Item.high_risks_unique_sorted, "High Findings", Risu::GRAPH_COLORS[1])
+				print_risk_summary(Item.medium_risks_unique_sorted, "Medium Findings", Risu::GRAPH_COLORS[2])
+				print_risk_summary(Item.low_risks_unique_sorted, "Low Findings", Risu::GRAPH_COLORS[3])
+				print_risk_summary(Item.info_risks_unique_sorted, "Informational Findings", Risu::GRAPH_COLORS[4])
 			end
 		end
 	end
