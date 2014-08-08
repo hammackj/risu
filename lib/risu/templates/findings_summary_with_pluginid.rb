@@ -35,7 +35,7 @@ module Risu
 				{
 					:name => "findings_summary_with_pluginid",
 					:author => "hammackj",
-					:version => "0.0.3",
+					:version => "0.0.5",
 					:renderer => "PDF",
 					:description => "Generates a Findings Summary with Nessus Plugin ID"
 				}
@@ -43,93 +43,37 @@ module Risu
 
 			#
 			#
+			def print_risk_summary_with_plugin_id(risks, text, color)
+				@output.font_size(20) do
+					@output.fill_color color.gsub('#', '')
+					@output.text text, :style => :bold
+					@output.fill_color "000000"
+				end
+
+				risks.each do |item|
+					name = Plugin.find_by_id(item.plugin_id).plugin_name
+					count = Item.where(:plugin_id => item.plugin_id).count
+
+					text "#{count} - #{name} - #{item.plugin_id}"
+				end				
+			end			
+
+			#
+			#
 			def render(output)
-				output.text Report.classification.upcase, :align => :center
-				output.text "\n"
+				text Report.classification.upcase, :align => :center
+				text "\n"
 
-				output.font_size(22) do
-					output.text Report.title, :align => :center
-				end
+				report_title Report.title
+				report_subtitle "Findings Summary Report"
+				report_author "This report was prepared by\n#{Report.author}"
+				text "\n\n\n"
 
-				output.font_size(18) do
-					output.text "Findings Summary Report", :align => :center
-					output.text "\n"
-					output.text "This report was prepared by\n#{Report.author}", :align => :center
-				end
-
-				output.text "\n\n\n"
-
-				output.font_size(20) {
-					output.fill_color "9B30FF"
-					output.text "Critical Findings", :style => :bold
-					output.fill_color "000000"
-				}
-
-				Item.critical_risks_unique_sorted.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
-
-					output.text "#{count} - #{name} - #{item.plugin_id}"
-				end
-
-				output.start_new_page
-
-				output.font_size(20) do
-					output.fill_color "FF0000"
-					output.text "High Findings", :style => :bold
-					output.fill_color "000000"
-				end
-
-				Item.high_risks_unique_sorted.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
-
-					output.text "#{count} - #{name} - #{item.plugin_id}"
-				end
-
-				output.start_new_page
-
-				output.font_size(20) {
-					output.fill_color "FF8040"
-					output.text "Medium Findings", :style => :bold
-					output.fill_color "000000"
-				}
-
-				Item.medium_risks_unique_sorted.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
-
-					output.text "#{count} - #{name} - #{item.plugin_id}"
-				end
-
-				output.start_new_page
-
-				output.font_size(20) {
-					output.fill_color "0000FF"
-					output.text "Low Findings", :style => :bold
-					output.fill_color "000000"
-				}
-
-				Item.low_risks_unique_sorted.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
-
-					output.text "#{count} - #{name} - #{item.plugin_id}"
-				end
-
-				#Provides nothing
-				#output.font_size(20) {
-				#	output.fill_color "008000"
-				#	output.text "Low Findings", :style => :bold
-				#	output.fill_color "000000"
-				#}
-				#
-				#Item.low_risks_unique_sorted.each do |item|
-				#	name = Plugin.find_by_id(item.plugin_id).plugin_name
-				#	count = Item.where(:plugin_id => item.plugin_id).count
-				#
-				#	output.text "#{count} - #{name}"
-				#end
+				print_risk_summary_with_plugin_id(Item.critical_risks_unique_sorted, "Critical Findings", Risu::GRAPH_COLORS[0])
+				print_risk_summary_with_plugin_id(Item.high_risks_unique_sorted, "High Findings", Risu::GRAPH_COLORS[1])
+				print_risk_summary_with_plugin_id(Item.medium_risks_unique_sorted, "Medium Findings", Risu::GRAPH_COLORS[2])
+				print_risk_summary_with_plugin_id(Item.low_risks_unique_sorted, "Low Findings", Risu::GRAPH_COLORS[3])
+				print_risk_summary_with_plugin_id(Item.info_risks_unique_sorted, "Informational Findings", Risu::GRAPH_COLORS[4])
 			end
 		end
 	end
