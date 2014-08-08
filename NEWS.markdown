@@ -5,9 +5,16 @@
 - Wiki
 	- New page for installing on [OSX]((https://github.com/arxopia/risu/wiki/OSX-Installation-Guide)
 - Models
+	- Host Model
+		- Changed the field type of 'mac' from string to text to increase the size
 	- HostProperty Model
-		- Added pcidss:insecure_http_methods
+		- Added pcidss:insecure_http_methods tag
 		- Added cpe-XXX, where XXX is a digit of the number of CPE found for that host.
+		- Added LastUnauthenticatedResults tag
+		- Added LastAuthenticatedResults tag
+		- Added Credentialed_Scan tag
+		- Added policy-used tag
+		- Added KBXXXXXX tag, used for Microsoft patches
 	- Plugin
 		- Added exploited_by_malware
 		- Added compliance
@@ -18,16 +25,30 @@
 	- Item
 		- Added exploitablity_matrix method, returns and formatted array of findings based on parameters.
 - _Experimental Post Processing_, Sums up the findings and removes the duplicates. This allows for cleaner 
-	authenticated reports. Very experimental at the moment will open it up to be plug-ins in the future.
+	authenticated reports. Very experimental at the moment, the are auto loaded from the same directories as 
+		templates for the time being
 	- Use of the --post-process command line option will turn this on and off
 	- Java Plugins
 	- Adobe Reader plugins
 	- Flash Player plugins
 	- Serv-U plugins
+	- Adobe Air plugins
+	- OpenSSH plugins
+	- Wireshark plugins
+	- Oracle Database plugins
+	- Shockwave Player plugins
+	- Google Chrome plugins
+	- CoreFtp plugins
 	- RootCause processing, this adds a subjective root cause to every plugin that I have seen / had to time do.
 - Renderers
 	- Added support for CSV output check out the host_findings_csv.rb template for an example of how to do it
 - Templates
+	- Updated the default color scheme for graphs to look a little better
+	- Templates will now be searched for in the current directory.
+		- Templates will be searched for in the following places:
+			- The risu template directory in $GEM_HOME/gems/risu-1.6.3/lib/risu/templates/
+			- The current directory
+			- The user directory of ~/.risu/templates/
 	- Added host_findings_csv.rb template
 	- Added "Failed compliance audits" template [abenson]
 	- Added "Exploitablity Summary Report" template
@@ -38,6 +59,8 @@
 	- Template Helper
 		- Added a table method to generate a table in 1 line of code
 		- Added a new_page method to create a page break in the report
+		- Added other_os_graph_page, This generates a page for the PDF renderer with the 
+			other_os_graph and other_os_graph_text followed by a new_page
 
 #1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
