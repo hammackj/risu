@@ -71,7 +71,7 @@ module Risu
 					t.integer :report_id
 					t.string :name
 					t.string :os
-					t.string :mac
+					t.text :mac, limit: 4294967295
 					t.datetime :start
 					t.datetime :end
 					t.string :ip
