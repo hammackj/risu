@@ -12,13 +12,6 @@
 ## 1.7.0
 - move project page on arxopia/project/risu to hammackj/risu
 - New HostProperties attribute: LastUnauthenticatedResults.
-- New HostProperties attribute: Credentialed_Scan.
-- New HostProperties attribute: policy-used.
-- New HostProperties attribute: cpe-4.
-- New HostProperties attribute: cpe-3.
-- New HostProperties attribute: cpe-2.
-- New HostProperties attribute: cpe-1.
-- New HostProperties attribute: cpe-0.
 - New XML element detected: glsa.
 - New XML element detected: freebsd.
 
