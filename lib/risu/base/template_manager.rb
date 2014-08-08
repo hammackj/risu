@@ -36,21 +36,25 @@ module Risu
 			#
 			# @return New instance of the template manager with templates loaded.
 			def initialize (path)
-			  @registered_templates = Array.new
+				@registered_templates = Array.new
 				@templates = Array.new
 
 				base_dir = __FILE__.gsub("risu/base/template_manager.rb", "")
 
 				load_templates(base_dir + path)
+				load_templates(Dir.pwd, false)
 				load_templates(File.expand_path(USER_TEMPLATES_DIR)) if File.exists?(File.expand_path(USER_TEMPLATES_DIR)) && File.directory?(File.expand_path(USER_TEMPLATES_DIR))
 			end
 
 			# Loads templates from a specific path
 			#
 			# @param path Path to templates to load
-			def load_templates(path)
+			def load_templates(path, recursive=true)
 				begin
-				  Dir["#{path}/**/*.rb"].each do |x|
+					search_path = "#{path}/**/*.rb" if recursive == true
+					search_path = "#{path}/*.rb" if recursive == false
+
+					Dir[search_path].each do |x|
 						begin
 							require x
 						rescue => e
@@ -58,15 +62,15 @@ module Risu
 						end
 					end
 
-				  TemplateBase.possible_templates.each do |p|
-				    if validate(p) ==  true
-				      @registered_templates << p if @registered_templates.include?(p) == false
-				    end
-				  end
+					TemplateBase.possible_templates.each do |p|
+						if validate(p) ==  true
+							@registered_templates << p if @registered_templates.include?(p) == false
+						end
+					end
 				rescue => e
 					puts "[!] Invalid template path"
 					#puts e.inspect
-  					#puts e.backtrace
+					#puts e.backtrace
 				end
 			end
 
