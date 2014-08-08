@@ -123,6 +123,78 @@ module Risu
 			def new_page
 				@output.start_new_page
 			end
+
+			#
+			def other_os_graph_page
+				if Host.other_os_graph_has_data?
+					new_page
+					@output.image Host.other_os_graph, :width => 500, :height => 375, :position => :center
+					text Host.other_os_graph_text
+				end				
+			end
+
+			def item_count_by_plugin_name (plugin_name)
+				begin
+					return Item.where(:plugin_id => Plugin.where(:plugin_name => plugin_name).first.id).count
+				rescue => e
+					return 0
+				end				
+			end
+
+			def item_count_by_plugin_id (plugin_id)
+				begin
+					return Item.where(:plugin_id => plugin_id).count
+				rescue => e
+					return 0
+				end				
+			end			
+
+			def default_credentials_section
+				plugins = [10862]
+				default_cred = false
+
+				plugins.each do |plugin_id|
+					if item_count_by_plugin_id(plugin_id) > 0
+						default_cred = true
+					end
+				end
+
+				if default_cred == false
+					return
+				end
+
+				headers = ["Plugin Name", "IP"]
+				header_widths = {0 => (@output.bounds.width - 70), 1 => 70}
+				data = Array.new
+
+				plugins.each do |plugin_id|
+					if item_count_by_plugin_id(plugin_id) > 0
+						items = Item.where(:plugin_id => plugin_id)
+
+						plugin_name = items.first.plugin_name
+
+						items.each do |item|
+							hosts = Host.where(:id => item.host_id)
+
+							hosts.each do |host|
+								row = Array.new
+								row.push plugin_name
+								row.push host.ip
+
+								data.push row
+							end
+						end
+					end
+				end
+				
+				heading2 "Default Credentials"
+
+				text "Default credentials were discovered on the network. This can cause issues because the credentials can be found all over the Internet giving anyone with network access full access to the systems in question."
+
+				table headers, header_widths, data
+
+				text "\n"
+			end	
 		end
 	end
 end
