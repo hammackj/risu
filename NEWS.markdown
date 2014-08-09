@@ -61,6 +61,9 @@
 		- Added a new_page method to create a page break in the report
 		- Added other_os_graph_page, This generates a page for the PDF renderer with the 
 			other_os_graph and other_os_graph_text followed by a new_page
+		- item_count_by_plugin_name
+		- item_count_by_plugin_id
+		- default_credentials_section
 
 #1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
