@@ -27,6 +27,7 @@
 module Risu
 	module Templates
 		class FindingsSummaryWithPluginID < Risu::Base::TemplateBase
+			include TemplateHelper
 
 			#
 			#
