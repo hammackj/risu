@@ -52,7 +52,7 @@ module Risu
 					items.each do |item|
 						host = Host.where(:id => item.host_id).first
 
-						@output.text "#{host.ip}, #{item.plugin_name}, #{item.severity}"
+						@output.text "#{host.ip}, #{item.plugin_name}, #{plugin.risk_factor}"
 					end
 				end				
 			end
