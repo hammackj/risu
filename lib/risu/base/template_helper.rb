@@ -187,7 +187,7 @@ module Risu
 					end
 				end
 				
-				heading2 "Default Credentials"
+				heading1 "Default Credentials"
 
 				text "Default credentials were discovered on the network. This can cause issues because the credentials can be found all over the Internet giving anyone with network access full access to the systems in question."
 
