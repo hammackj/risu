@@ -27,6 +27,8 @@
 module Risu
 	module Templates
 		module TemplateHelper
+			include HostTemplateHelper
+			include MalwareTemplateHelper
 
 			#
 			def report_classification classification=Report.classification.upcase, newline=true
@@ -130,8 +132,15 @@ module Risu
 					new_page
 					@output.image Host.other_os_graph, :width => 500, :height => 375, :position => :center
 					text Host.other_os_graph_text
+					new_page
 				end				
 			end
+
+			#
+			def windows_os_graph_page
+				
+			end
+
 
 			def item_count_by_plugin_name (plugin_name)
 				begin
