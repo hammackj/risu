@@ -7,6 +7,7 @@
 - Models
 	- Host Model
 		- Changed the field type of 'mac' from string to text to increase the size
+		- windows_os_graph_has_data()
 	- HostProperty Model
 		- Added pcidss:insecure_http_methods tag
 		- Added cpe-XXX, where XXX is a digit of the number of CPE found for that host.
@@ -46,7 +47,7 @@
 	- Updated the default color scheme for graphs to look a little better
 	- Templates will now be searched for in the current directory.
 		- Templates will be searched for in the following places:
-			- The risu template directory in $GEM_HOME/gems/risu-1.6.3/lib/risu/templates/
+			- The risu template directory in $GEM_HOME/gems/risu-1.7.0/lib/risu/templates/
 			- The current directory
 			- The user directory of ~/.risu/templates/
 	- Added host_findings_csv.rb template
@@ -64,6 +65,23 @@
 		- item_count_by_plugin_name
 		- item_count_by_plugin_id
 		- default_credentials_section
+		- Added MalwareTemplateHelper, this is included by TemplateHelper. It provides:
+			- malware_section()
+			- malware_appendix_section()
+			- conficker_section()
+			- conficker_appendix_section()
+			- conficker_count()
+		- Added HostTemplateHelper, this is included by TemplateHelper. It provides:
+			- unsupported_os_appendix_section()
+			- unsupported_os()
+		- Added GraphTemplateHelper, this is included by TemplateHelper. It provides:
+			- other_os_graph_page()
+			- windows_os_graph_page()
+			- risks_by_severity_graph_page()
+			- risks_by_service_graph_page()
+			- root_cause_graph_page()
+
+
 
 #1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
