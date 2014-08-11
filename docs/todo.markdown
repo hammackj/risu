@@ -10,18 +10,13 @@
 #Road map
 
 ## 1.7.0
-- move project page on arxopia/project/risu to hammackj/risu
-- New HostProperties attribute: LastUnauthenticatedResults.
-- New XML element detected: glsa.
-- New XML element detected: freebsd.
-
-- Roll ups needed
-	- PHP
-	- openSSH
-	- openSSL
 
 ## 1.7.x (??)
-- Make PostProcessing Plugins like templates
+- move project page on arxopia/project/risu to hammackj/risu
+- New XML element detected: glsa. (cant recreate / find)
+- New XML element detected: freebsd. (cant recreate / find)
+- Roll ups needed
+	- openSSL
 - Make Templates read the current directory also
 - Template arguments
 - Host
@@ -30,11 +25,11 @@
 	- search_plugin_output (keyword)
 - Shares
 	- Item
-		- Anonymous SMB count
-		- Anonymous FTP count
+		- Anonymous SMB count, Partially implemented in SharesTemplateHelper
+		- Anonymous FTP count, Partially implemented in SharesTemplateHelper
 		- Anonymous NFS count
-		- Anonymous SMB text
-		- Anonymous FTP text
+		- Anonymous SMB text, Partially implemented in SharesTemplateHelper
+		- Anonymous FTP text, Partially implemented in SharesTemplateHelper
 		- Anonymous NFS text		
 	- Text for describing these 3 findings with counts
 - Default creds blurb
@@ -100,7 +95,6 @@
 - filter (uncredentialed check) from the title of MS vulns and put it in the body as a true/false kind of field
 	- remove KB # also
 - add postgres support and test it
-- graph text is misleading
 - create an api determining vulnerability % based on the network
 - create an api for creating a vulnerability score per host to show a risk %
 - add scanner info at a table plugin #19506
