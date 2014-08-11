@@ -604,8 +604,7 @@ module Risu
 					win_95 = Host.os_windows_95
 					win_98 = Host.os_windows_98
 					win_me = Host.os_windows_me
-					win_nt = Host.os_windows_nt
-					#win_2000 = Host.os_windows_2k
+					win_nt = Plugin.where(:plugin_name => "Microsoft Windows NT 4.0 Unsupported Installation Detection")
 					win_2000 = Plugin.where(:plugin_name => "Microsoft Windows 2000 Unsupported Installation Detection")
 					win_xp = Plugin.where(:plugin_name => "Microsoft Windows XP Unsupported Installation Detection")
 
