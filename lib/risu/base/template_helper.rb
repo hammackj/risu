@@ -29,6 +29,7 @@ module Risu
 		module TemplateHelper
 			include HostTemplateHelper
 			include MalwareTemplateHelper
+			include GraphTemplateHelper
 
 			#
 			def report_classification classification=Report.classification.upcase, newline=true
@@ -127,21 +128,6 @@ module Risu
 			end
 
 			#
-			def other_os_graph_page
-				if Host.other_os_graph_has_data?
-					new_page
-					@output.image Host.other_os_graph, :width => 500, :height => 375, :position => :center
-					text Host.other_os_graph_text
-					new_page
-				end				
-			end
-
-			#
-			def windows_os_graph_page
-				
-			end
-
-
 			def item_count_by_plugin_name (plugin_name)
 				begin
 					return Item.where(:plugin_id => Plugin.where(:plugin_name => plugin_name).first.id).count
@@ -158,8 +144,9 @@ module Risu
 				end				
 			end			
 
+			#
 			def default_credentials_section
-				plugins = [10862]
+				plugins = [10862, 25927]
 				default_cred = false
 
 				plugins.each do |plugin_id|
