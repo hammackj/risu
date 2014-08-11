@@ -34,7 +34,6 @@ module Risu
 					new_page
 					@output.image Host.other_os_graph, :width => 500, :height => 375, :position => :center
 					text Host.other_os_graph_text
-					new_page
 				end				
 			end
 
@@ -44,7 +43,6 @@ module Risu
 					new_page
 					@output.image Host.windows_os_graph, :width => 500, :height => 375, :position => :center
 					text Host.windows_os_graph_text
-					new_page
 				end
 			end
 
@@ -53,7 +51,6 @@ module Risu
 				new_page
 				@output.image Plugin.root_cause_graph, :width => 500, :height => 375, :position => :center
 				text Plugin.root_cause_graph_text
-				new_page
 			end
 
 			#
@@ -61,7 +58,6 @@ module Risu
 				new_page
 				@output.image Item.risks_by_service_graph(10), :width => 500, :height => 375, :position => :center
 				text Item.risks_by_service_graph_text
-				new_page
 			end
 
 			#
@@ -69,7 +65,6 @@ module Risu
 				new_page
 				@output.image Item.risks_by_severity_graph, :width => 500, :height => 375, :position => :center
 				text Item.risks_by_severity_graph_text, :inline_format => true
-				new_page
 			end				
 		end
 	end
