@@ -40,6 +40,8 @@
 	- Shockwave Player plugins
 	- Google Chrome plugins
 	- CoreFtp plugins
+	- FLEXNet plugins
+	- PHP plugins
 	- RootCause processing, this adds a subjective root cause to every plugin that I have seen / had to time do.
 - Renderers
 	- Added support for CSV output check out the host_findings_csv.rb template for an example of how to do it
@@ -80,8 +82,6 @@
 			- risks_by_severity_graph_page()
 			- risks_by_service_graph_page()
 			- root_cause_graph_page()
-
-
 
 #1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
