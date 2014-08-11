@@ -34,6 +34,7 @@ require 'risu/base/template_manager'
 require 'risu/base/templater'
 require 'risu/base/host_template_helper'
 require 'risu/base/malware_template_helper'
+require 'risu/base/graph_template_helper'
 require 'risu/base/template_helper'
 
 require 'risu/base/post_process_base'
