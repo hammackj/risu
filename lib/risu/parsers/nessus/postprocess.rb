@@ -21,8 +21,8 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
 	module Nessus
@@ -31,17 +31,3 @@ module Risu
 		end
 	end
 end
-
-#require 'risu/parsers/nessus/postprocess/post_process'
-# require 'risu/parsers/nessus/postprocess/java'
-# require 'risu/parsers/nessus/postprocess/adobe_reader'
-# require 'risu/parsers/nessus/postprocess/flash_player'
-# require 'risu/parsers/nessus/postprocess/servu'
-# require 'risu/parsers/nessus/postprocess/openssh'
-# require 'risu/parsers/nessus/postprocess/adobe_air'
-# require 'risu/parsers/nessus/postprocess/wireshark'
-# require 'risu/parsers/nessus/postprocess/oracle_database'
-# require 'risu/parsers/nessus/postprocess/shockwave'
-#require 'risu/parsers/nessus/postprocess/risk_score'
-#require 'risu/parsers/nessus/postprocess/root_cause'
-#require 'risu/parsers/nessus/postprocess/google_chrome'
