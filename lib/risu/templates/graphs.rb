@@ -27,6 +27,7 @@
 module Risu
 	module Templates
 		class Graphs < Risu::Base::TemplateBase
+			include TemplateHelper
 
 			#
 			#
@@ -76,17 +77,9 @@ module Risu
 
 				output.image Host.top_vuln_graph(10), :width => 500, :height => 375, :position => :center
 
-				output.start_new_page
+				other_os_graph_page
 
-				output.image Host.other_os_graph, :width => 500, :height => 375, :position => :center
-				output.text Host.other_os_graph_text
-
-				output.start_new_page
-
-				output.image Host.windows_os_graph, :width => 500, :height => 375, :position => :center
-				output.text Host.windows_os_graph_text
-
-				output.start_new_page
+				windows_os_graph_page
 
 				output.image Item.stigs_severity_graph, :width => 500, :height => 375, :position => :center
 
