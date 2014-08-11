@@ -411,8 +411,29 @@ module Risu
 				#
 				# @todo comments
 				#
-				def other_os_graph_has_data?
+				def windows_os_graph_has_data?
+					nt = Host.os_windows_nt.to_a.count
+					w2k = Host.os_windows_2k.to_a.count
+					xp = Host.os_windows_xp.to_a.count
+					w2k3 = Host.os_windows_2k3.to_a.count
+					vista = Host.os_windows_vista.to_a.count
+					w2k8 = Host.os_windows_2k8.to_a.count
+					w2k12 = Host.os_windows_2k12.to_a.count
+					w7 = Host.os_windows_7.to_a.count
+					w8 = Host.os_windows_8.to_a.count
+					other = (Host.os_windows.os_windows_other).to_a.count
 
+					if nt == 0 && w2k == 0 && xp == 0 && w2k3 == 0 && vista == 0 && w2k8 == 0 && w2k12 == 0 && w7 == 0 && w8 == 0 && other == 0
+						return false
+					else
+						return true
+					end
+				end
+
+				#
+				# @todo comments
+				#
+				def other_os_graph_has_data?
 					linux = Host.os_linux.to_a.count
 					osx = Host.os_osx.to_a.count
 					freebsd = Host.os_freebsd.to_a.count
