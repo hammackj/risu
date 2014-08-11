@@ -21,51 +21,38 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class OracleDatabase < Risu::Base::PostProcessBase
+				class PHP < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
-						{					
-							:description => "Oracle Database Patch Rollup",
-							:plugin_id => -99993,
-							:plugin_name => "Upgrade to the latest Oracle Database",
-							:item_name => "Upgrade to the latest Oracle Database",
+						{
+							:description => "PHP Patch Rollup",
+							:plugin_id => -99988,
+							:plugin_name => "Upgrade to the latest PHP",
+							:item_name => "Upgrade to the latest PHP",
 							:plugin_ids => [
-								45625,
-								56051,
-								56052,
-								56053,
-								56056,
-								56066,
-								50652,
-								47718,
-								45626,
-								51573,
-								53897,
-								56054,
-								56055,
-								56057,
-								56058,
-								56060,
-								56064,
-								56065,
-								56059,
-								56061,
-								56062,
-								56063,
-								56653,
-								57589,
-								
-								
-							]
+								76281,
+								66843,
+								67260,
+								69401,
+								72881,
+								46803,
+								66585,
+								71427,
+								71927,
+								73338,
+								73862,
+								74291,
+								76791,
+							]								
 						}
 					end
 				end
