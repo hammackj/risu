@@ -28,39 +28,20 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class Wireshark < Risu::Base::PostProcessBase
+				class Flexnet < Risu::Base::PostProcessBase
 
 					#
 					def initialize
-						@info =
+						@info = 
 						{
-							:description => "Wireshark Patch Rollups",
-							:plugin_id => -99992,
-							:plugin_name => "Upgrade to the latest Wireshark",
-							:item_name => "Upgrade to the latest Wireshark",
+							:description => "Macrovision FLEXnet Patch Rollup",
+							:plugin_id => -99987,
+							:plugin_name => "Upgrade to the latest Macrovision FLEXnet",
+							:item_name => "Upgrade to the latest Macrovision FLEXnet",
 							:plugin_ids => [
-								61572,
-								64361,
-								65253,
-								66543,
-								65254,
-								66544,
-								72941,
-								66895,
-								69104,
-								69880,
-								70763,
-								71520,
-								56164,
-								56690,
-								58518,
-								59240,
-								60117,
-								62477,
-								63095,
-								66894,
-								57539,
-								
+								25371,
+								24712,
+								27599,
 								
 							]
 						}

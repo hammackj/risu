@@ -41,11 +41,11 @@ module Risu
 
 					#NOTE:
 					#looks like its working
-					def newest_reader_plugin
+					def newest_plugin
 						newest = DateTime.new(0001, 01, 01)
 						newest_plugin = nil
 
-						@plugin_ids.each do |id|
+						@plugin_ids.uniq.each do |id|
 							plugin = Plugin.find_by_id(id)
 
 							if plugin == nil || plugin.plugin_modification_date == nil
@@ -61,13 +61,12 @@ module Risu
 						return newest_plugin
 					end
 
-					# Creates a rollup plugin based on the newest Adobe Reader
+					# Creates a rollup plugin 
 					#
 					def create_plugin
-
 						plugin = Plugin.find_by_id(@plugin_id)
 
-						newest_plugin = newest_reader_plugin()
+						newest_plugin = newest_plugin()
 
 						if newest_plugin == nil
 							return
@@ -113,7 +112,7 @@ module Risu
 					end
 
 					#
-					def has_reader_findings
+					def has_findings
 						@plugin_ids.each do |plugin_id|
 							if Item.where(:plugin_id => plugin_id)
 								return true
@@ -123,7 +122,7 @@ module Risu
 						return false
 					end
 
-					def has_host_reader_findings (host_id)
+					def has_host_findings? (host_id)
 						@plugin_ids.each do |plugin_id|
 							if Item.where(:plugin_id => plugin_id).where(:host_id => host_id).count >= 1
 								return true
@@ -144,7 +143,7 @@ module Risu
 
 					#
 					def run
-						if !has_reader_findings()
+						if !has_findings()
 							return
 						end
 
@@ -152,11 +151,9 @@ module Risu
 						create_plugin()
 
 						Host.all.each do |host|
-							if !has_host_reader_findings(host.id)
+							if !has_host_findings?(host.id)
 								next
 							end
-
-							#puts "Found host with reader finding #{host.ip}"
 
 							finding_severity = 0
 
@@ -170,8 +167,6 @@ module Risu
 									finding_severity = calculate_severity(finding_severity, severity)
 								end
 							end
-
-							#puts "#{finding_severity}"
 
 							create_item(host.id, finding_severity)
 						end
