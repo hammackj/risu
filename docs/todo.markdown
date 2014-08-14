@@ -14,12 +14,8 @@
 ## 1.7.x (??)
 - unsupported software
 	- 55786
-	
 - detected services
 - move project page on arxopia/project/risu to hammackj/risu
-- Roll ups needed
-	- openSSL
-- Make Templates read the current directory also
 - Template arguments
 - Host
 	- Hosts with Critical / High order by count
@@ -27,19 +23,9 @@
 	- search_plugin_output (keyword)
 - Shares
 	- Item
-		- Anonymous SMB count, Partially implemented in SharesTemplateHelper
-		- Anonymous FTP count, Partially implemented in SharesTemplateHelper
 		- Anonymous NFS count
-		- Anonymous SMB text, Partially implemented in SharesTemplateHelper
-		- Anonymous FTP text, Partially implemented in SharesTemplateHelper
 		- Anonymous NFS text		
 	- Text for describing these 3 findings with counts
-- Default creds blurb
-	- 39364
-	- 33852
-	- 11454
-	- 51369
-	- 26918
 - create template -n --new-template cli option, guided INPUT name, author, description via stdin then generate valid template
 - Ability to load templates for the current working directory
 - configuration management
@@ -74,7 +60,6 @@
 	XXXXX, Conficker Worm Detection (uncredentialed check)
 	70767,
 - malware infection report
-- Nessus 5.2 support
 - tech findings report each host for plugin output
 - Documents
 	- Template Tutorial
@@ -128,8 +113,6 @@
 - Language abstraction for text generation
 - Look at moving to Nokogiri for xml parsing; http://nokogiri.org if its faster
 - Implement different renderer's
-	- pdf
-	- csv
 	- html
 	- rtf
 	- OpenOffice.org xml
@@ -223,7 +206,6 @@
 - template for rhs plugins
 - template for wsus plugins
 - Update Assets templates to use this if possible plugin: http://www.nessus.org/plugins/index.php?view=single&id=54615 for extra data
-- Colorize the reports with better style
 - Ensure font sizes are standard in the templates
 - The font in tech findings could be 1 size smaller
 - add more detailed pci templates
