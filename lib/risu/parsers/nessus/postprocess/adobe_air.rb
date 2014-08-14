@@ -36,8 +36,8 @@ module Risu
 						{
 							:description => "Adobe Air Patch Rollup",
 							:plugin_id => -99994,
-							:plugin_name => "Upgrade to the latest Adobe Air",
-							:item_name => "Upgrade to the latest Adobe Air",
+							:plugin_name => "Update to the latest Adobe Air",
+							:item_name => "Update to the latest Adobe Air",
 							:plugin_ids => [
 								52755,
 								53474,

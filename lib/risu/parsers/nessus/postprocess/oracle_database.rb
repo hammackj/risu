@@ -36,8 +36,8 @@ module Risu
 						{					
 							:description => "Oracle Database Patch Rollup",
 							:plugin_id => -99993,
-							:plugin_name => "Upgrade to the latest Oracle Database",
-							:item_name => "Upgrade to the latest Oracle Database",
+							:plugin_name => "Update to the latest Oracle Database",
+							:item_name => "Update to the latest Oracle Database",
 							:plugin_ids => [
 								45625,
 								56051,
@@ -64,6 +64,14 @@ module Risu
 								56653,
 								57589,
 								55632,
+								11227,
+								10848,
+								10851,
+								11223,
+								11224,
+								11226,
+								10852,
+								55786
 								
 								
 							]

@@ -36,8 +36,8 @@ module Risu
 						{
 							:description => "CoreFTP Patch Rollup",
 							:plugin_id => -99989,
-							:plugin_name => "Upgrade to the latest CoreFTP",
-							:item_name => "Upgrade to the latest CoreFTP",
+							:plugin_name => "Update to the latest CoreFTP",
+							:item_name => "Update to the latest CoreFTP",
 							:plugin_ids => [
 								65789,
 								70656,

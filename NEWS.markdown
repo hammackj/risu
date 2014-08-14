@@ -25,6 +25,13 @@
 		- Added root_cause_graph_text()
 	- Item
 		- Added exploitablity_matrix method, returns and formatted array of findings based on parameters.
+		- Added calculate_vulnerable_host_percent_with_patches_applied method, which calculates the vulnerable host percent
+			after removing all of the notable findings. This gives a sense of how the network would be after patching
+		- Added risk_percent_patched_rounded_text
+	- Reference
+		- Added hp.
+		- Added glsa.
+		- Added freebsd.
 - _Experimental Post Processing_, Sums up the findings and removes the duplicates. This allows for cleaner 
 	authenticated reports. Very experimental at the moment, the are auto loaded from the same directories as 
 		templates for the time being
@@ -42,6 +49,9 @@
 	- CoreFtp plugins
 	- FLEXNet plugins
 	- PHP plugins
+	- Apache plugins
+	- HP System Management Homepage
+	- Windows OS plugins
 	- RootCause processing, this adds a subjective root cause to every plugin that I have seen / had to time do.
 - Renderers
 	- Added support for CSV output check out the host_findings_csv.rb template for an example of how to do it

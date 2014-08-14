@@ -135,6 +135,8 @@ module Risu
 								@output.text "<b>nessus_plugin</b>: http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin_id}", :inline_format => true
 							end
 
+
+
 							@output.text "\n"
 							counter += 1
 						end

@@ -79,7 +79,7 @@ module Risu
 						plugin.id = @plugin_id
 						plugin.plugin_name = @plugin_name
 						plugin.family_name = "Risu Rollup Plugins"
-						plugin.description = newest_plugin.description || ""
+						plugin.description = @description #newest_plugin.description || ""
 						plugin.plugin_version = newest_plugin.plugin_version || ""
 						plugin.plugin_publication_date = newest_plugin.plugin_publication_date
 						plugin.plugin_modification_date = newest_plugin.plugin_modification_date

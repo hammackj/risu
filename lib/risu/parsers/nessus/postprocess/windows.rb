@@ -28,40 +28,24 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class Shockwave < Risu::Base::PostProcessBase
+				class OpenSSL < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Shockwave Player Patch Rollup",
-							:plugin_id => -99991,
-							:plugin_name => "Update to the latest Shockwave Player",
-							:item_name => "Update to the latest Shockwave Player",
+							:description => "Microsoft Windows Patch Rollup",
+							:plugin_id => -99983,
+							:plugin_name => "Update to the latest Windows Updates",
+							:item_name => "Update to the latest Windows Updates",
 							:plugin_ids => [
-								72435,
-								72983,
-								42369,
-								51936,
-								71342,
-								44094,
-								39564,
-								40421,
-								44094,
-								46329,
-								48436,
-								50387,
-								55142,
-								55833,
-								56734,
-								57941,
-								59047,
-								61536,
-								62702,
-								64621,
-								65913,
-								67233,
-								69844,
+								34477,
+								35362,
+								22194,
+								58435,
+								35635,
+								22034,
+								
 								
 							]
 						}

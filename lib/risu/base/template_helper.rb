@@ -143,11 +143,16 @@ module Risu
 				rescue => e
 					return 0
 				end				
-			end			
+			end	
 
-			#
-			def default_credentials_section
-				plugins = [10862, 25927]
+			# @todo comment
+			def default_credential_plugins
+				[10862, 25927, 32315, 65950]
+			end		
+
+			# @todo comment
+			def has_default_credentials?
+				plugins = default_credential_plugins
 				default_cred = false
 
 				plugins.each do |plugin_id|
@@ -156,15 +161,30 @@ module Risu
 					end
 				end
 
-				if default_cred == false
+				return default_cred
+			end
+
+			# @todo comment
+			def default_credentials_section
+				heading1 "Default Credentials"
+
+				text "Default credentials were discovered on the network. This can cause issues because the credentials can be found all over the Internet giving anyone with network access full access to the systems in question."
+				text "\n"
+			end
+
+			# @todo comment
+			def default_credentials_appendix_section
+				if !has_default_credentials?
 					return
 				end
+
+				heading1 "Default Credentials"
 
 				headers = ["Plugin Name", "IP"]
 				header_widths = {0 => (@output.bounds.width - 70), 1 => 70}
 				data = Array.new
 
-				plugins.each do |plugin_id|
+				default_credential_plugins.each do |plugin_id|
 					if item_count_by_plugin_id(plugin_id) > 0
 						items = Item.where(:plugin_id => plugin_id)
 
@@ -183,15 +203,12 @@ module Risu
 						end
 					end
 				end
-				
-				heading1 "Default Credentials"
-
-				text "Default credentials were discovered on the network. This can cause issues because the credentials can be found all over the Internet giving anyone with network access full access to the systems in question."
 
 				table headers, header_widths, data
 
 				text "\n"
-			end	
+			end
+
 		end
 	end
 end

@@ -12,9 +12,11 @@
 ## 1.7.0
 
 ## 1.7.x (??)
+- unsupported software
+	- 55786
+	
+- detected services
 - move project page on arxopia/project/risu to hammackj/risu
-- New XML element detected: glsa. (cant recreate / find)
-- New XML element detected: freebsd. (cant recreate / find)
 - Roll ups needed
 	- openSSL
 - Make Templates read the current directory also

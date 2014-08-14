@@ -21,47 +21,35 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-# OF THE POSSIBILITY OF SUCH DAMAGE.
+#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+#OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class Shockwave < Risu::Base::PostProcessBase
+				class Apache < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Shockwave Player Patch Rollup",
-							:plugin_id => -99991,
-							:plugin_name => "Update to the latest Shockwave Player",
-							:item_name => "Update to the latest Shockwave Player",
+							:description => "Apache Patch Rollup",
+							:plugin_id => -99986,
+							:plugin_name => "Update to the latest Apache",
+							:item_name => "Update to the latest Apache",
 							:plugin_ids => [
-								72435,
-								72983,
-								42369,
-								51936,
-								71342,
-								44094,
-								39564,
-								40421,
-								44094,
-								46329,
-								48436,
-								50387,
-								55142,
-								55833,
-								56734,
-								57941,
-								59047,
-								61536,
-								62702,
-								64621,
-								65913,
-								67233,
-								69844,
+								11030,
+								11137,
+								11793,
+								11915,
+								31654,
+								55976,
+								57792,
+								12280,
+								17696,
+								31408,
+								
 								
 							]
 						}

@@ -36,8 +36,8 @@ module Risu
 						{
 							:description => "Google Chrome Patch Rollup",
 							:plugin_id => -99990,
-							:plugin_name => "Upgrade to the latest Google Chrome",
-							:item_name => "Upgrade to the latest Google Chrome",
+							:plugin_name => "Update to the latest Google Chrome",
+							:item_name => "Update to the latest Google Chrome",
 							:plugin_ids => [
 								74434,
 								76581,

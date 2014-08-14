@@ -36,8 +36,8 @@ module Risu
 						{
 							:description => "PHP Patch Rollup",
 							:plugin_id => -99988,
-							:plugin_name => "Upgrade to the latest PHP",
-							:item_name => "Upgrade to the latest PHP",
+							:plugin_name => "Update to the latest PHP",
+							:item_name => "Update to the latest PHP",
 							:plugin_ids => [
 								76281,
 								66843,

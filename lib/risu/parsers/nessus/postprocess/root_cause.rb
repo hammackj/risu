@@ -21,8 +21,8 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
 	module Parsers
@@ -204,6 +204,59 @@ module Risu
 							25167 => "Vendor Patch",
 							27525 => "Vendor Patch",
 							73417 => "Vendor Patch",
+							53532 => "Vendor Patch",
+							58811 => "Vendor Patch",
+							25492 => "Vendor Patch",
+							31419 => "Vendor Patch",
+							58327 => "Vendor Patch",
+							68931 => "Vendor Patch",
+							59851 => "Vendor Patch",
+							66541 => "Vendor Patch",
+							70118 => "Vendor Patch",
+							69020 => "Vendor Patch",
+							76345 => "Vendor Patch",
+							49272 => "Vendor Patch",
+							11030 => "Vendor Patch",
+							11137 => "Vendor Patch",
+							11793 => "Vendor Patch",
+							11915 => "Vendor Patch",
+							31654 => "Vendor Patch",
+							35635 => "Vendor Patch",
+							11227 => "Vendor Patch",
+							12255 => "Vendor Patch",
+							13651 => "Vendor Patch",
+							44967 => "Vendor Patch",
+							71174 => "Vendor Patch",
+							72959 => "Vendor Patch",
+							10882 => "Vendor Patch",
+							51892 => "Vendor Patch",
+							51893 => "Vendor Patch",
+							44136 => "Vendor Patch",
+							49067 => "Vendor Patch",
+							62565 => "Vendor Patch",
+							10815 => "Vendor Patch",
+							12280 => "Vendor Patch",
+							17696 => "Vendor Patch",
+							22254 => "Vendor Patch",
+							76203 => "Vendor Patch",
+							11267 => "Vendor Patch",
+							12110 => "Vendor Patch",
+							39466 => "Vendor Patch",
+							65952 => "Vendor Patch",
+							70545 => "Vendor Patch",
+							-99985 => "Vendor Patch",
+							-99986 => "Vendor Patch",
+							71174 => "Vendor Patch",
+							72959 => "Vendor Patch",
+							25926 => "Vendor Patch",
+							11138 => "Vendor Patch",
+							47715 => "Vendor Patch",
+							63476 => "Vendor Patch",
+							39468 => "Vendor Patch",
+							-99983 => "Vendor Patch",
+							-99984 => "Vendor Patch",
+							
+
 							
 							33850 => "Vendor Support",
 							34460 => "Vendor Support",
@@ -273,6 +326,32 @@ module Risu
 							34324 => "Configuration",
 							54582 => "Configuration",
 							69551 => "Configuration",
+							50504 => "Configuration",
+							10205 => "Configuration",
+							32315 => "Configuration",
+							43160 => "Configuration",
+							65950 => "Configuration",
+							42263 => "Configuration",
+							34850 => "Configuration",
+							50686 => "Configuration",
+							66848 => "Configuration",
+							47831 => "Configuration",
+							12085 => "Configuration",
+							25289 => "Configuration",
+							10056 => "Configuration",
+							10188 => "Configuration",
+							10660 => "Configuration",
+							11411 => "Configuration",
+							10722 => "Configuration",
+							10056 => "Configuration",
+							10660 => "Configuration",
+							10595 => "Configuration",
+							11714 => "Configuration",
+							10203 => "Configuration",
+							29224 => "Configuration",
+
+
+
 						}
 					end
 

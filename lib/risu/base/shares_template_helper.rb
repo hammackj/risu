@@ -146,6 +146,7 @@ module Risu
 				#Anon ftp/smb + clear text
 				@output.text anon_ftp_text + anon_smb_text + anonymous_access_text if anon_ftp_count > 1 || anon_smb_count > 1
 				@output.text "\n"
+				@output.text "\n"
 			end
 
 			def shares_appendix_section

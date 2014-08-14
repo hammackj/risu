@@ -285,12 +285,6 @@ module Risu
 					g.data("Medium", medium)
 					g.data("Low", low)
 
-					# g.data("Critical", crit, "purple")
-					# g.data("High", high, "red")
-					# g.data("Medium", medium, "orange")
-					# g.data("Low", low, "yellow")
-					#g.data("Informational", info, "blue")
-
 					StringIO.new(g.to_blob)
 				end
 
@@ -340,6 +334,30 @@ module Risu
 					#unique_hosts_with_critical_and_high = Host.unique_hosts_with_critical.count + Host.unique_hosts_with_high.count
 					unique_hosts_with_critical_and_high = Host.unique_hosts_with_critical_and_high_count
 					host_percent = (unique_hosts_with_critical_and_high.to_f / Host.count.to_f) * 100
+				end
+
+				#
+				def calculate_vulnerable_host_percent_with_patches_applied
+
+					exclude_list = []
+					hosts = []
+
+					Item.notable_order_by_cvss_raw.each do |h, k|
+						exclude_list << h
+					end
+
+					criticals = Item.critical_risks.where.not(:plugin_id => exclude_list)
+
+					criticals.each do |item|
+						hosts << item.host_id
+					end
+
+					Item.high_risks.each do |item|
+						hosts << item.host_id
+					end
+
+					hosts.uniq!
+					(hosts.count.to_f / Host.count.to_f) * 100
 				end
 
 				# Based on the risk_percent returns a adjective representative
@@ -424,6 +442,10 @@ module Risu
 				def risk_percent_rounded_text
 					"#{calculate_vulnerable_host_percent().round}%"
 				end
+
+				def risk_percent_patched_rounded_text
+					"#{calculate_vulnerable_host_percent_with_patches_applied().round}%"
+				end				
 
 				#
 				# @todo comment

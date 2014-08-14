@@ -28,7 +28,7 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class OpenSSH < Risu::Base::PostProcessBase
+				class OpenSSHRollups < Risu::Base::PostProcessBase
 
 					#
 					def initialize
@@ -36,8 +36,8 @@ module Risu
 						{
 							:description => "OpenSSH Patch Rollup",
 							:plugin_id => -99995,
-							:plugin_name => "Upgrade to the latest OpenSSH",
-							:item_name => "Upgrade to the latest OpenSSH",
+							:plugin_name => "Update to the latest OpenSSH",
+							:item_name => "Update to the latest OpenSSH",
 							:plugin_ids => [
 								11837,
 								17702,

@@ -21,8 +21,8 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
 	module Parsers
@@ -36,8 +36,8 @@ module Risu
 						{
 							:description => "Wireshark Patch Rollups",
 							:plugin_id => -99992,
-							:plugin_name => "Upgrade to the latest Wireshark",
-							:item_name => "Upgrade to the latest Wireshark",
+							:plugin_name => "Update to the latest Wireshark",
+							:item_name => "Update to the latest Wireshark",
 							:plugin_ids => [
 								61572,
 								64361,
