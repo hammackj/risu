@@ -51,6 +51,7 @@
 	- PHP plugins
 	- Apache plugins
 	- HP System Management Homepage
+	- OpenSSL Plugins
 	- Windows OS plugins
 	- RootCause processing, this adds a subjective root cause to every plugin that I have seen / had to time do.
 - Renderers
@@ -77,6 +78,9 @@
 		- item_count_by_plugin_name
 		- item_count_by_plugin_id
 		- default_credentials_section
+		- default_credentials_appendix_section
+		- has_default_credentials?
+		- default_credential_plugins
 		- Added MalwareTemplateHelper, this is included by TemplateHelper. It provides:
 			- malware_section()
 			- malware_appendix_section()
