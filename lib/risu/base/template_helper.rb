@@ -147,7 +147,10 @@ module Risu
 
 			# @todo comment
 			def default_credential_plugins
-				[10862, 25927, 32315, 65950]
+				[
+					10862, 25927, 32315, 65950, 39364, 33852, 11454, 51369, 
+					26918,
+				].uniq
 			end		
 
 			# @todo comment
