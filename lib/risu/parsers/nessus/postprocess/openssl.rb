@@ -40,7 +40,9 @@ module Risu
 							:item_name => "Update to the latest OpenSSL",
 							:plugin_ids => [
 								11267,
-								12110
+								12110,
+								74363,
+								77086
 							]
 						}
 					end
