@@ -184,7 +184,7 @@ module Risu
 				heading1 "Default Credentials"
 
 				headers = ["Plugin Name", "IP"]
-				header_widths = {0 => (@output.bounds.width - 70), 1 => 70}
+				header_widths = {0 => (@output.bounds.width - 80), 1 => 80}
 				data = Array.new
 
 				default_credential_plugins.each do |plugin_id|
