@@ -1,6 +1,6 @@
 # News
 
-#1.7.0 (August ??, 2014)
+#1.7.0 (September 11, 2014)
 - Update Copyrights to 2014
 - Wiki
 	- New page for installing on [OSX]((https://github.com/arxopia/risu/wiki/OSX-Installation-Guide)
