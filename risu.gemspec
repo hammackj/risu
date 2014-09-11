@@ -21,8 +21,8 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), 'lib'))
@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
 	s.license = "BSD"
 
 	s.author = "Jacob Hammack"
-	s.email = "risu@arxopia.com"
+	s.email = "jacob.hammack@hammackj.com"
 
 	s.files	= Dir['[A-Z]*'] + Dir['lib/**/*'] + ['risu.gemspec']
 	s.bindir = "bin"
@@ -52,14 +52,14 @@ Gem::Specification.new do |s|
 
 	s.add_development_dependency("simplecov", [">= 0.7.1"])
 	s.add_development_dependency("yard", [">= 0.8.3"])
-	s.add_dependency('minitest', ["4.3.2"])
+	s.add_dependency('minitest', ['4.3.2'])
 
 	s.add_dependency('rails', ['4.0.0'])
 	s.add_dependency('libxml-ruby', ['2.4.0'])
 	s.add_dependency('prawn', ['0.12.0'])
 	s.add_dependency('gruff', ['0.3.7'])
 	s.add_dependency('mysql2', ['0.3.11'])
-	s.add_dependency('rmagick', ["2.13.2"])
-	s.add_dependency('sqlite3', ["1.3.7"])
-	s.add_dependency('nokogiri', ["1.6.0"])
+	s.add_dependency('rmagick', ['2.13.2'])
+	s.add_dependency('sqlite3', ['1.3.7'])
+	s.add_dependency('nokogiri', ['1.6.0'])
 end
