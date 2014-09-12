@@ -1,6 +1,6 @@
 # News
 
-#1.7.0 (September 11, 2014)
+#1.7.0 (September 12, 2014)
 - Update Copyrights to 2014
 - Wiki
 	- New page for installing on [OSX]((https://github.com/arxopia/risu/wiki/OSX-Installation-Guide)
@@ -96,6 +96,7 @@
 			- risks_by_severity_graph_page()
 			- risks_by_service_graph_page()
 			- root_cause_graph_page()
+- Probably other things I forgot to track...
 
 #1.6.3 (October 01, 2013)
 - Rails 4.0 compatibility, backwards rails compatibility doesn't exist. You will need to update any plugins using old Rails APIs
