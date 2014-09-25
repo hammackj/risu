@@ -56,7 +56,8 @@ module Risu
 						"pcidss:unprotected_mssql_db", "pcidss:obsolete_software", "pcidss:www:sql_injection", "pcidss:backup_files",
 						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2", "operating-system-unsupported", "patch-summary-total-cves",
 						"pcidss:insecure_http_methods", "LastUnauthenticatedResults", "LastAuthenticatedResults", "cpe-0", "cpe-1", 
-						"cpe-2", "cpe-3", "Credentialed_Scan", "policy-used", "UnsupportedProduct:microsoft:windows_xp::sp2"
+						"cpe-2", "cpe-3", "Credentialed_Scan", "policy-used", "UnsupportedProduct:microsoft:windows_xp::sp2",
+						"UnsupportedProduct:microsoft:windows_xp", "UnsupportedProduct:microsoft:windows_2000"
 					]
 
 					@valid_host_properties_regex = Array[
