@@ -28,7 +28,7 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class OpenSSL < Risu::Base::PostProcessBase
+				class WindowsPatches < Risu::Base::PostProcessBase
 
 					#
 					def initialize
@@ -45,8 +45,11 @@ module Risu
 								58435,
 								35635,
 								22034,
-								
-								
+								51956,
+								40564,
+								45517,
+								62940,
+
 							]
 						}
 					end
