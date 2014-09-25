@@ -1,5 +1,15 @@
 # News
 
+#1.7.1 (September 25, 2014)
+- Updated Windows Patch Rollup
+- Added CA Brightstor Arcserve Backup Rollup
+- Updated the RootCause plug-ins list
+- Updated some of the default credential plug-ins list
+- Models
+	- HostProperty Model
+		- UnsupportedProduct:microsoft:windows_xp
+		- UnsupportedProduct:microsoft:windows_2000
+
 #1.7.0 (September 12, 2014)
 - Update Copyrights to 2014
 - Wiki
