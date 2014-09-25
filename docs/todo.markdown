@@ -9,9 +9,8 @@
 
 #Road map
 
-## 1.7.0
-
 ## 1.7.x (??)
+- **BUG** dropping tables when there are no tables causes stacktrace, catch this.
 - unsupported software
 	- 55786
 - detected services
