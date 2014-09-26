@@ -6,7 +6,7 @@
 
 Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
-Version **1.7.0** is the current release.
+Version **1.7.1** is the current release.
 
 ## Requirements
 
