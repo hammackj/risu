@@ -9,8 +9,14 @@
 
 #Road map
 
-## 1.7.x (??)
+## 1.7.2 (??)
+- **TAG** New HostProperties attribute: UnsupportedProduct. 
+- **TAG** New XML element detected: fedora.
 - **BUG** dropping tables when there are no tables causes stacktrace, catch this.
+
+## 1.7.x (??)
+
+
 - unsupported software
 	- 55786
 - detected services
@@ -64,7 +70,7 @@
 	- Template Tutorial
 	- Updating tutorial
 - Do all the @todo / @fix  items!
-- complacence plugins xml parser test?
+- compliance plugins xml parser test?
 - error check connection fail on the console to mysql
 - migration error handling
   - catch mysql/sqlite/postgres errors during up/down
@@ -119,7 +125,6 @@
 ## Ideas
 ### Core
 - bug report info collection option
-- Remove rmagick (GRRRR!)
 - Complete comments for all existing code
 - More text generation from graphs
 - pdf bookmarks
