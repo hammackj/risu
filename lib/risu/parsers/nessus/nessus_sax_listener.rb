@@ -34,56 +34,50 @@ module Risu
 			class NessusSaxListener
 				include LibXML::XML::SaxParser::Callbacks
 
-				# Sets up a array of all valid XML fields
-				def initialize
-					@vals = Hash.new
-
-					@valid_references = Array[
-						"cpe", "bid", "see_also", "xref", "cve", "iava", "msft",
-						"osvdb", "cert", "edb-id", "rhsa", "secunia", "suse", "dsa",
-						"owasp", "cwe", "iavb", "iavt", "cisco-sa", "ics-alert",
-						"cisco-bug-id", "cisco-sr", "cert-vu", "vmsa", "apple-sa",
-						"icsa", "cert-cc", "msvr", "usn", "hp", "glsa", "freebsd"
+					VALID_REFERENCES = %w[
+						cpe bid see_also xref cve iava msft
+						osvdb cert edb-id rhsa secunia suse dsa
+						owasp cwe iavb iavt cisco-sa ics-alert
+						cisco-bug-id cisco-sr cert-vu vmsa apple-sa
+						icsa cert-cc msvr usn hp glsa freebsd
 					]
 
-					@valid_host_properties = Array[
-						"HOST_END", "mac-address", "HOST_START", "operating-system", "host-ip", "host-fqdn", "netbios-name",
-						"local-checks-proto", "smb-login-used", "ssh-auth-meth", "ssh-login-used", "pci-dss-compliance",
-						"pci-dss-compliance:", "system-type", "bios-uuid", "pcidss:compliance:failed", "pcidss:compliance:passed",
-						"pcidss:deprecated_ssl", "pcidss:expired_ssl_certificate", "pcidss:high_risk_flaw", "pcidss:medium_risk_flaw",
-						"pcidss:reachable_db", "pcidss:www:xss", "pcidss:directory_browsing", "pcidss:known_credentials",
-						"pcidss:compromised_host:worm", "pcidss:obsolete_operating_system", "pcidss:dns_zone_transfer",
-						"pcidss:unprotected_mssql_db", "pcidss:obsolete_software", "pcidss:www:sql_injection", "pcidss:backup_files",
-						"traceroute-hop-0", "traceroute-hop-1", "traceroute-hop-2", "operating-system-unsupported", "patch-summary-total-cves",
-						"pcidss:insecure_http_methods", "LastUnauthenticatedResults", "LastAuthenticatedResults", "cpe-0", "cpe-1", 
-						"cpe-2", "cpe-3", "Credentialed_Scan", "policy-used", "UnsupportedProduct:microsoft:windows_xp::sp2",
-						"UnsupportedProduct:microsoft:windows_xp", "UnsupportedProduct:microsoft:windows_2000", "UnsupportedProduct"
+					VALID_HOST_PROPERTIES = %w[
+						HOST_END mac-address HOST_START operating-system host-ip host-fqdn netbios-name
+						local-checks-proto smb-login-used ssh-auth-meth ssh-login-used pci-dss-compliance
+						pci-dss-compliance: system-type bios-uuid pcidss:compliance:failed pcidss:compliance:passed
+						pcidss:deprecated_ssl pcidss:expired_ssl_certificate pcidss:high_risk_flaw pcidss:medium_risk_flaw
+						pcidss:reachable_db pcidss:www:xss pcidss:directory_browsing pcidss:known_credentials
+						pcidss:compromised_host:worm pcidss:obsolete_operating_system pcidss:dns_zone_transfer
+						pcidss:unprotected_mssql_db pcidss:obsolete_software pcidss:www:sql_injection pcidss:backup_files
+						traceroute-hop-0 traceroute-hop-1 traceroute-hop-2 operating-system-unsupported patch-summary-total-cves
+						pcidss:insecure_http_methods LastUnauthenticatedResults LastAuthenticatedResults cpe-0 cpe-1
+						cpe-2 cpe-3 Credentialed_Scan policy-used UnsupportedProduct:microsoft:windows_xp::sp2
+						UnsupportedProduct:microsoft:windows_xp UnsupportedProduct:microsoft:windows_2000 UnsupportedProduct
 					]
 
-					@valid_host_properties_regex = Array[
+					VALID_HOST_PROPERTIES_REGEX = [
 						"patch-summary-cve-num", "patch-summary-cves", "patch-summary-txt", "cpe-\d+", "KB\d+"
 					]
 
-					@valid_elements = Array["ReportItem", "plugin_version", "risk_factor",
-						"description", "cvss_base_score", "solution", "item", "plugin_output", "tag", "synopsis", "plugin_modification_date",
-						"FamilyName", "FamilyItem", "Status", "vuln_publication_date", "ReportHost", "HostProperties", "preferenceName",
-						"preferenceValues", "preferenceType", "fullName", "pluginId", "pluginName", "selectedValue", "selectedValue",
-						"name", "value", "preference", "plugin_publication_date", "cvss_vector", "patch_publication_date",
-						"NessusClientData_v2", "Policy", "PluginName", "ServerPreferences", "policyComments", "policyName", "PluginItem",
-						"Report", "Family", "Preferences", "PluginsPreferences", "FamilySelection", "IndividualPluginSelection", "PluginId",
-						"pci-dss-compliance", "exploitability_ease", "cvss_temporal_vector", "exploit_framework_core", "cvss_temporal_score",
-						"exploit_available", "metasploit_name", "exploit_framework_canvas", "canvas_package", "exploit_framework_metasploit",
-						"plugin_type", "exploithub_sku", "exploit_framework_exploithub", "stig_severity", "plugin_name", "fname", "always_run",
-						"cm:compliance-info", "cm:compliance-actual-value", "cm:compliance-check-id", "cm:compliance-policy-value",
-						"cm:compliance-audit-file", "cm:compliance-check-name", "cm:compliance-result", "cm:compliance-output", "policyOwner",
-						"visibility", "script_version", "attachment", "policy_comments", "d2_elliot_name", "exploit_framework_d2_elliot",
-						"exploited_by_malware", "compliance"
+					VALID_ELEMENTS = VALID_REFERENCES + %w[ReportItem plugin_version risk_factor
+						description cvss_base_score solution item plugin_output tag synopsis plugin_modification_date
+						FamilyName FamilyItem Status vuln_publication_date ReportHost HostProperties preferenceName
+						preferenceValues preferenceType fullName pluginId pluginName selectedValue selectedValue
+						name value preference plugin_publication_date cvss_vector patch_publication_date
+						NessusClientData_v2 Policy PluginName ServerPreferences policyComments policyName PluginItem
+						Report Family Preferences PluginsPreferences FamilySelection IndividualPluginSelection PluginId
+						pci-dss-compliance exploitability_ease cvss_temporal_vector exploit_framework_core cvss_temporal_score
+						exploit_available metasploit_name exploit_framework_canvas canvas_package exploit_framework_metasploit
+						plugin_type exploithub_sku exploit_framework_exploithub stig_severity plugin_name fname always_run
+						cm:compliance-info cm:compliance-actual-value cm:compliance-check-id cm:compliance-policy-value
+						cm:compliance-audit-file cm:compliance-check-name cm:compliance-result cm:compliance-output policyOwner
+						visibility script_version attachment policy_comments d2_elliot_name exploit_framework_d2_elliot
+						exploited_by_malware compliance
 					]
 
-					@valid_elements = @valid_elements + @valid_references
-
 					# These are the more commonly used host properties, mapping them here to store in the host table
-					@host_properties_mapping = {
+					HOST_PROPERTIES_MAPPING = {
 						"HOST_END" => :end,
 						"mac-address" => :mac,
 						"HOST_START" => :start,
@@ -92,6 +86,9 @@ module Risu
 						"host-fqdn" => :fqdn,
 						"netbios-name" => :netbios
 					}
+				# Sets up a array of all valid XML fields
+				def initialize
+					@vals = Hash.new
 				end
 
 				# Callback for when the start of a XML element is reached
@@ -102,7 +99,7 @@ module Risu
 					@tag = element
 					@vals[@tag] = ""
 
-					if !@valid_elements.include?(element)
+					if !VALID_ELEMENTS.include?(element)
 						puts "New XML element detected: #{element}. Please report this at #{Risu::GITHUB}/issues/new or via email to #{Risu::EMAIL}"
 					end
 
@@ -156,7 +153,7 @@ module Risu
 											nil
 										end
 							else
-								@attr = if @valid_host_properties.include?(attributes["name"])
+								@attr = if VALID_HOST_PROPERTIES.include?(attributes["name"])
 									attributes["name"]
 								else
 									nil
@@ -294,7 +291,7 @@ module Risu
 								@patch.value = @vals['tag']
 								@patch.save
 							else
-								@rh.attributes = {@host_properties_mapping[@attr] => @vals["tag"].gsub("\n", ",") } if @host_properties_mapping.keys.include?(@attr)
+								@rh.attributes = {HOST_PROPERTIES_MAPPING[@attr] => @vals["tag"].gsub("\n", ",") } if HOST_PROPERTIES_MAPPING.key?(@attr)
 								@rh.save
 
 								@hp.name = @attr
@@ -305,9 +302,9 @@ module Risu
 						#We cannot handle the references in the same block as the rest of the ReportItem tag because
 						#there tends to be more than of the different types of reference per ReportItem, this causes issue for a sax
 						#parser. To solve this we do the references before the final plugin data, Valid references must be added
-						#the @valid_reference array at the top to be parsed.
-						# *@valid_reference, does a 'when' on each element of the @valid_references array, pure magic
-						when *@valid_references
+						#the VALID_REFERENCE array at the top to be parsed.
+						# *VALID_REFERENCE, does a 'when' on each element of the VALID_REFERENCES array, pure magic
+						when *VALID_REFERENCES
 							@ref = @plugin.references.create
 							@ref.reference_name = element
 							@ref.value = @vals["#{element}"]

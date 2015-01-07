@@ -34,12 +34,7 @@ module Risu
 			class SimpleNexpose
 				include LibXML::XML::SaxParser::Callbacks
 
-				# @todo comment
-				#
-				def initialize
-					@vals = Hash.new
-
-					@valid_fingerprints = {
+					VALID_FINGERPRINTS = {
 						"description" => :os,
 						"vendor" => nil,
 						"family" => nil,
@@ -48,6 +43,11 @@ module Risu
 						"device-class" => :system_type,
 						"architecture" => nil
 					}
+
+				# @todo comment
+				#
+				def initialize
+					@vals = Hash.new
 
 					@report = Report.create
 				end
@@ -93,7 +93,7 @@ module Risu
 							@in_device = false
 						when "description"
 							if @in_device && @in_fingerprint
-								@rh.attributes = { @valid_fingerprints[element] => @vals[element].gsub("\n", ",") } if @valid_fingerprints.keys.include?(element)
+								@rh.attributes = { VALID_FINGERPRINTS[element] => @vals[element].gsub("\n", ",") } if VALID_FINGERPRINTS.key?(element)
 								@rh.save
 							end
 						when "fingerprint"
