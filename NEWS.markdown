@@ -1,6 +1,7 @@
 # News
 
-# 1.7.2 (November)
+# 1.7.2 (January 5, 2015)
+- Updated Copyrights / etc
 - Added VMware ESXi Post Processing
 - Added DB2 Post Processing
 - Updated Default Credential plugin list
