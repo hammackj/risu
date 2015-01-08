@@ -2,7 +2,13 @@
 
 # 1.7.3 (Jan, 2015)
 - Parser Optimizations by [@bluehavana]
-- 
+- Renamed Attachment.type to Attachment.ttype, due to a rails naming issue
+- Added SAX Parser tests for Attachments
+- Rewrote the technical_findings template
+- Template Helper
+	- Added title method
+	- Added definition method
+- Fixed various bugs
 
 # 1.7.2 (January 5, 2015)
 - Updated Copyrights / etc
