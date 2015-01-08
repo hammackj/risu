@@ -1,5 +1,9 @@
 # News
 
+# 1.7.3 (Jan, 2015)
+- Parser Optimizations by [@bluehavana]
+- 
+
 # 1.7.2 (January 5, 2015)
 - Updated Copyrights / etc
 - Added VMware ESXi Post Processing
