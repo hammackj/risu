@@ -34,10 +34,58 @@ module Risu
 				{
 					:name => "technical_findings",
 					:author => "hammackj",
-					:version => "0.0.8",
+					:version => "0.0.9",
 					:renderer => "PDF",
 					:description => "Generates a Technical Findings Report"
 				}
+			end
+
+			def print_technical_findings(risks, text, color, last=false)
+				if risks.length > 0
+					title text, 18, color
+
+					risks.each do |f|
+						hosts = Item.where(:plugin_id => f.plugin_id).group(:host_id)
+						plugin = Plugin.find_by_id(f.plugin_id)
+
+						references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
+
+						output.font_size(16) do
+							text "#{plugin.plugin_name}\n"
+						end
+
+						if hosts.length > 1
+							text "Hosts", :style => :bold
+						else
+							text "Host", :style => :bold
+						end
+
+						hostlist = Array.new
+						hosts.each do |host|
+							ho = Host.find_by_id(host.host_id)
+							host_string = "#{ho.name}"
+							host_string << " (#{ho.fqdn})" if ho.fqdn != nil
+							hostlist << host_string
+						end
+
+						text hostlist.join(', ')
+
+						definition "Plugin output", f.plugin_output
+						definition "Description", plugin.description.gsub(/[ ]{2,}/, " ") if plugin.description != nil
+						definition "Synopsis", plugin.synopsis
+						definition "CVSS Base Score", plugin.cvss_base_score
+						definition "Exploit Available", (plugin.exploit_available == "true") ? "Yes" : "No"
+						definition "Solution", plugin.solution
+						definition "References", plugin.references.reference_string, :inline_format => true
+
+						plugin_url = "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin.id}"
+						definition "Nessus Plugin", plugin_url, :inline_format => true, :link => plugin_url
+
+						text "\n"
+					end
+
+					@output.start_new_page if last == false
+				end
 			end
 
 			def render(output)
@@ -45,106 +93,16 @@ module Risu
 				text "\n"
 
 				report_title Report.title
-				report_subtitle "Critical and High Findings"
+				report_subtitle "Technical Findings"
 				report_author "This report was prepared by\n#{Report.author}"
-
 				text "\n\n\n"
 
-				unique_risks = Array.new
-				unique_risks << Hash[:title => "Critical Findings", :color => Risu::GRAPH_COLORS[0], :values => Item.critical_risks_unique] if Item.critical_risks_unique.to_a.size != 0
-				unique_risks << Hash[:title => "High Findings", :color => Risu::GRAPH_COLORS[1], :values => Item.high_risks_unique] if Item.high_risks_unique.to_a.size != 0
+				# If you uncomment the med/low change the true in high to false for a new page after it
 
-#				unique_risks << Hash[:title => "Medium Findings", :color => Risu::GRAPH_COLORS[2], :values => Item.medium_risks_unique_sorted] if Item.medium_risks_unique_sorted.to_a.size != 0
-#				unique_risks << Hash[:title => "Low Findings", :color => Risu::GRAPH_COLORS[3], :values => Item.low_risks_unique_sorted] if Item.low_risks_unique_sorted.to_a.size != 0
-
-				unique_risks.each_with_index do |h, index|
-					if h[:values].length > 0
-
-						output.font_size(18) do
-							output.fill_color h[:color]
-							text h[:title], :style => :bold
-							output.fill_color "000000"
-						end
-
-						text "\n"
-
-						h[:values].each do |f|
-
-							hosts = Item.where(:plugin_id => f.plugin_id).group(:host_id)
-							plugin = Plugin.find_by_id(f.plugin_id)
-
-							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
-
-							output.font_size(16) do
-								text "#{plugin.plugin_name}\n"
-							end
-
-							if hosts.length > 1
-								text "Hosts", :style => :bold
-							else
-								text "Host", :style => :bold
-							end
-
-							hostlist = Array.new
-							hosts.each do |host|
-								ho = Host.find_by_id(host.host_id)
-								#if h.id != blacklist_host_id.first.id
-									host_string = "#{ho.name}"
-									host_string << " (#{ho.fqdn})" if ho.fqdn != nil
-									hostlist << host_string
-								#end
-							end
-
-							text hostlist.join(', ')
-
-							if f.plugin_output != nil
-								text "\nPlugin output", :style => :bold
-								text f.plugin_output
-							end
-
-							if plugin.description != nil
-								text "\nDescription", :style => :bold
-								text plugin.description.gsub(/[ ]{2,}/, " "), :inline_format => true
-							end
-
-							if plugin.synopsis != nil
-								text "\nSynopsis", :style => :bold
-								text plugin.synopsis
-							end
-
-							if plugin.cvss_base_score != nil
-								text "\nCVSS Base Score", :style => :bold
-								text plugin.cvss_base_score
-							end
-
-							if plugin.exploit_available != nil
-								text "\nExploit Available", :style => :bold
-
-								if plugin.exploit_available == "true"
-									text "Yes"
-								else
-									text "No"
-								end
-							end
-
-							if plugin.solution != nil
-								text "\nSolution", :style => :bold
-								text plugin.solution
-							end
-
-							if references.size != 0
-								text "\nReferences", :style => :bold
-								text plugin.references.reference_string, :inline_format => true
-								plugin_url = "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin.id}"
-								text "<b>nessus_plugin</b>: #{plugin_url}", :inline_format => true, :link => plugin_url
-							end
-
-							text "\n"
-						end
-					end
-
-					output.start_new_page if unique_risks[index+1] != nil
-				end
+				print_technical_findings(Item.critical_risks_unique, "Critical Findings", Risu::GRAPH_COLORS[0]) if Item.critical_risks_unique.to_a.size != 0
+				print_technical_findings(Item.high_risks_unique, "High Findings", Risu::GRAPH_COLORS[1], true) if Item.high_risks_unique.to_a.size != 0
+				#print_technical_findings(Item.medium_risks_unique, "Medium Findings", Risu::GRAPH_COLORS[2]) if Item.medium_risks_unique.to_a.size != 0
+				#print_technical_findings(Item.low_risks_unique, "Low Findings", Risu::GRAPH_COLORS[3], true) if Item.low_risks_unique.to_a.size != 0
 
 				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all
 			end
