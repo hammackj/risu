@@ -282,8 +282,7 @@ module Risu
 				end
 
 				def start_attachment(_element, attributes)
-					@attachment = @ri.attachments.create(:name => attributes['name'],
-													:type => attributes['type'])
+					@attachment = @ri.attachments.create(:name => attributes['name'], :ttype => attributes['type'])
 				end
 
 				# Dynamic dispatch end element methods
