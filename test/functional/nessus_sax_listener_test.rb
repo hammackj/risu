@@ -84,6 +84,9 @@
 							xml.xref "USN:1752-1"
 							xml.send(:"usn", "USN:1752-1")
 							xml.exploited_by_malware("true")
+							xml.attachment(:name => "ts_screenshot.jpg", :type => "image/bmp") do
+								xml.text "c89122a07b0ea7087a0c712d711a07b7"
+							end
 						end
 					end
 				end
@@ -97,7 +100,19 @@
   		xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
  		@parser = LibXML::XML::SaxParser.string xml
 		@parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
-		@parser.parse		
+		@parser.parse
+ 	end
+
+ 	test "Attachment.first.name == 'ts_screenshot.jpg'" do
+ 		assert Attachment.first.name == 'ts_screenshot.jpg', "GOT #{Attachment.first.name}"
+ 	end
+
+ 	test "Attachment.first.ttype == 'image/bmp'" do
+ 		assert Attachment.first.ttype == 'image/bmp', "GOT #{Attachment.first.ttype}"
+ 	end
+
+ 	test "Attachment.first.ahash == 'c89122a07b0ea7087a0c712d711a07b7'" do
+ 		assert Attachment.first.ahash == 'c89122a07b0ea7087a0c712d711a07b7', "GOT #{Attachment.first.ahash}"
  	end
 
  	test "return 2011-07-07 14:49:31 -0500 for Host.where(:name => '69.69.69.69').first.end" do
