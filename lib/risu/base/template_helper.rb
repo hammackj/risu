@@ -73,45 +73,52 @@ module Risu
 				@output.text text, options
 			end
 
-			#
-			def heading1 title
-				@output.font_size(24) do
-					@output.text title, :style => :bold
+			def title(text, size=18, color='#000000')
+				@output.font_size(size) do
+					@output.fill_color color.gsub('#', '')
+					@output.text text, :style => :bold
+					@output.fill_color "000000"
+				end
+
+				@output.text "\n"
+			end
+
+			def definition term, text, options = {}
+				if text != nil
+					@output.text "\n#{term}", :style => :bold
+					@output.text text, options
 				end
 			end
 
 			#
-			def heading2 title
-				@output.font_size(18) do
-					@output.text title, :style => :bold
-				end
+			def heading1 title_text
+				title title_text, 24
 			end
 
 			#
-			def heading3 title
-				@output.font_size(14) do
-					@output.text title, :style => :bold
-				end
+			def heading2 title_text
+				title title_text, 18
 			end
 
 			#
-			def heading4 title
-				@output.font_size(12) do
-					@output.text title, :style => :bold
-				end
+			def heading3 title_text
+				title title_text, 14
 			end
 
 			#
-			def heading5 title
-				@output.font_size(10) do
-					@output.text title, :style => :bold
-				end
+			def heading4 title_text
+				title title_text, 12
 			end
 
 			#
-			def heading6 title
+			def heading5 title_text
+				title title_text, 10
+			end
+
+			#
+			def heading6 title_text
 				@output.font_size(8) do
-					@output.text title, :style => :bold
+					@output.text title_text, :style => :bold
 				end
 			end
 
