@@ -165,7 +165,7 @@ module Risu
 				create_table :attachments do |t|
 					t.integer :item_id
 					t.string :name
-					t.string :type
+					t.string :ttype
 					t.string :ahash
 					t.text :value
 				end
