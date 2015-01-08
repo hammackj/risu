@@ -1,6 +1,6 @@
 # News
 
-# 1.7.3 (Jan, 2015)
+# 1.7.3 (January 8, 2015)
 - Parser Optimizations by [@bluehavana]
 - Renamed Attachment.type to Attachment.ttype, due to a rails naming issue
 - Added SAX Parser tests for Attachments
