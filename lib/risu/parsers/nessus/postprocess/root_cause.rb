@@ -301,6 +301,7 @@ module Risu
 							73598 => "Vendor Support",
 
 							49071 => "Configuration",
+							19948 => "Configuration",
 							41028 => "Configuration",
 							57582 => "Configuration",
 							45411 => "Configuration",
