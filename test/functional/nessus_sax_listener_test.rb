@@ -66,7 +66,7 @@
 
 							xml.tag(:name => "traceroute-hop-1") do
 								xml.text "69.69.69.68"
-							end	
+							end
 
 							xml.tag(:name => "traceroute-hop-2") do
 								xml.text "69.69.69.70"
@@ -74,7 +74,7 @@
 
 							xml.tag(:name => "pcidss:insecure_http_methods") do
 								xml.text "GET"
-							end																			
+							end
 						end
 
 						xml.ReportItem(:port => "88", :svc_name => "kerberos?", :protocol => "tcp", :severity => "0", :pluginName => "Test Plugin", :pluginFamily => "Test Family", :pluginID =>"999999") do
@@ -87,37 +87,58 @@
 							xml.attachment(:name => "ts_screenshot.jpg", :type => "image/bmp") do
 								xml.text "c89122a07b0ea7087a0c712d711a07b7"
 							end
+
+                            xml.send(:"cm:compliance-info", "cm:compliance-info")
+                            xml.send(:"cm:compliance-reference", "cm:compliance-reference")
+                            xml.send(:"cm:compliance-see-also", "cm:compliance-see-also")
+                            xml.send(:"cm:compliance-solution", "cm:compliance-solution")
 						end
 					end
 				end
 			end
 		end
 
- 		builder.to_xml
- 	end
+        builder.to_xml
+    end
 
- 	def setup
-  		xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
- 		@parser = LibXML::XML::SaxParser.string xml
+    def setup
+        xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
+        @parser = LibXML::XML::SaxParser.string xml
 		@parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
 		@parser.parse
- 	end
+    end
 
- 	test "Attachment.first.name == 'ts_screenshot.jpg'" do
- 		assert Attachment.first.name == 'ts_screenshot.jpg', "GOT #{Attachment.first.name}"
- 	end
+     test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_info == cm:compliance-info" do
+         assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info == "cm:compliance-info", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info}"
+    end
 
- 	test "Attachment.first.ttype == 'image/bmp'" do
- 		assert Attachment.first.ttype == 'image/bmp', "GOT #{Attachment.first.ttype}"
- 	end
+    test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_reference == cm:compliance-reference" do
+        assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference == "cm:compliance-reference", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference}"
+    end
 
- 	test "Attachment.first.ahash == 'c89122a07b0ea7087a0c712d711a07b7'" do
- 		assert Attachment.first.ahash == 'c89122a07b0ea7087a0c712d711a07b7', "GOT #{Attachment.first.ahash}"
- 	end
+    test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_see_also == cm:compliance-see-also" do
+        assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also == "cm:compliance-see-also", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also}"
+    end
 
- 	test "return 2011-07-07 14:49:31 -0500 for Host.where(:name => '69.69.69.69').first.end" do
-		assert Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d") == "20110707", "GOT #{Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d")}"
- 	end
+    test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_solution == cm:compliance-solution" do
+        assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution == "cm:compliance-solution", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution}"
+    end
+
+    test "Attachment.first.name == 'ts_screenshot.jpg'" do
+        assert Attachment.first.name == 'ts_screenshot.jpg', "GOT #{Attachment.first.name}"
+    end
+
+	test "Attachment.first.ttype == 'image/bmp'" do
+		assert Attachment.first.ttype == 'image/bmp', "GOT #{Attachment.first.ttype}"
+	end
+
+	test "Attachment.first.ahash == 'c89122a07b0ea7087a0c712d711a07b7'" do
+		assert Attachment.first.ahash == 'c89122a07b0ea7087a0c712d711a07b7', "GOT #{Attachment.first.ahash}"
+	end
+
+    test "return 2011-07-07 14:49:31 -0500 for Host.where(:name => '69.69.69.69').first.end" do
+        assert Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d") == "20110707", "GOT #{Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d")}"
+    end
 
  	test "return 1 Item for Host 69.69.69.69" do
  		assert Host.where(:name => "69.69.69.69").first.items.count == 1, "GOT #{Host.where(:name => "69.69.69.69").first.items.count}"
@@ -129,7 +150,7 @@
 
  	test "return USN:1752-1 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => usn).first.value" do
  		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value == "USN:1752-1", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value}"
- 	end 	
+ 	end
 
  	test "return Everything for Policy.last.name" do
  		assert Policy.last.name == "Everything", "GOT #{Policy.last.name}"
@@ -154,16 +175,16 @@
  	test "return 10.69.69.68 for Host.where(:name => 69.69.69.69)...traceroute_hop_1" do
  		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value == "69.69.69.68", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value}"
  	end
- 	
+
  	test "return 10.69.69.70 for Host.where(:name => 69.69.69.69)...traceroute_hop_2" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value == "69.69.69.70", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value}"
  	end
 
  	test "return GET for Host.where(:name => 69.69.69.69)...pcidss:insecure_http_methods" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value == "GET", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value}"
- 	end
+    end
 
- 	test "return 2 for Plugin.where(:exploited_by_malware => 'true').count" do
-		assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
- 	end 	
+    test "return 2 for Plugin.where(:exploited_by_malware => 'true').count" do
+        assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
+    end
  end

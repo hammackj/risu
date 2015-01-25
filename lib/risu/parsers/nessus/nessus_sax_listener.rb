@@ -75,7 +75,7 @@ module Risu
 					cm:compliance-info cm:compliance-actual-value cm:compliance-check-id cm:compliance-policy-value
 					cm:compliance-audit-file cm:compliance-check-name cm:compliance-result cm:compliance-output policyOwner
 					visibility script_version attachment policy_comments d2_elliot_name exploit_framework_d2_elliot
-					exploited_by_malware compliance
+					exploited_by_malware compliance cm:compliance-reference cm:compliance-see-also cm:compliance-solution
 				])
 
 				# TODO: documentation. These are never used in the class
@@ -276,7 +276,8 @@ module Risu
 									:svc_name => attributes["svc_name"],
 									:protocol => attributes["protocol"],
 									:severity => attributes["severity"],
-									:plugin_id => @plugin.id)
+									:plugin_id => @plugin.id
+								)
 
 					@plugin.save
 				end
@@ -358,8 +359,7 @@ module Risu
 				#parser. To solve this we do the references before the final plugin data, Valid references must be added
 				#the VALID_REFERENCE set at the top to be parsed.
 				def end_valid_reference(element)
-					@ref = @plugin.references.create(:reference_name => element,
-										:value => @vals["#{element}"])
+					@ref = @plugin.references.create(:reference_name => element, :value => @vals["#{element}"])
 				end
 
 				def end_report_item(_)
@@ -372,7 +372,12 @@ module Risu
 						:cm_compliance_audit_file => @vals["cm:compliance-audit-file"],
 						:cm_compliance_check_name => @vals["cm:compliance-check-name"],
 						:cm_compliance_result => @vals["cm:compliance-result"],
-						:cm_compliance_output => @vals["cm:compliance-output"])
+						:cm_compliance_output => @vals["cm:compliance-output"],
+
+						:cm_compliance_reference => @vals["cm:compliance-reference"],
+						:cm_compliance_see_also => @vals["cm:compliance-see-also" ],
+						:cm_compliance_solution => @vals["cm:compliance-solution"]
+					)
 
 					@plugin.update(:solution => @vals["solution"],
 						:risk_factor => @vals["risk_factor"],
@@ -401,7 +406,8 @@ module Risu
 						:always_run => @vals["always_run"],
 						:script_version => @vals["script_version"],
 						:exploited_by_malware => @vals["exploited_by_malware"],
-						:compliance => @vals["compliance"])
+						:compliance => @vals["compliance"]
+					)
 				end
 
 				def end_attachment(_)

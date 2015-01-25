@@ -98,14 +98,19 @@ module Risu
 					t.integer :severity
 					t.string :plugin_name
 					t.boolean :verified
-					t.string :cm_compliance_info
-					t.string :cm_compliance_actual_value
-					t.string :cm_compliance_check_id
-					t.string :cm_compliance_policy_value
-					t.string :cm_compliance_audit_file
-					t.string :cm_compliance_check_name
-					t.string :cm_compliance_result
-					t.string :cm_compliance_output
+					t.text :cm_compliance_info, limit: 4294967295
+					t.text :cm_compliance_actual_value, limit: 4294967295
+					t.text :cm_compliance_check_id, limit: 4294967295
+					t.text :cm_compliance_policy_value, limit: 4294967295
+					t.text :cm_compliance_audit_file, limit: 4294967295
+					t.text :cm_compliance_check_name, limit: 4294967295
+					t.text :cm_compliance_result, limit: 4294967295
+					t.text :cm_compliance_output, limit: 4294967295
+
+					t.text :cm_compliance_reference, limit: 4294967295
+					t.text :cm_compliance_see_also, limit: 4294967295
+					t.text :cm_compliance_solution, limit: 4294967295
+
 					t.integer :real_severity
 					t.integer :risk_score
 				end
