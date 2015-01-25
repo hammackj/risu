@@ -1,5 +1,12 @@
 # News
 
+# 1.7.4 (January 25, 2015)
+- Added New tags to the model Item
+	- cm:compliance-reference
+	- cm:compliance-see-also-
+	- cm:compliance-solution
+- Increased the database size of all cm:compliance tags from string to text
+
 # 1.7.3 (January 8, 2015)
 - Parser Optimizations by [@bluehavana]
 - Renamed Attachment.type to Attachment.ttype, due to a rails naming issue
@@ -62,9 +69,9 @@
 		- Added hp.
 		- Added glsa.
 		- Added freebsd.
-- _Experimental Post Processing_, Sums up the findings and removes the duplicates. This allows for cleaner 
-	authenticated reports. Very experimental at the moment, the are auto loaded from the same directories as 
-		templates for the time being
+		- *Experimental Post Processing*, Sums up the findings and removes the duplicates. This allows for cleaner
+			authenticated reports. Very experimental at the moment, the are auto loaded from the same directories as templates
+			for the time being
 	- Use of the --post-process command line option will turn this on and off
 	- Java Plugins
 	- Adobe Reader plugins
@@ -98,12 +105,12 @@
 	- Added "Exploitablity Summary Report" template
 	- Added "Talking Points Report" template
 	- Added "Missing Root Cause Report" template
-	- Templates must now specify their renderer :renderer => "PDF" or :renderer => "CSV" in the template_info section. This
-		will break all templates until it is added.
+	- Templates must now specify their renderer :renderer => "PDF" or :renderer => "CSV" in the template_info section.
+		This will break all templates until it is added.
 	- Template Helper
 		- Added a table method to generate a table in 1 line of code
 		- Added a new_page method to create a page break in the report
-		- Added other_os_graph_page, This generates a page for the PDF renderer with the 
+		- Added other_os_graph_page, This generates a page for the PDF renderer with the
 			other_os_graph and other_os_graph_text followed by a new_page
 		- item_count_by_plugin_name
 		- item_count_by_plugin_id
@@ -446,20 +453,20 @@ You can access it via `Host.first.patches` or `Patch.all`
 	- New HostProperties attribute: pcidss:www:xss
 - Added more unit tests 91.7% code coverage for testing at the moment. Not including templates.
 
-#1.4.2 (May 13, 2011)
+# 1.4.2 (May 13, 2011)
 
 - Added a fix for all of the MSXX-XXX Host Properties tags that don't serve any purpose
 - Added sqlite3 as an install dependency to help with sqlite usage
-- Fixed a privately report bug with the *_risks_unique_sorted functions not working on MySQL
+- Fixed a privately report bug with the *_risks_unique_sorted* functions not working on MySQL
 
-#1.4.1 (May 10, 2011)
+# 1.4.1 (May 10, 2011)
 
 - Fixed a issue with a nonexistent 'Critical' severity.
 - Added VMware ESX to the Other OS graph Ticket #33
 - windows_os_graph were using the wrong counters Ticket #32
 - Updated the Prawn gem version to 0.11.1
 
-#1.4.0 (April 20, 2011)
+# 1.4.0 (April 20, 2011)
 
 - Added a --console option for creating a ActiveRecord console into the database
 - Updated the parser to handle the new plugin_type field on the plugins table
