@@ -58,6 +58,7 @@ module Risu
 					pcidss:insecure_http_methods LastUnauthenticatedResults LastAuthenticatedResults cpe-0 cpe-1
 					cpe-2 cpe-3 Credentialed_Scan policy-used UnsupportedProduct:microsoft:windows_xp::sp2
 					UnsupportedProduct:microsoft:windows_xp UnsupportedProduct:microsoft:windows_2000 UnsupportedProduct
+					mcafee-epo-guid
 				])
 
 				# An array of all valid elements expected during parsing
