@@ -330,13 +330,13 @@ module Risu
 				#
 				# @return [FixNum] Percentage of vulnerable hosts
 				def calculate_vulnerable_host_percent
-					#patch to fix double counting 
+					#patch to fix double counting
 					#unique_hosts_with_critical_and_high = Host.unique_hosts_with_critical.count + Host.unique_hosts_with_high.count
 					unique_hosts_with_critical_and_high = Host.unique_hosts_with_critical_and_high_count
 					host_percent = (unique_hosts_with_critical_and_high.to_f / Host.count.to_f) * 100
 				end
 
-				#
+				# @todo w t f
 				def calculate_vulnerable_host_percent_with_patches_applied
 
 					exclude_list = []
@@ -383,7 +383,7 @@ module Risu
 				# Builds a sentence based on the risk_percent to describe the risk
 				#
 				# @param risk_percent Calculated percentage of risk based on {Item::calculate_vulnerable_host_percent}
-				# 
+				#
 				# @return [String] Sentence describing the implied significance of the risk_percent
 				def risk_text risk_percent
 					percent_text = case risk_percent
@@ -445,7 +445,15 @@ module Risu
 
 				def risk_percent_patched_rounded_text
 					"#{calculate_vulnerable_host_percent_with_patches_applied().round}%"
-				end				
+				end
+
+				def risk_percent_text
+					"%.2f%" % calculate_vulnerable_host_percent()
+				end
+
+				def risk_percent_patched_text
+					"%.2f%" % calculate_vulnerable_host_percent_with_patches_applied()
+				end
 
 				#
 				# @todo comment
@@ -459,7 +467,7 @@ module Risu
 				end
 
 				# Scrubs a plugin_name to remove all pointless data
-				# 
+				#
 				# @return [String] Scrubbed plugin name
 				def scrub_plugin_name (name)
 					return name.gsub("(remote check)", "").gsub("(uncredentialed check)", "").gsub(/(\(\d.*\))/, "")
@@ -467,7 +475,7 @@ module Risu
 
 				# Returns an array of plugin_id and plugin_name for the top 10
 				# findings unsorted
-				# 
+				#
 				# @return [Array] Unsorted top 10 findings
 				def top_10_sorted_raw
 					raw = notable_order_by_cvss_raw
@@ -493,7 +501,7 @@ module Risu
 
 				# Returns an array of plugin_id and plugin_name for the top 10
 				# findings sorted by CVSS score
-				# 
+				#
 				# @return [Array] Sorted top 10 findings
 				def top_10_sorted
 					raw = notable_order_by_cvss_raw
@@ -572,7 +580,7 @@ module Risu
 						results.push [name, total, core, metasploit, canvas, exploithub, d2elliot]
 					end
 
-					return results			
+					return results
 				end
 			end
 		end
