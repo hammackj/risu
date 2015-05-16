@@ -6,16 +6,15 @@
 *** OS's with 2000 or XP can be misidentified by Nessus showing both host messing up some of the graphs. ***
 - http://stackoverflow.com/questions/19040932/rmagick-complaining-about-libmagickcore-5-dylib-not-found-in-osx
 
-
-#Road map
+# Road map
 
 ## 1.7.2 (??)
-- **TAG** New HostProperties attribute: UnsupportedProduct. 
+- **TAG** New XML element detected: potential_vulnerability.
+- **TAG** New HostProperties attribute: UnsupportedProduct.
 - **TAG** New XML element detected: fedora.
 - **BUG** dropping tables when there are no tables causes stacktrace, catch this.
 
 ## 1.7.x (??)
-
 
 - unsupported software
 	- 55786
@@ -29,7 +28,7 @@
 - Shares
 	- Item
 		- Anonymous NFS count
-		- Anonymous NFS text		
+		- Anonymous NFS text
 	- Text for describing these 3 findings with counts
 - create template -n --new-template cli option, guided INPUT name, author, description via stdin then generate valid template
 - Ability to load templates for the current working directory
