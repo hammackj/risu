@@ -1,5 +1,19 @@
 # News
 
+# 1.7.5 (May, 2015)
+- Added initial test for HostProperties
+- Added fixture for HostProperties testing
+- Added vCenter PostProcessing
+- Added WinSCP PostProcessing
+- Added non rounded risk % text methods
+- Added SigPlus Pro post process
+- Added epo HostProperty
+- Updated Flash Player plugin list
+- Updated Adobe Reader plugin list
+- Updated Root Cause post processing
+- Updated Windows Post Processing
+- Updated java plugin list
+
 # 1.7.4 (January 25, 2015)
 - Added New tags to the model Item
 	- cm:compliance-reference
