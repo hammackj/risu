@@ -377,9 +377,7 @@ module Risu
 				end
 
 				if @options[:test_connection] != nil
-					result = test_connection?
-
-					puts "#{result[1]}"
+					puts "#{test_connection?[1]}"
 					exit
 				end
 
