@@ -107,10 +107,11 @@ module Risu
 			# Displays a list of all the templates to STDOUT
 			def display_templates
 				puts "Available Templates"
-			  @registered_templates.each do |x|
-			      p = x.new
-			      puts "\t#{p.template_info[:name]} - #{p.template_info[:description]}\n"
-			    end
+
+				@registered_templates.each do |x|
+					p = x.new
+					puts "\t#{p.template_info[:name]} - #{p.template_info[:description]}\n"
+				end
 			end
 		end
 	end
