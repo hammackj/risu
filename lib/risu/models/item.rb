@@ -346,13 +346,11 @@ module Risu
 						exclude_list << h
 					end
 
-					criticals = Item.critical_risks.where.not(:plugin_id => exclude_list)
-
-					criticals.each do |item|
+					Item.critical_risks.where.not(:plugin_id => exclude_list).each do |item|
 						hosts << item.host_id
 					end
 
-					Item.high_risks.each do |item|
+					Item.high_risks.where.not(:plugin_id => exclude_list).each do |item|
 						hosts << item.host_id
 					end
 
@@ -463,7 +461,16 @@ module Risu
 					#MIGHT NOT BE CORRECT @TODO
 
 					#return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").count(:all, :group => :plugin_id)
-					return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+
+					critical = Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+
+					if critical.size < 10
+						high = Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+						critical = critical.merge high
+					end
+
+					return critical
 				end
 
 				# Scrubs a plugin_name to remove all pointless data
