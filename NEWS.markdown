@@ -1,10 +1,11 @@
 # News
 
-# 1.7.5 (May, 2015)
+# 1.7.5 (June, 2015)
 - Added initial test for HostProperties
 - Added fixture for HostProperties testing
-- Added vCenter PostProcessing
-- Added WinSCP PostProcessing
+- Added VMware vCenter Post Processing
+- Added VMware Player Post Processing
+- Added WinSCP Post Processing
 - Added non rounded risk % text methods
 - Added SigPlus Pro post process
 - Added epo HostProperty
@@ -12,7 +13,9 @@
 - Updated Adobe Reader plugin list
 - Updated Root Cause post processing
 - Updated Windows Post Processing
-- Updated java plugin list
+- Updated Apache Post Processing
+- Updated Java Post Processing
+- Updated Item.notable_order_by_cvss_raw to pull in high findings if there are less than 10 critical findings
 
 # 1.7.4 (January 25, 2015)
 - Added New tags to the model Item
