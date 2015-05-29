@@ -21,8 +21,8 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
 require 'test_helper'
 
@@ -194,7 +194,7 @@ class ItemTest < ActiveSupport::TestCase
 	end
 
 	test "notable_order_by_cvss_raw.count" do
-		assert Item.notable_order_by_cvss_raw.count == 8, "GOT #{Item.notable_order_by_cvss_raw.count}"
+		assert Item.notable_order_by_cvss_raw.count == 9, "GOT #{Item.notable_order_by_cvss_raw.count}"
 	end
 
 	# #@todo bad test, rewrite or remove,

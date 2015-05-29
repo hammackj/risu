@@ -26,27 +26,77 @@
 
 require 'test_helper'
 
-class TechnicalFindingsTemplateTest < ActiveSupport::TestCase
+
+module Risu
+	module Templates
+		class NilRendererTemplateTest < Risu::Base::TemplateBase
+
+			# Initializes the template loading meta data
+			#
+			def initialize ()
+				@template_info =
+				{
+					:name => "nil_renderer_template",
+					:author => "hammackj",
+					:version => "0.0.1",
+					:renderer => "PDF",
+					:description => "template"
+				}
+			end
+
+			# Called during the rendering process
+			#
+			def render(output)
+				output.font_size 10
+				output.text "Template"
+				output.start_new_page
+
+				output.method_doesnt_exist()
+			end
+		end
+	end
+end
+
+class NilRendererTest < ActiveSupport::TestCase
 
 	def setup
-		@file_name = "/tmp/tech_find.pdf"
+		@file_name = "/tmp/nilrenderer_tempalte.pdf"
+		@template = Risu::Templates::NilRendererTemplateTest.new
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
+		@template_manager.registered_templates << @template
 
 		@report = Report
-		@report.title = "Function Test"
+		@report.title = "NilRenderer Test"
 		@report.author = "hammackj"
 		@report.company = "None"
 		@report.classification = "None"
-
-		@templater = Risu::Base::Templater.new("technical_findings", Report, @file_name, @template_manager)
-		@templater.generate
 	end
 
 	def teardown
 		File.delete(@file_name) if File.exist?(@file_name)
 	end
 
-	test "should create #{@filename} on template creation" do
-		assert File.exist?(@file_name) == true
+	test 'should fail to create nilrenderer_tempalte.pdf on template creation' do
+		assert_raise NoMethodError do
+			@templater = Risu::Base::Templater.new("nil_renderer_template", Report, @file_name, @template_manager)
+			@templater.generate
+		end
+
+		assert File.exist?(@file_name) == false
+	end
+
+	test 'should raise an exception' do
+		assert_raise NoMethodError do
+			@templater = Risu::Base::Templater.new("nil_renderer_template", Report, @file_name, @template_manager)
+			@templater.generate
+		end
+	end
+
+	test 'should raise NoMethodError' do
+		assert_raise NoMethodError do
+			nilrenderer = Risu::Renderers::NilRenderer.new
+			template = Risu::Templates::NilRendererTemplateTest.new
+			data = template.render(nilrenderer)
+		end
 	end
 end

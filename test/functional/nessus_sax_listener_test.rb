@@ -21,8 +21,8 @@
 # LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 # OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-#OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-#OF THE POSSIBILITY OF SUCH DAMAGE.
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+# OF THE POSSIBILITY OF SUCH DAMAGE.
 
  require 'test_helper'
 
@@ -75,6 +75,10 @@
 							xml.tag(:name => "pcidss:insecure_http_methods") do
 								xml.text "GET"
 							end
+
+                            xml.tag(:name => "UNDEFINED_HOST_PROPERTY") do
+								xml.text "UNDEFINED_HOST_PROPERTY"
+							end
 						end
 
 						xml.ReportItem(:port => "88", :svc_name => "kerberos?", :protocol => "tcp", :severity => "0", :pluginName => "Test Plugin", :pluginFamily => "Test Family", :pluginID =>"999999") do
@@ -92,6 +96,8 @@
                             xml.send(:"cm:compliance-reference", "cm:compliance-reference")
                             xml.send(:"cm:compliance-see-also", "cm:compliance-see-also")
                             xml.send(:"cm:compliance-solution", "cm:compliance-solution")
+
+                            xml.send(:"UNDEFINED_ELEMENT", "UNDEFINED_ELEMENT")
 						end
 					end
 				end
