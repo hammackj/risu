@@ -15,7 +15,7 @@
 - **BUG** dropping tables when there are no tables causes stacktrace, catch this.
 
 ## 1.7.x (??)
-
+- Microsoft Windows 2003 Approaching End Of Life - 80120
 - unsupported software
 	- 55786
 - detected services
