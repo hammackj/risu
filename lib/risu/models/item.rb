@@ -342,8 +342,10 @@ module Risu
 					exclude_list = []
 					hosts = []
 
-					Item.notable_order_by_cvss_raw.each do |h, k|
-						exclude_list << h
+					risks = Item.top_10_sorted_raw[0..9]
+
+					risks.each do |risk|
+						exclude_list << risk[0]
 					end
 
 					Item.critical_risks.where.not(:plugin_id => exclude_list).each do |item|
