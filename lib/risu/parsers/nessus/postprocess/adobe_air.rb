@@ -32,7 +32,7 @@ module Risu
 
 					#
 					def initialize
-						@info = 
+						@info =
 						{
 							:description => "Adobe Air Patch Rollup",
 							:plugin_id => -99994,
@@ -69,6 +69,18 @@ module Risu
 								66444,
 								66871,
 								63241,
+								77171,
+								77576,
+								78440,
+								79139,
+								80483,
+								34815,
+								40447,
+								43069,
+								46858,
+								48299,
+								50604,
+								44595,
 								
 							]
 
