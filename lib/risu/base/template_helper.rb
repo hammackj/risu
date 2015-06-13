@@ -69,7 +69,7 @@ module Risu
 				if text == nil
 					text = ""
 				end
-				
+
 				@output.text text, options
 			end
 
@@ -141,7 +141,7 @@ module Risu
 					return Item.where(:plugin_id => Plugin.where(:plugin_name => plugin_name).first.id).count
 				rescue => e
 					return 0
-				end				
+				end
 			end
 
 			def item_count_by_plugin_id (plugin_id)
@@ -149,16 +149,16 @@ module Risu
 					return Item.where(:plugin_id => plugin_id).count
 				rescue => e
 					return 0
-				end				
-			end	
+				end
+			end
 
 			# @todo comment
 			def default_credential_plugins
 				[
-					10862, 25927, 32315, 65950, 39364, 33852, 11454, 51369, 
-					26918, 76073, 24745, 11245, 23938, 46786, 46789, 
+					10862, 25927, 32315, 65950, 39364, 33852, 11454, 51369,
+					26918, 76073, 24745, 11245, 23938, 46786, 46789, 10483
 				].uniq
-			end		
+			end
 
 			# @todo comment
 			def has_default_credentials?
