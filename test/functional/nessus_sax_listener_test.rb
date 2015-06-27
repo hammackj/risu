@@ -92,6 +92,8 @@
 								xml.text "c89122a07b0ea7087a0c712d711a07b7"
 							end
 
+                            xml.agent "all"
+
                             xml.send(:"cm:compliance-info", "cm:compliance-info")
                             xml.send(:"cm:compliance-reference", "cm:compliance-reference")
                             xml.send(:"cm:compliance-see-also", "cm:compliance-see-also")
@@ -152,6 +154,10 @@
 
  	test "return CA-1997-22 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => cert-cc).first.value" do
  		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "cert-cc").first.value == "CA-1997-22", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "cert-cc").first.value}"
+ 	end
+
+    test "return 'all' for Host.where(:name => 69.69.69.69).first.items.first.plugin.agent" do
+ 		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.agent == "all", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.agent}"
  	end
 
  	test "return USN:1752-1 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => usn).first.value" do
