@@ -77,6 +77,7 @@ module Risu
 					cm:compliance-audit-file cm:compliance-check-name cm:compliance-result cm:compliance-output policyOwner
 					visibility script_version attachment policy_comments d2_elliot_name exploit_framework_d2_elliot
 					exploited_by_malware compliance cm:compliance-reference cm:compliance-see-also cm:compliance-solution
+					agent
 				])
 
 				# TODO: documentation. These are never used in the class
@@ -407,7 +408,8 @@ module Risu
 						:always_run => @vals["always_run"],
 						:script_version => @vals["script_version"],
 						:exploited_by_malware => @vals["exploited_by_malware"],
-						:compliance => @vals["compliance"]
+						:compliance => @vals["compliance"],
+						:agent => @vals["agent"]
 					)
 				end
 
