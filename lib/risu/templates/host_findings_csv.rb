@@ -28,7 +28,7 @@ module Risu
 	module Templates
 		class HostFindingsCSV < Risu::Base::TemplateBase
 
-			# 
+			#
 			#
 			def initialize ()
 				@template_info =
@@ -52,9 +52,9 @@ module Risu
 					items.each do |item|
 						host = Host.where(:id => item.host_id).first
 
-						@output.text "#{host.ip}, #{item.plugin_name}, #{plugin.risk_factor}"
+						@output.text "#{host.ip}, #{host.fqdn}, #{host.netbios}, #{item.plugin_name}, #{plugin.risk_factor}"
 					end
-				end				
+				end
 			end
 
 			#
