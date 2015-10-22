@@ -152,6 +152,7 @@ module Risu
 					t.string :compliance
 					t.string :root_cause
 					t.string :agent
+					t.boolean :potential_vulnerability
 				end
 
 				create_table :individual_plugin_selections do |t|
