@@ -32,7 +32,7 @@ module Risu
 
 					#
 					def initialize
-						@info = 
+						@info =
 						{
 							:description => "OpenSSH Patch Rollup",
 							:plugin_id => -99995,
@@ -54,7 +54,9 @@ module Risu
 								44080,
 								44077,
 								44078,
-								
+								85382,
+
+
 							]
 						}
 					end

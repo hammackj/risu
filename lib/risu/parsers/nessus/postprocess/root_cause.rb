@@ -278,6 +278,16 @@ module Risu
 							73595 => "Vendor Patch",
 							47152 => "Vendor Patch",
 							-99976 => "Vendor Patch",
+							-99971 => "Vendor Patch",
+							80518 => "Vendor Patch",
+							85181 => "Vendor Patch",
+							80442 => "Vendor Patch",
+							73018 => "Vendor Patch",
+							-99981 => "Vendor Patch",
+							-99967 => "Vendor Patch",
+							70124 => "Vendor Patch",
+							
+
 
 							33850 => "Vendor Support",
 							34460 => "Vendor Support",
@@ -306,6 +316,10 @@ module Risu
 							57859 => "Vendor Support",
 							56998 => "Vendor Support",
 							73598 => "Vendor Support",
+							84729 => "Vendor Support",
+							58991 => "Vendor Support",
+
+
 
 							49071 => "Configuration",
 							19948 => "Configuration",
@@ -381,6 +395,14 @@ module Risu
 							78479 => "Configuration",
 							81606 => "Configuration",
 							70395 => "Configuration",
+							51369 => "Configuration",
+							51418 => "Configuration",
+							10166 => "Configuration",
+							11454 => "Configuration",
+							10305 => "Configuration",
+							39364 => "Configuration",
+
+
 						}
 					end
 
