@@ -13,6 +13,7 @@
 - **TAG** New HostProperties attribute: UnsupportedProduct.
 - **TAG** New XML element detected: fedora.
 - **BUG** dropping tables when there are no tables causes stacktrace, catch this.
+- **TAG** New XML element detected: agent. 
 
 ## 1.7.x (??)
 - Microsoft Windows 2003 Approaching End Of Life - 80120
