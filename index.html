@@ -1,77 +1,82 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Risu by hammackj</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
+    <title>Risu by arxopia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Risu</h1>
-        <p>Risu is Nessus parser, that converts the generated reports into a ActiveRecord database, this allows for easy report generation and vulnerability verification.</p>
+    <section class="page-header">
+      <h1 class="project-name">Risu</h1>
+      <h2 class="project-tagline">Risu is Nessus parser, that converts the generated reports into a ActiveRecord database, this allows for easy report generation and vulnerability verification.</h2>
+      <a href="https://github.com/arxopia/risu" class="btn">View on GitHub</a>
+      <a href="https://github.com/arxopia/risu/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/arxopia/risu/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <p class="view"><a href="https://github.com/hammackj/risu">View the Project on GitHub <small>hammackj/risu</small></a></p>
+    <section class="main-content">
+      <h1>
+<a id="risu" class="anchor" href="#risu" aria-hidden="true"><span class="octicon octicon-link"></span></a>risu</h1>
 
+<p><a href="http://badge.fury.io/rb/risu"><img src="https://badge.fury.io/rb/risu.png" alt="Gem Version"></a></p>
 
-        <ul>
-          <li><a href="https://github.com/hammackj/risu/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/hammackj/risu/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/hammackj/risu">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>risu</h1>
+<p><a href="https://travis-ci.org/arxopia/risu"><img src="https://travis-ci.org/arxopia/risu.png?branch=1.7.2" alt="Build Status"></a></p>
 
-<p>Risu is <a href="http://www.nessus.org">Nessus</a> parser, that converts the generated reports into a  <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord</a> database, this allows for easy report generation and vulnerability verification. </p>
+<p>Risu is <a href="http://www.nessus.org">Nessus</a> parser, that converts the generated reports into a <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord</a> database, this allows for easy report generation and vulnerability verification.</p>
 
-<p>Version 1.5.0 is the current release.</p>
+<p>Version <strong>1.7.5</strong> is the current release.</p>
 
-<h2>Requirements</h2>
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
-<h3>Ruby</h3>
+<h3>
+<a id="ruby" class="anchor" href="#ruby" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ruby</h3>
 
-<p>Risu has been tested with ruby-1.8.7-p334, ruby-1.9.1-p431, ruby-1.9.2-p180. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it <a href="https://rvm.beginrescueend.com/">here</a>.</p>
+<p>Risu has been tested with ruby-1.9.3-p392, ruby-2.0.0 and ruby-2.1.0. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it <a href="https://rvm.beginrescueend.com/">here</a>.</p>
 
-<h3>RubyGems</h3>
+<h3>
+<a id="rubygems" class="anchor" href="#rubygems" aria-hidden="true"><span class="octicon octicon-link"></span></a>RubyGems</h3>
 
 <p>Risu relies heavily on <a href="http://rubygems.org/">RubyGems</a> to install other dependencies I highly recommend using it. RubyGems is included by default in the 1.9.x versions of <a href="http://ruby-lang.org/">Ruby</a>.</p>
 
 <ul>
 <li>libxml</li>
 <li>rails</li>
-<li>yaml </li>
+<li>yaml</li>
 <li>logger</li>
 <li>rmagick</li>
 <li>gruff</li>
 <li>prawn</li>
-<li>mysql</li>
-</ul><h2>Developmental Requirements</h2>
+<li>mysql2</li>
+<li>nokogiri</li>
+</ul>
 
-<p>These are all available through <a href="http://rubygems.org/">RubyGems</a>. The should be installed automatically when you install risu, If not this command will install them all:</p>
-
-<pre><code>% gem install rmagick gruff prawn sham faker rspec rcov machinist yard mysql libxml-ruby rails sqlite3 logger yaml
-</code></pre>
-
-<p><strong>You my need sudo/root access depending on your system setup</strong></p>
-
-<p>Any database that ActiveRecord supports should work. Risu has been tested with <a href="http://www.mysql.com/">MySQL</a> and <a href="http://sqlite.org/">SQLite3</a>. </p>
-
-<h2>Installation</h2>
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>Installation is really easy just gem install!</p>
 
 <pre><code>% gem install risu
 </code></pre>
 
-<h2>Database Setup</h2>
+<h2>
+<a id="developmental-requirements" class="anchor" href="#developmental-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Developmental Requirements</h2>
+
+<p>These are all available through <a href="http://rubygems.org/">RubyGems</a>. The should be installed automatically when you install risu, If not this command will install them all:</p>
+
+<pre><code>% gem install rmagick gruff prawn yard mysql2 libxml-ruby rails sqlite3 logger yaml nokogiri
+</code></pre>
+
+<p><strong>You my need sudo/root access depending on your system setup</strong></p>
+
+<p>Any database that ActiveRecord supports should work. Risu has been tested with <a href="http://www.mysql.com/">MySQL</a> and <a href="http://sqlite.org/">SQLite3</a>.</p>
+
+<h2>
+<a id="database-setup" class="anchor" href="#database-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Database Setup</h2>
 
 <pre><code>% risu --create-config
 % $EDITOR risu.cfg
@@ -82,94 +87,111 @@
 <li>Generate the risu.cfg file.</li>
 <li>Edit the risu.cfg file, filling in the variables as needed.</li>
 <li>Migrate the database schema.</li>
-</ol><h2>Parsing Nessus Output</h2>
+</ol>
+
+<h2>
+<a id="parsing-nessus-output" class="anchor" href="#parsing-nessus-output" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parsing Nessus Output</h2>
 
 <pre><code>% risu report1.nessus [report2.nessus ...]
 </code></pre>
 
 <ol>
 <li>Parse the files by passing their names on the command line.</li>
-</ol><h1>Viewing Data</h1>
+</ol>
 
-<p>The data can be viewed with a query browser available for your database. A Rails front end will be available in the <strong>future</strong>.</p>
+<h1>
+<a id="viewing-data" class="anchor" href="#viewing-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Viewing Data</h1>
 
-<h2>Generating Reports</h2>
+<p>The data can be viewed with a query browser available for your database.</p>
+
+<h2>
+<a id="generating-reports" class="anchor" href="#generating-reports" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generating Reports</h2>
 
 <p>To generate a report please execute the following after the the data is parsed into the database.</p>
 
 <pre><code>% risu -t &lt;TEMPLATE_NAME&gt; -o "REPORT_NAME.pdf"
 </code></pre>
 
-<h2>Risu Console</h2>
+<h2>
+<a id="risu-console" class="anchor" href="#risu-console" aria-hidden="true"><span class="octicon octicon-link"></span></a>Risu Console</h2>
 
 <p>Using the risu Console is just like using Rails. You can access all of the ActiveRecord models directly and pull specific data from each model. Like SQL only easier!</p>
 
-<pre><code>[hammackj@taco:~/Projects/public/risu]$ ../bin/risu --console
+<pre><code>$ risu --console
 
-      _           
- _ __(_)___ _   _ 
+      _
+ _ __(_)___ _   _
 | '__| / __| | | |
 | |  | \__ \ |_| |
 |_|  |_|___/\__,_|
 
 
-risu Console v1.5.0
+risu Console v1.7.2
 &gt;&gt; Host.first
-=&gt; #&lt;Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil&gt;
+=&gt; #&lt;Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.arxopia.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil&gt;
 </code></pre>
 
-<h2>Templates</h2>
+<h2>
+<a id="templates" class="anchor" href="#templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Templates</h2>
 
 <p>Several templates are included:</p>
 
-<pre><code>[hammackj@taco:~/Projects/public/risu]$ ./bin/risu -l
+<pre><code>$ risu -l
 Available Templates
-    assets - Generates a Assets Summary Report
-    cover_sheet - Generates a coversheet with a logo (Example Template)
-    exec_summary - Generates a simple executive summary.
-    exec_summary_detailed - Generates a detailed executive summary report
-    finding_statistics - Generates report finding statistics
-    findings_host - Generates a findings report by host
-    findings_summary - Generates a findings summary report
-    findings_summary_with_pluginid - Geneates a Findings Summary with Nessus Plugin ID
-    graphs - Generates a report with all the graphs in it
-    host_summary - Generates a Host Summary Report
-    ms_patch_summary - Generates a Microsoft Patch Summary Report
-    ms_update_summary - Generates a Microsoft Update Summary Report
+    stig_findings_summary - DISA Stig findings summary report
     pci_compliance - Generates a PCI Compliance Overview Report
     technical_findings - Generates a Technical Findings Report
+    ms_patch_summary - Generates a Microsoft Patch Summary Report
+    findings_summary_with_pluginid - Generates a Findings Summary with Nessus Plugin ID
+    findings_host - Generates a findings report by host
+    exec_summary - Generates a simple executive summary.
+    finding_statistics - Generates report finding statistics
+    graphs - Generates a report with all the graphs in it
+    findings_summary - Generates a findings summary report
+    assets - Generates a Assets Summary Report
+    cover_sheet - Generates a coversheet with a logo (Example Template)
+    notable_detailed - Notable Vulnerabilities Detailed
+    ms_update_summary - Generates a Microsoft Update Summary Report
     template - template
-[hammackj@taco:~/Projects/public/risu]$ 
+    notable - Notable Vulnerabilities
+    ms_wsus_findings - Generates a report based on the findings of the Patch Management: WSUS Report plugin
+    exec_summary_detailed - Generates a detailed executive summary report
+    host_summary - Generates a Host Summary Report
+$
 </code></pre>
 
 <p>The templates are written in ruby using <a href="http://prawn.majesticseacreature.com/">prawn</a>, they are fairly easy to make. I will add any templates as requested. See the 'template' example for creating your own template.</p>
 
-<h1>Contributing</h1>
+<h1>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h1>
 
-<p>If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on <a href="http://github.com/hammackj/risu">github</a> and make the changes in your fork and the submit a pull request to the project.</p>
+<p>If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on <a href="http://github.com/arxopia/risu">github</a> and make the changes in your fork and the submit a pull request to the project.</p>
 
-<h1>Issues</h1>
+<h1>
+<a id="issues" class="anchor" href="#issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Issues</h1>
 
-<p>If you have any problems, bugs or feature requests please use the <a href="http://github.com/hammackj/risu/issues">github issue tracker</a>.</p>
+<p>If you have any problems, bugs or feature requests please use the <a href="http://github.com/arxopia/risu/issues">github issue tracker</a>.</p>
 
-<h1>Donations</h1>
+<h1>
+<a id="donations--tips" class="anchor" href="#donations--tips" aria-hidden="true"><span class="octicon octicon-link"></span></a>Donations / tips</h1>
 
-<p>I have received several requests for a method to donate to the project. You can use the following Paypal donation link; if you are interested in donating to the Risu Project. Your donations are welcome and help the development of Risu.</p>
+<p>Feel free to donate or tip to BTC: 1Cfd5G6rJmSBrNcTHxEgE4uYgH7XZJPY7Z</p>
 
-<p><a href="http://www.pledgie.com/campaigns/16810"><img alt="Click here to lend your support to: Risu and make a donation at www.pledgie.com !" src="http://www.pledgie.com/campaigns/16810.png?skin_name=chrome" border="0"></a></p>
+<h1>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h1>
 
-<h1>Contact</h1>
+<p>You can reach me at risu[at]arxopia[dot]com.</p>
 
-<p>You can reach me at jacob[dot]hammack[at]hammackj[dot]com.</p>
+<p>You can also contact me on IRC as hammackj on irc.freenode.net, #risu</p>
 
-<p>You can also contact me on IRC as hammackj on irc.freenode.net, #risu </p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/hammackj">hammackj</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/arxopia/risu">Risu</a> is maintained by <a href="https://github.com/arxopia">arxopia</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
+
+    </section>
+
+  
   </body>
 </html>
