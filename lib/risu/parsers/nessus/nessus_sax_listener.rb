@@ -42,7 +42,7 @@ module Risu
 					osvdb cert edb-id rhsa secunia suse dsa
 					owasp cwe iavb iavt cisco-sa ics-alert
 					cisco-bug-id cisco-sr cert-vu vmsa apple-sa
-					icsa cert-cc msvr usn hp glsa freebsd
+					icsa cert-cc msvr usn hp glsa freebsd tra
 				])
 
 				# An array of valid host properties
@@ -77,7 +77,7 @@ module Risu
 					cm:compliance-audit-file cm:compliance-check-name cm:compliance-result cm:compliance-output policyOwner
 					visibility script_version attachment policy_comments d2_elliot_name exploit_framework_d2_elliot
 					exploited_by_malware compliance cm:compliance-reference cm:compliance-see-also cm:compliance-solution
-					agent potential_vulnerability
+					agent potential_vulnerability in_the_news exploited_by_nessus unsupported_by_vendor default_account
 				])
 
 				# TODO: documentation. These are never used in the class

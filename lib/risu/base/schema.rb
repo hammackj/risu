@@ -153,6 +153,10 @@ module Risu
 					t.string :root_cause
 					t.string :agent
 					t.boolean :potential_vulnerability
+					t.boolean :in_the_news
+					t.boolean :exploited_by_nessus
+					t.boolean :unsupported_by_vendor
+					t.boolean :default_account
 				end
 
 				create_table :individual_plugin_selections do |t|
