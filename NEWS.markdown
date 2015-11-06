@@ -1,6 +1,6 @@
 # News
 
-# 1.7.5 (June, 2015)
+# 1.7.5 (November, 2015)
 - Added initial test for HostProperties
 - Added fixture for HostProperties testing
 - Added VMware vCenter Post Processing
@@ -16,6 +16,24 @@
 - Updated Apache Post Processing
 - Updated Java Post Processing
 - Updated Item.notable_order_by_cvss_raw to pull in high findings if there are less than 10 critical findings
+- Added new tags in_the_news, exploited_by_nessus, unsupported_by_vendor, default_account
+- Downgraded FTP Privileged Port Bounce Scan to 0
+- Added vSphere client post processing
+- Added PCanywhere Post Processing
+- Added Foxit Reader Post Processing
+- Added Firefox Postprocessing
+- Added VLC Post Processing
+- Added a postprocess for downgrading plugins
+- Added blackberry enterprise server Post Processing
+- More support for windows 2003 unsupported
+- Added DNS to the cvs output
+- Added potentinal_vulnerability field
+- Added support for unsupported windows 2003
+- Test for potential_vunerability field
+- Fixture for new field test
+- Added docker container [jkordish]
+- Added support for the agent field
+- Added a default creds plugin
 
 # 1.7.4 (January 25, 2015)
 - Added New tags to the model Item
