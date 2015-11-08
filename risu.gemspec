@@ -55,7 +55,7 @@ Gem::Specification.new do |s|
 	s.add_development_dependency 'minitest', '~> 4.3', '>= 4.3.2'
 
 	s.add_dependency('rails', ['4.0.0'])
-	s.add_dependency('libxml-ruby', ['2.4.0'])
+	s.add_dependency('libxml-ruby', ['2.8.0'])
 	s.add_dependency('prawn', ['0.12.0'])
 	s.add_dependency('gruff', ['0.3.7'])
 	s.add_dependency('mysql2', ['0.4.1'])
