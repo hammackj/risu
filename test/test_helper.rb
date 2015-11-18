@@ -143,6 +143,8 @@ end
 
 setup_test_database()
 
+#debug_console
+
 class ActiveSupport::TestCase
 
 end
