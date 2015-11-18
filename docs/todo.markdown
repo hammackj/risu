@@ -4,6 +4,7 @@
 
 # Bugs
 *** OS's with 2000 or XP can be misidentified by Nessus showing both host messing up some of the graphs. ***
+
 - http://stackoverflow.com/questions/19040932/rmagick-complaining-about-libmagickcore-5-dylib-not-found-in-osx
 
 # Road map
@@ -13,7 +14,7 @@
 - **TAG** New HostProperties attribute: UnsupportedProduct.
 - **TAG** New XML element detected: fedora.
 - **BUG** dropping tables when there are no tables causes stacktrace, catch this.
-- **TAG** New XML element detected: agent. 
+- **TAG** New XML element detected: agent.
 
 ## 1.7.x (??)
 - Microsoft Windows 2003 Approaching End Of Life - 80120
