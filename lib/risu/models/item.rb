@@ -96,7 +96,8 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_unique_sorted
-					select("items.*").select("count(*) as count_all").where(:severity => 4).group(:plugin_id).order("count_all DESC")
+					#Item.select("items.*").select("count(*) as count_all").where(:severity => 4).group(:plugin_id).order("count_all DESC")
+					Item.where(:severity =>4).group(:plugin_id).order('count(*) desc')
 				end
 
 				# Queries for all the unique high findings and sorts them by count
