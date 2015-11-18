@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Gems to update
-gem "rails", '4.0.0'
+gem "rails", '4.0.3'
 gem "minitest"
 gem "test-unit"
 
