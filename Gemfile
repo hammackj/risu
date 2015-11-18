@@ -9,4 +9,5 @@ gem "rmagick", '2.15.4'
 gem "sqlite3", '1.3.11'
 gem "nokogiri", '1.6.6.3'
 gem "minitest", '4.3.2'
+gem "test-unit"
 gem "simplecov"
