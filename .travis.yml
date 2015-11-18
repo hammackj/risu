@@ -17,3 +17,4 @@ notifications:
 
 before_install:
   - gem --version
+  - gem list
