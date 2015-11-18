@@ -9,6 +9,8 @@
 
 # Road map
 
+patch summary plugin - 66334
+
 ## 1.7.2 (??)
 - **TAG** New XML element detected: potential_vulnerability.
 - **TAG** New HostProperties attribute: UnsupportedProduct.
