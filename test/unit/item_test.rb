@@ -68,17 +68,18 @@ class ItemTest < ActiveSupport::TestCase
 	end
 
 	test "returns 1 for Item.high_risks_unique.count" do
-		assert Item.high_risks_unique.to_a.count == 1
+		assert Item.high_risks_unique.to_a.count == 1, "GOT #{Item.high_risks_unique.to_a.count}"
 	end
 
 	test "returns 1 for Item.high_risks_unique_sorted.count" do
-		assert Item.high_risks_unique_sorted.to_a.count == 1
+		assert Item.high_risks_unique_sorted.to_a.count == 1, "GOT #{Item.high_risks_unique_sorted.to_a.count}"
 	end
 
 	test "returns 8 for Item.critical_risks_unique_sorted.count" do
 		assert Item.critical_risks_unique_sorted.to_a.count == 8, "GOT #{Item.critical_risks_unique_sorted.to_a.count}"
 	end
 
+	#@todo finish these tests
 	test "returns 1 for Item.medium_risks_unique.count" do
 		assert Item.medium_risks_unique.to_a.count == 1
 	end
