@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 # Gems to update
 gem "rails", '4.2.5'
-gem "minitest", '4.3.2'
+gem "minitest"
 gem "test-unit"
 
 # Updated Gems
