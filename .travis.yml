@@ -5,6 +5,8 @@ sudo: false
 rvm:
   - 2.0.0
   - 2.1.0
+  - 2.1.7
+  - 2.2.2
   - 2.2.3
 
 gemfile:
@@ -17,4 +19,3 @@ notifications:
 
 before_install:
   - gem --version
-  - gem list
