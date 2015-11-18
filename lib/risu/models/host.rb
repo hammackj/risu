@@ -398,8 +398,8 @@ module Risu
 
 					Item.risks_by_host(limit).to_a.each do |item|
 						ip = Host.find_by_id(item.host_id).name
-#						count = Item.where(:host_id => item.host_id).where("severity IN (?)", [2,3]).count
 						count = Item.where(:host_id => item.host_id).where(:severity => 4).count
+
 						if count > 0
 							g.data(ip, count)
 						end
@@ -412,16 +412,16 @@ module Risu
 				# @todo comments
 				#
 				def windows_os_graph_has_data?
-					nt = Host.os_windows_nt.to_a.count
-					w2k = Host.os_windows_2k.to_a.count
-					xp = Host.os_windows_xp.to_a.count
-					w2k3 = Host.os_windows_2k3.to_a.count
-					vista = Host.os_windows_vista.to_a.count
-					w2k8 = Host.os_windows_2k8.to_a.count
-					w2k12 = Host.os_windows_2k12.to_a.count
-					w7 = Host.os_windows_7.to_a.count
-					w8 = Host.os_windows_8.to_a.count
-					other = (Host.os_windows.os_windows_other).to_a.count
+					nt = Host.os_windows_nt.to_a.size
+					w2k = Host.os_windows_2k.to_a.size
+					xp = Host.os_windows_xp.to_a.size
+					w2k3 = Host.os_windows_2k3.to_a.size
+					vista = Host.os_windows_vista.to_a.size
+					w2k8 = Host.os_windows_2k8.to_a.size
+					w2k12 = Host.os_windows_2k12.to_a.size
+					w7 = Host.os_windows_7.to_a.size
+					w8 = Host.os_windows_8.to_a.size
+					other = (Host.os_windows.os_windows_other).to_a.size
 
 					if nt == 0 && w2k == 0 && xp == 0 && w2k3 == 0 && vista == 0 && w2k8 == 0 && w2k12 == 0 && w7 == 0 && w8 == 0 && other == 0
 						return false
@@ -434,17 +434,25 @@ module Risu
 				# @todo comments
 				#
 				def other_os_graph_has_data?
-					linux = Host.os_linux.to_a.count
-					osx = Host.os_osx.to_a.count
-					freebsd = Host.os_freebsd.to_a.count
-					netbsd = Host.os_netbsd.to_a.count
-					cisco = Host.os_cisco.to_a.count
-					vxworks = Host.os_vxworks.to_a.count
-					esx = Host.os_vmware_esx.to_a.count
-					aix = Host.os_aix.to_a.count
-					other = Host.os_other.to_a.count
+					linux = Host.os_linux.to_a.size
+					osx = Host.os_osx.to_a.size
+					freebsd = Host.os_freebsd.to_a.size
+					netbsd = Host.os_netbsd.to_a.size
+					cisco = Host.os_cisco.to_a.size
+					vxworks = Host.os_vxworks.to_a.size
+					esx = Host.os_vmware_esx.to_a.size
+					aix = Host.os_aix.to_a.size
+					other = Host.os_other.to_a.size
 
-					if linux == 0 && osx == 0 && freebsd == 0 && cisco == 0 && vxworks == 0 && esx == 0 && aix == 0 && other == 0
+					if linux == 0 &&
+						osx == 0 &&
+						freebsd == 0 &&
+						netbsd == 0 &&
+						cisco == 0 &&
+						vxworks == 0 &&
+						esx == 0 &&
+						aix == 0 &&
+						other == 0
 						return false
 					else
 						return true
@@ -739,7 +747,7 @@ module Risu
 				#
 				def unique_hosts_with_critical
 					hosts = Item.critical_risks_by_host(Host.all.count).count
-					hosts = hosts.sort_by {|k, v| v}
+					hosts = hosts.sort_by {| _k, v | v}
 					hosts.reverse!
 				end
 
@@ -748,7 +756,7 @@ module Risu
 				#
 				def unique_hosts_with_high
 					hosts = Item.high_risks_by_host(Host.all.count).count
-					hosts = hosts.sort_by {|k, v| v}
+					hosts = hosts.sort_by {| _k, v | v}
 					hosts.reverse!
 				end
 
