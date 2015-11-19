@@ -1,5 +1,12 @@
 #CentOS Installation
 
+## CentOS 7
+
+- yum -y update && yum clean all
+- yum install gcc glibc patch curl zlib readline libxml2 libxslt git autoconf automake diffutils make libtool bison subversion imagemagick openssl sqlite libyaml ncurses libmysqlclient gsfonts ruby ruby-devel zlib-devel libxml2-devel mariadb-devel ImageMagick-devel sqlite-devel
+- gem install risu
+
+
 ## Step 1: System Pre-requirements
 A few system packages need to be installed before we can install the risu gem. These packages include packages that [RVM](https://rvm.io/) recommends to have installed also. Select Yes to any extra packages it adds. As root execute the following:
 
@@ -29,4 +36,3 @@ You should see output like the following:
 	risu: 1.6.0
 	Ruby Version: 1.9.3
 	Rubygems Version: 1.8.24
-
