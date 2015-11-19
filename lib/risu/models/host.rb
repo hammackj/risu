@@ -755,7 +755,7 @@ module Risu
 				# @todo comments
 				#
 				def unique_hosts_with_high
-					hosts = Item.high_risks_by_host(Host.all.count).count
+					hosts = Item.high_risks_by_host(Host.all.size).size
 					hosts = hosts.sort_by {| _k, v | v}
 					hosts.reverse!
 				end
