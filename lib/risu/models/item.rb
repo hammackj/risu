@@ -193,7 +193,9 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_by_host(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
+					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
+
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 3).group(:host_id).order('count(*) desc').limit(limit)
 				end
 
 				# Queries for all the Medium risks by host
