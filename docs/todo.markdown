@@ -9,21 +9,17 @@
 
 # Road map
 
-patch summary plugin - 66334
-
-## 1.7.2 (??)
-- **TAG** New XML element detected: potential_vulnerability.
-- **TAG** New HostProperties attribute: UnsupportedProduct.
+## 1.7.6 (??)
 - **TAG** New XML element detected: fedora.
-- **BUG** dropping tables when there are no tables causes stacktrace, catch this.
-- **TAG** New XML element detected: agent.
-
-## 1.7.x (??)
 - Microsoft Windows 2003 Approaching End Of Life - 80120
+
+## 1.8.x (??)
+- **BUG** dropping tables when there are no tables causes stacktrace, catch this.
+- move project page on arxopia/project/risu to hammackj/risu
+- patch summary plugin - 66334
 - unsupported software
 	- 55786
 - detected services
-- move project page on arxopia/project/risu to hammackj/risu
 - Template arguments
 - Host
 	- Hosts with Critical / High order by count
@@ -268,6 +264,7 @@ patch summary plugin - 66334
 - Backtrack5 r2 setup Tutorial
 - Ubuntu LTS setup Tutorial
 - Presentation on Risu
+- Centos 7 setup
 
 #### Website
 - Increase the readability of the site some
