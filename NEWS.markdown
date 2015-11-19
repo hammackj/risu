@@ -1,6 +1,19 @@
 # News
 
-# 1.7.5 (November, 2015)
+# 1.7.6 (December 31, 2015)
+- Updated the dependent gems to newer versions
+	- rails 4.0.13
+	- libxml-ruby 2.8.0
+	- prawn 0.12.0
+	- gruff 0.6.0
+	- mysql2 0.4.1
+	- rmagick 2.15.4
+	- sqlite3 1.3.11
+	- nokogiri 1.6.6.3
+
+	My plan is to get them all updated for the latest version but some issues with Rails 4.2.5 and the lastest prawn are holding back those gems. I have also started work on testing with Ruby 2.2.3+, with the goal being moving to Rails 5 shortly after its release.
+
+# 1.7.5 (November 6, 2015)
 - Added initial test for HostProperties
 - Added fixture for HostProperties testing
 - Added VMware vCenter Post Processing
