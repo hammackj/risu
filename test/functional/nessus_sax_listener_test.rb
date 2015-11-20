@@ -112,8 +112,8 @@
     def setup
         xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
         @parser = LibXML::XML::SaxParser.string xml
-		@parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
-		@parser.parse
+        @parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
+        @parser.parse
     end
 
      test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_info == cm:compliance-info" do
