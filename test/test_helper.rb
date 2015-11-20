@@ -43,59 +43,98 @@ require 'risu'
 #rails 4.2+
 #ActiveSupport::TestCase.test_order = :sorted
 
-@config_sqlite =
-"report:
-  author: TEST
-  title: TEST
-  company: TEST
-  classification: TEST
+def config_sqlite
+  {
+    "report" =>
+      {
+        "author" => "TEST",
+        "title" => "TEST",
+        "company" => "TEST",
+        "classification" => "TEST",
+      },
+      "database" =>
+      {
+        "adapter" => "sqlite3",
+        "database" => "test_data/test.db"
+      }
+  }.to_yaml
+end
 
-database:
-  adapter: sqlite3
-  database: test_data/test.db"
+def config_sqlite_memory
+  {
+    "report" =>
+      {
+        "author" => "TEST",
+        "title" => "TEST",
+        "company" => "TEST",
+        "classification" => "TEST",
+      },
+      "database" =>
+      {
+        "adapter" => "sqlite3",
+        "database" => ":memory:"
+      }
+  }.to_yaml
+end
 
-@config_parser_sqlite =
-"report:
-  author: TEST
-  title: TEST
-  company: TEST
-  classification: TEST
+def config_parser_sqlite
+  {
+    "report" =>
+      {
+        "author" => "TEST",
+        "title" => "TEST",
+        "company" => "TEST",
+        "classification" => "TEST",
+      },
+      "database" =>
+      {
+        "adapter" => "sqlite3",
+        "database" => "test_data/parser_test.db"
+      }
+  }.to_yaml
+end
 
-database:
-  adapter: sqlite3
-  database: test_data/parser_test.db"
+def config_mysql
+  {
+    "report" =>
+      {
+        "author" => "TEST",
+        "title" => "TEST",
+        "company" => "TEST",
+        "classification" => "TEST",
+      },
+      "database" =>
+      {
+        "adapter" => "mysql2",
+        "database" => "risu_test",
+        "host" => "localhost",
+        "username" => "risu",
+        "password" => "risurisu"
+      }
+  }.to_yaml
+end
 
-#database: \":memory:\""
+def config_parser_mysql
+  {
+    "report" =>
+      {
+        "author" => "TEST",
+        "title" => "TEST",
+        "company" => "TEST",
+        "classification" => "TEST",
+      },
+      "database" =>
+      {
+        "adapter" => "mysql2",
+        "database" => "risu_parser_test",
+        "host" => "localhost",
+        "username" => "risu",
+        "password" => "risurisu"
+      }
+  }.to_yaml
+end
 
-@config_mysql =
-"report:
-  author: TEST
-  title: TEST
-  company: TEST
-  classification: TEST
-
-database:
-  adapter: mysql2
-  database: risu_test
-  host: localhost
-  username: risu
-  password: risurisu2012"
-
-@config_parser_mysql =
-"report:
-  author: TEST
-  title: TEST
-  company: TEST
-  classification: TEST
-
-database:
-  adapter: mysql2
-  database: risu_parser_test
-  host: localhost
-  username: risu
-  password: risurisu2012"
-
-  @app = nil
+@app = nil
 
 def setup_test_database
 
@@ -106,11 +145,11 @@ def setup_test_database
 		@app = Risu::CLI::Application.new
 
 		if ENV['RISU_TEST_ENV'] == 'sqlite'
-			puts "[*] Testing Sqlite"
-			@app.load_config(@config_sqlite, true)
+			#puts "[*] Testing Sqlite"
+			@app.load_config(config_sqlite_memory, true)
 		elsif ENV['RISU_TEST_ENV'] == 'mysql'
-			puts "[*] Testing MySql"
-			@app.load_config(@config_mysql, true)
+			#puts "[*] Testing MySql"
+			@app.load_config(config_mysql, true)
 		else
 			puts "[!] Unable to read RISU_TEST_ENV variable."
 			exit
@@ -122,8 +161,8 @@ def setup_test_database
 			@app.migrate(:down)
 		end
 
-		@app.migrate(:up)
-    @app.migrate(:down)
+		#@app.migrate(:up)
+    #@app.migrate(:down)
     @app.migrate(:up)
 
 		fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
@@ -144,7 +183,7 @@ def debug_console
   exit
 end
 
-setup_test_database()
+#setup_test_database()
 
 #debug_console
 

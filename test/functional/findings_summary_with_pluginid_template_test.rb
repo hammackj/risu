@@ -29,6 +29,8 @@ require 'test_helper'
 class FindingsSummaryPluginIDTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/findings_summary_pluginid.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 

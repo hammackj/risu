@@ -29,6 +29,8 @@ require 'test_helper'
 class MissingRootCauseTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/missing_root_cause.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 

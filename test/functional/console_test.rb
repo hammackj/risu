@@ -29,6 +29,8 @@ require 'test_helper'
 class ConsoleTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@app_test = Risu::CLI::Application.new
 	end
 

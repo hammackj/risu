@@ -27,6 +27,10 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
+	def setup
+		setup_test_database
+	end
+
 	test "returns 13 risks for Item.risks.count" do
 		assert Item.risks.count == 13, "GOT #{Item.risks.count}"
 	end
@@ -211,4 +215,29 @@ class ItemTest < ActiveSupport::TestCase
 	test "return 42411 for Item.first.plugin.id" do
 		assert Item.first.plugin.id == 42411, "GOT #{Item.first.plugin.id}"
 	end
+
+	test "return 4 for Item.risk_percent_rounded_text.length" do
+		assert Item.risk_percent_rounded_text.length == 4, "GOT #{Item.risk_percent_rounded_text.length}"
+	end
+
+	test "return XX Item.risk_percent_rounded_text" do
+		assert Item.risk_percent_rounded_text == "100%", "GOT #{Item.risk_percent_rounded_text}"
+	end
+
+	test "return 0% for Item.risk_percent_patched_rounded_text" do
+		assert Item.risk_percent_patched_rounded_text == "0%", "GOT #{Item.risk_percent_patched_rounded_text}"
+	end
+
+	test "return 100.00% for Item.risk_percent_text" do
+		assert Item.risk_percent_text == "100.00%", "GOT #{Item.risk_percent_text}"
+	end
+
+	test "return 0.00% for Item.risk_percent_patched_text" do
+		assert Item.risk_percent_patched_text == "0.00%", "GOT #{Item.risk_percent_patched_text}"
+	end
+
+	#@todo pass findings for each finding level
+	#test "return XX for Item.exploitablity_matrix" do
+	#	assert Item.exploitablity_matrix == "", "GOT #{Item.exploitablity_matrix}"
+	#end
 end

@@ -29,6 +29,8 @@ require 'test_helper'
 class ExecSummaryTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "#{Dir.tmpdir}/exec_summary.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 		@templater = Risu::Base::Templater.new("exec_summary", Report, @file_name, @template_manager)

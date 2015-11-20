@@ -29,6 +29,8 @@ require 'test_helper'
 class PciComplianceTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/pci.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 		@templater = Risu::Base::Templater.new("pci_compliance", Report, @file_name, @template_manager)

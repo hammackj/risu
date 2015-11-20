@@ -110,6 +110,7 @@
     end
 
     def setup
+        setup_test_database
         xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
         @parser = LibXML::XML::SaxParser.string xml
         @parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new

@@ -27,6 +27,10 @@
 require 'test_helper'
 
 class ReferenceTest < ActiveSupport::TestCase
+	def setup
+		setup_test_database
+	end
+	
 	test "should return a cve for Reference.cve" do
 		assert Reference.cve != nil, "GOT #{Reference.cve}"
 	end
@@ -137,6 +141,6 @@ class ReferenceTest < ActiveSupport::TestCase
 
 	test "should return a usn for Reference.usn" do
 		assert Reference.usn != nil, "GOT #{Reference.usn}"
-	end	
+	end
 
 end

@@ -29,6 +29,8 @@ require 'test_helper'
 class NotableTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/notable.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 		@templater = Risu::Base::Templater.new("notable", Report, @file_name, @template_manager)

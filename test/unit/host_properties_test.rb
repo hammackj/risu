@@ -27,7 +27,9 @@
 require 'test_helper'
 
 class HostPropertyTest < ActiveSupport::TestCase
-
+	def setup
+		setup_test_database
+	end
 	#
 	#
 	test "should return 'foo' for HostProperty.where(:host_id => Host.first.id).where(key => \"mcafee-epo-guid\").value" do

@@ -29,6 +29,8 @@ require 'test_helper'
 class FindingStatisticsTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/finding_statistics.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 		@templater = Risu::Base::Templater.new("finding_statistics", Report, @file_name, @template_manager)

@@ -29,6 +29,8 @@ require 'test_helper'
 class MSPatchSummaryTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/ms_patch_summary.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 		@templater = Risu::Base::Templater.new("ms_patch_summary", Report, @file_name, @template_manager)

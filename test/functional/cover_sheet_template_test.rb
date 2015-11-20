@@ -29,6 +29,8 @@ require 'test_helper'
 class CoverSheetTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/coversheet.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 		@templater = Risu::Base::Templater.new("cover_sheet", Report, @file_name, @template_manager)

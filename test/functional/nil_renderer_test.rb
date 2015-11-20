@@ -60,6 +60,8 @@ end
 class NilRendererTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/nilrenderer_tempalte.pdf"
 		@template = Risu::Templates::NilRendererTemplateTest.new
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"

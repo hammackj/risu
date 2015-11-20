@@ -29,6 +29,8 @@ require 'test_helper'
 class AssetsTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/assets.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 

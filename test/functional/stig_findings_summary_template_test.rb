@@ -29,6 +29,8 @@ require 'test_helper'
 class StigFindingsSummaryTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/stig_findings_summary.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 

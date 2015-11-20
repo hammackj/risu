@@ -26,7 +26,6 @@
 
 require 'test_helper'
 
-
 module Risu
 	module Templates
 		class BadTemplate < Risu::Base::TemplateBase
@@ -59,6 +58,8 @@ end
 class BadTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/bad_tempalte.pdf"
 		@template = Risu::Templates::BadTemplate.new
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"

@@ -27,6 +27,10 @@
 require 'test_helper'
 
 class PluginTest < ActiveSupport::TestCase
+	def setup
+		setup_test_database
+	end
+
 	test "returns 12 risks for Plugin.risks.count" do
 		assert Plugin.risks.count == 12, "GOT #{Plugin.risks.count}"
 	end
@@ -63,8 +67,8 @@ class PluginTest < ActiveSupport::TestCase
 		assert Plugin.where(:d2_elliot_name => "Sample Exploit Name").count == 1, "GOT #{Plugin.where(:d2_elliot_name => "Sample Exploit Name").count}"
 	end
 
-	test "return 2 risk for Plugin.where(:exploited_by_malware => 'true').count" do
-		assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
+	test "return 1 risk for Plugin.where(:exploited_by_malware => 'true').count" do
+		assert Plugin.where(:exploited_by_malware => "true").count == 1, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
 	end
 
 	test "return 1 risk for Plugin.where(:potential_vulnerability => 'true').count" do

@@ -29,6 +29,8 @@ require 'test_helper'
 class MaliciousProcessDetectionTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/malicious_process_detection.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 

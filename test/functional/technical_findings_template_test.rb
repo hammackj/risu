@@ -29,6 +29,8 @@ require 'test_helper'
 class TechnicalFindingsTemplateTest < ActiveSupport::TestCase
 
 	def setup
+		setup_test_database
+		
 		@file_name = "/tmp/tech_find.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 

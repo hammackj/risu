@@ -27,6 +27,10 @@
 require 'test_helper'
 
 class HostTest < ActiveSupport::TestCase
+	def setup
+		setup_test_database
+	end
+
 	test "returns 10.0.0.1 for Host.ip" do
 		assert_equal Host.first.ip, "10.0.0.1"
 	end
