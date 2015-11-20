@@ -171,11 +171,14 @@ module Risu
 
 				# Queries for all the Critical risks by host
 				#
+				# @deprecated This function shouldn't be used it has been replaced by critical_risks_by_host
+				#
 				# @param limit Limits the result to a specific number, default 10
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
+					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).group(:host_id).order('count(*) desc').limit(limit)
 				end
 
 				# Queries for all the Critical risks by host
@@ -185,7 +188,7 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 34).group(:host_id).order('count(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).group(:host_id).order('count(*) desc').limit(limit)
 				end
 
 				# Queries for all the High risks by host
