@@ -19,3 +19,6 @@ notifications:
 
 before_install:
   - gem --version
+
+after_success:
+  - coveralls
