@@ -41,7 +41,7 @@ require 'tmpdir'
 require 'risu'
 
 #rails 4.2+
-#ActiveSupport::TestCase.test_order = :sorted
+ActiveSupport::TestCase.test_order = :sorted
 
 def config_sqlite
   {
