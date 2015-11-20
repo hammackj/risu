@@ -104,7 +104,7 @@ class HostTest < ActiveSupport::TestCase
 	end
 
 	test "should return a list of String of 17 length for Host.ip_list" do
-		assert Host.ip_list.length == 17, "GOT #{Host.ip_list.length}"
+		assert Host.ip_list.length == 17, "GOT #{Host.ip_list} - #{Host.ip_list.length}"
 	end
 
 	test "should build an array of 2 ips for Host.ip_list.split(\"\\n\").size" do
