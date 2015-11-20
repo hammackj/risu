@@ -107,8 +107,8 @@ class HostTest < ActiveSupport::TestCase
 		assert Host.ip_list.length == 17, "GOT #{Host.ip_list.length}"
 	end
 
-	test "should build an array of 2 ips for Host.ip_list.split(\"\\n\")" do
-		assert Host.ip_list.split("\n").count == 2, "GOT #{Host.ip_list.split("\n").count}"
+	test "should build an array of 2 ips for Host.ip_list.split(\"\\n\").size" do
+		assert Host.ip_list.split("\n").size == 2, "GOT #{Host.ip_list.split("\n")} - #{Host.ip_list.split("\n").size}"
 	end
 
 	test "should return 2 for Host.not_os_windows_98" do
