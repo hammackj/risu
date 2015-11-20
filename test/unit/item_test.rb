@@ -131,7 +131,7 @@ class ItemTest < ActiveSupport::TestCase
 	end
 
 	test "returns 1088 for Item.risks_by_severity_graph_text.length" do
-		assert Item.risks_by_severity_graph_text.length == 1088, "GOT #{Item.risks_by_severity_graph_text.length}"
+		assert Item.risks_by_severity_graph_text.length == 1088, "GOT #{Item.risks_by_severity_graph_text} - #{Item.risks_by_severity_graph_text.length}"
 	end
 
 	test "returns 12 for Item.all_risks_unique_sorted.to_a.count" do
