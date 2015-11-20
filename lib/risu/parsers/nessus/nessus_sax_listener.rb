@@ -36,6 +36,8 @@ module Risu
 			class NessusSaxListener
 				include LibXML::XML::SaxParser::Callbacks
 
+				attr_accessor :new_tags
+
 				# An array of valid reference element names
 				VALID_REFERENCES = Set.new(%w[
 					cpe bid see_also xref cve iava msft
@@ -157,6 +159,7 @@ module Risu
 				# vals tracks state for elements encountered during parsing
 				def initialize
 					@vals = Hash.new
+					@new_tags = Array.new
 				end
 
 				# Callback for when the start of a XML element is reached
@@ -168,7 +171,7 @@ module Risu
 					@vals[@tag] = ""
 
 					if !VALID_ELEMENTS.include?(element)
-						puts "New XML element detected: #{element}. Please report this at #{Risu::GITHUB}/issues/new or via email to #{Risu::EMAIL}"
+						@new_tags << "New XML element detected: #{element}. Please report this at #{Risu::GITHUB}/issues/new or via email to #{Risu::EMAIL}"
 					end
 
 					if DYNAMIC_START_METHOD_NAMES.key?(element)
@@ -258,7 +261,7 @@ module Risu
 					if attributes["name"] !~ /(netstat-(?:established|listen)-(?:tcp|udp)\d+-\d+)/ \
 							&& attributes["name"] !~ /traceroute-hop-\d+/ \
 							&& @attr.nil?
-						puts "New HostProperties attribute: #{attributes["name"]}. Please report this at #{Risu::GITHUB}/issues/new or via email to #{Risu::EMAIL}\n"
+						@new_tags << "New HostProperties attribute: #{attributes["name"]}. Please report this at #{Risu::GITHUB}/issues/new or via email to #{Risu::EMAIL}\n"
 					end
 				end
 
