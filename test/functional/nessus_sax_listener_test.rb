@@ -92,21 +92,21 @@
 								xml.text "c89122a07b0ea7087a0c712d711a07b7"
 							end
 
-                            xml.agent "all"
+              xml.agent "all"
 
-                            xml.send(:"cm:compliance-info", "cm:compliance-info")
-                            xml.send(:"cm:compliance-reference", "cm:compliance-reference")
-                            xml.send(:"cm:compliance-see-also", "cm:compliance-see-also")
-                            xml.send(:"cm:compliance-solution", "cm:compliance-solution")
+              xml.send(:"cm:compliance-info", "cm:compliance-info")
+              xml.send(:"cm:compliance-reference", "cm:compliance-reference")
+              xml.send(:"cm:compliance-see-also", "cm:compliance-see-also")
+              xml.send(:"cm:compliance-solution", "cm:compliance-solution")
 
-                            xml.send(:"UNDEFINED_ELEMENT", "UNDEFINED_ELEMENT")
+              xml.send(:"UNDEFINED_ELEMENT", "UNDEFINED_ELEMENT")
 						end
 					end
 				end
 			end
 		end
 
-        builder.to_xml
+    builder.to_xml
     end
 
     def setup
