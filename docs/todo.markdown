@@ -5,6 +5,22 @@
 # Bugs
 *** OS's with 2000 or XP can be misidentified by Nessus showing both host messing up some of the graphs. ***
 
+3) Error:
+HostTest#test_should_return_1_for_Host.unique_hosts_with_high:
+ActiveRecord::StatementInvalid: SQLite3::SQLException: near "*": syntax error: SELECT  COUNT(items.*, count(*) as count_all) AS count_items_all_count_all_as_count_all, host_id AS host_id FROM "items" INNER JOIN "hosts" ON "hosts"."id" = "items"."host_id" WHERE (plugin_id != 1) AND "items"."severity" = ? GROUP BY "items"."host_id"  ORDER BY count_all DESC LIMIT 23
+
+
+
+4) Error:
+HostTest#test_should_return_2_for_Host.top_n_vulnerable(2):
+ActiveRecord::StatementInvalid: SQLite3::SQLException: near "*": syntax error: SELECT  COUNT(items.*, count(*) as count_all) AS count_items_all_count_all_as_count_all, host_id AS host_id FROM "items" INNER JOIN "hosts" ON "hosts"."id" = "items"."host_id" WHERE (plugin_id != 1) AND "items"."severity" = ? GROUP BY "items"."host_id"  ORDER BY count_all DESC LIMIT 23
+
+
+
+5) Error:
+HostTest#test_should_return_2_for_Host.unique_hosts_with_critical:
+ActiveRecord::StatementInvalid: SQLite3::SQLException: near "*": syntax error: SELECT  COUNT(items.*, count(*) as count_all) AS count_items_all_count_all_as_count_all, host_id AS host_id FROM "items" INNER JOIN "hosts" ON "hosts"."id" = "items"."host_id" WHERE (plugin_id != 1) AND "items"."severity" = ? GROUP BY "items"."host_id"  ORDER BY count_all DESC LIMIT 23
+
 - http://stackoverflow.com/questions/19040932/rmagick-complaining-about-libmagickcore-5-dylib-not-found-in-osx
 
 # Road map
