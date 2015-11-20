@@ -110,7 +110,7 @@ Several templates are included:
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See the 'template' example for creating your own template.
 
 # Contributing
-If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on [github](http://github.com/arxopia/risu) and make the changes in your fork and the submit a pull request to the project.
+If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on [github](http://github.com/arxopia/risu) and make the changes in your fork and the submit a pull request to the project on the dev branch.
 
 # Issues
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/arxopia/risu/issues).
