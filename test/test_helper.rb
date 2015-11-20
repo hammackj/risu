@@ -40,6 +40,9 @@ require 'tmpdir'
 
 require 'risu'
 
+#rails 4.2+
+#ActiveSupport::TestCase.test_order = :sorted
+
 @config_sqlite =
 "report:
   author: TEST
