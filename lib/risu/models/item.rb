@@ -184,7 +184,8 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_by_host(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
+					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 34).group(:host_id).order('count(*) desc').limit(limit)
 				end
 
 				# Queries for all the High risks by host
@@ -204,7 +205,8 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks_by_host(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 2).group(:host_id).order("count_all DESC").limit(limit)
+					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 2).group(:host_id).order("count_all DESC").limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 2).group(:host_id).order('count(*) desc').limit(limit)
 				end
 
 				# Queries for all the Low risks by host
@@ -213,7 +215,8 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def low_risks_by_host(limit=10)
-					select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 1).group(:host_id).order("count_all DESC").limit(limit)
+					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 1).group(:host_id).order("count_all DESC").limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 1).group(:host_id).order('count(*) desc').limit(limit)
 				end
 
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
