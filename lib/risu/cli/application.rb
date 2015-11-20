@@ -474,6 +474,7 @@ module Risu
 					end
 
 					printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
+					puts nessus_doc.new_tags.uniq.join("\n") #@todo add a verbose check
 				rescue Interrupt => i
 					puts "[!] Parse canceled!"
 					exit(1)
