@@ -30,10 +30,12 @@ module Risu
 
 			# A Object to represents the Nessus XML file in memory
 			class NessusDocument
+				attr_accessor :new_tags
 
 				# Creates a instance of the NessusDocument class
 				def initialize document
 					@document = document
+					@new_tags = Array.new
 				end
 
 				# Checks the validness of a NessusDocument
@@ -70,6 +72,10 @@ module Risu
 					@parser = LibXML::XML::SaxParser.file @document
 					@parser.callbacks = NessusSaxListener.new
 					@parser.parse
+
+					#require 'pry'
+					#binding.pry
+					@new_tags == @parser.callbacks.new_tags
 				end
 
 				# Fixes the ip field if nil and replaces it with the name if its an ip
