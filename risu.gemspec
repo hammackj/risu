@@ -62,5 +62,5 @@ Gem::Specification.new do |s|
 	s.add_dependency('mysql2', ['0.4.1'])
 	s.add_dependency('rmagick', ['2.15.4'])
 	s.add_dependency('sqlite3', ['1.3.11'])
-	s.add_dependency('nokogiri', ['1.6.6.3'])
+	s.add_dependency('nokogiri', ['1.6.6.4'])
 end
