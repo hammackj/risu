@@ -260,6 +260,20 @@ module Risu
 					where("os NOT LIKE '%Windows 8%'")
 				end
 
+				# Queries for hosts with a Windows 10 based Operating System
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def os_windows_10
+					where("os LIKE '%Windows 10%'")
+				end
+
+				# Negation query for all hosts with a Windows 10 based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def not_os_windows_10
+					where("os NOT LIKE '%Windows 10%'")
+				end
+
 				# Queries for hosts with a Windows Operating System that are not 2000,
 				# XP, 2003, Vista, 2008 or 7
 				#
@@ -385,6 +399,8 @@ module Risu
 
 				# Generates a graph of the high and medium findings count per host
 				#
+				# @deprecated
+				#
 				# @return [StringIO] Binary image object of the results
 				def top_vuln_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
@@ -408,7 +424,7 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 
-				#
+				# @deprecated
 				# @todo comments
 				#
 				def windows_os_graph_has_data?
@@ -538,7 +554,7 @@ module Risu
 					StringIO.new(g.to_blob)
 				end
 
-				#
+				# @deprecated
 				#@todo comment
 				#
 				def windows_os_graph_text
@@ -601,6 +617,7 @@ module Risu
 				end
 
 				# @todo add plural check
+				# @deprecated
 				#
 				def unsupported_os_text
 					if !unsupported_os?
