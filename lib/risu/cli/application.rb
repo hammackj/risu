@@ -118,7 +118,7 @@ module Risu
 					Schema.migrate(direction)
 
 					if direction == :up
-						puts "[*] Creating tables"
+						puts "[*] Creating tables" if @options[:debug]
 						ver = Version.create
 						ver.version = Risu::VERSION
 						ver.save
