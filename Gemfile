@@ -7,7 +7,8 @@ gem "test-unit"
 
 # Updated Gems
 gem "libxml-ruby", '2.8.0'
-gem "prawn", '1.0.0'
+gem "prawn"
+gem "prawn-table"
 gem "gruff", '0.6.0'
 gem "mysql2", '0.4.1'
 gem "rmagick", '2.15.4'
