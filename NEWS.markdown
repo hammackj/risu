@@ -1,17 +1,20 @@
 # News
 
 # 1.7.6 (December 31, 2015)
+- **API CHANGES** Several APIs have been marked deprecated they will be moved in 1.8.0. These changes are mostly to clean up the Models. Right now the models are very fat and interdependent on things they shouldn't. Some of the notable changes will be:
+	- Graphs will be moved to Risu::Graphs
+	- TemplateHelpers will be moved to Risu::TemplateHelpers
+- When new tags are encountered they are reported after each file now, as a uniqued list. This removes the spam of new tags.
 - Updated the dependent gems to newer versions
-	- rails 4.0.13
+	- rails 4.2.5
 	- libxml-ruby 2.8.0
-	- prawn 0.12.0
+	- prawn 2.0.2
 	- gruff 0.6.0
 	- mysql2 0.4.1
 	- rmagick 2.15.4
 	- sqlite3 1.3.11
-	- nokogiri 1.6.6.3
-
-	My plan is to get them all updated for the latest version but some issues with Rails 4.2.5 and the lastest prawn are holding back those gems. I have also started work on testing with Ruby 2.2.3+, with the goal being moving to Rails 5 shortly after its release.
+	- nokogiri 1.6.6.4
+- Massive updates to unit tests
 
 # 1.7.5 (November 6, 2015)
 - Added initial test for HostProperties
