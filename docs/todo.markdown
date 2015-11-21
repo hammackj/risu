@@ -5,33 +5,23 @@
 # Bugs
 *** OS's with 2000 or XP can be misidentified by Nessus showing both host messing up some of the graphs. ***
 
-3) Error:
-HostTest#test_should_return_1_for_Host.unique_hosts_with_high:
-ActiveRecord::StatementInvalid: SQLite3::SQLException: near "*": syntax error: SELECT  COUNT(items.*, count(*) as count_all) AS count_items_all_count_all_as_count_all, host_id AS host_id FROM "items" INNER JOIN "hosts" ON "hosts"."id" = "items"."host_id" WHERE (plugin_id != 1) AND "items"."severity" = ? GROUP BY "items"."host_id"  ORDER BY count_all DESC LIMIT 23
-
-
-
-4) Error:
-HostTest#test_should_return_2_for_Host.top_n_vulnerable(2):
-ActiveRecord::StatementInvalid: SQLite3::SQLException: near "*": syntax error: SELECT  COUNT(items.*, count(*) as count_all) AS count_items_all_count_all_as_count_all, host_id AS host_id FROM "items" INNER JOIN "hosts" ON "hosts"."id" = "items"."host_id" WHERE (plugin_id != 1) AND "items"."severity" = ? GROUP BY "items"."host_id"  ORDER BY count_all DESC LIMIT 23
-
-
-
-5) Error:
-HostTest#test_should_return_2_for_Host.unique_hosts_with_critical:
-ActiveRecord::StatementInvalid: SQLite3::SQLException: near "*": syntax error: SELECT  COUNT(items.*, count(*) as count_all) AS count_items_all_count_all_as_count_all, host_id AS host_id FROM "items" INNER JOIN "hosts" ON "hosts"."id" = "items"."host_id" WHERE (plugin_id != 1) AND "items"."severity" = ? GROUP BY "items"."host_id"  ORDER BY count_all DESC LIMIT 23
-
+# Known Issues
 - http://stackoverflow.com/questions/19040932/rmagick-complaining-about-libmagickcore-5-dylib-not-found-in-osx
 
 # Road map
 
-## 1.7.6 (??)
+## 1.7.7 (??)
 - **TAG** New XML element detected: fedora.
 - Microsoft Windows 2003 Approaching End Of Life - 80120
+- build Contributing doc ex: https://github.com/colszowka/simplecov/blob/master/CONTRIBUTING.md
+- Add windows 10 support for Host model
 
 ## 1.8.x (??)
+- Do all the @todo / @fix  items!
+- All installation documents have been updated on the wiki
 - **BUG** dropping tables when there are no tables causes stacktrace, catch this.
 - move project page on arxopia/project/risu to hammackj/risu
+- move unsupported os to Risu::TemplateHelper::UnsupportedOSXXX
 - patch summary plugin - 66334
 - unsupported software
 	- 55786
@@ -84,7 +74,6 @@ ActiveRecord::StatementInvalid: SQLite3::SQLException: near "*": syntax error: S
 - Documents
 	- Template Tutorial
 	- Updating tutorial
-- Do all the @todo / @fix  items!
 - compliance plugins xml parser test?
 - error check connection fail on the console to mysql
 - migration error handling
