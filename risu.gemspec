@@ -50,8 +50,8 @@ Gem::Specification.new do |s|
 	s.required_rubygems_version = ">= 1.8.24"
 	s.rubyforge_project	= "#{Risu::APP_NAME}"
 
-	s.add_development_dependency 'simplecov', '~> 0.7', '>= 0.7.1'
-	s.add_development_dependency 'yard', '~> 0.8', '>= 0.8.3'
+	s.add_development_dependency 'simplecov', '~> 0.10.0'
+	s.add_development_dependency 'yard', '~> 0.8.0'
 	s.add_development_dependency 'minitest', '~> 4.3', '>= 4.3.2'
 	s.add_development_dependency 'test-unit'
 
