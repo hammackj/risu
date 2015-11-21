@@ -3,14 +3,14 @@
 Steve Lodin <swlodin@gmail.com>
 
 
-# 1.0       Installation Instructions
+# 1.0 Installation Instructions
 
-## 1.1   Prerequisites
+## 1.1 Prerequisites
 - Windows Server
 - Standard Windows Installation (C:\ Drive)
 - New Volume for application and Data (D:\ Drive)
 
-## 1.2   Additional Components
+## 1.2 Additional Components
 - Ruby 1.9
 - MySQL 5.5
 - RubyDevKit
@@ -21,7 +21,7 @@ Steve Lodin <swlodin@gmail.com>
 ## 1.3 Installation Steps
 ### 1.3.1 Software Download
 
-- Download hammackj-risu-v1.4.5-0-g42a0be8.zip from https://github.com/hammackj/risu/archives/master  
+- Download hammackj-risu-v1.4.5-0-g42a0be8.zip from https://github.com/hammackj/risu/archives/master
 - Download rubyinstaller-1.9.2-p180.exe from http://www.ruby-lang.org/en/downloads/ or http://rubyinstaller.org/downloads/
 - Download mysql-5.5.14-winx64.msi from http://dev.mysql.com/downloads/
 - Download DevKit-tdm-32-4.5.2-20110712-1620-sfx.exe from http://rubyinstaller.org/downloads/
@@ -51,7 +51,7 @@ o   Run MySQL Server Instance Configuration Wizard
 
 §  No root password
 
-§  Create the necessary databases for RISU by running the command in a MySQL command line client “create database name;” 
+§  Create the necessary databases for RISU by running the command in a MySQL command line client “create database name;”
 
 - Install ImageMagick
 
