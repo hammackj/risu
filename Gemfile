@@ -20,7 +20,7 @@ source "https://rubygems.org"
 
 gem 'simplecov', '~> 0.10.0'
 gem 'yard', '~> 0.8.0'
-gem 'minitest', '~> 4.3', '>= 4.3.2'
+gem 'minitest', '~> 5.0'
 gem  'test-unit'
 
 gem 'rails', "~> 4.2.5"
