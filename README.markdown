@@ -1,10 +1,15 @@
-# risu
-
-[![Gem Version](https://badge.fury.io/rb/risu.png)](http://badge.fury.io/rb/risu) [![Build Status](https://travis-ci.org/arxopia/risu.png?branch=master)](https://travis-ci.org/arxopia/risu) [![Coverage Status](https://coveralls.io/repos/arxopia/risu/badge.svg?branch=master&service=github)](https://coveralls.io/github/arxopia/risu?branch=master) [![Code Climate](https://codeclimate.com/github/arxopia/risu/badges/gpa.svg)](https://codeclimate.com/github/arxopia/risu)
+# risu [![Gem Version](https://badge.fury.io/rb/risu.png)](http://badge.fury.io/rb/risu) [![Build Status](https://travis-ci.org/arxopia/risu.png?branch=master)](https://travis-ci.org/arxopia/risu)  [![Code Climate](https://codeclimate.com/github/arxopia/risu/badges/gpa.svg)](https://codeclimate.com/github/arxopia/risu) [![Inline docs](http://inch-ci.org/github/colszowka/simplecov.png)](http://inch-ci.org/github/colszowka/simplecov)
 
 Risu is [Nessus](http://www.nessus.org) parser, that converts the generated reports into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
 Version **1.7.6** is the current release.
+
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Issues](#issues)
+* [Contact](#contact)
 
 ## Requirements
 
@@ -29,7 +34,7 @@ Installation is really easy just gem install!
 
     % gem install risu
 
-## Developmental Requirements
+### Developmental Requirements
 
 These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install risu, If not this command will install them all:
 
@@ -39,7 +44,11 @@ These are all available through [RubyGems](http://rubygems.org/). The should be 
 
 Any database that ActiveRecord supports should work. Risu has been tested with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/).
 
-## Database Setup
+## Usage
+
+The following is some of the basic usage for risu. You must setup the database before you can start parsing in reports. All parsed reports share the same database, so all reports are combined as one inside of a database. I suggest a new database per required assessment.
+
+### Database Setup
 
 	% risu --create-config
 	% $EDITOR risu.cfg
@@ -49,22 +58,22 @@ Any database that ActiveRecord supports should work. Risu has been tested with [
 2. Edit the risu.cfg file, filling in the variables as needed.
 3. Migrate the database schema.
 
-## Parsing Nessus Output
+### Parsing Nessus Output
 
 	% risu report1.nessus [report2.nessus ...]
 
 1. Parse the files by passing their names on the command line.
 
 
-# Viewing Data
+## Viewing Data
 The data can be viewed with a query browser available for your database.
 
-## Generating Reports
+### Generating Reports
 To generate a report please execute the following after the the data is parsed into the database.
 
 	% risu -t <TEMPLATE_NAME> -o "REPORT_NAME.pdf"
 
-## Risu Console
+### Risu Console
 
 Using the risu Console is just like using Rails. You can access all of the ActiveRecord models directly and pull specific data from each model. Like SQL only easier!
 
@@ -115,10 +124,10 @@ If you would like to contribute templates/bug fixes/etc to risu. The easiest way
 # Issues
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/arxopia/risu/issues).
 
-# Donations / tips
-Feel free to donate or tip to BTC: 1Cfd5G6rJmSBrNcTHxEgE4uYgH7XZJPY7Z
-
 # Contact
 You can reach me at risu[at]arxopia[dot]com.
 
 You can also contact me on IRC as hammackj on irc.freenode.net, #risu
+
+# Donations / tips
+Feel free to donate or tip to BTC: 1Cfd5G6rJmSBrNcTHxEgE4uYgH7XZJPY7Z
