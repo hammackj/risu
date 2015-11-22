@@ -14,7 +14,7 @@ Version **1.7.6** is the current release.
 ## Requirements
 
 ### Ruby
-Risu has been tested with ruby-1.9.3-p392, ruby-2.0.0 and ruby-2.1.0. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
+Risu has been tested with ruby-1.9.3-p392, ruby-2.0.0, ruby-2.1.0 and ruby-2.2.3. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
 
 ### RubyGems
 Risu relies heavily on [RubyGems](http://rubygems.org/) to install other dependencies I highly recommend using it. RubyGems is included by default in the 1.9.x versions of [Ruby](http://ruby-lang.org/).
