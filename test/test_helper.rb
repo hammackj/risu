@@ -24,8 +24,9 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require 'simplecov'
-SimpleCov.start
+# Disable Coverage always on
+#require 'simplecov'
+#SimpleCov.start
 
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), '../lib'))
@@ -40,7 +41,6 @@ require 'tmpdir'
 
 require 'risu'
 
-#rails 4.2+
 ActiveSupport::TestCase.test_order = :sorted
 
 def config_sqlite
