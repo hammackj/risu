@@ -155,6 +155,7 @@ module Risu
 
 				# Queries for all the risks grouped by service type, used for the Vulnerabilities by Service graph
 				#
+				# @TODO rewrite
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_service(limit=10)
 					select("items.*").select("count(*) as count_all").where("svc_name != 'unknown' and svc_name != 'general'").group(:svc_name).order("count_all DESC").limit(limit)
@@ -162,6 +163,7 @@ module Risu
 
 				# Queries for all the Critical risks by plugin
 				#
+				# @TODO rewrite
 				# @param limit Limits the result to a specific number, default 10
 				#
 				# @return [ActiveRecord::Relation] with the query results
@@ -240,6 +242,7 @@ module Risu
 				#
 				# @param limit Limits the result to a specific number, default 10
 				#
+				# @deprecated
 				# @return [StringIO] Object containing the generated PNG image
 				def risks_by_service_graph(limit=10)
 					g = Gruff::Pie.new(GRAPH_WIDTH)
@@ -260,6 +263,7 @@ module Risu
 
 				# Generates text for the Risks by Service graph
 				#
+				# @deprecated
 				# @return [String] Text based on the Risks by Service graph
 				def risks_by_service_graph_text
 					"This graph is a representation of the findings found by service. This graph can help " +
@@ -269,6 +273,7 @@ module Risu
 
 				# Generates a Graph of all the risks by severity
 				#
+				# @deprecated
 				# @return [StringIO] Object containing the generated PNG image
 				def risks_by_severity_graph
 					g = Gruff::Bar.new(GRAPH_WIDTH)
@@ -311,6 +316,7 @@ module Risu
 
 				# Generates a Graph of all the risks by severity
 				#
+				# @deprecated
 				# @return [StringIO] Object containing the generated PNG image
 				def stigs_severity_graph
 					g = Gruff::Bar.new(GRAPH_WIDTH)
@@ -340,6 +346,7 @@ module Risu
 				# Calculates a vulnerable host percent based on Critical and High findings
 				# (unique_vuln_crit_high_count / host_count) * 100
 				#
+				# @deprecated
 				# @return [FixNum] Percentage of vulnerable hosts
 				def calculate_vulnerable_host_percent
 					#patch to fix double counting
@@ -348,7 +355,8 @@ module Risu
 					host_percent = (unique_hosts_with_critical_and_high.to_f / Host.count.to_f) * 100
 				end
 
-				# @todo w t f
+				# @TODO w t f
+				# @deprecated
 				def calculate_vulnerable_host_percent_with_patches_applied
 
 					exclude_list = []
@@ -376,6 +384,7 @@ module Risu
 				#
 				# @param risk_percent Calculated percentage of risk based on {Item::calculate_vulnerable_host_percent}
 				#
+				# @deprecated
 				# @return [String] Textual representation of the risk_percent
 				def adjective_for_risk_text risk_percent
 					adjective = case risk_percent
@@ -396,6 +405,7 @@ module Risu
 				#
 				# @param risk_percent Calculated percentage of risk based on {Item::calculate_vulnerable_host_percent}
 				#
+				# @deprecated
 				# @return [String] Sentence describing the implied significance of the risk_percent
 				def risk_text risk_percent
 					percent_text = case risk_percent
@@ -416,8 +426,9 @@ module Risu
 					end
 				end
 
-				# @todo change Report.title to a real variable
-				# @todo rewrite this
+				# @TODO change Report.title to a real variable
+				# @TODO rewrite this
+				# @deprecated
 				def risks_by_severity_graph_text
 					host_percent = calculate_vulnerable_host_percent()
 					adjective = adjective_for_risk_text(host_percent)
@@ -451,24 +462,29 @@ module Risu
 					return graph_text
 				end
 
+				# @deprecated
 				def risk_percent_rounded_text
 					"#{calculate_vulnerable_host_percent().round}%"
 				end
 
+				# @deprecated
 				def risk_percent_patched_rounded_text
 					"#{calculate_vulnerable_host_percent_with_patches_applied().round}%"
 				end
 
+				# @deprecated
 				def risk_percent_text
 					"%.2f%" % calculate_vulnerable_host_percent()
 				end
 
+				# @deprecated
 				def risk_percent_patched_text
 					"%.2f%" % calculate_vulnerable_host_percent_with_patches_applied()
 				end
 
 				#
-				# @todo comment
+				# @TODO comment
+				# @FIXME this doesn't work with PostProcess plugins
 				#
 				def notable_order_by_cvss_raw
 
@@ -549,8 +565,8 @@ module Risu
 
 				# Returns a prawn pdf table for the top 10 notable findings
 				#
-				# @todo change this method to return a array/table and let the template render it
-				# @todo rename to notable_table also
+				# @TODO change this method to return a array/table and let the template render it
+				# @TODO rename to notable_table also
 				#
 				# @param output device to write the table to
 				def top_10_table(output)
