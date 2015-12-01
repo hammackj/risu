@@ -141,7 +141,7 @@ module Risu
 
 				anonymous_access_text = "Allowing anonymous access to a file server can lead to information disclosures and other security violations. Each instance should be evaluated and removed or noted in the network's security policy.\n"
 
-				heading1 "Poor Security Practice" if poor_count > 0
+				heading1 "Other Findings of Interest" if poor_count > 0
 
 				#Anon ftp/smb + clear text
 				@output.text anon_ftp_text + anon_smb_text + anonymous_access_text if anon_ftp_count > 0 || anon_smb_count > 0
@@ -151,7 +151,41 @@ module Risu
 
 			def shares_appendix_section
 				anon_ftp_section
-				anon_smb_section				
+				anon_smb_section
+			end
+
+			def shares_section_has_findings?
+				poor_count = 0
+
+				anon_ftp_text = ""
+				anon_smb_text = ""
+
+				anon_smb_count = 0
+				anon_ftp_count = 0
+
+				begin
+					anon_ftp_count = Item.where(:plugin_id => Plugin.where(:plugin_name => "Anonymous FTP Enabled").first.id).count
+				rescue Exception => e
+				end
+
+				begin
+					anon_smb_count = Item.where(:plugin_id => Plugin.where(:plugin_name => "Microsoft Windows SMB Shares Unprivileged Access").first.id).count
+				rescue Exception => e
+				end
+
+				if anon_ftp_count >= 1
+					poor_count = poor_count + 1
+				end
+
+				if anon_smb_count >= 1
+					poor_count = poor_count + 1
+				end
+
+				if poor_count >= 1
+					return true
+				else
+					return false
+				end
 			end
 		end
 	end
