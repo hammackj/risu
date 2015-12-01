@@ -83,7 +83,7 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.critical_risks_unique_sorted.to_a.count == 8, "GOT #{Item.critical_risks_unique_sorted.to_a.count}"
 	end
 
-	#@todo finish these tests
+	#@TODO finish these tests
 	test "returns 1 for Item.medium_risks_unique.count" do
 		assert Item.medium_risks_unique.to_a.count == 1, "GOT #{Item.medium_risks_unique.to_a.count}"
 	end
@@ -108,12 +108,12 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.info_risks_unique.to_a.count == 1, "GOT #{Item.info_risks_unique.to_a.count}"
 	end
 
-	# @todo this test sucks, hash the object instead
+	# @TODO this test sucks, hash the object instead
 	test "returns a graph Item.risks_by_severity_graph" do
 		assert Item.risks_by_severity_graph.class == StringIO
 	end
 
-	# @todo this test sucks, hash the object instead
+	# @TODO this test sucks, hash the object instead
 	test "returns a graph Item.risks_by_service_graph" do
 		assert Item.risks_by_service_graph.class == StringIO
 	end
@@ -202,12 +202,12 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.notable_order_by_cvss_raw.count == 9, "GOT #{Item.notable_order_by_cvss_raw.count}"
 	end
 
-	# #@todo bad test, rewrite or remove,
+	# #@TODO bad test, rewrite or remove,
 	# test "return 42411 for Item.notable_order_by_cvss_raw.keys.first" do
 	# 	assert Item.notable_order_by_cvss_raw.keys.sort.first == 42411, "GOT #{Item.notable_order_by_cvss_raw.keys.sort.first}"
 	# end
 
-	# #@todo bad test, rewrite or remove
+	# #@TODO bad test, rewrite or remove
 	# test "return 99999 for Item.notable_order_by_cvss_raw.keys.last" do
 	# 	assert Item.notable_order_by_cvss_raw.keys.sort.last == 99999, "GOT #{Item.notable_order_by_cvss_raw.keys.sort.last}"
 	# end
@@ -236,7 +236,7 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.risk_percent_patched_text == "0.00%", "GOT #{Item.risk_percent_patched_text}"
 	end
 
-	#@todo pass findings for each finding level
+	#@TODO pass findings for each finding level
 	#test "return XX for Item.exploitablity_matrix" do
 	#	assert Item.exploitablity_matrix == "", "GOT #{Item.exploitablity_matrix}"
 	#end
