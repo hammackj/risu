@@ -27,7 +27,7 @@
 module Risu
 	APP_NAME = "risu"
 	VERSION = "1.7.6"
-	# @todo move graph variables to graphs.rb
+	# @TODO move graph variables to graphs.rb
 	GRAPH_WIDTH = 750
 	#                  red     orange  yellow  green    blue   purple        grey           pink
 	GRAPH_COLORS = %w(#d2403f #ec9241 #fcc343 #50ad51 #397bbb #8E6B8E black #cccccc brown #e52d89)
@@ -66,3 +66,7 @@ require 'risu/parsers/nessus/postprocess'
 require 'risu/renderers'
 
 include Risu::Models
+
+# Suppress Prawn Font Warning
+# @TODO update default font to a TTF font
+Prawn::Font::AFM.hide_m17n_warning = true
