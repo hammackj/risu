@@ -47,21 +47,20 @@ Gem::Specification.new do |s|
 	s.has_rdoc = 'yard'
 	s.extra_rdoc_files = ["README.markdown", "LICENSE", "NEWS.markdown"]
 
-	s.required_rubygems_version = ">= 1.8.24"
 	s.rubyforge_project	= "#{Risu::APP_NAME}"
 
-	s.add_development_dependency 'simplecov', '~> 0.10.0'
-	s.add_development_dependency 'yard', '~> 0.8.0'
+	s.add_development_dependency 'simplecov', '~> 0.11', '>= 0.11.0'
+	s.add_development_dependency 'yard', '~> 0.8', '>= 0.8.0'
 	s.add_development_dependency 'minitest', '~> 5.0'
-	s.add_development_dependency 'test-unit'
+	s.add_development_dependency 'test-unit', '~> 3.1', ">= 3.1.5"
 
-	s.add_dependency('rails', "~> 4.2.5")
-	s.add_dependency('libxml-ruby', "~> 2.8.0")
-	s.add_dependency('prawn', "~> 2.0.2")
-	s.add_dependency('prawn-table', "~> 0.2.2")
-	s.add_dependency('gruff', "~> 0.6.0")
-	s.add_dependency('mysql2', "~> 0.4.1")
-	s.add_dependency('rmagick', "~> 2.15.4")
-	s.add_dependency('sqlite3', "~> 1.3.11")
-	s.add_dependency('nokogiri', "~> 1.6.6.4")
+	s.add_runtime_dependency 'rails', '~> 4.2', '>= 4.2.5'
+	s.add_runtime_dependency 'libxml-ruby', '~> 2.8', '>= 2.8.0'
+	s.add_runtime_dependency 'prawn', '~> 2.0', '>= 2.0.2'
+	s.add_runtime_dependency 'prawn-table', '~> 0.2', '>= 0.2.2'
+	s.add_runtime_dependency 'gruff', '~> 0.6', '>= 0.6.0'
+	s.add_runtime_dependency 'mysql2', '~> 0.4', '>= 0.4.1'
+	s.add_runtime_dependency 'rmagick', '~> 2.15', '>= 2.15.4'
+	s.add_runtime_dependency 'sqlite3', '~> 1.3', '>= 1.3.11'
+	s.add_runtime_dependency 'nokogiri', '~> 1.6', '>= 1.6.7'
 end
