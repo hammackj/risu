@@ -119,7 +119,7 @@
 		end
 
 		 test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_info == cm:compliance-info" do
-				 assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info == "cm:compliance-info", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info}"
+				assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info == "cm:compliance-info", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info}"
 		end
 
 		test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_reference == cm:compliance-reference" do
