@@ -61,7 +61,7 @@ module Risu
 			end
 
 			#
-			# @todo pull to main Host api
+			# @TODO pull to main Host api
 			#
 			def host_list_text(hosts)
 				host_string = ""
