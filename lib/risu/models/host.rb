@@ -380,12 +380,12 @@ module Risu
 					where("os NOT LIKE '%Mac OS X%'")
 				end
 
-				#@todo comment
+				#@TODO comment
 				def os_aix
 					where("os LIKE '%AIX%'")
 				end
 
-				#@todo comment
+				#@TODO comment
 				def not_os_aix
 					where("os NOT LIKE '%AIX%'")
 				end
@@ -425,7 +425,7 @@ module Risu
 				end
 
 				# @deprecated
-				# @todo comments
+				# @TODO comments
 				#
 				def windows_os_graph_has_data?
 					nt = Host.os_windows_nt.to_a.size
@@ -447,7 +447,8 @@ module Risu
 				end
 
 				#
-				# @todo comments
+				# @deprecated
+				# @TODO comments
 				#
 				def other_os_graph_has_data?
 					linux = Host.os_linux.to_a.size
@@ -477,6 +478,7 @@ module Risu
 
 				# Graphs the percentage of other "non Windows" Operating Systems
 				#
+				# @deprecated
 				# @return [StringIO] Binary image object of the results
 				def other_os_graph
 					g = Gruff::Pie.new(GRAPH_WIDTH)
@@ -517,6 +519,7 @@ module Risu
 				end
 
 				# Graphs the percentage of Windows Operating Systems
+				# @deprecated
 				#
 				# @return [StringIO] Binary image object of the results
 				def windows_os_graph
@@ -555,7 +558,7 @@ module Risu
 				end
 
 				# @deprecated
-				#@todo comment
+				#@TODO comment
 				#
 				def windows_os_graph_text
 					nt = Host.os_windows_nt.to_a.count
@@ -585,6 +588,7 @@ module Risu
 					text = "This graph shows the percentage of the different Microsoft Windows based operating systems " +
 					"found on the #{Report.title} network.\n\n"
 
+					# @TODO this should be a table sorted by %
 					text << "#{nt_percent.round.to_i}% of the network is Windows NT. " if nt_percent >= 1
 					text << "#{w2k_percent.round.to_i}% of the network is Windows 2000. " if w2k_percent >= 1
 					text << "#{xp_percent.round.to_i}% of the network is Windows XP. " if xp_percent >= 1
@@ -601,7 +605,7 @@ module Risu
 				end
 
 				#
-				# @todo comments
+				# @TODO comments
 				#
 				def unsupported_os?
 					aix_text = unsupported_os_aix
@@ -616,7 +620,7 @@ module Risu
 					return true
 				end
 
-				# @todo add plural check
+				# @TODO add plural check
 				# @deprecated
 				#
 				def unsupported_os_text
@@ -639,7 +643,7 @@ module Risu
 					return unsupported_os_text
 				end
 
-				# @todo comments
+				# @TODO comments
 				def unsupported_os_windows
 					win_95_text = ""
 					win_98_text = ""
@@ -683,7 +687,7 @@ module Risu
 					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}"
 				end
 
-				# @todo comments
+				# @TODO comments
 				def unsupported_os_aix
 					text = ""
 					aix = Host.os_aix.where("OS LIKE 'AIX 5.%'")
@@ -695,7 +699,7 @@ module Risu
 					return text
 				end
 
-				# @todo comments
+				# @TODO comments
 				def unsupported_os_freebsd
 					text = ""
 					freebsd = Host.os_freebsd.where("OS LIKE 'FreeBSD 5.%'")
@@ -706,7 +710,7 @@ module Risu
 					return text
 				end
 
-				# @todo comments
+				# @TODO comments
 				#turn the os counts into blocks
 				def other_os_graph_text
 					text = "This graph shows the percentage of the different Non-Windows based operating systems " +
@@ -743,7 +747,7 @@ module Risu
 				end
 
 				#
-				# @todo comments
+				# @TODO comments
 				#
 				def top_n_vulnerable(n)
 					hosts = Item.risks_by_host(Host.count).count
@@ -760,7 +764,7 @@ module Risu
 				end
 
 				#
-				# @todo comments
+				# @TODO comments
 				#
 				def unique_hosts_with_critical
 					hosts = Item.critical_risks_by_host(Host.all.size).size
@@ -769,7 +773,7 @@ module Risu
 				end
 
 				#
-				# @todo comments
+				# @TODO comments
 				#
 				def unique_hosts_with_high
 					hosts = Item.high_risks_by_host(Host.all.size).size
@@ -777,7 +781,7 @@ module Risu
 					hosts.reverse!
 				end
 
-				# @todo
+				# @TODO
 				def unique_hosts_with_critical_and_high_count
 					hosts = Array.new
 					crit = Item.critical_risks_by_host(Host.all.count)
