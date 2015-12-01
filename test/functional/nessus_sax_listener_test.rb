@@ -195,11 +195,11 @@
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value == "69.69.69.70", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value}"
  	end
 
- 	test "return GET for Host.where(:name => 69.69.69.69)...pcidss:insecure_http_methods" do
+	test "return GET for Host.where(:name => 69.69.69.69)...pcidss:insecure_http_methods" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value == "GET", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value}"
-		end
+	end
 
-		test "return 2 for Plugin.where(:exploited_by_malware => 'true').count" do
-				assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
-		end
- end
+	test "return 2 for Plugin.where(:exploited_by_malware => 'true').count" do
+			assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
+	end
+end
