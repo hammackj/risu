@@ -69,7 +69,7 @@ module Risu
 			#	@info = {}
 			#end
 
-			#NOTE:
+			# NOTE:
 			#looks like its working
 			def newest_reader_plugin
 				newest = DateTime.new(0001, 01, 01)
@@ -207,4 +207,3 @@ module Risu
 		end
 	end
 end
-
