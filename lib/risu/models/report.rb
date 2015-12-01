@@ -44,7 +44,7 @@ module Risu
 				end
 
 				#
-				# @todo comment this
+				# @TODO comment this
 				#
 				def scanner_nessus_ratings_text
 					text = "The vulnerability scanner used by #{Report.company} rates the findings as follows: Critical, High, Medium, Low and Informational. High findings represents a security hole, initially this is the highest rating a risk can get.  These generally represent vulnerabilities that can lead to full system compromise due to missing security patches. High findings should be re-mediated first as they generally leave the network wide open. Medium findings are considered a security warning; these are not as severe as high but should be evaluated on a risk-by-risk basis. These are typically configuration errors that can lead to information disclosures such as usernames, passwords, and configuration settings. Low findings are identified as security notes; these provide information the scanner discovered during the scanning process. The information includes items such as hostname, domain name, and MAC address. Open Port findings represent the open ports on each system that the scanner found during the scan process. These should be evaluated against firewall settings to test the firewall configurations.\n\n"
