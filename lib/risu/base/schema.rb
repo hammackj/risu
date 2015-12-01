@@ -197,13 +197,13 @@ module Risu
 					t.string :value
 				end
 
-				#Index's for speed increases, possibly have these apply after parsing @todo
+				#Index's for speed increases, possibly have these apply after parsing @TODO
 				add_index :items, :host_id
 				add_index :items, :plugin_id
 				add_index :references, :plugin_id
 
 				#Default data for service descriptions
-				#@todo Unused ATM, might be better to use a yaml file tho..
+				#@TODO Unused ATM, might be better to use a yaml file tho..
 				# ServiceDescription.create :name => "www", :description => ""
 				# ServiceDescription.create :name => "cifs", :description => ""
 				# ServiceDescription.create :name => "smb", :description => ""
