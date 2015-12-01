@@ -28,25 +28,25 @@ module Risu
 	module Renderers
 		class PDFRenderer
 
-			#@todo 
+			#@TODO 
 			def initialize ()
 					
 
 			end
 
-			# @todo comment
+			# @TODO comment
 			#
 			def text text, *args
 				@output.text text, args
 			end
 
-			# @todo comment
+			# @TODO comment
 			#
 			def font_size x
 				true
 			end
 
-			# @todo comment
+			# @TODO comment
 			#
 			def start_new_page
 				true
