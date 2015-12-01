@@ -152,7 +152,7 @@ module Risu
 				end
 			end
 
-			# @todo comment
+			# @TODO comment
 			def default_credential_plugins
 				[
 					10862, 25927, 32315, 65950, 39364, 33852, 11454, 51369,
@@ -161,7 +161,7 @@ module Risu
 				].uniq
 			end
 
-			# @todo comment
+			# @TODO comment
 			def has_default_credentials?
 				plugins = default_credential_plugins
 				default_cred = false
@@ -175,7 +175,7 @@ module Risu
 				return default_cred
 			end
 
-			# @todo comment
+			# @TODO comment
 			def default_credentials_section
 				heading1 "Default Credentials"
 
@@ -183,7 +183,7 @@ module Risu
 				text "\n"
 			end
 
-			# @todo comment
+			# @TODO comment
 			def default_credentials_appendix_section
 				if !has_default_credentials?
 					return

@@ -34,6 +34,7 @@ module Risu
 			class << self
 
 				#Generates a full string of all the references
+				# @TODO automate references to parser references to see if all are covered
 				#
 				# @returns [String] of all the references with in-line formatting for
 				# direct output to the report
@@ -219,7 +220,7 @@ module Risu
 				def apple_sa
 					where(:reference_name => "apple-sa").select('DISTINCT value')
 				end
-				
+
 				#
 				#
 				def icsa
@@ -236,7 +237,7 @@ module Risu
 				#
 				def usn
 					where(:reference_name => "usn").select('DISTINCT value')
-				end	
+				end
 			end
 		end
 	end

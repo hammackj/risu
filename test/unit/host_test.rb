@@ -68,6 +68,7 @@ class HostTest < ActiveSupport::TestCase
 	end
 
 	test "returns 163 for Host.windows_os_graph_text.length" do
+		#puts "|#{Host.windows_os_graph_text}|"
 		assert Host.windows_os_graph_text.length == 163, "GOT #{Host.windows_os_graph_text} - #{Host.windows_os_graph_text.length}"
 	end
 

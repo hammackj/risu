@@ -109,7 +109,7 @@ module Risu
       end
 
       #
-      # @todo comments
+      # @TODO comments
       #
       def has_data?
         nt = Host.os_windows_nt.to_a.size

@@ -28,20 +28,20 @@ module Risu
 	module Renderers
 		class CSVRenderer
 
-			# @todo comment
+			# @TODO comment
 			#
 			def self.generate(output_file, &block)
 				csv = new(output_file, &block)
 			end
 
-			# @todo comment
+			# @TODO comment
 			#
 			def initialize(output_file, &block)
 				@output_file = output_file
 				instance_eval(&block)
 			end
 
-			# @todo comment
+			# @TODO comment
 			#
 			def text text, *args
 				File.open(@output_file, "a+") do |file|

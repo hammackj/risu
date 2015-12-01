@@ -31,7 +31,7 @@ module Risu
 		#
 		class TemplateBase
 			
-			# @todo comment
+			# @TODO comment
 			attr_accessor :output
 
 			# Accessors for template meta-data

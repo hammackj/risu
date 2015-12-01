@@ -76,7 +76,7 @@ module Risu
 
 			# Validates that a template is a valid template
 			#
-			# @todo look at refactoring this to valid?(template)
+			# @TODO look at refactoring this to valid?(template)
 			#
 			# @param template The template to validate
 			#

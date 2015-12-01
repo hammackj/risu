@@ -104,7 +104,7 @@ module Risu
 						plugin_name = Plugin.find_by_id(plugin.plugin_id).plugin_name
 
 						#We need to filter the names a little to make everything look nice on the graph
-						#@todo this concept should be added to the database via a yaml file
+						#@TODO this concept should be added to the database via a yaml file
 						plugin_name = case plugin.plugin_id
 							when 35362 then plugin_name.split(":")[0]
 							when 34477 then plugin_name.split(":")[0]

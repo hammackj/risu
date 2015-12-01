@@ -60,12 +60,12 @@ module Risu
 
 				@output.text "These critical and highs were discovered on #{Host.unique_hosts_with_critical_and_high_count} unique hosts. #{Item.risk_percent_rounded_text} of the total assessed computers were found to have an critical or high finding."
 
-				# @todo need vulnerable host count
+				# @TODO need vulnerable host count
 
 				@output.text "\n\n\n"
 
 				# Top Hosts with Findings
-				#@todo need this call
+				#@TODO need this call
 
 				@output.text "\n\n\n"
 
@@ -147,7 +147,7 @@ end
 # 				@output.text "\n\n\n"
 
 # 				# Top Hosts with Findings
-# 				#@todo need this call
+# 				#@TODO need this call
 
 # 				@output.text "\n\n\n"
 

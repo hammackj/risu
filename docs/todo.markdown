@@ -17,7 +17,9 @@
 - Add windows 10 support for Host model
 
 ## 1.8.x (??)
-- Do all the @todo / @fix  items!
+- template arguments
+- remove OSVDB|BID from tech findings template
+- Do all the @TODO / @fix  items!
 - All installation documents have been updated on the wiki
 - **BUG** dropping tables when there are no tables causes stacktrace, catch this.
 - move project page on arxopia/project/risu to hammackj/risu

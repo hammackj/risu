@@ -28,19 +28,19 @@ module Risu
 	module Renderers
 		class NilRenderer
 
-			# @todo comment
+			# @TODO comment
 			#
 			def text text, *args
 				true
 			end
 
-			# @todo comment
+			# @TODO comment
 			#
 			def font_size x
 				true
 			end
 
-			# @todo comment
+			# @TODO comment
 			#
 			def start_new_page
 				true

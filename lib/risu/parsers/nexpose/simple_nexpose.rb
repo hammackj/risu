@@ -44,7 +44,7 @@ module Risu
 						"architecture" => nil
 					}
 
-				# @todo comment
+				# @TODO comment
 				#
 				def initialize
 					@vals = Hash.new
@@ -52,7 +52,7 @@ module Risu
 					@report = Report.create
 				end
 
-				# @todo comment
+				# @TODO comment
 				#
 				def on_start_element(element, attributes)
 					@tag = element
