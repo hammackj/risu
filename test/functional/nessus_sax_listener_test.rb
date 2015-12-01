@@ -167,7 +167,6 @@
  	end
 
  	test "return Everything for Policy.last.name" do
-		puts "#{Policy.all.inspect}"
  		assert Policy.last.name == "Everything", "GOT #{Policy.last.name}"
  	end
 
