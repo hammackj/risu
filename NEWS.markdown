@@ -1,11 +1,11 @@
 # News
 
-# 1.7.6 (December 31, 2015)
-- **API CHANGES** Several APIs have been marked deprecated they will be moved in 1.8.0. These changes are mostly to clean up the Models. Right now the models are very fat and interdependent on things they shouldn't. Some of the notable changes will be:
+# 1.7.6 (November 29, 2015)
+- **API CHANGES** Several APIs have been marked deprecated they will be moved in 1.8.0. Stubs will be left behind with warnings until 1.9.0. These changes are mostly to clean up the Models. Right now the models are very fat and interdependent on things they shouldn't. Some of the notable changes will be:
 	- Graphs will be moved to Risu::Graphs
 	- TemplateHelpers will be moved to Risu::TemplateHelpers
 - When new tags are encountered they are reported after each file now, as a uniqued list. This removes the spam of new tags.
-- Updated the dependent gems to newer versions
+- Updated the dependent gems to the latest versions and removed exact version pinning.
 	- rails 4.2.5
 	- libxml-ruby 2.8.0
 	- prawn 2.0.2
@@ -15,6 +15,9 @@
 	- sqlite3 1.3.11
 	- nokogiri 1.6.6.4
 - Massive updates to unit tests
+- Post Processing
+	- updated openssh plugin list
+	- updated vmware esxi plugin list
 
 # 1.7.5 (November 6, 2015)
 - Added initial test for HostProperties
@@ -98,7 +101,7 @@
 		- windows_os_graph_has_data()
 	- HostProperty Model
 		- Added pcidss:insecure_http_methods tag
-		- Added cpe-XXX, where XXX is a digit of the number of CPE found for that host.
+		- Added cpe-XXXX, where XXXX is a digit of the number of CPE found for that host.
 		- Added LastUnauthenticatedResults tag
 		- Added LastAuthenticatedResults tag
 		- Added Credentialed_Scan tag
