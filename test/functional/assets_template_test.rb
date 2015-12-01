@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2015 Arxopia LLC.
+# Copyright (c) 2010-2016 Arxopia LLC.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ class AssetsTemplateTest < ActiveSupport::TestCase
 
 	def setup
 		setup_test_database
-		
+
 		@file_name = "/tmp/assets.pdf"
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"
 

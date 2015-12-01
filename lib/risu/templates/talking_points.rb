@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2015 Arxopia LLC.
+# Copyright (c) 2010-2016 Arxopia LLC.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -82,7 +82,7 @@ module Risu
 end
 
 
-# # Copyright (c) 2010-2015 Arxopia LLC.
+# # Copyright (c) 2010-2016 Arxopia LLC.
 # # All rights reserved.
 # #
 # # Redistribution and use in source and binary forms, with or without
