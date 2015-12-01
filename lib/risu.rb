@@ -27,10 +27,12 @@
 module Risu
 	APP_NAME = "risu"
 	VERSION = "1.7.6"
-	# @TODO move graph variables to graphs.rb
+	HOME_PAGE = "https://github.com/arxopia/risu"
+	# @TODO 1.8 - move graph variables to graphs.rb
 	GRAPH_WIDTH = 750
 	#                  red     orange  yellow  green    blue   purple        grey           pink
 	GRAPH_COLORS = %w(#d2403f #ec9241 #fcc343 #50ad51 #397bbb #8E6B8E black #cccccc brown #e52d89)
+
 	GITHUB = "http://github.com/arxopia/risu"
 	EMAIL = "risu@arxopia.com"
 	CONFIG_FILE = "./risu.cfg"
