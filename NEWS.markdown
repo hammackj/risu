@@ -1,6 +1,6 @@
 # News
 
-# 1.7.6 (November 29, 2015)
+# 1.7.6 (December 31, 2015)
 - **API CHANGES** Several APIs have been marked deprecated they will be moved in 1.8.0. Stubs will be left behind with warnings until 1.9.0. These changes are mostly to clean up the Models. Right now the models are very fat and interdependent on things they shouldn't. Some of the notable changes will be:
 	- Graphs will be moved to Risu::Graphs
 	- TemplateHelpers will be moved to Risu::TemplateHelpers
