@@ -29,6 +29,12 @@ require 'test_helper'
 class HostTest < ActiveSupport::TestCase
 	def setup
 		setup_test_database
+
+		@report = Report
+		@report.title = "Test"
+		@report.author = "hammackj"
+		@report.company = "None"
+		@report.classification = "None"
 	end
 
 	test "returns 10.0.0.1 for Host.ip" do
@@ -67,9 +73,8 @@ class HostTest < ActiveSupport::TestCase
 		assert Host.windows_os_graph.class == StringIO
 	end
 
-	test "returns 163 for Host.windows_os_graph_text.length" do
-		#puts "|#{Host.windows_os_graph_text}|"
-		assert Host.windows_os_graph_text.length == 163, "GOT #{Host.windows_os_graph_text} - #{Host.windows_os_graph_text.length}"
+	test "returns 166 for Host.windows_os_graph_text.length" do
+		assert Host.windows_os_graph_text.length == 154, "GOT #{Host.windows_os_graph_text} - #{Host.windows_os_graph_text.length}"
 	end
 
 	test "returns 0 for Host.unsupported_os_windows.length" do
@@ -88,8 +93,8 @@ class HostTest < ActiveSupport::TestCase
 		assert Host.unsupported_os_freebsd.length == 0, "GOT #{Host.unsupported_os_freebsd.length}"
 	end
 
-	test "returns 199 for Host.other_os_graph_text.length" do
-		assert Host.other_os_graph_text.length == 199, "GOT #{Host.other_os_graph_text.length}"
+	test "returns 202 for Host.other_os_graph_text.length" do
+		assert Host.other_os_graph_text.length == 190, "GOT #{Host.other_os_graph_text.length}"
 	end
 
 	test "should return 2 for Host.top_n_vulnerable(2)" do

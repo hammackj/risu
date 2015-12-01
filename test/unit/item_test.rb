@@ -29,6 +29,12 @@ require 'test_helper'
 class ItemTest < ActiveSupport::TestCase
 	def setup
 		setup_test_database
+
+		@report = Report
+		@report.title = "Test"
+		@report.author = "hammackj"
+		@report.company = "None"
+		@report.classification = "None"
 	end
 
 	test "returns 13 risks for Item.risks.count" do
@@ -130,8 +136,8 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.risks_by_service_graph_text.length == 220, "GOT #{Item.risks_by_service_graph_text.length}"
 	end
 
-	test "returns 1088 for Item.risks_by_severity_graph_text.length" do
-		assert Item.risks_by_severity_graph_text.length == 1088, "GOT #{Item.risks_by_severity_graph_text} - #{Item.risks_by_severity_graph_text.length}"
+	test "returns 1079 for Item.risks_by_severity_graph_text.length" do
+		assert Item.risks_by_severity_graph_text.length == 1079, "GOT #{Item.risks_by_severity_graph_text} - #{Item.risks_by_severity_graph_text.length}"
 	end
 
 	test "returns 12 for Item.all_risks_unique_sorted.to_a.count" do
