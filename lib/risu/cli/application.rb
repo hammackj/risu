@@ -49,7 +49,7 @@ module Risu
 
 			# Creates a blank configuration file
 			#
-			# @todo does this need exception handling
+			# @TODO does this need exception handling
 			#
 			# @param file Path to configuration file
 			def create_config(file=CONFIG_FILE)
@@ -126,7 +126,7 @@ module Risu
 
 					puts "[*] Dropping tables" if direction == :down
 
-				#@todo temp hack, fix this by checking the schema on :up or :down for exiting data
+				#@TODO temp hack, fix this by checking the schema on :up or :down for exiting data
 				rescue SQLite3::SQLException => sqlitex
 					puts "#{sqlitex.message}\n #{sqlitex.backtrace}" if @options[:debug]
 					continue
@@ -145,7 +145,7 @@ module Risu
 			end
 
 			# Establishes an [ActiveRecord::Base] database connection
-			# @todo better comments
+			# @TODO better comments
 			def db_connect
 				begin
 					if @database["adapter"] == nil
@@ -252,7 +252,7 @@ module Risu
 							@options[:list_postprocesses] = option
 						end
 
-						# @todo THIS NO WORK
+						# @TODO THIS NO WORK
 						#opt.on('--create-template NAME', "Creates a template file in the ~/.risu/templates directory") do |option|
 						#	if File.exists?(option) == true
 						#		puts "[!] Template "
@@ -474,7 +474,7 @@ module Risu
 					end
 
 					printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
-					puts nessus_doc.new_tags.uniq.join("\n") #@todo add a verbose check
+					puts nessus_doc.new_tags.uniq.join("\n") #@TODO add a verbose check
 				rescue Interrupt => i
 					puts "[!] Parse canceled!"
 					exit(1)
