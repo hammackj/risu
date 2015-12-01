@@ -177,8 +177,7 @@ end
 def debug_console
   @app = Risu::CLI::Application.new
   @app.consolize do
-    #puts Risu::CLI::Banner
-    #puts "#{APP_NAME} Console v#{VERSION}"
+    
   end
   exit
 end
