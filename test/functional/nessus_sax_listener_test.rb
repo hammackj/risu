@@ -4,14 +4,14 @@
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
 #
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#     * Neither the name of the Arxopia LLC nor the names of its contributors
-#     	may be used to endorse or promote products derived from this software
-#     	without specific prior written permission.
+#		 * Redistributions of source code must retain the above copyright
+#			 notice, this list of conditions and the following disclaimer.
+#		 * Redistributions in binary form must reproduce the above copyright
+#			 notice, this list of conditions and the following disclaimer in the
+#			 documentation and/or other materials provided with the distribution.
+#		 * Neither the name of the Arxopia LLC nor the names of its contributors
+#		 	may be used to endorse or promote products derived from this software
+#		 	without specific prior written permission.
 #
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -76,7 +76,7 @@
 								xml.text "GET"
 							end
 
-                            xml.tag(:name => "UNDEFINED_HOST_PROPERTY") do
+							xml.tag(:name => "UNDEFINED_HOST_PROPERTY") do
 								xml.text "UNDEFINED_HOST_PROPERTY"
 							end
 						end
@@ -92,50 +92,51 @@
 								xml.text "c89122a07b0ea7087a0c712d711a07b7"
 							end
 
-              xml.agent "all"
+							xml.agent "all"
 
-              xml.send(:"cm:compliance-info", "cm:compliance-info")
-              xml.send(:"cm:compliance-reference", "cm:compliance-reference")
-              xml.send(:"cm:compliance-see-also", "cm:compliance-see-also")
-              xml.send(:"cm:compliance-solution", "cm:compliance-solution")
+							xml.send(:"cm:compliance-info", "cm:compliance-info")
+							xml.send(:"cm:compliance-reference", "cm:compliance-reference")
+							xml.send(:"cm:compliance-see-also", "cm:compliance-see-also")
+							xml.send(:"cm:compliance-solution", "cm:compliance-solution")
 
-              xml.send(:"UNDEFINED_ELEMENT", "UNDEFINED_ELEMENT")
+							xml.send(:"UNDEFINED_ELEMENT", "UNDEFINED_ELEMENT")
 						end
 					end
 				end
 			end
 		end
 
-    builder.to_xml
-    end
+		builder.to_xml
+		end
 
-    def setup
-        setup_test_database
-        xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
-        @parser = LibXML::XML::SaxParser.string xml
-        @parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
-        @parser.parse
-    end
+		def setup
+				setup_test_database
+				xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
 
-     test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_info == cm:compliance-info" do
-         assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info == "cm:compliance-info", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info}"
-    end
+				@parser = LibXML::XML::SaxParser.string xml
+				@parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
+				@parser.parse
+		end
 
-    test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_reference == cm:compliance-reference" do
-        assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference == "cm:compliance-reference", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference}"
-    end
+		 test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_info == cm:compliance-info" do
+				 assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info == "cm:compliance-info", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info}"
+		end
 
-    test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_see_also == cm:compliance-see-also" do
-        assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also == "cm:compliance-see-also", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also}"
-    end
+		test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_reference == cm:compliance-reference" do
+				assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference == "cm:compliance-reference", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference}"
+		end
 
-    test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_solution == cm:compliance-solution" do
-        assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution == "cm:compliance-solution", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution}"
-    end
+		test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_see_also == cm:compliance-see-also" do
+				assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also == "cm:compliance-see-also", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also}"
+		end
 
-    test "Attachment.first.name == 'ts_screenshot.jpg'" do
-        assert Attachment.first.name == 'ts_screenshot.jpg', "GOT #{Attachment.first.name}"
-    end
+		test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_solution == cm:compliance-solution" do
+				assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution == "cm:compliance-solution", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution}"
+		end
+
+		test "Attachment.first.name == 'ts_screenshot.jpg'" do
+				assert Attachment.first.name == 'ts_screenshot.jpg', "GOT #{Attachment.first.name}"
+		end
 
 	test "Attachment.first.ttype == 'image/bmp'" do
 		assert Attachment.first.ttype == 'image/bmp', "GOT #{Attachment.first.ttype}"
@@ -145,9 +146,9 @@
 		assert Attachment.first.ahash == 'c89122a07b0ea7087a0c712d711a07b7', "GOT #{Attachment.first.ahash}"
 	end
 
-    test "return 2011-07-07 14:49:31 -0500 for Host.where(:name => '69.69.69.69').first.end" do
-        assert Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d") == "20110707", "GOT #{Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d")}"
-    end
+	test "return 2011-07-07 14:49:31 -0500 for Host.where(:name => '69.69.69.69').first.end" do
+			assert Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d") == "20110707", "GOT #{Host.where(:name => "69.69.69.69").first.end.strftime("%Y%m%d")}"
+	end
 
  	test "return 1 Item for Host 69.69.69.69" do
  		assert Host.where(:name => "69.69.69.69").first.items.count == 1, "GOT #{Host.where(:name => "69.69.69.69").first.items.count}"
@@ -157,15 +158,16 @@
  		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "cert-cc").first.value == "CA-1997-22", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "cert-cc").first.value}"
  	end
 
-    test "return 'all' for Host.where(:name => 69.69.69.69).first.items.first.plugin.agent" do
- 		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.agent == "all", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.agent}"
- 	end
+	test "return 'all' for Host.where(:name => 69.69.69.69).first.items.first.plugin.agent" do
+		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.agent == "all", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.agent}"
+	end
 
  	test "return USN:1752-1 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => usn).first.value" do
  		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value == "USN:1752-1", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value}"
  	end
 
  	test "return Everything for Policy.last.name" do
+		puts "#{Policy.all.inspect}"
  		assert Policy.last.name == "Everything", "GOT #{Policy.last.name}"
  	end
 
@@ -195,9 +197,9 @@
 
  	test "return GET for Host.where(:name => 69.69.69.69)...pcidss:insecure_http_methods" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value == "GET", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value}"
-    end
+		end
 
-    test "return 2 for Plugin.where(:exploited_by_malware => 'true').count" do
-        assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
-    end
+		test "return 2 for Plugin.where(:exploited_by_malware => 'true').count" do
+				assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
+		end
  end
