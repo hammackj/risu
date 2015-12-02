@@ -157,6 +157,9 @@ module Risu
 
 				# Negation query for all hosts with a Windows 2000 based Operating system
 				#
+				#
+				# @TODO update to use rails not syntax
+				#
 				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_2k
 					where("os NOT LIKE '%Windows 2000%'")
@@ -170,6 +173,9 @@ module Risu
 				end
 
 				# Negation query for all hosts with a Windows XP based Operating system
+				#
+				#
+				# @TODO update to use rails not syntax
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_xp
@@ -185,6 +191,9 @@ module Risu
 
 				# Negation query for all hosts with a Windows Server 2003 based Operating system
 				#
+				#
+				# @TODO update to use rails not syntax
+				#
 				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_2k3
 					where("os NOT LIKE '%Windows Server 2003%'")
@@ -198,6 +207,9 @@ module Risu
 				end
 
 				# Negation query for all hosts with a Windows Vista based Operating system
+				#
+				#
+				# @TODO update to use rails not syntax
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_vista
@@ -213,6 +225,9 @@ module Risu
 
 				# Negation query for all hosts with a Windows Server 2008 based Operating system
 				#
+				#
+				# @TODO update to use rails not syntax
+				#
 				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_2k8
 					where("os NOT LIKE '%Windows Server 2008%'")
@@ -226,6 +241,9 @@ module Risu
 				end
 
 				# Negation query for all hosts with a Windows Server 2012 based Operating system
+				#
+				#
+				# @TODO update to use rails not syntax
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_2k12
@@ -241,6 +259,9 @@ module Risu
 
 				# Negation query for all hosts with a Windows 7 based Operating system
 				#
+				#
+				# @TODO update to use rails not syntax
+				#
 				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_7
 					where("os NOT LIKE '%Windows 7%'")
@@ -254,6 +275,8 @@ module Risu
 				end
 
 				# Negation query for all hosts with a Windows 8 based Operating system
+				#
+				# @TODO update to use rails not syntax
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def not_os_windows_8
@@ -644,6 +667,7 @@ module Risu
 				end
 
 				# @TODO comments
+				# @deprecated
 				def unsupported_os_windows
 					win_95_text = ""
 					win_98_text = ""
@@ -688,6 +712,7 @@ module Risu
 				end
 
 				# @TODO comments
+				# @deprecated
 				def unsupported_os_aix
 					text = ""
 					aix = Host.os_aix.where("OS LIKE 'AIX 5.%'")
@@ -700,6 +725,7 @@ module Risu
 				end
 
 				# @TODO comments
+				# @deprecated
 				def unsupported_os_freebsd
 					text = ""
 					freebsd = Host.os_freebsd.where("OS LIKE 'FreeBSD 5.%'")
@@ -712,6 +738,7 @@ module Risu
 
 				# @TODO comments
 				#turn the os counts into blocks
+				# @deprecated
 				def other_os_graph_text
 					text = "This graph shows the percentage of the different Non-Windows based operating systems " +
 					"found on the #{Report.title} network.\n\n"
