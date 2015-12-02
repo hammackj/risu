@@ -1,5 +1,9 @@
 # Risu Windows Setup Instructions
 
+**This is NOT current, I doubt it will work!**
+
+**I recommend intalling in a VM or with Docker for now.**
+
 Steve Lodin <swlodin@gmail.com>
 
 
