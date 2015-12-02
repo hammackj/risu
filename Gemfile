@@ -1,6 +1,6 @@
+source "https://rubygems.org"
 gemspec
 
-# source "https://rubygems.org"
 #
 # gem 'simplecov', '~> 0.11.0'
 # gem 'yard', '~> 0.8.0'
