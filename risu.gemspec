@@ -27,18 +27,18 @@
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), 'lib'))
 
-require 'risu'
+require 'risu/version'
 
 Gem::Specification.new do |s|
-	s.name = "#{Risu::APP_NAME}"
+	s.name = Risu::APP_NAME
 	s.version = Risu::VERSION
 	s.homepage = Risu::HOME_PAGE
-	s.summary = "#{Risu::APP_NAME}"
-	s.description = "#{Risu::APP_NAME} is a Nessus .nessus XML parser and report generation tool"
-	s.license = "BSD"
-
 	s.author = "Jacob Hammack"
 	s.email = Risu::EMAIL
+
+	s.summary = Risu::APP_NAME
+	s.description = "#{Risu::APP_NAME} is a Nessus .nessus XML parser and report generation tool"
+	s.license = "BSD"
 
 	s.files	= Dir['[A-Z]*'] + Dir['lib/**/*'] + ['risu.gemspec']
 	s.bindir = "bin"
@@ -59,8 +59,8 @@ Gem::Specification.new do |s|
 	s.add_runtime_dependency 'sqlite3', '~> 1.3', '>= 1.3.11'
 	s.add_runtime_dependency 'nokogiri', '~> 1.6', '>= 1.6.7'
 
-	s.add_development_dependency 'simplecov', '~> 0.11', '>= 0.11.0'
+	s.add_development_dependency 'simplecov', '~> 0.11', '>= 0.11.1'
 	s.add_development_dependency 'yard', '~> 0.8', '>= 0.8.0'
-	s.add_development_dependency 'minitest', '~> 5.0'
+	s.add_development_dependency 'minitest', '~> 5.0', '>= 5.8.3'
 	s.add_development_dependency 'test-unit', '~> 3.1', ">= 3.1.5"
 end
