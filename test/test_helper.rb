@@ -4,14 +4,14 @@
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
 #
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#     * Neither the name of the Arxopia LLC nor the names of its contributors
-#     	may be used to endorse or promote products derived from this software
-#     	without specific prior written permission.
+#		 * Redistributions of source code must retain the above copyright
+#			 notice, this list of conditions and the following disclaimer.
+#		 * Redistributions in binary form must reproduce the above copyright
+#			 notice, this list of conditions and the following disclaimer in the
+#			 documentation and/or other materials provided with the distribution.
+#		 * Neither the name of the Arxopia LLC nor the names of its contributors
+#		 	may be used to endorse or promote products derived from this software
+#		 	without specific prior written permission.
 #
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -25,8 +25,8 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # Disable Coverage always on
-#require 'simplecov'
-#SimpleCov.start
+require 'simplecov'
+SimpleCov.start
 
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), '../lib'))
@@ -44,94 +44,94 @@ require 'risu'
 ActiveSupport::TestCase.test_order = :sorted
 
 def config_sqlite
-  {
-    "report" =>
-      {
-        "author" => "TEST",
-        "title" => "TEST",
-        "company" => "TEST",
-        "classification" => "TEST",
-      },
-      "database" =>
-      {
-        "adapter" => "sqlite3",
-        "database" => "test_data/test.db"
-      }
-  }.to_yaml
+	{
+		"report" =>
+			{
+				"author" => "TEST",
+				"title" => "TEST",
+				"company" => "TEST",
+				"classification" => "TEST",
+			},
+			"database" =>
+			{
+				"adapter" => "sqlite3",
+				"database" => "test_data/test.db"
+			}
+	}.to_yaml
 end
 
 def config_sqlite_memory
-  {
-    "report" =>
-      {
-        "author" => "TEST",
-        "title" => "TEST",
-        "company" => "TEST",
-        "classification" => "TEST",
-      },
-      "database" =>
-      {
-        "adapter" => "sqlite3",
-        "database" => ":memory:"
-      }
-  }.to_yaml
+	{
+		"report" =>
+			{
+				"author" => "TEST",
+				"title" => "TEST",
+				"company" => "TEST",
+				"classification" => "TEST",
+			},
+			"database" =>
+			{
+				"adapter" => "sqlite3",
+				"database" => ":memory:"
+			}
+	}.to_yaml
 end
 
 def config_parser_sqlite
-  {
-    "report" =>
-      {
-        "author" => "TEST",
-        "title" => "TEST",
-        "company" => "TEST",
-        "classification" => "TEST",
-      },
-      "database" =>
-      {
-        "adapter" => "sqlite3",
-        "database" => "test_data/parser_test.db"
-      }
-  }.to_yaml
+	{
+		"report" =>
+			{
+				"author" => "TEST",
+				"title" => "TEST",
+				"company" => "TEST",
+				"classification" => "TEST",
+			},
+			"database" =>
+			{
+				"adapter" => "sqlite3",
+				"database" => "test_data/parser_test.db"
+			}
+	}.to_yaml
 end
 
 def config_mysql
-  {
-    "report" =>
-      {
-        "author" => "TEST",
-        "title" => "TEST",
-        "company" => "TEST",
-        "classification" => "TEST",
-      },
-      "database" =>
-      {
-        "adapter" => "mysql2",
-        "database" => "risu_test",
-        "host" => "localhost",
-        "username" => "risu",
-        "password" => "risurisu"
-      }
-  }.to_yaml
+	{
+		"report" =>
+			{
+				"author" => "TEST",
+				"title" => "TEST",
+				"company" => "TEST",
+				"classification" => "TEST",
+			},
+			"database" =>
+			{
+				"adapter" => "mysql2",
+				"database" => "risu_test",
+				"host" => "localhost",
+				"username" => "risu",
+				"password" => "risurisu"
+			}
+	}.to_yaml
 end
 
 def config_parser_mysql
-  {
-    "report" =>
-      {
-        "author" => "TEST",
-        "title" => "TEST",
-        "company" => "TEST",
-        "classification" => "TEST",
-      },
-      "database" =>
-      {
-        "adapter" => "mysql2",
-        "database" => "risu_parser_test",
-        "host" => "localhost",
-        "username" => "risu",
-        "password" => "risurisu"
-      }
-  }.to_yaml
+	{
+		"report" =>
+			{
+				"author" => "TEST",
+				"title" => "TEST",
+				"company" => "TEST",
+				"classification" => "TEST",
+			},
+			"database" =>
+			{
+				"adapter" => "mysql2",
+				"database" => "risu_parser_test",
+				"host" => "localhost",
+				"username" => "risu",
+				"password" => "risurisu"
+			}
+	}.to_yaml
 end
 
 @app = nil
@@ -162,8 +162,8 @@ def setup_test_database
 		end
 
 		#@app.migrate(:up)
-    #@app.migrate(:down)
-    @app.migrate(:up)
+		#@app.migrate(:down)
+		@app.migrate(:up)
 
 		fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
 		fixtures.each do |fixture_file|
@@ -175,11 +175,11 @@ def setup_test_database
 end
 
 def debug_console
-  @app = Risu::CLI::Application.new
-  @app.consolize do
-    
-  end
-  exit
+	@app = Risu::CLI::Application.new
+	@app.consolize do
+
+	end
+	exit
 end
 
 #setup_test_database()
