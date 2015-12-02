@@ -46,4 +46,18 @@ class ConsoleTest < ActiveSupport::TestCase
 	test "should return true for Application.test_connection" do
 		assert @app_test.test_connection?[0] == true
 	end
+
+	#load_config from file
+	#load_config from file that doesn't exist
+	#load_config from memory
+
+	#migrate up
+	#migrate down
+	
+	#db_connect
+	#consoleize
+	#parse_options
+	#run
+	#process_post_processing
+	#parse_file
 end
