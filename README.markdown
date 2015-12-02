@@ -1,8 +1,6 @@
-# risu [![Gem Version](https://badge.fury.io/rb/risu.png)](http://badge.fury.io/rb/risu) [![Build Status](https://travis-ci.org/arxopia/risu.png?branch=master)](https://travis-ci.org/arxopia/risu)  [![Code Climate](https://codeclimate.com/github/arxopia/risu/badges/gpa.svg)](https://codeclimate.com/github/arxopia/risu) [![Inline docs](http://inch-ci.org/github/arxopia/risu.png)](http://inch-ci.org/github/arxopia/risu)
+# risu [![Gem Version](https://badge.fury.io/rb/risu.png)](http://badge.fury.io/rb/risu) [![Build Status](https://travis-ci.org/arxopia/risu.png?branch=master)](https://travis-ci.org/arxopia/risu)  [![Code Climate](https://codeclimate.com/github/arxopia/risu/badges/gpa.svg)](https://codeclimate.com/github/arxopia/risu) [![Inline docs](http://inch-ci.org/github/arxopia/risu.png)](http://inch-ci.org/github/arxopia/risu) [![Join the chat at https://gitter.im/arxopia/risu](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/arxopia/risu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Risu is [Nessus](http://www.nessus.org) parser, that converts the .nessus xml into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
-
-Version **1.7.6** is the current release.
+Risu is [Nessus](http://www.nessus.org) parser, that converts Nessus .nessus xml files into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
 * [Requirements](#requirements)
 * [Installation](#installation)
@@ -14,7 +12,7 @@ Version **1.7.6** is the current release.
 ## Requirements
 
 ### Ruby
-Risu has been tested with ruby-1.9.3-p392, ruby-2.0.0, ruby-2.1.0 and ruby-2.2.3. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
+Risu has been tested with ruby-2.0.0, ruby-2.1.0 and ruby-2.2.3. Please try to use one of these versions if possible. I recommend using RVM to setup your ruby environment you can get it [here](https://rvm.beginrescueend.com/).
 
 ### RubyGems
 Risu relies heavily on [RubyGems](http://rubygems.org/) to install other dependencies I highly recommend using it. RubyGems is included by default in the 1.9.x versions of [Ruby](http://ruby-lang.org/).
@@ -32,15 +30,23 @@ Risu relies heavily on [RubyGems](http://rubygems.org/) to install other depende
 ## Installation
 Installation is really easy just gem install!
 
-    % gem install risu
+	% gem install risu
 
-### Developmental Requirements
+### Runtime Requirements
 
 These are all available through [RubyGems](http://rubygems.org/). The should be installed automatically when you install risu, If not this command will install them all:
 
 	% gem install rmagick gruff prawn yard mysql2 libxml-ruby rails sqlite3 logger yaml nokogiri
 
-**You my need sudo/root access depending on your system setup**
+**You my need sudo/root access depending on your system setup, Please see detailed install guides for your system!**
+
+### Developmental Requirements
+
+These are all available through [RubyGems](http://rubygems.org/). These are required to run the tests, generate the documentation and test coverage. This command will install them all:
+
+	% gem install simplecov yard minitest test-unit
+
+**You my need sudo/root access depending on your system setup, Please see detailed install guides for your system!**
 
 Any database that ActiveRecord supports should work. Risu has been tested with [MySQL](http://www.mysql.com/) and [SQLite3](http://sqlite.org/).
 
@@ -66,7 +72,7 @@ The following is some of the basic usage for risu. You must setup the database b
 
 
 ## Viewing Data
-The data can be viewed with a query browser available for your database.
+The data can be viewed with any query browser available for your database of choice.
 
 ### Generating Reports
 To generate a report please execute the following after the the data is parsed into the database.
@@ -83,7 +89,7 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 	 _ __(_)___ _   _
 	| '__| / __| | | |
 	| |  | \__ \ |_| |
-	|_|  |_|___/\__,_|
+	|_|  |_|___/\__,_|_
 
 
 	risu Console v1.7.2
@@ -119,7 +125,7 @@ Several templates are included:
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See the 'template' example for creating your own template.
 
 # Contributing
-If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on [github](http://github.com/arxopia/risu) and make the changes in your fork and the submit a pull request to the project on the dev branch.
+If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on [github](http://github.com/arxopia/risu) and make the changes in your fork and the submit a pull request to the project on the dev branch. Please include unit tests for anything non trivial.
 
 # Issues
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/arxopia/risu/issues).
