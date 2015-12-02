@@ -1,6 +1,7 @@
 # News
 
 # 1.7.6 (December 31, 2015)
+- **NOTICE** Upon next major release, "1.8.0" ruby-2.2.1+ will only be supported. This is due to rails5 dropping support for all previous versions. Risu 1.8.0 will be release shortly after rails5 with this change.
 - **API CHANGES** Several APIs have been marked deprecated they will be moved in 1.8.0. Stubs will be left behind with warnings until 1.9.0. These changes are mostly to clean up the Models. Right now the models are very fat and interdependent on things they shouldn't. Some of the notable changes will be:
 	- Graphs will be moved to Risu::Graphs
 	- TemplateHelpers will be moved to Risu::TemplateHelpers
@@ -10,14 +11,14 @@
 	- libxml-ruby 2.8.0
 	- prawn 2.0.2
 	- gruff 0.6.0
-	- mysql2 0.4.1
+	- mysql2 0.4.2
 	- rmagick 2.15.4
 	- sqlite3 1.3.11
-	- nokogiri 1.6.6.4
+	- nokogiri 1.6.7
 - Massive updates to unit tests
 - Post Processing
-	- updated openssh plugin list
-	- updated vmware esxi plugin list
+	- Updated OpenSSH plugin list
+	- Updated VMware ESXi plugin list
 
 # 1.7.5 (November 6, 2015)
 - Added initial test for HostProperties
