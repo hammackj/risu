@@ -39,6 +39,7 @@ module Risu
 	USER_TEMPLATES_DIR = "~/.risu/templates/"
 end
 
+# TODO move these require to another file or move the above metadata to a config.rb
 require 'rails'
 require 'active_record'
 require "active_support"
