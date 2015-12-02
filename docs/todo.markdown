@@ -8,20 +8,37 @@
 # Known Issues
 - http://stackoverflow.com/questions/19040932/rmagick-complaining-about-libmagickcore-5-dylib-not-found-in-osx
 
+- http://www.railsbling.com/posts/fix_nokogiri_warning/
+
 # Road map
 
-## 1.7.7 (??)
-- **TAG** New XML element detected: fedora.
-- Microsoft Windows 2003 Approaching End Of Life - 80120
-- build Contributing doc ex: https://github.com/colszowka/simplecov/blob/master/CONTRIBUTING.md
-- Add windows 10 support for Host model
-
 ## 1.8.x (??)
+- Move Default Credentials related stuff to Risu::TemplateHlpers::DefaultCredentials
+- Add Mock data for
+	- plugin.exploitability_ease == "Exploits are available"
+	- plugin 58133 WSUS data
+	- pci-dss-compliance - passed | failed
+- Screenshots
+	- Risu Console with Host.first
+	- Risu Command line risu -l
+	- Sample Reports from Metasploitable2 Scan
+		- pngs of a few pages
+		- put sample PDFs in docs/sample_reports
+- Create docs/KNOWN_ISSUES.markdown
+	- detail rmagick bug
+	- detail nokogiri warning
+- Move NEWS.markdown to docs/
+- **TAG** New XML element detected: fedora.
+- **BUG** dropping tables when there are no tables causes stacktrace, catch this.
+- Microsoft Windows 2003 Approaching End Of Life - 80120
+- Add windows 10 support
+	- Host model
+	- Graphs
+- build Contributing doc ex: https://github.com/colszowka/simplecov/blob/master/CONTRIBUTING.md
 - template arguments
-- remove OSVDB|BID from tech findings template
+- *remove OSVDB|BID from tech findings template*
 - Do all the @TODO / @fix  items!
 - All installation documents have been updated on the wiki
-- **BUG** dropping tables when there are no tables causes stacktrace, catch this.
 - move project page on arxopia/project/risu to hammackj/risu
 - move unsupported os to Risu::TemplateHelper::UnsupportedOSXXX
 - patch summary plugin - 66334
@@ -41,9 +58,13 @@
 - create template -n --new-template cli option, guided INPUT name, author, description via stdin then generate valid template
 - Ability to load templates for the current working directory
 - configuration management
-- optional report prefix in cfg
+- optional report prefix in risu.cfg
 - Speed of parsing / etc
-- findings_host_detailed template
+- *findings_by_host_summary template*
+	- 1 Host per page
+	- graph vulns per host
+	- top 5 vulns per post
+- *findings_host_detailed template*
   -vuln by host
     -hosts.each
       - host.items.each
@@ -55,36 +76,44 @@
         - reference
         - ports
         - plugin output
-- Service Descriptions
+- add postgres support and tests for it
 - Parse summary # hosts, time / etc
 - ability to query for all remote/local checks and build a report off that
 - concept of template specific settings in the template file
 - test for Item.notable_order_by_cvss_raw
 	- ensure order is correct
-- Malware report template
-	Malware plugin ids =
-	64687, APT1 malware
-	64788, Bit9 signed malware
-	59275, Malicious Process Detection plugin
-	59641, Malicious process detection: unwanted software
-	52670, Website link malware
-	66391, Linux/Cdorked.A backdoor
-	XXXXX, Conficker Worm Detection (uncredentialed check)
-	70767,
-- malware infection report
+- Risu::TemplateHelpers::MalwareHelper
+	- has_malware_finding?
+	- hosts_infected
+	- hosts_not_infected
+- Risu::Graphs::Malware
+		- Infected vs Non-infected Pie Graph
+		-
+- *Malware report template*
+	- Malware plugin ids =
+	- 64687, APT1 malware
+	- 64788, Bit9 signed malware
+	- 59275, Malicious Process Detection plugin
+	- 59641, Malicious process detection: unwanted software
+	- 52670, Website link malware
+	- 66391, Linux/Cdorked.A backdoor
+	- XXXXX, Conficker Worm Detection (uncredentialed check)
+	- 70767,
 - tech findings report each host for plugin output
 - Documents
 	- Template Tutorial
 	- Updating tutorial
+
+## 1.8.1+
 - compliance plugins xml parser test?
 - error check connection fail on the console to mysql
 - migration error handling
   - catch mysql/sqlite/postgres errors during up/down
   - better integration with mysql/post/sqlite
   - catch mysql cannot connect exception
-- CLI
+- Console
 	- list scan in database via cli
-	- add a way to generate reports from the cli
+	- add a way to generate reports from the console
 	- add a way to spawn mysql/psql shell to the database
 	- add tables for the OS data
 	- prompt for password?
@@ -92,7 +121,6 @@
 - finding summary: crit/high spacing
 - filter (uncredentialed check) from the title of MS vulns and put it in the body as a true/false kind of field
 	- remove KB # also
-- add postgres support and test it
 - create an api determining vulnerability % based on the network
 - create an api for creating a vulnerability score per host to show a risk %
 - add scanner info at a table plugin #19506
@@ -127,28 +155,30 @@
 	- html
 	- rtf
 	- OpenOffice.org xml
+- Service Descriptions
 
 ## Ideas
 ### Core
 - bug report info collection option
 - Complete comments for all existing code
 - More text generation from graphs
-- pdf bookmarks
+- pdf bookmarks / Table of Contents
 - rewrite the application class
 - check the config file for \t
 - add create template option
 
 ### Parsers
-- move all pci related host properties to their own table
-- Nexpose SimpleXML parser
+- *Normalize the Schema to accomidate multiple scanners*
+- Move all pci related host properties to their own table
 - Create a Nessus document generator, for testing the parser
 - Add Schema checks to make sure the schema is compatible with the version of risu
-- Add Parser for Nessus SQLite Database Format
-- Add Parser for OpenVas Output
+- Add Importer for Nessus SQLite Database Format
+	- Requires decryption of the sqlite database
+- *Add Parser for OpenVas Output*
 - Add Parser for SecurityCenter Output
 - Add Parser for Nexpose XML [Simple, Detailed]
 - Add Parser for Qualys XML
-- Add Parser for Nmap XML?
+- *Add Parser for Nmap XML*
 - Add Parser for SAINT XML
 
 ###Models
@@ -156,6 +186,7 @@
 - add ibm to the os named_scopes
 
 ###Graphs
+- *Move all graphs under Risu::Graphs*
 - most common os graph
 - vulns by service bar chart
 - most common services graph
@@ -164,6 +195,7 @@
 - stig bar graph for cat 1 / 2 / 3
 - unsupported vs supported os graph
 - Add a CVSS risk factor graph
+	- Item.joins(:plugin).group(:cvss_base_score).order("plugins.cvss_base_score DESC").limit(10).size
 - security risk graph
 - detailed linux graph
 - detailed windows graph
@@ -175,10 +207,15 @@
 ###Reports / Templates
 - Easier way to select the Scan to generate reports from
 - Unsupported OS report
-	- <= XP SP1 = oct 10, 2006
-	- XP SP2 = July 13, 2010
-	- Vista SP0 = APril 13, 2010
-	- Vista SP1 = July 12, 2011
+	- http://windows.microsoft.com/en-us/windows/lifecycle
+	- XP SP3 = April 8, 2014
+	- Vista SP2 = April 11, 2017
+	- 7 = January 14, 2020
+	- 8 = January 10, 2023
+	- 10 = October 14, 2025
+	- 2003 =
+	- 2008 =
+
 - Reports based on audit data
 - Reports for mobile information
 - web server statics report (plugin id)
@@ -243,7 +280,7 @@
 	- Parser tests
 		- Add test for new XML element
 		- Add test for new host properties tag
-	- Model Specs
+	- Model Tests
 		- Report
 		- Item
 		- Host
@@ -268,14 +305,13 @@
 - Add tests for Patch model
 
 ### Marketing
-- Backtrack5 r2 setup Tutorial
+- Kali Linux setup Tutorial
 - Ubuntu LTS setup Tutorial
 - Presentation on Risu
 - Centos 7 setup
 
 #### Website
-- Increase the readability of the site some
-- Bold the current version info
+- Update github pages
 
 #### Documentation
 - add hacking doc
