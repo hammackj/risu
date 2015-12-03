@@ -44,7 +44,7 @@ end
 
 task :release => [:tag_and_bag, :build] do
  	system "gem push #{Risu::APP_NAME}-#{Risu::VERSION}.gem"
-	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is an Nessus XML parser/database/report generator. More information at http://github.com/arxopia/risu/"
+	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is an Nessus XML parser/database/report generator. More information at #{HOME_PAGE}"
 end
 
 task :clean do
