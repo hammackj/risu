@@ -38,7 +38,7 @@ task :tag_and_bag do
 	system "git tag -a v#{Risu::VERSION} -m 'version #{Risu::VERSION}'"
 	system "git push --tags"
 	system "git checkout master"
-	system "git merge #{Risu::VERSION}"
+	system "git merge dev"
 	system "git push"
 end
 
