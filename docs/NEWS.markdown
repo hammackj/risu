@@ -1,5 +1,9 @@
 # News
 
+# 1.8.0 (2016)
+- **NOTICE** Only ruby-2.2.1 and above are supported now. Please upgrade
+-
+
 # 1.7.6 (December 02, 2015)
 - **NOTICE** Upon next major release, "1.8.0" ruby-2.2.1+ will only be supported. This is due to rails5 dropping support for all previous versions. Risu 1.8.0 will be release shortly after rails5 with this change.
 - **API CHANGES** Several APIs have been marked deprecated they will be moved in 1.8.0. Stubs will be left behind with warnings until 1.9.0. These changes are mostly to clean up the Models. Right now the models are very fat and interdependent on things they shouldn't. Some of the notable changes will be:
