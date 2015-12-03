@@ -42,9 +42,16 @@ task :tag_and_bag do
 	system "git push"
 end
 
-task :release => [:tag_and_bag, :build] do
- 	system "gem push #{Risu::APP_NAME}-#{Risu::VERSION}.gem"
-	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is an Nessus XML parser/database/report generator. More information at #{HOME_PAGE}"
+task :push do
+	system "gem push #{Risu::APP_NAME}-#{Risu::VERSION}.gem"
+end
+
+task :tweet do
+	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is an Nessus XML parser/database/report generator. More information at #{Risu::HOME_PAGE}"
+end
+
+task :release => [:tag_and_bag, :build, :push, :tweet] do
+
 end
 
 task :clean do
