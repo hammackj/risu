@@ -19,6 +19,7 @@
 - Post Processing
 	- Updated OpenSSH plugin list
 	- Updated VMware ESXi plugin list
+- Tons of minor tweaks and other changes 
 
 # 1.7.5 (November 6, 2015)
 - Added initial test for HostProperties
