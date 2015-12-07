@@ -1,8 +1,8 @@
 # News
 
 # 1.8.0 (2016)
-- **NOTICE** Only ruby-2.2.1 and above are supported now. Please upgrade
--
+- **NOTICE** Only ruby-2.2.1 and above are supported now. Please upgrade.
+- Merge pull request #90 to add a new Banner for the console from [abenson]
 
 # 1.7.6 (December 02, 2015)
 - **NOTICE** Upon next major release, "1.8.0" ruby-2.2.1+ will only be supported. This is due to rails5 dropping support for all previous versions. Risu 1.8.0 will be release shortly after rails5 with this change.
