@@ -3,6 +3,10 @@
 # 1.8.0 (2016)
 - **NOTICE** Only ruby-2.2.1 and above are supported now. Please upgrade.
 - Merge pull request #90 to add a new Banner for the console from [abenson]
+- Updated Java, Windows, ESXi post-processing plugin-ids
+- Templates
+	- Added a count of hosts on the host listings on the notable_detailed and technical_findings templates.
+	- Added more fields to the host_findings_csv template.
 
 # 1.7.6 (December 02, 2015)
 - **NOTICE** Upon next major release, "1.8.0" ruby-2.2.1+ will only be supported. This is due to rails5 dropping support for all previous versions. Risu 1.8.0 will be release shortly after rails5 with this change.
