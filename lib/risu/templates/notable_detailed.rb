@@ -79,7 +79,7 @@ module Risu
 							heading3 "#{counter}: #{Item.scrub_plugin_name(plugin.plugin_name)}\n"
 
 							if hosts.length > 1
-								@output.text "Hosts", :style => :bold
+								@output.text "Hosts (#{hosts.length})", :style => :bold
 							else
 								@output.text "Host", :style => :bold
 							end
@@ -150,4 +150,3 @@ module Risu
 		end
 	end
 end
-
