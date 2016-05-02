@@ -106,11 +106,9 @@ module Risu
 					t.text :cm_compliance_check_name, limit: 4294967295
 					t.text :cm_compliance_result, limit: 4294967295
 					t.text :cm_compliance_output, limit: 4294967295
-
 					t.text :cm_compliance_reference, limit: 4294967295
 					t.text :cm_compliance_see_also, limit: 4294967295
 					t.text :cm_compliance_solution, limit: 4294967295
-
 					t.integer :real_severity
 					t.integer :risk_score
 				end
