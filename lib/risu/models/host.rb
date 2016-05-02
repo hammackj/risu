@@ -36,8 +36,8 @@ module Risu
 
 			class << self
 
-				#
-				#
+				# @TODO remove
+				# @deprecated
 				#
 				#def hosts_with_blacklist blacklist_hosts_id
 				# if blacklist_host_id == nil
@@ -564,6 +564,7 @@ module Risu
 					w2k12 = Host.os_windows_2k12.to_a.count
 					w7 = Host.os_windows_7.to_a.count
 					w8 = Host.os_windows_8.to_a.count
+					w10 = Host.os_windows_10.to_a.count
 					other = (Host.os_windows.os_windows_other).to_a.count
 
 					g.data("NT", nt) if nt >= 1
@@ -575,6 +576,7 @@ module Risu
 					g.data("Server 2012", w2k12) if w2k12 >= 1
 					g.data("7", w7) if w7 >= 1
 					g.data("8", w8) if w8 >= 1
+					g.data("10", w10) if w10 >= 1
 					g.data("Other Windows", other) if other >= 1
 
 					StringIO.new(g.to_blob)
@@ -593,6 +595,7 @@ module Risu
 					w2k12 = Host.os_windows_2k12.to_a.count
 					w7 = Host.os_windows_7.to_a.count
 					w8 = Host.os_windows_8.to_a.count
+					w10 = Host.os_windows_10.to_a.count
 					other = (Host.os_windows.os_windows_other).to_a.count
 
 					windows_os_count = nt + w2k + xp + w2k3 + vista + w7 + w8 + w2k8 + w2k12 + other
@@ -606,6 +609,7 @@ module Risu
 					w2k8_percent = (w2k8.to_f / windows_os_count.to_f) * 100
 					w7_percent = (w7.to_f / windows_os_count.to_f) * 100
 					w8_percent = (w8.to_f / windows_os_count.to_f) * 100
+					w10_percent = (w10.to_f / windows_os_count.to_f) * 100
 					w2k12_percent = (w2k12.to_f / windows_os_count.to_f) * 100
 
 					text = "This graph shows the percentage of the different Microsoft Windows based operating systems " +
@@ -620,6 +624,7 @@ module Risu
 					text << "#{w2k8_percent.round.to_i}% of the network is Windows Server 2008. " if w2k8_percent >= 1
 					text << "#{w7_percent.round.to_i}% of the network is Windows 7. " if w7_percent >= 1
 					text << "#{w8_percent.round.to_i}% of the network is Windows 8. " if w8_percent >= 1
+					text << "#{w10_percent.round.to_i}% of the network is Windows 10. " if w10_percent >= 1
 					text << "#{w2k12_percent.round.to_i}% of the network is Windows Server 20012. " if w2k12_percent >= 1
 
 					text << "\n\n" << unsupported_os_windows if nt > 0 or w2k > 0
