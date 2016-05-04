@@ -138,7 +138,7 @@ module Risu
 			end
 
 			#
-			def has_reader_findings
+			def has_findings
 				@info[:plugin_ids].each do |plugin_id|
 					if Item.where(:plugin_id => plugin_id)
 						return true
@@ -148,7 +148,7 @@ module Risu
 				return false
 			end
 
-			def has_host_reader_findings (host_id)
+			def has_host_findings (host_id)
 				@info[:plugin_ids].each do |plugin_id|
 					if Item.where(:plugin_id => plugin_id).where(:host_id => host_id).count >= 1
 						return true
@@ -169,7 +169,7 @@ module Risu
 
 			#
 			def run
-				if !has_reader_findings()
+				if !has_findings()
 					return
 				end
 
@@ -179,11 +179,9 @@ module Risu
 				end
 
 				Host.all.each do |host|
-					if !has_host_reader_findings(host.id)
+					if !has_host_findings(host.id)
 						next
 					end
-
-					#puts "Found host with reader finding #{host.ip}"
 
 					finding_severity = 0
 
