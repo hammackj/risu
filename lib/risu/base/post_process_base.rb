@@ -115,9 +115,57 @@ module Risu
 				end
 				
 				begin
-					p = Plugin.where(:id => @info[:plugin_ids]).select("sum(risk_factor) as risk_factor")
+					p = Plugin.where(:id => @info[:plugin_ids]).select("sum(risk_score) as risk_score")
 					unless p.nil? or p.total_risk.nil?
-						plugin.risk_factor = p.total_risk
+						plugin.risk_score = p.risk_score
+					else
+						plugin.risk_score = 0
+					end
+				end
+				
+				if Plugin.where(:id => @info[:plugin_ids]), :exploit_available => "true").count > 0
+					plugin.exploit_available = true
+				end
+				
+				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_core => "true").count > 0
+					plugin.exploit_framework_core = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_metasploit => "true").count > 0
+					plugin.exploit_framework_metasploit = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_canvas => "true").count > 0
+					plugin.exploit_framework_canvas = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_exploithub => "true").count > 0
+					plugin.exploit_framework_exploithub = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_d2_elliot => "true").count > 0
+					plugin.exploit_framework_d2_elliot = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids]), :in_the_news => true).count > 0
+					plugin.in_the_news = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids]), :exploited_by_malware => "true").count > 0
+					plugin.exploited_by_malware = true
+				end
+				
+				["Critical", "High", "Medium", "Low", "Info"].each do |risk|
+					if Plugin.where(:id => @info[:plugin_ids], :risk_factor => risk).size > 0
+						plugin.risk_factor = risk
+						break
+					end
+				end
+				
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:stig_severity => nil).order(:stig_severity).first
+					unless p.nil?
+						plugin.stig_severity = p.stig_severity
 					end
 				end
 				
