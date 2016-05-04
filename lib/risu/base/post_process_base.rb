@@ -64,67 +64,111 @@ module Risu
 				end
 			end
 
-			#
-			#def initialize
-			#	@info = {}
-			#end
-
-			# NOTE:
-			#looks like its working
-			def newest_reader_plugin
-				newest = DateTime.new(0001, 01, 01)
-				newest_plugin = nil
-
-				@info[:plugin_ids].each do |id|
-					plugin = Plugin.find_by_id(id)
-
-					if plugin == nil || plugin.plugin_modification_date == nil
-						next
-					end
-
-					if plugin.plugin_modification_date >= newest
-						newest = plugin.plugin_modification_date if plugin.plugin_modification_date != nil
-						newest_plugin = plugin
-					end
-				end
-
-				return newest_plugin
-			end
-
-			# Creates a rollup plugin based on the newest Adobe Reader
-			#
+			# Create a plugin based on a combination of all plugins
+			# to be rolled up.
 			def create_plugin
 
 				plugin = Plugin.find_by_id(@info[:plugin_id])
-
-				newest_plugin = newest_reader_plugin()
-
-				if newest_plugin == nil
-					return
-				end
 
 				if plugin == nil
 					plugin = Plugin.new
 				end
 
+				# Populate items from post process module
 				plugin.id = @info[:plugin_id]
 				plugin.plugin_name = @info[:plugin_name]
+				plugin.description = @info[:description]
+				plugin.plugin_version = @info[:version]
+				plugin.plugin_publication_date = @info[:publication_date]
+				plugin.plugin_modification_date = @info[:modification_date]
+				
+				# Boiler plate for all roll up plugins
 				plugin.family_name = "Risu Rollup Plugins"
-				plugin.description = newest_plugin.description || ""
-				plugin.plugin_version = newest_plugin.plugin_version || ""
-				plugin.plugin_publication_date = newest_plugin.plugin_publication_date
-				plugin.plugin_modification_date = newest_plugin.plugin_modification_date
-				plugin.vuln_publication_date = newest_plugin.vuln_publication_date
-				plugin.cvss_vector = newest_plugin.cvss_vector || ""
-				plugin.cvss_base_score = newest_plugin.cvss_base_score
-				plugin.cvss_temporal_score = newest_plugin.cvss_temporal_score
-				plugin.cvss_temporal_vector = newest_plugin.cvss_temporal_vector
-				plugin.risk_factor = newest_plugin.risk_factor
-				plugin.solution = newest_plugin.solution
-				plugin.synopsis = newest_plugin.synopsis
+				plugin.synopsis = "Software often has vulnerabilities that are corrected in newer versions. It was determined that an older version of the software is installed on this system."
+				plugin.solution = "If possible, update to the latest version of the software."
 				plugin.plugin_type = "Rollup"
 				plugin.rollup = true
+				plugin.compliance = false
+				
+				# Find oldest vuln date.
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:vuln_publication_date => nil).order(:vuln_publication_date).first
+					unless p.nil?
+						plugin.vuln_publication_date = p.vuln_publication_date
+					end
+				end
+				
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:cvss_base_score => nil).order(:cvss_base_score).last
+					unless p.nil?
+						plugin.cvss_base_score = p.cvss_base_score
+						plugin.cvss_vector = p.cvss_vector
+					end
+				end
 
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:cvss_temporal_score => nil).order(:cvss_temporal_score).last
+					unless p.nil?
+						plugin.cvss_temporal_score = p.cvss_temporal_score
+						plugin.cvss_temporal_vector = p.cvss_temporal_vector
+					end
+				end
+				
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).select("sum(risk_score) as risk_score")
+					unless p.nil? or p.total_risk.nil?
+						plugin.risk_score = p.risk_score
+					else
+						plugin.risk_score = 0
+					end
+				end
+				
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_available => true).count > 0
+					plugin.exploit_available = true
+				end
+				
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_core => "true").count > 0
+					plugin.exploit_framework_core = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_metasploit => "true").count > 0
+					plugin.exploit_framework_metasploit = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_canvas => "true").count > 0
+					plugin.exploit_framework_canvas = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_exploithub => "true").count > 0
+					plugin.exploit_framework_exploithub = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_d2_elliot => "true").count > 0
+					plugin.exploit_framework_d2_elliot = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids], :in_the_news => true).count > 0
+					plugin.in_the_news = true
+				end
+
+				if Plugin.where(:id => @info[:plugin_ids], :exploited_by_malware => "true").count > 0
+					plugin.exploited_by_malware = true
+				end
+				
+				["Critical", "High", "Medium", "Low", "Info"].each do |risk|
+					if Plugin.where(:id => @info[:plugin_ids], :risk_factor => risk).size > 0
+						plugin.risk_factor = risk
+						break
+					end
+				end
+				
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:stig_severity => nil).order(:stig_severity).first
+					unless p.nil?
+						plugin.stig_severity = p.stig_severity
+					end
+				end
+				
 				plugin.save
 			end
 
@@ -143,24 +187,12 @@ module Risu
 			end
 
 			#
-			def has_reader_findings
-				@info[:plugin_ids].each do |plugin_id|
-					if Item.where(:plugin_id => plugin_id)
-						return true
-					end
-				end
-
-				return false
+			def has_findings
+				Item.where(:plugin_id => @info[:plugin_ids]).count > 0
 			end
 
-			def has_host_reader_findings (host_id)
-				@info[:plugin_ids].each do |plugin_id|
-					if Item.where(:plugin_id => plugin_id).where(:host_id => host_id).count >= 1
-						return true
-					end
-				end
-
-				return false
+			def has_host_findings(host_id)
+				Item.where(:plugin_id => @info[:plugin_ids]).where(:host_id => host_id).count > 0
 			end
 
 			#
@@ -174,19 +206,19 @@ module Risu
 
 			#
 			def run
-				if !has_reader_findings()
+				if !has_findings()
 					return
 				end
 
-				#Create the dummy plugin
-				create_plugin()
+				# If this is a "roll up" post-process, create a plugin 
+				if Plugin.where(:id => @info[:plugin_ids]).count > 0
+					create_plugin()
+				end
 
 				Host.all.each do |host|
-					if !has_host_reader_findings(host.id)
+					if !has_host_findings(host.id)
 						next
 					end
-
-					#puts "Found host with reader finding #{host.ip}"
 
 					finding_severity = 0
 

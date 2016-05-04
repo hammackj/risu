@@ -398,7 +398,7 @@ module Risu
 						:cvss_temporal_vector => @vals["cvss_temporal_vector"],
 						:exploitability_ease => @vals["exploitability_ease"],
 						:exploit_framework_core => @vals["exploit_framework_core"],
-						:exploit_available => @vals["exploit_available"],
+						:exploit_available => @vals["exploit_available"] == "true",
 						:exploit_framework_metasploit => @vals["exploit_framework_metasploit"],
 						:metasploit_name => @vals["metasploit_name"],
 						:exploit_framework_canvas => @vals["exploit_framework_canvas"],

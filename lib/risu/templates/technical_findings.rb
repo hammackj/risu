@@ -55,7 +55,7 @@ module Risu
 						end
 
 						if hosts.length > 1
-							text "Hosts", :style => :bold
+							text "Hosts (#{hosts.length})", :style => :bold
 						else
 							text "Host", :style => :bold
 						end
@@ -74,7 +74,7 @@ module Risu
 						definition "Description", plugin.description.gsub(/[ ]{2,}/, " ") if plugin.description != nil
 						definition "Synopsis", plugin.synopsis
 						definition "CVSS Base Score", plugin.cvss_base_score
-						definition "Exploit Available", (plugin.exploit_available == "true") ? "Yes" : "No"
+						definition "Exploit Available", plugin.exploit_available? ? "Yes" : "No"
 						definition "Solution", plugin.solution
 						definition "References", plugin.references.reference_string, :inline_format => true
 

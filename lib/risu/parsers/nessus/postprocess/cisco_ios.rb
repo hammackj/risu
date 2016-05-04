@@ -28,56 +28,28 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class GoogleChrome < Risu::Base::PostProcessBase
+				class CiscoIOSPatchRollup < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Google Chrome Patch Rollup",
-							:plugin_id => -99990,
-							:plugin_name => "Update to the latest Google Chrome",
-							:item_name => "Update to the latest Google Chrome",
+							:description => "Cisco IOS Patch Rollup",
+							:plugin_id => -99965,
+							:plugin_name => "Update to the latest Cisco IOS",
+							:item_name => "Update to the latest Cisco IOS",
 							:plugin_ids => [
-								74434,
-								76581,
-								80485,
-								80951,
-								81020,
-								81207,
-								81647,
-								82534,
-								82825,
-								83136,
-								83366,
-								83745,
-								84049,
-								84667,
-								84731,
-								84921,
-								77409,
-								77581,
-								77861,
-								78080,
-								78475,
-								79141,
-								79336,
-								79578,
-								79836,
-								84342,
-								77184,
-								85567,
-								85743,
-								86061,
-								86209,
-								86380,
-								86598,
-								86852,
-								87206,
-								87245,
-								87417,
-								88088,
-								88681,
+								58568,
+								58570,
+								58572,
+								62372,
+								62373,
+								65891,
+								70316,
+								70322,
+								73345,
+								78035,
+								82571,
 								
 
 							]

@@ -1,4 +1,4 @@
-# Copyright (c) 2012-2014 Arxopia LLC.
+# Copyright (c) 2012-2016 Arxopia LLC.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -67,27 +67,52 @@ module Risu
 			end
 
 			#
+			def anon_smb_query
+				return Item.where(:plugin_id => Plugin.where(:plugin_name => "Microsoft Windows SMB Shares Unprivileged Access").first.id)
+			end
+
+			#
 			def anon_smb_count
+				count = 0
 				begin
-					return Item.where(:plugin_id => Plugin.where(:plugin_name => "Microsoft Windows SMB Shares Unprivileged Access").first.id).count
+					anon_smb_query().each do |finding|
+						host = Host.find_by_id(finding.host_id)
+
+						login = host.host_properties.where(:name => 'smb-login-used').first.value
+						login = login.split("\\")[1] if login.include?("\\")
+
+						if finding.plugin_output.include?("The following shares can be accessed as #{login}")
+							# If the output was collect via the username that is authenitcated skip it.
+							next
+						end
+
+						count = count + 1
+					end
 				rescue => e
 					return 0
 				end
+
+				return count
 			end
 
 			#
 			def anon_smb_section
-
 				if anon_smb_count() <= 0
 					return
 				end
 
 				heading2 "Anonymous SMB Share Detection"
 
-				findings =  Item.where(:plugin_id => Plugin.where(:plugin_name => "Microsoft Windows SMB Shares Unprivileged Access").first.id)
-
-				findings.each do |finding|
+				anon_smb_query().each do |finding|
 					host = Host.find_by_id(finding.host_id)
+
+					login = host.host_properties.where(:name => 'smb-login-used').first.value
+					login = login.split("\\")[1] if login.include?("\\")
+
+					if finding.plugin_output.include?("The following shares can be accessed as #{login}")
+						# If the output was collect via the username that is authenitcated skip it.
+						next
+					end
 
 					host_string = "#{host.name}"
 					host_string << " (#{host.fqdn})" if host.fqdn != nil
@@ -110,31 +135,31 @@ module Risu
 				anon_ftp_text = ""
 				anon_smb_text = ""
 
-				anon_smb_count = 0
-				anon_ftp_count = 0
+				v_anon_smb_count = 0
+				v_anon_ftp_count = 0
 
 				begin
-					anon_ftp_count = Item.where(:plugin_id => Plugin.where(:plugin_name => "Anonymous FTP Enabled").first.id).count
+					v_anon_ftp_count = anon_ftp_count()
 				rescue Exception => e
 				end
 
 				begin
-					anon_smb_count = Item.where(:plugin_id => Plugin.where(:plugin_name => "Microsoft Windows SMB Shares Unprivileged Access").first.id).count
+					v_anon_smb_count = anon_smb_count()
 				rescue Exception => e
 				end
 
-				if anon_ftp_count > 1
+				if v_anon_ftp_count > 1
 					anon_ftp_text = "Anonymous FTP was detected as being enabled on #{anon_ftp_count} network nodes. Anonymous FTP allows anyone to access files stored on the FTP server, depending on the server's configuration also write files. "
 					poor_count = poor_count + 1
-				elsif anon_ftp_count == 1
+				elsif v_anon_ftp_count == 1
 					anon_ftp_text = "Anonymous FTP was detected as being enabled on #{anon_ftp_count} network node. Anonymous FTP allows anyone to access files stored on the FTP server, depending on the server's configuration also write files. "
 					poor_count = poor_count + 1
 				end
 
-				if anon_smb_count > 1
+				if v_anon_smb_count > 1
 					anon_smb_text = "Anonymous SMB shares were detected on #{anon_smb_count} network nodes. These shares also were found to have read and write access enabled. "
 					poor_count = poor_count + 1
-				elsif anon_smb_count == 1
+				elsif v_anon_smb_count == 1
 					anon_smb_text = "Anonymous SMB shares were detected on #{anon_smb_count} network node. These shares also were found to have read and write access enabled. "
 					poor_count = poor_count + 1
 				end
@@ -144,7 +169,7 @@ module Risu
 				heading1 "Other Findings of Interest" if poor_count > 0
 
 				#Anon ftp/smb + clear text
-				@output.text anon_ftp_text + anon_smb_text + anonymous_access_text if anon_ftp_count > 0 || anon_smb_count > 0
+				@output.text anon_ftp_text + anon_smb_text + anonymous_access_text if v_anon_ftp_count > 0 || v_anon_smb_count > 0
 				@output.text "\n"
 				@output.text "\n"
 			end
@@ -154,30 +179,31 @@ module Risu
 				anon_smb_section
 			end
 
+			#
 			def shares_section_has_findings?
 				poor_count = 0
 
 				anon_ftp_text = ""
 				anon_smb_text = ""
 
-				anon_smb_count = 0
-				anon_ftp_count = 0
+				v_anon_smb_count = 0
+				v_anon_ftp_count = 0
 
 				begin
-					anon_ftp_count = Item.where(:plugin_id => Plugin.where(:plugin_name => "Anonymous FTP Enabled").first.id).count
+					v_anon_ftp_count = anon_ftp_count()
 				rescue Exception => e
 				end
 
 				begin
-					anon_smb_count = Item.where(:plugin_id => Plugin.where(:plugin_name => "Microsoft Windows SMB Shares Unprivileged Access").first.id).count
+					v_anon_smb_count = anon_smb_count()
 				rescue Exception => e
 				end
 
-				if anon_ftp_count >= 1
+				if v_anon_ftp_count >= 1
 					poor_count = poor_count + 1
 				end
 
-				if anon_smb_count >= 1
+				if v_anon_smb_count >= 1
 					poor_count = poor_count + 1
 				end
 

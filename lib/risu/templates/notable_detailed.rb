@@ -79,7 +79,7 @@ module Risu
 							heading3 "#{counter}: #{Item.scrub_plugin_name(plugin.plugin_name)}\n"
 
 							if hosts.length > 1
-								@output.text "Hosts", :style => :bold
+								@output.text "Hosts (#{hosts.length})", :style => :bold
 							else
 								@output.text "Host", :style => :bold
 							end
@@ -117,11 +117,7 @@ module Risu
 							if plugin.exploit_available != nil
 								@output.text "\nExploit Available", :style => :bold
 
-								if plugin.exploit_available == "true"
-									@output.text "Yes"
-								else
-									@output.text "No"
-								end
+								plugin.exploit_available? ? "Yes" : "No"
 							end
 
 							if plugin.solution != nil
@@ -150,4 +146,3 @@ module Risu
 		end
 	end
 end
-

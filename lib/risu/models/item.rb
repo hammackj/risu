@@ -494,6 +494,7 @@ module Risu
 					#return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
 
 					critical = Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#critical = Item.joins(:plugin).where(:severity => 4).group(:plugin_id).distinct.count
 
 					if critical.size < 10
 						high = Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
@@ -608,11 +609,11 @@ module Risu
 
 						name = scrub_plugin_name(plugin.plugin_name)
 						total = Item.where(:plugin_id => item.plugin_id).count
-						core = if plugin.exploit_framework_core == "true" then "Yes" else nil end
-						metasploit = if plugin.exploit_framework_metasploit == "true" then "Yes" else nil end
-						canvas = if plugin.exploit_framework_canvas == "true" then "Yes" else nil end
-						exploithub = if plugin.exploit_framework_exploithub == "true" then "Yes" else nil end
-						d2elliot = if plugin.exploit_framework_d2_elliot == "true" then "Yes" else nil end
+						core = plugin.exploit_framework_core? ? "Yes" : nil
+						metasploit = plugin.exploit_framework_metasploit? ? "Yes" : nil
+						canvas = plugin.exploit_framework_canvas? ? "Yes" : nil
+						exploithub = plugin.exploit_framework_exploithub? ? "Yes" : nil
+						d2elliot = plugin.exploit_framework_d2_elliot? ? "Yes" : nil
 
 						results.push [name, total, core, metasploit, canvas, exploithub, d2elliot]
 					end
