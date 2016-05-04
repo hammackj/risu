@@ -123,7 +123,7 @@ module Risu
 					end
 				end
 				
-				if Plugin.where(:id => @info[:plugin_ids], :exploit_available => "true").count > 0
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_available => true).count > 0
 					plugin.exploit_available = true
 				end
 				
