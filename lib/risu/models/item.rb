@@ -494,6 +494,7 @@ module Risu
 					#return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
 
 					critical = Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#critical = Item.joins(:plugin).where(:severity => 4).group(:plugin_id).distinct.count
 
 					if critical.size < 10
 						high = Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count

@@ -33,7 +33,7 @@ module Risu
 					#
 					def initialize
 						@info =
-						{					
+						{
 							:description => "Oracle Database Patch Rollup",
 							:plugin_id => -99993,
 							:plugin_name => "Update to the latest Oracle Database",
@@ -71,9 +71,15 @@ module Risu
 								11224,
 								11226,
 								10852,
-								55786
+								55786,
+								84822,
+								82903,
+								80906,
+								78540,
+								72982,
 								
-								
+
+
 							]
 						}
 					end
