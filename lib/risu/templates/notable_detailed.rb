@@ -117,11 +117,7 @@ module Risu
 							if plugin.exploit_available != nil
 								@output.text "\nExploit Available", :style => :bold
 
-								if plugin.exploit_available == "true"
-									@output.text "Yes"
-								else
-									@output.text "No"
-								end
+								plugin.exploit_available? ? "Yes" : "No"
 							end
 
 							if plugin.solution != nil
