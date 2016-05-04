@@ -70,10 +70,6 @@ module Risu
 
 				plugin = Plugin.find_by_id(@info[:plugin_id])
 
-				unless Plugin.where(:id => @info[:plugin_ids]).count > 0
-					return
-				end
-
 				if plugin == nil
 					plugin = Plugin.new
 				end
@@ -177,8 +173,10 @@ module Risu
 					return
 				end
 
-				#Create the dummy plugin
-				create_plugin()
+				# If this is a "roll up" post-process, create a plugin 
+				if Plugin.where(:id => @info[:plugin_ids]).count > 0
+					create_plugin()
+				end
 
 				Host.all.each do |host|
 					if !has_host_reader_findings(host.id)
