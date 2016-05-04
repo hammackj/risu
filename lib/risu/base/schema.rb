@@ -133,7 +133,7 @@ module Risu
 					t.string :metasploit_name
 					t.string :exploit_framework_canvas
 					t.string :canvas_package
-					t.string :exploit_available
+					t.boolean :exploit_available
 					t.string :risk_factor
 					t.text :solution, limit: 4294967295
 					t.text :synopsis, limit: 4294967295
