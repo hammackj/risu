@@ -64,42 +64,13 @@ module Risu
 				end
 			end
 
-			#
-			#def initialize
-			#	@info = {}
-			#end
-
-			# NOTE:
-			#looks like its working
-			def newest_reader_plugin
-				newest = DateTime.new(0001, 01, 01)
-				newest_plugin = nil
-
-				@info[:plugin_ids].each do |id|
-					plugin = Plugin.find_by_id(id)
-
-					if plugin == nil || plugin.plugin_modification_date == nil
-						next
-					end
-
-					if plugin.plugin_modification_date >= newest
-						newest = plugin.plugin_modification_date if plugin.plugin_modification_date != nil
-						newest_plugin = plugin
-					end
-				end
-
-				return newest_plugin
-			end
-
-			# Creates a rollup plugin based on the newest Adobe Reader
-			#
+			# Create a plugin based on a combination of all plugins
+			# to be rolled up.
 			def create_plugin
 
 				plugin = Plugin.find_by_id(@info[:plugin_id])
 
-				newest_plugin = newest_reader_plugin()
-
-				if newest_plugin == nil
+				unless Plugin.where(:id => @info[:plugin_ids]).count > 0
 					return
 				end
 
@@ -107,24 +78,52 @@ module Risu
 					plugin = Plugin.new
 				end
 
+				# Populate items from post process module
 				plugin.id = @info[:plugin_id]
 				plugin.plugin_name = @info[:plugin_name]
+				plugin.plugin_version = @info[:version]
+				plugin.plugin_publication_date = @info[:publication_date]
+				plugin.plugin_modification_date = @info[:modification_date]
+				
+				# Boiler plate for all roll up plugins
 				plugin.family_name = "Risu Rollup Plugins"
-				plugin.description = newest_plugin.description || ""
-				plugin.plugin_version = newest_plugin.plugin_version || ""
-				plugin.plugin_publication_date = newest_plugin.plugin_publication_date
-				plugin.plugin_modification_date = newest_plugin.plugin_modification_date
-				plugin.vuln_publication_date = newest_plugin.vuln_publication_date
-				plugin.cvss_vector = newest_plugin.cvss_vector || ""
-				plugin.cvss_base_score = newest_plugin.cvss_base_score
-				plugin.cvss_temporal_score = newest_plugin.cvss_temporal_score
-				plugin.cvss_temporal_vector = newest_plugin.cvss_temporal_vector
-				plugin.risk_factor = newest_plugin.risk_factor
-				plugin.solution = newest_plugin.solution
-				plugin.synopsis = newest_plugin.synopsis
+				plugin.description = "Often, software may contain bugs or vulnerabilties that are fixed in newer versions."
+				plugin.synopsis = "It was determined that an older version of the software is installed on this system."
+				plugin.solution = "If possible, update to the latest version of the software."
 				plugin.plugin_type = "Rollup"
 				plugin.rollup = true
+				
+				# Find oldest vuln date.
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:vuln_publication_date => nil).order(:vuln_publication_date).first
+					unless p.nil?
+						plugin.vuln_publication_date = p.vuln_publication_date
+					end
+				end
+				
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:cvss_base_score => nil).order(:cvss_base_score).last
+					unless p.nil?
+						plugin.cvss_base_score = p.cvss_base_score
+						plugin.cvss_vector = p.cvss_vector
+					end
+				end
 
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:cvss_temporal_score => nil).order(:cvss_temporal_score).last
+					unless p.nil?
+						plugin.cvss_temporal_score = p.cvss_temporal_score
+						plugin.cvss_temporal_vector = p.cvss_temporal_vector
+					end
+				end
+				
+				begin
+					p = Plugin.where(:id => @info[:plugin_ids]).select("sum(risk_factor) as risk_factor")
+					unless p.nil? or p.total_risk.nil?
+						plugin.risk_factor = p.total_risk
+					end
+				end
+				
 				plugin.save
 			end
 
