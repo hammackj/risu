@@ -77,17 +77,18 @@ module Risu
 				# Populate items from post process module
 				plugin.id = @info[:plugin_id]
 				plugin.plugin_name = @info[:plugin_name]
+				plugin.description = @info[:description]
 				plugin.plugin_version = @info[:version]
 				plugin.plugin_publication_date = @info[:publication_date]
 				plugin.plugin_modification_date = @info[:modification_date]
 				
 				# Boiler plate for all roll up plugins
 				plugin.family_name = "Risu Rollup Plugins"
-				plugin.description = "Often, software may contain bugs or vulnerabilties that are fixed in newer versions."
-				plugin.synopsis = "It was determined that an older version of the software is installed on this system."
+				plugin.synopsis = "Software often has vulnerabilities that are corrected in newer versions. It was determined that an older version of the software is installed on this system."
 				plugin.solution = "If possible, update to the latest version of the software."
 				plugin.plugin_type = "Rollup"
 				plugin.rollup = true
+				plugin.compliance = false
 				
 				# Find oldest vuln date.
 				begin
