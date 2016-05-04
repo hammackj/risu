@@ -55,7 +55,7 @@ module Risu
 						end
 
 						if hosts.length > 1
-							text "Hosts", :style => :bold
+							text "Hosts (#{hosts.length})", :style => :bold
 						else
 							text "Host", :style => :bold
 						end

@@ -2,8 +2,45 @@
 
 **Release dates and road map are estimates, and features can be changed at any time.**
 
+
+
+- Microsoft Windows Unquoted Service Path Enumeration - 63155
+	- https://gallery.technet.microsoft.com/scriptcenter/Windows-Unquoted-Service-190f0341
+-- Update centos docs and ubuntu docs
+libmagick9-dev was not a valid package, at least for the repos I have but I was able to install imagemagick and libmagickwand2 which appears to have worked.
+
+I also got an error :
+
+Fetching: i18n-0.7.0.gem (100%)
+ERROR:  Error installing risu:
+        i18n requires Ruby version >= 1.9.3.
+
+I just installed rvm 2.1.0 which worked.
+
+All in all really minor hurdles compared to Cent!
+--
+
+CSV headers, add solution, change order
+
 # Bugs
 *** OS's with 2000 or XP can be misidentified by Nessus showing both host messing up some of the graphs. ***
+
+** Ideas **
+
+Some kind of SSL summary
+
+5 - SSL Certificate Cannot Be Trusted - 51192
+5 - SSL Self-Signed Certificate - 57582
+4 - SSL Certificate Signed Using Weak Hashing Algorithm - 35291
+3 - SSH Protocol Version 1 Session Key Retrieval - 10882
+3 - SSL RC4 Cipher Suites Supported (Bar Mitzvah) - 65821
+2 - SSL Certificate Expiry - 15901
+2 - SSL Version 2 and 3 Protocol Detection - 20007
+2 - SSL Medium Strength Cipher Suites Supported - 42873
+2 - SSL / TLS Renegotiation Handshakes MiTM Plaintext Data Injection - 42880
+2 - SSL Certificate with Wrong Hostname - 45411
+2 - SSLv3 Padding Oracle On Downgraded Legacy Encryption Vulnerability (POODLE) - 78479
+
 
 Idea for more debug information
 <!-- module Nanoc

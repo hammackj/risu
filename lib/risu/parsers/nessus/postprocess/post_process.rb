@@ -61,7 +61,7 @@ module Risu
 						return newest_plugin
 					end
 
-					# Creates a rollup plugin 
+					# Creates a rollup plugin
 					#
 					def create_plugin
 						plugin = Plugin.find_by_id(@plugin_id)
@@ -134,7 +134,7 @@ module Risu
 
 					#
 					def calculate_severity current_severity, severity
-						if severity >= current_severity
+						if severity > current_severity
 							return severity
 						else
 							return current_severity
