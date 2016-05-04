@@ -139,23 +139,11 @@ module Risu
 
 			#
 			def has_findings
-				@info[:plugin_ids].each do |plugin_id|
-					if Item.where(:plugin_id => plugin_id)
-						return true
-					end
-				end
-
-				return false
+				Item.where(:plugin_id => @info[:plugin_ids]).count > 0
 			end
 
-			def has_host_findings (host_id)
-				@info[:plugin_ids].each do |plugin_id|
-					if Item.where(:plugin_id => plugin_id).where(:host_id => host_id).count >= 1
-						return true
-					end
-				end
-
-				return false
+			def has_host_findings(host_id)
+				Item.where(:plugin_id => @info[:plugin_ids]).where(:host_id => host_id).count > 0
 			end
 
 			#
