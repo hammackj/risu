@@ -123,35 +123,35 @@ module Risu
 					end
 				end
 				
-				if Plugin.where(:id => @info[:plugin_ids]), :exploit_available => "true").count > 0
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_available => "true").count > 0
 					plugin.exploit_available = true
 				end
 				
-				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_core => "true").count > 0
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_core => "true").count > 0
 					plugin.exploit_framework_core = true
 				end
 
-				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_metasploit => "true").count > 0
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_metasploit => "true").count > 0
 					plugin.exploit_framework_metasploit = true
 				end
 
-				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_canvas => "true").count > 0
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_canvas => "true").count > 0
 					plugin.exploit_framework_canvas = true
 				end
 
-				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_exploithub => "true").count > 0
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_exploithub => "true").count > 0
 					plugin.exploit_framework_exploithub = true
 				end
 
-				if Plugin.where(:id => @info[:plugin_ids]), :exploit_framework_d2_elliot => "true").count > 0
+				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_d2_elliot => "true").count > 0
 					plugin.exploit_framework_d2_elliot = true
 				end
 
-				if Plugin.where(:id => @info[:plugin_ids]), :in_the_news => true).count > 0
+				if Plugin.where(:id => @info[:plugin_ids], :in_the_news => true).count > 0
 					plugin.in_the_news = true
 				end
 
-				if Plugin.where(:id => @info[:plugin_ids]), :exploited_by_malware => "true").count > 0
+				if Plugin.where(:id => @info[:plugin_ids], :exploited_by_malware => "true").count > 0
 					plugin.exploited_by_malware = true
 				end
 				
