@@ -169,6 +169,8 @@ module Risu
 					end
 				end
 				
+				plugin.references << References.where(:plugin_id => @info[:plugin_ids], :reference_name => "cve")
+				
 				plugin.save
 			end
 
