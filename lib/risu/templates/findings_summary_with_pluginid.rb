@@ -36,7 +36,7 @@ module Risu
 				{
 					:name => "findings_summary_with_pluginid",
 					:author => "hammackj",
-					:version => "0.0.5",
+					:version => "0.0.6",
 					:renderer => "PDF",
 					:description => "Generates a Findings Summary with Nessus Plugin ID"
 				}
