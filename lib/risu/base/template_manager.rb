@@ -43,7 +43,7 @@ module Risu
 
 				load_templates(base_dir + path)
 				load_templates(Dir.pwd, false)
-				load_templates(File.expand_path(USER_TEMPLATES_DIR)) if File.exists?(File.expand_path(USER_TEMPLATES_DIR)) && File.directory?(File.expand_path(USER_TEMPLATES_DIR))
+				load_templates(File.expand_path(USER_TEMPLATES_DIR)) if File.exist?(File.expand_path(USER_TEMPLATES_DIR)) && File.directory?(File.expand_path(USER_TEMPLATES_DIR))
 			end
 
 			# Loads templates from a specific path
