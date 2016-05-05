@@ -57,7 +57,7 @@ module Risu
 					Dir[search_path].each do |x|
 						begin
 							require x
-						rescue => e
+						rescue
 							next
 						end
 					end
@@ -67,10 +67,8 @@ module Risu
 							@registered_templates << p if @registered_templates.include?(p) == false
 						end
 					end
-				rescue => e
+				rescue
 					puts "[!] Invalid template path"
-					#puts e.inspect
-					#puts e.backtrace
 				end
 			end
 
