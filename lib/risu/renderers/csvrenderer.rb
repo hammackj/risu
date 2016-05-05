@@ -31,7 +31,8 @@ module Risu
 			# @TODO comment
 			#
 			def self.generate(output_file, &block)
-				csv = new(output_file, &block)
+				#csv = new(output_file, &block)
+				return new(output_file, &block)
 			end
 
 			# @TODO comment
