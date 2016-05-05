@@ -411,7 +411,9 @@ module Risu
 						:script_version => @vals["script_version"],
 						:exploited_by_malware => @vals["exploited_by_malware"],
 						:compliance => @vals["compliance"],
-						:agent => @vals["agent"]
+						:agent => @vals["agent"],
+						:in_the_news => @vals["in_the_news"]
+
 					)
 				end
 

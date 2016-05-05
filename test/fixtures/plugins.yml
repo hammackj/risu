@@ -12,6 +12,7 @@ critical_plugin:
   d2_elliot_name: "Sample Exploit Name"
   exploited_by_malware: 'true'
   potential_vulnerability: 'true'
+  in_the_news: true
 
 high_plugin:
   id: 99998

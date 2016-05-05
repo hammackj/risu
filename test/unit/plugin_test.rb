@@ -74,4 +74,8 @@ class PluginTest < ActiveSupport::TestCase
 	test "return 1 risk for Plugin.where(:potential_vulnerability => 'true').count" do
 		assert Plugin.where(:potential_vulnerability => "true").count == 1, "GOT #{Plugin.where(:potential_vulnerability => 'true').count}"
 	end
+
+	test "return 1 risk for Plugin.in_the_news.count" do
+		assert Plugin.in_the_news.count == 1, "GOT #{Plugin.in_the_news.count}"
+	end
 end
