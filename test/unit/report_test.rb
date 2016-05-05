@@ -36,8 +36,8 @@ class ReportTest < ActiveSupport::TestCase
 		assert Report.scan_date.strftime("%a %B %d, %Y") == "Fri May 13, 2011", "GOT #{Report.scan_date.strftime("%a %B %d, %Y")}"
 	end
 
-	test "Report.scanner_nessus_ratings_text length should be 1537" do
+	test "Report.scanner_nessus_ratings_text length should be 1656" do
 		Report.company = ""
-		assert Report.scanner_nessus_ratings_text.length == 1537, "GOT #{Report.scanner_nessus_ratings_text.length}"
+		assert Report.scanner_nessus_ratings_text.length == 1656, "GOT #{Report.scanner_nessus_ratings_text.length}"
 	end
 end
