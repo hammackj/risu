@@ -64,12 +64,12 @@ module Risu
 				end
 			end
 
-			#
+			# TODO doc
 			#
 			def render(output)
 				@output.text "IP Address, FQDN, Netbios Name, Finding, Risk Factor, CVSS Base Score, Solution"
-				csv Plugin.critical_risks
-				csv Plugin.high_risks
+				csv Plugin.critical_risks.order(cvss_base_score: :desc)
+				csv Plugin.high_risks.order(cvss_base_score: :desc)
 			end
 		end
 	end
