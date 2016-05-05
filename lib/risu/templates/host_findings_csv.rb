@@ -35,7 +35,7 @@ module Risu
 				{
 					:name => "host_findings_csv",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:renderer => "CSV",
 					:description => "Generates a findings report by host and outputs to CSV"
 
