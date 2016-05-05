@@ -165,37 +165,37 @@ class NessusSaxListenerTest < ActiveSupport::TestCase
 		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.agent == "all", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.agent}"
 	end
 
- 	test "return USN:1752-1 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => usn).first.value" do
- 		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value == "USN:1752-1", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value}"
- 	end
+	test "return USN:1752-1 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => usn).first.value" do
+		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value == "USN:1752-1", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value}"
+	end
 
- 	test "return Everything for Policy.last.name" do
- 		assert Policy.last.name == "Everything", "GOT #{Policy.last.name}"
- 	end
+	test "return Everything for Policy.last.name" do
+		assert Policy.last.name == "Everything", "GOT #{Policy.last.name}"
+	end
 
- 	test "return Comments... for Policy.last.comments" do
- 		assert Policy.last.comments == "comments...", "GOT #{Policy.last.comments}"
- 	end
+	test "return Comments... for Policy.last.comments" do
+		assert Policy.last.comments == "comments...", "GOT #{Policy.last.comments}"
+	end
 
- 	test "return Someone for Policy.last.owner" do
- 		assert Policy.last.owner == "Someone", "GOT #{Policy.last.owner}"
- 	end
+	test "return Someone for Policy.last.owner" do
+		assert Policy.last.owner == "Someone", "GOT #{Policy.last.owner}"
+	end
 
- 	test "return shared for Policy.last.visibility" do
- 		assert Policy.last.visibility == "shared", "GOT #{Policy.last.visibility}"
- 	end
+	test "return shared for Policy.last.visibility" do
+		assert Policy.last.visibility == "shared", "GOT #{Policy.last.visibility}"
+	end
 
- 	test "return 10.69.69.67 for Host.where(:name => 69.69.69.69)...traceroute_hop_0" do
- 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value == "69.69.69.67", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value}"
- 	end
+	test "return 10.69.69.67 for Host.where(:name => 69.69.69.69)...traceroute_hop_0" do
+		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value == "69.69.69.67", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value}"
+	end
 
- 	test "return 10.69.69.68 for Host.where(:name => 69.69.69.69)...traceroute_hop_1" do
- 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value == "69.69.69.68", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value}"
- 	end
+	test "return 10.69.69.68 for Host.where(:name => 69.69.69.69)...traceroute_hop_1" do
+		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value == "69.69.69.68", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value}"
+	end
 
- 	test "return 10.69.69.70 for Host.where(:name => 69.69.69.69)...traceroute_hop_2" do
+	test "return 10.69.69.70 for Host.where(:name => 69.69.69.69)...traceroute_hop_2" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value == "69.69.69.70", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value}"
- 	end
+	end
 
 	test "return GET for Host.where(:name => 69.69.69.69)...pcidss:insecure_http_methods" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value == "GET", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value}"
