@@ -291,6 +291,7 @@ module Risu
 							79865 => "Vendor Patch",
 							83186 => "Vendor Patch",
 							86255 => "Vendor Patch",
+							90510 => "Vendor Patch",
 
 
 
@@ -406,6 +407,7 @@ module Risu
 							83738 => "Configuration",
 							83875 => "Configuration",
 							42256 => "Configuration",
+							15984 => "Configuration",
 
 
 						}
