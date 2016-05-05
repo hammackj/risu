@@ -76,7 +76,7 @@ module Risu
 								ip = IPAddr.new host.name
 								host.ip = ip.to_string
 								host.save
-							rescue ArgumentError => ae
+							rescue ArgumentError
 								next
 							end
 						end
