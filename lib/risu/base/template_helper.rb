@@ -31,6 +31,7 @@ module Risu
 			include MalwareTemplateHelper
 			include GraphTemplateHelper
 			include SharesTemplateHelper
+			include ScanHelper
 
 			#
 			def report_classification classification=Report.classification.upcase, newline=true
