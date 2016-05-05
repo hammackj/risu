@@ -57,7 +57,7 @@ module Risu
 				@output.text "#{Report.scan_date}"
 				@output.text "\n"
 
-				data = Item.top_10_sorted_raw
+				#data = Item.top_10_sorted_raw
 
 				unique_risks = Array.new
 				unique_risks << Hash[:title => "Notable Findings", :color => "9B30FF", :values => Item.top_10_sorted_raw[0..9]]
@@ -71,7 +71,7 @@ module Risu
 							plugin_id = f[0]
 
 							hosts = Item.where(:plugin_id => plugin_id).group(:host_id)
-							item = Item.where(:plugin_id => plugin_id)
+							#item = Item.where(:plugin_id => plugin_id)
 							plugin = Plugin.find_by_id(plugin_id)
 
 							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
