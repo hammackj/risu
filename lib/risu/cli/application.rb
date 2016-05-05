@@ -452,7 +452,7 @@ module Risu
 					puts "[*] Parsing #{file}..."
 					tstart = Time.new
 
-					if File.exists?(file) == false
+					if File.exist?(file) == false
 						raise Risu::Exceptions::InvalidDocument, "[!] Document does not exist - #{file}"
 					end
 
