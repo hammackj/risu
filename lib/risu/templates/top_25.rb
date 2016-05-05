@@ -36,7 +36,7 @@ module Risu
 				{
 					:name => "top_25",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:renderer => "PDF",
 					:description => "Generates a Top 25 Remediation report"
 				}
@@ -60,7 +60,8 @@ module Risu
 				page_width = output.bounds.width
 
 				#header_widths = {0 => 255, 1 => 56, 2 => 56, 3 => 56, 4 => 57}
-				header_widths = {
+				header_widths =
+				{
 					0 => (page_width * 0.50),
 					1 => (page_width * 0.10),
 					2 => (page_width * 0.15),
@@ -68,12 +69,12 @@ module Risu
 					4 => (page_width * 0.15)
 				}
 
-				Plugin.where(:risk_factor => "Critical").order(:risk_score).limit(25).reverse_order.each do |plugin|
+				#Plugin.where(:risk_factor => "Critical").order(:risk_score).limit(25).reverse_order.each do |plugin|
+				Plugin.joins(:items).where(:items => {severity: 4}).order(:risk_score).group(:plugin_id).limit(25).reverse_order.each do |plugin|
 					row = Array.new
 
 					name = plugin.plugin_name
 					vulns = Item.where(:plugin_id => plugin.id).count
-
 
 					if plugin.exploitability_ease == "Exploits are available"
 						exploitability = "Yes"
