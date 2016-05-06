@@ -66,7 +66,7 @@ module Risu
 					output.text "It contains confidential information about the state of #{Report.owner}'s #{Report.network} network at #{Report.location}."
 				end
 				
-				output.text "Access to this information by unauthorized personnel may allow them to compromise your network.\n\n"
+				output.text "Access to this information by unauthorized personnel may allow them to compromise said network.\n\n"
 				
 				output.text "A total of #{Host.count} hosts were found and scanned for vulnerabilities.\n\n"
 
