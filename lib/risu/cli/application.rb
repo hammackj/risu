@@ -403,6 +403,9 @@ module Risu
 					@findings.title = @report["title"]
 					@findings.company = @report["company"]
 					@findings.classification = @report["classification"]
+					@findings.network = @report["network"]
+					@findings.owner = @report["owner"]
+					@findings.location = @report["location"]
 					@findings.extra = @report
 
 					template = Templater.new(@options[:template], @findings, @options[:output_file], @template_manager)
