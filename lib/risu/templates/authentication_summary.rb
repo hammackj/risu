@@ -26,61 +26,69 @@
 
 module Risu
 	module Templates
-		class FindingsSummaryWithPluginID < Risu::Base::TemplateBase
+		class AuthenticationSummary < Risu::Base::TemplateBase
 			include TemplateHelper
 
-			#
 			#
 			def initialize ()
 				@template_info =
 				{
-					:name => "findings_summary_with_pluginid",
+					:name => "authentication_summary",
 					:author => "hammackj",
-					:version => "0.0.6",
+					:version => "0.0.1",
 					:renderer => "PDF",
-					:description => "Generates a Findings Summary with Nessus Plugin ID"
+					:description => "Generates a Authentication Summary Report"
 				}
 			end
 
-			# TODO doc
 			#
-			def print_risk_title (text, color)
-				@output.font_size(20) do
-					@output.fill_color color.gsub('#', '')
-					@output.text text, :style => :bold
-					@output.fill_color "000000"
-				end
-			end
-
-			# TODO doc
-			#
-			def print_risk_summary_with_plugin_id(risks, text, color)
-				print_risk_title(text, color) if risks.length != 0
-
-				risks.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
-
-					text "#{count} - #{name} - #{item.plugin_id}"
-				end
-			end
-
-			# TODO doc
 			#
 			def render(output)
-				text Report.classification.upcase, :align => :center
-				text "\n"
+				@output.text Report.classification.upcase, :align => :center
+				@output.text "\n"
 
 				report_title Report.title
-				report_subtitle "Findings Summary Report"
+				report_subtitle "Authentication Summary Report"
 				report_author "This report was prepared by\n#{Report.author}"
-				text "\n\n\n"
 
-				print_risk_summary_with_plugin_id(Item.critical_risks_unique_sorted, "Critical Findings", Risu::GRAPH_COLORS[0])
-				print_risk_summary_with_plugin_id(Item.high_risks_unique_sorted, "High Findings", Risu::GRAPH_COLORS[1])
-				print_risk_summary_with_plugin_id(Item.medium_risks_unique_sorted, "Medium Findings", Risu::GRAPH_COLORS[2])
-				print_risk_summary_with_plugin_id(Item.low_risks_unique_sorted, "Low Findings", Risu::GRAPH_COLORS[3])
-				print_risk_summary_with_plugin_id(Item.info_risks_unique_sorted, "Informational Findings", Risu::GRAPH_COLORS[4])
+				@output.text "\n\n\n"
+
+				@output.text "Scan Date:", :style => :bold
+				@output.text "#{Report.scan_date}"
+				@output.text "\n"
+
+				results = Array.new
+
+				headers = ["Hostname", "OS", "Authenticated"]
+				header_widths = {0 => 230, 1 => 138, 2 => 138}
+
+				Host.sorted.each do |host|
+					row = Array.new
+
+					authenticated = nil
+
+					if host.host_properties.where(:name => "Credentialed_Scan").first != nil
+						authenticated = host.host_properties.where(:name => "Credentialed_Scan").first.value
+					end
+					
+					os = host.os
+
+					host_name = host.name
+					host_name = "#{host.name} (#{host.netbios})" if host.netbios != nil
+
+					row.push(host_name)
+					row.push(os)
+					row.push(authenticated)
+
+					results.push(row)
+				end
+
+				output.table([headers] + results, :header => true, :column_widths => header_widths, :row_colors => ['ffffff', 'E5E5E5']) do
+					row(0).style(:font_style => :bold, :background_color => 'D0D0D0')
+					cells.borders = [:top, :bottom, :left, :right]
+				end
+
+				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all
 			end
 		end
 	end

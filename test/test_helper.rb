@@ -136,7 +136,7 @@ end
 
 @app = nil
 
-def setup_test_database
+def setup_test_database (run_fixtures=true)
 
 	begin
 		File.delete("test_data/test.db") if File.exist?("test_data/test.db")
@@ -168,7 +168,7 @@ def setup_test_database
 		fixtures = Dir.glob(File.join('test', 'fixtures', '*.{yml,csv}'))
 		fixtures.each do |fixture_file|
 			ActiveRecord::FixtureSet.create_fixtures('test/fixtures', File.basename(fixture_file, '.*'))
-		end
+		end if run_fixtures
 	rescue => e
 		puts "[!] #{e.message}\n#{e.backtrace}\n\n"
 	end

@@ -87,6 +87,12 @@ module Risu
 					where(:risk_factor => "None")
 				end
 
+				# TODO doc
+				#
+				def in_the_news
+					where(:in_the_news => true)
+				end
+
 				# Creates a graph based on the top plugins sorted by count
 				#
 				# @return Filename of the created graph
@@ -140,7 +146,7 @@ module Risu
 					g.data('Vendor Support', Plugin.where(:root_cause => 'Vendor Support').count)
 					g.data('Configuration', Plugin.where(:root_cause => 'Configuration').count)
 
-					StringIO.new(g.to_blob)					
+					StringIO.new(g.to_blob)
 				end
 
 				def root_cause_graph_text

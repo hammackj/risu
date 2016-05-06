@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2016 Arxopia LLC.
+# Copyright (c) 2012-2016 Arxopia LLC.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -25,29 +25,51 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module Risu
-	module Renderers
-		class CSVRenderer
+	module Templates
+		module ScanHelper
 
-			# @TODO comment
 			#
-			def self.generate(output_file, &block)
-				#csv = new(output_file, &block)
-				return new(output_file, &block)
-			end
+			# TODO doc
+			def scan_info_to_hash(plugin_output)
+				scan_info = {}
 
-			# @TODO comment
-			#
-			def initialize(output_file, &block)
-				@output_file = output_file
-				instance_eval(&block)
-			end
+				plugin_output.split("\n").each do |line|
+					a = line.split(":")
 
-			# @TODO comment
-			#
-			def text text, *args
-				File.open(@output_file, "a+") do |file|
-					file.write text + "\n"
+					if a.size != 2
+						next
+					end
+
+					key = a[0].strip.downcase
+					value = a[1].strip.downcase
+
+					key = key.gsub(" ", "_")
+
+					scan_info[key] = value
 				end
+
+				return scan_info
+			end
+
+			# TODO doc
+			#
+			def authenticated_count
+				count = {}
+				count["auth"] = 0
+				count["unauth"] = 0
+
+				Item.where(:plugin_id => 19506).each do |item|
+					scan_info = scan_info_to_hash (item.plugin_output)
+
+					auth = scan_info["credentialed_checks"]
+					if auth == "yes"
+						count["auth"] = count["auth"] + 1
+					else
+						count["unauth"] = count["unauth"] + 1
+					end
+				end
+
+				return count
 			end
 		end
 	end

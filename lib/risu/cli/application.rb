@@ -75,7 +75,7 @@ module Risu
 			# @param file Path to configuration file
 			# @param in_memory_config [Boolean] If the configuration is in memory
 			def load_config(file=CONFIG_FILE, in_memory_config=false)
-				if File.exists?(file) == true or in_memory_config == true
+				if File.exist?(file) == true or in_memory_config == true
 					begin
 						if in_memory_config
 							yaml = YAML::load(file)
@@ -452,7 +452,7 @@ module Risu
 					puts "[*] Parsing #{file}..."
 					tstart = Time.new
 
-					if File.exists?(file) == false
+					if File.exist?(file) == false
 						raise Risu::Exceptions::InvalidDocument, "[!] Document does not exist - #{file}"
 					end
 

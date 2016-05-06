@@ -48,7 +48,7 @@ module Risu
 						hosts = Item.where(:plugin_id => f.plugin_id).group(:host_id)
 						plugin = Plugin.find_by_id(f.plugin_id)
 
-						references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
+						#references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
 						output.font_size(16) do
 							text "#{plugin.plugin_name}\n"
@@ -74,7 +74,7 @@ module Risu
 						definition "Description", plugin.description.gsub(/[ ]{2,}/, " ") if plugin.description != nil
 						definition "Synopsis", plugin.synopsis
 						definition "CVSS Base Score", plugin.cvss_base_score
-						definition "Exploit Available", (plugin.exploit_available == "true") ? "Yes" : "No"
+						definition "Exploit Available", plugin.exploit_available? ? "Yes" : "No"
 						definition "Solution", plugin.solution
 						definition "References", plugin.references.reference_string, :inline_format => true
 

@@ -5,20 +5,21 @@ critical_plugin:
   risk_factor: Critical
   synopsis: "A Critical Plugin for testing"
   cvss_base_score: 10
-  exploit_available: "false"
+  exploit_available: false
   solution: "Patch this critical plugin"
   stig_severity: I
   exploit_framework_d2_elliot: true
   d2_elliot_name: "Sample Exploit Name"
   exploited_by_malware: 'true'
-  potential_vulnerability: 'true'
+  potential_vulnerability: true
+  in_the_news: true
 
 high_plugin:
   id: 99998
   plugin_name: High Plugin
   description: This is a High finding!
   risk_factor: High
-  exploit_available: "true"
+  exploit_available: true
   cvss_base_score: 8
   stig_severity: II
 
@@ -27,7 +28,7 @@ medium_plugin:
   plugin_name: Medium Plugin
   description: This is a Medium finding!
   risk_factor: Medium
-  exploit_available: "false"
+  exploit_available: false
   cvss_base_score: 5
   stig_severity: III
 
@@ -54,13 +55,13 @@ msft_plugin:
   id: 35362
   plugin_name: "MS09-001: Microsoft Windows SMB Vulnerabilities Remote Code Execution (958687) (uncredentialed check)"
   risk_factor: Critical
-  exploit_available: "true"
+  exploit_available: true
 
 34477:
   id: 34477
   plugin_name: "MS08-067: Microsoft Windows Server Service Crafted RPC Request Handling Remote Code Execution (958644) (uncredentialed check)"
   risk_factor: Critical
-  exploit_available: "false"
+  exploit_available: false
 
 21564:
   id: 21564

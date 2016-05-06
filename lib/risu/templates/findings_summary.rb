@@ -34,25 +34,29 @@ module Risu
 				{
 					:name => "findings_summary",
 					:author => "hammackj",
-					:version => "0.0.3",
+					:version => "0.0.4",
 					:renderer => "PDF",
 					:description => "Generates a findings summary report"
 				}
 			end
 
-			def print_risk_summary(risks, text, color)
+			def print_risk_title (text, color)
 				@output.font_size(20) do
 					@output.fill_color color.gsub('#', '')
 					@output.text text, :style => :bold
 					@output.fill_color "000000"
 				end
+			end
+
+			def print_risk_summary(risks, text, color)
+				print_risk_title(text, color) if risks.length != 0
 
 				risks.each do |item|
 					name = Plugin.find_by_id(item.plugin_id).plugin_name
 					count = Item.where(:plugin_id => item.plugin_id).count
 
 					text "#{count} - #{name}"
-				end				
+				end
 			end
 
 			def render(output)

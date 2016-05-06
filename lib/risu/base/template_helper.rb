@@ -31,6 +31,7 @@ module Risu
 			include MalwareTemplateHelper
 			include GraphTemplateHelper
 			include SharesTemplateHelper
+			include ScanHelper
 
 			#
 			def report_classification classification=Report.classification.upcase, newline=true
@@ -139,7 +140,7 @@ module Risu
 			def item_count_by_plugin_name (plugin_name)
 				begin
 					return Item.where(:plugin_id => Plugin.where(:plugin_name => plugin_name).first.id).count
-				rescue => e
+				rescue # => e
 					return 0
 				end
 			end

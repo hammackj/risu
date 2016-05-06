@@ -43,7 +43,7 @@ module Risu
 
 				load_postprocesses(base_dir + path)
 				load_postprocesses(Dir.pwd, false)
-				load_postprocesses(File.expand_path(USER_TEMPLATES_DIR)) if File.exists?(File.expand_path(USER_TEMPLATES_DIR)) && File.directory?(File.expand_path(USER_TEMPLATES_DIR))
+				load_postprocesses(File.expand_path(USER_TEMPLATES_DIR)) if File.exist?(File.expand_path(USER_TEMPLATES_DIR)) && File.directory?(File.expand_path(USER_TEMPLATES_DIR))
 
 				sort
 			end

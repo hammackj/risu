@@ -35,7 +35,7 @@ module Risu
 				{
 					:name => "host_findings_csv",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:renderer => "CSV",
 					:description => "Generates a findings report by host and outputs to CSV"
 
@@ -64,12 +64,12 @@ module Risu
 				end
 			end
 
-			#
+			# TODO doc
 			#
 			def render(output)
 				@output.text "IP Address, FQDN, Netbios Name, Finding, Risk Factor, CVSS Base Score, Solution"
-				csv Plugin.critical_risks
-				csv Plugin.high_risks
+				csv Plugin.critical_risks.order(cvss_base_score: :desc)
+				csv Plugin.high_risks.order(cvss_base_score: :desc)
 			end
 		end
 	end
