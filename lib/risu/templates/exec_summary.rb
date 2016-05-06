@@ -58,8 +58,16 @@ module Risu
 				output.text "#{Report.scan_date}"
 				output.text "\n"
 
-				output.text "This report contains the results of a security audit performed on #{Report.scan_date}. It contains confidential information about the state of your network. Access to this information by unauthorized personnel may allow them to compromise your network.\n\n"
+				output.text "This report contains the results of a security audit performed on #{Report.scan_date}."
 
+				if Report.owner.nil? or Report.network.nil? or Report.location.nil?
+					output.text "It contains confidential information about the state of your network." 
+				else
+					output.text "It contains confidential information about the state of #{Report.owner}'s #{Report.network} network at #{Report.location}."
+				end
+				
+				output.text "Access to this information by unauthorized personnel may allow them to compromise your network.\n\n"
+				
 				output.text "A total of #{Host.count} hosts were found and scanned for vulnerabilities.\n\n"
 
 				output.text "There were #{Item.risks.count} vulnerabilities found during this scan. Of these, #{Item.critical_risks.count} were critical vulnerabilities,#{Item.high_risks.count} were high vulnerabilities, #{Item.medium_risks.count} were medium vulnerabilities, #{Item.low_risks.count} were low vulnerabilities and #{Item.info_risks.count} were information findings.\n\n"
