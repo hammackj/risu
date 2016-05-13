@@ -62,7 +62,8 @@ module Risu
 					scan_info = scan_info_to_hash (item.plugin_output)
 
 					auth = scan_info["credentialed_checks"]
-					if auth == "yes"
+
+					if auth =~ /yes/
 						count["auth"] = count["auth"] + 1
 					else
 						count["unauth"] = count["unauth"] + 1
