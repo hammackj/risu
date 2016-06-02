@@ -28,65 +28,29 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class AdobeReader < Risu::Base::PostProcessBase
+				class CiscoAnyConnectPatchRollup < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Adobe Reader Patch Rollup",
-							:plugin_id => -99998,
-							:plugin_name => "Update to the latest Adobe Reader",
-							:item_name => "Update to the latest Adobe Reader",
+							:description => "Cisco AnyConnect Client Patch Rollup",
+							:plugin_id => -99961,
+							:plugin_name => "Update to the latest Cisco AnyConnect Client",
+							:item_name => "Update to the latest Cisco AnyConnect Client",
 							:plugin_ids => [
-								30200,
-								33256,
-								34695,
-								35821,
-								38746,
-								39355,
-								42120,
-								43876,
-								44644,
-								45505,
-								47165,
-								48375,
-								49173,
-								50614,
-								51925,
-								55144,
-								56198,
-								56213,
-								66517,
-								66542,
-								74012,
-								58683,
-								61562,
-								63454,
-								64786,
-								66410,
-								69846,
-								71947,
-								57043,
-								57484,
-								24002,
-								23776,
-								23975,
-								52672,
-								53451,
-								21698,
-								77712,
-								79856,
-								77175,
-								83471,
-								40494,
-								27584,
-								86403,
-								87918,
-								89831,
-								70343,
-								91097
-
+								76491,
+								81978,
+								86302,
+								78676,
+								81671,
+								82270,
+								85266,
+								85267,
+								85541,
+								87894,
+								88100,
+								
 
 
 							]
