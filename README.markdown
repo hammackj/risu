@@ -131,9 +131,6 @@ If you would like to contribute templates/bug fixes/etc to risu. The easiest way
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/arxopia/risu/issues).
 
 # Contact
-You can reach me at risu[at]arxopia[dot]com.
+You can reach me at jacob.hammack[at]arxopia[dot]com.
 
 You can also contact me on IRC as hammackj on irc.freenode.net, #risu
-
-# Donations / tips
-Feel free to donate or tip to BTC: 1Cfd5G6rJmSBrNcTHxEgE4uYgH7XZJPY7Z
