@@ -26,8 +26,8 @@
 
 module Risu
 	APP_NAME = "risu"
-	VERSION = "1.8.0"
+	VERSION = "1.7.7"
 	HOME_PAGE = "https://arxopia.github.io/risu/"
 	GITHUB = "http://github.com/arxopia/risu"
-	EMAIL = "risu@arxopia.com"
+	EMAIL = "jacob.hammack@arxopia.com"
 end
