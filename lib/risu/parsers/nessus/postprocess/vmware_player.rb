@@ -40,7 +40,14 @@ module Risu
 							:item_name => "Update to the latest VMware Player",
 							:plugin_ids => [
 								71231,
-								76454
+								76454,
+								73672,
+								74265,
+								84219,
+								84805,
+								81185,
+								
+
 							]
 						}
 					end
