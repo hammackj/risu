@@ -12,7 +12,7 @@ Risu is [Nessus](http://www.nessus.org) parser, that converts Nessus .nessus xml
 ## Requirements
 
 ### Ruby
-Risu has been tested with ruby-2.0.0, ruby-2.1.0 and ruby-2.2.3. Please try to use one of these versions if possible. I recommend using [chruby](https://github.com/postmodern/chruby) or [RVM](https://rvm.io/) to setup your ruby environment.
+Risu has been tested with ruby-2.0.0, ruby-2.1.0 and ruby-2.2.3. Please use the latest version if possible. I recommend using [chruby](https://github.com/postmodern/chruby) or [RVM](https://rvm.io/) to setup your ruby environment.
 
 ### RubyGems
 Risu relies heavily on [RubyGems](http://rubygems.org/) to install other dependencies I highly recommend using it. RubyGems is included by default in the 1.9.x versions of [Ruby](http://ruby-lang.org/).
