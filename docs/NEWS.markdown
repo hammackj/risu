@@ -1,6 +1,9 @@
 # News
 
-# 1.7.7 (June 24, 2016)
+# 1.7.8 (June 25, 2016)
+- Changed license from 3 clause BSD to MIT.
+
+# 1.7.7 (June 25, 2016)
 - **NOTICE** Only ruby-2.2.1 and above are supported now. Please upgrade.
 - Merge pull request #90 to add a new Banner for the console from [abenson]
 - Updated Java, Windows, ESXi post-processing plugin-ids
