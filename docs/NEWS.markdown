@@ -1,5 +1,10 @@
 # News
 
+# 1.7.9 (July 1, 2016)
+- Updated RootCauses
+- Fixed #99 issue with the FindingsHost template enumerating the wrong findings. [@ghuisman]
+-
+
 # 1.7.8 (June 25, 2016)
 - Changed license from 3 clause BSD to MIT.
 
@@ -209,8 +214,8 @@
 - Support for Ruby less than 1.9.3 also doesn't exist
 - Schema
 	- Changed size of ServerPreferences.value to text instead of string. Pull Request from [alanjones]
-	- Changed size of HostProperties.value to text instead of string. Pull Request from [alanjones]
-	- Changed size of References.value to text instead of string. Pull Request from [alanjones]
+	- Changed size of HostProperties.value to text instead of string. Pull Request from [@alanjones]
+	- Changed size of References.value to text instead of string. Pull Request from [@alanjones]
 - Models
 	- Policy Model
 		- Added policy_comments
