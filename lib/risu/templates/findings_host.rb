@@ -18,7 +18,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-
 module Risu
 	module Templates
 		class FindingsHost < Risu::Base::TemplateBase
@@ -31,7 +30,7 @@ module Risu
 				{
 					:name => "findings_host",
 					:author => "hammackj",
-					:version => "0.0.3",
+					:version => "0.0.4",
 					:renderer => "PDF",
 					:description => "Generates a findings report by host"
 				}
@@ -68,7 +67,7 @@ module Risu
 							output.fill_color "000000"
 						end
 
-						host.items.high_risks_unique_sorted.each do |item|
+						host.items.critical_risks_unique_sorted.each do |item|
 							name = Plugin.find_by_id(item.plugin_id).plugin_name
 							output.text "#{name}"
 						end
