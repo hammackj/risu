@@ -2,8 +2,8 @@
 
 # 1.7.9 (July 1, 2016)
 - Updated RootCauses
-- Fixed #99 issue with the FindingsHost template enumerating the wrong findings. [@ghuisman]
--
+- Fixed issue #99 with the FindingsHost template enumerating the wrong findings. [@ghuisman]
+- Fixed issue #94 Where some fields in the Schema were strings instead of bool [@abenson]
 
 # 1.7.8 (June 25, 2016)
 - Changed license from 3 clause BSD to MIT.
