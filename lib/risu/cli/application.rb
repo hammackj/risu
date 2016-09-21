@@ -168,8 +168,20 @@ module Risu
 					puts "[!] Database adapter not found, please check your configuration file"
 					puts "#{anf.message}\n #{anf.backtrace}" if @options[:debug]
 					exit
+				rescue ActiveRecord::NoDatabaseError => nde
+					puts "[!] Database not found. Please check your configuration file"
+					puts "#{nde.message}\n #{nde.backtrace}" if @options[:debug]
+					exit
+				rescue Mysql2::Error => mse
+					puts "[!] Unable to connect to MySQL. \"#{mse.message}\" Please check your configuration file"
+					puts "#{mse.message}\n #{mse.backtrace}" if @options[:debug]
+					exit
+				rescue SQLite3::Exception => se
+					puts "[!] Unable to open database. Please check your configuration file"
+					puts "#{se.message}\n #{se.backtrace}" if @options[:debug]
+					exit
 				rescue => e
-					puts "[!] Exception! #{e.message}\n #{e.backtrace}"
+					puts "[!] Exception (#{e.class})! #{e.message}\n #{e.backtrace}"
 				end
 			end
 
@@ -327,6 +339,9 @@ module Risu
 						puts opts.to_s + "\n"
 						exit
 					end
+				rescue OptionParser::AmbiguousOption => a
+					puts opts.to_s + "\n"
+					exit
 				rescue OptionParser::MissingArgument => m
 					puts opts.to_s + "\n"
 					exit
