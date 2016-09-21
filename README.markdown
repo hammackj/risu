@@ -1,4 +1,4 @@
-# risu [![Gem Version](https://badge.fury.io/rb/risu.png)](http://badge.fury.io/rb/risu) [![Build Status](https://travis-ci.org/arxopia/risu.png?branch=master)](https://travis-ci.org/arxopia/risu)  [![Code Climate](https://codeclimate.com/github/arxopia/risu/badges/gpa.svg)](https://codeclimate.com/github/arxopia/risu) [![Inline docs](http://inch-ci.org/github/arxopia/risu.png)](http://inch-ci.org/github/arxopia/risu) [![Join the chat at https://gitter.im/arxopia/risu](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/arxopia/risu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# risu [![Gem Version](https://badge.fury.io/rb/risu.png)](http://badge.fury.io/rb/risu) [![Build Status](https://travis-ci.org/arxopia/risu.png?branch=master)](https://travis-ci.org/arxopia/risu)  [![Code Climate](https://codeclimate.com/github/arxopia/risu/badges/gpa.svg)](https://codeclimate.com/github/arxopia/risu) [![Inline docs](http://inch-ci.org/github/arxopia/risu.png)](http://inch-ci.org/github/arxopia/risu) 
 
 Risu is [Nessus](http://www.nessus.org) parser, that converts Nessus .nessus xml files into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
@@ -12,7 +12,7 @@ Risu is [Nessus](http://www.nessus.org) parser, that converts Nessus .nessus xml
 ## Requirements
 
 ### Ruby
-Risu has been tested with ruby-2.0.0, ruby-2.1.0 and ruby-2.2.3. Please try to use one of these versions if possible. I recommend using [chruby](https://github.com/postmodern/chruby) or [RVM](https://rvm.io/) to setup your ruby environment.
+Risu has been tested with ruby-2.0.0, ruby-2.1.0 and ruby-2.2.3. Please use the latest version if possible. I recommend using [chruby](https://github.com/postmodern/chruby) or [RVM](https://rvm.io/) to setup your ruby environment.
 
 ### RubyGems
 Risu relies heavily on [RubyGems](http://rubygems.org/) to install other dependencies I highly recommend using it. RubyGems is included by default in the 1.9.x versions of [Ruby](http://ruby-lang.org/).
@@ -131,9 +131,6 @@ If you would like to contribute templates/bug fixes/etc to risu. The easiest way
 If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/arxopia/risu/issues).
 
 # Contact
-You can reach me at risu[at]arxopia[dot]com.
+You can reach me at jacob.hammack[at]arxopia[dot]com.
 
 You can also contact me on IRC as hammackj on irc.freenode.net, #risu
-
-# Donations / tips
-Feel free to donate or tip to BTC: 1Cfd5G6rJmSBrNcTHxEgE4uYgH7XZJPY7Z

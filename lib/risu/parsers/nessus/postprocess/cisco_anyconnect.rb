@@ -20,11 +20,39 @@
 
 
 module Risu
-	module Models
+	module Parsers
+		module Nessus
+			module PostProcess
+				class CiscoAnyConnectPatchRollup < Risu::Base::PostProcessBase
 
-		# Service Description Model
-		#
-		class ServiceDescription < ActiveRecord::Base
+					#
+					def initialize
+						@info =
+						{
+							:description => "Cisco AnyConnect Client Patch Rollup",
+							:plugin_id => -99961,
+							:plugin_name => "Update to the latest Cisco AnyConnect Client",
+							:item_name => "Update to the latest Cisco AnyConnect Client",
+							:plugin_ids => [
+								76491,
+								81978,
+								86302,
+								78676,
+								81671,
+								82270,
+								85266,
+								85267,
+								85541,
+								87894,
+								88100,
+								
+
+
+							]
+						}
+					end
+				end
+			end
 		end
 	end
 end

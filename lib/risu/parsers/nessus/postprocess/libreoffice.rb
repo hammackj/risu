@@ -20,11 +20,33 @@
 
 
 module Risu
-	module Models
+	module Parsers
+		module Nessus
+			module PostProcess
+				class LibreOfficePatchRollup < Risu::Base::PostProcessBase
 
-		# Service Description Model
-		#
-		class ServiceDescription < ActiveRecord::Base
+					#
+					def initialize
+						@info =
+						{
+							:description => "LibreOffice Patch Rollup",
+							:plugin_id => -99962,
+							:plugin_name => "Update to the latest LibreOffice",
+							:item_name => "Update to the latest LibreOffice",
+							:plugin_ids => [
+								80078,
+								86900,
+								88983,
+								86901,
+								80832,
+								73336
+
+
+							]
+						}
+					end
+				end
+			end
 		end
 	end
 end

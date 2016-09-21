@@ -20,11 +20,27 @@
 
 
 module Risu
-	module Models
+	module Parsers
+		module Nessus
+			module PostProcess
+				class IrfanViewPatchRollup < Risu::Base::PostProcessBase
 
-		# Service Description Model
-		#
-		class ServiceDescription < ActiveRecord::Base
+					#
+					def initialize
+						@info =
+						{
+							:description => "IrfanView Patch Rollup",
+							:plugin_id => -99958,
+							:plugin_name => "Update to the latest IrfanView",
+							:item_name => "Update to the latest IrfanView",
+							:plugin_ids => [
+								68888,
+								72395,
+							]
+						}
+					end
+				end
+			end
 		end
 	end
 end

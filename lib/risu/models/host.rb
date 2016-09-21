@@ -1,28 +1,23 @@
 # Copyright (c) 2010-2016 Arxopia LLC.
-# All rights reserved.
 #
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 #
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#     * Neither the name of the Arxopia LLC nor the names of its contributors
-#     	may be used to endorse or promote products derived from this software
-#     	without specific prior written permission.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-# DISCLAIMED. IN NO EVENT SHALL ARXOPIA LLC BE LIABLE FOR ANY DIRECT, INDIRECT,
-# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-# OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-# OF THE POSSIBILITY OF SUCH DAMAGE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
 
 module Risu
 	module Models
@@ -35,17 +30,6 @@ module Risu
 			has_many :host_properties
 
 			class << self
-
-				# @TODO remove
-				# @deprecated
-				#
-				#def hosts_with_blacklist blacklist_hosts_id
-				# if blacklist_host_id == nil
-				#		where("id != ?", blacklist_host_id).count
-				# else
-			 	#	count
-				# end
-				#end
 
 				# Sorts all of the hosts where the ip address is not null
 				#
@@ -437,7 +421,7 @@ module Risu
 
 					Item.risks_by_host(limit).to_a.each do |item|
 						ip = Host.find_by_id(item.host_id).name
-						count = Item.where(:host_id => item.host_id).where(:severity => 4).count
+						count = Item.where(:host_id => item.host_id).where(:severity => 4).size
 
 						if count > 0
 							g.data(ip, count)
@@ -513,15 +497,15 @@ module Risu
 						:background_colors => %w(white white)
 					}
 
-					linux = Host.os_linux.to_a.count
-					osx = Host.os_osx.to_a.count
-					freebsd = Host.os_freebsd.to_a.count
-					netbsd = Host.os_netbsd.to_a.count
-					cisco = Host.os_cisco.to_a.count
-					vxworks = Host.os_vxworks.to_a.count
-					esx = Host.os_vmware_esx.to_a.count
-					aix = Host.os_aix.to_a.count
-					other = Host.os_other.to_a.count
+					linux = Host.os_linux.to_a.size
+					osx = Host.os_osx.to_a.size
+					freebsd = Host.os_freebsd.to_a.size
+					netbsd = Host.os_netbsd.to_a.size
+					cisco = Host.os_cisco.to_a.size
+					vxworks = Host.os_vxworks.to_a.size
+					esx = Host.os_vmware_esx.to_a.size
+					aix = Host.os_aix.to_a.size
+					other = Host.os_other.to_a.size
 
 					g.data("Linux", linux) unless linux == 0
 					g.data("OSX", osx) unless osx == 0
@@ -535,7 +519,7 @@ module Risu
 
 					#Creates very odd graphs
 					#Host.os_other.each do |host|
-					# g.data(host.os, Host.where(:os => host.os).count) unless host.os == nil
+					# g.data(host.os, Host.where(:os => host.os).size) unless host.os == nil
 					#end
 
 					StringIO.new(g.to_blob)
@@ -555,17 +539,17 @@ module Risu
 						:background_colors => %w(white white)
 					}
 
-					nt = Host.os_windows_nt.to_a.count
-					w2k = Host.os_windows_2k.to_a.count
-					xp = Host.os_windows_xp.to_a.count
-					w2k3 = Host.os_windows_2k3.to_a.count
-					vista = Host.os_windows_vista.to_a.count
-					w2k8 = Host.os_windows_2k8.to_a.count
-					w2k12 = Host.os_windows_2k12.to_a.count
-					w7 = Host.os_windows_7.to_a.count
-					w8 = Host.os_windows_8.to_a.count
-					w10 = Host.os_windows_10.to_a.count
-					other = (Host.os_windows.os_windows_other).to_a.count
+					nt = Host.os_windows_nt.to_a.size
+					w2k = Host.os_windows_2k.to_a.size
+					xp = Host.os_windows_xp.to_a.size
+					w2k3 = Host.os_windows_2k3.to_a.size
+					vista = Host.os_windows_vista.to_a.size
+					w2k8 = Host.os_windows_2k8.to_a.size
+					w2k12 = Host.os_windows_2k12.to_a.size
+					w7 = Host.os_windows_7.to_a.size
+					w8 = Host.os_windows_8.to_a.size
+					w10 = Host.os_windows_10.to_a.size
+					other = (Host.os_windows.os_windows_other).to_a.size
 
 					g.data("NT", nt) if nt >= 1
 					g.data("2000", w2k) if w2k >= 1
@@ -586,17 +570,17 @@ module Risu
 				#@TODO comment
 				#
 				def windows_os_graph_text
-					nt = Host.os_windows_nt.to_a.count
-					w2k = Host.os_windows_2k.to_a.count
-					xp = Host.os_windows_xp.to_a.count
-					w2k3 = Host.os_windows_2k3.to_a.count
-					vista = Host.os_windows_vista.to_a.count
-					w2k8 = Host.os_windows_2k8.to_a.count
-					w2k12 = Host.os_windows_2k12.to_a.count
-					w7 = Host.os_windows_7.to_a.count
-					w8 = Host.os_windows_8.to_a.count
-					w10 = Host.os_windows_10.to_a.count
-					other = (Host.os_windows.os_windows_other).to_a.count
+					nt = Host.os_windows_nt.to_a.size
+					w2k = Host.os_windows_2k.to_a.size
+					xp = Host.os_windows_xp.to_a.size
+					w2k3 = Host.os_windows_2k3.to_a.size
+					vista = Host.os_windows_vista.to_a.size
+					w2k8 = Host.os_windows_2k8.to_a.size
+					w2k12 = Host.os_windows_2k12.to_a.size
+					w7 = Host.os_windows_7.to_a.size
+					w8 = Host.os_windows_8.to_a.size
+					w10 = Host.os_windows_10.to_a.size
+					other = (Host.os_windows.os_windows_other).to_a.size
 
 					windows_os_count = nt + w2k + xp + w2k3 + vista + w7 + w8 + w2k8 + w2k12 + other
 
@@ -693,25 +677,25 @@ module Risu
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
 					win_95_text = "Windows 95 is an unsupported operating system; Microsoft has stopped support as of December 2001. " +
-					"Please see http://en.wikipedia.org/wiki/Windows_95 for more information.\n\n" if win_95.count >= 1
+					"Please see http://en.wikipedia.org/wiki/Windows_95 for more information.\n\n" if win_95.size >= 1
 
 					win_98_text = "Windows 98 is an unsupported operating system; Microsoft has stopped support as of July 2006. " +
-					"Please see http://support.microsoft.com/gp/lifean18 for more information.\n\n" if win_98.count >= 1
+					"Please see http://support.microsoft.com/gp/lifean18 for more information.\n\n" if win_98.size >= 1
 
 					win_me_text = "Windows Millennium is an unsupported operating system; Microsoft has stopped support as of July 2006. " +
-					"Please see http://support.microsoft.com/gp/lifean18 for more information.\n\n" if win_me.count >= 1
+					"Please see http://support.microsoft.com/gp/lifean18 for more information.\n\n" if win_me.size >= 1
 
 					win_nt_text = "Windows NT is an unsupported operating system; Microsoft has stopped support as of December 2004. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_nt.count >= 1
+					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_nt.size >= 1
 
 					win_2000_text = "Windows 2000 is an unsupported operating system; Microsoft has stopped support as of July 2010. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2000.count >= 1
+					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2000.size >= 1
 
 					win_xp_text = "Windows XP is an unsupported operating system; Microsoft has stopped support as of April 2014. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_xp.count >= 1
+					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_xp.size >= 1
 
 					win_2003_text = "Windows 2003 is an unsupported operating system; Microsoft has stopped support as of July 2015. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2003.count >= 1
+					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2003.size >= 1
 
 					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}"
 				end
@@ -724,7 +708,7 @@ module Risu
 
 					text = "AIX 5.x is an unsupported operating system since IBM has stopped support as of April 2011. " +
 					"Please see http://www-03.ibm.com/systems/power/software/aix/ for more information " +
-					"about obtaining a newer supported version.\n\n" if aix.count >= 1
+					"about obtaining a newer supported version.\n\n" if aix.size >= 1
 
 					return text
 				end
@@ -736,7 +720,7 @@ module Risu
 					freebsd = Host.os_freebsd.where("OS LIKE 'FreeBSD 5.%'")
 
 					text = "FreeBSD 5 support ended on 2008-05-31. Upgrade to FreeBSD 8.2 or 7.4. For more information, " +
-					"see : http://www.freebsd.org/security/\n\n" if freebsd.count >= 1
+					"see : http://www.freebsd.org/security/\n\n" if freebsd.size >= 1
 
 					return text
 				end
@@ -748,15 +732,15 @@ module Risu
 					text = "This graph shows the percentage of the different Non-Windows based operating systems " +
 					"found on the #{Report.title} network.\n\n"
 
-					linux = Host.os_linux.to_a.count
-					osx = Host.os_osx.to_a.count
-					freebsd = Host.os_freebsd.to_a.count
-					netbsd = Host.os_netbsd.to_a.count
-					cisco = Host.os_cisco.to_a.count
-					vxworks = Host.os_vxworks.to_a.count
-					esx = Host.os_vmware_esx.to_a.count
-					aix = Host.os_aix.to_a.count
-					other = Host.os_other.to_a.count
+					linux = Host.os_linux.to_a.size
+					osx = Host.os_osx.to_a.size
+					freebsd = Host.os_freebsd.to_a.size
+					netbsd = Host.os_netbsd.to_a.size
+					cisco = Host.os_cisco.to_a.size
+					vxworks = Host.os_vxworks.to_a.size
+					esx = Host.os_vmware_esx.to_a.size
+					aix = Host.os_aix.to_a.size
+					other = Host.os_other.to_a.size
 
 					other_os_count = linux + osx + freebsd + netbsd + cisco + vxworks + esx + aix + other
 
@@ -782,7 +766,7 @@ module Risu
 				# @TODO comments
 				#
 				def top_n_vulnerable(n)
-					hosts = Item.risks_by_host(Host.count).count
+					hosts = Item.risks_by_host(Host.count).size
 					hosts = hosts.sort_by {|k, v| v}
 					hosts.reverse!
 
@@ -816,19 +800,19 @@ module Risu
 				# @TODO
 				def unique_hosts_with_critical_and_high_count
 					hosts = Array.new
-					crit = Item.critical_risks_by_host(Host.all.count)
+					crit = Item.critical_risks_by_host(Host.all.size)
 
 					crit.each do |item|
 						hosts.push(item.host_id)
 					end
 
-					high = Item.high_risks_by_host(Host.all.count)
+					high = Item.high_risks_by_host(Host.all.size)
 
 					high.each do |item|
 						hosts.push(item.host_id)
 					end
 
-					hosts.uniq.count
+					hosts.uniq.size
 				end
 			end
 		end

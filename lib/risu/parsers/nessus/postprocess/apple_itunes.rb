@@ -20,11 +20,34 @@
 
 
 module Risu
-	module Models
+	module Parsers
+		module Nessus
+			module PostProcess
+				class AppleiTunesPatchRollup < Risu::Base::PostProcessBase
 
-		# Service Description Model
-		#
-		class ServiceDescription < ActiveRecord::Base
+					#
+					def initialize
+						@info =
+						{
+							:description => "Apple iTunes Patch Rollup",
+							:plugin_id => -99960,
+							:plugin_name => "Update to the latest Apple iTunes",
+							:item_name => "Update to the latest Apple iTunes",
+							:plugin_ids => [
+								84504,
+								86001,
+								86602,
+								91347,
+								87371,
+								
+
+
+
+							]
+						}
+					end
+				end
+			end
 		end
 	end
 end

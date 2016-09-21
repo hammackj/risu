@@ -1,12 +1,22 @@
 # News
 
-# 1.8.0 (2016)
+# 1.7.9 (July 1, 2016)
+- Updated RootCauses
+- Fixed issue #99 with the FindingsHost template enumerating the wrong findings. [@ghuisman]
+- Fixed issue #94 Where some fields in the Schema were strings instead of bool [@abenson]
+
+# 1.7.8 (June 25, 2016)
+- Changed license from 3 clause BSD to MIT.
+
+# 1.7.7 (June 25, 2016)
 - **NOTICE** Only ruby-2.2.1 and above are supported now. Please upgrade.
 - Merge pull request #90 to add a new Banner for the console from [abenson]
 - Updated Java, Windows, ESXi post-processing plugin-ids
 - Templates
 	- Added a count of hosts on the host listings on the notable_detailed and technical_findings templates.
 	- Added more fields to the host_findings_csv template.
+- Loads of updates to the PostProcessing Plugins
+- Some changes based on code climate reports
 
 # 1.7.6 (December 02, 2015)
 - **NOTICE** Upon next major release, "1.8.0" ruby-2.2.1+ will only be supported. This is due to rails5 dropping support for all previous versions. Risu 1.8.0 will be release shortly after rails5 with this change.
@@ -204,8 +214,8 @@
 - Support for Ruby less than 1.9.3 also doesn't exist
 - Schema
 	- Changed size of ServerPreferences.value to text instead of string. Pull Request from [alanjones]
-	- Changed size of HostProperties.value to text instead of string. Pull Request from [alanjones]
-	- Changed size of References.value to text instead of string. Pull Request from [alanjones]
+	- Changed size of HostProperties.value to text instead of string. Pull Request from [@alanjones]
+	- Changed size of References.value to text instead of string. Pull Request from [@alanjones]
 - Models
 	- Policy Model
 		- Added policy_comments

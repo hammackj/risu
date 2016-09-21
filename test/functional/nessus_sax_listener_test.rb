@@ -201,8 +201,8 @@ class NessusSaxListenerTest < ActiveSupport::TestCase
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value == "GET", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value}"
 	end
 
-	test "return 1 for Plugin.where(:exploited_by_malware => 'true').count" do
-			assert Plugin.where(:exploited_by_malware => "true").count == 1, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
+	test "return 1 for Plugin.where(:exploited_by_malware => true).count" do
+			assert Plugin.where(:exploited_by_malware => true).count == 1, "GOT #{Plugin.where(:exploited_by_malware => true).count}"
 	end
 
 	test "return 1 for Plugin.in_the_news.count" do
