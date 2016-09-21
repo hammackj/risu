@@ -30,7 +30,7 @@ module Risu
 				{
 					:name => "authentication_summary",
 					:author => "hammackj",
-					:version => "0.0.1",
+					:version => "0.0.2",
 					:renderer => "PDF",
 					:description => "Generates a Authentication Summary Report"
 				}
@@ -52,6 +52,35 @@ module Risu
 				@output.text "#{Report.scan_date}"
 				@output.text "\n"
 
+
+				credentialied_scans = HostProperty.where(:name => "Credentialed_Scan")
+				auth = []
+				unauth = []
+
+				credentialied_scans.each do |s|
+					if s.value == "true"
+						auth.push(s.host_id)
+					else
+						unauth.push(s.host_id)
+					end
+				end
+
+				auth_hosts = []
+
+				auth.each do |h|
+					auth_hosts.push Host.find(h).ip
+				end
+
+				@output.text "Authenticated Count:", :style => :bold
+				@output.text "#{auth.size}"
+				@output.text "\n"
+				@output.text "#{auth_hosts.join(", ")}"
+				@output.text "\n"
+
+				@output.text "UnAuthenticated Count:", :style => :bold
+				@output.text "#{unauth.size}"
+				@output.text "\n"
+
 				results = Array.new
 
 				headers = ["Hostname", "OS", "Authenticated"]
@@ -65,7 +94,7 @@ module Risu
 					if host.host_properties.where(:name => "Credentialed_Scan").first != nil
 						authenticated = host.host_properties.where(:name => "Credentialed_Scan").first.value
 					end
-					
+
 					os = host.os
 
 					host_name = host.name
