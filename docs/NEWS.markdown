@@ -1,5 +1,8 @@
 # News
 
+# 1.7.10 (October 1, 2016)
+- Various fixes [@abenson]
+
 # 1.7.9 (July 1, 2016)
 - Updated RootCauses
 - Fixed issue #99 with the FindingsHost template enumerating the wrong findings. [@ghuisman]
