@@ -2,8 +2,6 @@
 
 **Release dates and road map are estimates, and features can be changed at any time.**
 
-
-
 - Microsoft Windows Unquoted Service Path Enumeration - 63155
 	- https://gallery.technet.microsoft.com/scriptcenter/Windows-Unquoted-Service-190f0341
 -- Update centos docs and ubuntu docs

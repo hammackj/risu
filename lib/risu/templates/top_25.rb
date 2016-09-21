@@ -1,28 +1,23 @@
 # Copyright (c) 2010-2016 Arxopia LLC.
-# All rights reserved.
 #
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 #
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#     * Neither the name of the Arxopia LLC nor the names of its contributors
-#     	may be used to endorse or promote products derived from this software
-#     	without specific prior written permission.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-# DISCLAIMED. IN NO EVENT SHALL ARXOPIA LLC BE LIABLE FOR ANY DIRECT, INDIRECT,
-# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-# OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-# OF THE POSSIBILITY OF SUCH DAMAGE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
 
 module Risu
 	module Templates
@@ -36,7 +31,7 @@ module Risu
 				{
 					:name => "top_25",
 					:author => "hammackj",
-					:version => "0.0.2",
+					:version => "0.0.3",
 					:renderer => "PDF",
 					:description => "Generates a Top 25 Remediation report"
 				}
@@ -60,7 +55,8 @@ module Risu
 				page_width = output.bounds.width
 
 				#header_widths = {0 => 255, 1 => 56, 2 => 56, 3 => 56, 4 => 57}
-				header_widths = {
+				header_widths =
+				{
 					0 => (page_width * 0.50),
 					1 => (page_width * 0.10),
 					2 => (page_width * 0.15),
@@ -68,12 +64,12 @@ module Risu
 					4 => (page_width * 0.15)
 				}
 
-				Plugin.where(:risk_factor => "Critical").order(:risk_score).limit(25).reverse_order.each do |plugin|
+				#Plugin.where(:risk_factor => "Critical").order(:risk_score).limit(25).reverse_order.each do |plugin|
+				Plugin.joins(:items).where(:items => {severity: 4}).order(:risk_score).group(:plugin_id).limit(25).reverse_order.each do |plugin|
 					row = Array.new
 
 					name = plugin.plugin_name
 					vulns = Item.where(:plugin_id => plugin.id).count
-
 
 					if plugin.exploitability_ease == "Exploits are available"
 						exploitability = "Yes"

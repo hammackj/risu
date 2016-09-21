@@ -24,13 +24,24 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
- require 'test_helper'
+require 'test_helper'
 
- class NessusSaxListenerTest < ActiveSupport::TestCase
- 	include Risu::Models
+class NessusSaxListenerTest < ActiveSupport::TestCase
+	include Risu::Models
 
- 	#Expand this to cover the entire Nessus xml spec
- 	def build_nessus_xml property, value
+	# TODO doc
+	#
+	def setup
+			setup_test_database (false)
+			xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
+
+			@parser = LibXML::XML::SaxParser.string xml
+			@parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
+			@parser.parse
+	end
+
+	#Expand this to cover the entire Nessus xml spec
+	def build_nessus_xml property, value
 		builder = Nokogiri::XML::Builder.new do |xml|
 			xml.NessusClientData_v2 do
 				xml.Policy do
@@ -93,6 +104,7 @@
 							end
 
 							xml.agent "all"
+							xml.in_the_news "true"
 
 							xml.send(:"cm:compliance-info", "cm:compliance-info")
 							xml.send(:"cm:compliance-reference", "cm:compliance-reference")
@@ -107,36 +119,27 @@
 		end
 
 		builder.to_xml
-		end
+	end
 
-		def setup
-				setup_test_database
-				xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
+	test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_info == cm:compliance-info" do
+			assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info == "cm:compliance-info", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info}"
+	end
 
-				@parser = LibXML::XML::SaxParser.string xml
-				@parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
-				@parser.parse
-		end
+	test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_reference == cm:compliance-reference" do
+			assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference == "cm:compliance-reference", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference}"
+	end
 
-		 test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_info == cm:compliance-info" do
-				assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info == "cm:compliance-info", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_info}"
-		end
+	test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_see_also == cm:compliance-see-also" do
+			assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also == "cm:compliance-see-also", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also}"
+	end
 
-		test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_reference == cm:compliance-reference" do
-				assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference == "cm:compliance-reference", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_reference}"
-		end
+	test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_solution == cm:compliance-solution" do
+			assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution == "cm:compliance-solution", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution}"
+	end
 
-		test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_see_also == cm:compliance-see-also" do
-				assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also == "cm:compliance-see-also", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_see_also}"
-		end
-
-		test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_solution == cm:compliance-solution" do
-				assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution == "cm:compliance-solution", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution}"
-		end
-
-		test "Attachment.first.name == 'ts_screenshot.jpg'" do
-				assert Attachment.first.name == 'ts_screenshot.jpg', "GOT #{Attachment.first.name}"
-		end
+	test "Attachment.first.name == 'ts_screenshot.jpg'" do
+			assert Attachment.first.name == 'ts_screenshot.jpg', "GOT #{Attachment.first.name}"
+	end
 
 	test "Attachment.first.ttype == 'image/bmp'" do
 		assert Attachment.first.ttype == 'image/bmp', "GOT #{Attachment.first.ttype}"
@@ -162,43 +165,47 @@
 		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.agent == "all", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.agent}"
 	end
 
- 	test "return USN:1752-1 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => usn).first.value" do
- 		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value == "USN:1752-1", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value}"
- 	end
+	test "return USN:1752-1 for Host.where(:name => 69.69.69.69).first.items.first.plugin.references.where(:reference_name => usn).first.value" do
+		assert Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value == "USN:1752-1", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.plugin.references.where(:reference_name => "usn").first.value}"
+	end
 
- 	test "return Everything for Policy.last.name" do
- 		assert Policy.last.name == "Everything", "GOT #{Policy.last.name}"
- 	end
+	test "return Everything for Policy.last.name" do
+		assert Policy.last.name == "Everything", "GOT #{Policy.last.name}"
+	end
 
- 	test "return Comments... for Policy.last.comments" do
- 		assert Policy.last.comments == "comments...", "GOT #{Policy.last.comments}"
- 	end
+	test "return Comments... for Policy.last.comments" do
+		assert Policy.last.comments == "comments...", "GOT #{Policy.last.comments}"
+	end
 
- 	test "return Someone for Policy.last.owner" do
- 		assert Policy.last.owner == "Someone", "GOT #{Policy.last.owner}"
- 	end
+	test "return Someone for Policy.last.owner" do
+		assert Policy.last.owner == "Someone", "GOT #{Policy.last.owner}"
+	end
 
- 	test "return shared for Policy.last.visibility" do
- 		assert Policy.last.visibility == "shared", "GOT #{Policy.last.visibility}"
- 	end
+	test "return shared for Policy.last.visibility" do
+		assert Policy.last.visibility == "shared", "GOT #{Policy.last.visibility}"
+	end
 
- 	test "return 10.69.69.67 for Host.where(:name => 69.69.69.69)...traceroute_hop_0" do
- 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value == "69.69.69.67", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value}"
- 	end
+	test "return 10.69.69.67 for Host.where(:name => 69.69.69.69)...traceroute_hop_0" do
+		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value == "69.69.69.67", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-0").first.value}"
+	end
 
- 	test "return 10.69.69.68 for Host.where(:name => 69.69.69.69)...traceroute_hop_1" do
- 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value == "69.69.69.68", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value}"
- 	end
+	test "return 10.69.69.68 for Host.where(:name => 69.69.69.69)...traceroute_hop_1" do
+		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value == "69.69.69.68", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-1").first.value}"
+	end
 
- 	test "return 10.69.69.70 for Host.where(:name => 69.69.69.69)...traceroute_hop_2" do
+	test "return 10.69.69.70 for Host.where(:name => 69.69.69.69)...traceroute_hop_2" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value == "69.69.69.70", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "traceroute-hop-2").first.value}"
- 	end
+	end
 
 	test "return GET for Host.where(:name => 69.69.69.69)...pcidss:insecure_http_methods" do
 		assert Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value == "GET", "GOT #{Host.where(:name => "69.69.69.69").first.host_properties.where(:name => "pcidss:insecure_http_methods").first.value}"
 	end
 
-	test "return 2 for Plugin.where(:exploited_by_malware => 'true').count" do
-			assert Plugin.where(:exploited_by_malware => "true").count == 2, "GOT #{Plugin.where(:exploited_by_malware => 'true').count}"
+	test "return 1 for Plugin.where(:exploited_by_malware => true).count" do
+			assert Plugin.where(:exploited_by_malware => true).count == 1, "GOT #{Plugin.where(:exploited_by_malware => true).count}"
+	end
+
+	test "return 1 for Plugin.in_the_news.count" do
+			assert Plugin.in_the_news.count == 1, "GOT #{Plugin.in_the_news.count}"
 	end
 end
