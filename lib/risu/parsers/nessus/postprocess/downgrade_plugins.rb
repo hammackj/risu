@@ -43,7 +43,7 @@ module Risu
 							41028 => 0, #SNMP Agent Default Community Name (public) - 41028
               10264 => 0, #SNMP Agent Default Community Names - 10264
 							10081 => 0, #FTP Privileged Port Bounce Scan - 10081
-							#42411 => 0, #Microsoft Windows SMB Shares Unprivileged Access
+							42411 => 0, #Microsoft Windows SMB Shares Unprivileged Access
 
 						}
 					end
