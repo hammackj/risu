@@ -110,8 +110,8 @@ module Risu
 				end
 				
 				begin
-					p = Plugin.where(:id => @info[:plugin_ids]).select("sum(risk_score) as risk_score")
-					unless p.nil? or p.total_risk.nil?
+					p = Plugin.where(:id => @info[:plugin_ids]).select("sum(risk_score) as risk_score").first
+					unless p.nil? or p.risk_score.nil?
 						plugin.risk_score = p.risk_score
 					else
 						plugin.risk_score = 0
@@ -164,8 +164,8 @@ module Risu
 					end
 				end
 				
-				plugin.references << References.where(:plugin_id => @info[:plugin_ids], :reference_name => "cve")
 				
+				plugin.references << Reference.where(:plugin_id => @info[:plugin_ids], :reference_name => "cve")
 				plugin.save
 			end
 
