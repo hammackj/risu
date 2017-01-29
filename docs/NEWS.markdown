@@ -1,6 +1,6 @@
 # News
 
-# 1.7.10 (November 1, 2016)
+# 1.7.10 (March 1, 2017)
 - Various improvements / fixes [@abenson]
 - Post Processing
 	- Added 7-Zip
