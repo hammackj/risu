@@ -34,14 +34,17 @@ module Risu
 							:plugin_name => "Update to the latest VLC",
 							:item_name => "Update to the latest VLC",
 							:plugin_ids => [
-                58416,
-                60049,
-                63381,
-                66216,
-                72279,
-                69015,
-                70560,
-                78626,
+								58416,
+								60049,
+								63381,
+								66216,
+								72279,
+								69015,
+								70560,
+								78626,
+								55608,
+								63137,
+								
 
 							]
 						}

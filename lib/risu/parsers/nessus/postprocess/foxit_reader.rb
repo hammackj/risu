@@ -34,13 +34,16 @@ module Risu
 							:plugin_name => "Update to the latest Foxit Reader",
 							:item_name => "Update to the latest Foxit Reader",
 							:plugin_ids => [
-                52458,
-                55671,
-                57050,
-                62063,
-                62384,
-                72723,
-                62064,
+								52458,
+								55671,
+								57050,
+								62063,
+								62384,
+								72723,
+								62064,
+								86698,
+								90567,
+								
 
 
 							]
