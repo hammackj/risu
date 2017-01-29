@@ -1,7 +1,23 @@
 # News
 
-# 1.7.10 (October 1, 2016)
-- Various fixes [@abenson]
+# 1.7.10 (November 1, 2016)
+- Various improvements / fixes [@abenson]
+- Post Processing
+	- Added 7-Zip
+	- Added Foxit Phantom PDF
+	- Added RealPlayer
+	- Added Skype
+	- Updated OpenSSH plugin list
+	- Updated VMware ESXi plugin list
+	- Updated Apple QuickTime
+	- Updated Cisco AnyConnect
+	- Updated Firefox
+	- Updated Foxit Reader
+	- Updated Google Chrome
+	- Updated Java
+	- Updated Libre Office
+	- Updated Windows updates
+	- Updated Wireshark
 
 # 1.7.9 (July 1, 2016)
 - Updated RootCauses
