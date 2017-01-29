@@ -600,18 +600,18 @@ module Risu
 					"found on the #{Report.title} network.\n\n"
 
 					# @TODO this should be a table sorted by %
-					text << "#{nt_percent.round.to_i}% of the network is Windows NT. " if nt_percent >= 1
-					text << "#{w2k_percent.round.to_i}% of the network is Windows 2000. " if w2k_percent >= 1
-					text << "#{xp_percent.round.to_i}% of the network is Windows XP. " if xp_percent >= 1
-					text << "#{w2k3_percent.round.to_i}% of the network is Windows Server 2003. " if w2k3_percent >= 1
-					text << "#{vista_percent.round.to_i}% of the network is Windows Vista. " if vista_percent >= 1
-					text << "#{w2k8_percent.round.to_i}% of the network is Windows Server 2008. " if w2k8_percent >= 1
-					text << "#{w7_percent.round.to_i}% of the network is Windows 7. " if w7_percent >= 1
-					text << "#{w8_percent.round.to_i}% of the network is Windows 8. " if w8_percent >= 1
-					text << "#{w10_percent.round.to_i}% of the network is Windows 10. " if w10_percent >= 1
-					text << "#{w2k12_percent.round.to_i}% of the network is Windows Server 20012. " if w2k12_percent >= 1
+					text << "#{nt_percent.round.to_i}% (#{nt}) of the network is Windows NT.\n" if nt_percent >= 1
+					text << "#{w2k_percent.round.to_i}% (#{w2k}) of the network is Windows 2000.\n" if w2k_percent >= 1
+					text << "#{xp_percent.round.to_i}% (#{xp}) of the network is Windows XP.\n" if xp_percent >= 1
+					text << "#{w2k3_percent.round.to_i}% (#{w2k3}) of the network is Windows Server 2003.\n" if w2k3_percent >= 1
+					text << "#{vista_percent.round.to_i}% (#{vista}) of the network is Windows Vista.\n" if vista_percent >= 1
+					text << "#{w2k8_percent.round.to_i}% (#{w2k8}) of the network is Windows Server 2008.\n" if w2k8_percent >= 1
+					text << "#{w7_percent.round.to_i}% (#{w7}) of the network is Windows 7.\n" if w7_percent >= 1
+					text << "#{w8_percent.round.to_i}% (#{w8}) of the network is Windows 8.\n" if w8_percent >= 1
+					text << "#{w10_percent.round.to_i}% (#{w10}) of the network is Windows 10.\n" if w10_percent >= 1
+					text << "#{w2k12_percent.round.to_i}% (#{w2k12}) of the network is Windows Server 20012.\n" if w2k12_percent >= 1
 
-					text << "\n\n" << unsupported_os_windows if nt > 0 or w2k > 0
+					text << "\n\n" << unsupported_os_windows if nt > 0 or w2k > 0 or xp > 0
 
 					return text
 				end
