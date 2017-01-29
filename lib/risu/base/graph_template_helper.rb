@@ -1,4 +1,4 @@
-# Copyright (c) 2012-2016 Arxopia LLC.
+# Copyright (c) 2010-2017 Arxopia LLC.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,14 @@
 module Risu
 	module Templates
 		module GraphTemplateHelper
-			
+
 			#
 			def other_os_graph_page
 				if Host.other_os_graph_has_data?
 					new_page
 					@output.image Host.other_os_graph, :width => 500, :height => 375, :position => :center
 					text Host.other_os_graph_text
-				end				
+				end
 			end
 
 			#
@@ -65,7 +65,7 @@ module Risu
 				new_page
 				@output.image Item.risks_by_severity_graph, :width => 500, :height => 375, :position => :center
 				text Item.risks_by_severity_graph_text, :inline_format => true
-			end				
+			end
 		end
 	end
 end
