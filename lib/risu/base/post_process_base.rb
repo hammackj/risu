@@ -76,7 +76,7 @@ module Risu
 				plugin.plugin_version = @info[:version]
 				plugin.plugin_publication_date = @info[:publication_date]
 				plugin.plugin_modification_date = @info[:modification_date]
-				
+
 				# Boiler plate for all roll up plugins
 				plugin.family_name = "Risu Rollup Plugins"
 				plugin.synopsis = "Software often has vulnerabilities that are corrected in newer versions. It was determined that an older version of the software is installed on this system."
@@ -84,7 +84,7 @@ module Risu
 				plugin.plugin_type = "Rollup"
 				plugin.rollup = true
 				plugin.compliance = false
-				
+
 				# Find oldest vuln date.
 				begin
 					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:vuln_publication_date => nil).order(:vuln_publication_date).first
@@ -92,7 +92,7 @@ module Risu
 						plugin.vuln_publication_date = p.vuln_publication_date
 					end
 				end
-				
+
 				begin
 					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:cvss_base_score => nil).order(:cvss_base_score).last
 					unless p.nil?
@@ -108,20 +108,11 @@ module Risu
 						plugin.cvss_temporal_vector = p.cvss_temporal_vector
 					end
 				end
-				
-				begin
-					p = Plugin.where(:id => @info[:plugin_ids]).select("sum(risk_score) as risk_score")
-					unless p.nil? or p.total_risk.nil?
-						plugin.risk_score = p.risk_score
-					else
-						plugin.risk_score = 0
-					end
-				end
-				
+
 				if Plugin.where(:id => @info[:plugin_ids], :exploit_available => true).count > 0
 					plugin.exploit_available = true
 				end
-				
+
 				if Plugin.where(:id => @info[:plugin_ids], :exploit_framework_core => "true").count > 0
 					plugin.exploit_framework_core = true
 				end
@@ -149,23 +140,24 @@ module Risu
 				if Plugin.where(:id => @info[:plugin_ids], :exploited_by_malware => "true").count > 0
 					plugin.exploited_by_malware = true
 				end
-				
+
 				["Critical", "High", "Medium", "Low", "Info"].each do |risk|
 					if Plugin.where(:id => @info[:plugin_ids], :risk_factor => risk).size > 0
 						plugin.risk_factor = risk
 						break
 					end
 				end
-				
+
 				begin
 					p = Plugin.where(:id => @info[:plugin_ids]).where.not(:stig_severity => nil).order(:stig_severity).first
 					unless p.nil?
 						plugin.stig_severity = p.stig_severity
 					end
 				end
-				
-				plugin.references << References.where(:plugin_id => @info[:plugin_ids], :reference_name => "cve")
-				
+
+				# Broken
+				#plugin.references << References.where(:plugin_id => @info[:plugin_ids], :reference_name => "cve")
+
 				plugin.save
 			end
 
@@ -207,7 +199,7 @@ module Risu
 					return
 				end
 
-				# If this is a "roll up" post-process, create a plugin 
+				# If this is a "roll up" post-process, create a plugin
 				if Plugin.where(:id => @info[:plugin_ids]).count > 0
 					create_plugin()
 				end
