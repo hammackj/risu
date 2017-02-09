@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby -W0
 
 # Copyright (c) 2010-2017 Arxopia LLC.
 #

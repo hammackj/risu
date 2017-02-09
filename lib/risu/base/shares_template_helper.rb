@@ -88,7 +88,7 @@ module Risu
 
 						count = count + 1
 					end
-				rescue => e
+				rescue
 					return 0
 				end
 
