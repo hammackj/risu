@@ -23,7 +23,7 @@ module Risu
 	module Base
 
 		# Risu database Schema
-		class Schema < ActiveRecord::Migration
+		class Schema < ActiveRecord::Migration[4.2]
 
 			# Creates all of the database tables required by the parser
 			def self.up
