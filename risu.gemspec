@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
 
 	s.rubyforge_project	= "#{Risu::APP_NAME}"
 
-	s.add_runtime_dependency 'rails', '~> 4.2', '>= 4.2.6'
+	s.add_runtime_dependency 'rails', '~> 5.0', '>= 5.0.1'
 	s.add_runtime_dependency 'libxml-ruby', '~> 2.9', '>= 2.9.0'
 	s.add_runtime_dependency 'prawn', '~> 2.0', '>= 2.1.0'
 	s.add_runtime_dependency 'prawn-table', '~> 0.2', '>= 0.2.2'
