@@ -117,7 +117,7 @@ module Risu
 						return false
 					end
 
-					def has_host_findings? (host_id)
+					def has_host_findings? host_id
 						@plugin_ids.each do |plugin_id|
 							if Item.where(:plugin_id => plugin_id).where(:host_id => host_id).count >= 1
 								return true
