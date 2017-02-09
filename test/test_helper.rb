@@ -157,7 +157,8 @@ def setup_test_database (run_fixtures=true)
 
 		@app.db_connect
 
-		if !ActiveRecord::Base.connection.tables.empty?
+		#if !ActiveRecord::Base.connection.tables.empty?
+		if !ActiveRecord::Base.connection.data_sources.empty?
 			@app.migrate(:down)
 		end
 
