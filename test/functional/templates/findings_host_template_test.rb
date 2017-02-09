@@ -47,7 +47,7 @@ class FindingsHostTemplateTest < ActiveSupport::TestCase
 		File.delete(@file_name) if File.exist?(@file_name)
 	end
 
-	test "should create #{@filename} on template creation" do
+	test "should create #{@file_name} on template creation" do
 		@templater.generate
 		assert File.exist?(@file_name) == true
 	end

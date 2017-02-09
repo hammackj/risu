@@ -35,7 +35,7 @@ module Risu
 				}
 			end
 
-			def print_risk_title (text, color)
+			def print_risk_title text, color
 				@output.font_size(20) do
 					@output.fill_color color.gsub('#', '')
 					@output.text text, :style => :bold
@@ -43,7 +43,7 @@ module Risu
 				end
 			end
 
-			def print_risk_summary(risks, text, color)
+			def print_risk_summary risks, text, color
 				print_risk_title(text, color) if risks.length != 0
 
 				risks.each do |item|

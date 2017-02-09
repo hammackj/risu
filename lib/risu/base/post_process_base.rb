@@ -49,7 +49,7 @@ module Risu
 				end
 			end
 
-			def <=> (other)
+			def <=> other
 				if self.info[:plugin_id] < other.info[:plugin_id]
 					-1
 				elsif self.info[:plugin_id] > other.info[:plugin_id]
