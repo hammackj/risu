@@ -136,7 +136,7 @@ end
 
 @app = nil
 
-def setup_test_database (run_fixtures=true)
+def setup_test_database run_fixtures=true
 
 	begin
 		File.delete("test_data/test.db") if File.exist?("test_data/test.db")
@@ -157,7 +157,6 @@ def setup_test_database (run_fixtures=true)
 
 		@app.db_connect
 
-		#if !ActiveRecord::Base.connection.tables.empty?
 		if !ActiveRecord::Base.connection.data_sources.empty?
 			@app.migrate(:down)
 		end
