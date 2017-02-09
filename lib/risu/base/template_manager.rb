@@ -30,7 +30,7 @@ module Risu
 			# @param path Path relative to the base_dir of risu
 			#
 			# @return New instance of the template manager with templates loaded.
-			def initialize (path)
+			def initialize path
 				@registered_templates = Array.new
 				@templates = Array.new
 
@@ -74,7 +74,7 @@ module Risu
 			# @param template The template to validate
 			#
 			# @return [Boolean] If the template is valid
-			def validate(template)
+			def validate template
 			  t = template.new
 
 				return false if t == nil
@@ -86,7 +86,7 @@ module Risu
 			# @param name Name of the template to find
 			#
 			# @return the instance of the template or nil if not found
-			def find_template_by_name(name)
+			def find_template_by_name name
 				@registered_templates.each do |template|
 					t = template.new
 					if t.template_info[:name] == name
