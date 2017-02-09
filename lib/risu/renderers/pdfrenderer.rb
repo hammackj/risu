@@ -23,10 +23,9 @@ module Risu
 	module Renderers
 		class PDFRenderer
 
-			#@TODO 
-			def initialize ()
-					
-
+			#@TODO
+			def initialize
+			
 			end
 
 			# @TODO comment

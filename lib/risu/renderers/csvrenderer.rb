@@ -25,14 +25,14 @@ module Risu
 
 			# @TODO comment
 			#
-			def self.generate(output_file, &block)
+			def self.generate output_file, &block
 				#csv = new(output_file, &block)
 				return new(output_file, &block)
 			end
 
 			# @TODO comment
 			#
-			def initialize(output_file, &block)
+			def initialize output_file, &block
 				@output_file = output_file
 				instance_eval(&block)
 			end

@@ -29,7 +29,7 @@ module Risu
 		module HostTemplateHelper
 
 			#
-			def unsupported_os(title, plugin_name)
+			def unsupported_os title, plugin_name
 				if item_count_by_plugin_name(plugin_name) <= 0
 					return
 				end

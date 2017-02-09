@@ -34,11 +34,11 @@ module Risu
 			attr_accessor :info
 
 			#
-			def self.inherited(child)
+			def self.inherited child
 				possible_postprocesses << child
 			end
 
-			def == (other)
+			def == other
 
 				if self.info == nil || self.info[:plugin_id] == nil
 					false

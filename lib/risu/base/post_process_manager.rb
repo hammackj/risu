@@ -30,7 +30,7 @@ module Risu
 			# @param path Path relative to the base_dir of risu
 			#
 			# @return New instance of the template manager with templates loaded.
-			def initialize (path)
+			def initialize path
 				@registered_postprocesses = Array.new
 				@postprocesses = Array.new
 
@@ -92,7 +92,7 @@ module Risu
 			# @param template The template to validate
 			#
 			# @return [Boolean] If the template is valid
-			def validate(template)
+			def validate template
 				t = template.new
 
 				return false if t == nil
