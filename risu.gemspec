@@ -46,13 +46,13 @@ Gem::Specification.new do |s|
 
 	s.add_runtime_dependency 'rails', '~> 5.0', '>= 5.0.1'
 	s.add_runtime_dependency 'libxml-ruby', '~> 2.9', '>= 2.9.0'
-	s.add_runtime_dependency 'prawn', '~> 2.0', '>= 2.1.0'
+	s.add_runtime_dependency 'prawn', '~> 2.1', '>= 2.1.0'
 	s.add_runtime_dependency 'prawn-table', '~> 0.2', '>= 0.2.2'
 	s.add_runtime_dependency 'gruff', '~> 0.7', '>= 0.7.0'
-	s.add_runtime_dependency 'mysql2', '~> 0.4', '>= 0.4.4'
+	s.add_runtime_dependency 'mysql2', '~> 0.4', '>= 0.4.5'
 	s.add_runtime_dependency 'rmagick', '~> 2.15', '>= 2.15.4'
 	s.add_runtime_dependency 'sqlite3', '~> 1.3', '>= 1.3.11'
-	s.add_runtime_dependency 'nokogiri', '~> 1.6', '>= 1.6.8'
+	s.add_runtime_dependency 'nokogiri', '~> 1.7', '>= 1.7.0.1'
 
 	s.add_development_dependency 'simplecov', '~> 0.11', '>= 0.11.2'
 	s.add_development_dependency 'yard', '~> 0.8', '>= 0.8.7.6'
