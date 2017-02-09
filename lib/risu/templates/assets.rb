@@ -24,7 +24,7 @@ module Risu
 		class AssetsTemplate < Risu::Base::TemplateBase
 			include TemplateHelper
 
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "assets",
