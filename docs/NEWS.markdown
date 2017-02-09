@@ -1,6 +1,8 @@
 # News
 
-# 1.7.10 (March 1, 2017)
+# 1.8.0 (March 1, 2017)
+- Ported to Rails 5
+- Lots of clean up for Rails 5 and Ruby 2.4
 - Various improvements / fixes [@abenson]
 - Post Processing
 	- Added 7-Zip
