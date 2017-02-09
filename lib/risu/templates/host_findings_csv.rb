@@ -25,7 +25,7 @@ module Risu
 
 			#
 			#
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "host_findings_csv",
@@ -61,7 +61,7 @@ module Risu
 
 			# TODO doc
 			#
-			def render(output)
+			def render output
 				@output.text "IP Address, FQDN, Netbios Name, Finding, Risk Factor, CVSS Base Score, Solution"
 				csv Plugin.critical_risks.order(cvss_base_score: :desc)
 				csv Plugin.high_risks.order(cvss_base_score: :desc)

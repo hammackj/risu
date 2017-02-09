@@ -26,7 +26,7 @@ module Risu
 
 			#
 			#
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "top_25",
@@ -39,7 +39,7 @@ module Risu
 
 			#
 			#
-			def render(output)
+			def render output
 				text Report.classification.upcase, :align => :center
 				text "\n"
 

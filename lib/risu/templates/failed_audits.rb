@@ -31,7 +31,7 @@ module Risu
 
 			# Initializes the template loading meta data
 			#
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "failed_audits",
@@ -53,7 +53,7 @@ module Risu
 
 			# Called during the rendering process
 			#
-			def render(output)
+			def render output
 				text Report.classification.upcase, :align => :center
 				text "\n"
 

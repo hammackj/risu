@@ -24,7 +24,7 @@ module Risu
 		class TechnicalFindingsTemplate < Risu::Base::TemplateBase
 			include TemplateHelper
 
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "technical_findings",
@@ -83,7 +83,7 @@ module Risu
 				end
 			end
 
-			def render(output)
+			def render output
 				text Report.classification.upcase, :align => :center
 				text "\n"
 

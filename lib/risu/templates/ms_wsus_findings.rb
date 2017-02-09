@@ -30,7 +30,7 @@ module Risu
 
 			# Initializes the template loading meta-data
 			#
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "ms_wsus_findings",
@@ -43,7 +43,7 @@ module Risu
 
 			# Called during the rendering process
 			#
-			def render(output)
+			def render output
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 

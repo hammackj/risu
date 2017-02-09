@@ -29,7 +29,7 @@ module Risu
 			# Setups of the Templater class initializing all of the variables
 			#
 			# @return [Templater] New Instance
-			def initialize(template, findings, output, template_manager)
+			def initialize template, findings, output, template_manager
 				@template = template
 				@findings = findings
 				@output_file = output
@@ -59,10 +59,8 @@ module Risu
 							t = t.class.new
 							t.output = output
 							t.render(output) unless t == nil
-						end		
+						end
 					end
-
-
 				rescue => e
 					raise unless Rails.env.production?
 					puts "Templater Error: #{e.message} \n #{e.backtrace.join("\n\t")}\n"

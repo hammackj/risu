@@ -25,7 +25,7 @@ module Risu
 			include TemplateHelper
 
 			# Initializes the Talking Points Report
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "talking_points",
@@ -37,7 +37,7 @@ module Risu
 			end
 
 			# Renders the Talking Points Report
-			def render(output)
+			def render output
 				report_classification
 
 				report_title Report.title
@@ -109,7 +109,7 @@ end
 # 			include TemplateHelper
 
 # 			# Initializes the Talking Points Report
-# 			def initialize ()
+# 			def initialize
 # 				@template_info =
 # 				{
 # 					:name => "talking_points",
@@ -120,7 +120,7 @@ end
 # 			end
 
 # 			# Renders the Talking Points Report
-# 			def render(output)
+# 			def render output
 # 				report_classification
 
 # 				report_title Report.title

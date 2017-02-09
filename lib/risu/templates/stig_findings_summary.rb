@@ -24,7 +24,7 @@ module Risu
 		class StigFindingsSummaryTemplate < Risu::Base::TemplateBase
 			include TemplateHelper
 
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "stig_findings_summary",
@@ -116,7 +116,7 @@ module Risu
 				ref_string.chomp!(", ")
 			end
 
-			def render(output)
+			def render output
 				header
 
 				if Item.stig_findings("I").count > 0

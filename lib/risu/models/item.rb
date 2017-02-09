@@ -502,7 +502,7 @@ module Risu
 				# Scrubs a plugin_name to remove all pointless data
 				#
 				# @return [String] Scrubbed plugin name
-				def scrub_plugin_name (name)
+				def scrub_plugin_name name
 					return name.gsub("(remote check)", "").gsub("(uncredentialed check)", "").gsub(/(\(\d.*\))/, "")
 				end
 

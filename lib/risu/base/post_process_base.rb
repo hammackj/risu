@@ -162,7 +162,7 @@ module Risu
 			end
 
 			#
-			def create_item(host_id, severity)
+			def create_item host_id, severity
 				item = Item.new
 
 					item.host_id = host_id

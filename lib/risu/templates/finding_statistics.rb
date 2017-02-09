@@ -25,7 +25,7 @@ module Risu
 
 			#
 			#
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "finding_statistics",
@@ -38,7 +38,7 @@ module Risu
 
 			#
 			#
-			def render(output)
+			def render output
 				output.text Report.classification.upcase, :align => :center
 				output.text "\n"
 

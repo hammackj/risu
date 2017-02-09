@@ -30,7 +30,7 @@ module Risu
 
 			#
 			# TODO doc
-			def scan_info_to_hash(plugin_output)
+			def scan_info_to_hash plugin_output
 				scan_info = {}
 
 				plugin_output.split("\n").each do |line|

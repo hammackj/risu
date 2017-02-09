@@ -24,7 +24,7 @@ module Risu
 		class CoverSheet < Risu::Base::TemplateBase
 			include TemplateHelper
 
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "cover_sheet",
@@ -35,7 +35,7 @@ module Risu
 				}
 			end
 
-			def render(output)
+			def render output
 				output.image "#{File.expand_path(File.dirname(__FILE__))}/data/nessuslogo.jpg", :scale => 0.2, :position => :left, :vposition => :top
 
 				text "\n"
@@ -83,6 +83,3 @@ module Risu
 		end
 	end
 end
-
-
-

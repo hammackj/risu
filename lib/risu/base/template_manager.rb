@@ -44,7 +44,7 @@ module Risu
 			# Loads templates from a specific path
 			#
 			# @param path Path to templates to load
-			def load_templates(path, recursive=true)
+			def load_templates path, recursive=true
 				begin
 					search_path = "#{path}/**/*.rb" if recursive == true
 					search_path = "#{path}/*.rb" if recursive == false

@@ -26,7 +26,7 @@ module Risu
 
 			#
 			#
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "findings_summary_with_pluginid",
@@ -62,7 +62,7 @@ module Risu
 
 			# TODO doc
 			#
-			def render(output)
+			def render output
 				text Report.classification.upcase, :align => :center
 				text "\n"
 

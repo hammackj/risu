@@ -25,7 +25,7 @@ module Risu
 			include TemplateHelper
 
 			#Creates an instance of the [NotableTemplateDetailed] class and initializes its meta-data
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "notable_detailed",
@@ -38,7 +38,7 @@ module Risu
 
 			#
 			#
-			def render(output)
+			def render output
 				@output.text Report.classification.upcase, :align => :center
 				@output.text "\n"
 

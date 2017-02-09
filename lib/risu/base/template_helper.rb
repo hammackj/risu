@@ -137,7 +137,7 @@ module Risu
 			end
 
 			#
-			def item_count_by_plugin_name (plugin_name)
+			def item_count_by_plugin_name plugin_name
 				begin
 					return Item.where(:plugin_id => Plugin.where(:plugin_name => plugin_name).first.id).count
 				rescue # => e
@@ -145,7 +145,7 @@ module Risu
 				end
 			end
 
-			def item_count_by_plugin_id (plugin_id)
+			def item_count_by_plugin_id plugin_id
 				begin
 					return Item.where(:plugin_id => plugin_id).count
 				rescue => e

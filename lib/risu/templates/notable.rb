@@ -25,7 +25,7 @@ module Risu
 			include TemplateHelper
 
 			#Creates an instance of the [NotableTemplate] class and initializes its meta-data
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "notable",
@@ -37,7 +37,7 @@ module Risu
 			end
 
 			# Renders a Notable Findings Report
-			def render(output)
+			def render output
 				report_classification
 
 				report_title Report.title

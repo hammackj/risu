@@ -24,7 +24,7 @@ module Risu
 		class MaliciousProcessDetection < Risu::Base::TemplateBase
 			include TemplateHelper
 
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "malicious_process_detection",
@@ -35,7 +35,7 @@ module Risu
 				}
 			end
 
-			def render(output)
+			def render output
 				text Report.classification.upcase, :align => :center
 				text "\n"
 

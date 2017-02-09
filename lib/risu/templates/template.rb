@@ -26,7 +26,7 @@ module Risu
 
 			# Initializes the template loading meta data
 			#
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "template",
@@ -39,7 +39,7 @@ module Risu
 
 			# Called during the rendering process
 			#
-			def render(output)
+			def render output
 				text "Template"
 				output.start_new_page
 			end

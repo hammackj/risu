@@ -32,7 +32,7 @@ module Risu
 			def anon_ftp_count
 				begin
 					return Item.where(:plugin_id => Plugin.where(:plugin_name => "Anonymous FTP Enabled").first.id).count
-				rescue => e
+				rescue
 					return 0
 				end
 			end

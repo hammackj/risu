@@ -72,7 +72,7 @@ module Risu
 			#
 			# @param file Path to configuration file
 			# @param in_memory_config [Boolean] If the configuration is in memory
-			def load_config(file=CONFIG_FILE, in_memory_config=false)
+			def load_config file=CONFIG_FILE, in_memory_config=false
 				if File.exist?(file) == true or in_memory_config == true
 					begin
 						if in_memory_config
@@ -105,7 +105,7 @@ module Risu
 			# Initiator for [ActiveRecord] migrations.
 			#
 			# @param direction [Symbol] :up or :down
-			def migrate(direction)
+			def migrate direction
 				begin
 					if @database["adapter"] == nil
 						return false, "[!] Invalid database adapter, please check your configuration file"

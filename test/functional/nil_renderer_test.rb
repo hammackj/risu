@@ -28,7 +28,7 @@ module Risu
 
 			# Initializes the template loading meta data
 			#
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "nil_renderer_template",
@@ -41,7 +41,7 @@ module Risu
 
 			# Called during the rendering process
 			#
-			def render(output)
+			def render output
 				output.font_size 10
 				output.text "Template"
 				output.start_new_page
@@ -56,7 +56,7 @@ class NilRendererTest < ActiveSupport::TestCase
 
 	def setup
 		setup_test_database
-		
+
 		@file_name = "/tmp/nilrenderer_tempalte.pdf"
 		@template = Risu::Templates::NilRendererTemplateTest.new
 		@template_manager = Risu::Base::TemplateManager.new "risu/templates"

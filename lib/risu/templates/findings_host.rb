@@ -25,7 +25,7 @@ module Risu
 
 			#
 			#
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "findings_host",
@@ -38,7 +38,7 @@ module Risu
 
 			#
 			#
-			def render(output)
+			def render output
 				@output.font_size 10
 
 				report_classification

@@ -24,7 +24,7 @@ module Risu
 		class MSPatchSummary < Risu::Base::TemplateBase
 			include TemplateHelper
 
-			def initialize ()
+			def initialize
 				@template_info =
 				{
 					:name => "ms_patch_summary",
@@ -35,7 +35,7 @@ module Risu
 				}
 			end
 
-			def render(output)
+			def render output
 				text Report.classification.upcase, :align => :center
 				text "\n"
 
