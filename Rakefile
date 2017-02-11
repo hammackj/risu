@@ -32,11 +32,19 @@ end
 
 task :checksum do
 	built_gem_path = "#{Risu::APP_NAME}-#{Risu::VERSION}.gem"
-	checksum = Digest::SHA512.new.hexdigest(File.read(built_gem_path))
-	checksum_path = "checksum/#{Risu::APP_NAME}-#{Risu::VERSION}.gem.sha512"
-	File.open(checksum_path, 'w' ) {|f| f.write(checksum) }
-	system "git add #{checksum_path}"
-	system "git commit #{checksum_path} -m 'Added #{Risu::APP_NAME}-#{Risu::VERSION}.gem checksum'"
+
+	checksum512 = Digest::SHA512.new.hexdigest(File.read(built_gem_path))
+	checksum256 = Digest::SHA256.new.hexdigest(File.read(built_gem_path))
+
+	checksum_512_path = "checksum/#{Risu::APP_NAME}-#{Risu::VERSION}.gem.sha512"
+	checksum_256_path = "checksum/#{Risu::APP_NAME}-#{Risu::VERSION}.gem.sha256"
+
+	File.open(checksum_512_path, 'w' ) {|f| f.write(checksum512) }
+	File.open(checksum_256_path, 'w' ) {|f| f.write(checksum256) }
+
+	system "git add #{checksum_512_path} #{checksum_256_path}"
+	system "git commit #{checksum_512_path} -m 'Added #{Risu::APP_NAME}-#{Risu::VERSION}.gem SHA512 checksum'"
+	system "git commit #{checksum_256_path} -m 'Added #{Risu::APP_NAME}-#{Risu::VERSION}.gem SHA256 checksum'"
 end
 
 task :tag_and_bag do
