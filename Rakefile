@@ -24,9 +24,19 @@ $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require "risu"
 require 'rake'
 require 'rake/testtask'
+require 'digest/sha2'
 
 task :build do
 	system "gem build #{Risu::APP_NAME}.gemspec"
+end
+
+task :checksum do
+	built_gem_path = "#{Risu::APP_NAME}-#{Risu::VERSION}.gem"
+	checksum = Digest::SHA512.new.hexdigest(File.read(built_gem_path))
+	checksum_path = "checksum/#{Risu::APP_NAME}-#{Risu::VERSION}.gem.sha512"
+	File.open(checksum_path, 'w' ) {|f| f.write(checksum) }
+	puts "git add #{checksum_path}"
+	puts "git commit #{checksum_path} -m 'Added #{Risu::APP_NAME}-#{Risu::VERSION}.gem checksum'"
 end
 
 task :tag_and_bag do
@@ -45,8 +55,7 @@ task :tweet do
 	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is an Nessus XML parser/database/report generator. More information at #{Risu::HOME_PAGE}"
 end
 
-task :release => [:tag_and_bag, :build, :push, :tweet] do
-
+task :release => [:tag_and_bag, :build, :checksum, :push, :tweet] do
 end
 
 task :clean do
