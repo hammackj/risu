@@ -1,4 +1,9 @@
-# risu [![Gem Version](https://badge.fury.io/rb/risu.png)](http://badge.fury.io/rb/risu) [![Build Status](https://travis-ci.org/arxopia/risu.png?branch=master)](https://travis-ci.org/arxopia/risu)  [![Code Climate](https://codeclimate.com/github/arxopia/risu/badges/gpa.svg)](https://codeclimate.com/github/arxopia/risu) [![Inline docs](http://inch-ci.org/github/arxopia/risu.png)](http://inch-ci.org/github/arxopia/risu) 
+# risu
+
+[![Gem Version](https://badge.fury.io/rb/risu.png)](http://badge.fury.io/rb/risu)
+[![Build Status](https://travis-ci.org/hammackj/risu.png?branch=master)](https://travis-ci.org/hammackj/risu)  
+[![Code Climate](https://codeclimate.com/github/hammackj/risu/badges/gpa.svg)](https://codeclimate.com/github/hammackj/risu)
+[![Inline docs](http://inch-ci.org/github/hammackj/risu.png)](http://inch-ci.org/github/hammackj/risu)
 
 Risu is [Nessus](http://www.nessus.org) parser, that converts Nessus .nessus xml files into a [ActiveRecord](http://api.rubyonrails.org/classes/ActiveRecord/Base.html) database, this allows for easy report generation and vulnerability verification.
 
@@ -31,6 +36,11 @@ Risu relies heavily on [RubyGems](http://rubygems.org/) to install other depende
 Installation is really easy just gem install!
 
 	% gem install risu
+
+## Installation with gem signature verification
+
+	% gem cert --add <(curl -Ls https://raw.github.com/hammackj/risu/master/certs/hammackj.pem
+	% gem install risu -P MediumSecurity
 
 ### Runtime Requirements
 
@@ -94,10 +104,10 @@ Using the risu Console is just like using Rails. You can access all of the Activ
 
 	risu Console v1.7.2
 	>> Host.first
-	=> #<Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.arxopia.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
+	=> #<Risu::Models::Host id: 1, report_id: 1, name: "10.69.69.74", os: "Linux Kernel 2.6 on Debian 4.0 (etch)", mac: "XX:XX:XX:XX:XX:XX", start: "2011-04-20 16:29:37", end: "2011-04-20 16:32:14", ip: "10.69.69.74", fqdn: "redada.hammackj.net", netbios: "REDADA", local_checks_proto: nil, smb_login_used: nil, ssh_auth_meth: nil, ssh_login_used: nil, pci_dss_compliance: nil, notes: nil>
 
 ## Templates
-Several templates are included:
+Several templates are included, but is recommend you build your own based on what you need.
 
 	$ risu -l
     Available Templates
@@ -125,12 +135,10 @@ Several templates are included:
 The templates are written in ruby using [prawn](http://prawn.majesticseacreature.com/), they are fairly easy to make. I will add any templates as requested. See the 'template' example for creating your own template.
 
 # Contributing
-If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on [github](http://github.com/arxopia/risu) and make the changes in your fork and the submit a pull request to the project on the dev branch. Please include unit tests for anything non trivial.
+If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on [github](http://github.com/hammackj/risu) and make the changes in your fork and the submit a pull request to the project on the dev branch. Please include unit tests for anything non trivial.
 
 # Issues
-If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/arxopia/risu/issues).
+If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/hammackj/risu/issues).
 
 # Contact
-You can reach me at jacob.hammack[at]arxopia[dot]com.
-
-You can also contact me on IRC as hammackj on irc.freenode.net, #risu
+You can reach me at jacob.hammack[at]hammackj[dot]com. You can also contact me on IRC as hammackj on irc.freenode.net, #risu
