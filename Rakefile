@@ -35,8 +35,8 @@ task :checksum do
 	checksum = Digest::SHA512.new.hexdigest(File.read(built_gem_path))
 	checksum_path = "checksum/#{Risu::APP_NAME}-#{Risu::VERSION}.gem.sha512"
 	File.open(checksum_path, 'w' ) {|f| f.write(checksum) }
-	puts "git add #{checksum_path}"
-	puts "git commit #{checksum_path} -m 'Added #{Risu::APP_NAME}-#{Risu::VERSION}.gem checksum'"
+	system "git add #{checksum_path}"
+	system "git commit #{checksum_path} -m 'Added #{Risu::APP_NAME}-#{Risu::VERSION}.gem checksum'"
 end
 
 task :tag_and_bag do
@@ -55,7 +55,7 @@ task :tweet do
 	puts "Just released #{Risu::APP_NAME} v#{Risu::VERSION}. #{Risu::APP_NAME} is an Nessus XML parser/database/report generator. More information at #{Risu::HOME_PAGE}"
 end
 
-task :release => [:tag_and_bag, :build, :checksum, :push, :tweet] do
+task :release => [:build, :checksum, :tag_and_bag, :push, :tweet] do
 end
 
 task :clean do
