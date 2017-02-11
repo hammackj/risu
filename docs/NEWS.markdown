@@ -1,6 +1,6 @@
 # News
 
-# 1.8.0 (March 1, 2017)
+# 1.8.0 (February 11, 2017)
 - **Moved repo from http://github.com/arxopia/risu to http://github.com/hammackj/risu**
 - **Upgraded to Rails 5**
 - Added gem signing
