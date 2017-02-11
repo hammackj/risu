@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
 	s.name = Risu::APP_NAME
 	s.version = Risu::VERSION
 	s.homepage = Risu::HOME_PAGE
-	s.author = "Jacob Hammack"
+	s.authors = Risu::AUTHORS
 	s.email = Risu::EMAIL
 
 	s.summary = Risu::APP_NAME
@@ -43,6 +43,9 @@ Gem::Specification.new do |s|
 	s.extra_rdoc_files = ["README.markdown", "LICENSE", "docs/NEWS.markdown"]
 
 	s.rubyforge_project	= "#{Risu::APP_NAME}"
+
+	s.cert_chain  = ['certs/hammackj.pem']
+	s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 
 	s.add_runtime_dependency 'rails', '~> 5.0', '>= 5.0.1'
 	s.add_runtime_dependency 'libxml-ruby', '~> 2.9', '>= 2.9.0'
