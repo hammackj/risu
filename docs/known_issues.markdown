@@ -27,11 +27,11 @@ The easy way to fix this is to just reinstall RMagick, like below:
 ## Mac OSX Native Dependencies
 The gems for mysql and rmagick will fail to build if these are not installed.
 
-###Mac Ports
+### Mac Ports
 	% sudo port install sqlite3 ImageMagick mysql5
 	% gem install sqlite3
 
-###Brew
+### Brew
 	% brew install sqlite3 ImageMagick mysql5
 
 ## Linux Native Dependencies
