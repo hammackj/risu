@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2016 Arxopia LLC.
+# Copyright (c) 2010-2017 Jacob Hammack.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
