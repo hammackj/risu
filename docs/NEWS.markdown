@@ -137,7 +137,7 @@
 # 1.7.0 (September 12, 2014)
 - Update Copyrights to 2014
 - Wiki
-	- New page for installing on [OSX]((https://github.com/arxopia/risu/wiki/OSX-Installation-Guide)
+	- New page for installing on [OSX]((https://github.com/hammackj/risu/wiki/OSX-Installation-Guide)
 - Models
 	- Host Model
 		- Changed the field type of 'mac' from string to text to increase the size
@@ -259,7 +259,7 @@
 		it is rough at the moment but good for viewing all the findings. It requires
 		that local checks were run, for the plugin to fire during the Nessus scan.
 - Wiki
-	- New page for installing on [Kali Linux](https://github.com/arxopia/risu/wiki/Kali-Linux-Risu-Installation-Guide)
+	- New page for installing on [Kali Linux](https://github.com/hammackj/risu/wiki/Kali-Linux-Risu-Installation-Guide)
 - Post Processing (Alpha Support)
 	- Started to develop a method for doing post processing on all the findings
 		- Initial RiskScore plugin to calculate a risk score for Plugins / Findings / Hosts
@@ -351,10 +351,10 @@
 	- template
 		- cleaned up and updated to use the TemplateHelper mixin
 - Wiki Pages
-	- New page for installing on [Fedora](https://github.com/arxopia/risu/wiki/Fedora-Installation-Guide)
-	- New page for installing on [CentOS](https://github.com/arxopia/risu/wiki/CentOS-Installation-Guide)
-	- New page for installing on [Gentoo](https://github.com/arxopia/risu/wiki/Gentoo-Installation-Guide)
-	- New page for installing on [ArchLinux](https://github.com/arxopia/risu/wiki/Arch-Linux-Install-Guide)
+	- New page for installing on [Fedora](https://github.com/hammackj/risu/wiki/Fedora-Installation-Guide)
+	- New page for installing on [CentOS](https://github.com/hammackj/risu/wiki/CentOS-Installation-Guide)
+	- New page for installing on [Gentoo](https://github.com/hammackj/risu/wiki/Gentoo-Installation-Guide)
+	- New page for installing on [ArchLinux](https://github.com/hammackj/risu/wiki/Arch-Linux-Install-Guide)
 
 #1.5.3 (August 29, 2012)
 - New Parsed Tags
@@ -493,14 +493,14 @@
 - Fixed a bug on the exec_summary_detailed detailed report
 - A quick reference for Microsoft findings can now be found in the Patch model,
 You are able to get host_id, name(patch name, ie MS01-001), value (plugin_id)
-- Please report any missing tags that risu outputs to risu[@]arxopia[.]com, I expect a ton of Microsoft Patch tags missing
+- Please report any missing tags that risu outputs to jacob.hammack[@]hammackj[.]com, I expect a ton of Microsoft Patch tags missing
 
 #1.4.8 (August 21, 2011)
 - Fixed a gemspec dependency error reported by mlpotgieter
 - Fixed a parser error related to Microsoft Bulletins report by stevelodin
 - Added a Table for all host related patches, currently only has Microsoft Bulletins
 You can access it via `Host.first.patches` or `Patch.all`
-- Please report any missing tags that risu outputs to risu[@]arxopia[.]com, I expect a ton of Microsoft Patch tags missing
+- Please report any missing tags that risu outputs to jacob.hammack[@]hammackj[.]com, I expect a ton of Microsoft Patch tags missing
 
 #1.4.7 (August 13, 2011)
 - Fixed issue #39 Ruby 1.8.7 Syntax error reported by mlpotgieter
@@ -533,7 +533,7 @@ You can access it via `Host.first.patches` or `Patch.all`
 
 #1.4.3 (May 23, 2011)
 
-**This is the last release under the NessusDB name, I received a legal notice to change the name. They gave me a few weeks to change the name but I do not have a new name yet. If you have any suggestions please submit them to risu[@]arxopia[.]com**
+**This is the last release under the NessusDB name, I received a legal notice to change the name. They gave me a few weeks to change the name but I do not have a new name yet. If you have any suggestions please submit them to jacob.hammack[@]hammackj[.]com**
 
 - Fixed small bug in Windows/Other OS graphs
 - Increased the verboseness of Error messages Ticket #29

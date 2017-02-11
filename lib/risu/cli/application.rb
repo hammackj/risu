@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Arxopia LLC.
+# Copyright (c) 2010-2017 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -234,7 +234,7 @@ module Risu
 			def parse_options
 				begin
 					opts = OptionParser.new do |opt|
-						opt.banner =	"#{APP_NAME} v#{VERSION}\nJacob Hammack\nhttp://www.arxopia.com\n\n"
+						opt.banner =	"#{APP_NAME} v#{VERSION}\nJacob Hammack\nhttp://www.hammackj.com\n\n"
 						opt.banner << "Usage: #{APP_NAME} [options] [files_to_parse]"
 						opt.separator('')
 						opt.separator("Parse Options")

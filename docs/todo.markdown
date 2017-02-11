@@ -96,7 +96,6 @@ end -->
 - *remove OSVDB|BID from tech findings template*
 - Do all the @TODO / @fix  items!
 - All installation documents have been updated on the wiki
-- move project page on arxopia/project/risu to hammackj/risu
 - move unsupported os to Risu::TemplateHelper::UnsupportedOSXXX
 - patch summary plugin - 66334
 - unsupported software
