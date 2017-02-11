@@ -22,7 +22,8 @@
 module Risu
 	APP_NAME = "risu"
 	VERSION = "1.8.0"
-	HOME_PAGE = "https://arxopia.github.io/risu/"
-	GITHUB = "http://github.com/arxopia/risu"
-	EMAIL = "jacob.hammack@arxopia.com"
+	HOME_PAGE = "https://hammackj.github.io/risu/"
+	GITHUB = "http://github.com/hammackj/risu"
+	EMAIL = "jacob.hammack@hammackj.com"
+	AUTHORS = ["Jacob Hammack", "Andrew Benson", "Joseph Kordish", "bluehavana"]
 end
