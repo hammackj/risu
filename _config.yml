@@ -1,0 +1,8 @@
+title: risu
+description: Risu is Nessus parser, that converts the generated reports into a ActiveRecord database, this allows for easy report generation and vulnerability verification.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+  - jekyll-mentions
