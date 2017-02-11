@@ -1,10 +1,12 @@
 # News
 
 # 1.8.0 (March 1, 2017)
-- Ported to Rails 5
+- **Moved repo from http://github.com/arxopia/risu to http://github.com/hammackj/risu**
+- **Upgraded to Rails 5**
+- Added gem signing
 - Lots of clean up for Rails 5 and Ruby 2.4
 - Various improvements / fixes [@abenson]
-- Post Processing
+- Post Processing Updates
 	- Added 7-Zip
 	- Added Foxit Phantom PDF
 	- Added RealPlayer

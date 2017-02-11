@@ -70,7 +70,7 @@ end -->
 
 # Road map
 
-## 1.8.x (??)
+## 1.8.1+ (??)
 - Move Default Credentials related stuff to Risu::TemplateHlpers::DefaultCredentials
 - Add Mock data for
 	- plugin.exploitability_ease == "Exploits are available"
@@ -85,7 +85,6 @@ end -->
 - Create docs/KNOWN_ISSUES.markdown
 	- detail rmagick bug
 	- detail nokogiri warning
-- Move NEWS.markdown to docs/
 - **TAG** New XML element detected: fedora.
 - **BUG** dropping tables when there are no tables causes stacktrace, catch this.
 - Microsoft Windows 2003 Approaching End Of Life - 80120
