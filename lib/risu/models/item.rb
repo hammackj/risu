@@ -496,6 +496,8 @@ module Risu
 						critical = critical.merge high
 					end
 
+					
+
 					return critical
 				end
 
