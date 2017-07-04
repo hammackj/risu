@@ -27,7 +27,7 @@ module Risu
 
 					#
 					def initialize
-						@info = 
+						@info =
 						{
 							:description => "Macrovision FLEXnet Patch Rollup",
 							:plugin_id => -99987,
@@ -37,7 +37,7 @@ module Risu
 								25371,
 								24712,
 								27599,
-								
+
 							]
 						}
 					end
