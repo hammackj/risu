@@ -23,20 +23,20 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class Flexnet < Risu::Base::PostProcessBase
+				class DropbearSSHServerPatchRollup < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Macrovision FLEXnet Patch Rollup",
-							:plugin_id => -99987,
-							:plugin_name => "Update to the latest Macrovision FLEXnet",
-							:item_name => "Update to the latest Macrovision FLEXnet",
+							:description => "Dropbear SSH Server Patch Rollup",
+							:plugin_id => -99952,
+							:plugin_name => "Update to the latest Dropbear SSH Server",
+							:item_name => "Update to the latest Dropbear SSH Server",
 							:plugin_ids => [
-								25371,
-								24712,
-								27599,
+								93650,
+								58183,
+								
 
 							]
 						}

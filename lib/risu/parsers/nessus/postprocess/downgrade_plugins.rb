@@ -39,13 +39,17 @@ module Risu
             #3 - high
             #4 - critical
 
-						@plugins_to_severity = {
-							41028 => 0, #SNMP Agent Default Community Name (public) - 41028
-              10264 => 0, #SNMP Agent Default Community Names - 10264
-							10081 => 0, #FTP Privileged Port Bounce Scan - 10081
-							42411 => 0, #Microsoft Windows SMB Shares Unprivileged Access
-							66349 => 0, #X Server Unauthenticated Access: Screenshot 
+						# TODO read from "extra" section
 
+						@plugins_to_severity = {
+							41028 => 0, # SNMP Agent Default Community Name (public) - 41028
+              10264 => 0, # SNMP Agent Default Community Names - 10264
+							10081 => 0, # FTP Privileged Port Bounce Scan - 10081
+							42411 => 0, # Microsoft Windows SMB Shares Unprivileged Access
+							66349 => 0, # X Server Unauthenticated Access: Screenshot
+							26925 => 0, # VNC Server Unauthenticated Access
+							66174 => 0, # VNC Server Unauthenticated Access: Screenshot
+							10205 => 0, # rlogin Service Detection
 						}
 					end
 

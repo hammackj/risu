@@ -1,5 +1,9 @@
 # News
 
+# 1.8.1 (July 6, 2017)
+- Updated PostProcessing plugins
+- Fixed #107 where plugin_name was to short in the schema
+
 # 1.8.0 (February 11, 2017)
 - **Moved repo from http://github.com/arxopia/risu to http://github.com/hammackj/risu**
 - **Upgraded to Rails 5**
