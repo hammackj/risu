@@ -1,5 +1,8 @@
 # News
 
+# 1.8.2 (July 6, 2017)
+- Fixed documentation issue
+
 # 1.8.1 (July 6, 2017)
 - Updated PostProcessing plugins
 - Fixed #107 where plugin_name was to short in the schema
