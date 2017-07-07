@@ -43,7 +43,7 @@ module Risu
 				create_table :plugins_preferences do |t|
 					t.integer :policy_id
 					t.integer :plugin_id
-					t.string :plugin_name
+					t.text :plugin_name, limit: 4294967295
 					t.string :fullname
 					t.string :preference_name
 					t.string :preference_type
