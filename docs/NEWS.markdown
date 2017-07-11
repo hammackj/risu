@@ -1,5 +1,14 @@
 # News
 
+# 1.8.3 (July 11, 2017)
+- Updated PostProcessing plugin id's
+- Added new PostProcessing plugin NormalizePluginNames
+	- It removes most of the (STRING) things from plugin names, the list is still going,
+		please submit issues for any that have been missed.
+- Fixed #62, removed stacktrace from common error
+- Close all other open issues, some were several years old
+- Added basic Code of Conduct and Contributing guidelines
+
 # 1.8.2 (July 6, 2017)
 - Fixed documentation issue
 
