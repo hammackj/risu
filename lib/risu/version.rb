@@ -21,7 +21,7 @@
 
 module Risu
 	APP_NAME = "risu"
-	VERSION = "1.8.2"
+	VERSION = "1.8.3"
 	HOME_PAGE = "https://hammackj.github.io/risu/"
 	GITHUB = "http://github.com/hammackj/risu"
 	EMAIL = "jacob.hammack@hammackj.com"
