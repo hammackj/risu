@@ -137,7 +137,7 @@ module Risu
 					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
 					exit
 				rescue => e
-					puts "[!] Exception! #{e.message}\n#{e.backtrace}"
+					puts "[!] Exception! #{e.message}"
 					exit
 				end
 			end
