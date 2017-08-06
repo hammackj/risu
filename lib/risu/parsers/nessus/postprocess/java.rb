@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Java Patch Rollup",
 							:plugin_id => -99999,
-							:plugin_name => "Update to the latest Java",
+							:plugin_name => "Missing the latest Java",
 							:item_name => "Update to the latest Java",
 							:plugin_ids => [
 								66932,
@@ -92,10 +92,6 @@ module Risu
 								99588,
 								94138,
 								96628,
-								
-
-
-
 
 							]
 						}

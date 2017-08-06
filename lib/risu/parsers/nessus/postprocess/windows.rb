@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Microsoft Windows Patch Rollup",
 							:plugin_id => -99983,
-							:plugin_name => "Update to the latest Windows Updates",
+							:plugin_name => "Missing the latest Windows Updates",
 							:item_name => "Update to the latest Windows Updates",
 							:plugin_ids => [
 								11110,
@@ -963,6 +963,10 @@ module Risu
 								100103,
 								100058,
 								97833,
+								100761,
+								101367,
+								100767,
+								101371, # Office
 
 
 

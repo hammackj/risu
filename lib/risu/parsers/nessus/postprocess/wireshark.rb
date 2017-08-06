@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Wireshark Patch Rollups",
 							:plugin_id => -99992,
-							:plugin_name => "Update to the latest Wireshark",
+							:plugin_name => "Missing the latest Wireshark",
 							:item_name => "Update to the latest Wireshark",
 							:plugin_ids => [
 								61572,
@@ -81,7 +81,11 @@ module Risu
 								92817,
 								99437,
 								97574,
-								
+								89104,
+								91821,
+								100671,
+
+
 
 							]
 						}

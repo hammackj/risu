@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "OpenOffice Patch Rollup",
 							:plugin_id => -99963,
-							:plugin_name => "Update to the latest OpenOffice",
+							:plugin_name => "Missing the latest OpenOffice",
 							:item_name => "Update to the latest OpenOffice",
 							:plugin_ids => [
 								25954,
@@ -39,7 +39,10 @@ module Risu
 								77408,
 								86904,
 								94199,
-								
+								61731,
+								69185,
+
+
 
 
 

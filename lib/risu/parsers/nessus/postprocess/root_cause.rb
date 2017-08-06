@@ -300,7 +300,19 @@ module Risu
 							-99952 => "Vendor Patch",
 							-99973 => "Vendor Patch",
 							-99962 => "Vendor Patch",
-
+							101367 => "Vendor Patch",
+							100761 => "Vendor Patch",
+							97997 => "Vendor Patch",
+							89104 => "Vendor Patch",
+							100756 => "Vendor Patch",
+							101362 => "Vendor Patch",
+							61731 => "Vendor Patch",
+							69185 => "Vendor Patch",
+							-99963 => "Vendor Patch",
+							91821 => "Vendor Patch",
+							100671 => "Vendor Patch",
+							100767 => "Vendor Patch",
+							101371 => "Vendor Patch",
 
 
 							33850 => "Vendor Support",

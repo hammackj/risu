@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Adobe Reader Patch Rollup",
 							:plugin_id => -99998,
-							:plugin_name => "Update to the latest Adobe Reader",
+							:plugin_name => "Missing the latest Adobe Reader",
 							:item_name => "Update to the latest Adobe Reader",
 							:plugin_ids => [
 								30200,
@@ -85,7 +85,9 @@ module Risu
 								94072,
 								96453,
 								99374,
-								
+								100756,
+								101362,
+
 
 
 							]

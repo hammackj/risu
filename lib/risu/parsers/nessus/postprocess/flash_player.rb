@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Flash Player Patch Rollup",
 							:plugin_id => -99997,
-							:plugin_name => "Update to the latest Flash Player",
+							:plugin_name => "Missing the latest Flash Player",
 							:item_name => "Update to the latest Flash Player",
 							:plugin_ids => [
 								11323,
@@ -133,7 +133,7 @@ module Risu
 								97727,
 								99283,
 								100052,
-								
+
 
 							]
 						}
