@@ -109,7 +109,7 @@ module Risu
 				end
 
 				create_table :plugins do |t|
-					t.string :plugin_name
+					t.text :plugin_name, limit: 4294967295
 					t.string :family_name
 					t.text :description, limit: 4294967295
 					t.string :plugin_version
