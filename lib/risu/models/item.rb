@@ -477,6 +477,40 @@ module Risu
 					"%.2f%" % calculate_vulnerable_host_percent_with_patches_applied()
 				end
 
+
+				def common_patches_order_by_cvss_raw
+					#items = Item.joins(:plugin).where(:severity => [4, 3, 2, 1]).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#items = Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#items = items.merge Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#items = items.merge Item.joins(:plugin).where(:severity => 2).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#items = items.merge Item.joins(:plugin).where(:severity => 1).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					# items = items.sort_by{|k,v| v}.reverse.to_h
+					# results = {}
+					#
+					# items.each do |id, count|
+					# 	if Item.where(:plugin_id => id).plugin.first.family_name != "Risu Rollup Plugins"
+					# 		next
+					# 	end
+					#
+					# 	results[id] = count;
+					# end
+					#
+					# return results
+
+					results = {}
+
+
+					common_patches = Plugin.where(:family_name => "Risu Rollup Plugins").group(:id)
+					common_patches.each do |plugin|
+						count = Item.where(:plugin_id => plugin.id).count
+						results[plugin.id] = count
+					end
+
+					results = results.sort_by{|k,v| v}.reverse.to_h
+
+					return results
+				end
+
 				#
 				# @TODO comment
 				# @FIXME this doesn't work with PostProcess plugins
@@ -487,18 +521,43 @@ module Risu
 
 					#return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").count(:all, :group => :plugin_id)
 					#return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
-
-					critical = Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
 					#critical = Item.joins(:plugin).where(:severity => 4).group(:plugin_id).distinct.count
 
-					if critical.size < 10
-						high = Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
-						critical = critical.merge high
+
+					#critical = Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#if critical.size < 10
+					#	high = Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#	critical = critical.merge high
+					#end
+
+					#critical =Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#high = Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#critical = critical.merge high
+
+					items = Item.joins(:plugin).where(:severity => [4, 3]).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					items = items.sort_by{|k,v| v}.reverse.to_h
+					results = {}
+
+					items.each do |id, count|
+						if Item.where(:plugin_id => id).plugin.first.family_name == "Risu Rollup Plugins"
+							next
+						end
+
+						results[id] = count;
 					end
 
-					
+					return results
 
-					return critical
+
+					#items = Item.joins(:plugin).where(:severity => [4, 3])
+
+					#items = items.where.not("plugin.family_name" => 'Risu Rollup Plugins')
+
+					#items.where.not(:plugin.family_name = Risu Rollup Plugins').order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+
+					#items.sort_by{|k,v| v}.to_h
+
+
 				end
 
 				# Scrubs a plugin_name to remove all pointless data
@@ -514,6 +573,28 @@ module Risu
 				# @return [Array] Unsorted top 10 findings
 				def top_10_sorted_raw
 					raw = notable_order_by_cvss_raw
+
+					data = Array.new
+
+					raw.each do |vuln|
+						row = Array.new
+						plugin_id = vuln[0]
+						count = vuln[1]
+
+						row.push(plugin_id)
+						row.push(count)
+						data.push(row)
+					end
+
+					data = data.sort do |a, b|
+						b[1] <=> a[1]
+					end
+
+					return data
+				end
+
+				def common_patches_sorted_raw
+					raw = common_patches_order_by_cvss_raw
 
 					data = Array.new
 
@@ -561,6 +642,29 @@ module Risu
 					return data
 				end
 
+				def common_patches_sorted
+					raw = common_patches_order_by_cvss_raw
+					data = Array.new
+
+					raw.each do |vuln|
+						row = Array.new
+						plugin_id = vuln[0]
+						count = vuln[1]
+
+						name = scrub_plugin_name(Plugin.find_by_id(plugin_id).plugin_name)
+
+						row.push(name)
+						row.push(count)
+						data.push(row)
+					end
+
+					data = data.sort do |a, b|
+						b[1] <=> a[1]
+					end
+
+					return data
+				end
+
 				# Returns a prawn pdf table for the top 10 notable findings
 				#
 				# @TODO change this method to return a array/table and let the template render it
@@ -572,6 +676,18 @@ module Risu
 					header_widths = {0 => (output.bounds.width - 50), 1 => 50}
 
 					data = top_10_sorted
+
+					output.table([headers] + data[0..9], :header => true, :column_widths => header_widths, :width => output.bounds.width) do
+						row(0).style(:font_style => :bold, :background_color => 'cccccc')
+						cells.borders = [:top, :bottom, :left, :right]
+					end
+				end
+
+				def common_patches_table(output)
+					headers = ["Description", "Count"]
+					header_widths = {0 => (output.bounds.width - 50), 1 => 50}
+
+					data = common_patches_sorted
 
 					output.table([headers] + data[0..9], :header => true, :column_widths => header_widths, :width => output.bounds.width) do
 						row(0).style(:font_style => :bold, :background_color => 'cccccc')
