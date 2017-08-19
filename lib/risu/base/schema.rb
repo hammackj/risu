@@ -106,6 +106,7 @@ module Risu
 					t.text :cm_compliance_solution, limit: 4294967295
 					t.integer :real_severity
 					t.integer :risk_score
+					t.boolean :rollup_finding, :default => false
 				end
 
 				create_table :plugins do |t|
