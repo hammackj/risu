@@ -375,7 +375,8 @@ module Risu
 						:cm_compliance_output => @vals["cm:compliance-output"],
 						:cm_compliance_reference => @vals["cm:compliance-reference"],
 						:cm_compliance_see_also => @vals["cm:compliance-see-also" ],
-						:cm_compliance_solution => @vals["cm:compliance-solution"]
+						:cm_compliance_solution => @vals["cm:compliance-solution"],
+						:rollup_finding => false
 					)
 
 					@plugin.update(:solution => @vals["solution"],
