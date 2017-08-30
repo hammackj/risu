@@ -43,7 +43,8 @@ module Risu
 							"(FREAK)",
 							"(Bar Mitzvah)",
 							"(Logjam)",
-							"(uncredentialed check)"
+							"(uncredentialed check)",
+							"(EXPLODINGCAN)"
 						]
 					end
 
