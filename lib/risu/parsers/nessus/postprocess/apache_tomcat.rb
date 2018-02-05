@@ -31,17 +31,14 @@ module Risu
 						{
 							:description => "Apache Tomcat Patch Rollup",
 							:plugin_id => -99966,
-							:plugin_name => "Update to the latest Apache Tomcat",
+							:plugin_name => "Missing the latest Apache Tomcat Patches",
 							:item_name => "Update to the latest Apache Tomcat",
 							:plugin_ids => [
-                81649,
-                12085,
-                35806,
-								81650,
-								83526,
-								
-
-
+								81649, #Apache Tomcat 6.0.x < 6.0.43 Multiple Vulnerabilities (POODLE)
+								12085, #Apache Tomcat Servlet / JSP Container Default Files
+								35806, #Tomcat Sample App cal2.jsp 'time' Parameter XSS
+								81650, #Apache Tomcat 7.0.x < 7.0.57 Multiple Vulnerabilities (POODLE)
+								83526, #Apache Tomcat 7.0.x < 7.0.60 Multiple Vulnerabilities (FREAK)
 							]
 						}
 					end
