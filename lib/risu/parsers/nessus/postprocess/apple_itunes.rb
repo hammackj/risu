@@ -31,25 +31,23 @@ module Risu
 						{
 							:description => "Apple iTunes Patch Rollup",
 							:plugin_id => -99960,
-							:plugin_name => "Update to the latest Apple iTunes",
+							:plugin_name => "Missing the latest Apple iTunes Patches",
 							:item_name => "Update to the latest Apple iTunes",
 							:plugin_ids => [
-								84504,
-								86001,
-								86602,
-								91347,
-								87371,
-								92410,
-								94914,
-								94915,
-								95824,
-								96830,
-								100025,
-								100300,
-								
-
-
-
+								84504, #Apple iTunes < 12.2 Multiple Vulnerabilities (credentialed check)
+								86001, #Apple iTunes < 12.3 Multiple Vulnerabilities (credentialed check)
+								86602, #Apple iTunes < 12.3.1 Multiple Vulnerabilities (credentialed check)
+								91347, #Apple iTunes < 12.4 DLL Injection Arbitrary Code Execution (credentialed check)
+								87371, #Apple iTunes < 12.3.2 Multiple Vulnerabilities (credentialed check)
+								92410, #Apple iTunes < 12.4.2 Multiple Vulnerabilities (credentialed check)
+								94914, #Apple iTunes < 12.5.1 Multiple Vulnerabilities (credentialed check)
+								94915, #Apple iTunes < 12.5.2 Multiple Vulnerabilities (credentialed check)
+								95824, #Apple iTunes < 12.5.4 Multiple Vulnerabilities (credentialed check)
+								96830, #Apple iTunes < 12.5.5 Multiple Vulnerabilities (credentialed check)
+								100025, #Apple iTunes < 12.6 Multiple Vulnerabilities (credentialed check)
+								100300, #Apple iTunes < 12.6.1 WebKit Memory Corruption RCE (credentialed check)
+								78597, #Apple iTunes < 12.0.1 Multiple Vulnerabilities (credentialed check) -
+								101954, #Apple iTunes < 12.6.2 Multiple Vulnerabilities (credentialed check) - 
 							]
 						}
 					end
