@@ -50,6 +50,7 @@ module Risu
 								99687, #Cisco IOS EnergyWise DoS (cisco-sa-20170419-energywise)
 								103670, #Cisco IOS Software PROFINET denial of service (cisco-sa-20170927-profinet)
 								97991, #Cisco IOS Cluster Management Protocol Telnet Option Handling RCE (cisco-sa-20170317-cmp)
+								94252, #Cisco IOS Software CIP Request DoS (cisco-sa-20160928-cip)
 							]
 						}
 					end
