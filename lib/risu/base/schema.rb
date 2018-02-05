@@ -191,6 +191,11 @@ module Risu
 					t.string :value
 				end
 
+				create_table :nessus_plugin_metadata do |t|
+					t.integer :plugin_id
+					t.text :plugin_name, limit: 4294967295
+				end
+
 				#Index's for speed increases, possibly have these apply after parsing @TODO
 				add_index :items, :host_id
 				add_index :items, :plugin_id
