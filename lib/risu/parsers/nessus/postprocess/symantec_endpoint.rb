@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Symantec Endpoint Patch Rollup",
 							:plugin_id => -99953,
-							:plugin_name => "Update to the latest Symantec Endpoint",
+							:plugin_name => "Missing the latest Symantec Endpoint Patches",
 							:item_name => "Update to the latest Symantec Endpoint",
 							:plugin_ids => [
 								91895,
@@ -41,7 +41,7 @@ module Risu
 								71994,
 								72542,
 								85256,
-								
+
 							]
 						}
 					end

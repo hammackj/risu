@@ -31,21 +31,14 @@ module Risu
 						{
 							:description => "OpenOffice Patch Rollup",
 							:plugin_id => -99963,
-							:plugin_name => "Missing the latest OpenOffice",
+							:plugin_name => "Missing the latest OpenOffice Patches",
 							:item_name => "Update to the latest OpenOffice",
 							:plugin_ids => [
-								25954,
-								39563,
-								77408,
-								86904,
-								94199,
-								61731,
-								69185,
-
-
-
-
-
+								77408, #Apache OpenOffice < 4.1.1 Multiple Vulnerabilities
+								86904, #Apache OpenOffice < 4.1.2 Multiple Vulnerabilities
+								94199, #Apache OpenOffice < 4.1.3 Multiple Vulnerabilities
+								61731, #Apache OpenOffice < 3.4.1 Multiple Heap-Based Buffer Overflows
+								69185, #Apache OpenOffice < 4.0 Multiple Memory Corruption Vulnerabilities
 							]
 						}
 					end

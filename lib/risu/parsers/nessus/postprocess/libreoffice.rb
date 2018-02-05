@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "LibreOffice Patch Rollup",
 							:plugin_id => -99962,
-							:plugin_name => "Update to the latest LibreOffice",
+							:plugin_name => "Missing the latest LibreOffice Patches",
 							:item_name => "Update to the latest LibreOffice",
 							:plugin_ids => [
 								80078,

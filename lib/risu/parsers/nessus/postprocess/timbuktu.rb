@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Timbuktu Pro Patch Rollup",
 							:plugin_id => -99964,
-							:plugin_name => "Update to the latest Timbuktu Pro",
+							:plugin_name => "Missing the latest Timbuktu Pro Patches",
 							:item_name => "Update to the latest Timbuktu Pro",
 							:plugin_ids => [
 								25954,

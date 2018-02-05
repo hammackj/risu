@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "OpenSSH Patch Rollup",
 							:plugin_id => -99995,
-							:plugin_name => "Update to the latest OpenSSH",
+							:plugin_name => "Missing the latest OpenSSH Patches",
 							:item_name => "Update to the latest OpenSSH",
 							:plugin_ids => [
 								11837,
@@ -59,7 +59,7 @@ module Risu
 								11712,
 								44072,
 								10802,
-								
+
 
 
 

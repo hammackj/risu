@@ -349,6 +349,7 @@ module Risu
 							11057 => "Vendor Support",
 							21725 => "Vendor Support",
 							97994 => "Vendor Support",
+							78555 => "Vendor Support", #OpenSSL Unsupported - 
 
 							49071 => "Configuration",
 							19948 => "Configuration",

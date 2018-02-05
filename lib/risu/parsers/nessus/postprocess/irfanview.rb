@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "IrfanView Patch Rollup",
 							:plugin_id => -99958,
-							:plugin_name => "Update to the latest IrfanView",
+							:plugin_name => "Missing the latest IrfanView Patches",
 							:item_name => "Update to the latest IrfanView",
 							:plugin_ids => [
 								68888,

@@ -31,11 +31,12 @@ module Risu
 						{
 							:description => "Skype Patch Rollup",
 							:plugin_id => -99955,
-							:plugin_name => "Update to the latest Skype",
+							:plugin_name => "Missing the latest Skype Patches",
 							:item_name => "Update to the latest Skype",
 							:plugin_ids => [
 								66695,
-								
+								101084
+
 							]
 						}
 					end
