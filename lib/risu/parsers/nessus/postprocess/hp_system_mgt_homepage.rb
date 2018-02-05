@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "HP System Management Homepage Patch Rollup",
 							:plugin_id => -99985,
-							:plugin_name => "Update to the latest HP System Management Homepage",
+							:plugin_name => "Missing the latest HP System Management Homepage Patches",
 							:item_name => "Update to the latest HP System Management Homepage",
 							:plugin_ids => [
 								53532,
@@ -56,7 +56,7 @@ module Risu
 								90251,
 								91222,
 								94654,
-								
+
 
 
 							]
