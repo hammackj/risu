@@ -62,6 +62,7 @@ module Risu
 				unsupported_os("Unsupported Windows 2000 Installations", "Microsoft Windows 2000 Unsupported Installation Detection")
 				unsupported_os("Unsupported Windows XP Installations", "Microsoft Windows XP Unsupported Installation Detection")
 				unsupported_os("Unsupported Windows 2003 Installations", "Microsoft Windows Server 2003 Unsupported Installation Detection")
+				unsupported_os("Unsupported Windows 8 Installations", "Microsoft Windows 8 Unsupported Installation Detection")
 
 				text "\n"
 			end
