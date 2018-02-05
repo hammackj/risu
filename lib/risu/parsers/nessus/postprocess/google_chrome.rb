@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Google Chrome Patch Rollup",
 							:plugin_id => -99990,
-							:plugin_name => "Update to the latest Google Chrome",
+							:plugin_name => "Missing the latest Google Chrome Patches",
 							:item_name => "Update to the latest Google Chrome",
 							:plugin_ids => [
 								74434,
@@ -140,7 +140,8 @@ module Risu
 								100679,
 								100991,
 								101980,
-								
+								102993, #Google Chrome < 61.0.3163.79 Multiple Vulnerabilities -
+103933, #Google Chrome < 62.0.3202.62 Multiple Vulnerabilities
 
 
 
