@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "VMware vCenter Patch Rollup",
 							:plugin_id => -99979,
-							:plugin_name => "Update to the latest VMware vCenter",
+							:plugin_name => "Missing the latest VMware vCenter Patches",
 							:item_name => "Update to the latest VMware vCenter",
 							:plugin_ids => [
 								79865,

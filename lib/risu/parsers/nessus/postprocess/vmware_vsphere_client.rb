@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "VMware vSphere Client Patch Rollup",
 							:plugin_id => -99967,
-							:plugin_name => "Update to the latest VMware vSphere Client",
+							:plugin_name => "Missing the latest VMware vSphere Client Patches",
 							:item_name => "Update to the latest VMware vSphere Client",
 							:plugin_ids => [
                 64559,
@@ -39,7 +39,7 @@ module Risu
                 51057,
 								76355,
 								87675,
-								
+
 							]
 						}
 					end
