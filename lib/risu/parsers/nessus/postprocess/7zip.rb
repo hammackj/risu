@@ -31,11 +31,10 @@ module Risu
 						{
 							:description => "7-Zip Patch Rollup",
 							:plugin_id => -99954,
-							:plugin_name => "Update to the latest 7-Zip",
+							:plugin_name => "Missing the latest 7-Zip Patches",
 							:item_name => "Update to the latest 7-Zip",
 							:plugin_ids => [
-								91230,
-								
+								91230, #7-Zip < 16.00 Multiple Vulnerabilities
 							]
 						}
 					end
