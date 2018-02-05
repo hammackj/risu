@@ -31,29 +31,25 @@ module Risu
 						{
 							:description => "Cisco AnyConnect Client Patch Rollup",
 							:plugin_id => -99961,
-							:plugin_name => "Update to the latest Cisco AnyConnect Client",
+							:plugin_name => "Missing the latest Cisco AnyConnect Client Patches",
 							:item_name => "Update to the latest Cisco AnyConnect Client",
 							:plugin_ids => [
-								76491,
-								81978,
-								86302,
-								78676,
-								81671,
-								82270,
-								85266,
-								85267,
-								85541,
-								87894,
-								88100,
-								54954,
-								59820,
-								93382,
-								71464,
-								95951,
-								
-
-
-
+								76491, #Cisco AnyConnect Secure Mobility Client 2.x / 3.x < 3.1(5170) Multiple OpenSSL Vulnerabilities
+								81978, #Cisco AnyConnect Secure Mobility Client < 3.1.10010.0 / 4.0.x < 4.0.4014.0 / 4.1.x < 4.1.4011.0 Code Execution Vulnerability
+								86302, #Cisco AnyConnect Secure Mobility Client 3.x < 3.1.11004.0 / 4.x < 4.1.6020.0 Privilege Escalation
+								78676, #Cisco AnyConnect Secure Mobility Client < 3.1(5187) (POODLE)
+								81671, #Cisco AnyConnect Secure Mobility Client < 3.1(6068) XSS
+								82270, #Cisco AnyConnect Secure Mobility Client < 3.1(7021) / <= 4.0(48) Multiple Vulnerabilities (FREAK)
+								85266, #Cisco AnyConnect Secure Mobility Client < 3.1.8009.0 / 4.0.x < 4.0.2052.0 / 4.1.x < 4.1.28.0 Multiple Vulnerabilities
+								85267, #Cisco AnyConnect Secure Mobility Client < 3.1.10010.0 / 4.0.x < 4.0.4013.0 / 4.1.x < 4.1.4011.0 IPC File Write Vulnerability
+								85541, #Cisco AnyConnect Secure Mobility Client 3.x < 3.1.10010.0 / 4.x < 4.1.4011.0 Arbitrary File Write
+								87894, #Cisco AnyConnect Secure Mobility Client 2.x < 3.1.13015.0 / 4.x < 4.2.1035.0 Arbitrary File Manipulation
+								88100, #Cisco AnyConnect Secure Mobility Client < 3.1.13015.0 / 4.2.x < 4.2.1035.0 Multiple OpenSSL Vulnerabilities
+								54954, #Cisco AnyConnect Secure Mobility Client < 2.3.254 Multiple Vulnerabilities
+								59820, #Cisco AnyConnect Secure Mobility Client VPN Downloader RCE (cisco-sa-20120620-ac)
+								93382, #Cisco AnyConnect Secure Mobility Client 4.2.x < 4.2.5015.0 / 4.3.x < 4.3.2039.0 Privilege Escalation Vulnerability
+								71464, #Cisco AnyConnect Secure Mobility Client 2.x / 3.x < 3.0(629) ATL Buffer Overflow
+								95951, #Cisco AnyConnect Secure Mobility Client 3.1.x < 4.3.4019.0 / 4.4.x < 4.4.225.0 Privilege Escalation
 							]
 						}
 					end
