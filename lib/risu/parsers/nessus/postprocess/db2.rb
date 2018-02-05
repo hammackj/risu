@@ -31,16 +31,14 @@ module Risu
 						{
 							:description => "DB2 Patch Rollup",
 							:plugin_id => -99980,
-							:plugin_name => "Update to the latest DB2",
+							:plugin_name => "Missing the latest DB2 Patches",
 							:item_name => "Update to the latest DB2",
 							:plugin_ids => [
-								62701,
-								71519,
-								76114,
-								76116,
-								84828
-
-
+								62701, #IBM DB2 9.7 < Fix Pack 7 Multiple Vulnerabilities
+								71519, #IBM DB2 9.7 < Fix Pack 9 Multiple Vulnerabilities
+								76114, #IBM DB2 9.7 < Fix Pack 9a Multiple Vulnerabilities
+								76116, #IBM DB2 Stored Procedure Infrastructure Privilege Escalation Vulnerability
+								84828, #IBM DB2 9.7 < Fix Pack 11 Multiple Vulnerabilities (Bar Mitzvah) (FREAK) (TLS POODLE)
 							]
 						}
 					end
