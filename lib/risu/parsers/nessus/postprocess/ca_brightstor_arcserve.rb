@@ -31,17 +31,17 @@ module Risu
 						{
 							:description => "CA BrightStor ARCserve Backup Patch Rollup",
 							:plugin_id => -99982,
-							:plugin_name => "Update to the latest CA BrightStor ARCserve Backup",
+							:plugin_name => "Missing the latest CA BrightStor ARCserve Backup Patches",
 							:item_name => "Update to the latest CA BrightStor ARCserve Backup",
 							:plugin_ids => [
-								24015,
-								24816,
-								25086,
-								26970,
-								32398,
-								34393,
-								22510,
-								23841,
+								24015, #CA BrightStor ARCserve Backup Multiple Vulnerabilities (QO84983)
+								24816, #CA BrightStor ARCserve Backup Tape Engine and Portmapper Multiple Vulnerabilities (QO86255)
+								25086, #CA BrightStor ARCserve Backup Multiple Vulnerabilities (QO87569)
+								26970, #CA BrightStor ARCserve Backup Multiple Remote Vulnerabilities (QO91094)
+								32398, #CA BrightStor ARCserve Backup Multiple Vulnerabilities (QO92996)
+								34393, #CA BrightStor ARCserve Backup RPC Interface (asdbapi.dll) Traversal Arbitrary Command Execution
+								22510, #CA BrightStor ARCserve Backup for Windows Multiple Remote Buffer Overflows (QO81201)
+								23841, #CA BrightStor ARCserve Backup Discovery Service Overflow
 							]
 						}
 					end
