@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Macrovision FLEXnet Patch Rollup",
 							:plugin_id => -99987,
-							:plugin_name => "Update to the latest Macrovision FLEXnet",
+							:plugin_name => "Missing the latest Macrovision FLEXnet Patches",
 							:item_name => "Update to the latest Macrovision FLEXnet",
 							:plugin_ids => [
 								25371,
