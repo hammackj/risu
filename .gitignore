@@ -9,3 +9,4 @@ coverage.data
 coverage/
 .bundle/
 Gemfile.lock
+tools/output
