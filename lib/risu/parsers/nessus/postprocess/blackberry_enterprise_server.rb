@@ -31,21 +31,17 @@ module Risu
 						{
 							:description => "Black Berry Enterprise Server Patch Rollup",
 							:plugin_id => -99968,
-							:plugin_name => "Update to the latest Black Berry Enterprise Server",
+							:plugin_name => "Missing the latest Black Berry Enterprise Server Patches",
 							:item_name => "Update to the latest Black Berry Enterprise Server",
 							:plugin_ids => [
-                50071,
-                51191,
-                51527,
-                55819,
-								55670,
-								53829,
-								72583,
-								77327,
-								
-
-
-
+								50071, #BlackBerry Enterprise Server / Attachment Service PDF Distiller Buffer Overflow (KB24547)
+								51191, #BlackBerry Enterprise Server / Attachment Service PDF Distiller Buffer Overflow (KB24761)
+								51527, #BlackBerry Enterprise Server / Attachment Service PDF Distiller Buffer Overflow (KB25382)
+								55819, #BlackBerry Enterprise Server PNG and TIFF Image Processing Vulnerabilities (KB27244)
+								55670, #BlackBerry Enterprise Server Administration API Unspecified Remote Vulnerability (KB27258)
+								53829, #BlackBerry Enterprise Server Web Desktop Manager XSS (KB26296)
+								72583, #BlackBerry Enterprise Server / Enterprise Service / Enterprise Server Express Information Disclosure (KB35647)
+								77327, #BlackBerry Enterprise Server / Enterprise Service / Enterprise Server Express Information Disclosure (KB36175)
 							]
 						}
 					end
