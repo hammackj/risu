@@ -1030,6 +1030,7 @@ module Risu
 103876, #Microsoft Windows SMB Server (2017-10) Multiple Vulnerabilities
 103137, #Security and Quality Rollup for .NET Framework (Sep 2017)
 100464, #Microsoft Windows SMBv1 Multiple Vulnerabilities
+40887, #MS09-050: Microsoft Windows SMB2 _Smb2ValidateProviderCallback() Vulnerability (975497) (EDUCATEDSCHOLAR)
 							]
 						}
 					end

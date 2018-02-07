@@ -52,7 +52,7 @@ module Risu
 								91322,
 								87592,
 								92870,
-
+91713, #VMware vCenter Server 5.0.x < 5.0u3g / 5.1.x < 5.1u3d / 5.5.x < 5.5u2d Reflected XSS (VMSA-2016- 0009)
 
 
 

@@ -56,7 +56,7 @@ module Risu
 								90251,
 								91222,
 								94654,
-
+103530, #HP System Management Homepage < 7.6.1 Multiple Vulnerabilities (HPSBMU03753)
 
 
 							]
