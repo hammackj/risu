@@ -103,6 +103,27 @@ module Risu
 								102359, #Mozilla Firefox < 55 Multiple Vulnerabilities
 								100810, #Mozilla Firefox < 54 Multiple Vulnerabilities
 								103680, #Mozilla Firefox < 56 Multiple Vulnerabilities
+								99631, #Mozilla Firefox ESR 52.x < 52.1 Multiple Vulnerabilities
+								100126, #Mozilla Firefox ESR 52.x < 52.1.1 ANGLE Graphics Library RCE
+								100809, #Mozilla Firefox ESR < 52.2 Multiple Vulnerabilities
+								102358, #Mozilla Firefox ESR < 52.3 Multiple Vulnerabilities
+								104637, #Mozilla Firefox ESR < 52.5 Multiple Vulnerabilities
+								105212, #Mozilla Firefox ESR < 52.5.2 Multiple Vulnerabilities
+								106302, #Mozilla Firefox ESR < 52.6 Multiple Vulnerabilities
+								103679, #Mozilla Firefox ESR < 52.4 Multiple Vulnerabilities
+								108376, #Mozilla Firefox ESR < 52.7 Multiple Vulnerabilities
+								108586, #Mozilla Firefox ESR < 52.7.2 Multiple Code Execution Vulnerabilities
+								108755, #Mozilla Firefox ESR < 52.7.3 Denial of Service Vulnerability
+								104638, #Mozilla Firefox < 57 Multiple Vulnerabilities
+105213, #Mozilla Firefox < 57.0.2 ANGLE Graphics Library RCE
+106303, #Mozilla Firefox < 58 Multiple Vulnerabilities
+106561, #Mozilla Firefox < 58.0.1 Arbitrary Code Execution
+108377, #Mozilla Firefox < 59 Multiple Vulnerabilities
+108587, #Mozilla Firefox < 59.0.1 Multiple Code Execution Vulnerabilities
+108756, #Mozilla Firefox ESR < 59.0.2 Denial of Service Vulnerability
+109869, #Mozilla Firefox < 60 Multiple Critical Vulnerabilities
+105040, #Mozilla Firefox < 57.0.1 Multiple Vulnerabilities
+105616, #Mozilla Firefox < 57.0.4 Speculative Execution Side-Channel Attack Vulnerability (Spectre)
 							]
 						}
 					end

@@ -94,6 +94,8 @@ module Risu
 								101843, #Oracle Java SE Multiple Vulnerabilities (July 2017 CPU)
 103963, #Oracle Java SE Multiple Vulnerabilities (October 2017 CPU)
 30149, #Sun Java JRE External XML Entities Restriction Bypass (231246)
+106190, #Oracle Java SE Multiple Vulnerabilities (January 2018 CPU)
+109202, #Oracle Java SE Multiple Vulnerabilities (April 2018 CPU)
 
 							]
 						}

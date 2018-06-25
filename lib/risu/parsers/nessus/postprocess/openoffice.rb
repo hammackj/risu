@@ -39,6 +39,10 @@ module Risu
 								94199, #Apache OpenOffice < 4.1.3 Multiple Vulnerabilities
 								61731, #Apache OpenOffice < 3.4.1 Multiple Heap-Based Buffer Overflows
 								69185, #Apache OpenOffice < 4.0 Multiple Memory Corruption Vulnerabilities
+								51773, #Oracle OpenOffice.org < 3.3 Multiple Vulnerabilities
+								58727, #OpenOffice XML External Entity RDF Document Handling Information Disclosure 59191, #Apache OpenOffice < 3.4.0 Multiple Memory Corruption Vulnerabilities
+								59191, #Apache OpenOffice < 3.4.0 Multiple Memory Corruption Vulnerabilities
+								104351, #Apache OpenOffice < 4.1.4 Multiple Vulnerabilities
 							]
 						}
 					end

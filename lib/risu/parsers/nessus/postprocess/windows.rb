@@ -1031,6 +1031,39 @@ module Risu
 103137, #Security and Quality Rollup for .NET Framework (Sep 2017)
 100464, #Microsoft Windows SMBv1 Multiple Vulnerabilities
 40887, #MS09-050: Microsoft Windows SMB2 _Smb2ValidateProviderCallback() Vulnerability (975497) (EDUCATEDSCHOLAR)
+100791, #Microsoft Security Advisory 4025685: Guidance for older platforms (XP / 2003)
+104892, #Security Updates for Internet Explorer (June 2017)
+105552, #KB4056897: Windows 7 and Windows Server 2008 R2 January 2018 Security Update (Meltdown)(Spectre)
+105546, #Security Updates for Internet Explorer (January 2018)
+105731, #Security and Quality Rollup for .NET Framework (January 2018)
+104893, #Security Updates for Internet Explorer (May 2017)
+99523, #Microsoft Windows Server 2003 IIS 6.0 WebDAV PROPFIND Request Handling RCE
+105553, #KB4056898: Windows 8.1 and Windows Server 2012 R2 January 2018 Security Update (Meltdown)(Spectre)
+106800, #KB4074597: Windows 8.1 and Windows Server 2012 R2 February 2018 Security Update 106804, #Security Updates for Internet Explorer (February 2018)
+108291, #KB4088879: Windows 8.1 and Windows Server 2012 R2 March 2018 Security Update
+104554, #Windows 8.1 and Windows Server 2012 R2 November 2017 Security Updates
+104890, #Security Updates for Internet Explorer (August 2017)
+104891, #Security Updates for Internet Explorer (July 2017)
+104894, #Security Updates for Internet Explorer (November 2017)
+104895, #Security Updates for Internet Explorer (October 2017)
+104896, #Security Updates for Internet Explorer (September 2017)
+105185, #Windows 8.1 and Windows Server 2012 R2 December 2017 Security Updates
+105188, #Security Updates for Internet Explorer (December 2017)
+105109, #Microsoft Malware Protection Engine < 1.1.14405.2 RCE
+104553, #Windows 7 and Windows Server 2008 R2 November 2017 Security Updates
+105184, #Windows 7 and Windows Server 2008 R2 December 2017 Security Updates
+106802, #KB4074587: Windows 7 and Windows Server 2008 R2 February 2018 Security Update
+106804, #Security Updates for Internet Explorer (February 2018)
+108290, #KB4088878: Windows 7 and Windows Server 2008 R2 March 2018 Security Update
+108295, #Security Updates for Internet Explorer (March 2018)
+108757, #KB4100480: Windows Kernel Elevation of Privilege Vulnerability
+108813, #Microsoft Malware Protection Engine < 1.1.14700.5 RCE
+108966, #KB4093108: Windows 7 and Windows Server 2008 R2 April 2018 Security Update
+108971, #Security Updates for Internet Explorer (April 2018)
+109652, #Security Updates for Microsoft .NET Framework (May 2018)
+109604, #KB4103712: Windows 7 and Windows Server 2008 R2 May 2018 Security Update
+109613, #Security Updates for Internet Explorer (May 2018)
+
 							]
 						}
 					end

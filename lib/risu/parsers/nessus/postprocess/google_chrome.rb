@@ -142,8 +142,17 @@ module Risu
 								101980,
 								102993, #Google Chrome < 61.0.3163.79 Multiple Vulnerabilities -
 103933, #Google Chrome < 62.0.3202.62 Multiple Vulnerabilities
-
-
+105356, #Google Chrome < 63.0.3239.108 Multiple Vulnerabilities
+106350, #Google Chrome < 62.0.3202.94 Out of bounds read flaw in V8
+105152, #Google Chrome < 63.0.3239.84 Multiple Vulnerabilities
+104434, #Google Chrome < 62.0.3202.89 Multiple Vulnerabilities
+103421, #Google Chrome < 61.0.3163.100 Multiple Vulnerabilities
+106485, #Google Chrome < 64.0.3282.119 Multiple Vulnerabilities
+106840, #Google Chrome < 64.0.3282.167 V8 JSFunction::CalculateInstanceSizeForDerivedClass() RCE
+107220, #Google Chrome < 65.0.3325.146 Multiple Vulnerabilities
+110228, #Google Chrome < 67.0.3396.62 Multiple Vulnerabilities
+109395, #Google Chrome < 66.0.3359.117 Multiple Vulnerabilities
+109899, #Google Chrome < 66.0.3359.170 Multiple Vulnerabilities
 
 							]
 						}

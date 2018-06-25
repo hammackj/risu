@@ -35,6 +35,9 @@ module Risu
 							:item_name => "Update to the latest 7-Zip",
 							:plugin_ids => [
 								91230, #7-Zip < 16.00 Multiple Vulnerabilities
+								109730, #7-Zip < 18.05 Memory Corruption Arbitrary Code Execution
+								109799, #7-Zip < 16.03 NULL Pointer Dereference DoS
+109800, #7-Zip < 18.00 Multiple Vulnerabilities
 							]
 						}
 					end

@@ -67,6 +67,7 @@ module Risu
 								100995, #Apache 2.2.x < 2.2.33-dev / 2.4.x < 2.4.26 Multiple Vulnerabilities -
 								101788, #Apache 2.4.x < 2.4.27 Multiple Vulnerabilities
 								103838, #Apache 2.4.x < 2.4.28 HTTP Vulnerability (OptionsBleed)
+								101787, #Apache 2.2.x < 2.2.34 Multiple Vulnerabilities
 							]
 						}
 					end

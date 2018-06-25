@@ -136,7 +136,14 @@ module Risu
 								102262, #Adobe Flash Player <= 26.0.0.137 Multiple Vulnerabilities (APSB17-23)
 								101362, #Adobe Flash Player <= 26.0.0.131 Multiple Vulnerabilities (APSB17-21)
 								103124, #Adobe Flash Player <= 26.0.0.151 Multiple Vulnerabilities (APSB17-28)
-								103922, #Adobe Flash Player <= 27.0.0.159 Type Confusion Vulnerability (APSB17-32)								
+								103922, #Adobe Flash Player <= 27.0.0.159 Type Confusion Vulnerability (APSB17-32)
+								108958, #Adobe Flash Player <= 29.0.0.113 (APSB18-08)
+								104544, #Adobe Flash Player <= 27.0.0.183 (APSB17-33)
+105691, #Adobe Flash Player <= 28.0.0.126 (APSB18-01)
+106606, #Adobe Flash Player <= 28.0.0.137 Use-after-free Remote Code Execution (APSA18-01) (APSB18-03)
+108281, #Adobe Flash Player <= 28.0.0.161 (APSB18-05)
+109601, #Adobe Flash Player <= 29.0.0.140 (APSB18-16)
+105175, #Adobe Flash Player <= 27.0.0.187 (APSB17-42)
 							]
 						}
 					end

@@ -86,6 +86,7 @@ module Risu
 								100671, #Wireshark 2.0.x < 2.0.13 / 2.2.x < 2.2.7 Multiple DoS
 								91820, #Wireshark 1.12.x < 1.12.12 Multiple DoS - 91820
 								92816, #Wireshark 1.12.x < 1.12.13 Multiple DoS - 92816
+								50678, #Wireshark < 1.2.13 / 1.4.2 Multiple Vulnerabilities
 							]
 						}
 					end
