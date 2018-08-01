@@ -1039,7 +1039,8 @@ module Risu
 104893, #Security Updates for Internet Explorer (May 2017)
 99523, #Microsoft Windows Server 2003 IIS 6.0 WebDAV PROPFIND Request Handling RCE
 105553, #KB4056898: Windows 8.1 and Windows Server 2012 R2 January 2018 Security Update (Meltdown)(Spectre)
-106800, #KB4074597: Windows 8.1 and Windows Server 2012 R2 February 2018 Security Update 106804, #Security Updates for Internet Explorer (February 2018)
+106800, #KB4074597: Windows 8.1 and Windows Server 2012 R2 February 2018 Security Update
+106804, #Security Updates for Internet Explorer (February 2018)
 108291, #KB4088879: Windows 8.1 and Windows Server 2012 R2 March 2018 Security Update
 104554, #Windows 8.1 and Windows Server 2012 R2 November 2017 Security Updates
 104890, #Security Updates for Internet Explorer (August 2017)
@@ -1063,6 +1064,20 @@ module Risu
 109652, #Security Updates for Microsoft .NET Framework (May 2018)
 109604, #KB4103712: Windows 7 and Windows Server 2008 R2 May 2018 Security Update
 109613, #Security Updates for Internet Explorer (May 2018)
+109605, #KB4103721: Windows 10 Version 1803 May 2018 Security Update
+110487, #KB4284835: Windows 10 Version 1803 June 2018 Security Update
+108964, #KB4093112: Windows 10 Version 1709 and Windows Server Version 1709 April 2018 Security Update (Meltdown)(Spectre)
+109608, #KB4103727: Windows 10 Version 1709 May 2018 Security Update
+108284, #KB4088776: Windows 10 Version 1709 March 2018 Security Update
+110485, #KB4284819: Windows 10 Version 1709 June 2018 Security Update
+104551, #KB4048955: Windows 10 Version 1709 November 2017 Cumulative Update
+105550, #KB4056892: Windows 10 Version 1709 January 2018 Security Update (Meltdown)(Spectre)
+106795, #KB4074588: Windows 10 Version 1709 February 2018 Security Update
+104889, #Security Updates for Internet Explorer (April 2017)
+110490, #KB4284874: Windows 10 Version 1703 June 2018 Security Update
+110494, #Security Updates for Internet Explorer (June 2018)
+105183, #KB4054517: Windows 10 Version 1709 December 2017 Security Update
+
 
 							]
 						}

@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "SigPlus Pro Patch Rollups",
 							:plugin_id => -99977,
-							:plugin_name => "Missing the latest SigPlus Pro",
+							:plugin_name => "Missing the latest SigPlus Pro Patches",
 							:item_name => "Update to the latest SigPlus Pro",
 							:plugin_ids => [
 								51895,

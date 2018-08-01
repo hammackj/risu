@@ -39,6 +39,10 @@ module Risu
 								102682, #Foxit PhantomPDF < 7.3.15 Multiple Vulnerabilities - 102682
 								102858, #Foxit PhantomPDF < 8.3.2 Multiple Vulnerabilities - 102858
 								101523, #Foxit PhantomPDF < 8.3.1 Multiple Vulnerabilities - 101523
+								104436, #Foxit PhantomPDF < 9.0 Multiple Vulnerabilities
+104742, #Foxit PhantomPDF < 8.3.5 Multiple Vulnerabilities
+109398, #Foxit PhantomPDF < 9.1 Multiple Vulnerabilities
+
 							]
 						}
 					end

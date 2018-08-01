@@ -144,6 +144,7 @@ module Risu
 108281, #Adobe Flash Player <= 28.0.0.161 (APSB18-05)
 109601, #Adobe Flash Player <= 29.0.0.140 (APSB18-16)
 105175, #Adobe Flash Player <= 27.0.0.187 (APSB17-42)
+110397, #Adobe Flash Player <= 29.0.0.171 (APSB18-19)
 							]
 						}
 					end
