@@ -61,7 +61,8 @@ module Risu
 								85882, #Adobe Shockwave Player <= 12.1.9.160 Multiple RCE (APSB15-22)
 								86633, #Adobe Shockwave Player <= 12.2.0.162 RCE (APSB15-26)
 								97835, #Adobe Shockwave Player <= 12.2.7.197 DLL Hijacking (APSB17-08)
-								100806, #Adobe Shockwave Player <= 12.2.8.198 Memory Corruption RCE (APSB17-18) - 
+								100806, #Adobe Shockwave Player <= 12.2.8.198 Memory Corruption RCE (APSB17-18) -
+								104628, #Adobe Shockwave Player <= 12.2.9.199 Memory Corruption RCE (APSB17-40) 
 							]
 						}
 					end

@@ -47,7 +47,13 @@ module Risu
 								100025, #Apple iTunes < 12.6 Multiple Vulnerabilities (credentialed check)
 								100300, #Apple iTunes < 12.6.1 WebKit Memory Corruption RCE (credentialed check)
 								78597, #Apple iTunes < 12.0.1 Multiple Vulnerabilities (credentialed check) -
-								101954, #Apple iTunes < 12.6.2 Multiple Vulnerabilities (credentialed check) - 
+								101954, #Apple iTunes < 12.6.2 Multiple Vulnerabilities (credentialed check) -
+								111105, #Apple iTunes < 12.8 Multiple Vulnerabilities (credentialed check)
+								117880, #Apple iTunes < 12.9 Multiple Vulnerabilities (credentialed check)
+								108795, #Apple iTunes < 12.7.4 WebKit Multiple Vulnerabilities (credentialed check)
+								110384, #Apple iTunes < 12.7.5 Multiple Vulnerabilities (credentialed check)
+								118718, #Apple iTunes < 12.9.1 Multiple Vulnerabilities (credentialed check)
+								
 							]
 						}
 					end

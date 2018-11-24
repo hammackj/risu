@@ -233,6 +233,7 @@ module Risu
 				drop_table :patches
 				drop_table :host_properties
 				drop_table :attachments
+				drop_table :nessus_plugin_metadata
 			end
 		end
 	end

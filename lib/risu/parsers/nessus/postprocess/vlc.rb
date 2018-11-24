@@ -45,6 +45,7 @@ module Risu
 								55608,
 								63137,
 								100592, #VLC Media Player < 2.2.5 Multiple Vulnerabilities - 100592
+105294, #VLC Media Player < 2.2.7 Overflow Condition
 
 							]
 						}

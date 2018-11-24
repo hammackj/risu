@@ -23,26 +23,22 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class SymantecEndpointPatchRollup < Risu::Base::PostProcessBase
+				class MozzilaThunderbirdPatchRollup < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Symantec Endpoint Patch Rollup",
-							:plugin_id => -99953,
-							:plugin_name => "Missing the latest Symantec Endpoint Patches",
-							:item_name => "Update to the latest Symantec Endpoint",
+							:description => "Mozzila Thunderbird Patch Rollup",
+							:plugin_id => -99949,
+							:plugin_name => "Missing the latest Mozzila Thunderbird Patches",
+							:item_name => "Update to the latest Mozzila Thunderbird",
 							:plugin_ids => [
-								91895,
-								71993,
-								90199,
-								59366,
-								71994,
-								72542,
-								85256,
-104459, #Symantec Endpoint Protection Client 12.1.x < 12.1 RU6 MP9 / 14.0.x < 14.0 RU1 Multiple Vulnerabilities (SYM17-011)
-
+								105507, #Mozilla Thunderbird < 52.5.2 Multiple Vulnerabilities
+								108519, #Mozilla Thunderbird < 52.6 Multiple Vulnerabilities
+								109946, #Mozilla Thunderbird < 52.8 Multiple Vulnerabilities (EFAIL)
+								105044, #Mozilla Thunderbird < 52.5 Multiple Vulnerabilities
+								111044, #Mozilla Thunderbird < 52.9 Multiple Vulnerabilities
 							]
 						}
 					end

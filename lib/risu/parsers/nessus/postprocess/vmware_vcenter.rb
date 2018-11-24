@@ -53,7 +53,9 @@ module Risu
 								87592,
 								92870,
 91713, #VMware vCenter Server 5.0.x < 5.0u3g / 5.1.x < 5.1u3d / 5.5.x < 5.5u2d Reflected XSS (VMSA-2016- 0009)
-
+76947, #VMware vCenter Converter Multiple Vulnerabilities (VMSA-2014-0006)
+99475, #VMware vCenter Server 6.0.x < 6.0u3b / 6.5.x < 6.5c BlazeDS AMF3 RCE (VMSA-2017-0007)
+104654, #VMware vCenter Server 5.5.x < 5.5u3f / 6.0.x < 6.0u3c / 6.5.x < 6.5u1 Multiple Vulnerabilities (VMSA- 2017-0017)
 
 
 

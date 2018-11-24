@@ -23,25 +23,20 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class SymantecEndpointPatchRollup < Risu::Base::PostProcessBase
+				class AbobeCreativeCloudDesktopRollup < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Symantec Endpoint Patch Rollup",
-							:plugin_id => -99953,
-							:plugin_name => "Missing the latest Symantec Endpoint Patches",
-							:item_name => "Update to the latest Symantec Endpoint",
+							:description => "Adobe Creative Cloud Desktop Patch Rollup",
+							:plugin_id => -99948,
+							:plugin_name => "Missing the latest Adobe Creative Cloud Desktop Patches",
+							:item_name => "Update to the latest Adobe Creative Cloud Desktop",
 							:plugin_ids => [
-								91895,
-								71993,
-								90199,
-								59366,
-								71994,
-								72542,
-								85256,
-104459, #Symantec Endpoint Protection Client 12.1.x < 12.1 RU6 MP9 / 14.0.x < 14.0 RU1 Multiple Vulnerabilities (SYM17-011)
+								99366, #Adobe Creative Cloud Desktop < 4.0.0.185 Multiple Vulnerabilities (APSB17-13)
+								91386, #Adobe Creative Cloud <= 3.5.1.209 Arbitrary File Read/Write Vulnerability
+94055, #Adobe Creative Cloud Desktop < 3.8.0.310 Unquoted Search Path Local Privilege Escalation (APSB16-34)
 
 							]
 						}

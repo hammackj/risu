@@ -89,6 +89,9 @@ module Risu
 								103375, #ESXi 5.5 < Build 6480267 RPC NULL Pointer Dereference Vulnerability (VMSA-2017-0015)
 								105486, #ESXi 5.5 / 6.0 / 6.5 / Multiple Vulnerabilities (VMSA-2017-0021) (VMSA-2018-0002) (Spectre)
 								87941, #ESXi 5.1 < Build 3070626 Shared Folders (HGFS) Guest Privilege Escalation (VMSA-2016-0001)
+								87681, #VMware ESXi Multiple Vulnerabilities (VMSA-2014-0012)
+								105614, #ESXi 6.5 < Build 6765664 Heap Buffer Overflow (VMSA-2017-0021)
+								111759, #ESXi 5.5 / 6.0 / 6.5 / 6.7 Speculative Execution Side Channel Vulnerability (Foreshadow) (VMSA-2018- 0020)
 							]
 						}
 					end

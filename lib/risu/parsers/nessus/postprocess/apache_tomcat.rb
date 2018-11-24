@@ -39,6 +39,7 @@ module Risu
 								35806, #Tomcat Sample App cal2.jsp 'time' Parameter XSS
 								81650, #Apache Tomcat 7.0.x < 7.0.57 Multiple Vulnerabilities (POODLE)
 								83526, #Apache Tomcat 7.0.x < 7.0.60 Multiple Vulnerabilities (FREAK)
+								70414, #Apache Tomcat / JBoss EJBInvokerServlet / JMXInvokerServlet Multiple Vulnerabilities
 							]
 						}
 					end

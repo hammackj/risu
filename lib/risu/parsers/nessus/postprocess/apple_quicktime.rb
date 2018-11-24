@@ -65,6 +65,11 @@ module Risu
 								45388, #QuickTime < 7.6.6 Multiple Vulnerabilities (Windows)
 								27626, #QuickTime < 7.3 Multiple Vulnerabilities (Windows)
 								30204, #QuickTime < 7.4.1 RTSP Response Long Reason-Phrase Arbitrary Remote Code Execution (Windows)
+								11506, #QuickTime < 6.1 URL Handling Overflow (Windows)
+17637, #QuickTime < 6.5.2 PictureViewer Malformed JPEG Overflow (Windows)
+20136, #QuickTime < 7.0.3 Multiple Vulnerabilities (Windows)
+20395, #QuickTime < 7.0.4 Multiple Vulnerabilities (Windows)
+
 							]
 						}
 					end

@@ -1077,7 +1077,111 @@ module Risu
 110490, #KB4284874: Windows 10 Version 1703 June 2018 Security Update
 110494, #Security Updates for Internet Explorer (June 2018)
 105183, #KB4054517: Windows 10 Version 1709 December 2017 Security Update
+103128, #KB4038782: Windows 10 Version 1607 and Windows Server 2016 September 2017 Cumulative Update
+103134, #Security Updates for Microsoft Office Compatibility Pack SP3 (September 2017)
+103751, #Security Updates for Microsoft Office Compatibility Pack SP3 (October 2017)
+103754, #Security Update for Microsoft Office Word Viewer (October 2017)
+104558, #Security Updates for Microsoft Office Compatibility SP3 (November 2017)
+104559, #Security Updates for Microsoft Office Viewer Products (November 2017)
+110990, #Security Updates for Microsoft .NET Framework (July 2018)
+111689, #KB4343899: Windows 7 and Windows Server 2008 R2 August 2018 Security Update (Foreshadow)
+104556, #Security Updates for Microsoft Excel Products (November 2017)
+104562, #Security Updates for Microsoft Word Products (November 2017)
+52544, #Microsoft Forefront Endpoint Protection / System Center Endpoint Protection / Anti-malware Client Detection and Status
+109684, #Security Updates for Exchange (May 2018)
+111755, #Security Updates for Exchange (August 2018)
+110994, #Security Updates for Microsoft Word Products (July 2018)
+108969, #Security Updates for Microsoft Excel Products (April 2018)
+108972, #Security Updates for Microsoft Office Products (April 2018)
+109612, #Security Updates for Microsoft Excel Products (May 2018)
+109614, #Security Updates for Microsoft Office Products (May 2018)
+109617, #Security Updates for Microsoft Word Products (May 2018)
+110495, #Security Updates for Microsoft Office Products (June 2018)
+110499, #Security Updates for Outlook (June 2018)
+110500, #Security Updates for Microsoft Publisher Products (June 2018)
+104557, #Security Updates for Microsoft Office Products (November 2017)
+105189, #Security Updates for Microsoft Office Products (December 2017)
+105192, #Security Updates for Microsoft Word Products (December 2017)
+105694, #Security Updates for Microsoft Excel Products (January 2018)
+105699, #Security Updates for Outlook (January 2018)
+105700, #Security Updates for Microsoft Word Products (January 2018)
+105728, #Security Updates for Microsoft Office Products (January 2018)
+106805, #Security Updates for Microsoft Office Products (February 2018)
+106807, #Security Updates for Outlook (February 2018)
+108301, #Security Updates for Microsoft Word Products (March 2018)
+110982, #KB4338823: Windows 7 and Windows Server 2008 R2 July 2018 Security Update
+110991, #Security Updates for Internet Explorer (July 2018)
+111694, #Security Updates for Microsoft Excel Products (August 2018)
+111696, #Security Updates for Microsoft Office Products (August 2018)
+111787, #Security Updates for Microsoft Powerpoint Products (August 2018)
+111685, #KB4343887: Windows 10 Version 1607 and Windows Server 2016 August 2018 Security Update (Foreshadow)
+111690, #KB4343896: Windows Server 2012 August 2018 Security Update (Foreshadow)
+103135, #Security Updates for Microsoft Office Viewers (September 2017)
+103569, #Windows Defender Antimalware/Antivirus Signature Definition Check
+103749, #KB4041691: Windows 10 Version 1607 and Windows Server 2016 October 2017 Cumulative Update (KRACK)
+104549, #KB4048953: Windows 10 Version 1607 and Windows Server 2016 November 2017 Cumulative Update
+111695, #Security Updates for Internet Explorer (August 2018)
+110486, #KB4284867: Windows 7 and Windows Server 2008 R2 June 2018 Security Update
+111698, #Security Updates for Microsoft Office Viewer Products / Office Compatibility Products (August 2018)
+110491, #KB4284880: Windows 10 Version 1607 and Windows Server 2016 June 2018 Security Update
+110980, #KB4338814: Windows 10 Version 1607 and Windows Server 2016 July 2018 Security Update
+111008, #Security Updates for Microsoft Office Viewer Products / Office Compatibility Products (July 2018)
+108967, #KB4093119: Windows 10 Version 1607 and Windows Server 2016 April 2018 Security Update
+108970, #Security Updates for Microsoft Office Viewer Products (April 2018)
+108973, #Security Updates for Microsoft Office Compatibility Products (April 2018)
+109606, #KB4103723: Windows 10 Version 1607 and Windows Server 2016 May 2018 Security Update
+109615, #Security Updates for Microsoft Office Compatibility Products (May 2018)
+105695, #Security Updates for Microsoft Office Compatibility SP3 (January 2018)
+105697, #Security Updates for Microsoft Office Viewer Products (January 2018)
+106796, #KB4074590: Windows 10 Version 1607 and Windows Server 2016 February 2018 Security Update (Meltdown)(Spectre)
+106817, #Security Updates for Microsoft Word Viewer (Feburary 2018)
+108289, #KB4088787: Windows 10 Version 1607 and Windows Server 2016 March 2018 Security Update
+108292, #KB4088880: Windows Server 2012 March 2018 Security Update (Meltdown)(Spectre)
+108297, #Security Updates for Microsoft Office Compatibility Products (March 2018)
+105548, #KB4056890: Windows 10 Version 1607 and Windows Server 2016 January 2018 Security Update (Meltdown)(Spectre)
+105180, #KB4053579: Windows 10 Version 1607 and Windows Server 2016 December 2017 Security Update
 
+100760, #KB4022715: Windows 10 Version 1607 and Windows Server 2016 June 2017 Cumulative Update
+101366, #KB4025339: Windows 10 Version 1607 and Windows Server 2016 July 2017 Cumulative Update
+111685, #KB4343887: Windows 10 Version 1607 and Windows Server 2016 August 2018 Security Update (Foreshadow)
+103132, #Windows Server 2012 September 2017 Security Updates
+117421, #Security Updates for Microsoft Excel Products (September 2018)
+117423, #Security Updates for Internet Explorer (September 2018)
+117418, #KB4457145: Windows 7 and Windows Server 2008 R2 September 2018 Security Update
+117426, #Security Updates for Microsoft Word Products (September 2018)
+117411, #KB4457128: Windows 10 Version 1803 September 2018 Security Update
+111691, #KB4343902: Security update for Adobe Flash Player (August 2018)
+110984, #KB4338825: Windows 10 Version 1709 July 2018 Security Update
+111687, #KB4343897: Windows 10 Version 1709 August 2018 Security Update (Foreshadow)
+117417, #KB4457142: Windows 10 Version 1709 September 2018 Security Update
+111688, #KB4343888: Windows 8.1 and Windows Server 2012 R2 August 2018 Security Update (Foreshadow)
+117412, #KB4457143: Windows 8.1 and Windows Server 2012 R2 September 2018 Security Update
+103748, #Windows Server 2012 October 2017 Security Updates (KRACK)
+104555, #Windows Server 2012 November 2017 Security Updates
+105186, #Windows Server 2012 December 2017 Security Updates
+105554, #KB4056899: Windows Server 2012 January 2018 Security Update
+106799, #KB4074589: Windows Server 2012 February 2018 Security Update
+108968, #KB4093122: Windows Server 2012 April 2018 Security Update
+109610, #KB4103726: Windows Server 2012 May 2018 Security Update
+110488, #KB4284846: Windows Server 2012 June 2018 Security Update
+110987, #KB4338820: Windows Server 2012 July 2018 Security Update
+117424, #Security Updates for Microsoft Office Compatibility Products (September 2018)
+117415, #KB4457140: Windows Server 2012 September 2018 Security Update
+117422, #Security Updates for Microsoft Office Viewer Products (September 2018)
+118001, #KB4462915: Windows 7 and Windows Server 2008 R2 October 2018 Security Update
+118007, #Security Updates for Microsoft Excel Products (October 2018)
+118009, #Security Updates for Internet Explorer (October 2018)
+118010, #Security Updates for Microsoft Office Products (October 2018)
+118014, #Security Updates for Outlook (October 2018)
+118015, #Security Updates for Microsoft PowerPoint Products (October 2018)
+118016, #Security Updates for Microsoft Word Products (October 2018)
+108962, #KB4093110: Security update for Adobe Flash Player (April 2018)
+101374, #Windows 2008 July 2017 Multiple Security Updates
+109609, #KB4103729: Security update for Adobe Flash Player (May 2018)
+110414, #KB4287903: Security update for Adobe Flash Player (June 2018)
+110988, #KB4338832: Security update for Adobe Flash Player (July 2018)
+111700, #Security Updates for Windows Server 2008 (August 2018) (Foreshadow)
+117998, #KB4462918: Windows 10 Version 1709 and Windows Server Version 1709 October 2018 Security Update
 
 							]
 						}

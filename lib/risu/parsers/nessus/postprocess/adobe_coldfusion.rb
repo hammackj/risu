@@ -23,26 +23,20 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class SymantecEndpointPatchRollup < Risu::Base::PostProcessBase
+				class AdobeColdfusionPatchRollup < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Symantec Endpoint Patch Rollup",
-							:plugin_id => -99953,
-							:plugin_name => "Missing the latest Symantec Endpoint Patches",
-							:item_name => "Update to the latest Symantec Endpoint",
+							:description => "Adobe Coldfusion Patch Rollup",
+							:plugin_id => -99950,
+							:plugin_name => "Missing the latest Adobe Coldfusion Patches",
+							:item_name => "Update to the latest Adobe Coldfusion",
 							:plugin_ids => [
-								91895,
-								71993,
-								90199,
-								59366,
-								71994,
-								72542,
-								85256,
-104459, #Symantec Endpoint Protection Client 12.1.x < 12.1 RU6 MP9 / 14.0.x < 14.0 RU1 Multiple Vulnerabilities (SYM17-011)
-
+								64689, #Adobe ColdFusion Authentication Bypass (APSB13-03)
+								72091, #Adobe ColdFusion Unsupported Version Detection
+								99731, #Adobe ColdFusion BlazeDS Java Object Deserialization RCE
 							]
 						}
 					end

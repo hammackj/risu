@@ -90,7 +90,8 @@ module Risu
 								107093, #Wireshark 2.2.x < 2.2.13 / 2.4.x < 2.4.5 Multiple DoS Vulnerabilities
 108885, #Wireshark 2.2.x < 2.2.14 / 2.4.x < 2.4.6 Multiple Vulnerabilities
 110269, #Wireshark 2.2.x < 2.2.15 / 2.4.x < 2.4.7 / 2.6.x < 2.6.1 Multiple Vulnerabilities
-
+111387, #Wireshark 2.2.x < 2.2.16 / 2.4.x < 2.4.8 / 2.6.x < 2.6.2 Multiple Vulnerabilities
+117339, #Wireshark 2.2.x < 2.2.17 / 2.4.x < 2.4.9 / 2.6.x < 2.6.3 Multiple Vulnerabilities
 							]
 						}
 					end

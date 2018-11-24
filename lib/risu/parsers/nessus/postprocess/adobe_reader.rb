@@ -86,6 +86,10 @@ module Risu
 								102428, #Adobe Reader < 11.0.21 / 2015.006.30355 / 2017.011.30066 / 2017.012.20098 Multiple Vulnerabilities (APSB17-24)
 								104627, #Adobe Reader < 11.0.23 / 2015.006.30392 / 2017.011.30068 / 2018.009.20044 Multiple Vulnerabilities (APSB17-36)
 								104626, #Adobe Acrobat < 11.0.23 / 2015.006.30392 / 2017.011.30068 / 2018.009.20044 Multiple Vulnerabilities (APSB17-36)
+								111794, #Adobe Reader <= 2015.006.30434 / 2017.011.30096 / 2018.011.20055 Multiple Vulnerabilities (APSB18- 29)
+117600, #Adobe Reader <= 2015.006.30448 / 2017.011.30099 / 2018.011.20058 Multiple Vulnerabilities (APSB18- 34)
+117877, #Adobe Reader <= 2015.006.30452 / 2017.011.30102 / 2018.011.20063 Multiple Vulnerabilities (APSB18- 30)
+
 							]
 						}
 					end

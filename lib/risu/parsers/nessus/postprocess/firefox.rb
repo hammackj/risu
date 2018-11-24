@@ -124,6 +124,12 @@ module Risu
 109869, #Mozilla Firefox < 60 Multiple Critical Vulnerabilities
 105040, #Mozilla Firefox < 57.0.1 Multiple Vulnerabilities
 105616, #Mozilla Firefox < 57.0.4 Speculative Execution Side-Channel Attack Vulnerability (Spectre)
+110811, #Mozilla Firefox < 61 Multiple Critical Vulnerabilities
+117294, #Mozilla Firefox < 62 Multiple Critical Vulnerabilities
+118397, #Mozilla Firefox < 63 Multiple Vulnerabilities
+117921, #Mozilla Firefox < 62.0.3 Multiple Vulnerabilities
+117941, #Mozilla Firefox < 49 Multiple Vulnerabilities
+
 							]
 						}
 					end
