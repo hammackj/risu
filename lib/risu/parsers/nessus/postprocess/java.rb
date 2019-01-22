@@ -98,7 +98,6 @@ module Risu
 109202, #Oracle Java SE Multiple Vulnerabilities (April 2018 CPU)
 111163, #Oracle Java SE Multiple Vulnerabilities (July 2018 CPU)
 118228, #Oracle Java SE Multiple Vulnerabilities (October 2018 CPU)
-
 							]
 						}
 					end

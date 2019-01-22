@@ -92,6 +92,8 @@ module Risu
 								87681, #VMware ESXi Multiple Vulnerabilities (VMSA-2014-0012)
 								105614, #ESXi 6.5 < Build 6765664 Heap Buffer Overflow (VMSA-2017-0021)
 								111759, #ESXi 5.5 / 6.0 / 6.5 / 6.7 Speculative Execution Side Channel Vulnerability (Foreshadow) (VMSA-2018- 0020)
+								118466, #ESXi 6.0 / 6.5 / 6.7 Out-of-Bounds Read Vulnerability (VMSA-2018-0026) (Remote Check)
+								102698, #ESXi 6.0 < Build 5485776 Multiple Vulnerabilities (VMSA-2017-0015)
 							]
 						}
 					end

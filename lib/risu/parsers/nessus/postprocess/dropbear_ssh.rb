@@ -36,6 +36,9 @@ module Risu
 							:plugin_ids => [
 								93650, #Dropbear SSH Server < 2016.72 Multiple Vulnerabilities
 								58183, #Dropbear SSH Server Channel Concurrency Use-after-free Remote Code Execution
+								70545, #Dropbear SSH Server < 2013.59 Multiple Vulnerabilities
+								21023, #Dropbear SSH Authorization-pending Connection Saturation DoS
+								34769, #Dropbear SSH Server svr_ses.childpidsize Remote Overflow
 							]
 						}
 					end

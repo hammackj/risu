@@ -1182,6 +1182,16 @@ module Risu
 110988, #KB4338832: Security update for Adobe Flash Player (July 2018)
 111700, #Security Updates for Windows Server 2008 (August 2018) (Foreshadow)
 117998, #KB4462918: Windows 10 Version 1709 and Windows Server Version 1709 October 2018 Security Update
+119589, #KB4471329: Windows 10 Version 1709 and Windows Server Version 1709 December 2018 Security Update
+119771, #KB4483232: Windows 10 Version 1709 and Windows Server Version 1709 December 2018 OOB Security Update
+118915, #KB4467686: Windows 10 Version 1709 and Windows Server Version 1709 November 2018 Security Update
+119612, #Security Updates for Microsoft .NET Framework (December 2018)
+121020, #KB4480978: Windows 10 Version 1709 and Windows Server Version 1709 January 2019 Security Update 121024, #Security Updates for Microsoft Office Products (January 2019)
+121028, #Security Updates for Microsoft Word Products (January 2019)
+117431, #Security Updates for Microsoft .NET Framework (September 2018)
+121021, #Security Updates for Microsoft .NET Framework (January 2019)
+121027, #Security Updates for Outlook (January 2019)
+121035, #Security Updates for Windows 10 / Windows Server 2016 (January 2019) (Spectre)
 
 							]
 						}
