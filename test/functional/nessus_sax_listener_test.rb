@@ -23,7 +23,6 @@ require 'test_helper'
 class NessusSaxListenerTest < ActiveSupport::TestCase
 	include Risu::Models
 
-	# TODO doc
 	#
 	def setup
 			setup_test_database (false)
