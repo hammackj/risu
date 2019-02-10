@@ -84,6 +84,10 @@ class NessusSaxListenerTest < ActiveSupport::TestCase
 							xml.tag(:name => "UNDEFINED_HOST_PROPERTY") do
 								xml.text "UNDEFINED_HOST_PROPERTY"
 							end
+
+							xml.tag(:name => "operating-system") do
+								xml.text "X" * 1000
+							end
 						end
 
 						xml.ReportItem(:port => "88", :svc_name => "kerberos?", :protocol => "tcp", :severity => "0", :pluginName => "Test Plugin", :pluginFamily => "Test Family", :pluginID =>"999999") do
@@ -129,6 +133,10 @@ class NessusSaxListenerTest < ActiveSupport::TestCase
 
 	test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_solution == cm:compliance-solution" do
 			assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution == "cm:compliance-solution", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution}"
+	end
+
+	test "Host.where(:name => '69.69.69.69').first.os == X * 1000" do
+			assert Host.where(:name => "69.69.69.69").first.os == 'X' * 1000, "GOT #{Host.where(:name => "69.69.69.69").first.os}"
 	end
 
 	test "Attachment.first.name == 'ts_screenshot.jpg'" do
