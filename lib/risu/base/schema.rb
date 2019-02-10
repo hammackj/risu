@@ -65,7 +65,7 @@ module Risu
 				create_table :hosts do |t|
 					t.integer :report_id
 					t.string :name
-					t.string :os
+					t.text :os, limit: 4294967295
 					t.text :mac, limit: 4294967295
 					t.datetime :start
 					t.datetime :end
