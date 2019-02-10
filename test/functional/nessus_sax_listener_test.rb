@@ -86,7 +86,17 @@ class NessusSaxListenerTest < ActiveSupport::TestCase
 							end
 
 							xml.tag(:name => "operating-system") do
-								xml.text "X" * 1000
+								xml.text "Microsoft Windows Server 2003
+	Microsoft Windows Vista
+	Microsoft Windows Server 2008
+	Microsoft Windows 7
+	Microsoft Windows Server 2008 R2
+	Microsoft Windows Server 2012
+	Microsoft Windows 8
+	Microsoft Windows Server 2012 R2
+	Microsoft Windows 10
+	Microsoft Windows Server 2016
+	Microsoft Windows Server 2019"
 							end
 						end
 
@@ -135,8 +145,8 @@ class NessusSaxListenerTest < ActiveSupport::TestCase
 			assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution == "cm:compliance-solution", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution}"
 	end
 
-	test "Host.where(:name => '69.69.69.69').first.os == X * 1000" do
-			assert Host.where(:name => "69.69.69.69").first.os == 'X' * 1000, "GOT #{Host.where(:name => "69.69.69.69").first.os}"
+	test "Host.where(:name => '69.69.69.69').first.os.length == 310" do
+			assert Host.where(:name => "69.69.69.69").first.os.length == 310, "GOT #{Host.where(:name => "69.69.69.69").first.os.length}"
 	end
 
 	test "Attachment.first.name == 'ts_screenshot.jpg'" do
