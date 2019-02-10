@@ -134,7 +134,7 @@ module Risu
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
 					puts "[!] Database adapter not found, please check your configuration file"
-					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
+					puts "#{anf.message}\n #{anf.backtrace}" if @options[:debug]
 					exit
 				rescue => e
 					puts "[!] Exception! #{e.message}"
@@ -342,13 +342,13 @@ module Risu
 						puts opts.to_s + "\n"
 						exit
 					end
-				rescue OptionParser::AmbiguousOption => a
+				rescue OptionParser::AmbiguousOption
 					puts opts.to_s + "\n"
 					exit
-				rescue OptionParser::MissingArgument => m
+				rescue OptionParser::MissingArgument
 					puts opts.to_s + "\n"
 					exit
-				rescue OptionParser::InvalidOption => i
+				rescue OptionParser::InvalidOption
 					puts opts.to_s + "\n"
 					exit
 				end
@@ -432,7 +432,7 @@ module Risu
 					rescue Risu::Exceptions::InvalidDocument => id
 						puts "[!] #{id.message}"
 						next
-					rescue ActiveRecord::StatementInvalid => si
+					rescue ActiveRecord::StatementInvalid
 						puts "[!] Please run #{Risu::APP_NAME} --create-tables, to create the required database schema!"
 						exit
 					rescue => e
@@ -491,7 +491,7 @@ module Risu
 
 					printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
 					puts nessus_doc.new_tags.uniq.join("\n") #@TODO add a verbose check
-				rescue Interrupt => i
+				rescue Interrupt
 					puts "[!] Parse canceled!"
 					exit(1)
 				rescue Mysql2::Error => m
