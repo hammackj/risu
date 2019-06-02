@@ -51,6 +51,12 @@ module Risu
 								103670, #Cisco IOS Software PROFINET denial of service (cisco-sa-20170927-profinet)
 								97991, #Cisco IOS Cluster Management Protocol Telnet Option Handling RCE (cisco-sa-20170317-cmp)
 								94252, #Cisco IOS Software CIP Request DoS (cisco-sa-20160928-cip)
+								103565, #Cisco IOS Software DHCP Remote Code Execution Vulnerability
+								108722, #Cisco IOS Software Smart Install Remote Code Execution Vulnerability
+								108880, #Cisco IOS Software Link Layer Discovery Protocol Buffer Overflow Vulnerabilities (cisco-sa-20180328- lldp)
+								108956, #Cisco IOS Software DNS Forwarder Denial of Service Vulnerability (cisco-sa-20160928-dns)
+								109087, #Cisco IOS DHCP Multiple Vulnerabilities
+								117944, #Cisco IOS Software Cluster Management Protocol DoS Vulnerability (cisco-sa-20180926-cmp)																
 							]
 						}
 					end

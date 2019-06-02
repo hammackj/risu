@@ -23,7 +23,7 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class WindowsPatches < Risu::Base::PostProcessBase
+				class MicrosoftWindowsPatches < Risu::Base::PostProcessBase
 
 					#
 					def initialize
@@ -75,9 +75,6 @@ module Risu
 								21694, #MS06-032: Vulnerability in TCP/IP Could Allow Remote Code Execution (917953)
 								22028, #MS06-034: Vulnerability in Microsoft IIS using ASP Could Allow Remote Code Execution (917537)
 								22030, #MS06-036: Vulnerability in DHCP Client Service Could Allow Remote Code Execution (914388)
-								22031, #MS06-037: Vulnerabilities in Microsoft Excel Could Allow Remote Code Execution (917285)
-								22032, #MS06-038: Vulnerabilities in Microsoft Office Could Allow Remote Code Execution (917284)
-								22033, #MS06-039: Vulnerabilities in Microsoft Office Filters Could Allow Remote Code Execution (915384)
 								22034, #MS06-035: Vulnerability in Server Service Could Allow Remote Code Execution (917159) (uncredentialed check)
 								22183, #MS06-041: Vulnerability in DNS Resolution Could Allow Remote Code Execution (920683)
 								22188, #MS06-046: Vulnerability in HTML Help Could Allow Remote Code Execution (922616)
@@ -145,11 +142,6 @@ module Risu
 								31041, #MS08-007: Vulnerability in WebDAV Mini-Redirector Could Allow Remote Code Execution (946026)
 								31042, #MS08-008: Vulnerability in OLE Automation Could Allow Remote Code Execution (947890)
 								31044, #MS08-010: Cumulative Security Update for Internet Explorer (944533)
-								31046, #MS08-012: Vulnerability in Microsoft Publisher Could Allow Remote Code Execution (947085)
-								31047, #MS08-013: Vulnerability in Microsoft Office Could Allow Remote Code Execution (947108)
-								31413, #MS08-014: Vulnerabilities in Microsoft Excel Could Allow Remote Code Execution (949029)
-								31414, #MS08-015: Vulnerability in Microsoft Outlook Could Allow Remote Code Execution (949031)
-								31415, #MS08-016: Vulnerabilities in Microsoft Office Could Allow Remote Code Execution (949030)
 								31793, #MS08-020: Vulnerability in DNS Client Could Allow Spoofing (945553)
 								31794, #MS08-021: Vulnerabilities in GDI Could Allow Remote Code Execution (948590)
 								31795, #MS08-022: Vulnerability in VBScript and JScript Scripting Engines Could Allow Remote Code Execution (944338)
@@ -893,13 +885,12 @@ module Risu
 								91604, #MS16-076: Security Update for Netlogon (3167691)
 								90435, #MS16-041: Security Update for .NET Framework (3148789)
 								91607, #MS16-080: Security Update for Microsoft Windows PDF (3164302)
-								91611, #MS16-070: Security Update for Microsoft Office (3163610)
-								92019, #MS16-088: Security Update for Microsoft Office (3170008)
+
 								92023, #MS16-092: Security Update for Windows Kernel (3171910)
 								92025, #MS16-094: Security Update for Secure Boot (3177404)
 								92822, #MS16-100: Security Update for Secure Boot (3179577)
 								92824, #MS16-102: Security Update for Microsoft Windows PDF Library (3182248)
-								92839, #MS16-099: Security Update for Microsoft Office (3177451)
+								
 								93469, #MS16-110: Security Update for Microsoft Windows (3178467)
 								93481, #MS16-107: Security Update for Microsoft Office (3185852)
 								91605, #MS16-077: Security Update for WPAD (3165191)
@@ -1140,7 +1131,6 @@ module Risu
 108297, #Security Updates for Microsoft Office Compatibility Products (March 2018)
 105548, #KB4056890: Windows 10 Version 1607 and Windows Server 2016 January 2018 Security Update (Meltdown)(Spectre)
 105180, #KB4053579: Windows 10 Version 1607 and Windows Server 2016 December 2017 Security Update
-
 100760, #KB4022715: Windows 10 Version 1607 and Windows Server 2016 June 2017 Cumulative Update
 101366, #KB4025339: Windows 10 Version 1607 and Windows Server 2016 July 2017 Cumulative Update
 111685, #KB4343887: Windows 10 Version 1607 and Windows Server 2016 August 2018 Security Update (Foreshadow)
@@ -1186,13 +1176,72 @@ module Risu
 119771, #KB4483232: Windows 10 Version 1709 and Windows Server Version 1709 December 2018 OOB Security Update
 118915, #KB4467686: Windows 10 Version 1709 and Windows Server Version 1709 November 2018 Security Update
 119612, #Security Updates for Microsoft .NET Framework (December 2018)
-121020, #KB4480978: Windows 10 Version 1709 and Windows Server Version 1709 January 2019 Security Update 121024, #Security Updates for Microsoft Office Products (January 2019)
+121020, #KB4480978: Windows 10 Version 1709 and Windows Server Version 1709 January 2019 Security Update
+121024, #Security Updates for Microsoft Office Products (January 2019)
 121028, #Security Updates for Microsoft Word Products (January 2019)
 117431, #Security Updates for Microsoft .NET Framework (September 2018)
 121021, #Security Updates for Microsoft .NET Framework (January 2019)
 121027, #Security Updates for Outlook (January 2019)
 121035, #Security Updates for Windows 10 / Windows Server 2016 (January 2019) (Spectre)
-
+119609, #Security Updates for Microsoft Office Viewer Products (December 2018)
+119582, #KB4471328: Windows 7 and Windows Server 2008 R2 December 2018 Security Update
+122234, #Security Updates for Microsoft .NET Framework (February 2019)
+118913, #KB4467106: Windows 7 and Windows Server 2008 R2 November 2018 Security Update
+121017, #KB4480960: Windows 7 and Windows Server 2008 R2 January 2019 Security Update
+122118, #KB4486564: Windows 7 and Windows Server 2008 R2 February 2019 Security Update
+122782, #KB4489885: Windows 7 and Windows Server 2008 R2 March 2019 Security Update
+118922, #Security Updates for Internet Explorer (November 2018)
+119594, #Security Updates for Internet Explorer (December 2018)
+119774, #Security Updates for Internet Explorer (December 2018 OOB)
+121023, #Security Updates for Internet Explorer (January 2019)
+122131, #Security Updates for Internet Explorer (February 2019)
+122789, #Security Updates for Internet Explorer (March 2019)
+122317, #Security Updates for Microsoft Office Viewers And Compatibility Products (February 2019)
+111692, #KB4343909: Windows 10 Version 1803 and Windows Server Version 1803 August 2018 Security Update (Foreshadow)
+119463, #KB4471331: Security update for Adobe Flash Player (December 2018)
+119587, #KB4471319: Windows Server 2008 December 2018 Security Update
+119772, #KB4483234: Windows 10 Version 1803 and Windows Server Version 1803 December 2018 OOB Security Update
+119095, #KB4477029: Security update for Adobe Flash Player (November 2018)
+100785, #Microsoft Security Advisory 4025685: Windows Vista (June 2017)
+118920, #KB4467700: Windows Server 2008 November 2018 Security Update
+118921, #Security Updates for Microsoft Excel Products (November 2018)
+118923, #Security Updates for Microsoft Office Products (November 2018)
+118928, #Security Updates for Outlook (November 2018)
+118930, #Security Updates for Microsoft Word Products (November 2018)
+119592, #Security Updates for Microsoft Excel Products (December 2018)
+119595, #Security Updates for Microsoft Office Products (December 2018)
+119598, #Security Updates for Outlook (December 2018)
+119599, #Security Updates for Microsoft PowerPoint Products (December 2018)
+121015, #KB4480966: Windows 10 Version 1803 and Windows Server Version 1803 January 2019 Security Update
+121016, #KB4480957: Windows Server 2008 January 2019 Security Update
+122121, #KB4487017: Windows 10 Version 1803 and Windows Server Version 1803 February 2019 Security Update
+122123, #KB4487019: Windows Server 2008 February 2019 Security Update
+122132, #Security Updates for Microsoft Office Products (February 2019)
+122779, #KB4489868: Windows 10 Version 1803 and Windows Server Version 1803 March 2019 Security Update
+122783, #KB4489876: Windows Server 2008 March 2019 Security Update
+104045, #KB4020535: Security Update for the Scripting Engine Memory Corruption Vulnerability (May 2017)
+110989, #Security Updates for Microsoft Access Products (July 2018)
+117458, #Security Updates for Microsoft Office Products (September 2018)
+118005, #KB4463104: Windows Server 2008 October 2018 Security Update
+122974, #Security Updates for Windows 10 / Windows Server 2019 (February 2019) (Spectre) (Meltdown) (Foreshadow)
+122975, #Security Updates for Windows 10 / Windows Server 2016 / Windows Server 2019 (March 2019) (Spectre) (Meltdown) (Foreshadow)
+119583, #KB4471322: Windows 8.1 and Windows Server 2012 R2 December 2018 Security Update
+110484, #KB4284878: Windows 8.1 and Windows Server 2012 R2 June 2018 Security Update
+110981, #KB4338824: Windows 8.1 and Windows Server 2012 R2 July 2018 Security Update
+118002, #KB4462941: Windows 8.1 and Windows Server 2012 R2 October 2018 Security Update
+118918, #KB4467703: Windows 8.1 and Windows Server 2012 R2 November 2018 Security Update
+121014, #KB4480964: Windows 8.1 and Windows Server 2012 R2 January 2019 Security Update
+122120, #KB4487028: Windows 8.1 and Windows Server 2012 R2 February 2019 Security Update
+122784, #KB4489883: Windows 8.1 and Windows Server 2012 R2 March 2019 Security Update
+123942, #KB4493464: Windows 10 Version 1803 and Windows Server Version 1803 April 2019 Security Update
+123945, #KB4493448: Windows 7 and Windows Server 2008 R2 April 2019 Security Update
+123949, #Security Updates for Microsoft Excel Products (April 2019)
+123952, #Security Updates for Microsoft Office Products (April 2019)
+118012, #Security Updates for Microsoft Office Viewer Products / Office Compatibility Products (October 2018)
+121025, #Security Updates for Microsoft Office Viewer Products (January 2019)
+123940, #KB4493467: Windows 8.1 and Windows Server 2012 R2 April 2019 Security Update
+123950, #KB4493478: Security update for Adobe Flash Player (April 2019)
+123951, #Security Updates for Internet Explorer (April 2019)
 							]
 						}
 					end

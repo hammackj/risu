@@ -112,6 +112,13 @@ module Risu
 								90921, #PHP 5.6.x < 5.6.21 Multiple Vulnerabilities -
 								93077, #PHP 5.6.x < 5.6.25 Multiple Vulnerabilities -
 								96799, #PHP 5.6.x < 5.6.30 Multiple DoS
+								104631, #PHP 5.6.x < 5.6.32 Multiple Vulnerabilities
+								107216, #PHP 5.6.x < 5.6.34 Stack Buffer Overflow
+								119764, #PHP 5.6.x < 5.6.39 Arbitrary Command Injection Vulnerability
+								105771, #PHP 5.6.x < 5.6.33 Multiple Vulnerabilities
+109576, #PHP 5.6.x < 5.6.36 Multiple Vulnerabilities
+111230, #PHP 5.6.x < 5.6.37 exif_thumbnail_extract() DoS
+117497, #PHP 5.6.x < 5.6.38 Transfer-Encoding Parameter XSS Vulnerability								
 							]
 						}
 					end

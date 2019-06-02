@@ -137,8 +137,5 @@ The templates are written in ruby using [prawn](http://prawn.majesticseacreature
 # Contributing
 If you would like to contribute templates/bug fixes/etc to risu. The easiest way is to fork the project on [github](http://github.com/hammackj/risu) and make the changes in your fork and the submit a pull request to the project on the dev branch. Please include unit tests for anything non trivial.
 
-# Issues
-If you have any problems, bugs or feature requests please use the [github issue tracker](http://github.com/hammackj/risu/issues).
-
-# Contact
-You can reach me at jacob.hammack[at]hammackj[dot]com. You can also contact me on IRC as hammackj on irc.freenode.net, #risu
+# Contact / Issues
+If you have any problems, bugs, questions or feature requests please use the [github issue tracker](http://github.com/hammackj/risu/issues).

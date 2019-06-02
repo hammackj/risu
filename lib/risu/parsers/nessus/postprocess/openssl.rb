@@ -84,6 +84,12 @@ module Risu
 82030, #OpenSSL 0.9.8 < 0.9.8zf Multiple Vulnerabilities
 84151, #OpenSSL 0.9.8 < 0.9.8zg Multiple Vulnerabilities
 87219, #OpenSSL 0.9.8 < 0.9.8zh X509_ATTRIBUTE Memory Leak DoS
+87222, #OpenSSL 1.0.2 < 1.0.2e Multiple Vulnerabilities
+88530, #OpenSSL 1.0.2 < 1.0.2f Multiple Vulnerabilities
+90891, #OpenSSL 1.0.2 < 1.0.2h Multiple Vulnerabilities
+109945, #OpenSSL 1.0.x < 1.0.2o Multiple Vulnerabilities
+112119, #OpenSSL 1.0.x < 1.0.2p Multiple Vulnerabilities
+104408, #OpenSSL 1.0.x < 1.0.2m RSA/DSA Unspecified Carry Issue
 							]
 						}
 					end

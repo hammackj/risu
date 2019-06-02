@@ -211,7 +211,7 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).where(:rollup_finding => false).group(:host_id).order('count(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).where(:rollup_finding => false).group(:host_id).order('COUNT(*) desc').limit(limit)
 				end
 
 				# Queries for all the High risks by host
