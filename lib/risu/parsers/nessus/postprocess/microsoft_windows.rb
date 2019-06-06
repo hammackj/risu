@@ -1242,6 +1242,7 @@ module Risu
 123940, #KB4493467: Windows 8.1 and Windows Server 2012 R2 April 2019 Security Update
 123950, #KB4493478: Security update for Adobe Flash Player (April 2019)
 123951, #Security Updates for Internet Explorer (April 2019)
+125313, #Microsoft RDP RCE (CVE-2019-0708)
 							]
 						}
 					end

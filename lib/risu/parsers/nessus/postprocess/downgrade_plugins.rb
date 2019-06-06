@@ -43,13 +43,15 @@ module Risu
 
 						@plugins_to_severity = {
 							41028 => 0, # SNMP Agent Default Community Name (public) - 41028
-              10264 => 0, # SNMP Agent Default Community Names - 10264
+              				10264 => 0, # SNMP Agent Default Community Names - 10264
 							10081 => 0, # FTP Privileged Port Bounce Scan - 10081
 							42411 => 0, # Microsoft Windows SMB Shares Unprivileged Access
 							66349 => 0, # X Server Unauthenticated Access: Screenshot
 							26925 => 0, # VNC Server Unauthenticated Access
 							66174 => 0, # VNC Server Unauthenticated Access: Screenshot
 							10205 => 0, # rlogin Service Detection
+							20007 => 2, # SSL Version 2 and 3 Protocol Detection
+							80101 => 2, # IPMI v2.0 Password Hash Disclosure
 						}
 					end
 

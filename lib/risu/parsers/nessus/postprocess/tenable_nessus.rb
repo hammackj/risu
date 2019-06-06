@@ -35,6 +35,7 @@ module Risu
 							:item_name => "Update to the latest Tenable Nessus",
 							:plugin_ids => [
 123462, #Tenable Nessus < 8.3.0 Multiple Vulnerabilities (TNS-2019-02)
+121620, #Tenable Nessus < 8.2.2 Stored XSS Vulnerability (TNS-2019-01)
 
 							]
 						}
