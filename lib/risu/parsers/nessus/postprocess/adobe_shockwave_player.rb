@@ -23,16 +23,16 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class Shockwave < Risu::Base::PostProcessBase
+				class AdobeShockwavePlayer < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Shockwave Player Patch Rollup",
+							:description => "Adobe Shockwave Player Patch Rollup",
 							:plugin_id => -99991,
-							:plugin_name => "Missing the latest Shockwave Player Patches",
-							:item_name => "Update to the latest Shockwave Player",
+							:plugin_name => "Missing the latest Adobe Shockwave Player Patches",
+							:item_name => "Update to the latest Adobe Shockwave Player",
 							:plugin_ids => [
 								72435, #Shockwave Player <= 12.0.7.148 Multiple Memory Corruption Vulnerabilities (APSB14-06)
 								72983, #Shockwave Player <= 12.0.9.149 Unspecified Memory Corruption Vulnerabilities (APSB14-10)
@@ -63,6 +63,7 @@ module Risu
 								97835, #Adobe Shockwave Player <= 12.2.7.197 DLL Hijacking (APSB17-08)
 								100806, #Adobe Shockwave Player <= 12.2.8.198 Memory Corruption RCE (APSB17-18) -
 								104628, #Adobe Shockwave Player <= 12.2.9.199 Memory Corruption RCE (APSB17-40) 
+								124028, #Adobe Shockwave Player <= 12.3.4.204 Multiple memory corruption vulnerabilities (APSB19-20) (Windows)								
 							]
 						}
 					end

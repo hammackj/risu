@@ -551,6 +551,7 @@ module Risu
 					# return results
 
 					results = {}
+					final_results = {}
 
 					common_patches = Plugin.where(:family_name => "Risu Rollup Plugins").group(:id)
 					common_patches.each do |plugin|
@@ -558,7 +559,13 @@ module Risu
 						results[plugin.id] = count
 					end
 
-					results = results.sort_by{|k,v| v}.reverse.to_h
+					results.each do |k,v|
+						if v > 0
+							final_results[k] = v
+						end
+					end
+
+					results = final_results.sort_by{|k,v| v}.reverse.to_h
 
 					return results
 				end
@@ -657,7 +664,7 @@ module Risu
 
 						row.push(plugin_id)
 						row.push(count)
-						data.push(row)
+						data.push(row) if count > 0
 					end
 
 					data = data.sort do |a, b|

@@ -37,6 +37,7 @@ module Risu
 								25371,
 								24712,
 								27599,
+								128148, #Flexera FlexNet Publisher < 11.16.2 Multiple Vulnerabilities
 
 							]
 						}

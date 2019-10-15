@@ -45,6 +45,23 @@ module Risu
 91611, #MS16-070: Security Update for Microsoft Office (3163610)
 92019, #MS16-088: Security Update for Microsoft Office (3170008)
 92839, #MS16-099: Security Update for Microsoft Office (3177451)
+125071, #Security Updates for Microsoft Office Products (May 2019)
+125072, #Security Updates for Microsoft Word Products (May 2019)
+125832, #Security Updates for Microsoft Word Products (June 2019)
+118926, #Security Updates for Microsoft Office Viewer Products (November 2018)
+96391, #MS17-002: Security Update for Microsoft Office (3214291)
+126580, #Security Updates for Microsoft Excel Products (July 2019)
+126583, #Security Updates for Microsoft Office Products (July 2019)
+127853, #Security Updates for Microsoft Office Products (August 2019)
+108976, #Security Updates for Microsoft Word Products (April 2018)
+110492, #Security Updates for Microsoft Excel Products (June 2018)
+122128, #Security Updates for Microsoft Excel Products (February 2019)
+126585, #Security Updates for Outlook (July 2019)
+127854, #Security Updates for Outlook (August 2019)
+127856, #Security Updates for Microsoft Word Products (August 2019)
+128645, #Security Updates for Microsoft Excel Products (September 2019)
+128648, #Security Updates for Microsoft Office Products (September 2019)
+108293, #Security Updates for Microsoft Excel Products (March 2018)
 
 							]
 						}

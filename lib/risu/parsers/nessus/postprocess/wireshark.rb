@@ -97,6 +97,14 @@ module Risu
 103985, #Wireshark 2.2.x < 2.2.10 Multiple DoS
 105007, #Wireshark 2.2.x < 2.2.11 / 2.4.x < 2.4.3 DoS Vulnerabilities
 106142, #Wireshark 2.2.x < 2.2.12 / 2.4.x < 2.4.4 DoS Vulnerabilities
+102919, #Wireshark 2.0.x < 2.0.15 Multiple DoS
+103984, #Wireshark 2.0.x < 2.0.16 DMP dissector DoS
+118206, #Wireshark 2.4.x < 2.4.10 Multiple Vulnerabilities
+119419, #Wireshark 2.4.x < 2.4.11 Multiple Vulnerabilities
+121107, #Wireshark 2.4.x < 2.4.12 Multiple Vulnerabilities
+124164, #Wireshark 2.4.x < 2.4.14 Multiple Vulnerabilities
+125365, #Wireshark 2.4.x < 2.4.15 A Vulnerability
+126923, #Wireshark 2.4.x < 2.4.16 DoS Vulnerability
 							]
 						}
 					end

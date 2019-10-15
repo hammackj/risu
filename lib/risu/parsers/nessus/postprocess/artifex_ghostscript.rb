@@ -23,24 +23,20 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class VmwareVsphereClientRollups < Risu::Base::PostProcessBase
+				class ArtifexGhostscriptRollup < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "VMware vSphere Client Patch Rollup",
-							:plugin_id => -99967,
-							:plugin_name => "Missing the latest VMware vSphere Client Patches",
-							:item_name => "Update to the latest VMware vSphere Client",
+							:description => "Artifex Ghostscript Patch Rollup",
+							:plugin_id => -99937,
+							:plugin_name => "Missing the latest Artifex Ghostscript",
+							:item_name => "Update to the latest Artifex Ghostscript",
 							:plugin_ids => [
-                				64559,
-                				73595,
-                				51057,
-								76355,
-								87675,
-								95657, #VMware vSphere Client XXE Injection Information Disclosure (VMSA-2016-0022)
-
+                                117459, #Artifex Ghostscript Multiple Vulnerabilities
+117596, #Artifex Ghostscript < 9.25 PostScript Code Execution Vulnerability
+119240, #Artifex Ghostscript < 9.26 PostScript Multiple Vulnerabilities
 							]
 						}
 					end
@@ -49,3 +45,5 @@ module Risu
 		end
 	end
 end
+
+

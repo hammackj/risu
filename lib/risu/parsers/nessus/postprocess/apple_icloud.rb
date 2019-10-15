@@ -23,24 +23,18 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class VmwareVsphereClientRollups < Risu::Base::PostProcessBase
+				class AppleICloudRollup < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "VMware vSphere Client Patch Rollup",
-							:plugin_id => -99967,
-							:plugin_name => "Missing the latest VMware vSphere Client Patches",
-							:item_name => "Update to the latest VMware vSphere Client",
+							:description => "Apple iCloud Patch Rollup",
+							:plugin_id => -99939,
+							:plugin_name => "Missing the latest Apple iCloud",
+							:item_name => "Update to the latest Apple iCloud",
 							:plugin_ids => [
-                				64559,
-                				73595,
-                				51057,
-								76355,
-								87675,
-								95657, #VMware vSphere Client XXE Injection Information Disclosure (VMSA-2016-0022)
-
+                                125878, #Apple iCloud < 7.12 Multiple Vulnerabilities
 							]
 						}
 					end
@@ -49,3 +43,5 @@ module Risu
 		end
 	end
 end
+
+

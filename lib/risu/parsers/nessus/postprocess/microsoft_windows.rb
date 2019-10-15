@@ -1243,6 +1243,62 @@ module Risu
 123950, #KB4493478: Security update for Adobe Flash Player (April 2019)
 123951, #Security Updates for Internet Explorer (April 2019)
 125313, #Microsoft RDP RCE (CVE-2019-0708)
+119586, #KB4471324: Windows 10 Version 1803 and Windows Server Version 1803 December 2018 Security Update
+122819, #KB4467702: Windows 10 Version 1803 and Windows Server Version 1803 November 2018 Security Update
+124117, #Microsoft Windows 10 Version 1709 Unsupported Version Detection
+125073, #Microsoft Security Advisory 4500331: Guidance for older platforms (XP / 2003) (BlueKeep)
+125822, #KB4503286: Windows 10 Version 1803 June 2019 Security Update
+125064, #KB4499167: Windows 10 Version 1803 and Windows Server Version 1803 May 2019 Security Update (MDSUM/RIDL) (MFBDS/RIDL/ZombieLoad) (MLPDS/RIDL) (MSBDS/Fallout)
+125820, #KB4503284: Windows 10 Version 1709 June 2019 Security Update
+117999, #KB4462919: Windows 10 Version 1803 and Windows Server Version 1803 October 2018 Security Update 
+125818, #KB4503290: Windows 8.1 and Windows Server 2012 R2 June 2019 Security Update
+110983, #KB4338819: Windows 10 Version 1803 and Windows Server Version 1803 July 2018 Security Update 
+122119, #KB4486996: Windows 10 Version 1709 and Windows Server Version 1709 February 2019 Security Update
+122786, #KB4489886: Windows 10 Version 1709 and Windows Server Version 1709 March 2019 Security Update 
+123939, #KB4493441: Windows 10 Version 1709 and Windows Server Version 1709 April 2019 Security Update
+125828, #Security Updates for Internet Explorer (June 2019)
+125066, #KB4499179: Windows 10 Version 1709 and Windows Server Version 1709 May 2019 Security Update (MDSUM/RIDL) (MFBDS/RIDL/ZombieLoad) (MLPDS/RIDL) (MSBDS/Fallout)
+125069, #Security Updates for Internet Explorer (May 2019)
+125824, #KB4503269: Windows 7 and Windows Server 2008 R2 June 2019 Security Update
+125061, #KB4499165: Windows 8.1 and Windows Server 2012 R2 May 2019 Security Update (MDSUM/RIDL) (MFBDS/RIDL/ZombieLoad) (MLPDS/RIDL) (MSBDS/Fallout)
+109607, #KB4103715: Windows 8.1 and Windows Server 2012 R2 May 2018 Security Update
+125063, #KB4499175: Windows 7 and Windows Server 2008 R2 May 2019 Security Update (MDSUM/RIDL) (MFBDS/RIDL/ZombieLoad) (MLPDS/RIDL) (MSBDS/Fallout) (BlueKeep)
+125817, #KB4503287: Windows Server 2008 June 2019 Security Update
+125816, #KB4503267: Windows 10 Version 1607 and Windows Server 2016 June 2019 Security Update
+125058, #KB4494440: Windows 10 Version 1607 and Windows Server 2016 May 2019 Security Update (MDSUM/RIDL) (MFBDS/RIDL/ZombieLoad) (MLPDS/RIDL) (MSBDS/Fallout)
+112116, #Security Updates for Windows 10 / Windows Server 2016 (August 2018) (Spectre) (Meltdown)
+127843, #KB4512489: Windows 8.1 and Windows Server 2012 R2 August 2019 Security Update
+127846, #KB4512486: Windows 7 and Windows Server 2008 R2 August 2019 Security Update
+127850, #KB4512517: Windows 10 Version 1607 and Windows Server 2016 August 2019 Security Update
+126600, #Security Updates for Microsoft .NET Framework (July 2019)
+126570, #KB4507457: Windows 8.1 and Windows Server 2012 R2 July 2019 Security Update (SWAPGS)
+126571, #KB4507456: Windows 7 and Windows Server 2008 R2 July 2019 Security Update (SWAPGS)
+126582, #Security Updates for Internet Explorer (July 2019)
+108965, #KB4093115: Windows 8.1 and Windows Server 2012 R2 April 2018 Security Update
+122785, #KB4489882: Windows 10 Version 1607 and Windows Server 2016 March 2019 Security Update
+123943, #KB4493470: Windows 10 Version 1607 and Windows Server 2016 April 2019 Security Update
+126577, #KB4507460: Windows 10 Version 1607 and Windows Server 2016 July 2019 Security Update (SWAPGS)
+125074, #Security Updates for Microsoft .NET Framework (May 2019)
+86818, #MS KB3108638: Update for Windows Hyper-V to Address CPU Weakness
+86830, #MS15-120: Security Update for IPSec to Address Denial of Service (3102939)
+88652, #MS16-020: Security Update for Active Directory Federation Services to Address Denial of Service (3134222)
+91016, #MS16-067: Security Update for Volume Manager Driver (3155784)
+91045, #MS KB3155527: Update to Cipher Suites for FalseStart
+93474, #MS16-115: Security Update for Microsoft Windows PDF Library (3188733)
+63643, #MS13-006: Vulnerability in Microsoft Windows Could Allow Security Feature Bypass (2785220)
+99289, #KB4017094: Security Update for the libjpeg Information Disclosure Vulnerability for Microsoft Silverlight 5 (April 2017)
+127852, #Security Updates for Internet Explorer (August 2019)
+111693, #Security Updates for Microsoft .NET Framework (August 2018)
+80495, #MS15-006: Vulnerability in Windows Error Reporting Could Allow Security Feature Bypass (3004365) 
+82778, #MS15-042: Vulnerability in Windows Hyper-V Could Allow Denial of Service (3047234)
+85848, #MS15-105: Vulnerability in Windows Hyper-V Could Allow Security Feature Bypass (3091287) 
+94013, #MS16-124: Security Update for Windows Registry (3193227)
+95770, #MS16-153: Security Update for Common Log File System Driver (3207328)
+128647, #Security Updates for Internet Explorer (September 2019)
+127910, #Microsoft Defender Elevation of Privilege Vulnerability (CVE-2019-1161)
+128637, #KB4516044: Windows 10 Version 1607 and Windows Server 2016 September 2019 Security Update
+128640, #KB4516033: Windows 7 and Windows Server 2008 R2 September 2019 Security Update
+
 							]
 						}
 					end

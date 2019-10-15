@@ -44,7 +44,7 @@ module Risu
 								86698, #Foxit Reader < 7.2 Multiple Vulnerabilities
 								90567, #Foxit Reader < 7.3.4 Multiple Vulnerabilities
 								101524, #Foxit Reader < 8.3.1 Multiple Vulnerabilities
-
+								112059, #Foxit Reader < 8.3.7 Multiple Vulnerabilities
 
 
 							]

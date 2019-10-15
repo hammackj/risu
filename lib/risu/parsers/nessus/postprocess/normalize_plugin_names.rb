@@ -44,7 +44,9 @@ module Risu
 							"(Bar Mitzvah)",
 							"(Logjam)",
 							"(uncredentialed check)",
-							"(EXPLODINGCAN)"
+							"(EXPLODINGCAN)",
+							"(Foreshadow)",
+							"(MSXML)"
 						]
 					end
 

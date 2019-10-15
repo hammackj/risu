@@ -53,7 +53,9 @@ module Risu
 								108795, #Apple iTunes < 12.7.4 WebKit Multiple Vulnerabilities (credentialed check)
 								110384, #Apple iTunes < 12.7.5 Multiple Vulnerabilities (credentialed check)
 								118718, #Apple iTunes < 12.9.1 Multiple Vulnerabilities (credentialed check)
-								
+								119767, #Apple iTunes < 12.9.2 Multiple Vulnerabilities (credentialed check)
+121473, #Apple iTunes < 12.9.3 Multiple Vulnerabilities (credentialed check)
+
 							]
 						}
 					end

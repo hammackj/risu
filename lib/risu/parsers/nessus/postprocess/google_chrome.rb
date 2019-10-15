@@ -159,7 +159,16 @@ module Risu
 118153, #Google Chrome < 70.0.3538.67 Multiple Vulnerabilities
 117636, #Google Chrome < 69.0.3497.100 Vulnerability
 122853, #Google Chrome < 73.0.3683.75 Multiple Vulnerabilities
-
+121514, #Google Chrome < 72.0.3626.81 Multiple Vulnerabilities
+118887, #Google Chrome < 70.0.3538.102 Vulnerability
+119097, #Google Chrome < 70.0.3538.110 Vulnerability
+119558, #Google Chrome < 71.0.3578.80 Multiple Vulnerabilities
+122246, #Google Chrome < 72.0.3626.96 Vulnerability
+122617, #Google Chrome < 72.0.3626.121 Vulnerability
+124279, #Google Chrome < 74.0.3729.108 Multiple Vulnerabilities
+124460, #Google Chrome < 74.0.3729.131 Multiple Vulnerabilities
+125371, #Google Chrome < 74.0.3729.157 Vulnerability
+125952, #Google Chrome < 75.0.3770.90 Vulnerability
 							]
 						}
 					end

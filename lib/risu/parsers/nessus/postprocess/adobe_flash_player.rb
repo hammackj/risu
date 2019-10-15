@@ -23,16 +23,16 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class FlashPlayer < Risu::Base::PostProcessBase
+				class AdobeFlashPlayer < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Flash Player Patch Rollup",
+							:description => "Adobe Flash Player Patch Rollup",
 							:plugin_id => -99997,
-							:plugin_name => "Missing the latest Flash Player Patches",
-							:item_name => "Update to the latest Flash Player",
+							:plugin_name => "Missing the latest Adobe Flash Player Patches",
+							:item_name => "Update to the latest Adobe Flash Player",
 							:plugin_ids => [
 								100756, #Adobe Flash Player <= 25.0.0.171 Multiple Vulnerabilities (APSB17-17)
 								11323, #Flash Player < 6.0.79.0 Multiple Unspecified Overflows
@@ -150,6 +150,21 @@ module Risu
 119094, #Adobe Flash Player <= 31.0.0.148 (APSB18-44)
 119462, #Adobe Flash Player <= 31.0.0.153 (APSB18-42)
 123938, #Adobe Flash Player <= 32.0.0.156 (APSB19-19)
+125056, #Adobe Flash Player <= 32.0.0.171 (APSB19-26)
+125815, #Adobe Flash Player <= 32.0.0.192 (APSB19-30)
+125827, #KB4503308: Security update for Adobe Flash Player (June 2019)
+125068, #KB4497932: Security update for Adobe Flash Player (May 2019)
+104547, #KB4048951: Security update for Adobe Flash Player (November 2017)
+105693, #KB4056887: Security update for Adobe Flash Player (January 2018)
+106655, #KB4074595: Security update for Adobe Flash Player (February 2018)
+108287, #KB4088785: Security update for Adobe Flash Player (March 2018)
+118909, #Adobe Flash Player <= 31.0.0.122 (APSB18-39)
+122117, #Adobe Flash Player <= 32.0.0.114 (APSB19-06)
+117419, #KB4457146: Security update for Adobe Flash Player (September 2018)
+118917, #KB4467694: Security update for Adobe Flash Player (November 2018)
+122130, #KB4487038: Security update for Adobe Flash Player (February 2019)
+128633, #Adobe Flash Player <= 32.0.0.238 (APSB19-46)
+117410, #Adobe Flash Player <= 30.0.0.154 (APSB18-31)
 							]
 						}
 					end

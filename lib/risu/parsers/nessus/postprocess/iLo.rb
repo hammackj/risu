@@ -36,7 +36,10 @@ module Risu
 							:plugin_ids => [
 122032, #iLO 4 < 2.60 / iLO 5 < 1.30 Multiple Vulnerabilities
 125342, #iLO 4 < 2.70 / iLO 5 < 1.40a Multiple Vulnerabilities
-
+122095, #iLO 4 < 2.53 Remote Code Execution Vulnerability
+122187, #iLO 3 < 1.88 / iLO 4 < 2.44 XSS Vulnerability
+122191, #iLO 3 < 1.85 / iLO 4 < 2.22 Denial of Service Vulnerability
+102803, #HP iLO 4 <= 2.52 RCE
 							]
 						}
 					end
