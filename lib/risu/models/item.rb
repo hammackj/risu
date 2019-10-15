@@ -118,14 +118,14 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_unique_sorted
 					#Item.select("items.*").select("count(*) as count_all").where(:severity => 4).group(:plugin_id).order("count_all DESC")
-					Item.where(:severity => 4).group(:plugin_id).order('count(*) desc')
+					Item.where(:severity => 4).group(:plugin_id).order(Arel.sql('COUNT(*) DESC'))
 				end
 
 				# Queries for all the unique high findings and sorts them by count
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_unique_sorted
-					Item.where(:severity => 3).group(:plugin_id).order('count(*) desc')
+					Item.where(:severity => 3).group(:plugin_id).order(Arel.sql('COUNT(*) DESC'))
 					#select("items.*").select("count(*) as count_all").where(:severity => 3).group(:plugin_id).order("count_all DESC")
 				end
 
@@ -141,7 +141,7 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks_unique_sorted
-					Item.where(:severity => 2).group(:plugin_id).order('count(*) desc')
+					Item.where(:severity => 2).group(:plugin_id).order(Arel.sql('COUNT(*) DESC'))
 					#select("items.*").select("count(*) as count_all").where(:severity => 2).group(:plugin_id).order("count_all DESC")
 				end
 
@@ -198,10 +198,18 @@ module Risu
 				#
 				# @param limit Limits the result to a specific number, default 10
 				#
+				#
+				# => "SELECT  \"items\".* FROM \"items\" INNER JOIN \"hosts\" ON \"hosts\".\"id\" = \"items\".\"host_id\" WHERE \"items\".\"plugin_id\" != 1 AND \"items\".\"severity\" = 4 GROUP BY \"items\".\"host_id\" ORDER BY count(*) desc LIMIT 10"
+				#
+				#
+				#
+				#
+
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).group(:host_id).order('count(*) desc').limit(limit)
+					#Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the Critical risks by host
@@ -211,7 +219,7 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).where(:rollup_finding => false).group(:host_id).order('COUNT(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).where(:rollup_finding => false).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the High risks by host
@@ -222,7 +230,7 @@ module Risu
 				def high_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
 
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 3).where(:rollup_finding => false).group(:host_id).order('count(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 3).where(:rollup_finding => false).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the Medium risks by host
@@ -232,7 +240,7 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 2).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 2).where(:rollup_finding => false).group(:host_id).order('count(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 2).where(:rollup_finding => false).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the Low risks by host
@@ -242,7 +250,7 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def low_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 1).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 1).where(:rollup_finding => false).group(:host_id).order('count(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 1).where(:rollup_finding => false).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
