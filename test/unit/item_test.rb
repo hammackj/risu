@@ -234,7 +234,7 @@ class ItemTest < ActiveSupport::TestCase
 	end
 
 	test "return 0.00% for Item.risk_percent_patched_text" do
-		assert Item.risk_percent_patched_text == "0.00%", "GOT #{Item.risk_percent_patched_text}"
+		assert Item.risk_percent_patched_text == "0.00%%", "GOT #{Item.risk_percent_patched_text}"
 	end
 
 	#@TODO pass findings for each finding level
