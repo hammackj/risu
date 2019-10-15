@@ -54,7 +54,7 @@ module Risu
 
 				risks.each do |item|
 					name = Plugin.find_by_id(item.plugin_id).plugin_name
-					count = Item.where(:plugin_id => item.plugin_id).count
+					#count = Item.where(:plugin_id => item.plugin_id).count
 					
 					text "#{item.plugin_id}, ##{name}"
 				end
