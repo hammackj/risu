@@ -10,6 +10,6 @@ RUN apt-get -y update && \
     apt-get -y install ruby ruby-dev build-essential zlib1g-dev libxml2-dev libmysqlclient-dev libsqlite3-dev libmagickwand-dev imagemagick ghostscript
 #RUN apt-get purge && apt-get -qy autoremove
 #RUN gem install -q --no-ri --no-rdoc risu
-RUN git clone git@github.com:hammackj/risu.git && cd risu && git checkout dev
+RUN git clone https://github.com/hammackj/risu.git && cd risu && git checkout dev
 
 CMD []
