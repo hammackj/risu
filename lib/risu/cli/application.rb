@@ -175,10 +175,10 @@ module Risu
 					puts "[!] Database not found. Please check your configuration file"
 					puts "#{nde.message}\n #{nde.backtrace}" if @options[:debug]
 					exit
-				rescue Mysql2::Error => mse
-					puts "[!] Unable to connect to MySQL. \"#{mse.message}\" Please check your configuration file"
-					puts "#{mse.message}\n #{mse.backtrace}" if @options[:debug]
-					exit
+				#rescue Mysql2::Error => mse
+				#	puts "[!] Unable to connect to MySQL. \"#{mse.message}\" Please check your configuration file"
+				#	puts "#{mse.message}\n #{mse.backtrace}" if @options[:debug]
+				#	exit
 				rescue SQLite3::Exception => se
 					puts "[!] Unable to open database. Please check your configuration file"
 					puts "#{se.message}\n #{se.backtrace}" if @options[:debug]
@@ -494,11 +494,11 @@ module Risu
 				rescue Interrupt
 					puts "[!] Parse canceled!"
 					exit(1)
-				rescue Mysql2::Error => m
-					if m.errno == 1146
-						puts "[!] Error: Tables were not created. Please run #{Risu::APP_NAME} --create-tables"
-						exit(1)
-					end
+				#rescue Mysql2::Error => m
+				#	if m.errno == 1146
+				#		puts "[!] Error: Tables were not created. Please run #{Risu::APP_NAME} --create-tables"
+				#		exit(1)
+				#	end
 				rescue => e
 					puts "[!] #{e.message}\n #{e.backtrace.join("\n")}\n"
 					exit(1)
