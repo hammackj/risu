@@ -522,20 +522,20 @@ module Risu
 
 				# @deprecated
 				def risk_percent_text
-					"%.2f%" % calculate_vulnerable_host_percent()
+					"%.2f%%" % calculate_vulnerable_host_percent()
 				end
 
 				def common_patch_percent_text
-					"%.2f%" % calculate_missing_common_patch_host_percent()
+					"%.2f%%" % calculate_missing_common_patch_host_percent()
 				end
 
 				def overall_risk_percent_text
-					"%.2f%" % calculate_overall_host_percent()
+					"%.2f%%" % calculate_overall_host_percent()
 				end
 
 				# @deprecated
 				def risk_percent_patched_text
-					"%.2f%" % calculate_vulnerable_host_percent_with_patches_applied()
+					"%.2f%%" % calculate_vulnerable_host_percent_with_patches_applied()
 				end
 
 
