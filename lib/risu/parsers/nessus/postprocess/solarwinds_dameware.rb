@@ -34,7 +34,8 @@ module Risu
 							:plugin_name => "Missing the latest SolarWinds DameWare",
 							:item_name => "Update to the latest SolarWinds DameWare",
 							:plugin_ids => [
-                                124062, #SolarWinds DameWare Mini Remote Client Agent < 12.0.3 Stack Buffer Overflow
+								124062, #SolarWinds DameWare Mini Remote Client Agent < 12.0.3 Stack Buffer Overflow
+								130458, #SolarWinds Dameware Mini Remote Control Unauthenticated RCE
 							]
 						}
 					end

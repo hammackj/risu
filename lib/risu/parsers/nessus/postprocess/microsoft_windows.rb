@@ -1298,6 +1298,9 @@ module Risu
 127910, #Microsoft Defender Elevation of Privilege Vulnerability (CVE-2019-1161)
 128637, #KB4516044: Windows 10 Version 1607 and Windows Server 2016 September 2019 Security Update
 128640, #KB4516033: Windows 7 and Windows Server 2008 R2 September 2019 Security Update
+130909, #KB4525250: Windows 8.1 and Windows Server 2012 R2 November 2019 Security Update
+130912, #Security Updates for Internet Explorer (November 2019)
+130906, #KB4525236: Windows 10 Version 1607 and Windows Server 2016 November 2019 Security Update
 
 							]
 						}
