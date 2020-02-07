@@ -1,5 +1,8 @@
 # News
 
+# 1.8.4 (Feburary 6, 2020)
+- A great deal of changes/bug fixes/post processing
+
 # 1.8.3 (July 11, 2017)
 - Updated PostProcessing plugin id's
 - Added new PostProcessing plugin NormalizePluginNames
