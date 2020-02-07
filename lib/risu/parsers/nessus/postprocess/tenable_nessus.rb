@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,45 +23,19 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class Shockwave < Risu::Base::PostProcessBase
+				class TenableNessusRollup < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "Shockwave Player Patch Rollup",
-							:plugin_id => -99991,
-							:plugin_name => "Update to the latest Shockwave Player",
-							:item_name => "Update to the latest Shockwave Player",
+							:description => "Tenable Nessus Patch Rollup",
+							:plugin_id => -99945,
+							:plugin_name => "Missing the latest Tenable Nessus",
+							:item_name => "Update to the latest Tenable Nessus",
 							:plugin_ids => [
-								72435,
-								72983,
-								42369,
-								51936,
-								71342,
-								44094,
-								39564,
-								40421,
-								44094,
-								46329,
-								48436,
-								50387,
-								55142,
-								55833,
-								56734,
-								57941,
-								59047,
-								61536,
-								62702,
-								64621,
-								65913,
-								67233,
-								69844,
-								84765,
-								85882,
-								86633,
-								97835,
-								
+123462, #Tenable Nessus < 8.3.0 Multiple Vulnerabilities (TNS-2019-02)
+121620, #Tenable Nessus < 8.2.2 Stored XSS Vulnerability (TNS-2019-01)
 
 							]
 						}

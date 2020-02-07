@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -134,7 +134,7 @@ module Risu
 					exit
 				rescue ActiveRecord::AdapterNotFound => anf
 					puts "[!] Database adapter not found, please check your configuration file"
-					puts "#{ans.message}\n #{ans.backtrace}" if @options[:debug]
+					puts "#{anf.message}\n #{anf.backtrace}" if @options[:debug]
 					exit
 				rescue => e
 					puts "[!] Exception! #{e.message}"
@@ -175,10 +175,10 @@ module Risu
 					puts "[!] Database not found. Please check your configuration file"
 					puts "#{nde.message}\n #{nde.backtrace}" if @options[:debug]
 					exit
-				rescue Mysql2::Error => mse
-					puts "[!] Unable to connect to MySQL. \"#{mse.message}\" Please check your configuration file"
-					puts "#{mse.message}\n #{mse.backtrace}" if @options[:debug]
-					exit
+				#rescue Mysql2::Error => mse
+				#	puts "[!] Unable to connect to MySQL. \"#{mse.message}\" Please check your configuration file"
+				#	puts "#{mse.message}\n #{mse.backtrace}" if @options[:debug]
+				#	exit
 				rescue SQLite3::Exception => se
 					puts "[!] Unable to open database. Please check your configuration file"
 					puts "#{se.message}\n #{se.backtrace}" if @options[:debug]
@@ -342,13 +342,13 @@ module Risu
 						puts opts.to_s + "\n"
 						exit
 					end
-				rescue OptionParser::AmbiguousOption => a
+				rescue OptionParser::AmbiguousOption
 					puts opts.to_s + "\n"
 					exit
-				rescue OptionParser::MissingArgument => m
+				rescue OptionParser::MissingArgument
 					puts opts.to_s + "\n"
 					exit
-				rescue OptionParser::InvalidOption => i
+				rescue OptionParser::InvalidOption
 					puts opts.to_s + "\n"
 					exit
 				end
@@ -432,7 +432,7 @@ module Risu
 					rescue Risu::Exceptions::InvalidDocument => id
 						puts "[!] #{id.message}"
 						next
-					rescue ActiveRecord::StatementInvalid => si
+					rescue ActiveRecord::StatementInvalid
 						puts "[!] Please run #{Risu::APP_NAME} --create-tables, to create the required database schema!"
 						exit
 					rescue => e
@@ -491,14 +491,14 @@ module Risu
 
 					printf "[*] Finished parsing %s. Parse took %.02f seconds\n", file, Time.now - tstart
 					puts nessus_doc.new_tags.uniq.join("\n") #@TODO add a verbose check
-				rescue Interrupt => i
+				rescue Interrupt
 					puts "[!] Parse canceled!"
 					exit(1)
-				rescue Mysql2::Error => m
-					if m.errno == 1146
-						puts "[!] Error: Tables were not created. Please run #{Risu::APP_NAME} --create-tables"
-						exit(1)
-					end
+				#rescue Mysql2::Error => m
+				#	if m.errno == 1146
+				#		puts "[!] Error: Tables were not created. Please run #{Risu::APP_NAME} --create-tables"
+				#		exit(1)
+				#	end
 				rescue => e
 					puts "[!] #{e.message}\n #{e.backtrace.join("\n")}\n"
 					exit(1)

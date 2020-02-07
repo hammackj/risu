@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -171,6 +171,7 @@ module Risu
 					item.port = 0
 					item.severity = severity
 					item.plugin_name = @info[:item_name]
+					item.rollup_finding = true
 
 				item.save
 			end
@@ -186,7 +187,7 @@ module Risu
 
 			#
 			def calculate_severity current_severity, severity
-				if severity >= current_severity
+				if severity > current_severity
 					return severity
 				else
 					return current_severity
@@ -204,15 +205,17 @@ module Risu
 					create_plugin()
 				end
 
+				finding_severity = 0
+
 				Host.all.each do |host|
 					if !has_host_findings(host.id)
 						next
 					end
 
-					finding_severity = 0
-
+					# Downgrade Nessus findings to -1, to replace with rollup
 					@info[:plugin_ids].each do |plugin_id|
 						Item.where(:plugin_id => plugin_id).each do |item|
+
 							severity = item.severity
 							item.real_severity = severity
 							item.severity = -1

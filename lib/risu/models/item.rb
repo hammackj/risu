@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -35,13 +35,20 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def risks
-					where(:severity => [0,1,2,3,4])
+					where(:severity => [0,1,2,3,4]).where(:rollup_finding => false)
 				end
 
-				# Queries for all the high risks in the database
+				# Queries for all the critical risks in the database
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks
+					where(:severity => 4).where(:rollup_finding => false)
+				end
+
+				# Queries for all the real critical risks in the database
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def raw_critical_risks
 					where(:severity => 4)
 				end
 
@@ -49,6 +56,13 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def high_risks
+					where(:severity => 3).where(:rollup_finding => false)
+				end
+
+				# Queries for all the real  high risks in the database
+				#
+				# @return [ActiveRecord::Relation] with the query results
+				def raw_high_risks
 					where(:severity => 3)
 				end
 
@@ -56,6 +70,10 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks
+					where(:severity => 2).where(:rollup_finding => false)
+				end
+
+				def raw_medium_risks
 					where(:severity => 2)
 				end
 
@@ -63,6 +81,10 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def low_risks
+					where(:severity => 1).where(:rollup_finding => false)
+				end
+
+				def raw_low_risks
 					where(:severity => 1)
 				end
 
@@ -70,6 +92,10 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def info_risks
+					where(:severity => 0).where(:rollup_finding => false)
+				end
+
+				def raw_info_risks
 					where(:severity => 0)
 				end
 
@@ -92,14 +118,14 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_unique_sorted
 					#Item.select("items.*").select("count(*) as count_all").where(:severity => 4).group(:plugin_id).order("count_all DESC")
-					Item.where(:severity => 4).group(:plugin_id).order('count(*) desc')
+					Item.where(:severity => 4).group(:plugin_id).order(Arel.sql('COUNT(*) DESC'))
 				end
 
 				# Queries for all the unique high findings and sorts them by count
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def high_risks_unique_sorted
-					Item.where(:severity => 3).group(:plugin_id).order('count(*) desc')
+					Item.where(:severity => 3).group(:plugin_id).order(Arel.sql('COUNT(*) DESC'))
 					#select("items.*").select("count(*) as count_all").where(:severity => 3).group(:plugin_id).order("count_all DESC")
 				end
 
@@ -115,7 +141,7 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks_unique_sorted
-					Item.where(:severity => 2).group(:plugin_id).order('count(*) desc')
+					Item.where(:severity => 2).group(:plugin_id).order(Arel.sql('COUNT(*) DESC'))
 					#select("items.*").select("count(*) as count_all").where(:severity => 2).group(:plugin_id).order("count_all DESC")
 				end
 
@@ -172,10 +198,18 @@ module Risu
 				#
 				# @param limit Limits the result to a specific number, default 10
 				#
+				#
+				# => "SELECT  \"items\".* FROM \"items\" INNER JOIN \"hosts\" ON \"hosts\".\"id\" = \"items\".\"host_id\" WHERE \"items\".\"plugin_id\" != 1 AND \"items\".\"severity\" = 4 GROUP BY \"items\".\"host_id\" ORDER BY count(*) desc LIMIT 10"
+				#
+				#
+				#
+				#
+
 				# @return [ActiveRecord::Relation] with the query results
 				def risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).group(:host_id).order('count(*) desc').limit(limit)
+					#Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the Critical risks by host
@@ -185,7 +219,7 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def critical_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 4).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).group(:host_id).order('count(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 4).where(:rollup_finding => false).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the High risks by host
@@ -196,7 +230,7 @@ module Risu
 				def high_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 3).group(:host_id).order("count_all DESC").limit(limit)
 
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 3).group(:host_id).order('count(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 3).where(:rollup_finding => false).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the Medium risks by host
@@ -206,7 +240,7 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def medium_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 2).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 2).group(:host_id).order('count(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 2).where(:rollup_finding => false).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the Low risks by host
@@ -216,7 +250,7 @@ module Risu
 				# @return [ActiveRecord::Relation] with the query results
 				def low_risks_by_host(limit=10)
 					#select("items.*").select("count(*) as count_all").joins(:host).where("plugin_id != 1").where(:severity => 1).group(:host_id).order("count_all DESC").limit(limit)
-					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 1).group(:host_id).order('count(*) desc').limit(limit)
+					Item.joins(:host).where.not(plugin_id: 1).where(:severity => 1).where(:rollup_finding => false).group(:host_id).order(Arel.sql('COUNT(*) DESC')).limit(limit)
 				end
 
 				# Queries for all the hosts with the Microsoft patch summary plugin (38153)
@@ -346,8 +380,19 @@ module Risu
 				def calculate_vulnerable_host_percent
 					#patch to fix double counting
 					#unique_hosts_with_critical_and_high = Host.unique_hosts_with_critical.count + Host.unique_hosts_with_high.count
+					#unique_hosts_with_critical_and_high = Host.unique_hosts_with_critical_and_high_count
 					unique_hosts_with_critical_and_high = Host.unique_hosts_with_critical_and_high_count
 					host_percent = (unique_hosts_with_critical_and_high.to_f / Host.count.to_f) * 100
+				end
+
+				def calculate_missing_common_patch_host_percent
+					hosts = Host.unique_hosts_with_common_missing_patches_count
+					host_percent = (hosts.to_f / Host.count.to_f) * 100
+				end
+
+				def calculate_overall_host_percent
+					hosts = Host.uniquie_hosts_with_critical_high_common_count
+					host_percent = (hosts.to_f / Host.count.to_f) * 100
 				end
 
 				# @TODO w t f
@@ -467,14 +512,70 @@ module Risu
 					"#{calculate_vulnerable_host_percent_with_patches_applied().round}%"
 				end
 
+				def common_patch_percent_rounded_text
+					"#{calculate_missing_common_patch_host_percent().round}%"
+				end
+
+				def overall_risk_percent_rounded_text
+					"#{calculate_overall_host_percent().round}%"
+				end
+
 				# @deprecated
 				def risk_percent_text
-					"%.2f%" % calculate_vulnerable_host_percent()
+					"%.2f%%" % calculate_vulnerable_host_percent()
+				end
+
+				def common_patch_percent_text
+					"%.2f%%" % calculate_missing_common_patch_host_percent()
+				end
+
+				def overall_risk_percent_text
+					"%.2f%%" % calculate_overall_host_percent()
 				end
 
 				# @deprecated
 				def risk_percent_patched_text
-					"%.2f%" % calculate_vulnerable_host_percent_with_patches_applied()
+					"%.2f%%" % calculate_vulnerable_host_percent_with_patches_applied()
+				end
+
+
+				def common_patches_order_by_cvss_raw
+					#items = Item.joins(:plugin).where(:severity => [4, 3, 2, 1]).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#items = Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#items = items.merge Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#items = items.merge Item.joins(:plugin).where(:severity => 2).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#items = items.merge Item.joins(:plugin).where(:severity => 1).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					# items = items.sort_by{|k,v| v}.reverse.to_h
+					# results = {}
+					#
+					# items.each do |id, count|
+					# 	if Item.where(:plugin_id => id).plugin.first.family_name != "Risu Rollup Plugins"
+					# 		next
+					# 	end
+					#
+					# 	results[id] = count;
+					# end
+					#
+					# return results
+
+					results = {}
+					final_results = {}
+
+					common_patches = Plugin.where(:family_name => "Risu Rollup Plugins").group(:id)
+					common_patches.each do |plugin|
+						count = Item.where(:plugin_id => plugin.id).count
+						results[plugin.id] = count
+					end
+
+					results.each do |k,v|
+						if v > 0
+							final_results[k] = v
+						end
+					end
+
+					results = final_results.sort_by{|k,v| v}.reverse.to_h
+
+					return results
 				end
 
 				#
@@ -487,18 +588,43 @@ module Risu
 
 					#return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").count(:all, :group => :plugin_id)
 					#return Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
-
-					critical = Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
 					#critical = Item.joins(:plugin).where(:severity => 4).group(:plugin_id).distinct.count
 
-					if critical.size < 10
-						high = Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
-						critical = critical.merge high
+
+					#critical = Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#if critical.size < 10
+					#	high = Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#	critical = critical.merge high
+					#end
+
+					#critical =Item.joins(:plugin).where(:severity => 4).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#high = Item.joins(:plugin).where(:severity => 3).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					#critical = critical.merge high
+
+					items = Item.joins(:plugin).where(:severity => [4, 3]).order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+					items = items.sort_by{|k,v| v}.reverse.to_h
+					results = {}
+
+					items.each do |id, count|
+						if Item.where(:plugin_id => id).plugin.first.family_name == "Risu Rollup Plugins"
+							next
+						end
+
+						results[id] = count;
 					end
 
-					
+					return results
 
-					return critical
+
+					#items = Item.joins(:plugin).where(:severity => [4, 3])
+
+					#items = items.where.not("plugin.family_name" => 'Risu Rollup Plugins')
+
+					#items.where.not(:plugin.family_name = Risu Rollup Plugins').order("plugins.cvss_base_score").group(:plugin_id).distinct.count
+
+					#items.sort_by{|k,v| v}.to_h
+
+
 				end
 
 				# Scrubs a plugin_name to remove all pointless data
@@ -525,6 +651,28 @@ module Risu
 						row.push(plugin_id)
 						row.push(count)
 						data.push(row)
+					end
+
+					data = data.sort do |a, b|
+						b[1] <=> a[1]
+					end
+
+					return data
+				end
+
+				def common_patches_sorted_raw
+					raw = common_patches_order_by_cvss_raw
+
+					data = Array.new
+
+					raw.each do |vuln|
+						row = Array.new
+						plugin_id = vuln[0]
+						count = vuln[1]
+
+						row.push(plugin_id)
+						row.push(count)
+						data.push(row) if count > 0
 					end
 
 					data = data.sort do |a, b|
@@ -561,6 +709,29 @@ module Risu
 					return data
 				end
 
+				def common_patches_sorted
+					raw = common_patches_order_by_cvss_raw
+					data = Array.new
+
+					raw.each do |vuln|
+						row = Array.new
+						plugin_id = vuln[0]
+						count = vuln[1]
+
+						name = scrub_plugin_name(Plugin.find_by_id(plugin_id).plugin_name)
+
+						row.push(name)
+						row.push(count)
+						data.push(row)
+					end
+
+					data = data.sort do |a, b|
+						b[1] <=> a[1]
+					end
+
+					return data
+				end
+
 				# Returns a prawn pdf table for the top 10 notable findings
 				#
 				# @TODO change this method to return a array/table and let the template render it
@@ -572,6 +743,18 @@ module Risu
 					header_widths = {0 => (output.bounds.width - 50), 1 => 50}
 
 					data = top_10_sorted
+
+					output.table([headers] + data[0..9], :header => true, :column_widths => header_widths, :width => output.bounds.width) do
+						row(0).style(:font_style => :bold, :background_color => 'cccccc')
+						cells.borders = [:top, :bottom, :left, :right]
+					end
+				end
+
+				def common_patches_table(output)
+					headers = ["Description", "Count"]
+					header_widths = {0 => (output.bounds.width - 50), 1 => 50}
+
+					data = common_patches_sorted
 
 					output.table([headers] + data[0..9], :header => true, :column_widths => header_widths, :width => output.bounds.width) do
 						row(0).style(:font_style => :bold, :background_color => 'cccccc')
@@ -616,6 +799,51 @@ module Risu
 					end
 
 					return results
+				end
+
+
+				def common_patch_risks
+					results = Array.new
+
+					common_patches = Plugin.where(:family_name => "Risu Rollup Plugins").group(:id)
+
+					common_patches.each do |plugin|
+						items = Item.where(:plugin_id => plugin.id).to_a
+						items.each do |item|
+							results.push(item.id)
+						end
+					end
+
+					results
+				end
+
+				def critical_high_common_risks
+					results = Array.new
+
+					common_patches = Plugin.where(:family_name => "Risu Rollup Plugins").group(:id)
+
+					common_patches.each do |plugin|
+						items = Item.where(:plugin_id => plugin.id).to_a
+						items.each do |item|
+							results.push(item.id)
+						end
+					end
+
+					items = Item.critical_risks.to_a
+					items.each do |item|
+						results.push(item.id)
+					end
+
+					items = Item.high_risks.to_a
+					items.each do |item|
+						results.push(item.id)
+					end
+
+					results
+				end
+
+				def critical_high_common_risks_count
+					critical_high_common_risks().size
 				end
 			end
 		end

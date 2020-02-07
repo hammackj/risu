@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "HP System Management Homepage Patch Rollup",
 							:plugin_id => -99985,
-							:plugin_name => "Update to the latest HP System Management Homepage",
+							:plugin_name => "Missing the latest HP System Management Homepage Patches",
 							:item_name => "Update to the latest HP System Management Homepage",
 							:plugin_ids => [
 								53532,
@@ -56,7 +56,7 @@ module Risu
 								90251,
 								91222,
 								94654,
-								
+103530, #HP System Management Homepage < 7.6.1 Multiple Vulnerabilities (HPSBMU03753)
 
 
 							]

@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,13 @@ module Risu
 						{
 							:description => "7-Zip Patch Rollup",
 							:plugin_id => -99954,
-							:plugin_name => "Update to the latest 7-Zip",
+							:plugin_name => "Missing the latest 7-Zip Patches",
 							:item_name => "Update to the latest 7-Zip",
 							:plugin_ids => [
-								91230,
-								
+								91230, #7-Zip < 16.00 Multiple Vulnerabilities
+								109730, #7-Zip < 18.05 Memory Corruption Arbitrary Code Execution
+								109799, #7-Zip < 16.03 NULL Pointer Dereference DoS
+109800, #7-Zip < 18.00 Multiple Vulnerabilities
 							]
 						}
 					end

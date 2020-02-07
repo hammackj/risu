@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Oracle Database Patch Rollup",
 							:plugin_id => -99993,
-							:plugin_name => "Update to the latest Oracle Database",
+							:plugin_name => "Missing the latest Oracle Database Patches",
 							:item_name => "Update to the latest Oracle Database",
 							:plugin_ids => [
 								45625,
@@ -72,7 +72,7 @@ module Risu
 								80906,
 								78540,
 								72982,
-								
+
 
 
 							]

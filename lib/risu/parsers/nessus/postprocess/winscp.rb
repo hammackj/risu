@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,15 +31,14 @@ module Risu
 						{
 							:description => "WinSCP Patch Rollups",
 							:plugin_id => -99978,
-							:plugin_name => "Update to the latest WinSCP",
+							:plugin_name => "Missing the latest WinSCP Patches",
 							:item_name => "Update to the latest WinSCP",
 							:plugin_ids => [
-								73613,
-								76167,
-								78078,
-								72388,
-								72389,
-								
+								73613, #WinSCP Heartbeat Information Disclosure (Heartbleed)
+								76167, #WinSCP 5.x < 5.5.4 Multiple Vulnerabilities
+								78078, #WinSCP 5.x < 5.5.5 Multiple Vulnerabilities
+								72388, #WinSCP < 5.1.6 RSA Signature Blob Integer Overflow
+								72389, #WinSCP < 5.1.7 Multiple Vulnerabilities
 
 
 							]

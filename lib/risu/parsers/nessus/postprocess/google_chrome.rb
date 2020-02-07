@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Google Chrome Patch Rollup",
 							:plugin_id => -99990,
-							:plugin_name => "Update to the latest Google Chrome",
+							:plugin_name => "Missing the latest Google Chrome Patches",
 							:item_name => "Update to the latest Google Chrome",
 							:plugin_ids => [
 								74434,
@@ -137,10 +137,38 @@ module Risu
 								96828,
 								97724,
 								99136,
-								
-
-
-
+								100679,
+								100991,
+								101980,
+								102993, #Google Chrome < 61.0.3163.79 Multiple Vulnerabilities -
+103933, #Google Chrome < 62.0.3202.62 Multiple Vulnerabilities
+105356, #Google Chrome < 63.0.3239.108 Multiple Vulnerabilities
+106350, #Google Chrome < 62.0.3202.94 Out of bounds read flaw in V8
+105152, #Google Chrome < 63.0.3239.84 Multiple Vulnerabilities
+104434, #Google Chrome < 62.0.3202.89 Multiple Vulnerabilities
+103421, #Google Chrome < 61.0.3163.100 Multiple Vulnerabilities
+106485, #Google Chrome < 64.0.3282.119 Multiple Vulnerabilities
+106840, #Google Chrome < 64.0.3282.167 V8 JSFunction::CalculateInstanceSizeForDerivedClass() RCE
+107220, #Google Chrome < 65.0.3325.146 Multiple Vulnerabilities
+110228, #Google Chrome < 67.0.3396.62 Multiple Vulnerabilities
+109395, #Google Chrome < 66.0.3359.117 Multiple Vulnerabilities
+109899, #Google Chrome < 66.0.3359.170 Multiple Vulnerabilities
+111383, #Google Chrome < 68.0.3440.75 Multiple Vulnerabilities
+117333, #Google Chrome < 69.0.3497.81 Multiple Vulnerabilities
+117429, #Google Chrome < 69.0.3497.92 Vulnerability
+118153, #Google Chrome < 70.0.3538.67 Multiple Vulnerabilities
+117636, #Google Chrome < 69.0.3497.100 Vulnerability
+122853, #Google Chrome < 73.0.3683.75 Multiple Vulnerabilities
+121514, #Google Chrome < 72.0.3626.81 Multiple Vulnerabilities
+118887, #Google Chrome < 70.0.3538.102 Vulnerability
+119097, #Google Chrome < 70.0.3538.110 Vulnerability
+119558, #Google Chrome < 71.0.3578.80 Multiple Vulnerabilities
+122246, #Google Chrome < 72.0.3626.96 Vulnerability
+122617, #Google Chrome < 72.0.3626.121 Vulnerability
+124279, #Google Chrome < 74.0.3729.108 Multiple Vulnerabilities
+124460, #Google Chrome < 74.0.3729.131 Multiple Vulnerabilities
+125371, #Google Chrome < 74.0.3729.157 Vulnerability
+125952, #Google Chrome < 75.0.3770.90 Vulnerability
 							]
 						}
 					end

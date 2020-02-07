@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,13 @@ module Risu
 						{
 							:description => "CoreFTP Patch Rollup",
 							:plugin_id => -99989,
-							:plugin_name => "Update to the latest CoreFTP",
+							:plugin_name => "Missing the latest CoreFTP Patches",
 							:item_name => "Update to the latest CoreFTP",
 							:plugin_ids => [
-								65789,
-								70656,
-								59243
-							]								
+								65789, #Core FTP < 2.2 build 1769 Multiple Buffer Overflows
+								70656, #Core FTP < 2.2 build 1785 CWD Command Buffer Overflow
+								59243, #Core FTP Filename Processing Boundary Error FTP List Command Response Parsing Remote Overflow
+							]
 						}
 					end
 				end

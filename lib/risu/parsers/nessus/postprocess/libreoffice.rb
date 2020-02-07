@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "LibreOffice Patch Rollup",
 							:plugin_id => -99962,
-							:plugin_name => "Update to the latest LibreOffice",
+							:plugin_name => "Missing the latest LibreOffice Patches",
 							:item_name => "Update to the latest LibreOffice",
 							:plugin_ids => [
 								80078,

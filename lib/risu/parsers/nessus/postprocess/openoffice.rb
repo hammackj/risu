@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,18 +31,21 @@ module Risu
 						{
 							:description => "OpenOffice Patch Rollup",
 							:plugin_id => -99963,
-							:plugin_name => "Update to the latest OpenOffice",
+							:plugin_name => "Missing the latest OpenOffice Patches",
 							:item_name => "Update to the latest OpenOffice",
 							:plugin_ids => [
-								25954,
-								39563,
-								77408,
-								86904,
-								94199,
-								
-
-
-
+								77408, #Apache OpenOffice < 4.1.1 Multiple Vulnerabilities
+								86904, #Apache OpenOffice < 4.1.2 Multiple Vulnerabilities
+								94199, #Apache OpenOffice < 4.1.3 Multiple Vulnerabilities
+								61731, #Apache OpenOffice < 3.4.1 Multiple Heap-Based Buffer Overflows
+								69185, #Apache OpenOffice < 4.0 Multiple Memory Corruption Vulnerabilities
+								51773, #Oracle OpenOffice.org < 3.3 Multiple Vulnerabilities
+								58727, #OpenOffice XML External Entity RDF Document Handling Information Disclosure 59191, #Apache OpenOffice < 3.4.0 Multiple Memory Corruption Vulnerabilities
+								59191, #Apache OpenOffice < 3.4.0 Multiple Memory Corruption Vulnerabilities
+								104351, #Apache OpenOffice < 4.1.4 Multiple Vulnerabilities
+								40826, #OpenOffice < 3.1.1 Multiple Buffer Overflows
+44597, #Sun OpenOffice.org < 3.2 Multiple Vulnerabilities
+46814, #Oracle OpenOffice.org < 3.2.1 Multiple Vulnerabilities
 							]
 						}
 					end

@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,11 +27,11 @@ module Risu
 
 					#
 					def initialize
-						@info = 
+						@info =
 						{
 							:description => "Serv-U Patch Rollup",
 							:plugin_id => -99996,
-							:plugin_name => "Update to the latest Serv-U",
+							:plugin_name => "Missing the latest Serv-U Patches",
 							:item_name => "Update to the latest Serv-U",
 							:plugin_ids => [
 								36035,
@@ -41,7 +41,7 @@ module Risu
 								71863,
 								72658,
 								76369,
-								
+
 							]
 						}
 					end

@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,12 @@ module Risu
 						{
 							:description => "SigPlus Pro Patch Rollups",
 							:plugin_id => -99977,
-							:plugin_name => "Update to the latest SigPlus Pro",
+							:plugin_name => "Missing the latest SigPlus Pro Patches",
 							:item_name => "Update to the latest SigPlus Pro",
 							:plugin_ids => [
 								51895,
 								51894,
-								
+
 
 
 

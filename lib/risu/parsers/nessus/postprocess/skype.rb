@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,12 @@ module Risu
 						{
 							:description => "Skype Patch Rollup",
 							:plugin_id => -99955,
-							:plugin_name => "Update to the latest Skype",
+							:plugin_name => "Missing the latest Skype Patches",
 							:item_name => "Update to the latest Skype",
 							:plugin_ids => [
 								66695,
-								
+								101084
+
 							]
 						}
 					end

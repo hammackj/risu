@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,11 @@ module Risu
 						{
 							:description => "FileZilla Client Patch Rollup",
 							:plugin_id => -99974,
-							:plugin_name => "Update to the latest FileZilla Client",
+							:plugin_name => "Missing the latest FileZilla Client Patches",
 							:item_name => "Update to the latest FileZilla Client",
 							:plugin_ids => [
-								69476,
-								69494,
-								
-
+								69476, #FileZilla Client < 3.7.2 SFTP Integer Overflow
+								69494, #FileZilla Client < 3.7.3 Multiple Vulnerabilities
 							]
 						}
 					end

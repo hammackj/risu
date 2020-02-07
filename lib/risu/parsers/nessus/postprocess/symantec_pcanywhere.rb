@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Symantec pcAnywhere Patch Rollup",
 							:plugin_id => -99971,
-							:plugin_name => "Update to the latest Symantec pcAnywhere",
+							:plugin_name => "Missing the latest Symantec pcAnywhere Patches",
 							:item_name => "Update to the latest Symantec pcAnywhere",
 							:plugin_ids => [
                 20743,
@@ -39,7 +39,7 @@ module Risu
                 58119,
                 35976,
                 58204,
-                
+
 
 							]
 						}

@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "Symantec Endpoint Patch Rollup",
 							:plugin_id => -99953,
-							:plugin_name => "Update to the latest Symantec Endpoint",
+							:plugin_name => "Missing the latest Symantec Endpoint Patches",
 							:item_name => "Update to the latest Symantec Endpoint",
 							:plugin_ids => [
 								91895,
@@ -41,7 +41,8 @@ module Risu
 								71994,
 								72542,
 								85256,
-								
+104459, #Symantec Endpoint Protection Client 12.1.x < 12.1 RU6 MP9 / 14.0.x < 14.0 RU1 Multiple Vulnerabilities (SYM17-011)
+
 							]
 						}
 					end

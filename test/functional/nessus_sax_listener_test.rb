@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,6 @@ require 'test_helper'
 class NessusSaxListenerTest < ActiveSupport::TestCase
 	include Risu::Models
 
-	# TODO doc
 	#
 	def setup
 			setup_test_database (false)
@@ -84,6 +83,20 @@ class NessusSaxListenerTest < ActiveSupport::TestCase
 							xml.tag(:name => "UNDEFINED_HOST_PROPERTY") do
 								xml.text "UNDEFINED_HOST_PROPERTY"
 							end
+
+							xml.tag(:name => "operating-system") do
+								xml.text "Microsoft Windows Server 2003
+	Microsoft Windows Vista
+	Microsoft Windows Server 2008
+	Microsoft Windows 7
+	Microsoft Windows Server 2008 R2
+	Microsoft Windows Server 2012
+	Microsoft Windows 8
+	Microsoft Windows Server 2012 R2
+	Microsoft Windows 10
+	Microsoft Windows Server 2016
+	Microsoft Windows Server 2019"
+							end
 						end
 
 						xml.ReportItem(:port => "88", :svc_name => "kerberos?", :protocol => "tcp", :severity => "0", :pluginName => "Test Plugin", :pluginFamily => "Test Family", :pluginID =>"999999") do
@@ -129,6 +142,10 @@ class NessusSaxListenerTest < ActiveSupport::TestCase
 
 	test "Host.where(:name => '69.69.69.69').first.items.first.cm_compliance_solution == cm:compliance-solution" do
 			assert Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution == "cm:compliance-solution", "GOT #{Host.where(:name => "69.69.69.69").first.items.first.cm_compliance_solution}"
+	end
+
+	test "Host.where(:name => '69.69.69.69').first.os.length == 310" do
+			assert Host.where(:name => "69.69.69.69").first.os.length == 310, "GOT #{Host.where(:name => "69.69.69.69").first.os.length}"
 	end
 
 	test "Attachment.first.name == 'ts_screenshot.jpg'" do

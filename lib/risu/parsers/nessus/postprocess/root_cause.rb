@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -300,8 +300,20 @@ module Risu
 							-99952 => "Vendor Patch",
 							-99973 => "Vendor Patch",
 							-99962 => "Vendor Patch",
-
-
+							101367 => "Vendor Patch",
+							100761 => "Vendor Patch",
+							97997 => "Vendor Patch",
+							89104 => "Vendor Patch",
+							100756 => "Vendor Patch",
+							101362 => "Vendor Patch",
+							61731 => "Vendor Patch",
+							69185 => "Vendor Patch",
+							-99963 => "Vendor Patch",
+							91821 => "Vendor Patch",
+							100671 => "Vendor Patch",
+							100767 => "Vendor Patch",
+							101371 => "Vendor Patch",
+							99523 => "Vendor Patch",
 
 							33850 => "Vendor Support",
 							34460 => "Vendor Support",
@@ -337,6 +349,7 @@ module Risu
 							11057 => "Vendor Support",
 							21725 => "Vendor Support",
 							97994 => "Vendor Support",
+							78555 => "Vendor Support", #OpenSSL Unsupported - 
 
 							49071 => "Configuration",
 							19948 => "Configuration",

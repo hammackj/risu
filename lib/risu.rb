@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ require 'gruff'
 require 'prawn'
 require 'prawn/table'
 require 'stringio'
-require 'mysql2'
+#require 'mysql2'
 require 'irb'
 require 'sqlite3'
 require 'nokogiri'

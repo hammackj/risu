@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -65,7 +65,7 @@ module Risu
 				create_table :hosts do |t|
 					t.integer :report_id
 					t.string :name
-					t.string :os
+					t.text :os, limit: 4294967295
 					t.text :mac, limit: 4294967295
 					t.datetime :start
 					t.datetime :end
@@ -106,10 +106,11 @@ module Risu
 					t.text :cm_compliance_solution, limit: 4294967295
 					t.integer :real_severity
 					t.integer :risk_score
+					t.boolean :rollup_finding, :default => false
 				end
 
 				create_table :plugins do |t|
-					t.string :plugin_name
+					t.text :plugin_name, limit: 4294967295
 					t.string :family_name
 					t.text :description, limit: 4294967295
 					t.string :plugin_version
@@ -190,6 +191,11 @@ module Risu
 					t.string :value
 				end
 
+				create_table :nessus_plugin_metadata do |t|
+					t.integer :plugin_id
+					t.text :plugin_name, limit: 4294967295
+				end
+
 				#Index's for speed increases, possibly have these apply after parsing @TODO
 				add_index :items, :host_id
 				add_index :items, :plugin_id
@@ -227,6 +233,7 @@ module Risu
 				drop_table :patches
 				drop_table :host_properties
 				drop_table :attachments
+				drop_table :nessus_plugin_metadata
 			end
 		end
 	end

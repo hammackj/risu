@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -799,6 +799,10 @@ module Risu
 
 				# @TODO
 				def unique_hosts_with_critical_and_high_count
+					unique_hosts_with_critical_and_high().size
+				end
+
+				def unique_hosts_with_critical_and_high
 					hosts = Array.new
 					crit = Item.critical_risks_by_host(Host.all.size)
 
@@ -812,7 +816,35 @@ module Risu
 						hosts.push(item.host_id)
 					end
 
-					hosts.uniq.size
+					hosts.uniq
+				end
+
+				def unique_hosts_with_common_missing_patches_count
+					unique_hosts_with_common_missing_patches().size
+				end
+
+				def unique_hosts_with_common_missing_patches
+					results = Array.new
+
+					common_patches = Plugin.where(:family_name => "Risu Rollup Plugins").group(:id)
+					hosts = Host.all
+
+					hosts.each do |host|
+						common_patches.each do |plugin|
+							results.push(host.id) if host.items.where(:plugin_id => plugin.id).count > 0
+						end
+					end
+
+					results.uniq
+				end
+
+				def uniquie_hosts_with_critical_high_common
+					hosts = unique_hosts_with_common_missing_patches() + unique_hosts_with_critical_and_high()
+					hosts.uniq
+				end
+
+				def uniquie_hosts_with_critical_high_common_count
+					uniquie_hosts_with_critical_high_common().size
 				end
 			end
 		end

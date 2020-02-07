@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "VLC Patch Rollup",
 							:plugin_id => -99970,
-							:plugin_name => "Update to the latest VLC",
+							:plugin_name => "Missing the latest VLC Patches",
 							:item_name => "Update to the latest VLC",
 							:plugin_ids => [
 								58416,
@@ -44,7 +44,8 @@ module Risu
 								78626,
 								55608,
 								63137,
-								
+								100592, #VLC Media Player < 2.2.5 Multiple Vulnerabilities - 100592
+105294, #VLC Media Player < 2.2.7 Overflow Condition
 
 							]
 						}

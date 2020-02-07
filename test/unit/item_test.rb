@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -41,19 +41,19 @@ class ItemTest < ActiveSupport::TestCase
 	end
 
 	test "returns 1 risks for Item.high_risks.count" do
-		assert Item.high_risks.to_a.count == 1
+		assert Item.high_risks.to_a.count == 1, "GOT #{Item.high_risks.count}"
 	end
 
 	test "returns 1 for Item.medium_risks.count" do
-		assert Item.medium_risks.to_a.count == 1
+		assert Item.medium_risks.to_a.count == 1, "GOT #{Item.medium_risks.count}"
 	end
 
 	test "returns 1 for Item.low_risks.count" do
-		assert Item.low_risks.to_a.count == 1
+		assert Item.low_risks.to_a.count == 1, "GOT #{Item.low_risks.count}"
 	end
 
 	test "returns 1 risks for Item.info_risks.count" do
-		assert Item.info_risks.to_a.count == 1
+		assert Item.info_risks.to_a.count == 1, "GOT #{Item.info_risks.count}"
 	end
 
 	test "returns 12 risks for Item.risks_by_service" do
@@ -234,7 +234,7 @@ class ItemTest < ActiveSupport::TestCase
 	end
 
 	test "return 0.00% for Item.risk_percent_patched_text" do
-		assert Item.risk_percent_patched_text == "0.00%", "GOT #{Item.risk_percent_patched_text}"
+		assert Item.risk_percent_patched_text == '0.00%', "GOT #{Item.risk_percent_patched_text}"
 	end
 
 	#@TODO pass findings for each finding level

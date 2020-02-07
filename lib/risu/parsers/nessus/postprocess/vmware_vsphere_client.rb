@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,15 +31,16 @@ module Risu
 						{
 							:description => "VMware vSphere Client Patch Rollup",
 							:plugin_id => -99967,
-							:plugin_name => "Update to the latest VMware vSphere Client",
+							:plugin_name => "Missing the latest VMware vSphere Client Patches",
 							:item_name => "Update to the latest VMware vSphere Client",
 							:plugin_ids => [
-                64559,
-                73595,
-                51057,
+                				64559,
+                				73595,
+                				51057,
 								76355,
 								87675,
-								
+								95657, #VMware vSphere Client XXE Injection Information Disclosure (VMSA-2016-0022)
+
 							]
 						}
 					end

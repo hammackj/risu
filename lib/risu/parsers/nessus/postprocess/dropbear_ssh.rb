@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,14 @@ module Risu
 						{
 							:description => "Dropbear SSH Server Patch Rollup",
 							:plugin_id => -99952,
-							:plugin_name => "Update to the latest Dropbear SSH Server",
+							:plugin_name => "Missing the latest Dropbear SSH Server Patches",
 							:item_name => "Update to the latest Dropbear SSH Server",
 							:plugin_ids => [
-								93650,
-								58183,
-								
-
+								93650, #Dropbear SSH Server < 2016.72 Multiple Vulnerabilities
+								58183, #Dropbear SSH Server Channel Concurrency Use-after-free Remote Code Execution
+								70545, #Dropbear SSH Server < 2013.59 Multiple Vulnerabilities
+								21023, #Dropbear SSH Authorization-pending Connection Saturation DoS
+								34769, #Dropbear SSH Server svr_ses.childpidsize Remote Overflow
 							]
 						}
 					end

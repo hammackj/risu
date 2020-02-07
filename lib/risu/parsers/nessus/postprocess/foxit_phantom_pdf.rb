@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,18 @@ module Risu
 						{
 							:description => "Foxit PhantomPDF Patch Rollup",
 							:plugin_id => -99956,
-							:plugin_name => "Update to the latest Foxit PhantomPDF",
+							:plugin_name => "Missing the latest Foxit PhantomPDF Patches",
 							:item_name => "Update to the latest Foxit PhantomPDF",
 							:plugin_ids => [
 								86697,
-								90566
+								90566,
+								102682, #Foxit PhantomPDF < 7.3.15 Multiple Vulnerabilities - 102682
+								102858, #Foxit PhantomPDF < 8.3.2 Multiple Vulnerabilities - 102858
+								101523, #Foxit PhantomPDF < 8.3.1 Multiple Vulnerabilities - 101523
+								104436, #Foxit PhantomPDF < 9.0 Multiple Vulnerabilities
+104742, #Foxit PhantomPDF < 8.3.5 Multiple Vulnerabilities
+109398, #Foxit PhantomPDF < 9.1 Multiple Vulnerabilities
+
 							]
 						}
 					end

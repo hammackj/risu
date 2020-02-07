@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ module Risu
 						{
 							:description => "VMware Player Patch Rollup",
 							:plugin_id => -99976,
-							:plugin_name => "Update to the latest VMware Player",
+							:plugin_name => "Missing the latest VMware Player Patches",
 							:item_name => "Update to the latest VMware Player",
 							:plugin_ids => [
 								71231,
@@ -41,7 +41,7 @@ module Risu
 								84219,
 								84805,
 								81185,
-								
+
 
 							]
 						}

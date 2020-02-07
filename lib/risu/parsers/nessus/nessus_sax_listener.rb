@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Jacob Hammack.
+# Copyright (c) 2010-2020 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -375,7 +375,8 @@ module Risu
 						:cm_compliance_output => @vals["cm:compliance-output"],
 						:cm_compliance_reference => @vals["cm:compliance-reference"],
 						:cm_compliance_see_also => @vals["cm:compliance-see-also" ],
-						:cm_compliance_solution => @vals["cm:compliance-solution"]
+						:cm_compliance_solution => @vals["cm:compliance-solution"],
+						:rollup_finding => false
 					)
 
 					@plugin.update(:solution => @vals["solution"],
