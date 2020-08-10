@@ -165,6 +165,7 @@ module Risu
 122130, #KB4487038: Security update for Adobe Flash Player (February 2019)
 128633, #Adobe Flash Player <= 32.0.0.238 (APSB19-46)
 117410, #Adobe Flash Player <= 30.0.0.154 (APSB18-31)
+133607, #Adobe Flash Player <= 32.0.0.321 (APSB20-06)
 							]
 						}
 					end

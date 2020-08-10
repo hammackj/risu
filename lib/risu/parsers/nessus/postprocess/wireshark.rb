@@ -105,6 +105,12 @@ module Risu
 124164, #Wireshark 2.4.x < 2.4.14 Multiple Vulnerabilities
 125365, #Wireshark 2.4.x < 2.4.15 A Vulnerability
 126923, #Wireshark 2.4.x < 2.4.16 DoS Vulnerability
+129061, #Wireshark 2.6.x < 2.6.11 Gryphon Dissector DoS Vulnerability
+119420, #Wireshark 2.6.x < 2.6.5 Multiple Vulnerabilities
+121108, #Wireshark 2.6.x < 2.6.6 Multiple Vulnerabilities
+124165, #Wireshark 2.6.x < 2.6.8 Multiple Vulnerabilities
+125367, #Wireshark 2.6.x < 2.6.9 A Vulnerability
+126921, #Wireshark 2.6.x < 2.6.10 DoS Vulnerability
 							]
 						}
 					end

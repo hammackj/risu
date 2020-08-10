@@ -1301,6 +1301,50 @@ module Risu
 130909, #KB4525250: Windows 8.1 and Windows Server 2012 R2 November 2019 Security Update
 130912, #Security Updates for Internet Explorer (November 2019)
 130906, #KB4525236: Windows 10 Version 1607 and Windows Server 2016 November 2019 Security Update
+132862, #KB4534293: Windows 10 Version 1803 January 2020 Security Update
+132863, #KB4534309: Windows 8.1 and Windows Server 2012 R2 January 2020 Security Update
+127845, #KB4512501: Windows 10 Version 1803 August 2019 Security Update
+129166, #Security Update for Internet Explorer (CVE-2019-1367)
+129718, #KB4520003: Windows 7 and Windows Server 2008 R2 October 2019 Security Update 
+129728, #Security Updates for Internet Explorer (October 2019)
+130905, #KB4525233: Windows 7 and Windows Server 2008 R2 November 2019 Security Update 
+131934, #KB4530692: Windows 7 and Windows Server 2008 R2 December 2019 Security Update
+131936, #Security Updates for Internet Explorer (December 2019)
+132868, #Security Updates for Internet Explorer (January 2020)
+126569, #KB4507435: Windows 10 Version 1803 July 2019 Security Update (SWAPGS)
+128639, #KB4516058: Windows 10 Version 1803 September 2019 Security Update
+133619, #Security Updates for Internet Explorer (February 2020)
+130907, #KB4525237: Windows 10 Version 1803 November 2019 Security Update
+131930, #KB4530730: Windows 8.1 and Windows Server 2012 R2 December 2019 Security Update 
+131933, #KB4530717: Windows 10 Version 1803 December 2019 Security Update
+133610, #KB4537762: Windows 10 Version 1803 February 2020 Security Update
+133615, #KB4537803: Windows 8.1 and Windows Server 2012 R2 February 2020 Security Update
+132866, #KB4534314: Windows 7 and Windows Server 2008 R2 January 2020 Security Update 
+132999, #Security Updates for Microsoft .NET Framework (January 2020)
+129724, #KB4520008: Windows 10 Version 1803 October 2019 Security Update
+117413, #KB4457131: Windows 10 Version 1607 and Windows Server 2016 September 2018 Security Update 
+118916, #KB4467691: Windows 10 Version 1607 and Windows Server 2016 November 2018 Security Update 
+119584, #KB4471321: Windows 10 Version 1607 and Windows Server 2016 December 2018 Security Update 
+132858, #KB4534271: Windows 10 Version 1607 and Windows Server 2016 January 2020 Security Update 
+134369, #KB4540670: Windows 10 Version 1607 and Windows Server 2016 March 2020 Security Update
+122615, #Microsoft Windows 7 / Server 2008 R2 Unsupported Version Detection
+125060, #KB4499180: Windows Server 2008 and Windows Vista SP2 May 2019 Security Update (BlueKeep) 
+132864, #KB4534312: Windows Server 2008 January 2020 Security Update
+117997, #KB4462917: Windows 10 Version 1607 and Windows 
+119769, #KB4483229: Windows 10 Version 1607 and Windows 
+121012, #KB4480961: Windows 10 Version 1607 and Windows 
+122126, #KB4487026: Windows 10 Version 1607 and Windows 
+129719, #KB4519998: Windows 10 Version 1607 and Windows 
+131927, #KB4530689: Windows 10 Version 1607 and Windows 
+133611, #KB4537764: Windows 10 Version 1607 and Windows
+123944, #KB4493458: Windows Server 2008 April 2019 Security Update
+126573, #KB4507461: Windows Server 2008 July 2019 Security Update (SWAPGS)
+127842, #KB4512491: Windows Server 2008 August 2019 Security Update
+128636, #KB4516051: Windows Server 2008 September 2019 Security Update
+129720, #KB4520009: Windows Server 2008 October 2019 Security Update
+130904, #KB4525239: Windows Server 2008 November 2019 Security Update
+131929, #KB4530719: Windows Server 2008 December 2019 Security Update
+
 
 							]
 						}

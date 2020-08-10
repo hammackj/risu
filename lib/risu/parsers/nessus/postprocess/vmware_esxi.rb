@@ -96,6 +96,7 @@ module Risu
 102698, #ESXi 6.0 < Build 5485776 Multiple Vulnerabilities (VMSA-2017-0015)
 118885, #ESXi 6.0 / 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2018-0027) (Remote Check) 
 123518, #ESXi 6.0 / 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2019-0005) (Remote Check)
+134878, #VMware ESXi 5.5 / 6.0 / 6.5 / 6.7 DoS (VMSA-2018-0018)
 							]
 						}
 					end

@@ -42,6 +42,7 @@ module Risu
 								72542,
 								85256,
 104459, #Symantec Endpoint Protection Client 12.1.x < 12.1 RU6 MP9 / 14.0.x < 14.0 RU1 Multiple Vulnerabilities (SYM17-011)
+131233, #Symantec Endpoint Protection Client 12.x < 12.1.7454.7000 / 14.x < 14.2.5323.2000 Multiple Vulnerabilities (SYMSA1488)
 
 							]
 						}

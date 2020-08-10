@@ -145,6 +145,8 @@ module Risu
 126622, #Mozilla Firefox < 68.0
 128061, #Mozilla Firefox < 68.0.2
 128525, #Mozilla Firefox < 69.0
+132715, #Mozilla Firefox < 72.0.1
+133693, #Mozilla Firefox < 73.0
 							]
 						}
 					end

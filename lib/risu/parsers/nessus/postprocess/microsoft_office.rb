@@ -62,6 +62,14 @@ module Risu
 128645, #Security Updates for Microsoft Excel Products (September 2019)
 128648, #Security Updates for Microsoft Office Products (September 2019)
 108293, #Security Updates for Microsoft Excel Products (March 2018)
+130913, #Security Updates for Microsoft Office Products (November 2019)
+129727, #Security Updates for Microsoft Excel Products (October 2019)
+131937, #Security Updates for Microsoft Office Products (December 2019)
+131938, #Security Updates for Microsoft PowerPoint Products (December 2019)
+131940, #Security Updates for Microsoft Word Products (December 2019)
+130911, #Security Updates for Microsoft Excel Products (November 2019)
+132867, #Security Updates for Microsoft Excel Products (January 2020)
+133616, #Security Updates for Microsoft Excel Products (February 2020)
 
 							]
 						}
