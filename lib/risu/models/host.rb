@@ -609,7 +609,7 @@ module Risu
 					text << "#{w7_percent.round.to_i}% (#{w7}) of the network is Windows 7.\n" if w7_percent >= 1
 					text << "#{w8_percent.round.to_i}% (#{w8}) of the network is Windows 8.\n" if w8_percent >= 1
 					text << "#{w10_percent.round.to_i}% (#{w10}) of the network is Windows 10.\n" if w10_percent >= 1
-					text << "#{w2k12_percent.round.to_i}% (#{w2k12}) of the network is Windows Server 20012.\n" if w2k12_percent >= 1
+					text << "#{w2k12_percent.round.to_i}% (#{w2k12}) of the network is Windows Server 2012.\n" if w2k12_percent >= 1
 
 					text << "\n\n" << unsupported_os_windows if nt > 0 or w2k > 0 or xp > 0
 
@@ -665,6 +665,8 @@ module Risu
 					win_2000_text = ""
 					win_xp_text = ""
 					win_2003_text = ""
+					win_7_text = ""
+					win_2008 = ""
 
 					win_95 = Host.os_windows_95
 					win_98 = Host.os_windows_98
@@ -673,6 +675,8 @@ module Risu
 					win_2000 = Plugin.where(:plugin_name => "Microsoft Windows 2000 Unsupported Installation Detection")
 					win_xp = Plugin.where(:plugin_name => "Microsoft Windows XP Unsupported Installation Detection")
 					win_2003 = Plugin.where(:plugin_name => "Microsoft Windows Server 2003 Unsupported Installation Detection")
+					win_7 = Host.os_windows_7
+					win_2008 = Host.os_windows_2k8
 
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
@@ -697,7 +701,13 @@ module Risu
 					win_2003_text = "Windows 2003 is an unsupported operating system; Microsoft has stopped support as of July 2015. " +
 					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2003.size >= 1
 
-					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}"
+					win_7_text = "Windows 7 is an unsupported operating system; Microsoft has stopped support as of Janurary 2020. " +
+					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_7.size >= 1
+
+					win_2008_text = "Windows 2008 is an unsupported operating system; Microsoft has stopped support as of Janurary 2020. " +
+					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2008.size >= 1
+
+					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}#{win_7_text}#{win_2008_text}"
 				end
 
 				# @TODO comments
