@@ -30,7 +30,7 @@ module Risu
 				{
 					:name => "host_findings_csv",
 					:author => "hammackj",
-					:version => "0.0.3",
+					:version => "0.0.4",
 					:renderer => "CSV",
 					:description => "Generates a findings report by host and outputs to CSV"
 
@@ -57,6 +57,27 @@ module Risu
 						@output.text "#{host.ip}, #{host.fqdn}, #{host.netbios}, #{item.plugin_name}, #{plugin.risk_factor}, #{plugin.cvss_base_score}, #{solution}"
 					end
 				end
+			end
+
+			# Flattens CVS output removing newlines and commas
+			def flatten text
+				if text == nil
+					return nil
+				end
+
+#				puts "===="
+#				puts text
+
+
+				output = text.gsub("\n", " ")
+				output = output.gsub(",", ";")
+				
+
+#				puts output
+
+#				puts "==="
+
+				return "'" + output + "'"
 			end
 
 			# TODO doc
