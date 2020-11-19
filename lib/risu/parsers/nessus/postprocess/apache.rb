@@ -70,7 +70,7 @@ module Risu
 								101787, #Apache 2.2.x < 2.2.34 Multiple Vulnerabilities
 								68914, #Apache 2.0.x < 2.0.65 Multiple Vulnerabilities
 								123642, #Apache 2.4.x < 2.4.39 Multiple Vulnerabilities
-								
+								139574, #Apache 2.4.x < 2.4.46 Multiple Vulnerabilities								
 							]
 						}
 					end

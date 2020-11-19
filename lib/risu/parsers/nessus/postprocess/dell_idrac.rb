@@ -38,6 +38,8 @@ module Risu
 111604, #Dell iDRAC Products Multiple Vulnerabilities (June 2018) 
 119833, #Dell iDRAC Products Multiple Vulnerabilities (December 2018)
 90265, #Dell iDRAC6 / iDRAC7 / iDRAC8 Path Traversal Authentication Bypass
+135187, #Dell iDRAC Buffer Overflow Vulnerability (CVE-2020-5344)
+
 
 							]
 						}

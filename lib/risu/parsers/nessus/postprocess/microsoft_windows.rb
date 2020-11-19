@@ -1344,8 +1344,58 @@ module Risu
 129720, #KB4520009: Windows Server 2008 October 2019 Security Update
 130904, #KB4525239: Windows Server 2008 November 2019 Security Update
 131929, #KB4530719: Windows Server 2008 December 2019 Security Update
-
-
+137265, #KB4561600: Security update for Adobe Flash Player (June 2020)
+128646, #KB4516115: Security update for Adobe Flash Player (September 2019)
+134372, #KB4540689: Windows 10 Version 1803 March 2020 Security Update
+139498, #Security Updates for Internet Explorer (August 2020)
+138467, #Security Updates for Internet Explorer (July 2020) 
+136512, #Security Updates for Internet Explorer (May 2020) 
+137266, #Security Updates for Internet Explorer (June 2020)
+134864, #KB4537813: Windows 7 and Windows Server 2008 R2 February 2020 Security Update
+134865, #KB4541500: Windows 7 and Windows Server 2008 R2 March 2020 Security Update
+135472, #KB4550965: Windows 7 and Windows Server 2008 R2 April 2020 Security Update
+136507, #KB4556843: Windows 7 and Windows Server 2008 R2 May 2020 Security Update
+137260, #KB4561669: Windows 7 and Windows Server 2008 R2 June 2020 Security Update
+138460, #KB4565539: Windows 7 and Windows Server 2008 R2 July 2020 Security Update
+135466, #KB4550922: Windows 10 Version 1803 April 2020 Security Update
+136503, #KB4556807: Windows 10 Version 1803 May 2020 Security Update
+137259, #KB4561621: Windows 10 Version 1803 June 2020 Security Update
+138455, #KB4565489: Windows 10 Version 1803 July 2020 Security Update
+138463, #KB4565540: Windows 8.1 and Windows Server 2012 R2 July 2020 Security Update
+136509, #KB4556853: Windows 8.1 and Windows Server 2012 R2 May 2020 Security Update
+137255, #KB4561602: Windows 10 Version 1709 June 2020 Security Update
+137262, #KB4561673: Windows 8.1 and Windows Server 2012 R2 June 2020 Security Update
+138457, #KB4565508: Windows 10 Version 1709 July 2020 Security Update
+134863, #KB4537822: Windows Server 2008 February 2020 Security Update
+134866, #KB4541504: Windows Server 2008 March 2020 Security Update
+135470, #KB4550957: Windows Server 2008 April 2020 Security Update
+136510, #KB4556854: Windows Server 2008 May 2020 Security Update
+137263, #KB4561645: Windows Server 2008 June 2020 Security Update
+128642, #KB4516064: Windows 8.1 and Windows Server 2012 R2 September 2019 Security Update 
+129722, #KB4519990: Windows 8.1 and Windows Server 2012 R2 October 2019 Security Update
+134374, #KB4541505: Windows 8.1 and Windows Server 2012 R2 March 2020 Security Update 
+134377, #Security Updates for Internet Explorer (March 2020)
+135471, #KB4550970: Windows 8.1 and Windows Server 2012 R2 April 2020 Security Update 
+138461, #KB4565529: Windows Server 2008 July 2020 Security Update
+133618, #KB4537759: Security update for Adobe Flash Player (February 2020)
+135475, #Security Updates for Internet Explorer (April 2020)
+139491, #KB4571719: Windows 7 and Windows Server 2008 R2 August 2020 Security Update 
+140422, #KB4577053: Windows 7 and Windows Server 2008 R2 September 2020 Security Update
+134942, #Microsoft Windows Type 1 Font Parsing Remote Code Execution Vulnerability (ADV200006)
+138600, #Windows DNS Server RCE (CVE-2020-1350)
+134204, #MS15-124: Cumulative Security Update for Internet Explorer (CVE-2015-6161) (3125869)
+134368, #KB4538461: Windows 10 Version 1809 and Windows Server 2019 March 2020 Security Update
+132859, #KB4534273: Windows 10 Version 1809 and Windows Server 2019 January 2020 Security Update
+137256, #KB4561608: Windows 10 Version 1809 and Windows Server 2019 June 2020 Security Update 
+138453, #KB4558998: Windows 10 Version 1809 and Windows Server 2019 July 2020 Security Update 
+139484, #KB4565349: Windows 10 Version 1809 and Windows Server 2019 August 2020 Security Update 
+140414, #KB4570333: Windows 10 Version 1809 and Windows Server 2019 September 2020 Security Update
+135463, #KB4549949: Windows 10 Version 1809 and Windows Server 2019 April 2020 Security Update 
+136501, #KB4551853: Windows 10 Version 1809 and Windows Server 2019 May 2020 Security Update
+133608, #KB4532691: Windows 10 Version 1809 and Windows Server 2019 February 2020 Security Update
+129717, #KB4519338: Windows 10 Version 1809 and Windows Server 2019 October 2019 Security Update
+130901, #KB4523205: Windows 10 Version 1809 and Windows Server 2019 November 2019 Security Update
+131932, #KB4530715: Windows 10 Version 1809 and Windows Server 2019 December 2019 Security Update
 							]
 						}
 					end

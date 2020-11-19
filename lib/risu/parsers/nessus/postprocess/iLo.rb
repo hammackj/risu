@@ -40,6 +40,8 @@ module Risu
 122187, #iLO 3 < 1.88 / iLO 4 < 2.44 XSS Vulnerability
 122191, #iLO 3 < 1.85 / iLO 4 < 2.22 Denial of Service Vulnerability
 102803, #HP iLO 4 <= 2.52 RCE
+134976, #iLO 3 < 1.90 / iLO 4 < 2.61 / iLO 5 < 1.35 Remote Code Execution Vulnerability (HPESBHF03866)
+140770, #HP iLO 3 < 1.93 / HP iLO 4 < 2.75 / HP iLO 5 < 2.18 Ripple20 Multiple vulnerabilities
 							]
 						}
 					end

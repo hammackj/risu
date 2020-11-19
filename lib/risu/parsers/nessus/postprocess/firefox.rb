@@ -147,6 +147,15 @@ module Risu
 128525, #Mozilla Firefox < 69.0
 132715, #Mozilla Firefox < 72.0.1
 133693, #Mozilla Firefox < 73.0
+136404, #Mozilla Firefox < 76.0
+135276, #Mozilla Firefox < 75.0 (mfsa2020-12)
+137049, #Mozilla Firefox < 77.0
+138085, #Mozilla Firefox < 78.0
+138445, #Mozilla Firefox < 78.0.2
+119606, #Mozilla Firefox ESR < 60.4 Multiple Vulnerabilities
+134405, #Mozilla Firefox < 74.0 Multiple Vulnerabilities
+134407, #Mozilla Firefox ESR < 68.6 Multiple Vulnerabilities
+
 							]
 						}
 					end

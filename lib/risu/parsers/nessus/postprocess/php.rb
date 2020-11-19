@@ -125,7 +125,21 @@ module Risu
 85887, #PHP 5.6.x < 5.6.13 Multiple Vulnerabilities
 121602, #PHP 5.6.x < 5.6.40 Multiple vulnerabilities.
 86301, #PHP 5.6.x < 5.6.14 Multiple Vulnerabilities	
-122591, #PHP 5.6.x < 5.6.35 Security Bypass Vulnerability						
+122591, #PHP 5.6.x < 5.6.35 Security Bypass Vulnerability
+130276, #PHP < 7.1.33 / 7.2.x < 7.2.24 / 7.3.x < 7.3.11 Remote Code Execution Vulnerability.
+123829, #PHP 7.3.x < 7.3.3 Multiple vulnerabilities.
+128531, #PHP 7.3.x < 7.3.9 Multiple Vulnerabilities.
+129557, #PHP 7.3.x < 7.3.10 Heap-Based Buffer Overflow Vulnerability.
+125681, #PHP 7.3.x < 7.3.6 Multiple Vulnerabilities.
+126637, #PHP 7.3.x < 7.3.7 Multiple Vulnerabilities.
+127132, #PHP 7.3.x < 7.3.8 Multiple Vulnerabilities.
+135918, #PHP 7.3.x < 7.3.17 Out of Bounds Read Vulnerability
+136741, #PHP 7.2.x < 7.2.31 / 7.3.x < 7.3.18, 7.4.x < 7.4.6 Denial of Service (DoS)
+138593, #PHP 7.2.x < 7.2.32 / 7.3.x < 7.3.20 / 7.4.x < 7.4.8 Information Disclosure
+140532, #PHP 7.2.x / 7.3.x < 7.3.22 Memory Leak Vulnerability
+122750, #PHP 7.3.x < 7.3.2 Information Disclosure.
+123755, #PHP 7.3.x < 7.3.4 Multiple vulnerabilities.
+124764, #PHP 7.3.x < 7.3.5 Heap-based Buffer Overflow Vulnerability.				
 							]
 						}
 					end

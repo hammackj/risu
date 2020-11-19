@@ -57,6 +57,21 @@ module Risu
 								108956, #Cisco IOS Software DNS Forwarder Denial of Service Vulnerability (cisco-sa-20160928-dns)
 								109087, #Cisco IOS DHCP Multiple Vulnerabilities
 								117944, #Cisco IOS Software Cluster Management Protocol DoS Vulnerability (cisco-sa-20180926-cmp)																
+108720, #Cisco IOS Software Quality of Service Remote Code Execution Vulnerability
+133000, #Cisco IOS Web UI Cross-Site Request Forgery (cisco-sa-20200108-ios-csrf)
+103669, #Cisco IOS Software NAT denial of service (cisco-sa-20170927-nat)
+103693, #Cisco IOS Software Internet Key Exchange Denial of Service Vulnerability
+117949, #Cisco IOS Software IPv6 Hop-by-Hop DoS Vulnerability (cisco-sa-20180926-ipv6hbh)
+129694, #Cisco IOS Denial of Service Vulnerability (cisco-sa-20190925-sip-dos)		
+132048, #Cisco IOS Software Software Plug and Play Agent Memory Leak(cisco-sa-20180926-pnp-memleak) 
+132723, #Cisco IOS Software NAT64 Denial of Service Vulnerability
+137630, #Cisco IOS and IOS XE Software Tcl Arbitrary Code Execution (cisco-sa-tcl-ace-C9KuVKmm) 
+137654, #Cisco IOS, IOS XE, and NX-OS Software Security Group Tag Exchange Protocol Denial of Service																														
+129812, #Cisco IOS ISDN Interface Denial of Service Vulnerability
+130092, #Cisco IOS Software IP Service Level Agreement Denial of Service Vulnerability
+131325, #Cisco IOS Software Internet Key Exchange Memory Leak (cisco-sa-20180328-ike)
+141170, #Cisco IOS Software Split DNS DoS (cisco-sa-splitdns-SPWqpdGW)
+
 							]
 						}
 					end

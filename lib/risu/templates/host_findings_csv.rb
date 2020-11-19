@@ -53,8 +53,16 @@ module Risu
 						host = Host.where(:id => item.host_id).first
 
 						solution = plugin.solution.gsub("\n", " ").gsub(",", "")
+						
+						mac_address = ""
 
-						@output.text "#{host.ip}, #{host.fqdn}, #{host.netbios}, #{item.plugin_name}, #{plugin.risk_factor}, #{plugin.cvss_base_score}, #{solution}"
+						if host.mac != nil
+							mac_address = host.mac.gsub("\n", " ").gsub(",", "")
+						else
+							mac_address = "FF:FF:FF:FF:FF:FF"
+						end
+
+						@output.text "#{host.ip}, #{host.fqdn}, #{host.netbios}, #{mac_address}, #{item.plugin_name}, #{plugin.risk_factor}, #{plugin.cvss_base_score}, #{solution}"
 					end
 				end
 			end
@@ -83,7 +91,7 @@ module Risu
 			# TODO doc
 			#
 			def render output
-				@output.text "IP Address, FQDN, Netbios Name, Finding, Risk Factor, CVSS Base Score, Solution"
+				@output.text "IP Address, FQDN, Netbios Name, MAC Address, Finding, Risk Factor, CVSS Base Score, Solution"
 				csv Plugin.critical_risks.order(cvss_base_score: :desc)
 				csv Plugin.high_risks.order(cvss_base_score: :desc)
 			end

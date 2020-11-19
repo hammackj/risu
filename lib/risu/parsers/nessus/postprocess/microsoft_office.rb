@@ -70,7 +70,19 @@ module Risu
 130911, #Security Updates for Microsoft Excel Products (November 2019)
 132867, #Security Updates for Microsoft Excel Products (January 2020)
 133616, #Security Updates for Microsoft Excel Products (February 2020)
-
+135474, #Security Updates for Microsoft Excel Products (April 2020)
+135476, #Security Updates for Microsoft Office Products (April 2020)
+135482, #Security Updates for Microsoft Word Products (April 2020)
+136511, #Security Updates for Microsoft Excel Products (May 2020)
+52584, #MS11-016: Vulnerability in Microsoft Groove Could Allow Remote Code Execution (2494047) 
+56176, #MS11-073: Vulnerabilities in Microsoft Office Could Allow Remote Code Execution (2587634)
+139497, #Security Updates for Microsoft Excel Products (August 2020)
+139499, #Security Updates for Microsoft Office Products (August 2020)
+139505, #Security Updates for Outlook (August 2020)
+138602, #Microsoft OneDrive Elevation of Privilege (CVE-2020-1465)
+139598, #Security Updates for Microsoft .NET Framework (August 2020)
+134382, #Security Updates for Microsoft Word Products (March 2020)
+137264, #Security Feature Bypass Vulnerability for Microsoft Excel Products (June 2020)
 							]
 						}
 					end

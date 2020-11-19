@@ -37,6 +37,8 @@ module Risu
                                 117459, #Artifex Ghostscript Multiple Vulnerabilities
 117596, #Artifex Ghostscript < 9.25 PostScript Code Execution Vulnerability
 119240, #Artifex Ghostscript < 9.26 PostScript Multiple Vulnerabilities
+130273, #Artifex Ghostscript < 9.50 Multiple Vulnerabilities
+
 							]
 						}
 					end
