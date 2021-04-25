@@ -31,8 +31,8 @@ module Risu
 						{
 							:description => "iLO Patch Rollup",
 							:plugin_id => -99942,
-							:plugin_name => "Missing the latest iLO",
-							:item_name => "Update to the latest iLO",
+							:plugin_name => "Missing the latest iLO Patches",
+							:item_name => "Update to the latest iLO Patches",
 							:plugin_ids => [
 122032, #iLO 4 < 2.60 / iLO 5 < 1.30 Multiple Vulnerabilities
 125342, #iLO 4 < 2.70 / iLO 5 < 1.40a Multiple Vulnerabilities

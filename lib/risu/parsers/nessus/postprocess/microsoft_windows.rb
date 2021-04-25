@@ -1396,6 +1396,16 @@ module Risu
 129717, #KB4519338: Windows 10 Version 1809 and Windows Server 2019 October 2019 Security Update
 130901, #KB4523205: Windows 10 Version 1809 and Windows Server 2019 November 2019 Security Update
 131932, #KB4530715: Windows 10 Version 1809 and Windows Server 2019 December 2019 Security Update
+142690, #KB4586830: Windows 10 Version 1607 and Windows Server 2016 November 2020 Security Update 
+142683, #KB4586805: Windows 7 and Windows Server 2008 R2 November 2020 Security Update
+142680, #KB4586786: Windows 10 Version 1903 and Windows 10 Version 1909 November 2020 Security Update
+141431, #KB4580387: Windows 7 and Windows Server 2008 R2 October 2020 Security Update
+141427, #KB4577671: Windows 10 Version 1903 and Windows 10 Version 1909 October 2020 Security Update 
+141493, #KB4580325: Security update for Adobe Flash Player (October 2020)
+142691, #Security Updates for Internet Explorer (November 2020)
+147231, #KB5000851: Windows 7 and Windows Server 2008 R2 March 2021 Security Update 
+148465, #KB5001347: Windows 10 1607 and Windows Server 2016 1607 Apr 2021 Security Update 
+148466, #KB5001335: Windows Server 2008 R2 Apr 2021 Security Update
 							]
 						}
 					end
