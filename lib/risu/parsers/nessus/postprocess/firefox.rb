@@ -166,6 +166,8 @@ module Risu
 129101, #Mozilla Firefox < 69.0.1
 130170, #Mozilla Firefox < 70.0 Multiple Vulnerabilities
 140732, #Mozilla Firefox < 81.0
+144282, #Mozilla Firefox < 84.0
+146425, #Mozilla Firefox < 85.0.1
 							]
 						}
 					end

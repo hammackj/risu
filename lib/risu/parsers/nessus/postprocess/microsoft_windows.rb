@@ -1406,6 +1406,16 @@ module Risu
 147231, #KB5000851: Windows 7 and Windows Server 2008 R2 March 2021 Security Update 
 148465, #KB5001347: Windows 10 1607 and Windows Server 2016 1607 Apr 2021 Security Update 
 148466, #KB5001335: Windows Server 2008 R2 Apr 2021 Security Update
+147222, #KB5000803: Windows Security Update (March 2021)
+148482, #KB5001633: Mar 2021 OOB Security Update
+147229, #KB5000853: Windows 8.1 and Windows Server 2012 R2 March 2021 Security Update 
+148477, #KB5001382: Windows 8.1/RT and Windows Server 2012 R2 Apr 2021 Security Update
+143572, #KB4592503: Windows 7 and Windows Server 2008 R2 December 2020 Security Update
+144877, #KB4598289: Windows 7 and Windows Server 2008 R2 January 2021 Security Update
+146342, #KB4601363: Windows 7 and Windows Server 2008 R2 February 2021 Security Update
+146329, #KB4601318: Windows 10 Version 1607 and Windows Server 2016 February 2021 Security Update
+144882, #KB4598243: Windows 10 Version 1607 and Windows Server 2016 January 2021 Security Update
+148693, #Microsoft Edge (Chromium) < 90.0.818.39 Multiple Vulnerabilities
 							]
 						}
 					end

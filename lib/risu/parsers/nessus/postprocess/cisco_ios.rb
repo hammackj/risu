@@ -71,7 +71,9 @@ module Risu
 130092, #Cisco IOS Software IP Service Level Agreement Denial of Service Vulnerability
 131325, #Cisco IOS Software Internet Key Exchange Memory Leak (cisco-sa-20180328-ike)
 141170, #Cisco IOS Software Split DNS DoS (cisco-sa-splitdns-SPWqpdGW)
-
+130766, #Cisco IOS Smart Install Memory Leak (cisco-sa-20160928-smi) 
+131164, #Cisco IOS AAA Login DoS (cisco-sa-20160928-aaados) 
+131322, #Cisco IOS Software Smart Install DoS (cisco-sa-20180328-smi)
 							]
 						}
 					end
