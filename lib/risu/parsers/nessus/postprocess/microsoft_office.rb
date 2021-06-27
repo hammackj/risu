@@ -83,6 +83,16 @@ module Risu
 139598, #Security Updates for Microsoft .NET Framework (August 2020)
 134382, #Security Updates for Microsoft Word Products (March 2020)
 137264, #Security Feature Bypass Vulnerability for Microsoft Excel Products (June 2020)
+141418, #Security Updates for Microsoft Office Products (October 2020)
+141428, #Security Updates for Outlook (October 2020)
+142685, #Security Updates for Microsoft Excel Products (November 2020)
+142689, #Security Updates for Microsoft Office Products (November 2020)
+143555, #Security Updates for Microsoft Office Products (December 2020)
+143564, #Security Updates for Microsoft Excel Products (December 2020)
+143567, #Security Updates for Microsoft PowerPoint Products (December 2020)
+144875, #Security Updates for Microsoft Word Products (January 2021)
+144885, #Security Updates for Microsoft Office Products (January 2021)
+147218, #Security Updates for Microsoft Office Products (March 2021)
 							]
 						}
 					end

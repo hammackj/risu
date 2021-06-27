@@ -41,7 +41,9 @@ module Risu
 								83526, #Apache Tomcat 7.0.x < 7.0.60 Multiple Vulnerabilities (FREAK)
 								70414, #Apache Tomcat / JBoss EJBInvokerServlet / JMXInvokerServlet Multiple Vulnerabilities
 								134862, #Apache Tomcat AJP Connector Request Injection (Ghostcat)
-								133845, #Apache Tomcat 7.0.x < 7.0.100 / 8.5.x < 8.5.51 / 9.0.x < 9.0.31 Multiple Vulnerabilities								
+								133845, #Apache Tomcat 7.0.x < 7.0.100 / 8.5.x < 8.5.51 / 9.0.x < 9.0.31 Multiple Vulnerabilities
+111066, #Apache Tomcat 7.0.41 < 7.0.90 Multiple Vulnerabilities
+
 							]
 						}
 					end
