@@ -43,7 +43,9 @@ module Risu
 								134862, #Apache Tomcat AJP Connector Request Injection (Ghostcat)
 								133845, #Apache Tomcat 7.0.x < 7.0.100 / 8.5.x < 8.5.51 / 9.0.x < 9.0.31 Multiple Vulnerabilities
 111066, #Apache Tomcat 7.0.41 < 7.0.90 Multiple Vulnerabilities
-
+141446, #Apache Tomcat 8.5.x < 8.5.58 / 9.0.x < 9.0.38 HTTP/2 Request Mix-Up
+144050, #Apache Tomcat 9.x < 9.0.40 Information Disclosure
+147164, #Apache Tomcat 9.0.0.M1 < 9.0.43 Multiple Vulnerabilities
 							]
 						}
 					end

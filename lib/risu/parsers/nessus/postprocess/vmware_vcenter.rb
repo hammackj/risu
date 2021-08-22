@@ -62,6 +62,8 @@ module Risu
 111760, #VMware vCenter Server 5.5.x / 6.0.x / 6.5.x / 6.7.x Speculative Execution Side Channel Vulnerability (Foreshadow) (VMSA-2018-0020)
 79864, #VMware vCenter Update Manager Multiple Java Vulnerabilities (VMSA-2014-0012)
 129503, #VMware vCenter Server 6.0 / 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2019-0013)
+149902, #VMware vCenter Server 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2021-0010)
+150163, #VMware vCenter Server Virtual SAN Health Check plug-in RCE (CVE-2021-21985) (direct check)
 
 
 							]
