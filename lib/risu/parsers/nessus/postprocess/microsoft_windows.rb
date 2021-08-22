@@ -1435,6 +1435,8 @@ module Risu
 146326, #KB4601315: Windows 10 Version 1909 February 2021 Security Update
 147220, #KB5000808: Windows 10 Version 1909 March 2021 Security Update
 149398, #KB5003173: Windows 10 20H1 / 20H2 May 2021 Security Update
+136946, #Windows 10 / Windows Server 2016 September 2017 Information Disclosure Vulnerability (CVE-2017- 8529)
+
 
 							]
 						}
