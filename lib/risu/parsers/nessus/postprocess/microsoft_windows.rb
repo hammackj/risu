@@ -1436,7 +1436,16 @@ module Risu
 147220, #KB5000808: Windows 10 Version 1909 March 2021 Security Update
 149398, #KB5003173: Windows 10 20H1 / 20H2 May 2021 Security Update
 136946, #Windows 10 / Windows Server 2016 September 2017 Information Disclosure Vulnerability (CVE-2017- 8529)
-
+151474, #KB5004948: Windows 10 1607 and Windows Server 2016 OOB Security Update RCE (July 2021)
+151592, #KB5004238: Windows 10 Version 1607 / Windows Server 2016 Security Update (July 2021)
+152434, #KB5005043: Windows 10 Version 1607 and Windows Server 2016 Security Update (August 2021)
+150367, #KB5003638: Windows 10 version 1607 / Windows Server 2016 Security Update (June 2021)
+149394, #KB5003209: Windows Server 2012 R2 Security Update (May 2021)
+151477, #KB5004958: Windows Server 2012 R2 OOB Security Update RCE (July 2021)
+151598, #KB5004298: Windows Server 2012 R2 Security Update (July 2021)
+152433, #KB5005106: Windows Server 2012 R2 Security Update (August 2021)
+151597, #Security Updates for Internet Explorer (July 2021)
+152587, #Security Updates for Internet Explorer (June 2021)
 
 							]
 						}

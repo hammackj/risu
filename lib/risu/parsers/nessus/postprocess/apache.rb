@@ -70,7 +70,17 @@ module Risu
 								101787, #Apache 2.2.x < 2.2.34 Multiple Vulnerabilities
 								68914, #Apache 2.0.x < 2.0.65 Multiple Vulnerabilities
 								123642, #Apache 2.4.x < 2.4.39 Multiple Vulnerabilities
-								139574, #Apache 2.4.x < 2.4.46 Multiple Vulnerabilities								
+								139574, #Apache 2.4.x < 2.4.46 Multiple Vulnerabilities
+150280, #Apache 2.4.x < 2.4.47 Multiple Vulnerabilities
+111788, #Apache 2.4.x < 2.4.34 Multiple Vulnerabilities
+117807, #Apache 2.4.x < 2.4.35 DoS
+121355, #Apache 2.4.x < 2.4.38 Multiple Vulnerabilities
+122060, #Apache 2.4.x < 2.4.33 Multiple Vulnerabilities
+128033, #Apache 2.4.x < 2.4.41 Multiple Vulnerabilities
+92320, #Apache 2.4.18 / 2.4.20 X.509 Certificate Authentication Bypass
+135290, #Apache 2.4.x < 2.4.42 Multiple Vulnerabilities
+150244, #Apache 2.4.x < 2.4.48 Vulnerability
+
 							]
 						}
 					end

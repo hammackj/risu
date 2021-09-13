@@ -93,6 +93,7 @@ module Risu
 144875, #Security Updates for Microsoft Word Products (January 2021)
 144885, #Security Updates for Microsoft Office Products (January 2021)
 147218, #Security Updates for Microsoft Office Products (March 2021)
+110496, #Security Updates for Microsoft Office Compatibility Products (June 2018)
 							]
 						}
 					end

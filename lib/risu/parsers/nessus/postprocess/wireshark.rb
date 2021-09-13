@@ -111,6 +111,17 @@ module Risu
 124165, #Wireshark 2.6.x < 2.6.8 Multiple Vulnerabilities
 125367, #Wireshark 2.6.x < 2.6.9 A Vulnerability
 126921, #Wireshark 2.6.x < 2.6.10 DoS Vulnerability
+134112, #Wireshark 3.2.x < 3.2.2 Multiple Vulnerabilities
+142421, #Wireshark 3.2.x < 3.2.8 Multiple Vulnerabilities
+139573, #Wireshark 3.2.x < 3.2.6 A Vulnerability
+140757, #Wireshark 3.2.x < 3.2.7 Multiple Vulnerabilities
+142678, #Wireshark 3.2.x < 3.2.8 Multiple Vulnerabilities
+147645, #Wireshark 3.2.x < 3.2.12 A Vulnerability
+148946, #Wireshark 3.2.x < 3.2.13 A Vulnerability
+136924, #Wireshark 3.2.x < 3.2.4 NFS Dissector DoS Vulnerability
+135857, #Wireshark 2.6.x < 2.6.16 / 3.0.x < 3.0.10 / 3.2.x < 3.2.3 BACapp Dissector DoS
+138087, #Wireshark 3.2.x < 3.2.5 A Vulnerability
+151643, #Wireshark 3.2.x < 3.2.15 A Vulnerability
 							]
 						}
 					end

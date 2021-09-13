@@ -46,6 +46,18 @@ module Risu
 141446, #Apache Tomcat 8.5.x < 8.5.58 / 9.0.x < 9.0.38 HTTP/2 Request Mix-Up
 144050, #Apache Tomcat 9.x < 9.0.40 Information Disclosure
 147164, #Apache Tomcat 9.0.0.M1 < 9.0.43 Multiple Vulnerabilities
+118036, #Apache Tomcat 8.5.x < 8.5.34 Open Redirect Weakness
+132413, #Apache Tomcat 8.5.0 < 8.5.49 Privilege Escalation
+132418, #Apache Tomcat 8.5.0 < 8.5.50 Privilege Escalation Vulnerability
+136807, #Apache Tomcat 8.5.x < 8.5.55 Remote Code Execution
+138097, #Apache Tomcat 8.5.0 < 8.5.56 DoS
+138574, #Apache Tomcat 8.5.0 < 8.5.57 Multiple Vulnerabilities
+144054, #Apache Tomcat 8.5.x < 8.5.60 Information Disclosure
+147019, #Apache Tomcat 8.5.0 < 8.5.63 Multiple Vulnerabilities
+152183, #Apache Tomcat 8.5.0 < 8.5.68 vulnerability
+126125, #Apache Tomcat 8.5.0 < 8.5.41 DoS
+
+
 							]
 						}
 					end

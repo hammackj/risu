@@ -34,13 +34,14 @@ module Risu
 							:plugin_name => "Missing the latest Serv-U Patches",
 							:item_name => "Update to the latest Serv-U",
 							:plugin_ids => [
-								36035,
-								41980,
-								48435,
-								69060,
-								71863,
-								72658,
-								76369,
+36035,
+41980,
+48435,
+69060,
+71863,
+72658,
+76369,
+151646, #Serv-U FTP Server <= 15.2.3 Hotfix 1 Memory Escape Vulnerability								
 
 							]
 						}
