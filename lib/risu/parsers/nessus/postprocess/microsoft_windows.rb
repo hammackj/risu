@@ -1446,6 +1446,38 @@ module Risu
 152433, #KB5005106: Windows Server 2012 R2 Security Update (August 2021)
 151597, #Security Updates for Internet Explorer (July 2021)
 152587, #Security Updates for Internet Explorer (June 2021)
+151476, #KB5004951: Windows Server 2008 R2 OOB Security Update RCE (July 2021) 
+151611, #KB5004307: Windows 7 and Windows Server 2008 R2 Security Update (July 2021) 
+152436, #KB5005089: Windows Server 2008 R2 Security Update (August 2021)
+153379, #KB5005615: Windows 7 and Windows Server 2008 R2 September 2021 Security Update
+154035, #KB5006728: Windows 7 and Windows Server 2008 R2 Security Update (October 2021)
+144952, #Microsoft Windows 10 Version 1903 Unsupported Version Detection
+154956, #Microsoft Windows Server Version 1809 Unsupported Version Detection
+154986, #KB5007186: Windows 10 Version 2004 Security Update (November 2021)
+154993, #KB5007206: Windows 10 Version 1809 and Windows Server 2019 Security Update (November 2021)
+154990, #KB5007192: Windows 10 Version 1607 and Windows Server 2016 Security Update (November 2021)
+154996, #KB5007255: Windows Server 2012 R2 Security Update (November 2021)
+152435, #KB5005030: Windows 10 Version 1809 and Windows Server 2019 Security Update (August 2021) 
+153373, #KB5005568: Windows 10 Version 1809 and Windows Server 2019 September 2021 Security Update 
+154026, #KB5006672: Windows 10 Version 1809 and Windows Server 2019 Security Update (October 2021)
+151588, #KB5004244: Windows 10 version 1809 / Windows Server 2019 Security Update (July 2021)
+137258, #KB4561616: Windows 10 Version 1607 and Windows Server 2016 June 2020 Security Update
+138458, #KB4565511: Windows 10 Version 1607 and Windows Server 2016 July 2020 Security Update
+139488, #KB4571694: Windows 10 Version 1607 and Windows Server 2016 August 2020 Security Update
+140417, #KB4577015: Windows 10 Version 1607 and Windows Server 2016 September 2020 Security Update
+141434, #KB4580346: Windows 10 Version 1607 and Windows Server 2016 October 2020 Security Update
+143569, #KB4593226: Windows 10 Version 1607 and Windows Server 2016 December 2020 Security Update 
+149390, #KB5003197: Windows 10 1607 / Windows Server 2016 Security Update (May 2021)
+153377, #KB5005573: Windows 10 Version 1607 and Windows Server 2016 September 2021 Security Update 
+154034, #KB5006669: Windows 10 Version 1607 and Windows Server 2016 Security Update (October 2021) 
+154040, #KB5006729: Windows Server 2012 R2 Security Update (October 2021)
+151473, #KB5004947: Windows 10 1809 and Windows Server 2019 OOB Security Update RCE (July 2021)
+154984, #KB5007233: Windows Server 2008 R2 Security Update (November 2021)
+140428, #Security Updates for Internet Explorer (September 2020)
+141503, #Security Updates for Microsoft .NET Framework (October 2020)
+145033, #Security Updates for Microsoft SQL Server (January 2021)
+151488, #Windows PrintNightmare Registry Exposure CVE-2021-34527 OOB Security Update RCE (July 2021)
+
 
 							]
 						}

@@ -50,6 +50,15 @@ module Risu
 								93382, #Cisco AnyConnect Secure Mobility Client 4.2.x < 4.2.5015.0 / 4.3.x < 4.3.2039.0 Privilege Escalation Vulnerability
 								71464, #Cisco AnyConnect Secure Mobility Client 2.x / 3.x < 3.0(629) ATL Buffer Overflow
 								95951, #Cisco AnyConnect Secure Mobility Client 3.1.x < 4.3.4019.0 / 4.4.x < 4.4.225.0 Privilege Escalation
+								100790, #Cisco AnyConnect Secure Mobility Client < 4.4.02034 Local Privilege Escalation
+								139411, #Cisco AnyConnect Secure Mobility Client for Windows Multiple Vulnerablities
+								144945, #Cisco AnyConnect Secure Mobility Client for Windows DLL Injection (cisco-sa-anyconnect-dll-injec- pQnryXLf)
+								149448, #Cisco AnyConnect Secure Mobility Client for Windows DLL and Executable Hijacking Vulnerabilities (cisco-sa-anyconnect-code-exec-jR3tWTA6)
+								110563, #Cisco AnyConnect Secure Mobility Client < 4.6.01098 Certificate Bypass Vulnerability
+								134164, #Cisco AnyConnect Secure Mobility Client for Windows Uncontrolled Search Path Vulnerability
+								148450, #Cisco AnyConnect Secure Mobility Client DoS (cisco-sa-anyconnect-dos-55AYyxYr)
+								150811, #Cisco AnyConnect Secure Mobility Client for Windows with VPN Posture (HostScan) Module DLL
+																								
 							]
 						}
 					end

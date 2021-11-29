@@ -80,6 +80,7 @@ module Risu
 92320, #Apache 2.4.18 / 2.4.20 X.509 Certificate Authentication Bypass
 135290, #Apache 2.4.x < 2.4.42 Multiple Vulnerabilities
 150244, #Apache 2.4.x < 2.4.48 Vulnerability
+153584, #Apache < 2.4.49 Multiple Vulnerabilities
 
 							]
 						}

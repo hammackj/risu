@@ -64,7 +64,13 @@ module Risu
 129503, #VMware vCenter Server 6.0 / 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2019-0013)
 149902, #VMware vCenter Server 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2021-0010)
 150163, #VMware vCenter Server Virtual SAN Health Check plug-in RCE (CVE-2021-21985) (direct check)
-
+146825, #VMware vCenter Server RCE (direct check)
+146826, #VMware vCenter Server 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2021-0002)
+153544, #VMware vCenter Server < 6.7 Multiple Vulnerabilities (VMSA-2021-0020)
+153889, #VMware vCenter Server Arbitrary File Upload (VMSA-2021-0020)
+135411, #VMware vCenter Server 6.7 Sensitive Information Disclosure Vulnerability (VMSA-2020-0006) 
+140040, #VMware vCenter Server 6.5 / 6.7 / 7.0 DoS (VMSA-2020-0018)
+150982, #VMware vCenter Server 6.5 / 6.7 Session Hijack (VMSA-2020-0023)
 
 							]
 						}
