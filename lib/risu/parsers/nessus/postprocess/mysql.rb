@@ -39,6 +39,9 @@ module Risu
 154259, #MySQL 5.7.x < 5.7.36 Multiple Vulnerabilities (Oct 2021 CPU)
 148936, #MySQL 5.7.x < 5.7.34 Multiple Vulnerabilities (Apr 2021 CPU)
 151969, #MySQL 5.7.x < 5.7.35 Multiple Vulnerabilities (Jul 2021 CPU)
+145247, #MySQL 5.7.x < 5.7.33 Multiple Vulnerabilities (Jan 2021 CPU)
+138561, #MySQL Denial of Service (Jul 2020 CPU)
+138570, #MySQL 5.7.x < 5.7.31 Multiple Vulnerabilities (Jul 2020 CPU)
 
 
 							]
