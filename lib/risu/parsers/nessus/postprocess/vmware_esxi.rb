@@ -100,6 +100,7 @@ module Risu
 143221, #ESXi 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2020-0026)
 138475, #ESXi 6.5 / 6.7 XSS (VMSA-2020-0008)
 140039, #ESXi 6.5 / 6.7 / 7.0 DoS (VMSA-2020-0018)
+158494, #ESXi 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2022-0004)
 
 							]
 						}

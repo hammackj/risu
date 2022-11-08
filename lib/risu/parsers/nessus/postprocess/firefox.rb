@@ -179,7 +179,17 @@ module Risu
 154819, #Mozilla Firefox < 94.0
 148014, #Mozilla Firefox < 87.0
 149281, #Mozilla Firefox < 88.0.1
-
+158654, #Mozilla Firefox < 97.0.2
+158694, #Mozilla Firefox < 98.0
+157443, #Mozilla Firefox < 97.0
+160465, #Mozilla Firefox < 100.0
+161415, #Mozilla Firefox < 100.0.2
+161716, #Mozilla Firefox < 101.0
+162602, #Mozilla Firefox < 102.0
+155917, #Mozilla Firefox < 95.0
+156606, #Mozilla Firefox < 96.0
+159530, #Mozilla Firefox < 99.0
+163497, #Mozilla Firefox < 103.0
 							]
 						}
 					end

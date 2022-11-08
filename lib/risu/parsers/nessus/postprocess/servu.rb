@@ -41,7 +41,8 @@ module Risu
 71863,
 72658,
 76369,
-151646, #Serv-U FTP Server <= 15.2.3 Hotfix 1 Memory Escape Vulnerability								
+151646, #Serv-U FTP Server <= 15.2.3 Hotfix 1 Memory Escape Vulnerability
+156886, #Serv-U FTP Server < 15.3 Improper Input Validation								
 
 							]
 						}

@@ -81,6 +81,13 @@ module Risu
 135290, #Apache 2.4.x < 2.4.42 Multiple Vulnerabilities
 150244, #Apache 2.4.x < 2.4.48 Vulnerability
 153584, #Apache < 2.4.49 Multiple Vulnerabilities
+156255, #Apache 2.4.x < 2.4.52 Multiple Vulnerabilities
+153583, #Apache < 2.4.49 Multiple Vulnerabilities
+153585, #Apache >= 2.4.17 < 2.4.49 mod_http2
+153586, #Apache >= 2.4.30 < 2.4.49 mod_proxy_uwsgi
+158900, #Apache 2.4.x < 2.4.53 Multiple Vulnerabilities
+161948, #Apache 2.4.x < 2.4.54 Multiple Vulnerabilities
+
 
 							]
 						}

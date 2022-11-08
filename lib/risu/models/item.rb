@@ -395,6 +395,10 @@ module Risu
 					host_percent = (hosts.to_f / Host.count.to_f) * 100
 				end
 
+				def calculate_overall_unique_host_count
+					hosts = Host.uniquie_hosts_with_critical_high_common_count
+				end
+
 				# @TODO w t f
 				# @deprecated
 				def calculate_vulnerable_host_percent_with_patches_applied

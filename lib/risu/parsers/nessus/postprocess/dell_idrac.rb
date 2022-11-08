@@ -39,6 +39,7 @@ module Risu
 119833, #Dell iDRAC Products Multiple Vulnerabilities (December 2018)
 90265, #Dell iDRAC6 / iDRAC7 / iDRAC8 Path Traversal Authentication Bypass
 135187, #Dell iDRAC Buffer Overflow Vulnerability (CVE-2020-5344)
+162428, #Dell EMC iDRAC8 < 2.83.83.83 / Dell EMC iDRAC9 < 5.10.30.00 (DSA-2022-154)
 
 
 							]

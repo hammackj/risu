@@ -122,6 +122,10 @@ module Risu
 135857, #Wireshark 2.6.x < 2.6.16 / 3.0.x < 3.0.10 / 3.2.x < 3.2.3 BACapp Dissector DoS
 138087, #Wireshark 3.2.x < 3.2.5 A Vulnerability
 151643, #Wireshark 3.2.x < 3.2.15 A Vulnerability
+158992, #Wireshark 3.6.x < 3.6.2 Multiple Vulnerabilities
+157893, #Wireshark 3.4.x < 3.4.12 A Vulnerability
+164838, #Wireshark 3.4.x < 3.4.16 A Vulnerability
+
 							]
 						}
 					end

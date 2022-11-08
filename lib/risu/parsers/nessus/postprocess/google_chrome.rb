@@ -182,7 +182,75 @@ module Risu
 148558, #Google Chrome < 90.0.4430.72 Multiple Vulnerabilities
 150430, #Google Chrome < 91.0.4472.101 Multiple Vulnerabilities
 154238, #Google Chrome < 95.0.4638.54 Multiple Vulnerabilities
-
+158500, #Google Chrome < 99.0.4844.51 Multiple Vulnerabilities
+158936, #Google Chrome < 99.0.4844.74 Multiple Vulnerabilities
+159304, #Google Chrome < 100.0.4896.60 Multiple Vulnerabilities
+159638, #Google Chrome < 100.0.4896.88 Multiple Vulnerabilities
+160217, #Google Chrome < 101.0.4951.41 Multiple Vulnerabilities
+160906, #Google Chrome < 101.0.4951.64 Multiple Vulnerabilities
+161477, #Google Chrome < 102.0.5005.61 Multiple Vulnerabilities
+161979, #Google Chrome < 102.0.5005.115 Multiple Vulnerabilities
+162422, #Google Chrome < 103.0.5060.53 Multiple Vulnerabilities
+162706, #Google Chrome < 103.0.5060.114 Multiple Vulnerabilities
+163273, #Google Chrome < 103.0.5060.134 Multiple Vulnerabilities
+163724, #Google Chrome < 104.0.5112.79 Multiple Vulnerabilities
+164155, #Google Chrome < 104.0.5112.101 Multiple Vulnerabilities
+164508, #Google Chrome < 105.0.5195.52 Multiple Vulnerabilities
+165068, #Google Chrome < 105.0.5195.125 Multiple Vulnerabilities
+165502, #Google Chrome < 106.0.5249.61 Multiple Vulnerabilities
+165590, #Google Chrome < 106.0.5249.91 Multiple Vulnerabilities
+139695, #Google Chrome < 84.0.4147.135 Vulnerability
+139794, #Google Chrome < 85.0.4183.83 Multiple Vulnerabilities
+142641, #Google Chrome < 86.0.4240.193 Vulnerability
+144781, #Google Chrome < 87.0.4280.141 Multiple Vulnerabilities
+159235, #Google Chrome < 99.0.4844.84 Vulnerability
+159494, #Google Chrome < 100.0.4896.75 Vulnerability
+159741, #Google Chrome < 100.0.4896.127 Vulnerability
+166045, #Google Chrome < 106.0.5249.119 Multiple Vulnerabilities
+146948, #Google Chrome < 89.0.4389.72 Multiple Vulnerabilities
+136743, #Google Chrome < 83.0.4103.61 Multiple Vulnerabilities
+137081, #Google Chrome < 83.0.4103.97 Multiple Vulnerabilities
+137635, #Google Chrome < 83.0.4103.106 Multiple Vulnerabilities
+137701, #Google Chrome < 83.0.4103.116 Vulnerability
+140406, #Google Chrome < 85.0.4183.102 Multiple Vulnerabilities
+140700, #Google Chrome < 85.0.4183.121 Multiple Vulnerabilities
+141194, #Google Chrome < 86.0.4240.75 Multiple Vulnerabilities
+141573, #Google Chrome < 86.0.4240.111 Multiple Vulnerabilities
+142209, #Google Chrome < 86.0.4240.183 Multiple Vulnerabilities
+142719, #Google Chrome < 86.0.4240.198 Multiple Vulnerabilities
+145071, #Google Chrome < 88.0.4324.96 Multiple Vulnerabilities
+146060, #Google Chrome < 88.0.4324.146 Multiple Vulnerabilities 
+146204, #Google Chrome < 88.0.4324.150 Vulnerability
+146544, #Google Chrome < 88.0.4324.182 Multiple Vulnerabilities 
+147754, #Google Chrome < 89.0.4389.90 Multiple Vulnerabilities 
+148243, #Google Chrome < 89.0.4389.114 Multiple Vulnerabilities 
+148487, #Google Chrome < 89.0.4389.128 Multiple Vulnerabilities 
+148848, #Google Chrome < 90.0.4430.85 Multiple Vulnerabilities 
+148996, #Google Chrome < 90.0.4430.93 Multiple Vulnerabilities 
+149412, #Google Chrome < 90.0.4430.212 Multiple Vulnerabilities 
+149900, #Google Chrome < 91.0.4472.77 Multiple Vulnerabilities 
+150854, #Google Chrome < 91.0.4472.114 Multiple Vulnerabilities 
+151672, #Google Chrome < 91.0.4472.164 Multiple Vulnerabilities 
+151831, #Google Chrome < 92.0.4515.107 Multiple Vulnerabilities 
+152189, #Google Chrome < 92.0.4515.131 Multiple Vulnerabilities 
+152609, #Google Chrome < 92.0.4515.159 Multiple Vulnerabilities 
+152928, #Google Chrome < 93.0.4577.63 Multiple Vulnerabilities 
+153255, #Google Chrome < 93.0.4577.82 Multiple Vulnerabilities 
+153515, #Google Chrome < 94.0.4606.54 Multiple Vulnerabilities 
+153630, #Google Chrome < 94.0.4606.61 Vulnerability
+153829, #Google Chrome < 94.0.4606.71 Multiple Vulnerabilities 
+153931, #Google Chrome < 94.0.4606.81 Multiple Vulnerabilities 
+154706, #Google Chrome < 95.0.4638.69 Multiple Vulnerabilities 
+155352, #Google Chrome < 96.0.4664.45 Multiple Vulnerabilities 
+155867, #Google Chrome < 96.0.4664.93 Multiple Vulnerabilities 
+156033, #Google Chrome < 96.0.4664.110 Multiple Vulnerabilities 
+156462, #Google Chrome < 97.0.4692.71 Multiple Vulnerabilities 
+156862, #Google Chrome < 97.0.4692.99 Multiple Vulnerabilities 
+157293, #Google Chrome < 98.0.4758.80 Multiple Vulnerabilities 
+158051, #Google Chrome < 98.0.4758.102 Multiple Vulnerabilities 
+164656, #Google Chrome < 105.0.5195.102 Vulnerability
+166631, #Google Chrome < 107.0.5304.87 Vulnerability
+166468, #Google Chrome < 107.0.5304.62 Multiple Vulnerabilities
 							]
 						}
 					end

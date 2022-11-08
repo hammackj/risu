@@ -71,6 +71,8 @@ module Risu
 135411, #VMware vCenter Server 6.7 Sensitive Information Disclosure Vulnerability (VMSA-2020-0006) 
 140040, #VMware vCenter Server 6.5 / 6.7 / 7.0 DoS (VMSA-2020-0018)
 150982, #VMware vCenter Server 6.5 / 6.7 Session Hijack (VMSA-2020-0023)
+155790, #VMware vCenter Server 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2021-0027)
+166101, #VMware vCenter Server 6.5 < 6.5 U3u RCE (VMSA-2022-0025)
 
 							]
 						}

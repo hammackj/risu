@@ -1477,8 +1477,81 @@ module Risu
 141503, #Security Updates for Microsoft .NET Framework (October 2020)
 145033, #Security Updates for Microsoft SQL Server (January 2021)
 151488, #Windows PrintNightmare Registry Exposure CVE-2021-34527 OOB Security Update RCE (July 2021)
-
-
+156063, #KB5008207: Windows 10 Version 1607 and Windows Server 2016 Security Update (December 2021)
+139490, #KB4571709: Windows 10 Version 1803 August 2020 Security Update
+140418, #KB4577032: Windows 10 Version 1803 September 2020 Security Update
+141422, #KB4580330: Windows 10 Version 1803 October 2020 Security Update
+142682, #KB4586785: Windows 10 Version 1803 November 2020 Security Update
+143571, #KB4592446: Windows 10 Version 1803 December 2020 Security Update
+144880, #KB4598245: Windows 10 Version 1803 January 2021 Security Update
+146339, #KB4601354: Windows 10 Version 1803 February 2021 Security Update
+147224, #KB5000809: Windows 10 Version 1803 March 2021 Security Update
+148468, #KB5001339: Windows 10 version 1803 Security Update (April 2021)
+149391, #KB5003174: Windows 10 version 1803 Security Update (May 2021)
+126631, #Security Updates for Microsoft SQL Server (July 2019)
+133719, #Security Updates for Microsoft SQL Server (February 2020)
+136564, #Security Updates for Microsoft .NET Framework (May 2020)
+138464, #Security Updates for Microsoft .NET Framework (July 2020)
+153382, #Microsoft Windows MPEG-2 Video Extension RCE (September 2021)
+158708, #Microsoft Windows HEIF Image Extensions RCE (March 2022)
+160319, #Microsoft Edge (Chromium) < 101.0.1210.32 Multiple Vulnerabilities
+111786, #Security Updates for Microsoft SQL Server 2016 and 2017 x64 (August 2018)
+160931, #KB5014001: Windows Server 2012 R2 Security Update (May 2022)
+162202, #KB5014746: Windows Server 2012 R2 Security Update (June 2022)
+158583, #Microsoft Edge (Chromium) < 99.0.1150.30 Multiple Vulnerabilities 
+159037, #Microsoft Edge (Chromium) < 99.0.1150.46 Multiple Vulnerabilities 
+159465, #Microsoft Edge (Chromium) < 100.0.1185.29 Multiple Vulnerabilities 
+159816, #Microsoft Edge (Chromium) < 100.0.1185.44 Multiple Vulnerabilities 
+161198, #Microsoft Edge (Chromium) < 101.0.1210.47 Multiple Vulnerabilities 
+161717, #Microsoft Edge (Chromium) < 102.0.1245.30 Multiple Vulnerabilities 
+161921, #Microsoft Windows 10 Version 20H2 Unsupported Version Detection 
+162168, #Microsoft Edge (Chromium) < 102.0.1245.41 Multiple Vulnerabilities
+157881, #Microsoft Edge (Chromium) < 98.0.1108.50 Vulnerability
+159239, #Microsoft Edge (Chromium) < 99.0.1150.55 Vulnerability
+159592, #Microsoft Edge (Chromium) < 100.0.1185.36 Vulnerability
+162624, #Microsoft Edge (Chromium) < 103.0.1264.44 Vulnerability
+161989, #Microsoft Edge (Chromium) < 102.0.1245.39 Vulnerability
+162503, #Microsoft Edge (Chromium) < 103.0.1264.37 Multiple Vulnerabilities
+162776, #Microsoft Edge (Chromium) < 103.0.1264.49 Vulnerability
+157369, #Microsoft Edge (Chromium) < 98.0.1108.43 Multiple Vulnerabilities
+158097, #Microsoft Edge (Chromium) < 98.0.1108.55 Multiple Vulnerabilities
+162196, #KB5014702: Windows 10 Version 1607 and Windows Server 2016 Security Update (June 2022)
+163052, #KB5015808: Windows 10 Version 1607 and Windows Server 2016 Security Update (July 2022)
+147223, #KB5000822: Windows 10 Version 1809 and Windows Server 2019 March 2021 Security Update 
+156619, #KB5009546: Windows 10 Version 1607 and Windows Server 2016 Security Update (January 2022) 
+156621, #KB5009557: Windows 10 Version 1809 and Windows Server 2019 Security Update (January 2022)
+159675, #KB5012647: Windows 10 version 1809 / Windows Server 2019 Security Update (April 2022)
+159677, #KB5012596: Windows 10 version 1607 / Windows Server 2016 Security Update (April 2022)
+162197, #KB5014692: Windows 10 version 1809 / Windows Server 2019 Security Update (June 2022)
+166025, #KB5018419: Windows 10 version 1809 / Windows Server 2019 Security Update (October 2022)
+166039, #KB5018411: Windows 10 Version 1607 and Windows Server 2016 Security Update (October 2022)
+143561, #KB4592440: Windows 10 Version 1809 and Windows Server 2019 December 2020 Security Update
+144887, #KB4598230: Windows 10 Version 1809 and Windows Server 2019 January 2021 Security Update 
+146337, #KB4601345: Windows 10 Version 1809 and Windows Server 2019 February 2021 Security Update
+148473, #KB5001342: Windows 10 version 1809 / Windows Server 2019 Security Update (Apr 2021)
+149382, #KB5003171: Windows 10 version 1809 / Windows Server 2019 Security Update (May 2021) 
+150374, #KB5003646: Windows 10 version 1809 / Windows Server 2019 Security Update (June 2021) 
+156071, #KB5008218: Windows 10 version 1809 / Windows Server 2019 Security Update (December 2021) 
+157432, #KB5010351: Windows 10 version 1809 / Windows Server 2019 Security Update (February 2022) 
+157436, #KB5010359: Windows 10 Version 1607 and Windows Server 2016 Security Update (February 2022) 
+158704, #KB5011495: Windows 10 Version 1607 and Windows Server 2016 Security Update (March 2022) 
+158712, #KB5011503: Windows 10 version 1809 / Windows Server 2019 Security Update (March 2022)
+160928, #KB5013941: Windows 10 version 1809 / Windows Server 2019 Security Update (May 2022) 
+160934, #KB5013952: Windows 10 Version 1607 and Windows Server 2016 Security Update (May 2022) 
+163046, #KB5015811: Windows 10 version 1809 / Windows Server 2019 Security Update (July 2022)
+163940, #KB5016622: Windows 10 Version 1607 and Windows Server 2016 Security Update (August 2022) 
+163946, #KB5016623: Windows 10 version 1809 / Windows Server 2019 Security Update (August 2022)
+164996, #KB5017305: Windows 10 Version 1607 and Windows Server 2016 Security Update (September 2022) 
+164997, #KB5017315: Windows 10 version 1809 / Windows Server 2019 Security Update (September 2022)
+166034, #KB5018410: Windows 10 Version 20H2 / 21H1 / 21H2 Security Update (October 2022)
+156073, #KB5008285: Windows Server 2012 R2 Security Update (December 2021)
+156624, #KB5009595: Windows Server 2012 R2 Security Updates (January 2022)
+157431, #KB5010395: Windows Server 2012 R2 Security Update (February 2022)
+158702, #KB5011560: Windows Server 2012 R2 Security Update (March 2022)
+163042, #KB5015877: Windows Server 2012 R2 Security Update (July 2022)
+153375, #KB5005627: Windows 8.1 and Windows Server 2012 R2 September 2021 Security Update
+166030, #KB5018476: Windows Server 2012 R2 Security Update (October 2022)
+159682, #KB5012670: Windows Server 2012 R2 Security Update (April 2022)
 							]
 						}
 					end

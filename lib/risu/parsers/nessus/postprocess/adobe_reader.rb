@@ -106,7 +106,8 @@ module Risu
 124008, #Adobe Reader <= 2015.006.30482 / 2017.011.30127 / 2019.010.20098 Multiple Vulnerabilities (APSB19- 17)
 118932, #Adobe Reader <= 15.006.30456 / 17.011.30105 / 19.008.20080 NTLM SSO Hash Theft (APSB18-40)
 142467, #Adobe Reader <= 2017.011.30175 / 2020.001.30005 / 2020.012.20048 Multiple Vulnerabilities (APSB20- 67)
-
+156668, #Adobe Reader < 17.011.30207 / 20.004.30020 / 21.011.20039 Multiple Vulnerabilities (APSB22-01)
+159657, #Adobe Reader < 17.012.30227 / 17.012.30229 / 20.005.30331 / 20.005.30331 / 20.005.30334 / 20.005.30334 / 22.001.20112 / 22.001.20117 Multiple Vulnerabilities (APSB22-16)
 							]
 						}
 					end
