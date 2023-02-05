@@ -95,6 +95,10 @@ module Risu
 102587, #Apache Tomcat 7.0.41 < 7.0.79 Cache Poisoning Vulnerability
 118035, #Apache Tomcat 7.0.0 < 7.0.91 Open Redirect Weakness
 121121, #Apache Tomcat 7.0.x < 7.0.88 Denial of Service
+124064, #Apache Tomcat 7.0.0 < 7.0.94 Remote Code Execution Vulnerability (Windows)
+166807, #Apache Tomcat 8.5.x < 8.5.83 Request Smuggling Vulnerability
+169458, #Apache Tomcat 8.5.0 < 8.5.84
+162502, #Apache Tomcat 8.5.50 < 8.5.82 vulnerability
 
 							]
 						}

@@ -40,16 +40,16 @@ Gem::Specification.new do |s|
 	s.require_paths = ["lib"]
 	s.extra_rdoc_files = ["README.markdown", "LICENSE", "docs/NEWS.markdown"]
 
-	s.cert_chain  = ['certs/hammackj.pem']
-	s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
+	#s.cert_chain  = ['certs/hammackj.pem']
+	#s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 
 	s.add_runtime_dependency 'rails', '~> 6.0', '>= 6.0.0'
 	s.add_runtime_dependency 'libxml-ruby', '~> 2.9', '>= 2.9.0'
 	s.add_runtime_dependency 'prawn', '~> 2.1', '>= 2.1.0'
 	s.add_runtime_dependency 'prawn-table', '~> 0.2', '>= 0.2.2'
-	s.add_runtime_dependency 'gruff', '~> 0.7', '>= 0.7.0'
+	s.add_runtime_dependency 'gruff', '~> 0.19', '>= 0.19.0'
 	#s.add_runtime_dependency 'mysql2', '~> 0.5', '>= 0.5.2'
-	s.add_runtime_dependency 'rmagick', '~> 4.1', '>= 4.1.2'
+	#s.add_runtime_dependency 'rmagick', '~> 4.1', '>= 4.1.2'
 	s.add_runtime_dependency 'sqlite3', '~> 1.3', '>= 1.3.11'
 	s.add_runtime_dependency 'nokogiri', '~> 1.7', '>= 1.7.0.1'
 

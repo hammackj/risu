@@ -287,7 +287,16 @@ module Risu
 						g.data(service.svc_name, Item.all.where(:svc_name => service.svc_name).count)
 					end
 
-					StringIO.new(g.to_blob)
+					image = g.to_image
+					image.format = 'png'
+			
+					#puts image.inspect
+					#puts image.methods
+			
+					image.write("risks_by_service_graph.png")
+			
+					return "risks_by_service_graph.png"
+					#StringIO.new(image.to_blob)
 				end
 
 				# Generates text for the Risks by Service graph
@@ -331,7 +340,16 @@ module Risu
 					g.data("Medium", medium)
 					g.data("Low", low)
 
-					StringIO.new(g.to_blob)
+					image = g.to_image
+					image.format = 'png'
+
+					#puts image.inspect
+					#puts image.methods
+
+					image.write("risks_by_severity_graph.png")
+
+					return "risks_by_severity_graph.png"
+					#StringIO.new(image.to_blob)
 				end
 
 				# Queries for all DISA Stig findings by category
@@ -369,7 +387,16 @@ module Risu
 					g.data("Cat II", ii)
 					g.data("Cat III", iii)
 
-					StringIO.new(g.to_blob)
+					image = g.to_image
+					image.format = 'png'
+			
+					#puts image.inspect
+					#puts image.methods
+			
+					image.write("stigs_severity.png")
+			
+					return "stigs_severity.png"
+					#StringIO.new(image.to_blob)
 				end
 
 				# Calculates a vulnerable host percent based on Critical and High findings

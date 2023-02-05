@@ -40,6 +40,15 @@ module Risu
 90265, #Dell iDRAC6 / iDRAC7 / iDRAC8 Path Traversal Authentication Bypass
 135187, #Dell iDRAC Buffer Overflow Vulnerability (CVE-2020-5344)
 162428, #Dell EMC iDRAC8 < 2.83.83.83 / Dell EMC iDRAC9 < 5.10.30.00 (DSA-2022-154)
+159643, #Dell EMC iDRAC8 < 2.83.83.83 (DSA-2022-069)
+161798, #Dell EMC iDRAC8 < 2.80.80.80 / Dell EMC iDRAC9 < 4.40.40.00 (DSA-2021-177)
+167508, #Dell EMC iDRAC8 < 2.84.84.84 (DSA-2022-265)
+167509, #Dell EMC iDRAC9 < 6.00.30.00 (DSA-2022-265)
+131730, #Dell iDRAC Improper Authorization (DSA-2019-137)
+139206, #Dell iDRAC9 Directory Traversal (DSA-2020-128)
+144756, #Dell iDRAC XSS (DSA-2020-268)
+148956, #Dell iDRAC Multiple Vulnerabilities (DSA-2021-073)
+161800, #Dell EMC iDRAC9 < 5.00.00.00 (DSA-2021-177)
 
 
 							]

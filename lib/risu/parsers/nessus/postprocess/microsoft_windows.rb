@@ -1552,6 +1552,33 @@ module Risu
 153375, #KB5005627: Windows 8.1 and Windows Server 2012 R2 September 2021 Security Update
 166030, #KB5018476: Windows Server 2012 R2 Security Update (October 2022)
 159682, #KB5012670: Windows Server 2012 R2 Security Update (April 2022)
+167112, #KB5019966: Windows 10 version 1809 / Windows Server 2019 Security Update (November 2022)
+167115, #KB5019959: Windows 10 Version 20H2 / 21H1 / 21H2 Security Update (November 2022)
+167109, #KB5020010: Windows Server 2012 R2 Security Update (November 2022)
+167111, #KB5019964: Windows 10 Version 1607 and Windows Server 2016 Security Update (November 2022)
+159672, #KB5012649: Windows 7 and Windows Server 2008 R2 Security Update (April 2022)
+163952, #KB5016679: Windows 7 and Windows Server 2008 R2 Security Update (August 2022)
+165002, #KB5017373: Windows Server 2008 R2 Security Update (September 2022)
+166024, #KB5018479: Windows Server 2008 R2 Security Update (October 2022)
+167103, #KB5020013: Windows Server 2008 R2 Security Update (November 2022)
+169779, #KB5022289: Windows 10 Version 1607 and Windows Server 2016 Security Update (January 2023)
+169781, #KB5022339: Windows Server 2008 R2 Security Update (January 2023)
+169788, #KB5022286: Windows 10 version 1809 / Windows Server 2019 Security Update (January 2023)
+156069, #KB5008282: Windows 7 and Windows Server 2008 R2 Security Update (December 2021) 
+156627, #KB5009621: Windows 7 and Windows Server 2008 R2 Security Update (January 2022) 
+157427, #KB5010422: Windows 7 and Windows Server 2008 R2 Security Update (February 2022) 
+158718, #KB5011529: Windows 7 and Windows Server 2008 R2 (March 2022) Security Update 
+160937, #KB5013999: Windows 7 and Windows Server 2008 R2 Security Update (May 2022) 
+162191, #KB5014742: Windows 7 and Windows Server 2008 R2 Security Update (June 2022) 
+163050, #KB5015862: Windows 7 and Windows Server 2008 R2 Security Update (July 2022)
+168681, #KB5021288: Windows Server 2008 R2 Security Update (December 2022)
+168693, #KB5021237: Windows 10 version 1809 / Windows Server 2019 Security Update (December 2022)
+169775, #Security Updates for Microsoft .NET Core (January 2023)
+147228, #Security Updates for Internet Explorer (March 2021)
+152432, #Security Updates for Internet Explorer (August 2021)
+153374, #Security Updates for Internet Explorer (September 2021)
+154032, #Security Updates for Internet Explorer (October 2021)
+
 							]
 						}
 					end

@@ -428,7 +428,16 @@ module Risu
 						end
 					end
 
-					StringIO.new(g.to_blob)
+					image = g.to_image
+					image.format = 'png'
+			
+					#puts image.inspect
+					#puts image.methods
+			
+					image.write("top_vuln_graph.png")
+			
+					return "top_vuln_graph.png"
+					#StringIO.new(image.to_blob)
 				end
 
 				# @deprecated
@@ -522,7 +531,16 @@ module Risu
 					# g.data(host.os, Host.where(:os => host.os).size) unless host.os == nil
 					#end
 
-					StringIO.new(g.to_blob)
+					image = g.to_image
+					image.format = 'png'
+			
+					#puts image.inspect
+					#puts image.methods
+			
+					image.write("other_os_graph.png")
+			
+					return "other_os_graph.png"
+					#StringIO.new(image.to_blob)
 				end
 
 				# Graphs the percentage of Windows Operating Systems
@@ -563,7 +581,16 @@ module Risu
 					g.data("10", w10) if w10 >= 1
 					g.data("Other Windows", other) if other >= 1
 
-					StringIO.new(g.to_blob)
+					image = g.to_image
+					image.format = 'png'
+			
+					#puts image.inspect
+					#puts image.methods
+			
+					image.write("windows_os_graph.png")
+			
+					return "windows_os_graph.png"
+					#StringIO.new(image.to_blob)
 				end
 
 				# @deprecated

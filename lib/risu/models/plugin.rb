@@ -124,7 +124,16 @@ module Risu
 						g.data(plugin_name, Item.where(:plugin_id => plugin.plugin_id).count)
 					end
 
-					StringIO.new(g.to_blob)
+					image = g.to_image
+					image.format = 'png'
+			
+					#puts image.inspect
+					#puts image.methods
+			
+					image.write("top_by_count_graph.png")
+			
+					return "top_by_count_graph.png"
+					#StringIO.new(image.to_blob)
 				end
 
 				def root_cause_graph
@@ -141,7 +150,16 @@ module Risu
 					g.data('Vendor Support', Plugin.where(:root_cause => 'Vendor Support').count)
 					g.data('Configuration', Plugin.where(:root_cause => 'Configuration').count)
 
-					StringIO.new(g.to_blob)
+					image = g.to_image
+					image.format = 'png'
+			
+					#puts image.inspect
+					#puts image.methods
+			
+					image.write("root_cause_graph.png")
+			
+					return "root_cause_graph.png"
+					#StringIO.new(image.to_blob)
 				end
 
 				def root_cause_graph_text

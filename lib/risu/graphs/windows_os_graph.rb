@@ -57,7 +57,16 @@ module Risu
         g.data("8", w8) if w8 >= 1
         g.data("Other Windows", other) if other >= 1
 
-        StringIO.new(g.to_blob)
+        image = g.to_image
+        image.format = 'png'
+
+        #puts image.inspect
+        #puts image.methods
+
+        image.write("TopVulnGraph.png")
+
+        return "TopVulnGraph.png"
+        #StringIO.new(image.to_blob)
       end
 
       def text

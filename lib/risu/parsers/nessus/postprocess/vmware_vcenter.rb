@@ -73,6 +73,7 @@ module Risu
 150982, #VMware vCenter Server 6.5 / 6.7 Session Hijack (VMSA-2020-0023)
 155790, #VMware vCenter Server 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2021-0027)
 166101, #VMware vCenter Server 6.5 < 6.5 U3u RCE (VMSA-2022-0025)
+163100, #VMware vCenter Server 6.5 / 6.7 / 7.0 SSRF (VMSA-2022-0018)
 
 							]
 						}

@@ -87,7 +87,7 @@ module Risu
 153586, #Apache >= 2.4.30 < 2.4.49 mod_proxy_uwsgi
 158900, #Apache 2.4.x < 2.4.53 Multiple Vulnerabilities
 161948, #Apache 2.4.x < 2.4.54 Multiple Vulnerabilities
-
+161454, #Apache 2.4.x < 2.4.52 mod_lua Buffer Overflow
 
 							]
 						}
