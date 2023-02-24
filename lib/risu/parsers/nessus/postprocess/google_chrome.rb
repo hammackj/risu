@@ -252,6 +252,7 @@ module Risu
 166631, #Google Chrome < 107.0.5304.87 Vulnerability
 166468, #Google Chrome < 107.0.5304.62 Multiple Vulnerabilities
 167101, #Google Chrome < 107.0.5304.110 Multiple Vulnerabilities
+171321, #Google Chrome < 110.0.5481.77 Multiple Vulnerabilities
 
 							]
 						}

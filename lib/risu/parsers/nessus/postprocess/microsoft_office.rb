@@ -147,6 +147,8 @@ module Risu
 159683, #Security Updates for Microsoft Office Products (April 2022)
 111756, #Security Updates for Outlook (August 2018)
 142688, #Security Updates for Microsoft Word Products (November 2020)
+171554, #Security Updates for Microsoft Word Products C2R (February 2023)
+171556, #Security Updates for Microsoft Publisher Products C2R (February 2023)
 							]
 						}
 					end

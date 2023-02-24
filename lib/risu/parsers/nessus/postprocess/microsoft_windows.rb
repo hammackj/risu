@@ -1578,7 +1578,13 @@ module Risu
 152432, #Security Updates for Internet Explorer (August 2021)
 153374, #Security Updates for Internet Explorer (September 2021)
 154032, #Security Updates for Internet Explorer (October 2021)
-
+171441, #KB5022840: Windows 10 version 1809 / Windows Server 2019 Security Update (February 2023) 
+171448, #KB5022838: Windows 10 Version 1607 and Windows Server 2016 Security Update (February 2023)
+171598, #Security Updates for Microsoft .NET Framework (February 2023)
+171268, #Microsoft Edge (Chromium) < 110.0.1587.41 Multiple Vulnerabilities
+168747, #Security Updates for Microsoft .NET Core (December 2022)
+171545, #Security Updates for Microsoft .NET core (February 2023)
+171604, #Security Updates for Microsoft SQL Server (February 2023)
 							]
 						}
 					end
