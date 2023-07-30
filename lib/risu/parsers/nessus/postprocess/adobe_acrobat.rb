@@ -80,6 +80,9 @@ module Risu
 								99373, #Adobe Acrobat < 11.0.20 / 2015.006.30306 / 2017.009.20044 Multiple Vulnerabilities (APSB17-11)
 								94071, #Adobe Acrobat < 11.0.18 / 15.006.30243 / 15.020.20039 Multiple Vulnerabilities (APSB16-33)
 								102427, #Adobe Acrobat < 11.0.21 / 2015.006.30355 / 2017.011.30066 / 2017.012.20098 Multiple Vulnerabilities (APSB17-24)
+								169877, #Adobe Acrobat < 20.005.30436 / 22.003.20310 Multiple Vulnerabilities (APSB23-01)
+								174136, #Adobe Acrobat < 20.005.30467 / 23.001.20143 Multiple Vulnerabilities (APSB23-24)
+																
 							]
 						}
 					end

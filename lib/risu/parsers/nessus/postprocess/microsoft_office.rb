@@ -149,6 +149,27 @@ module Risu
 142688, #Security Updates for Microsoft Word Products (November 2020)
 171554, #Security Updates for Microsoft Word Products C2R (February 2023)
 171556, #Security Updates for Microsoft Publisher Products C2R (February 2023)
+172527, #Security Updates for Outlook (March 2023)
+177245, #Security Updates for Outlook (June 2023)
+178162, #Security Updates for Microsoft Word Products (July 2023)
+178165, #Security Updates for Outlook (July 2023)
+163950, #Security Updates for Microsoft Office Products (August 2022)
+172522, #Security Updates for Microsoft Excel Products (March 2023)
+172537, #Security Updates for Microsoft Office Products (March 2023)
+174114, #Security Updates for Microsoft Publisher Products (April 2023)
+160940, #Security Updates for Microsoft Excel Products (May 2022) 
+163944, #Security Updates for Outlook (August 2022)
+164993, #Security Updates for Microsoft Office Products (September 2022)
+166037, #Security Updates for Microsoft Office Products (October 2022)
+167108, #Security Updates for Microsoft Excel Products (November 2022)
+167110, #Security Updates for Microsoft Word Products (November 2022)
+177248, #Security Updates for Microsoft Excel Products (June 2023)
+178169, #Security Updates for Microsoft Office Products (July 2023)
+175337, #Security Updates for Microsoft Excel Products (May 2023)
+175346, #Security Updates for Microsoft Word Products (May 2023)
+175408, #Microsoft Teams < 1.6.0.11166 Information Disclosure
+171449, #Security Updates for Microsoft Word Products (February 2023)
+
 							]
 						}
 					end

@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
 	s.add_runtime_dependency 'prawn-table', '~> 0.2', '>= 0.2.2'
 	s.add_runtime_dependency 'gruff', '~> 0.19', '>= 0.19.0'
 	#s.add_runtime_dependency 'mysql2', '~> 0.5', '>= 0.5.2'
-	#s.add_runtime_dependency 'rmagick', '~> 4.1', '>= 4.1.2'
+	s.add_runtime_dependency 'rmagick', '~> 5.2', '>= 5.2.0'
 	s.add_runtime_dependency 'sqlite3', '~> 1.3', '>= 1.3.11'
 	s.add_runtime_dependency 'nokogiri', '~> 1.7', '>= 1.7.0.1'
 

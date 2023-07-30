@@ -125,6 +125,11 @@ module Risu
 158992, #Wireshark 3.6.x < 3.6.2 Multiple Vulnerabilities
 157893, #Wireshark 3.4.x < 3.4.12 A Vulnerability
 164838, #Wireshark 3.4.x < 3.4.16 A Vulnerability
+174236, #Wireshark 3.6.x < 3.6.13 Multiple Vulnerabilities
+178197, #Wireshark 3.6.x < 3.6.15 A Vulnerability
+176368, #Wireshark 3.6.x < 3.6.14 Multiple Vulnerabilities
+166608, #Wireshark 3.6.x < 3.6.9 Multiple Vulnerabilities
+170172, #Wireshark 3.6.x < 3.6.11 Multiple Vulnerabilities
 
 							]
 						}

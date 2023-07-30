@@ -31,7 +31,7 @@ module Risu
 				{
 					:name => "rollup_summary",
 					:author => "hammackj",
-					:version => "0.0.1",
+					:version => "0.0.2",
 					:renderer => "PDF",
 					:description => "Generates a Findings Summary with Nessus Plugin ID"
 				}

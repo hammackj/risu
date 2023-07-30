@@ -89,6 +89,8 @@ module Risu
 161948, #Apache 2.4.x < 2.4.54 Multiple Vulnerabilities
 161454, #Apache 2.4.x < 2.4.52 mod_lua Buffer Overflow
 170113, #Apache 2.4.x < 2.4.55 Multiple Vulnerabilities
+172186, #Apache 2.4.x < 2.4.56 Multiple Vulnerabilities
+
 
 							]
 						}

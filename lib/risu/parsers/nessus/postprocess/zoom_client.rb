@@ -35,6 +35,16 @@ module Risu
 							:item_name => "Update to the latest Zoom Client for Meetings",
 							:plugin_ids => [
 								135188, #Zoom Client for Meetings < 4.6.19253.0401 Multiple Vulnerabilities
+								168792, #Zoom Client for Meetings < 5.12.2 Vulnerability (ZSB-22024)
+168821, #Zoom Client for Meetings < 5.3.0 Vulnerability (ZSB-21003)
+177219, #Zoom Client for Meetings < 5.14.0 Vulnerability (ZSB-23013)
+177223, #Zoom Client for Meetings < 5.14.0 Vulnerability (ZSB-23015)
+168797, #Zoom Client for Meetings < 5.8.4 Vulnerability (ZSB-21019)
+168807, #Zoom Client for Meetings < 5.6.3 Vulnerability (ZSB-22002)
+168816, #Zoom Client for Meetings < 5.6.3 Vulnerability (ZSB-21002)
+174469, #Zoom Client for Meetings < 5.13.3 Vulnerability / Zoom VDI < 5.13.1 Information Disclosure (ZSB-23001)
+158168, #Zoom Client < 5.8.4 Multiple Vulnerabilities
+
 							]
 						}
 					end
