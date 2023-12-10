@@ -39,6 +39,7 @@ module Risu
 								78078, #WinSCP 5.x < 5.5.5 Multiple Vulnerabilities
 								72388, #WinSCP < 5.1.6 RSA Signature Blob Integer Overflow
 								72389, #WinSCP < 5.1.7 Multiple Vulnerabilities
+								177397, #CRITICAL, WinSCP < 5.17.10 RCE
 
 
 							]
