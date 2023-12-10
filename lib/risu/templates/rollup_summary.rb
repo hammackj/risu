@@ -49,14 +49,14 @@ module Risu
 
 			# TODO doc
 			#
-			def print_risk_summary_with_plugin_id risks, text, color
+			def print_risk_summary_with_plugin_id risks, text, color, severity
 				print_risk_title(text, color) if risks.length != 0
 
 				risks.each do |item|
 					name = Plugin.find_by_id(item.plugin_id).plugin_name
 					#count = Item.where(:plugin_id => item.plugin_id).count
 					
-					text "#{item.plugin_id}, ##{name}"
+					text "#{item.plugin_id}, ##{severity}, #{name}"
 				end
 			end
 
@@ -71,11 +71,11 @@ module Risu
 				report_author "This report was prepared by\n#{Report.author}"
 				text "\n\n\n"
 
-				print_risk_summary_with_plugin_id(Item.critical_risks_unique_sorted, "Critical Findings", Risu::GRAPH_COLORS[0])
-				print_risk_summary_with_plugin_id(Item.high_risks_unique_sorted, "High Findings", Risu::GRAPH_COLORS[1])
-				print_risk_summary_with_plugin_id(Item.medium_risks_unique_sorted, "Medium Findings", Risu::GRAPH_COLORS[2])
-				print_risk_summary_with_plugin_id(Item.low_risks_unique_sorted, "Low Findings", Risu::GRAPH_COLORS[3])
-				print_risk_summary_with_plugin_id(Item.info_risks_unique_sorted, "Informational Findings", Risu::GRAPH_COLORS[4])
+				print_risk_summary_with_plugin_id(Item.critical_risks_unique_sorted, "Critical Findings", Risu::GRAPH_COLORS[0], "CRITICAL")
+				print_risk_summary_with_plugin_id(Item.high_risks_unique_sorted, "High Findings", Risu::GRAPH_COLORS[1], "HIGH")
+				print_risk_summary_with_plugin_id(Item.medium_risks_unique_sorted, "Medium Findings", Risu::GRAPH_COLORS[2], "MEDIUM")
+				print_risk_summary_with_plugin_id(Item.low_risks_unique_sorted, "Low Findings", Risu::GRAPH_COLORS[3], "LOW")
+				print_risk_summary_with_plugin_id(Item.info_risks_unique_sorted, "Informational Findings", Risu::GRAPH_COLORS[4], "INFO")
 			end
 		end
 	end
