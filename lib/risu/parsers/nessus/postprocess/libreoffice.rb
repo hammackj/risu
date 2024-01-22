@@ -50,6 +50,8 @@ module Risu
 122857, #LibreOffice < 5.4.7 or 6.x < 6.0.4 Information Disclosure
 125223, #LibreOffice < 6.1.6, 6.2.x < 6.2.3 Hyperlink Processing Vulnerability (Windows) 
 133471, #LibreOffice 6.2.6 / 6.3.1 Security Control Bypass (Windows)
+163762, #LibreOffice < 7.2.7 / 7.3.2 Improper Certificate Validation (Windows)
+163764, #LibreOffice < 7.2.7 / 7.3 < 7.3.3 Multiple Vulnerabilities (Windows)
 
 
 							]

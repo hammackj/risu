@@ -74,6 +74,9 @@ module Risu
 155790, #VMware vCenter Server 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2021-0027)
 166101, #VMware vCenter Server 6.5 < 6.5 U3u RCE (VMSA-2022-0025)
 163100, #VMware vCenter Server 6.5 / 6.7 / 7.0 SSRF (VMSA-2022-0018)
+168746, #VMware vCenter Server 6.5 < 6.5 U3u / 6.7 < 6.7.0 U3s / 7.0 < 7.0 U3i Multiple Vulnerabilities (VMSA- 2022-0030)
+183957, #VMware vCenter Server 6.5 < 6.5U3v / 6.7 < 6.7U3t / 7.0 < 7.0U3o / 8.0 < 8.0U1d Out-of-bounds Write (VMSA-2023-0023)
+183958, #VMware vCenter Server 7.0 < 7.0U3o / 8.0 < 8.0U2 Partial Information Disclosure (VMSA-2023-0023)
 
 							]
 						}

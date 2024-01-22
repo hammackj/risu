@@ -142,7 +142,13 @@ module Risu
 124764, #PHP 7.3.x < 7.3.5 Heap-based Buffer Overflow Vulnerability.
 142591, #PHP < 7.3.24 Multiple Vulnerabilities
 25368, #PHP < 5.2.3 Multiple Vulnerabilities
-25971, #PHP < 5.2.4 Multiple Vulnerabilities			
+25971, #PHP < 5.2.4 Multiple Vulnerabilities
+154349, #PHP 7.4.x < 7.4.25
+155589, #PHP 7.4.x < 7.4.26
+158133, #PHP 7.4.x < 7.4.28
+161971, #PHP 7.4.x < 7.4.30 Multiple Vulnerabilities
+166901, #PHP 7.4.x < 7.4.33 Multiple Vulnerabilities
+165545, #PHP 7.4.x < 7.4.32 Multiple Vulnerabilities		
 							]
 						}
 					end

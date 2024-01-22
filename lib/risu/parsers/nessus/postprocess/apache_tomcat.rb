@@ -99,7 +99,17 @@ module Risu
 166807, #Apache Tomcat 8.5.x < 8.5.83 Request Smuggling Vulnerability
 169458, #Apache Tomcat 8.5.0 < 8.5.84
 162502, #Apache Tomcat 8.5.50 < 8.5.82 vulnerability
-
+166906, #Apache Tomcat 9.0.0-M1 < 9.0.68 Request Smuggling Vulnerability 
+171657, #Apache Tomcat 9.0.0.M1 < 9.0.71
+173251, #Apache Tomcat 9.0.0.M1 < 9.0.72
+180194, #Apache Tomcat 9.0.0.M1 < 9.0.80
+159464, #Apache Tomcat 9.0.0.M1 < 9.0.62 Spring4Shell (CVE-2022-22965) Mitigations
+171351, #Apache Tomcat SEoL (7.0.x)
+74247, #Apache Tomcat 7.0.x < 7.0.54 XML Parser Information Disclosure
+83490, #Apache Tomcat 6.0.x < 6.0.44 Multiple Vulnerabilities
+72690, #Apache Tomcat 6.0.x < 6.0.39 Multiple Vulnerabilities
+74245, #Apache Tomcat 6.0.x < 6.0.40 Multiple Vulnerabilities
+81579, #Apache Tomcat 6.0.x < 6.0.42 Handling Request Smuggling DoS
 							]
 						}
 					end

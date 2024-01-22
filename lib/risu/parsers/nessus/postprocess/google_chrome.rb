@@ -272,6 +272,24 @@ module Risu
 176675, #Google Chrome < 114.0.5735.110 Vulnerability
 177227, #Google Chrome < 114.0.5735.133 Multiple Vulnerabilities 
 177635, #Google Chrome < 114.0.5735.198 Multiple Vulnerabilities
+178447, #Google Chrome < 115.0.5790.98 Multiple Vulnerabilities
+179224, #Google Chrome < 115.0.5790.170 Multiple Vulnerabilities
+179837, #Google Chrome < 116.0.5845.96 Multiple Vulnerabilities
+180163, #Google Chrome < 116.0.5845.110 Multiple Vulnerabilities
+180250, #Google Chrome < 116.0.5845.140 Vulnerability
+180508, #Google Chrome < 116.0.5845.179 Multiple Vulnerabilities
+181235, #Google Chrome < 116.0.5845.187 Vulnerability
+181291, #Google Chrome < 117.0.5938.62 Multiple Vulnerabilities
+182072, #Google Chrome < 117.0.5938.132 Multiple Vulnerabilities
+182442, #Google Chrome < 117.0.5938.149 Vulnerability
+182850, #Google Chrome < 118.0.5993.70 Multiple Vulnerabilities
+183806, #Google Chrome < 118.0.5993.117 Vulnerability
+184083, #Google Chrome < 119.0.6045.105 Multiple Vulnerabilities
+185349, #Google Chrome < 119.0.6045.123 Vulnerability
+185587, #KB5032250: Windows Server 2008 R2 Security Update (November 2023)
+186362, #Google Chrome < 119.0.6045.199 Multiple Vulnerabilities
+185605, #Google Chrome < 119.0.6045.159 Multiple Vulnerabilities
+183246, #Google Chrome < 118.0.5993.88 Vulnerability
 							]
 						}
 					end

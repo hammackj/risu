@@ -116,6 +116,7 @@ module Risu
 163304, #Oracle Java SE Multiple Vulnerabilities (July 2022 CPU)
 170161, #Oracle Java SE Multiple Vulnerabilities (January 2023 CPU)
 174511, #Oracle Java SE Multiple Vulnerabilities (April 2023 CPU)
+178485, #Oracle Java SE Multiple Vulnerabilities (July 2023 CPU)
 
 							]
 						}

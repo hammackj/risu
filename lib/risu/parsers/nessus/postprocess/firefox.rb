@@ -203,6 +203,14 @@ module Risu
 171454, #Mozilla Firefox < 110.0
 172515, #Mozilla Firefox < 111.0
 178147, #Mozilla Firefox < 115.0.2
+180232, #Mozilla Firefox < 117.0
+181349, #Mozilla Firefox < 117.0.1
+181875, #Mozilla Firefox < 118.0
+182134, #Mozilla Firefox < 118.0.1
+179143, #Mozilla Firefox < 116.0
+186186, #Mozilla Firefox ESR < 115.5.0
+183784, #Mozilla Firefox ESR < 115.4
+
 							]
 						}
 					end

@@ -39,6 +39,7 @@ module Risu
 97435, #PostgreSQL 9.2.x < 9.2.20 / 9.3.x < 9.3.16 / 9.4.x < 9.4.11 / 9.5.x < 9.5.6 / 9.6.x < 9.6.2 Multiple Vulnerabilities
 125264, #PostgreSQL 9.4.x < 9.4.22 / 9.5.x < 9.5.17 / 9.6.x < 9.6.13 / 10.x < 10.8 / 11.x < 11.3 Multiple vulnerabilities
 110288, #PostgreSQL 9.3 < 9.3.23 / 9.4 < 9.4.18 / 9.5 < 9.5.13 / 9.6 < 9.6.9 / 10.3 Insecure ACL Remote Issue
+144060, #PostgreSQL 9.5.x < 9.5.24 / 9.6.x < 9.6.20 / 10.x < 10.15 / 11.x < 11.10 / 12.x < 12.5 / 13.x < 13.1 Multiple Vulnerabilities
 							]
 						}
 					end

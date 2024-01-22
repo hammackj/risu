@@ -37,6 +37,9 @@ module Risu
 156002, #Apache Log4j < 2.15.0 Remote Code Execution (Windows)
 156327, #Apache Log4j 2.0 < 2.3.2 / 2.4 < 2.12.4 / 2.13 < 2.17.1 RCE
 156860, #Apache Log4j 1.x Multiple Vulnerabilities
+156057, #Apache Log4j 2.x < 2.16.0 RCE
+156183, #Apache Log4j 2.x < 2.17.0 DoS
+156103, #Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)
 
 							]
 						}

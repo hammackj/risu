@@ -314,6 +314,8 @@ module Risu
 							100767 => "Vendor Patch",
 							101371 => "Vendor Patch",
 							99523 => "Vendor Patch",
+							175373 => "Vendor Patch", #Microsoft Message Queuing RCE (CVE-2023-21554, QueueJumper) - 
+							-99946 => "Vendor Patch", #Missing the latest Microsoft Office Patches 
 
 							33850 => "Vendor Support",
 							34460 => "Vendor Support",
@@ -349,7 +351,10 @@ module Risu
 							11057 => "Vendor Support",
 							21725 => "Vendor Support",
 							97994 => "Vendor Support",
-							78555 => "Vendor Support", #OpenSSL Unsupported - 
+							78555 => "Vendor Support", # OpenSSL Unsupported - 
+							56997 => "Vendor Support", # VMware ESX / ESXi Unsupported Version Detection - 
+							108797 => "Vendor Support", # Unsupported Windows OS (remote)
+							73756 => "Vendor Support", # Microsoft SQL Server Unsupported Version Detection
 
 							49071 => "Configuration",
 							19948 => "Configuration",

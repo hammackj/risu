@@ -104,6 +104,10 @@ module Risu
 99131, #ESXi 6.5 < Build 5224529 Multiple Vulnerabilities (VMSA-2017-0006)
 103376, #ESXi 6.5 < Build 5969300 Multiple Vulnerabilities (VMSA-2017-0015)
 168828, #ESXi 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2022-0030)
+176249, #ESXi < 7.0 Reflected Denial of Service
+146827, #ESXi 6.5 / 6.7 / 7.0 RCE (VMSA-2021-0002)
+151665, #ESXi 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2021-0014)
+
 							]
 						}
 					end
