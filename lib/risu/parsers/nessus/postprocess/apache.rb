@@ -91,6 +91,8 @@ module Risu
 170113, #Apache 2.4.x < 2.4.55 Multiple Vulnerabilities
 172186, #Apache 2.4.x < 2.4.56 Multiple Vulnerabilities
 183391, #Apache 2.4.x < 2.4.58 Multiple Vulnerabilities
+192923, #HIGH, Apache 2.4.x < 2.4.59 Multiple Vulnerabilities
+
 
 							]
 						}

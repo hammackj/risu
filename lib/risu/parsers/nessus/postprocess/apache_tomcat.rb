@@ -110,6 +110,14 @@ module Risu
 72690, #Apache Tomcat 6.0.x < 6.0.39 Multiple Vulnerabilities
 74245, #Apache Tomcat 6.0.x < 6.0.40 Multiple Vulnerabilities
 81579, #Apache Tomcat 6.0.x < 6.0.42 Handling Request Smuggling DoS
+171656, #HIGH, Apache Tomcat 8.5.0 < 8.5.85
+186364, #HIGH, Apache Tomcat 8.5.0 < 8.5.96
+173256, #MEDIUM, Apache Tomcat 8.5.0 < 8.5.86
+180192, #MEDIUM, Apache Tomcat 8.5.0 < 8.5.93
+182811, #MEDIUM, Apache Tomcat 8.5.0 < 8.5.94 multiple vulnerabilities
+197843, #HIGH, Apache Tomcat 7.0.0 < 7.0.100 multiple vulnerabilities
+197848, #HIGH, Apache Tomcat 7.0.0 < 7.0.73 multiple vulnerabilities
+
 							]
 						}
 					end

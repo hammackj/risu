@@ -59,9 +59,10 @@ module Risu
 								11712,
 								44072,
 								10802,
-
-
-
+								90022, #HIGH, OpenSSH < 7.2 Untrusted X11 Forwarding Fallback Security Bypass
+								93194, #HIGH, OpenSSH < 7.3 Multiple Vulnerabilities
+								96151, #HIGH, OpenSSH < 7.4 Multiple Vulnerabilities
+								201194, #HIGH, OpenSSH < 9.8 RCE
 
 
 							]

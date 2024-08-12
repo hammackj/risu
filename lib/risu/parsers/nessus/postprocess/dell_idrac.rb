@@ -49,7 +49,10 @@ module Risu
 144756, #Dell iDRAC XSS (DSA-2020-268)
 148956, #Dell iDRAC Multiple Vulnerabilities (DSA-2021-073)
 161800, #Dell EMC iDRAC9 < 5.00.00.00 (DSA-2021-177)
-
+70411, #MEDIUM, Dell iDRAC6 / iDRAC7 Login Page 'ErrorMsg' Parameter XSS
+80442, #MEDIUM, Dell iDRAC Products IPMI Arbitrary Command Injection Vulnerability
+193888, #HIGH, Dell EMC iDRAC8 < 2.85.85.85 (DSA-2024-089)
+202259, #MEDIUM, Dell EMC iDRAC9 < 7.00.00.172 / 7.10.00.00 < 7.10.50.00 (DSA-2024-099)
 
 							]
 						}

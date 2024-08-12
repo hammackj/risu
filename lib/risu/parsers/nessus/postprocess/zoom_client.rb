@@ -44,7 +44,20 @@ module Risu
 168816, #Zoom Client for Meetings < 5.6.3 Vulnerability (ZSB-21002)
 174469, #Zoom Client for Meetings < 5.13.3 Vulnerability / Zoom VDI < 5.13.1 Information Disclosure (ZSB-23001)
 158168, #Zoom Client < 5.8.4 Multiple Vulnerabilities
-
+184369, #CRITICAL, Zoom Client for Meetings < 5.15.2 Vulnerability (ZSB-23038)
+184371, #CRITICAL, Zoom Client for Meetings < 5.14.7 Vulnerability (ZSB-23032)
+184379, #CRITICAL, Zoom Client for Meetings < 5.14.7 Vulnerability (ZSB-23030)
+190787, #CRITICAL, Zoom Client for Meetings < 5.16.5 Vulnerability (ZSB-24008)
+184358, #HIGH, Zoom Client for Meetings < 5.14.5 Vulnerability (ZSB-23027)
+184372, #HIGH, Zoom Client for Meetings < 5.14.5 Vulnerability (ZSB-23028)
+184376, #HIGH, Zoom Client for Meetings < 5.15.0 Vulnerability (ZSB-23018)
+185527, #HIGH, Zoom Client for Meetings < 5.16.0 Vulnerability (ZSB-23047)
+185530, #HIGH, Zoom Client for Meetings < 5.16.0 Vulnerability (ZSB-23050)
+185532, #HIGH, Zoom Client for Meetings < 5.16.0 Vulnerability (ZSB-23055)
+185548, #HIGH, Zoom Client for Meetings < 5.15.10 Vulnerability (ZSB-23048)
+190798, #HIGH, Zoom Client for Meetings < 5.16.5 Vulnerability (ZSB-23059)
+184364, #HIGH, Zoom Client for Meetings < 5.13.3 Vulnerability (ZSB-23001)
+184375, #HIGH, Zoom Client for Meetings < 5.13.5 Vulnerability (ZSB-23002)
 							]
 						}
 					end

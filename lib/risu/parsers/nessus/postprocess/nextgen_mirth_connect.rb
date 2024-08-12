@@ -23,22 +23,19 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class SevenZipPatchRollup < Risu::Base::PostProcessBase
+				class NextGENMirthConnect < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "7-Zip Patch Rollup",
-							:plugin_id => -99954,
-							:plugin_name => "Missing the latest 7-Zip Patches",
-							:item_name => "Update to the latest 7-Zip",
+							:description => "NextGen Mirth Connect Patch Rollup",
+							:plugin_id => -99929,
+							:plugin_name => "Missing the latest NextGen Mirth Connect",
+							:item_name => "Update to the latest NextGen Mirth Connect",
 							:plugin_ids => [
-91230, #7-Zip < 16.00 Multiple Vulnerabilities
-109730, #7-Zip < 18.05 Memory Corruption Arbitrary Code Execution
-109799, #7-Zip < 16.03 NULL Pointer Dereference DoS
-109800, #7-Zip < 18.00 Multiple Vulnerabilities
-180360, #HIGH, 7-Zip < 23.00 Multiple Vulnerabilities
+183968, #CRITICAL, NextGen Mirth Connect < 4.4.0 RCE (CVE-2023-37679) 
+183969, #CRITICAL, NextGen Mirth Connect < 4.4.1 RCE (CVE-2023-43208)
 							]
 						}
 					end
@@ -47,3 +44,5 @@ module Risu
 		end
 	end
 end
+
+

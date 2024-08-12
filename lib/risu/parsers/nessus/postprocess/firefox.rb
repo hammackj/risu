@@ -210,6 +210,12 @@ module Risu
 179143, #Mozilla Firefox < 116.0
 186186, #Mozilla Firefox ESR < 115.5.0
 183784, #Mozilla Firefox ESR < 115.4
+189364, #CRITICAL, Mozilla Firefox < 122.0
+190779, #HIGH, Mozilla Firefox < 123.0
+192470, #HIGH, Mozilla Firefox < 124.0.1
+193366, #HIGH, Mozilla Firefox < 125.0
+196992, #HIGH, Mozilla Firefox < 126.0
+200315, #HIGH, Mozilla Firefox < 127.0
 
 							]
 						}

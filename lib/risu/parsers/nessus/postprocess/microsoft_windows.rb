@@ -1647,7 +1647,26 @@ module Risu
 182857, #KB5031441: Windows Server 2008 R2 Security Update (October 2023)
 181299, #MEDIUM, KB5030261: Windows Server 2008 R2 Security Update (September 2023)
 186447, #MEDIUM, Microsoft Edge (Chromium) < 118.0.2088.122 / 119.0.2151.97 Multiple Vulnerabilities
-
+186781, #CRITICAL, KB5033424: Windows Server 2008 R2 Security Update (December 2023)
+187901, #CRITICAL, Security Updates for Microsoft .NET Framework (January 2024)
+190478, #CRITICAL, KB5034809: Windows Server 2008 R2 Security Update (February 2024)
+186782, #CRITICAL, KB5033420: Windows Server 2012 R2 Security Update (December 2023)
+190490, #CRITICAL, KB5034819: Windows Server 2012 R2 Security Update (February 2024)
+147946, #HIGH, Security Update for .NET Core (March 2021)
+187799, #HIGH, KB5034171: Windows Server 2012 R2 Security Update (January 2024)
+190535, #HIGH, Security Update for Microsoft .NET Core (February 2024)
+187805, #HIGH, KB5034167: Windows Server 2008 R2 Security Update (January 2024)
+133049, #HIGH, Security Update for Microsoft ASP.NET Core (January 2020)
+191942, #CRITICAL, KB5035885: Windows Server 2012 R2 Security Update (March 2024)
+193101, #CRITICAL, KB5036960: Windows Server 2012 R2 Security Update (April 2024)
+197010, #CRITICAL, KB5037823: Windows Server 2012 R2 Security Update (May 2024)
+200349, #CRITICAL, KB5039217: Windows 10 version 1809 / Windows Server 2019 Security Update (June 2024)
+200351, #CRITICAL, KB5039214: Windows 10 Version 1607 / Windows Server 2016 Security Update (June 2024)
+179501, #CRITICAL, KB5029304: Windows Server 2012 R2 Security Update (August 2023)
+182864, #CRITICAL, KB5031407: Windows Server 2012 R2 Security Update (October 2023)
+187859, #CRITICAL, Security Update for Microsoft .NET Core (January 2024)
+200343, #CRITICAL, KB5039211: Windows 10 Version 21H2 / Windows 10 Version 22H2 Security Update (June 2024)
+200338, #CRITICAL, KB5039294: Windows Server 2012 R2 Security Update (June 2024)
 							]
 						}
 					end

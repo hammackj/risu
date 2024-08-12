@@ -128,6 +128,7 @@ module Risu
 150341, #Adobe Reader <= 2017.011.30196 / 2020.001.30025 / 2021.001.20155 Multiple Vulnerabilities (APSB21- 37)
 153364, #Adobe Reader < 2017.011.30202 / 2020.004.30015 / 2021.007.20091 Multiple Vulnerabilities (APSB21- 55)
 144107, #Adobe Reader <= 2017.011.30180 / 2020.001.30010 / 2020.013.20066 Vulnerability (APSB20-75)
+197027, #HIGH, Adobe Reader < 20.005.30635 / 24.002.20759 Multiple Vulnerabilities (APSB24-29)
 							]
 						}
 					end

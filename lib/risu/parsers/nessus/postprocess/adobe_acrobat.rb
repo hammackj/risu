@@ -86,7 +86,8 @@ module Risu
 								166041, #Adobe Acrobat < 20.005.30407 / 22.003.20258 Multiple Vulnerabilities (APSB22-46)
 								179482, #Adobe Acrobat < 20.005.30514.10514 / 23.003.20269 Multiple Vulnerabilities (APSB23-30)
 								181274, #Adobe Acrobat < 20.005.30524 / 23.006.20320 Vulnerability (APSB23-34)
-								
+								190457, #HIGH, Adobe Acrobat < 20.005.30574 / 23.008.20533 Multiple Vulnerabilities (APSB24-07)
+																
 																
 							]
 						}
