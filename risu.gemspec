@@ -21,7 +21,9 @@
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), 'lib'))
 
-require 'risu/version'
+#require 'risu/version'
+
+require './lib/risu/version'
 
 Gem::Specification.new do |s|
 	s.name = Risu::APP_NAME
