@@ -74,6 +74,7 @@ module Risu
 130766, #Cisco IOS Smart Install Memory Leak (cisco-sa-20160928-smi) 
 131164, #Cisco IOS AAA Login DoS (cisco-sa-20160928-aaados) 
 131322, #Cisco IOS Software Smart Install DoS (cisco-sa-20180328-smi)
+184452, #CRITICAL, Cisco IOS XE Unauthenticatd Remote Command Execution (CVE-2023-20198) (Direct Check)
 							]
 						}
 					end

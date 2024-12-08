@@ -92,7 +92,14 @@ module Risu
 172186, #Apache 2.4.x < 2.4.56 Multiple Vulnerabilities
 183391, #Apache 2.4.x < 2.4.58 Multiple Vulnerabilities
 192923, #HIGH, Apache 2.4.x < 2.4.59 Multiple Vulnerabilities
-
+201198, #CRITICAL, Apache 2.4.x < 2.4.60 Multiple Vulnerabilities
+202577, #HIGH, Apache 2.4.x < 2.4.62 Multiple Vulnerabilities
+193421, #CRITICAL, Apache 2.4.x < 2.4.54 Authentication Bypass
+193419, #HIGH, Apache 2.4.x < 2.4.58 Out-of-Bounds Read (CVE-2023-31122)
+193422, #HIGH, Apache 2.4.x < 2.4.54 HTTP Request Smuggling Vulnerability
+193423, #HIGH, Apache 2.4.x < 2.4.54 Multiple Vulnerabilities
+193424, #HIGH, Apache 2.4.x < 2.4.54 Multiple Vulnerabilities (mod_lua)
+193420, #MEDIUM, Apache 2.4.x < 2.4.54 Out-Of-Bounds Read (CVE-2022-28330)
 
 							]
 						}

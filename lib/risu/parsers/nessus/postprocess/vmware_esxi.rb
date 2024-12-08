@@ -108,6 +108,7 @@ module Risu
 146827, #ESXi 6.5 / 6.7 / 7.0 RCE (VMSA-2021-0002)
 151665, #ESXi 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2021-0014)
 192466, #MEDIUM, VMware ESXi 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2022-0020)
+191711, #CRITICAL, VMware ESXi 7.0 / 8.0 Multiple Vulnerabilities (VMSA-2024-0006)
 
 							]
 						}

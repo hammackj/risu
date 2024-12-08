@@ -216,6 +216,13 @@ module Risu
 193366, #HIGH, Mozilla Firefox < 125.0
 196992, #HIGH, Mozilla Firefox < 126.0
 200315, #HIGH, Mozilla Firefox < 127.0
+183785, #CRITICAL, Mozilla Firefox < 119.0
+186030, #CRITICAL, Mozilla Firefox < 120.0
+186032, #CRITICAL, Mozilla Firefox < 115.5
+187079, #CRITICAL, Mozilla Firefox < 121.0
+205009, #CRITICAL, Mozilla Firefox < 129.0
+202017, #HIGH, Mozilla Firefox < 128.0
+192243, #MEDIUM, Mozilla Firefox < 124.0
 
 							]
 						}

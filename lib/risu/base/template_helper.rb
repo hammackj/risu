@@ -85,6 +85,20 @@ module Risu
 				end
 			end
 
+			def field term, text, options = {}
+				if text != nil
+					#@output.text "\n#{term}", :style => :bold
+					#@output.text text, options
+
+
+					@output.formatted_text [
+						{text: "#{term}", styles: [:bold]},
+						{ text: text }
+					]
+
+				end
+			end
+
 			#
 			def heading1 title_text
 				title title_text, 24

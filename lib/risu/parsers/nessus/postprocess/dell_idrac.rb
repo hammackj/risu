@@ -53,6 +53,7 @@ module Risu
 80442, #MEDIUM, Dell iDRAC Products IPMI Arbitrary Command Injection Vulnerability
 193888, #HIGH, Dell EMC iDRAC8 < 2.85.85.85 (DSA-2024-089)
 202259, #MEDIUM, Dell EMC iDRAC9 < 7.00.00.172 / 7.10.00.00 < 7.10.50.00 (DSA-2024-099)
+148955, #MEDIUM, Dell iDRAC XSS (DSA-2021-073)
 
 							]
 						}

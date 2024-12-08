@@ -23,26 +23,22 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class WinSCP < Risu::Base::PostProcessBase
+				class ZoomWorkplaceDesktopApp < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "WinSCP Patch Rollups",
-							:plugin_id => -99978,
-							:plugin_name => "Missing the latest WinSCP Patches",
-							:item_name => "Update to the latest WinSCP",
+							:description => "Zoom Workplace Desktop App Patch Rollup",
+							:plugin_id => -99923,
+							:plugin_name => "Missing the latest Zoom Workplace Desktop App",
+							:item_name => "Update to the latest Zoom Workplace Desktop App",
 							:plugin_ids => [
-								73613, #WinSCP Heartbeat Information Disclosure (Heartbleed)
-								76167, #WinSCP 5.x < 5.5.4 Multiple Vulnerabilities
-								78078, #WinSCP 5.x < 5.5.5 Multiple Vulnerabilities
-								72388, #WinSCP < 5.1.6 RSA Signature Blob Integer Overflow
-								72389, #WinSCP < 5.1.7 Multiple Vulnerabilities
-								177397, #CRITICAL, WinSCP < 5.17.10 RCE
-								205312, #MEDIUM, WinSCP < 6.3.3 Key Recovery Attack Vulnerability
-
-
+200481, #MEDIUM, Zoom Workplace Desktop App < 5.17.11 Divide By Zero Vulnerability (ZSB-24018)
+202591, #MEDIUM, Zoom Workplace Desktop App For Windows < 6.0.10 Privilage Escalation (ZSB-24026)
+202593, #MEDIUM, Zoom Workplace Desktop App For Windows < 6.0.10 RACE condition (ZSB-24028)
+204852, #MEDIUM, Zoom Workplace Desktop App < 6.0.0 Improper Input Validation (ZSB-24020)
+207228, #MEDIUM, Zoom Workplace Desktop App < 6.1.0 Information Disclosure (ZSB-24036)
 							]
 						}
 					end
@@ -51,3 +47,5 @@ module Risu
 		end
 	end
 end
+
+

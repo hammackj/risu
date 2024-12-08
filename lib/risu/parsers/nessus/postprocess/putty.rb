@@ -35,7 +35,8 @@ module Risu
 							:item_name => "Update to the latest PuTTY",
 							:plugin_ids => [
 123418, #PuTTY < 0.71 Multiple Vulnerabilities
-105154, #PuTTY < 0.67 PSCP Server Header Handling Stack Buffer Overflow								
+105154, #PuTTY < 0.67 PSCP Server Header Handling Stack Buffer Overflow
+193433, #HIGH, PuTTY < 0.81 Key Recovery Attack Vulnerability								
 							]
 						}
 					end

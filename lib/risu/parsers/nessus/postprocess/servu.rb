@@ -45,6 +45,8 @@ module Risu
 156886, #Serv-U FTP Server < 15.3 Improper Input Validation			
 169899, #SolarWinds Serv-U < 15.3.0 Common Key (CVE-2021-35252)
 177024, #SolarWinds Serv-U < 15.4 Exposure of Sensitive Information (CVE-2023-23841)
+193517, #HIGH, SolarWinds Serv-U < 15.4.2 Directory Traversal (CVE-2024-28073)
+207863, #HIGH, SolarWinds Serv-U 15.2.4 < 15.2.5 Multiple Vulnerabilities
 					
 
 							]

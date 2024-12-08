@@ -35,9 +35,8 @@ module Risu
 							:item_name => "Update to the latest Windows Updates",
 							:plugin_ids => [
 								11110, #MS02-045: Microsoft Windows SMB Protocol SMB_COM_TRANSACTION Packet Remote Overflow DoS (326830) (uncredentialed check)
-								11214, #MS02-061: Microsoft SQL Server Multiple Vulnerabilities (uncredentialed check)
-								11322, #MS02-035: MS SQL Installation may leave passwords on system (263968)
-								11804, #MS03-031: Cumulative Patch for MS SQL Server (815495)
+
+
 								11808, #MS03-026: Microsoft RPC Interface Buffer Overrun (823980) (uncredentialed check)
 								11835, #MS03-039: Microsoft RPC Interface Buffer Overrun (824146) (uncredentialed check)
 								11890, #MS03-043: Buffer Overrun in Messenger Service (828035) (uncredentialed check)
@@ -157,7 +156,7 @@ module Risu
 								33135, #MS08-033: Vulnerabilities in DirectX Could Allow Remote Code Execution (951698)
 								33137, #MS08-036: Vulnerabilities in Pragmatic General Multicast (PGM) Could Allow Denial of Service (950762)
 								33441, #MS08-037: Vulnerabilities in DNS Could Allow Spoofing (953230)
-								33444, #MS08-040: Vulnerabilities in Microsoft SQL Server Could Allow Elevation of Privilege (941203)
+
 								33870, #MS08-041: Vulnerability in the ActiveX Control for the Snapshot Viewer for Microsoft Access Could Allow Remote Code Execution (955617)
 								33871, #MS08-042: Vulnerabilities in Microsoft Word Could Allow Remote Code Execution (955048)
 								33872, #MS08-043: Vulnerabilities in Microsoft Excel Could Allow Remote Code Execution (954066)
@@ -172,7 +171,7 @@ module Risu
 								34120, #MS08-052: Vulnerabilities in GDI+ Could Allow Remote Code Execution (954593)
 								34121, #MS08-053: Vulnerability in Windows Media Encoder 9 Could Allow Remote Code Execution (954156)
 								34123, #MS08-055: Vulnerabilities in Microsoft Office Could Allow Remote Code Execution (955047)
-								34311, #MS08-040: Microsoft SQL Server Multiple Privilege Escalation (941203) (uncredentialed check)
+
 								34402, #MS08-057: Microsoft Excel Multiple Method Remote Code Execution (956416)
 								34403, #MS08-058: Microsoft Internet Explorer Multiple Vulnerabilities (956390)
 								34406, #MS08-061: Microsoft Windows Kernel Multiple Privilege Elevation (954211)
@@ -193,9 +192,9 @@ module Risu
 								35221, #MS08-078: Microsoft Internet Explorer Security Update (960714)
 								35361, #MS09-001: Vulnerabilities in SMB Could Allow Remote Code Execution (958687)
 								35630, #MS09-002: Cumulative Security Update for Internet Explorer (961260)
-								35632, #MS09-004: Vulnerability in Microsoft SQL Server Could Allow Remote Code Execution (959420)
+
 								35634, #MS KB960715: Cumulative Security Update of ActiveX Kill Bits
-								35635, #MS09-004: Vulnerability in Microsoft SQL Server Could Allow Remote Code Execution (959420) (uncredentialed check)
+
 								35822, #MS09-006: Vulnerabilities in Windows Kernel Could Allow Remote Code Execution (958690)
 								35823, #MS09-007: Vulnerability in SChannel Could Allow Spoofing (960225)
 								36147, #MS09-009: Vulnerabilities in Microsoft Office Excel Could Cause Remote Code Execution (968557)
@@ -495,7 +494,7 @@ module Risu
 								62461, #MS12-066: Vulnerability in HTML Sanitization Component Could Allow Elevation of Privilege (2741517)
 								62463, #MS12-068: Vulnerability in Windows Kernel Could Allow Elevation of Privilege (2724197)
 								62464, #MS12-069: Vulnerability in Kerberos Could Allow Denial of Service (2743555)
-								62465, #MS12-070: Vulnerability in SQL Server Could Allow Elevation of Privilege (2754849)
+
 								62466, #MS KB2661254: Update For Minimum Certificate Key Length
 								62903, #MS12-071: Cumulative Security Update for Internet Explorer (2761451)
 								62904, #MS12-072: Vulnerabilities in Windows Shell Could Allow Remote Code Execution (2727528)
@@ -636,7 +635,7 @@ module Risu
 								76409, #MS14-040: Vulnerability in Ancillary Function Driver (AFD) Could Allow Elevation of Privilege (2975684)
 								76410, #MS14-041: Vulnerability in Microsoft DirectShow Could Allow Elevation of Privilege (2975681)
 								77160, #MS14-043: Vulnerability in Windows Media Center Could Allow Remote Code Execution (2978742)
-								77162, #MS14-044: Vulnerability in SQL Server Could Allow Elevation of Privilege (2984340)
+
 								77163, #MS14-045: Vulnerabilities in Kernel-Mode Drivers Could Allow Elevation of Privilege (2984615)
 								77164, #MS14-046: Vulnerability in .NET Framework Could Allow Security Feature Bypass (2984625)
 								77165, #MS14-047: Vulnerability in LRPC Could Allow Security Feature Bypass (2978668)
@@ -733,7 +732,7 @@ module Risu
 								84734, #MS15-069: Vulnerabilities in Windows Could Allow Remote Code Execution (3072631)
 								84735, #MS15-071: Vulnerability in NETLOGON Could Allow Elevation of Privilege (3068457)
 								84736, #MS15-066: Vulnerability in VBScript Scripting Engine Could Allow Remote Code Execution (3072604)
-								84738, #MS15-058: Vulnerabilities in SQL Server Could Allow Remote Code Execution (3065718)
+
 								84739, #MS15-070: Vulnerabilities in Microsoft Office Could Allow Remote Code Execution (3072620)
 								84741, #MS15-075: Vulnerabilities in OLE Could Allow Elevation of Privilege (3072633)
 								84742, #MS KB3074162: Vulnerability in Microsoft Malicious Software Removal Tool Could Allow Elevation of Privilege
@@ -932,7 +931,7 @@ module Risu
 								94633, #MS16-132: Security Update for Microsoft Graphics Component (3199120)
 								94635, #MS16-134: Security Update for Common Log File System Driver (3193706)
 								94636, #MS16-135: Security Update for Windows Kernel-Mode Drivers (3199135)
-								94637, #MS16-136: Security Update for SQL Server (3199641)
+
 								94638, #MS16-137: Security Update for Windows Authentication Methods (3199173)
 								94639, #MS16-138: Security Update for Microsoft Virtual Hard Disk Driver (3199647)
 								94641, #MS16-140: Security Update for Boot Manager (3193479)
@@ -1474,8 +1473,7 @@ module Risu
 151473, #KB5004947: Windows 10 1809 and Windows Server 2019 OOB Security Update RCE (July 2021)
 154984, #KB5007233: Windows Server 2008 R2 Security Update (November 2021)
 140428, #Security Updates for Internet Explorer (September 2020)
-141503, #Security Updates for Microsoft .NET Framework (October 2020)
-145033, #Security Updates for Microsoft SQL Server (January 2021)
+
 151488, #Windows PrintNightmare Registry Exposure CVE-2021-34527 OOB Security Update RCE (July 2021)
 156063, #KB5008207: Windows 10 Version 1607 and Windows Server 2016 Security Update (December 2021)
 139490, #KB4571709: Windows 10 Version 1803 August 2020 Security Update
@@ -1488,33 +1486,10 @@ module Risu
 147224, #KB5000809: Windows 10 Version 1803 March 2021 Security Update
 148468, #KB5001339: Windows 10 version 1803 Security Update (April 2021)
 149391, #KB5003174: Windows 10 version 1803 Security Update (May 2021)
-126631, #Security Updates for Microsoft SQL Server (July 2019)
-133719, #Security Updates for Microsoft SQL Server (February 2020)
-136564, #Security Updates for Microsoft .NET Framework (May 2020)
-138464, #Security Updates for Microsoft .NET Framework (July 2020)
+
 153382, #Microsoft Windows MPEG-2 Video Extension RCE (September 2021)
 158708, #Microsoft Windows HEIF Image Extensions RCE (March 2022)
-160319, #Microsoft Edge (Chromium) < 101.0.1210.32 Multiple Vulnerabilities
-111786, #Security Updates for Microsoft SQL Server 2016 and 2017 x64 (August 2018)
-160931, #KB5014001: Windows Server 2012 R2 Security Update (May 2022)
-162202, #KB5014746: Windows Server 2012 R2 Security Update (June 2022)
-158583, #Microsoft Edge (Chromium) < 99.0.1150.30 Multiple Vulnerabilities 
-159037, #Microsoft Edge (Chromium) < 99.0.1150.46 Multiple Vulnerabilities 
-159465, #Microsoft Edge (Chromium) < 100.0.1185.29 Multiple Vulnerabilities 
-159816, #Microsoft Edge (Chromium) < 100.0.1185.44 Multiple Vulnerabilities 
-161198, #Microsoft Edge (Chromium) < 101.0.1210.47 Multiple Vulnerabilities 
-161717, #Microsoft Edge (Chromium) < 102.0.1245.30 Multiple Vulnerabilities 
 161921, #Microsoft Windows 10 Version 20H2 Unsupported Version Detection 
-162168, #Microsoft Edge (Chromium) < 102.0.1245.41 Multiple Vulnerabilities
-157881, #Microsoft Edge (Chromium) < 98.0.1108.50 Vulnerability
-159239, #Microsoft Edge (Chromium) < 99.0.1150.55 Vulnerability
-159592, #Microsoft Edge (Chromium) < 100.0.1185.36 Vulnerability
-162624, #Microsoft Edge (Chromium) < 103.0.1264.44 Vulnerability
-161989, #Microsoft Edge (Chromium) < 102.0.1245.39 Vulnerability
-162503, #Microsoft Edge (Chromium) < 103.0.1264.37 Multiple Vulnerabilities
-162776, #Microsoft Edge (Chromium) < 103.0.1264.49 Vulnerability
-157369, #Microsoft Edge (Chromium) < 98.0.1108.43 Multiple Vulnerabilities
-158097, #Microsoft Edge (Chromium) < 98.0.1108.55 Multiple Vulnerabilities
 162196, #KB5014702: Windows 10 Version 1607 and Windows Server 2016 Security Update (June 2022)
 163052, #KB5015808: Windows 10 Version 1607 and Windows Server 2016 Security Update (July 2022)
 147223, #KB5000822: Windows 10 Version 1809 and Windows Server 2019 March 2021 Security Update 
@@ -1544,11 +1519,6 @@ module Risu
 164996, #KB5017305: Windows 10 Version 1607 and Windows Server 2016 Security Update (September 2022) 
 164997, #KB5017315: Windows 10 version 1809 / Windows Server 2019 Security Update (September 2022)
 166034, #KB5018410: Windows 10 Version 20H2 / 21H1 / 21H2 Security Update (October 2022)
-156073, #KB5008285: Windows Server 2012 R2 Security Update (December 2021)
-156624, #KB5009595: Windows Server 2012 R2 Security Updates (January 2022)
-157431, #KB5010395: Windows Server 2012 R2 Security Update (February 2022)
-158702, #KB5011560: Windows Server 2012 R2 Security Update (March 2022)
-163042, #KB5015877: Windows Server 2012 R2 Security Update (July 2022)
 153375, #KB5005627: Windows 8.1 and Windows Server 2012 R2 September 2021 Security Update
 166030, #KB5018476: Windows Server 2012 R2 Security Update (October 2022)
 159682, #KB5012670: Windows Server 2012 R2 Security Update (April 2022)
@@ -1558,9 +1528,6 @@ module Risu
 167111, #KB5019964: Windows 10 Version 1607 and Windows Server 2016 Security Update (November 2022)
 159672, #KB5012649: Windows 7 and Windows Server 2008 R2 Security Update (April 2022)
 163952, #KB5016679: Windows 7 and Windows Server 2008 R2 Security Update (August 2022)
-165002, #KB5017373: Windows Server 2008 R2 Security Update (September 2022)
-166024, #KB5018479: Windows Server 2008 R2 Security Update (October 2022)
-167103, #KB5020013: Windows Server 2008 R2 Security Update (November 2022)
 169779, #KB5022289: Windows 10 Version 1607 and Windows Server 2016 Security Update (January 2023)
 169781, #KB5022339: Windows Server 2008 R2 Security Update (January 2023)
 169788, #KB5022286: Windows 10 version 1809 / Windows Server 2019 Security Update (January 2023)
@@ -1571,102 +1538,29 @@ module Risu
 160937, #KB5013999: Windows 7 and Windows Server 2008 R2 Security Update (May 2022) 
 162191, #KB5014742: Windows 7 and Windows Server 2008 R2 Security Update (June 2022) 
 163050, #KB5015862: Windows 7 and Windows Server 2008 R2 Security Update (July 2022)
-168681, #KB5021288: Windows Server 2008 R2 Security Update (December 2022)
 168693, #KB5021237: Windows 10 version 1809 / Windows Server 2019 Security Update (December 2022)
-169775, #Security Updates for Microsoft .NET Core (January 2023)
 147228, #Security Updates for Internet Explorer (March 2021)
 152432, #Security Updates for Internet Explorer (August 2021)
 153374, #Security Updates for Internet Explorer (September 2021)
 154032, #Security Updates for Internet Explorer (October 2021)
 171441, #KB5022840: Windows 10 version 1809 / Windows Server 2019 Security Update (February 2023) 
 171448, #KB5022838: Windows 10 Version 1607 and Windows Server 2016 Security Update (February 2023)
-171598, #Security Updates for Microsoft .NET Framework (February 2023)
-171268, #Microsoft Edge (Chromium) < 110.0.1587.41 Multiple Vulnerabilities
-168747, #Security Updates for Microsoft .NET Core (December 2022)
-171545, #Security Updates for Microsoft .NET core (February 2023)
-171604, #Security Updates for Microsoft SQL Server (February 2023)
 177247, #KB5027222: Windows 10 version 1809 / Windows Server 2019 Security Update (June 2023)
 177246, #KB5027219: Windows 10 Version 1607 and Windows Server 2016 Security Update (June 2023)
-177393, #Security Updates for Microsoft .NET Framework (June 2023)
-171453, #KB5022894: Windows Server 2012 R2 Security Update (February 2023)
-172535, #KB5023764: Windows Server 2012 R2 Security Update (March 2023)
-174118, #KB5025288: Windows Server 2012 R2 Security Update (April 2023)
-163947, #KB5016683: Windows Server 2012 R2 Security Update (August 2022)
-165005, #KB5017365: Windows Server 2012 R2 Security Update (September 2022)
-168745, #Security Updates for Microsoft .NET Framework (December 2022)
 178156, #KB5028223: Windows Server 2012 R2 Security Update (July 2023)
 178159, #KB5028166: Windows 10 Version 20H2 / Windows 10 Version 21H2 / Windows 10 Version 22H2 Security Update (July 2023)
-175349, #KB5026409: Windows Server 2012 R2 Security Update (May 2023)
 178150, #KB5028168: Windows 10 version 1809 / Windows Server 2019 Security Update (July 2023)
-169789, #KB5022346: Windows Server 2012 R2 Security Update (January 2023)
-170963, #Microsoft Windows 10 Version 21H2 Unsupported Version Detection 
-177237, #KB5027282: Windows Server 2012 R2 Security Update (June 2023)
 176328, #KB5019966: Windows Kerberos Elevation of Privilege Vulnerability (CVE-2022-37967)(November 2022)
-175450, #Security Updates for Microsoft SQL Server (April 2023)
-168687, #KB5021296: Windows Server 2012 R2 Security Update (December 2022)
-175441, #Security Updates for Microsoft SQL Server ODBC Driver (April 2023)
-177265, #Security Update for .NET Core (June 2023)
-178193, #Security Update for Microsoft .NET Core (July 2023)
-167254, #Security Updates for Microsoft .NET Framework (November 2022)
-167885, #Security Updates for Microsoft .NET Framework (May 2022)
-168395, #Security Updates for Microsoft .NET Framework (April 2022)
-168396, #Security Updates for Microsoft .NET Framework (February 2021)
-168397, #Security Updates for Microsoft .NET Framework (January 2022)
-179502, #Security Update for Microsoft .NET Core (August 2023)
-181277, #Security Update for Microsoft .NET Core (September 2023)
-183025, #Security Update for Microsoft .NET 6 Core (October 2023)
 182865, #KB5031361: Windows 10 version 1809 / Windows Server 2019 Security Update (October 2023)
-180007, #Security Updates for Microsoft SQL Server ODBC Driver (August 2023)
-175440, #Security Updates for Microsoft SQL Server OLE DB Driver (April 2023)
-178851, #Security Updates for Microsoft SQL Server ODBC Driver (June 2023)
-183036, #Security Updates for Microsoft SQL Server ODBC Driver (October 2023)
 182854, #KB5031356: Windows 10 Version 21H2 / Windows 10 Version 22H2 Security Update (October 2023)
-178852, #Security Updates for Microsoft SQL Server OLE DB Driver (June 2023)
-182968, #Security Updates for Microsoft SQL Server OLE DB Driver (October 2023)
 144813, #Microsoft Teams < 1.3.0.13000 Remote Code Execution
-150365, #Security Update for .NET Core SDK (June 2021)
-150708, #Security Update for .NET Core (June 2021)
-152488, #Security Update for .NET Core (August 2021)
-156227, #Security Updates for Microsoft ASP.NET Core (December 2021)
-157879, #Security Update for .NET Core (February 2022)
-158744, #Security Updates for Microsoft .NET core (March 2022)
-161167, #Security Updates for Microsoft .NET core (May 2022)
-171440, #KB5022874: Windows Server 2008 R2 Security Update (February 2023)
-172517, #KB5023759: Windows Server 2008 R2 Security Update (March 2023)
-174103, #KB5025277: Windows Server 2008 R2 Security Update (April 2023)
-175344, #KB5026426: Windows Server 2008 R2 Security Update (May 2023)
-177241, #KB5027256: Windows Server 2008 R2 Security Update (June 2023)
-178168, #KB5028224: Windows Server 2008 R2 Security Update (July 2023)
-179489, #KB5029307: Windows Server 2008 R2 Security Update (August 2023)
-185577, #KB5032249: Windows Server 2012 R2 Security Update (November 2023)
-185887, #Security Updates for Microsoft .NET Framework (November 2023)
 175373, #Microsoft Message Queuing RCE (CVE-2023-21554, QueueJumper)
-179664, #Security Updates for Microsoft .NET Framework (August 2023)
-174219, #Security Updates for Microsoft .NET core (April 2023)
-185886, #Security Update for Microsoft .NET Core (November 2023) (CVE-2023-36558)
-182857, #KB5031441: Windows Server 2008 R2 Security Update (October 2023)
-181299, #MEDIUM, KB5030261: Windows Server 2008 R2 Security Update (September 2023)
-186447, #MEDIUM, Microsoft Edge (Chromium) < 118.0.2088.122 / 119.0.2151.97 Multiple Vulnerabilities
-186781, #CRITICAL, KB5033424: Windows Server 2008 R2 Security Update (December 2023)
-187901, #CRITICAL, Security Updates for Microsoft .NET Framework (January 2024)
-190478, #CRITICAL, KB5034809: Windows Server 2008 R2 Security Update (February 2024)
-186782, #CRITICAL, KB5033420: Windows Server 2012 R2 Security Update (December 2023)
-190490, #CRITICAL, KB5034819: Windows Server 2012 R2 Security Update (February 2024)
-147946, #HIGH, Security Update for .NET Core (March 2021)
-187799, #HIGH, KB5034171: Windows Server 2012 R2 Security Update (January 2024)
-190535, #HIGH, Security Update for Microsoft .NET Core (February 2024)
-187805, #HIGH, KB5034167: Windows Server 2008 R2 Security Update (January 2024)
-133049, #HIGH, Security Update for Microsoft ASP.NET Core (January 2020)
-191942, #CRITICAL, KB5035885: Windows Server 2012 R2 Security Update (March 2024)
-193101, #CRITICAL, KB5036960: Windows Server 2012 R2 Security Update (April 2024)
-197010, #CRITICAL, KB5037823: Windows Server 2012 R2 Security Update (May 2024)
 200349, #CRITICAL, KB5039217: Windows 10 version 1809 / Windows Server 2019 Security Update (June 2024)
 200351, #CRITICAL, KB5039214: Windows 10 Version 1607 / Windows Server 2016 Security Update (June 2024)
-179501, #CRITICAL, KB5029304: Windows Server 2012 R2 Security Update (August 2023)
-182864, #CRITICAL, KB5031407: Windows Server 2012 R2 Security Update (October 2023)
-187859, #CRITICAL, Security Update for Microsoft .NET Core (January 2024)
-200343, #CRITICAL, KB5039211: Windows 10 Version 21H2 / Windows 10 Version 22H2 Security Update (June 2024)
-200338, #CRITICAL, KB5039294: Windows Server 2012 R2 Security Update (June 2024)
+206973, #HIGH, Microsoft Power Automate For Desktop Remote Code Execution (CVE-2024-43479)
+161691, #HIGH, The Microsoft Windows Support Diagnostic Tool (MSDT) RCE Workaround Detection (CVE-2022-30190)
+210860, #CRITICAL, KB5046615: Windows 10 version 1809 / Windows Server 2019 Security Update (November 2024)
+210850, #CRITICAL, KB5046612: Windows 10 Version 1607 / Windows Server 2016 Security Update (November 2024)
 							]
 						}
 					end

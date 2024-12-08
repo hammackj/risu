@@ -314,9 +314,16 @@ module Risu
 							100767 => "Vendor Patch",
 							101371 => "Vendor Patch",
 							99523 => "Vendor Patch",
-							175373 => "Vendor Patch", #Microsoft Message Queuing RCE (CVE-2023-21554, QueueJumper) - 
-							-99946 => "Vendor Patch", #Missing the latest Microsoft Office Patches 
+							175373 => "Vendor Patch", # Microsoft Message Queuing RCE (CVE-2023-21554, QueueJumper) - 
+							-99946 => "Vendor Patch", # Missing the latest Microsoft Office Patches 
 							-99929 => "Vendor Patch", # NextGen Mirth
+							-99947 => "Vendor Patch", # Missing the latest Dell iDRAC Patches
+							-99935 => "Vendor Patch", # Missing the latest Zoom Client for Meetings
+							-99938 => "Vendor Patch", # Missing the latest PuTTY
+							-99928 => "Vendor Patch", # Missing the latest Microsoft SQL Server
+							-99927 => "Vendor Patch", # Missing the latest Notepad++
+
+
 
 							33850 => "Vendor Support",
 							34460 => "Vendor Support",
@@ -356,7 +363,7 @@ module Risu
 							56997 => "Vendor Support", # VMware ESX / ESXi Unsupported Version Detection - 
 							108797 => "Vendor Support", # Unsupported Windows OS (remote)
 							73756 => "Vendor Support", # Microsoft SQL Server Unsupported Version Detection
-							
+							172179 => "Vendor Support", # Microsoft .NET Core SEoL - 
 							
 
 							49071 => "Configuration",
@@ -445,6 +452,7 @@ module Risu
 							59275 => "Configuration",
 							35453 => "Configuration",
 							90317 => "Configuration",
+							121008 => "Configuration", #SSL / TLS Certificate Known Hard Coded Private Keys - 
 
 						}
 					end

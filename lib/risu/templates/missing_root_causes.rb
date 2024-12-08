@@ -69,7 +69,8 @@ module Risu
 						next
 					end
 
-					output.text "#{count} - #{name} - #{item.plugin_id}" 
+					#output.text "#{count} - #{name} - #{item.plugin_id}"
+					output.text "#{item.plugin_id} => \"\", ##{name}"
 				end
 
 				output.start_new_page
@@ -89,7 +90,8 @@ module Risu
 						next
 					end					
 
-					output.text "#{count} - #{name} - #{item.plugin_id}"
+					#output.text "#{count} - #{name} - #{item.plugin_id}"
+					output.text "#{item.plugin_id} => \"\", ##{name}"
 				end
 
 				output.start_new_page
@@ -109,7 +111,8 @@ module Risu
 						next
 					end
 
-					output.text "#{count} - #{name} - #{item.plugin_id}"
+					#output.text "#{count} - #{name} - #{item.plugin_id}"
+					output.text "#{item.plugin_id} => \"\", ##{name}"
 				end
 
 				output.start_new_page
@@ -129,7 +132,8 @@ module Risu
 						next
 					end
 
-					output.text "#{count} - #{name} - #{item.plugin_id}"
+					#output.text "#{count} - #{name} - #{item.plugin_id}"
+					output.text "#{item.plugin_id} => \"\", ##{name}"
 				end
 
 				output.start_new_page
@@ -149,7 +153,8 @@ module Risu
 						next
 					end
 				
-					output.text "#{count} - #{name} - #{item.plugin_id}"
+					#output.text "#{count} - #{name} - #{item.plugin_id}"
+					output.text "#{item.plugin_id} => \"\", ##{name}"
 				end
 			end
 		end

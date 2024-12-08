@@ -131,6 +131,14 @@ module Risu
 166608, #Wireshark 3.6.x < 3.6.9 Multiple Vulnerabilities
 170172, #Wireshark 3.6.x < 3.6.11 Multiple Vulnerabilities
 187630, #HIGH, Wireshark 4.2.x < 4.2.1 Multiple Vulnerabilities
+170000, #HIGH, Wireshark 3.6.x < 3.6.10 Multiple Vulnerabilities
+172121, #HIGH, Wireshark 3.6.x < 3.6.12 A Vulnerability
+182524, #HIGH, Wireshark 3.6.x < 3.6.17 A Vulnerability
+187623, #HIGH, Wireshark 3.6.x < 3.6.20 Multiple Vulnerabilities
+197093, #MEDIUM, Wireshark 3.6.x < 3.6.23 Multiple Vulnerabilities
+197561, #MEDIUM, Wireshark 3.6.x < 3.6.24 Multiple Vulnerabilities
+164831, #MEDIUM, Wireshark 3.4.x < 3.4.16, 3.6.x < 3.6.8 DoS
+176372, #HIGH, Wireshark 2.2.x < 2.2.17 Multiple Vulnerabilities
 							]
 						}
 					end

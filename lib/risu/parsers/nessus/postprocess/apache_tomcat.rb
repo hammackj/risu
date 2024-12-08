@@ -117,6 +117,11 @@ module Risu
 182811, #MEDIUM, Apache Tomcat 8.5.0 < 8.5.94 multiple vulnerabilities
 197843, #HIGH, Apache Tomcat 7.0.0 < 7.0.100 multiple vulnerabilities
 197848, #HIGH, Apache Tomcat 7.0.0 < 7.0.73 multiple vulnerabilities
+197818, #CRITICAL, Apache Tomcat 7.0.0 < 7.0.72 multiple vulnerabilities
+197820, #HIGH, Apache Tomcat 7.0.0 < 7.0.77
+197823, #HIGH, Apache Tomcat 7.0.0 < 7.0.75
+197831, #HIGH, Apache Tomcat 7.0.0 < 7.0.78
+197838, #HIGH, Apache Tomcat 7.0.0 < 7.0.99 multiple vulnerabilities
 
 							]
 						}

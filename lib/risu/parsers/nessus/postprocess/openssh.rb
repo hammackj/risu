@@ -63,6 +63,15 @@ module Risu
 								93194, #HIGH, OpenSSH < 7.3 Multiple Vulnerabilities
 								96151, #HIGH, OpenSSH < 7.4 Multiple Vulnerabilities
 								201194, #HIGH, OpenSSH < 9.8 RCE
+								106608, #HIGH, OpenSSH 5.4 < 7.1p2 Multiple Vulnerabilities
+								99359, #MEDIUM, OpenSSH < 7.5
+								103781, #MEDIUM, OpenSSH < 7.6
+								159490, #MEDIUM, OpenSSH < 7.8
+								159491, #MEDIUM, OpenSSH < 8.0
+								187201, #MEDIUM, OpenSSH < 9.6 Multiple Vulnerabilities
+								84638, #HIGH, OpenSSH < 6.9 Multiple Vulnerabilities
+								90023, #MEDIUM, OpenSSH < 7.2p2 X11Forwarding xauth Command Injection								
+
 
 
 							]

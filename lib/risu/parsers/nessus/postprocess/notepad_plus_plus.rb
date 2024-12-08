@@ -23,25 +23,19 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class WinSCP < Risu::Base::PostProcessBase
+				class NotepadPlusPlus < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "WinSCP Patch Rollups",
-							:plugin_id => -99978,
-							:plugin_name => "Missing the latest WinSCP Patches",
-							:item_name => "Update to the latest WinSCP",
+							:description => "Notepad++ Patch Rollup",
+							:plugin_id => -99927,
+							:plugin_name => "Missing the latest Notepad++",
+							:item_name => "Update to the latest Notepad++",
 							:plugin_ids => [
-								73613, #WinSCP Heartbeat Information Disclosure (Heartbleed)
-								76167, #WinSCP 5.x < 5.5.4 Multiple Vulnerabilities
-								78078, #WinSCP 5.x < 5.5.5 Multiple Vulnerabilities
-								72388, #WinSCP < 5.1.6 RSA Signature Blob Integer Overflow
-								72389, #WinSCP < 5.1.7 Multiple Vulnerabilities
-								177397, #CRITICAL, WinSCP < 5.17.10 RCE
-								205312, #MEDIUM, WinSCP < 6.3.3 Key Recovery Attack Vulnerability
-
+208192, #HIGH, Notepad++ < 8.4.1 DLL hijacking vulnerability
+181867, #HIGH, Notepad++ < 8.5.7 Multiple Buffer Overflow Vulnerabilities
 
 							]
 						}
@@ -51,3 +45,5 @@ module Risu
 		end
 	end
 end
+
+

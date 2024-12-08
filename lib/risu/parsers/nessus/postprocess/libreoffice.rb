@@ -52,6 +52,7 @@ module Risu
 133471, #LibreOffice 6.2.6 / 6.3.1 Security Control Bypass (Windows)
 163762, #LibreOffice < 7.2.7 / 7.3.2 Improper Certificate Validation (Windows)
 163764, #LibreOffice < 7.2.7 / 7.3 < 7.3.3 Multiple Vulnerabilities (Windows)
+197300, #HIGH, LibreOffice < 7.6.7 / 8.0.x < 24.2.3 (cve-2024-3044)
 
 
 							]

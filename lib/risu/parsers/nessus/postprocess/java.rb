@@ -118,6 +118,10 @@ module Risu
 174511, #Oracle Java SE Multiple Vulnerabilities (April 2023 CPU)
 178485, #Oracle Java SE Multiple Vulnerabilities (July 2023 CPU)
 189116, #HIGH, Oracle Java SE Multiple Vulnerabilities (January 2024 CPU)
+193574, #CRITICAL, Oracle Java (Apr 2024 CPU)
+202704, #HIGH, Oracle Java SE Multiple Vulnerabilities (July2024 CPU)
+183295, #MEDIUM, Oracle Java SE Multiple Vulnerabilities (October 2023 CPU)
+209282, #MEDIUM, Oracle Java SE Multiple Vulnerabilities (October 2024 CPU)
 
 							]
 						}
