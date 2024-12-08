@@ -364,7 +364,35 @@ module Risu
 							108797 => "Vendor Support", # Unsupported Windows OS (remote)
 							73756 => "Vendor Support", # Microsoft SQL Server Unsupported Version Detection
 							172179 => "Vendor Support", # Microsoft .NET Core SEoL - 
-							
+
+109321 => "Vendor Patch", #JBoss Enterprise Application Platform doFilter() Method Insecure Deserialization RCE
+137702 => "Vendor Patch", #Treck TCP/IP stack multiple vulnerabilities. (Ripple20)
+-99965 => "Vendor Patch", #Missing the latest Cisco IOS Patches
+171347 => "Vendor Support", #Apache HTTP Server SEoL (<= 1.3.x)
+121007 => "Configuration", #SSH Known Hard Coded Private Keys
+11358 => "Vendor Patch", #NFS portmapper localhost Mount Request Restricted Host Access
+104743 => "Vendor Patch", #TLS Version 1.0 Protocol Detection
+157288 => "Vendor Support", #TLS Version 1.1 Deprecated Protocol
+136929 => "Vendor Patch", #JQuery 1.2 < 3.5.0 Multiple XSS
+97861 => "Vendor Patch", #Network Time Protocol (NTP) Mode 6 Scanner
+142960 => "Vendor Patch", #HSTS Missing From HTTPS Server (RFC 6797)
+89058 => "Vendor Patch", #SSL DROWN Attack Vulnerability (Decrypting RSA with Obsolete and Weakened eNcryption)
+10061 => "Configuration", #Echo Service Detection
+33869 => "Vendor Patch", #JBoss Enterprise Application Platform (EAP) Status Servlet Request Remote Information Disclosure
+46181 => "Vendor Patch", #JBoss Enterprise Application Platform '/web-console' Authentication Bypass
+60108 => "Configuration", #SSL Certificate Chain Contains Weak RSA Keys
+187315 => "Vendor Patch", #SSH Terrapin Prefix Truncation Weakness (CVE-2023-48795)
+201125 => "Vendor Patch", #VMware ESXi 7.0 / 8.0 Out-of-Bounds read (CVE-2024-37086)
+10068 => "Configuration", #Finger Service Remote Information Disclosure
+10072 => "Configuration", #Finger .@host Unused Account Disclosure
+10891 => "Configuration", #X Display Manager Control Protocol (XDMCP) Detection
+11058 => "Configuration", #RPC rusers Remote Information Disclosure
+62694 => "Configuration", #Internet Key Exchange (IKE) Aggressive Mode with Pre-Shared Key
+78655 => "Configuration", #OpenSSH SSHFP Record Verification Weakness
+87733 => "Configuration", #AMQP Cleartext Authentication
+88098 => "Configuration", #Apache Server ETag Header Information Disclosure		
+153953 => "Configuration", #SSH Weak Key Exchange Algorithms Enabled
+10407 => "Configuration", #X Server Detection					
 
 							49071 => "Configuration",
 							19948 => "Configuration",
