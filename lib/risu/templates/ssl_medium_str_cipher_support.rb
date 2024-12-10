@@ -43,7 +43,7 @@ module Risu
 				@output.text "\n"
 
 				report_title Report.title
-				report_subtitle "SSL Medium Strength Cipher Suites Suupported Report"
+				report_subtitle "SSL Medium Strength Cipher Suites Supported Report"
 				report_author "This report was prepared by\n#{Report.author}"
 
 				@output.text "\n\n\n"
