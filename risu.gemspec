@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
 	#s.cert_chain  = ['certs/hammackj.pem']
 	#s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 
-	s.add_runtime_dependency 'rails', '~> 6.0', '>= 6.0.0'
+	s.add_runtime_dependency 'rails', '~> 6.1', '>= 6.1.1'
 	s.add_runtime_dependency 'libxml-ruby', '~> 2.9', '>= 2.9.0'
 	s.add_runtime_dependency 'prawn', '~> 2.1', '>= 2.1.0'
 	s.add_runtime_dependency 'prawn-table', '~> 0.2', '>= 0.2.2'
@@ -54,6 +54,7 @@ Gem::Specification.new do |s|
 	s.add_runtime_dependency 'rmagick', '~> 5.2', '>= 5.2.0'
 	s.add_runtime_dependency 'sqlite3', '~> 1.3', '>= 1.3.11'
 	s.add_runtime_dependency 'nokogiri', '~> 1.7', '>= 1.7.0.1'
+	s.add_runtime_dependency 'concurrent-ruby', '1.3.4'
 
 	s.add_development_dependency 'simplecov', '~> 0.15', '>= 0.15'
 	s.add_development_dependency 'yard', '~> 0.9', '>= 0.9.20'

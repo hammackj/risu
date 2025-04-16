@@ -23,20 +23,19 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class SolarWindsDameWareRollup < Risu::Base::PostProcessBase
+				class DellClientBIOS < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "SolarWinds DameWare Patch Rollup",
-							:plugin_id => -99936,
-							:plugin_name => "Missing the latest SolarWinds DameWare",
-							:item_name => "Update to the latest SolarWinds DameWare",
+							:description => "Dell Client BIOS Patch Rollup",
+							:plugin_id => -99918,
+							:plugin_name => "Missing the latest Dell Client BIOS",
+							:item_name => "Update to the latest Dell Client BIOS",
 							:plugin_ids => [
-								124062, #SolarWinds DameWare Mini Remote Client Agent < 12.0.3 Stack Buffer Overflow
-								130458, #SolarWinds Dameware Mini Remote Control Unauthenticated RCE
-								126263, #HIGH, SolarWinds Dameware Mini Remote Control Client Public Key Buffer Over-read								
+165181, #HIGH, Dell Client BIOS Multiple Vulnerabilities (DSA-2022-224)
+216935, #HIGH, Dell Client BIOS Weak Authentication (DSA-2025-021)
 							]
 						}
 					end

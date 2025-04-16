@@ -23,20 +23,18 @@ module Risu
 	module Parsers
 		module Nessus
 			module PostProcess
-				class SolarWindsDameWareRollup < Risu::Base::PostProcessBase
+				class MicrosoftAzureDataStudio < Risu::Base::PostProcessBase
 
 					#
 					def initialize
 						@info =
 						{
-							:description => "SolarWinds DameWare Patch Rollup",
-							:plugin_id => -99936,
-							:plugin_name => "Missing the latest SolarWinds DameWare",
-							:item_name => "Update to the latest SolarWinds DameWare",
+							:description => "Microsoft Azure Data Studio Patch Rollup",
+							:plugin_id => -99920,
+							:plugin_name => "Missing the latest Microsoft Azure Data Studio",
+							:item_name => "Update to the latest Microsoft Azure Data Studio",
 							:plugin_ids => [
-								124062, #SolarWinds DameWare Mini Remote Client Agent < 12.0.3 Stack Buffer Overflow
-								130458, #SolarWinds Dameware Mini Remote Control Unauthenticated RCE
-								126263, #HIGH, SolarWinds Dameware Mini Remote Control Client Public Key Buffer Over-read								
+192147, #HIGH, Microsoft Azure Data Studio < 1.48.0 Elevation of Privilege Vulnerability (CVE-2024-26203)
 							]
 						}
 					end

@@ -61,6 +61,10 @@ module Risu
 175441, #Security Updates for Microsoft SQL Server ODBC Driver (April 2023)
 178852, #Security Updates for Microsoft SQL Server OLE DB Driver (June 2023)
 182968, #Security Updates for Microsoft SQL Server OLE DB Driver (October 2023)
+207065, #CRITICAL, Security Updates for Microsoft SQL Server Elevation of Privilege (September 2024)
+207067, #HIGH, Security Updates for Microsoft SQL Server (September 2024)
+211472, #HIGH, Security Updates for Microsoft SQL Server (November 2024)
+182956, #MEDIUM, Security Updates for Microsoft SQL Server (October 2023)
 							]
 						}
 					end

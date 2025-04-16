@@ -59,13 +59,15 @@ module Risu
 						
 						mac_address = ""
 
+                        plugin_name = flatten item.plugin_name
+
 						if host.mac != nil
 							mac_address = host.mac.gsub("\n", " ").gsub(",", "")
 						else
 							mac_address = "FF:FF:FF:FF:FF:FF"
 						end
 
-						@output.text "#{host.ip}, #{host.fqdn}, #{host.netbios}, #{mac_address}, #{item.plugin_name}, #{plugin.risk_factor}, #{plugin.cvss_base_score}, #{solution}, #{vuln_publication_date}, #{date_older_than}"
+						@output.text "#{host.ip}, #{host.fqdn}, #{host.netbios}, #{mac_address}, #{plugin_name}, #{plugin.risk_factor}, #{plugin.cvss_base_score}, #{solution}, #{vuln_publication_date}, #{date_older_than}"
 					end
 				end
 			end
@@ -75,7 +77,7 @@ module Risu
                 if date == nil
                     return nil
                 end
-                
+
                 date_to_check = Time.new(date.to_s)
 
                 if date_to_check < Time.now - 3.months
@@ -91,17 +93,8 @@ module Risu
 					return nil
 				end
 
-#				puts "===="
-#				puts text
-
-
 				output = text.gsub("\n", " ")
 				output = output.gsub(",", ";")
-				
-
-#				puts output
-
-#				puts "==="
 
 				return "'" + output + "'"
 			end
@@ -112,6 +105,7 @@ module Risu
 				@output.text "IP Address, FQDN, Netbios Name, MAC Address, Finding, Risk Factor, CVSS Base Score, Solution, Vulnerability Publication Date, Older than 3 Months"
 				csv Plugin.critical_risks.order(cvss_base_score: :desc)
 				csv Plugin.high_risks.order(cvss_base_score: :desc)
+                csv Plugin.medium_risks.order(cvss_base_score: :desc)
 			end
 		end
 	end

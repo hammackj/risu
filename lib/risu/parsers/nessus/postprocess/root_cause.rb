@@ -392,7 +392,8 @@ module Risu
 87733 => "Configuration", #AMQP Cleartext Authentication
 88098 => "Configuration", #Apache Server ETag Header Information Disclosure		
 153953 => "Configuration", #SSH Weak Key Exchange Algorithms Enabled
-10407 => "Configuration", #X Server Detection					
+10407 => "Configuration", #X Server Detection				
+-99921 => "Vendor Patch", #Missing the latest Ubuntu Linux	
 
 							49071 => "Configuration",
 							19948 => "Configuration",

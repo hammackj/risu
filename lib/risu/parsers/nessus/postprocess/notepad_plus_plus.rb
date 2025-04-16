@@ -36,6 +36,7 @@ module Risu
 							:plugin_ids => [
 208192, #HIGH, Notepad++ < 8.4.1 DLL hijacking vulnerability
 181867, #HIGH, Notepad++ < 8.5.7 Multiple Buffer Overflow Vulnerabilities
+205291, #HIGH, Notepad++ < 8.1.1 Arbitrary Code Execution
 
 							]
 						}

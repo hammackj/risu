@@ -1561,6 +1561,8 @@ module Risu
 161691, #HIGH, The Microsoft Windows Support Diagnostic Tool (MSDT) RCE Workaround Detection (CVE-2022-30190)
 210860, #CRITICAL, KB5046615: Windows 10 version 1809 / Windows Server 2019 Security Update (November 2024)
 210850, #CRITICAL, KB5046612: Windows 10 Version 1607 / Windows Server 2016 Security Update (November 2024)
+169783, #MEDIUM, Security Updates for Windows Malicious Software Removal Tool (January 2023)
+152102, #HIGH, Microsoft Windows EFSRPC NTLM Reflection Elevation of Privilege (PetitPotam) (Remote)
 							]
 						}
 					end

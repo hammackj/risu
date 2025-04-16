@@ -38,6 +38,11 @@ module Risu
 117596, #Artifex Ghostscript < 9.25 PostScript Code Execution Vulnerability
 119240, #Artifex Ghostscript < 9.26 PostScript Multiple Vulnerabilities
 130273, #Artifex Ghostscript < 9.50 Multiple Vulnerabilities
+177205, #CRITICAL, Artifex Ghostscript < 10.01.1 Buffer Overflow
+177836, #HIGH, Artifex Ghostscript < 10.01.2 Security Bypass
+186904, #HIGH, Artifex Ghostscript < 10.2.1 DoS
+200487, #HIGH, Artifex Ghostscript < 10.03.1 Multiple Vulnerabilities
+210946, #HIGH, Artifex Ghostscript < 10.04.0 Multiple Vulnerabilities
 
 							]
 						}

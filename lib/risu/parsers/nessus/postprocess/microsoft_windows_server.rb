@@ -108,6 +108,15 @@ module Risu
 165002, #KB5017373: Windows Server 2008 R2 Security Update (September 2022)
 166024, #KB5018479: Windows Server 2008 R2 Security Update (October 2022)
 167103, #KB5020013: Windows Server 2008 R2 Security Update (November 2022)
+202034, #CRITICAL, KB5040456: Windows Server 2012 R2 Security Update (July 2024)
+205453, #CRITICAL, KB5041828: Windows Server 2012 R2 Security Update (August 2024)
+206896, #CRITICAL, KB5043138: Windows Server 2012 R2 Security Update (September 2024)
+208305, #CRITICAL, KB5044343: Windows Server 2012 R2 Security Update (October 2024)
+210861, #CRITICAL, KB5046682: Windows Server 2012 R2 Security Update (November 2024)
+212233, #HIGH, KB5048735: Windows Server 2012 R2 Security Update (December 2024)
+214135, #HIGH, KB5050048: Windows Server 2012 R2 Security Update (January 2025)
+216139, #HIGH, KB5052042: Windows Server 2012 R2 Security Update (February 2025)
+232622, #HIGH, KB5053887: Windows Server 2012 R2 Security Update (March 2025)
 							]
 						}
 					end

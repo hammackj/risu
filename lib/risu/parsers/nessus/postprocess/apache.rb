@@ -100,6 +100,7 @@ module Risu
 193423, #HIGH, Apache 2.4.x < 2.4.54 Multiple Vulnerabilities
 193424, #HIGH, Apache 2.4.x < 2.4.54 Multiple Vulnerabilities (mod_lua)
 193420, #MEDIUM, Apache 2.4.x < 2.4.54 Out-Of-Bounds Read (CVE-2022-28330)
+210450, #HIGH, Apache 2.4.x < 2.4.62 Multiple Vulnerabilities (Windows)
 
 							]
 						}

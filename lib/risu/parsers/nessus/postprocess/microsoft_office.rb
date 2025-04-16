@@ -249,6 +249,10 @@ module Risu
 181343, #MEDIUM, Security Updates for Microsoft Excel Products C2R Information Disclosure (September 2023) 
 181344, #MEDIUM, Security Updates for Microsoft Word Products C2R Multiple Vulnerabilities (September 2023)
 200479, #HIGH, Security Updates for Microsoft Office Products C2R (June 2024)
+216321, #HIGH, Security Updates for Microsoft Excel Products C2R (February 2025)
+216323, #HIGH, Security Updates for Microsoft Word Products C2R (February 2025)
+216324, #HIGH, Security Updates for Microsoft Office Products C2R (February 2024)
+216322, #MEDIUM, Security Updates for Outlook C2R (February 2024)
 
 							]
 						}
