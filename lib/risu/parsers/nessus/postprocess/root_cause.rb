@@ -393,7 +393,15 @@ module Risu
 88098 => "Configuration", #Apache Server ETag Header Information Disclosure		
 153953 => "Configuration", #SSH Weak Key Exchange Algorithms Enabled
 10407 => "Configuration", #X Server Detection				
--99921 => "Vendor Patch", #Missing the latest Ubuntu Linux	
+-99921 => "Vendor Patch", #Missing the latest Ubuntu Linux
+-99917 => "Vendor Patch", #Missing the latest Veeam Backup and Replication
+-99925 => "Vendor Patch", #Missing the latest Microsoft .NET
+
+132101 => "Configuration", #Windows Speculative Execution Configuration Check
+166555 => "Vendor Patch", #WinVerifyTrust Signature Validation CVE-2013-3900 Mitigation (EnableCertPaddingCheck)
+-99916 => "Vendor Patch", #Missing the latest JQuery
+76474 => "Configuration", #SNMP 'GETBULK' Reflection DDoS
+10663 => "Configuration", #DHCP Server Detection
 
 							49071 => "Configuration",
 							19948 => "Configuration",
