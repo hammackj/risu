@@ -54,10 +54,11 @@ module Risu
 						end
 					elsif t.template_info[:renderer] == "PDF"
 						Prawn::Document.generate(@output_file, :margin => [75, 50, 75, 50]) do |output|
-							output.font_size 10
+							output.font_size 8
 							t = template_manager.find_template_by_name(template)
 							t = t.class.new
 							t.output = output
+							t.page_count = 1
 							t.render(output) unless t == nil
 						end
 					end
