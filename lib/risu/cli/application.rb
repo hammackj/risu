@@ -419,6 +419,8 @@ module Risu
 					@findings.network = @report["network"]
 					@findings.owner = @report["owner"]
 					@findings.location = @report["location"]
+					@findings.stakeholders = @report["stakeholders"]
+					@findings.reviewers = @report["reviewers"]
 					@findings.extra = @report
 
 					template = Templater.new(@options[:template], @findings, @options[:output_file], @template_manager)
