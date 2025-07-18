@@ -40,6 +40,14 @@ module Risu
 				end
 			end
 
+			def windows_client_os_graph_page
+				if Host.windows_client_os_graph_has_data?
+					new_page
+					@output.image Host.windows_client_os_graph, :width => 500, :height => 375, :position => :center
+					text Host.windows_client_os_graph_text
+				end
+			end
+
 			#
 			def root_cause_graph_page
 				new_page
