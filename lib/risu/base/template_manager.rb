@@ -52,18 +52,19 @@ module Risu
 					Dir[search_path].each do |x|
 						begin
 							require x
-						rescue
+						rescue => e
+							puts "[FAILED] #{x} failed\n + #{e.inspect}"
 							next
 						end
 					end
 
-					TemplateBase.possible_templates.each do |p|
+					TemplateBase.possible_templates.each do |p|						
 						if validate(p) ==  true
 							@registered_templates << p if @registered_templates.include?(p) == false
 						end
 					end
-				rescue
-					puts "[!] Invalid template path"
+				rescue => error
+					puts "[!] Invalid template path, #{error.inspect}"
 				end
 			end
 
