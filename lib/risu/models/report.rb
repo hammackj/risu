@@ -29,7 +29,7 @@ module Risu
 
 			class << self
 
-				attr_accessor :title, :author, :company, :classification, :network, :owner, :location, :extra
+				attr_accessor :title, :author, :company, :classification, :network, :owner, :location, :stakeholders, :reviewers, :extra
 
 				#
 				#@scan_date = Host.where("start is not null").first[:start].to_s
