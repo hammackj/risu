@@ -29,6 +29,8 @@ module Risu
 			# @TODO comment
 			attr_accessor :output
 
+			attr_accessor :page_count
+
 			# Accessors for template meta-data
 			#
 			# @return [Hash] Containing template meta-data
