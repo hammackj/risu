@@ -402,6 +402,8 @@ module Risu
 -99916 => "Vendor Patch", #Missing the latest JQuery
 76474 => "Configuration", #SNMP 'GETBULK' Reflection DDoS
 10663 => "Configuration", #DHCP Server Detection
+201408 => "Vendor Support", #Canonical Ubuntu Linux SEoL (14.04.x)
+201456 => "Vendor Support", #Canonical Ubuntu Linux SEoL (18.04.x)
 
 							49071 => "Configuration",
 							19948 => "Configuration",
