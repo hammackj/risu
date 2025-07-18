@@ -71,8 +71,9 @@ module Risu
 								187201, #MEDIUM, OpenSSH < 9.6 Multiple Vulnerabilities
 								84638, #HIGH, OpenSSH < 6.9 Multiple Vulnerabilities
 								90023, #MEDIUM, OpenSSH < 7.2p2 X11Forwarding xauth Command Injection								
-
-
+90924, #MEDIUM, OpenSSH 6.8p1 - 7.x < 7.1p2 ssh_packet_read_poll2() Packet Handling DoS
+85690, #LOW, OpenSSH 7.x < 7.1 PermitRootLogin Security Bypass
+234554, #LOW, OpenSSH < 10.0 DisableForwarding
 
 							]
 						}
