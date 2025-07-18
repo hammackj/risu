@@ -43,6 +43,13 @@ module Risu
 				end
 			end
 
+			def report_title_page title, newline=false
+				@output.font_size(24) do
+					@output.text title, :align => :left
+					@output.text "\n" if newline
+				end
+			end
+
 			#
 			def report_subtitle title, newline=false
 				@output.font_size(18) do
@@ -51,10 +58,24 @@ module Risu
 				end
 			end
 
+			def report_subtitle_page title, newline=false
+				@output.font_size(18) do
+					@output.text title, :align => :left
+					@output.text "\n" if newline
+				end
+			end
+
 			#
 			def report_author author, newline=false
 				@output.font_size(14) do
 					@output.text author, :align => :center
+					@output.text "\n" if newline
+				end
+			end
+
+			def report_author_page author, newline=false
+				@output.font_size(14) do
+					@output.text author, :align => :left
 					@output.text "\n" if newline
 				end
 			end
@@ -87,16 +108,91 @@ module Risu
 
 			def field term, text, options = {}
 				if text != nil
-					#@output.text "\n#{term}", :style => :bold
-					#@output.text text, options
-
-
 					@output.formatted_text [
-						{text: "#{term}", styles: [:bold]},
+						{ text: "#{term}", styles: [:bold]},
 						{ text: text }
 					]
 
 				end
+			end
+
+			def bullet_item point, indent, item, bold = false, options = {}
+				if item != nil
+
+					indent_spacing = "#{Prawn::Text::NBSP}" * (indent * 5)
+					idented_point = indent_spacing + point
+
+					if bold
+						@output.formatted_text [
+							{ text: "#{idented_point} ", styles: [:bold]},
+							{ text: item, styles: [:bold] }
+						]
+					else
+						@output.formatted_text [
+							{ text: "#{idented_point} ", styles: [:bold]},
+							{ text: item }
+						]
+					end
+
+				end
+			end
+
+			def bullet_field_item point, indent, term, item, bold = false, options = {}
+				if item != nil
+
+					indent_spacing = "#{Prawn::Text::NBSP}" * (indent * 5)
+					idented_point = indent_spacing + point
+
+					if bold
+						@output.formatted_text [
+							{ text: "#{idented_point} ", styles: [:bold]},
+							{ text: "#{term}: ", styles: [:bold]},
+							{ text: item, styles: [:bold] }
+						]
+					else
+						@output.formatted_text [
+							{ text: "#{idented_point} ", styles: [:bold]},
+							{ text: "#{term}: ", styles: [:bold]},
+							{ text: item }
+						]
+					end
+				end
+			end
+
+			def numbered_item number, indent, item, options = {}
+				if item != nil
+
+					indent_spacing = "\t" * indent
+
+					idented_point = indent_spacing + number
+
+
+
+					@output.formatted_text [
+						{ text: "#{idented_point}. ", styles: [:bold]},
+						{ text: item }
+					]
+
+				end
+			end
+
+			def numbered_field_item number, indent, term, item, options = {}
+				if item != nil
+
+					indent_spacing = "\t" * indent
+					idented_point = indent_spacing + number
+
+					@output.formatted_text [
+						{ text: "#{idented_point}. ", styles: [:bold]},
+						{ text: "#{term}: ", styles: [:bold]},
+						{ text: item }
+					]
+
+				end
+			end
+
+			def page_width
+				@output.bounds.width
 			end
 
 			#
@@ -104,9 +200,30 @@ module Risu
 				title title_text, 24
 			end
 
+			def heading1_with_outline title_text
+				heading1 title_text
+
+
+				# @output.outline.define do
+				# 	section(title_text, destination: @page_count) do
+				# 		page title: title_text, destination: @page_count
+				# 	end
+				# end
+
+				@output.outline.page({title: title_text, destination: @page_count})
+			end
+
 			#
 			def heading2 title_text
 				title title_text, 18
+			end
+
+			def heading2_with_outline title_text, section
+				heading2 title_text
+
+				@output.outline.add_subsection_to(section) do
+      		@output.outline.page(title: title_text, destination: @page_count)
+    		end
 			end
 
 			#
@@ -142,6 +259,7 @@ module Risu
 			#
 			def new_page
 				@output.start_new_page
+				@page_count = @page_count + 1
 			end
 
 			#
