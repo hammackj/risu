@@ -322,7 +322,7 @@ module Risu
 							-99938 => "Vendor Patch", # Missing the latest PuTTY
 							-99928 => "Vendor Patch", # Missing the latest Microsoft SQL Server
 							-99927 => "Vendor Patch", # Missing the latest Notepad++
-
+							-99936 => "Vendor Patch", #Missing the latest SolarWinds DameWare
 
 
 							33850 => "Vendor Support",
