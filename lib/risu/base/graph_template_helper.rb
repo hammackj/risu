@@ -58,7 +58,7 @@ module Risu
 			#
 			def risks_by_service_graph_page
 				new_page
-				@output.image Item.risks_by_service_graph(10), :width => 500, :height => 375, :position => :center
+				@output.image Item.risks_by_service_graph(5), :width => 500, :height => 375, :position => :center
 				text Item.risks_by_service_graph_text
 			end
 
