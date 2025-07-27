@@ -308,7 +308,7 @@ module Risu
 				# Negation query for all hosts with a Windows 10 based Operating system
 				#
 				# @return [ActiveRecord::Relation] with the query results
-				def not_os_windows_10
+				def not_os_windows_11
 					where("os NOT LIKE '%Windows 11%'")
 				end
 
@@ -317,7 +317,7 @@ module Risu
 				#
 				# @return [ActiveRecord::Relation] with the query results
 				def os_windows_other
-					not_os_windows_2k12.not_os_windows_8.not_os_windows_7.not_os_windows_2k8.not_os_windows_vista.not_os_windows_2k3.not_os_windows_xp.not_os_windows_2k.not_os_windows_nt
+					not_os_windows_2k12.not_os_windows_8.not_os_windows_7.not_os_windows_2k8.not_os_windows_vista.not_os_windows_2k3.not_os_windows_xp.not_os_windows_2k.not_os_windows_nt.not_os_windows_10.not_os_windows_11
 				end
 
 				# Queries for all hosts with a Linux based Operating system
@@ -550,7 +550,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => Risu::GRAPH_COLORS,
+						:colors => Risu::ALT_GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
@@ -601,36 +601,36 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => Risu::GRAPH_COLORS,
+						:colors => Risu::ALT_GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
 					nt = Host.os_windows_nt.to_a.size
 					w2k = Host.os_windows_2k.to_a.size
-					xp = Host.os_windows_xp.to_a.size
+					#xp = Host.os_windows_xp.to_a.size
 					w2k3 = Host.os_windows_2k3.to_a.size
-					vista = Host.os_windows_vista.to_a.size
+					#vista = Host.os_windows_vista.to_a.size
 					w2k8 = Host.os_windows_2k8.to_a.size
 					w2k12 = Host.os_windows_2k12.to_a.size
 					w2k19 = Host.os_windows_2k19.to_a.size
-					w7 = Host.os_windows_7.to_a.size
-					w8 = Host.os_windows_8.to_a.size
-					w10 = Host.os_windows_10.to_a.size
-					w11 = Host.os_windows_11.to_a.size
+					# w7 = Host.os_windows_7.to_a.size
+					# w8 = Host.os_windows_8.to_a.size
+					# w10 = Host.os_windows_10.to_a.size
+					# w11 = Host.os_windows_11.to_a.size
 					other = (Host.os_windows.os_windows_other).to_a.size
 
 					g.data("NT", nt) if nt >= 1
 					g.data("2000", w2k) if w2k >= 1
-					g.data("XP", xp) if xp >= 1
+					#g.data("XP", xp) if xp >= 1
 					g.data("Server 2003", w2k3) if w2k3 >= 1
-					g.data("Vista", vista) if vista >= 1
+					#g.data("Vista", vista) if vista >= 1
 					g.data("Server 2008", w2k8) if w2k8 >= 1
 					g.data("Server 2012", w2k12) if w2k12 >= 1
 					g.data("Server 2019", w2k19) if w2k19 >= 1
-					g.data("7", w7) if w7 >= 1
-					g.data("8", w8) if w8 >= 1
-					g.data("10", w10) if w10 >= 1
-					g.data("11", w11) if w10 >= 1
+					#g.data("7", w7) if w7 >= 1
+					#.data("8", w8) if w8 >= 1
+					#g.data("10", w10) if w10 >= 1
+					#g.data("11", w11) if w10 >= 1
 					g.data("Other Windows", other) if other >= 1
 
 					image = g.to_image
@@ -655,7 +655,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => Risu::GRAPH_COLORS,
+						:colors => Risu::ALT_GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
@@ -690,30 +690,31 @@ module Risu
 				def windows_os_graph_text
 					nt = Host.os_windows_nt.to_a.size
 					w2k = Host.os_windows_2k.to_a.size
-					xp = Host.os_windows_xp.to_a.size
+					#xp = Host.os_windows_xp.to_a.size
 					w2k3 = Host.os_windows_2k3.to_a.size
-					vista = Host.os_windows_vista.to_a.size
+					#vista = Host.os_windows_vista.to_a.size
 					w2k8 = Host.os_windows_2k8.to_a.size
 					w2k12 = Host.os_windows_2k12.to_a.size
-					w7 = Host.os_windows_7.to_a.size
-					w8 = Host.os_windows_8.to_a.size
-					w10 = Host.os_windows_10.to_a.size
-					w11 = Host.os_windows_11.to_a.size
+					#w7 = Host.os_windows_7.to_a.size
+					#w8 = Host.os_windows_8.to_a.size
+					#w10 = Host.os_windows_10.to_a.size
+					#w11 = Host.os_windows_11.to_a.size
 					other = (Host.os_windows.os_windows_other).to_a.size
 
-					windows_os_count = nt + w2k + xp + w2k3 + vista + w7 + w8 + w2k8 + w2k12 + w10 + w11 + other
+					#windows_os_count = nt + w2k + xp + w2k3 + vista + w7 + w8 + w2k8 + w2k12 + w10 + w11 + other
+					windows_os_count = nt + w2k + w2k3 + w2k8 + w2k12 + other
 
 					nt_percent = (nt.to_f / windows_os_count.to_f) * 100
 					w2k_percent = (w2k.to_f / windows_os_count.to_f) * 100
-					xp_percent = (xp.to_f / windows_os_count.to_f) * 100
+					#xp_percent = (xp.to_f / windows_os_count.to_f) * 100
 					w2k3_percent = (w2k3.to_f / windows_os_count.to_f) * 100
-					vista_percent = (vista.to_f / windows_os_count.to_f) * 100
+					#vista_percent = (vista.to_f / windows_os_count.to_f) * 100
 
 					w2k8_percent = (w2k8.to_f / windows_os_count.to_f) * 100
-					w7_percent = (w7.to_f / windows_os_count.to_f) * 100
-					w8_percent = (w8.to_f / windows_os_count.to_f) * 100
-					w10_percent = (w10.to_f / windows_os_count.to_f) * 100
-					w11_percent = (w11.to_f / windows_os_count.to_f) * 100
+					#w7_percent = (w7.to_f / windows_os_count.to_f) * 100
+					#w8_percent = (w8.to_f / windows_os_count.to_f) * 100
+					#w10_percent = (w10.to_f / windows_os_count.to_f) * 100
+					#w11_percent = (w11.to_f / windows_os_count.to_f) * 100
 					w2k12_percent = (w2k12.to_f / windows_os_count.to_f) * 100
 
 					text = "This graph shows the percentage of the different Microsoft Windows based operating systems " +
@@ -722,17 +723,17 @@ module Risu
 					# @TODO this should be a table sorted by %
 					text << "#{nt_percent.round.to_i}% (#{nt}) of the network is Windows NT.\n" if nt_percent > 0
 					text << "#{w2k_percent.round.to_i}% (#{w2k}) of the network is Windows 2000.\n" if w2k_percent > 0
-					text << "#{xp_percent.round.to_i}% (#{xp}) of the network is Windows XP.\n" if xp_percent > 0
+					#text << "#{xp_percent.round.to_i}% (#{xp}) of the network is Windows XP.\n" if xp_percent > 0
 					text << "#{w2k3_percent.round.to_i}% (#{w2k3}) of the network is Windows Server 2003.\n" if w2k3_percent > 0
-					text << "#{vista_percent.round.to_i}% (#{vista}) of the network is Windows Vista.\n" if vista_percent > 0
+					#text << "#{vista_percent.round.to_i}% (#{vista}) of the network is Windows Vista.\n" if vista_percent > 0
 					text << "#{w2k8_percent.round.to_i}% (#{w2k8}) of the network is Windows Server 2008.\n" if w2k8_percent > 0
-					text << "#{w7_percent.round.to_i}% (#{w7}) of the network is Windows 7.\n" if w7_percent > 0
-					text << "#{w8_percent.round.to_i}% (#{w8}) of the network is Windows 8.\n" if w8_percent > 0
-					text << "#{w10_percent.round.to_i}% (#{w10}) of the network is Windows 10.\n" if w10_percent > 0
-					text << "#{w11_percent.round.to_i}% (#{w11}) of the network is Windows 11.\n" if w11_percent > 0
+					#text << "#{w7_percent.round.to_i}% (#{w7}) of the network is Windows 7.\n" if w7_percent > 0
+					#text << "#{w8_percent.round.to_i}% (#{w8}) of the network is Windows 8.\n" if w8_percent > 0
+					#text << "#{w10_percent.round.to_i}% (#{w10}) of the network is Windows 10.\n" if w10_percent > 0
+					#text << "#{w11_percent.round.to_i}% (#{w11}) of the network is Windows 11.\n" if w11_percent > 0
 					text << "#{w2k12_percent.round.to_i}% (#{w2k12}) of the network is Windows Server 2012.\n" if w2k12_percent > 0
 
-					text << "\n\n" << unsupported_os_windows if nt > 0 or w2k > 0 or xp > 0
+					text << "\n\n" << unsupported_os_windows if nt > 0 or w2k > 0 # or xp > 0
 
 					return text
 				end
