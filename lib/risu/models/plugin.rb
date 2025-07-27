@@ -142,7 +142,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => Risu::GRAPH_COLORS,
+						:colors => Risu::ALT_GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
