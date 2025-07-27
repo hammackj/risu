@@ -279,7 +279,7 @@ module Risu
 					g.sort = false
 					g.marker_count = 1
 					g.theme = {
-						:colors => Risu::GRAPH_COLORS,
+						:colors => Risu::ALT_GRAPH_COLORS,
 						:background_colors => %w(white white)
 					}
 
@@ -662,7 +662,32 @@ module Risu
 				#
 				# @return [String] Scrubbed plugin name
 				def scrub_plugin_name name
-					return name.gsub("(remote check)", "").gsub("(uncredentialed check)", "").gsub(/(\(\d.*\))/, "")
+
+					#puts "-#{name.inspect}-"
+
+					# new_name = name.gsub("(remote check)", "")
+					# new_name = new_name.gsub("(remote)", "")
+					# new_name = new_name.gsub("(uncredentialed check)", "")
+					# new_name = new_name.gsub(/\(VMSA-\d{4}-\d{4}\)/, "")
+
+					new_name = name.dup
+
+					# Remove specific parentheses terms
+					new_name.gsub!(/\(remote check\)/i, "")
+					new_name.gsub!(/\(remote\)/i, "")
+					new_name.gsub!(/\(uncredentialed check\)/i, "")
+
+					# Remove any (VMSA-xxxx-xxxx)
+					new_name.gsub!(/\(VMSA[\u2010-\u2015\-]\d{4}[\u2010-\u2015\-]\d{4}\)/i, "")
+
+					# Optional: remove extra whitespace
+					new_name.strip!
+					new_name.squeeze!(" ")
+
+					# Overly reductive
+					#new_name = name.gsub(/(\(\d.*\))/, "")
+
+					return new_name
 				end
 
 				# Returns an array of plugin_id and plugin_name for the top 10
