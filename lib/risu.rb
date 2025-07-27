@@ -23,7 +23,46 @@ module Risu
 	# @TODO 1.8.1 - move graph variables to graphs.rb
 	GRAPH_WIDTH = 750
 	#                  red     orange  yellow  green    blue   purple        grey           pink
-	GRAPH_COLORS = %w(#d2403f #ec9241 #fcc343 #50ad51 #397bbb #8E6B8E black #cccccc brown #e52d89)
+	#GRAPH_COLORS = %w(#d2403f #ec9241 #fcc343 #50ad51 #397bbb #8E6B8E black #cccccc brown #e52d89)
+
+	GRAPH_COLORS = %w(#C0392B #D35400 #F1C40F #27AE60 #08306B #ECF0F1)
+
+  # Critical (Rich Red)
+  # High     (Warm Orange)
+  # Medium   (Bright Yellow)
+  # Low      (Emerald Green)
+  # Info     (Light Gray)
+
+
+
+	ALT_GRAPH_COLORS = %w(#08306B #08519C #2171B5 #4292C6 #6BAED6 #9ECAE1)
+	  # Shade 1 (Dark Navy)
+  # Shade 2 (Deep Blue)
+  # Shade 3 (Strong Blue)
+  # Shade 4 (Sky Blue)
+  # Shade 5 (Light Sky)
+  # Shade 6 (Pale Blue)
+	
+	
+	#%w(#4B0082 #8A2BE2 #9370DB #D8BFD8 #0000FF #1E90FF #87CEEB #8B4513 #404040 #DCDCDC)
+	  # Indigo
+  # BlueViolet
+  # MediumPurple
+  # Thistle
+  # Blue
+  # DodgerBlue
+  # SkyBlue
+  # SaddleBrown
+  # DarkGray
+  # Gainsboro
+
+# 	%w(
+#   #C0392B  # Critical (Rich Red)
+#   #D35400  # High     (Warm Orange)
+#   #F1C40F  # Medium   (Bright Yellow)
+#   #27AE60  # Low      (Emerald Green)
+#   #ECF0F1  # Info     (Light Gray)
+# )
 
 	CONFIG_FILE = "./risu.cfg"
 	USER_TEMPLATES_DIR = "~/.risu/templates/"
