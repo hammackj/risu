@@ -25,7 +25,7 @@ module Risu
 	#                  red     orange  yellow  green    blue   purple        grey           pink
 	#GRAPH_COLORS = %w(#d2403f #ec9241 #fcc343 #50ad51 #397bbb #8E6B8E black #cccccc brown #e52d89)
 
-	GRAPH_COLORS = %w(#C0392B #D35400 #F1C40F #27AE60 #08306B #ECF0F1)
+        GRAPH_COLORS = %w(#C0392B #D35400 #F1C40F #27AE60 #08306B #ECF0F1).freeze
 
   # Critical (Rich Red)
   # High     (Warm Orange)
@@ -35,7 +35,7 @@ module Risu
 
 
 
-	ALT_GRAPH_COLORS = %w(#08306B #08519C #2171B5 #4292C6 #6BAED6 #9ECAE1)
+        ALT_GRAPH_COLORS = %w(#08306B #08519C #2171B5 #4292C6 #6BAED6 #9ECAE1).freeze
 	  # Shade 1 (Dark Navy)
   # Shade 2 (Deep Blue)
   # Shade 3 (Strong Blue)
@@ -64,8 +64,8 @@ module Risu
 #   #ECF0F1  # Info     (Light Gray)
 # )
 
-	CONFIG_FILE = "./risu.cfg"
-	USER_TEMPLATES_DIR = "~/.risu/templates/"
+        CONFIG_FILE = File.expand_path("risu.cfg", __dir__).freeze
+        USER_TEMPLATES_DIR = "~/.risu/templates/".freeze
 end
 
 # TODO move these require to another file or move the above metadata to a config.rb
@@ -74,7 +74,6 @@ require 'rails'
 require 'active_record'
 require "active_support"
 require 'libxml'
-require 'logger'
 require 'ipaddr'
 require 'yaml'
 require 'gruff'
