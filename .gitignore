@@ -10,3 +10,4 @@ coverage/
 .bundle/
 Gemfile.lock
 tools/output
+certs/
