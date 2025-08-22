@@ -38,9 +38,16 @@ class ConsoleTest < ActiveSupport::TestCase
 		assert result == true
 	end
 
-	test "should return true for Application.test_connection" do
-		assert @app_test.test_connection?[0] == true
-	end
+        test "should return true for Application.test_connection" do
+                assert @app_test.test_connection?[0] == true
+        end
+
+        test "load_config exits on unsafe YAML" do
+                unsafe_yaml = "---\nfoo: !ruby/object:Risu::CLI::Application {}\n"
+                assert_raises(SystemExit) do
+                        @app_test.load_config(unsafe_yaml, true)
+                end
+        end
 
 	#load_config from file
 	#load_config from file that doesn't exist

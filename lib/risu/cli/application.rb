@@ -72,35 +72,46 @@ module Risu
 			#
 			# @param file Path to configuration file
 			# @param in_memory_config [Boolean] If the configuration is in memory
-			def load_config file=CONFIG_FILE, in_memory_config=false
-				if File.exist?(file) == true or in_memory_config == true
-					begin
-						if in_memory_config
-							yaml = YAML::load(file)
-						else
-							yaml = YAML::load(File.open(file))
-						end
+                       def load_config file=CONFIG_FILE, in_memory_config=false
+                               if File.exist?(file) == true or in_memory_config == true
+                                       begin
+                                               if in_memory_config
+                                                       yaml = YAML.safe_load(
+                                                               file,
+                                                               permitted_classes: [],
+                                                               aliases: true
+                                                       )
+                                               else
+                                                       yaml = YAML.load_file(
+                                                               file,
+                                                               permitted_classes: [],
+                                                               aliases: true
+                                                       )
+                                               end
 
-						@database = yaml["database"]
-						@report = yaml["report"]
+                                               @database = yaml["database"]
+                                               @report = yaml["report"]
 
-						puts @database.inspect if @options[:debug]
+                                               puts @database.inspect if @options[:debug]
 
-						#If no values were entered put a default value in
-						@report.each do |k, v|
-							if v == nil
-								@report[k] = "No #{k}"
-							end
-						end
-					rescue => e
-						puts "[!] Error loading configuration! - #{e.message}"
-						exit
-					end
-				else
-					puts "[!] Configuration file does not exist!"
-					exit
-				end
-			end
+                                               #If no values were entered put a default value in
+                                               @report.each do |k, v|
+                                                       if v == nil
+                                                               @report[k] = "No #{k}"
+                                                       end
+                                               end
+                                       rescue Psych::Exception => e
+                                               puts "[!] Error loading configuration! - #{e.message}"
+                                               exit
+                                       rescue => e
+                                               puts "[!] Error loading configuration! - #{e.message}"
+                                               exit
+                                       end
+                               else
+                                       puts "[!] Configuration file does not exist!"
+                                       exit
+                               end
+                       end
 
 			# Initiator for [ActiveRecord] migrations.
 			#
