@@ -314,8 +314,8 @@ module Risu
 							100767 => "Vendor Patch",
 							101371 => "Vendor Patch",
 							99523 => "Vendor Patch",
-							175373 => "Vendor Patch", # Microsoft Message Queuing RCE (CVE-2023-21554, QueueJumper) - 
-							-99946 => "Vendor Patch", # Missing the latest Microsoft Office Patches 
+							175373 => "Vendor Patch", # Microsoft Message Queuing RCE (CVE-2023-21554, QueueJumper) -
+							-99946 => "Vendor Patch", # Missing the latest Microsoft Office Patches
 							-99929 => "Vendor Patch", # NextGen Mirth
 							-99947 => "Vendor Patch", # Missing the latest Dell iDRAC Patches
 							-99935 => "Vendor Patch", # Missing the latest Zoom Client for Meetings
@@ -359,11 +359,11 @@ module Risu
 							11057 => "Vendor Support",
 							21725 => "Vendor Support",
 							97994 => "Vendor Support",
-							78555 => "Vendor Support", # OpenSSL Unsupported - 
-							56997 => "Vendor Support", # VMware ESX / ESXi Unsupported Version Detection - 
+							78555 => "Vendor Support", # OpenSSL Unsupported -
+							56997 => "Vendor Support", # VMware ESX / ESXi Unsupported Version Detection -
 							108797 => "Vendor Support", # Unsupported Windows OS (remote)
 							73756 => "Vendor Support", # Microsoft SQL Server Unsupported Version Detection
-							172179 => "Vendor Support", # Microsoft .NET Core SEoL - 
+							172179 => "Vendor Support", # Microsoft .NET Core SEoL -
 
 109321 => "Vendor Patch", #JBoss Enterprise Application Platform doFilter() Method Insecure Deserialization RCE
 137702 => "Vendor Patch", #Treck TCP/IP stack multiple vulnerabilities. (Ripple20)
@@ -390,12 +390,29 @@ module Risu
 62694 => "Configuration", #Internet Key Exchange (IKE) Aggressive Mode with Pre-Shared Key
 78655 => "Configuration", #OpenSSH SSHFP Record Verification Weakness
 87733 => "Configuration", #AMQP Cleartext Authentication
-88098 => "Configuration", #Apache Server ETag Header Information Disclosure		
+88098 => "Configuration", #Apache Server ETag Header Information Disclosure
 153953 => "Configuration", #SSH Weak Key Exchange Algorithms Enabled
-10407 => "Configuration", #X Server Detection				
+10407 => "Configuration", #X Server Detection
 -99921 => "Vendor Patch", #Missing the latest Ubuntu Linux
 -99917 => "Vendor Patch", #Missing the latest Veeam Backup and Replication
 -99925 => "Vendor Patch", #Missing the latest Microsoft .NET
+
+81777 => "Configuration", #MongoDB Service Without Authentication Detection
+213078 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.98 multiple vulnerabilities
+232528 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.99
+235034 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.104 multiple vulnerabilities
+157117 => "Vendor Patch", #Apache Tomcat 9.0.35 < 9.0.58 multiple vulnerabilities
+186365 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.83
+201848 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.90
+237498 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.105
+240060 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.106 multiple vulnerabilities
+241680 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.107 multiple vulnerabilities
+
+44135 => "Vendor Support", #Web Server Generic Cookie Injection
+182809 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.81 multiple vulnerabilities
+192042 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.86 multiple vulnerabilities
+194473 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.44 multiple vulnerabilities
+197830 => "Vendor Patch", #Apache Tomcat 9.0.0.M1 < 9.0.46
 
 132101 => "Configuration", #Windows Speculative Execution Configuration Check
 166555 => "Vendor Patch", #WinVerifyTrust Signature Validation CVE-2013-3900 Mitigation (EnableCertPaddingCheck)
@@ -491,7 +508,7 @@ module Risu
 							59275 => "Configuration",
 							35453 => "Configuration",
 							90317 => "Configuration",
-							121008 => "Configuration", #SSL / TLS Certificate Known Hard Coded Private Keys - 
+							121008 => "Configuration", #SSL / TLS Certificate Known Hard Coded Private Keys -
 
 						}
 					end

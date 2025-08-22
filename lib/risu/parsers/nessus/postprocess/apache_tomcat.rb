@@ -88,9 +88,9 @@ module Risu
 55859, #Apache Tomcat 7.x < 7.0.20 'jsvc' Information Disclosure
 57082, #Apache Tomcat 7.x < 7.0.22 Multiple Vulnerabilities
 57541, #Apache Tomcat 7.x < 7.0.23 Hash Collision DoS
-151502, #Apache Tomcat 7.0.x <= 7.0.108 / 8.5.x <= 8.5.65 / 9.0.x <= 9.0.45 / 10.0.x <= 10.0.5 vulnerability 
+151502, #Apache Tomcat 7.0.x <= 7.0.108 / 8.5.x <= 8.5.65 / 9.0.x <= 9.0.45 / 10.0.x <= 10.0.5 vulnerability
 152182, #Apache Tomcat 9.0.0.M1 < 9.0.48 vulnerability
-160894, #Apache Tomcat 9.0.13 < 9.0.63 vulnerability 
+160894, #Apache Tomcat 9.0.13 < 9.0.63 vulnerability
 162498, #Apache Tomcat 9.0.30 < 9.0.65 vulnerability
 102587, #Apache Tomcat 7.0.41 < 7.0.79 Cache Poisoning Vulnerability
 118035, #Apache Tomcat 7.0.0 < 7.0.91 Open Redirect Weakness
@@ -99,7 +99,7 @@ module Risu
 166807, #Apache Tomcat 8.5.x < 8.5.83 Request Smuggling Vulnerability
 169458, #Apache Tomcat 8.5.0 < 8.5.84
 162502, #Apache Tomcat 8.5.50 < 8.5.82 vulnerability
-166906, #Apache Tomcat 9.0.0-M1 < 9.0.68 Request Smuggling Vulnerability 
+166906, #Apache Tomcat 9.0.0-M1 < 9.0.68 Request Smuggling Vulnerability
 171657, #Apache Tomcat 9.0.0.M1 < 9.0.71
 173251, #Apache Tomcat 9.0.0.M1 < 9.0.72
 180194, #Apache Tomcat 9.0.0.M1 < 9.0.80
@@ -122,7 +122,19 @@ module Risu
 197823, #HIGH, Apache Tomcat 7.0.0 < 7.0.75
 197831, #HIGH, Apache Tomcat 7.0.0 < 7.0.78
 197838, #HIGH, Apache Tomcat 7.0.0 < 7.0.99 multiple vulnerabilities
-
+213078, #CRITICAL, Apache Tomcat 9.0.0.M1 < 9.0.98 multiple vulnerabilities
+232528, #CRITICAL, Apache Tomcat 9.0.0.M1 < 9.0.99
+235034, #CRITICAL, Apache Tomcat 9.0.0.M1 < 9.0.104 multiple vulnerabilities
+157117, #HIGH, Apache Tomcat 9.0.35 < 9.0.58 multiple vulnerabilities
+186365, #HIGH, Apache Tomcat 9.0.0.M1 < 9.0.83
+201848, #HIGH, Apache Tomcat 9.0.0.M1 < 9.0.90
+237498, #HIGH, Apache Tomcat 9.0.0.M1 < 9.0.105
+240060, #HIGH, Apache Tomcat 9.0.0.M1 < 9.0.106 multiple vulnerabilities
+241680, #HIGH, Apache Tomcat 9.0.0.M1 < 9.0.107 multiple vulnerabilities
+182809, #MEDIUM, Apache Tomcat 9.0.0.M1 < 9.0.81 multiple vulnerabilities
+192042, #MEDIUM, Apache Tomcat 9.0.0.M1 < 9.0.86 multiple vulnerabilities
+194473, #MEDIUM, Apache Tomcat 9.0.0.M1 < 9.0.44 multiple vulnerabilities
+197830, #MEDIUM, Apache Tomcat 9.0.0.M1 < 9.0.46
 							]
 						}
 					end
