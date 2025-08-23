@@ -130,11 +130,8 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 			
-					image.write("top_by_count_graph.png")
-			
-					return "top_by_count_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+                                        StringIO.new(image.to_blob)
+                                end
 
 				def root_cause_graph
 					g = Gruff::Pie.new(GRAPH_WIDTH)

@@ -293,11 +293,8 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 			
-					image.write("risks_by_service_graph.png")
-			
-					return "risks_by_service_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+                                        StringIO.new(image.to_blob)
+                                end
 
 				# Generates text for the Risks by Service graph
 				#
@@ -346,11 +343,8 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 
-					image.write("risks_by_severity_graph.png")
-
-					return "risks_by_severity_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+                                        StringIO.new(image.to_blob)
+                                end
 
 				# Queries for all DISA Stig findings by category
 				#
