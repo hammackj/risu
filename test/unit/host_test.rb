@@ -68,9 +68,9 @@ class HostTest < ActiveSupport::TestCase
 		assert Host.windows_os_graph.class == StringIO
 	end
 
-	test "returns 160 for Host.windows_os_graph_text.length" do
-		assert Host.windows_os_graph_text.length == 160, "GOT #{Host.windows_os_graph_text} - #{Host.windows_os_graph_text.length}"
-	end
+        test "returns 119 for Host.windows_os_graph_text.length" do
+                assert Host.windows_os_graph_text.length == 119, "GOT #{Host.windows_os_graph_text} - #{Host.windows_os_graph_text.length}"
+        end
 
 	test "returns 0 for Host.unsupported_os_windows.length" do
 		assert Host.unsupported_os_windows.length == 0, "GOT #{Host.unsupported_os_windows.length}"

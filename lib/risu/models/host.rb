@@ -465,11 +465,8 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 			
-					image.write("top_vuln_graph.png")
-			
-					return "top_vuln_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+                                        StringIO.new(image.to_blob)
+                                end
 
 				# @deprecated
 				# @TODO comments
@@ -585,11 +582,8 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 			
-					image.write("other_os_graph.png")
-			
-					return "other_os_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+                                        StringIO.new(image.to_blob)
+                                end
 
 				# Graphs the percentage of Windows Operating Systems
 				# @deprecated
@@ -639,11 +633,8 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 			
-					image.write("windows_os_graph.png")
-			
-					return "windows_os_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+                                        StringIO.new(image.to_blob)
+                                end
 
 				# Graphs the percentage of Windows Operating Systems
 				# @deprecated
