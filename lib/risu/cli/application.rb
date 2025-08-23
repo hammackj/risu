@@ -273,7 +273,7 @@ module Risu
 						opt.separator('Configuration Options')
 
 						opt.on('--config-file FILE', "Loads configuration settings for the specified file. By default #{APP_NAME} loads #{CONFIG_FILE}") do |option|
-							if File.exists?(option) == true
+							if File.exist?(option) == true
 								@options[:config_file] = option
 							else
 								puts "[!] Specified config file does not exist. Please specify a file that exists."
@@ -286,7 +286,7 @@ module Risu
 								option = CONFIG_FILE
 							end
 
-							if File.exists?(option) == true
+							if File.exist?(option) == true
 								puts "[!] Configuration file already exists; If you wish to over-write this file please delete it."
 							else
 								if option == nil

@@ -461,10 +461,10 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
+
                                         StringIO.new(image.to_blob)
                                 end
 
@@ -578,10 +578,10 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
+
                                         StringIO.new(image.to_blob)
                                 end
 
@@ -592,8 +592,8 @@ module Risu
 				def windows_os_graph
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = "Windows Operating Systems By Percentage"
-					g.sort = false
-					g.marker_count = 1
+					#g.sort = false
+					#g.marker_count = 1
 					g.theme = {
 						:colors => Risu::ALT_GRAPH_COLORS,
 						:background_colors => %w(white white)
@@ -629,12 +629,12 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
-                                        StringIO.new(image.to_blob)
-                                end
+
+          StringIO.new(image.to_blob)
+        end
 
 				# Graphs the percentage of Windows Operating Systems
 				# @deprecated
@@ -666,12 +666,12 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
+
 					image.write("windows_client_os_graph.png")
-			
+
 					return "windows_client_os_graph.png"
 				end
 
@@ -736,7 +736,7 @@ module Risu
 					w8 = Host.os_windows_8.to_a.size
 					w10 = Host.os_windows_10.to_a.size
 					w11 = Host.os_windows_11.to_a.size
-					
+
 					windows_os_count = xp + vista + w7 + w8 + w10 + w11
 
 					xp_percent = (xp.to_f / windows_os_count.to_f) * 100

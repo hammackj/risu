@@ -276,8 +276,8 @@ module Risu
 				def risks_by_service_graph(limit=10)
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = sprintf "Top %d Services By Vulnerability", Item.risks_by_service(limit).to_a.count
-					g.sort = false
-					g.marker_count = 1
+					#g.sort = false
+					#g.marker_count = 1
 					g.theme = {
 						:colors => Risu::ALT_GRAPH_COLORS,
 						:background_colors => %w(white white)
@@ -289,10 +289,10 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
+
                                         StringIO.new(image.to_blob)
                                 end
 
@@ -383,12 +383,12 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
+
 					image.write("stigs_severity.png")
-			
+
 					return "stigs_severity.png"
 					#StringIO.new(image.to_blob)
 				end

@@ -28,8 +28,8 @@ module Risu
 			def graph
         g = Gruff::Pie.new(GRAPH_WIDTH)
         g.title = "Windows Operating Systems By Percentage"
-        g.sort = false
-        g.marker_count = 1
+        #g.sort = false
+        #g.marker_count = 1
         g.theme = {
           :colors => Risu::GRAPH_COLORS,
           :background_colors => %w(white white)
