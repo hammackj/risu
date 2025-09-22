@@ -42,12 +42,16 @@ module Risu
 72658,
 76369,
 151646, #Serv-U FTP Server <= 15.2.3 Hotfix 1 Memory Escape Vulnerability
-156886, #Serv-U FTP Server < 15.3 Improper Input Validation			
+156886, #Serv-U FTP Server < 15.3 Improper Input Validation
 169899, #SolarWinds Serv-U < 15.3.0 Common Key (CVE-2021-35252)
 177024, #SolarWinds Serv-U < 15.4 Exposure of Sensitive Information (CVE-2023-23841)
 193517, #HIGH, SolarWinds Serv-U < 15.4.2 Directory Traversal (CVE-2024-28073)
 207863, #HIGH, SolarWinds Serv-U 15.2.4 < 15.2.5 Multiple Vulnerabilities
-					
+146308, #HIGH, Serv-U FTP Server < 15.2.2 Hotfix 1 Arbitrary File Read/Write
+207858, #HIGH, SolarWinds Serv-U 15.2.0 < 15.2.4
+207862, #MEDIUM, SolarWinds Serv-U 15.2.0 < 15.2.3 XSS
+207860, #MEDIUM, SolarWinds Serv-U 15.0 < 15.3.1
+234441, #LOW, SolarWinds Serv-U 15.0 < 15.5.1 XSS
 
 							]
 						}
