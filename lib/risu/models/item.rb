@@ -514,8 +514,8 @@ module Risu
 
 					graph_text << "The majority of the critical findings were found on #{host_percent.round}% of the total assessed computers. #{risk_text}\n\n"
 
-					graph_text << "The systems with critical vulnerabilities represent the largest threat to the network, " +
-					"so patching this group is paramount to the overall network security. It only takes one vulnerability " +
+					graph_text << "The systems with critical vulnerabilities represent the largest threat to the network " +
+					"so, patching this group is paramount to the overall network security. It only takes one vulnerability " +
 					"to create a security incident.\n\n"
 
 					graph_text << "It should be noted that low findings and open ports represent the discovery "
