@@ -466,7 +466,7 @@ module Risu
 					#puts image.methods
 
                                         StringIO.new(image.to_blob)
-                                end
+                    end
 
 				# @deprecated
 				# @TODO comments
@@ -583,7 +583,7 @@ module Risu
 					#puts image.methods
 
                                         StringIO.new(image.to_blob)
-                                end
+                        end
 
 				# Graphs the percentage of Windows Operating Systems
 				# @deprecated
@@ -829,31 +829,31 @@ module Risu
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
 					win_95_text = "Windows 95 is an unsupported operating system; Microsoft has stopped support as of December 2001. " +
-					"Please see http://en.wikipedia.org/wiki/Windows_95 for more information.\n\n" if win_95.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_95.size >= 1
 
 					win_98_text = "Windows 98 is an unsupported operating system; Microsoft has stopped support as of July 2006. " +
-					"Please see http://support.microsoft.com/gp/lifean18 for more information.\n\n" if win_98.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_98.size >= 1
 
 					win_me_text = "Windows Millennium is an unsupported operating system; Microsoft has stopped support as of July 2006. " +
-					"Please see http://support.microsoft.com/gp/lifean18 for more information.\n\n" if win_me.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_me.size >= 1
 
 					win_nt_text = "Windows NT is an unsupported operating system; Microsoft has stopped support as of December 2004. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_nt.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_nt.size >= 1
 
 					win_2000_text = "Windows 2000 is an unsupported operating system; Microsoft has stopped support as of July 2010. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2000.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_2000.size >= 1
 
 					win_xp_text = "Windows XP is an unsupported operating system; Microsoft has stopped support as of April 2014. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_xp.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_xp.size >= 1
 
 					win_2003_text = "Windows 2003 is an unsupported operating system; Microsoft has stopped support as of July 2015. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2003.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_2003.size >= 1
 
 					win_7_text = "Windows 7 is an unsupported operating system; Microsoft has stopped support as of Janurary 2020. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_7.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_7.size >= 1
 
-					win_2008_text = "Windows 2008 is an unsupported operating system; Microsoft has stopped support as of Janurary 2020. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2008.size >= 1
+					win_2008_text = 'Windows 2008 is an unsupported operating system; Microsoft has stopped support as of Janurary 2020. " +
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n' if win_2008.size >= 1
 
 					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}#{win_7_text}#{win_2008_text}"
 				end
