@@ -63,6 +63,7 @@ module Risu
 161717, #Microsoft Edge (Chromium) < 102.0.1245.30 Multiple Vulnerabilities
 160319, #Microsoft Edge (Chromium) < 101.0.1210.32 Multiple Vulnerabilities
 186447, #MEDIUM, Microsoft Edge (Chromium) < 118.0.2088.122 / 119.0.2151.97 Multiple Vulnerabilities
+274366, #HIGH, Microsoft Edge (Chromium) < 142.0.3595.65 Multiple Vulnerabilities
 							]
 						}
 					end

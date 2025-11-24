@@ -42,6 +42,7 @@ module Risu
 211725, #HIGH, 7-Zip < 24.07 RCE (ZDI-24-1532)
 214542, #HIGH, 7-Zip < 24.09 (ZDI-25-045)
 209231, #HIGH, 7-Zip < 24.01 Heap-based Buffer Overflow
+242639, #MEDIUM, 7-Zip < 25.00
 							]
 						}
 					end

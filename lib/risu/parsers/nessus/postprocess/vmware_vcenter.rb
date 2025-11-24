@@ -68,7 +68,7 @@ module Risu
 146826, #VMware vCenter Server 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2021-0002)
 153544, #VMware vCenter Server < 6.7 Multiple Vulnerabilities (VMSA-2021-0020)
 153889, #VMware vCenter Server Arbitrary File Upload (VMSA-2021-0020)
-135411, #VMware vCenter Server 6.7 Sensitive Information Disclosure Vulnerability (VMSA-2020-0006) 
+135411, #VMware vCenter Server 6.7 Sensitive Information Disclosure Vulnerability (VMSA-2020-0006)
 140040, #VMware vCenter Server 6.5 / 6.7 / 7.0 DoS (VMSA-2020-0018)
 150982, #VMware vCenter Server 6.5 / 6.7 Session Hijack (VMSA-2020-0023)
 155790, #VMware vCenter Server 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2021-0027)
@@ -77,7 +77,11 @@ module Risu
 168746, #VMware vCenter Server 6.5 < 6.5 U3u / 6.7 < 6.7.0 U3s / 7.0 < 7.0 U3i Multiple Vulnerabilities (VMSA- 2022-0030)
 183957, #VMware vCenter Server 6.5 < 6.5U3v / 6.7 < 6.7U3t / 7.0 < 7.0U3o / 8.0 < 8.0U1d Out-of-bounds Write (VMSA-2023-0023)
 183958, #VMware vCenter Server 7.0 < 7.0U3o / 8.0 < 8.0U2 Partial Information Disclosure (VMSA-2023-0023)
-
+207464, #CRITICAL, VMware vCenter Server 7.x < 7.0 U3t / 8.x < 8.0.3 U3d Multiple Vulnerabilities (VMSA-2024-0019)
+237247, #HIGH, VMware vCenter Server 7.0.x < 7.0 U3v / 8.0.x < 8.0 U3e Authenticated Command Execution (CVE-2025-41225) (VMSA-2025-0010)
+237248, #HIGH, VMware vCenter Server 8.0 < 8.0 U3e Server Reflected XSS (CVE-2025-41228) (VMSA-2025-0010)
+266405, #HIGH, VMware vCenter Server 7.0.x < 7.0 U3w / 8.0.x < 8.0 U3g SMTP Header Injection (VMSA-2025-0016)
+245963, #MEDIUM, VMware vCenter Server 7.0.x < 7.0 U3v / 8.0.x < 8.0 U3g DoS (VMSA-2025-0014)
 							]
 						}
 					end

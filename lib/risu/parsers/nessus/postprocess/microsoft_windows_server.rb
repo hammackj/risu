@@ -117,6 +117,9 @@ module Risu
 214135, #HIGH, KB5050048: Windows Server 2012 R2 Security Update (January 2025)
 216139, #HIGH, KB5052042: Windows Server 2012 R2 Security Update (February 2025)
 232622, #HIGH, KB5053887: Windows Server 2012 R2 Security Update (March 2025)
+249126, #CRITICAL, KB5063880: Windows Server 2022 / Azure Stack HCI 22H2 Security Update (August 2025)
+270390, #CRITICAL, KB5066782: Windows Server 2022 / Azure Stack HCI 22H2 Security Update (October 2025)
+261807, #HIGH, KB5065432: Windows Server 2022 / Azure Stack HCI 22H2 Security Update (September 2025)
 							]
 						}
 					end

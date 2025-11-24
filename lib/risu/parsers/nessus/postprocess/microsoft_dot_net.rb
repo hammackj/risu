@@ -80,6 +80,8 @@ module Risu
 232619, #HIGH, Security Update for Microsoft .NET Core (March 2025)
 232847, #HIGH, Security Update for Microsoft .NET 8 Core (January 2025)
 234051, #HIGH, Security Update for Microsoft .NET Core (April 2025)
+235852, #HIGH, Security Update for Microsoft .NET Core (May 2025)
+238082, #HIGH, Security Update for Microsoft .NET Core (June 2025)
 							]
 						}
 					end

@@ -94,7 +94,7 @@ module Risu
 111759, #ESXi 5.5 / 6.0 / 6.5 / 6.7 Speculative Execution Side Channel Vulnerability (Foreshadow) (VMSA-2018- 0020)
 118466, #ESXi 6.0 / 6.5 / 6.7 Out-of-Bounds Read Vulnerability (VMSA-2018-0026) (Remote Check)
 102698, #ESXi 6.0 < Build 5485776 Multiple Vulnerabilities (VMSA-2017-0015)
-118885, #ESXi 6.0 / 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2018-0027) (Remote Check) 
+118885, #ESXi 6.0 / 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2018-0027) (Remote Check)
 123518, #ESXi 6.0 / 6.5 / 6.7 Multiple Vulnerabilities (VMSA-2019-0005) (Remote Check)
 134878, #VMware ESXi 5.5 / 6.0 / 6.5 / 6.7 DoS (VMSA-2018-0018)
 143221, #ESXi 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2020-0026)
@@ -109,7 +109,10 @@ module Risu
 151665, #ESXi 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2021-0014)
 192466, #MEDIUM, VMware ESXi 6.5 / 6.7 / 7.0 Multiple Vulnerabilities (VMSA-2022-0020)
 191711, #CRITICAL, VMware ESXi 7.0 / 8.0 Multiple Vulnerabilities (VMSA-2024-0006)
-
+237304, #CRITICAL, VMware ESXi 7.0 / 8.0 Multiple Vulnerabilities (VMSA-2025-0004)
+242168, #CRITICAL, VMware ESXi 7.x < 7.0 Update 3w / 8.x < 8.0 Update 2e / 8.0 Update 3 < 8.0 Update 3f (VMSA-2025-0013)
+237246, #MEDIUM, VMware ESXi 7.0 / 8.0 Multiple Vulenerabilities (VMSA-2025-0010)
+201125, #MEDIUM, VMware ESXi 7.0 / 8.0 Out-of-Bounds read (CVE-2024-37086)
 							]
 						}
 					end

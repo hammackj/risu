@@ -662,7 +662,7 @@ module Risu
 					g.data("7", w7) if w7 >= 1
 					g.data("8", w8) if w8 >= 1
 					g.data("10", w10) if w10 >= 1
-					g.data("11", w11) if w10 >= 1
+					g.data("11", w11) if w11 >= 1
 
 					image = g.to_image
 					image.format = 'png'

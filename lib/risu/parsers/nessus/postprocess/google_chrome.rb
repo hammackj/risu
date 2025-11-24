@@ -310,7 +310,7 @@ module Risu
 216177, #CRITICAL, Google Chrome < 133.0.6943.98 Multiple Vulnerabilities
 214952, #MEDIUM, Google Chrome < 133.0.6943.53 Multiple Vulnerabilities
 233671, #HIGH, Google Chrome < 135.0.7049.41 Multiple Vulnerabilities
-
+274069, #HIGH, Google Chrome < 142.0.7444.134 Multiple Vulnerabilities
 							]
 						}
 					end
