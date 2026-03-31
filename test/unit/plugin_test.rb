@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -72,5 +72,14 @@ class PluginTest < ActiveSupport::TestCase
 
 	test "return 1 risk for Plugin.in_the_news.count" do
 		assert Plugin.in_the_news.count == 1, "GOT #{Plugin.in_the_news.count}"
+	end
+
+	test "returns a graph Plugin.root_cause_graph" do
+		result = Plugin.root_cause_graph
+		assert result.class == String, "GOT #{result.class}"
+	end
+
+	test "returns a String for Plugin.root_cause_graph_text" do
+		assert Plugin.root_cause_graph_text.class == String, "GOT #{Plugin.root_cause_graph_text.class}"
 	end
 end

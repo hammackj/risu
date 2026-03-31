@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -126,5 +126,205 @@ class HostTest < ActiveSupport::TestCase
 
 	test "should return 2 for Host.not_os_windows_95" do
 		assert Host.not_os_windows_95.count == 2 , "GOT #{Host.not_os_windows_95.count}"
+	end
+
+	test "should return 0 for Host.os_windows_nt.count" do
+		assert Host.os_windows_nt.count == 0, "GOT #{Host.os_windows_nt.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_nt.count" do
+		assert Host.not_os_windows_nt.count == 2, "GOT #{Host.not_os_windows_nt.count}"
+	end
+
+	test "should return 0 for Host.os_windows_98.count" do
+		assert Host.os_windows_98.count == 0, "GOT #{Host.os_windows_98.count}"
+	end
+
+	test "should return 0 for Host.os_windows_me.count" do
+		assert Host.os_windows_me.count == 0, "GOT #{Host.os_windows_me.count}"
+	end
+
+	test "should return 0 for Host.os_windows_95.count" do
+		assert Host.os_windows_95.count == 0, "GOT #{Host.os_windows_95.count}"
+	end
+
+	test "should return 0 for Host.os_windows_2k.count" do
+		assert Host.os_windows_2k.count == 0, "GOT #{Host.os_windows_2k.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_2k.count" do
+		assert Host.not_os_windows_2k.count == 2, "GOT #{Host.not_os_windows_2k.count}"
+	end
+
+	test "should return 0 for Host.os_windows_2k3.count" do
+		assert Host.os_windows_2k3.count == 0, "GOT #{Host.os_windows_2k3.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_2k3.count" do
+		assert Host.not_os_windows_2k3.count == 2, "GOT #{Host.not_os_windows_2k3.count}"
+	end
+
+	test "should return 0 for Host.os_windows_vista.count" do
+		assert Host.os_windows_vista.count == 0, "GOT #{Host.os_windows_vista.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_vista.count" do
+		assert Host.not_os_windows_vista.count == 2, "GOT #{Host.not_os_windows_vista.count}"
+	end
+
+	test "should return 0 for Host.os_windows_2k8.count" do
+		assert Host.os_windows_2k8.count == 0, "GOT #{Host.os_windows_2k8.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_2k8.count" do
+		assert Host.not_os_windows_2k8.count == 2, "GOT #{Host.not_os_windows_2k8.count}"
+	end
+
+	test "should return 0 for Host.os_windows_2k12.count" do
+		assert Host.os_windows_2k12.count == 0, "GOT #{Host.os_windows_2k12.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_2k12.count" do
+		assert Host.not_os_windows_2k12.count == 2, "GOT #{Host.not_os_windows_2k12.count}"
+	end
+
+	test "should return 0 for Host.os_windows_2k19.count" do
+		assert Host.os_windows_2k19.count == 0, "GOT #{Host.os_windows_2k19.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_2k19.count" do
+		assert Host.not_os_windows_2k19.count == 2, "GOT #{Host.not_os_windows_2k19.count}"
+	end
+
+	test "should return 0 for Host.os_windows_7.count" do
+		assert Host.os_windows_7.count == 0, "GOT #{Host.os_windows_7.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_7.count" do
+		assert Host.not_os_windows_7.count == 2, "GOT #{Host.not_os_windows_7.count}"
+	end
+
+	test "should return 0 for Host.os_windows_8.count" do
+		assert Host.os_windows_8.count == 0, "GOT #{Host.os_windows_8.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_8.count" do
+		assert Host.not_os_windows_8.count == 2, "GOT #{Host.not_os_windows_8.count}"
+	end
+
+	test "should return 0 for Host.os_windows_10.count" do
+		assert Host.os_windows_10.count == 0, "GOT #{Host.os_windows_10.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_10.count" do
+		assert Host.not_os_windows_10.count == 2, "GOT #{Host.not_os_windows_10.count}"
+	end
+
+	test "should return 0 for Host.os_windows_11.count" do
+		assert Host.os_windows_11.count == 0, "GOT #{Host.os_windows_11.count}"
+	end
+
+	test "should return 2 for Host.not_os_windows_11.count" do
+		assert Host.not_os_windows_11.count == 2, "GOT #{Host.not_os_windows_11.count}"
+	end
+
+	test "should return 0 for Host.os_windows.os_windows_other.count" do
+		assert Host.os_windows.os_windows_other.count == 0, "GOT #{Host.os_windows.os_windows_other.count}"
+	end
+
+	test "should return 1 for Host.not_os_windows.count" do
+		assert Host.not_os_windows.count == 1, "GOT #{Host.not_os_windows.count}"
+	end
+
+	test "should return 0 for Host.os_freebsd.count" do
+		assert Host.os_freebsd.count == 0, "GOT #{Host.os_freebsd.count}"
+	end
+
+	test "should return 2 for Host.not_os_freebsd.count" do
+		assert Host.not_os_freebsd.count == 2, "GOT #{Host.not_os_freebsd.count}"
+	end
+
+	test "should return 0 for Host.os_netbsd.count" do
+		assert Host.os_netbsd.count == 0, "GOT #{Host.os_netbsd.count}"
+	end
+
+	test "should return 2 for Host.not_os_netbsd.count" do
+		assert Host.not_os_netbsd.count == 2, "GOT #{Host.not_os_netbsd.count}"
+	end
+
+	test "should return 0 for Host.os_cisco.count" do
+		assert Host.os_cisco.count == 0, "GOT #{Host.os_cisco.count}"
+	end
+
+	test "should return 2 for Host.not_os_cisco.count" do
+		assert Host.not_os_cisco.count == 2, "GOT #{Host.not_os_cisco.count}"
+	end
+
+	test "should return 0 for Host.os_vxworks.count" do
+		assert Host.os_vxworks.count == 0, "GOT #{Host.os_vxworks.count}"
+	end
+
+	test "should return 2 for Host.not_os_vxworks.count" do
+		assert Host.not_os_vxworks.count == 2, "GOT #{Host.not_os_vxworks.count}"
+	end
+
+	test "should return 0 for Host.os_vmware_esx.count" do
+		assert Host.os_vmware_esx.count == 0, "GOT #{Host.os_vmware_esx.count}"
+	end
+
+	test "should return 2 for Host.not_os_vmware_esx.count" do
+		assert Host.not_os_vmware_esx.count == 2, "GOT #{Host.not_os_vmware_esx.count}"
+	end
+
+	test "should return 0 for Host.os_osx.count" do
+		assert Host.os_osx.count == 0, "GOT #{Host.os_osx.count}"
+	end
+
+	test "should return 2 for Host.not_os_osx.count" do
+		assert Host.not_os_osx.count == 2, "GOT #{Host.not_os_osx.count}"
+	end
+
+	test "should return 0 for Host.os_aix.count" do
+		assert Host.os_aix.count == 0, "GOT #{Host.os_aix.count}"
+	end
+
+	test "should return 2 for Host.not_os_aix.count" do
+		assert Host.not_os_aix.count == 2, "GOT #{Host.not_os_aix.count}"
+	end
+
+	test "should return 1 for Host.not_os_linux.count" do
+		assert Host.not_os_linux.count == 1, "GOT #{Host.not_os_linux.count}"
+	end
+
+	test "should return true for Host.windows_os_graph_has_data?" do
+		assert Host.windows_os_graph_has_data? == true, "GOT #{Host.windows_os_graph_has_data?}"
+	end
+
+	test "should return true for Host.windows_client_os_graph_has_data?" do
+		assert Host.windows_client_os_graph_has_data? == true, "GOT #{Host.windows_client_os_graph_has_data?}"
+	end
+
+	test "should return true for Host.other_os_graph_has_data?" do
+		assert Host.other_os_graph_has_data? == true, "GOT #{Host.other_os_graph_has_data?}"
+	end
+
+	test "should return false for Host.unsupported_os?" do
+		assert Host.unsupported_os? == false, "GOT #{Host.unsupported_os?}"
+	end
+
+	test "should return 2 for Host.unique_hosts_with_critical_and_high.size" do
+		assert Host.unique_hosts_with_critical_and_high.size == 2, "GOT #{Host.unique_hosts_with_critical_and_high.size}"
+	end
+
+	test "should return 2 for Host.unique_hosts_with_critical_and_high_count" do
+		assert Host.unique_hosts_with_critical_and_high_count == 2, "GOT #{Host.unique_hosts_with_critical_and_high_count}"
+	end
+
+	test "should return a String for Host.windows_client_os_graph" do
+		assert Host.windows_client_os_graph.class == String, "GOT #{Host.windows_client_os_graph.class}"
+	end
+
+	test "should return a String for Host.windows_client_os_graph_text" do
+		assert Host.windows_client_os_graph_text.class == String, "GOT #{Host.windows_client_os_graph_text.class}"
 	end
 end

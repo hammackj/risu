@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -136,6 +136,10 @@ class ReferenceTest < ActiveSupport::TestCase
 
 	test "should return a usn for Reference.usn" do
 		assert Reference.usn != nil, "GOT #{Reference.usn}"
+	end
+
+	test "returns a String for Reference.reference_string" do
+		assert Reference.reference_string.class == String, "GOT #{Reference.reference_string.class}"
 	end
 
 end

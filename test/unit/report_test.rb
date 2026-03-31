@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,5 +34,9 @@ class ReportTest < ActiveSupport::TestCase
 	test "Report.scanner_nessus_ratings_text length should be 1656" do
 		Report.company = ""
 		assert Report.scanner_nessus_ratings_text.length == 456, "GOT #{Report.scanner_nessus_ratings_text.length}"
+	end
+
+	test "returns a String for Report.scanner_nessus_ratings_text_legacy" do
+		assert Report.scanner_nessus_ratings_text_legacy.class == String, "GOT #{Report.scanner_nessus_ratings_text_legacy.class}"
 	end
 end
