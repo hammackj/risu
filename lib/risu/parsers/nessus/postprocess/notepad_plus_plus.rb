@@ -37,6 +37,7 @@ module Risu
 208192, #HIGH, Notepad++ < 8.4.1 DLL hijacking vulnerability
 181867, #HIGH, Notepad++ < 8.5.7 Multiple Buffer Overflow Vulnerabilities
 205291, #HIGH, Notepad++ < 8.1.1 Arbitrary Code Execution
+299664, #HIGH, Notepad++ < 8.9.2 Unsafe Search Path (GHSA-rjvm-fcxw-2jxq)
 
 							]
 						}
@@ -46,5 +47,3 @@ module Risu
 		end
 	end
 end
-
-

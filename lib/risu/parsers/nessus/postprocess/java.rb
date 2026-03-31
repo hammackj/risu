@@ -102,7 +102,7 @@ module Risu
 124198, #Oracle Java SE 1.7.0_221 / 1.8.0_211 / 1.11.0_3 / 1.12.0_1 Multiple Vulnerabilities (Apr 2019 CPU)
 126821, #Oracle Java SE 1.7.0_231 / 1.8.0_221 / 1.11.0_4 / 1.12.0_2 Multiple Vulnerabilities (Jul 2019 CPU)
 130011, #Oracle Java SE 1.7.0_241 / 1.8.0_231 / 1.11.0_5 / 1.13.0_1 Multiple Vulnerabilities (Oct 2019 CPU) (Windows)
-135592, #Oracle Java SE 1.7.0_261 / 1.8.0_251 / 1.11.0_7 / 1.14.0_1 Multiple Vulnerabilities (Apr 2020 CPU) 
+135592, #Oracle Java SE 1.7.0_261 / 1.8.0_251 / 1.11.0_7 / 1.14.0_1 Multiple Vulnerabilities (Apr 2020 CPU)
 138522, #Oracle Java SE 1.7.0_271 / 1.8.0_261 / 1.11.0_8 / 1.14.0_2 Multiple Vulnerabilities (Jul 2020 CPU)
 132992, #Oracle Java SE 1.7.0_251 / 1.8.0_241 / 1.11.0_6 / 1.13.0_2 Multiple Vulnerabilities (Jan 2020 CPU)
 145218, #Oracle Java SE 1.7.0_291 / 1.8.0_281 / 1.11.0_10 / 1.15.0_2 Information Disclosure (Windows Jan 2021 CPU)
@@ -110,7 +110,7 @@ module Risu
 148960, #Oracle Java SE 1.7.0_301 / 1.8.0_291 / 1.11.0_11 / 1.16.0_1 Multiple Vulnerabilities (Apr 2021 CPU)
 152020, #Oracle Java SE 1.7.0_311 / 1.8.0_301 / 1.11.0_12 / 1.16.0_2 Multiple Vulnerabilities (July 2021 CPU)
 154344, #Oracle Java SE 1.7.0_321 / 1.8.0_311 / 1.11.0_13 / 1.17.0_1 Multiple Vulnerabilities (October 2021 CPU)
-156887, #Oracle Java SE 1.7.0_331 / 1.8.0_321 / 1.11.0_14 / 1.17.0_2 Multiple Vulnerabilities (January 2022 CPU) 
+156887, #Oracle Java SE 1.7.0_331 / 1.8.0_321 / 1.11.0_14 / 1.17.0_2 Multiple Vulnerabilities (January 2022 CPU)
 159975, #Oracle Java SE Multiple Vulnerabilities (April 2022 CPU)
 166316, #Oracle Java SE Multiple Vulnerabilities (October 2022 CPU)
 163304, #Oracle Java SE Multiple Vulnerabilities (July 2022 CPU)
@@ -126,6 +126,8 @@ module Risu
 161241, #MEDIUM, Oracle Java SE Multiple Vulnerabilities (April 2022 CPU)
 234624, #CRITICAL, Oracle Java SE Multiple Vulnerabilities (April 2025 CPU)
 271249, #HIGH, Oracle Java SE Multiple Vulnerabilities (October 2025 CPU)
+242293, #CRITICAL, Oracle Java SE Multiple Vulnerabilities (July 2025 CPU)
+294870, #HIGH, Oracle Java SE Multiple Vulnerabilities (January 2026 CPU)
 
 							]
 						}
