@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -W0
+#!/usr/bin/env -S ruby -W0
 
 # Copyright (c) 2010-2025 Jacob Hammack.
 #
@@ -26,6 +26,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '/../lib'))
 $stdout.sync = true
 $stderr.sync = true
 
+require 'bundler/setup'
 require 'risu'
 
 app = Risu::CLI::Application.new

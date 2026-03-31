@@ -37,10 +37,9 @@ module Risu
 				# @return [Boolean] True if valid, False if invalid
 				def valid?
 					if File.exist?(@document)
-						@parser = LibXML::XML::Parser.file @document
-						doc = @parser.parse
+						doc = Nokogiri::XML(File.open(@document))
 
-						if doc.root.name == nil
+						if doc.root.nil? || doc.root.name.nil?
 							return false
 						end
 
@@ -56,9 +55,9 @@ module Risu
 
 				# Invokes the SAX parser on the XML document
 				def parse
-					@parser = LibXML::XML::SaxParser.file @document
-					@parser.callbacks = SimpleNexpose.new
-					@parser.parse
+					listener = SimpleNexpose.new
+					@parser = Nokogiri::XML::SAX::Parser.new(listener)
+					@parser.parse_file @document
 				end
 
 				# Fixes the ip field if nil and replaces it with the name if its an ip

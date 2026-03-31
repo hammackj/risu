@@ -70,10 +70,9 @@ end
 
 # TODO move these require to another file or move the above metadata to a config.rb
 require "logger"
-require 'rails'
 require 'active_record'
-require "active_support"
-require 'libxml'
+require 'active_support'
+require 'nokogiri'
 require 'logger'
 require 'ipaddr'
 require 'yaml'

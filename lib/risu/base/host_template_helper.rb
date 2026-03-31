@@ -25,6 +25,7 @@ module Risu
 			#
 			def unsupported_os title, plugin_name
 				if item_count_by_plugin_name(plugin_name) <= 0
+					STDERR.puts "No Items for #{plugin_name}, unsupported_os"
 					return
 				end
 
