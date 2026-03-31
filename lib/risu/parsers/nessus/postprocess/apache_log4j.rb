@@ -41,6 +41,7 @@ module Risu
 156183, #Apache Log4j 2.x < 2.17.0 DoS
 156103, #Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)
 182252, #CRITICAL, Apache Log4j SEoL (<= 1.x)
+282519, #MEDIUM, Apache Log4j 2.0-beta9 < 2.25.3 MitM
 							]
 						}
 					end
@@ -49,5 +50,3 @@ module Risu
 		end
 	end
 end
-
-

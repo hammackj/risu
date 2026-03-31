@@ -72,6 +72,24 @@ module Risu
 
 					@output.text "\n"
 
+					authenticated = nil
+					if host.host_properties.where(:name => "Credentialed_Scan").first != nil
+						authenticated = host.host_properties.where(:name => "Credentialed_Scan").first.value
+					end
+
+					host_info = []
+					host_info << ["Hostname", host.name || "N/A"]
+					host_info << ["FQDN", host.fqdn || "N/A"]
+					host_info << ["MAC Address", host.mac || "N/A"]
+					host_info << ["Authenticated", authenticated || "N/A"]
+
+					output.table(host_info, :column_widths => {0 => 130, 1 => 380}, :row_colors => ['ffffff', 'E5E5E5']) do
+						column(0).style(:font_style => :bold)
+						cells.borders = [:top, :bottom, :left, :right]
+					end
+
+					@output.text "\n"
+
 					headers = ["Total", "Critical", "High", "Medium", "Low", "Info"]
 					header_widths = {0 => 85, 1 => 85, 2 => 85, 3 => 85, 4 => 85, 5 => 85}
 

@@ -25,11 +25,11 @@ SimpleCov.start
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), '../lib'))
 
-require 'test/unit'
 require 'active_record'
 require 'active_record/fixtures'
 require 'active_support'
 require 'active_support/test_case'
+require 'minitest/autorun'
 require 'tmpdir'
 
 require 'risu'

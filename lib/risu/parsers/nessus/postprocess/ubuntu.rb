@@ -85,6 +85,10 @@ module Risu
 252945, #HIGH, Ubuntu 20.04 LTS / 22.04 LTS : Linux kernel vulnerabilities (USN-7704-1)
 254434, #HIGH, Ubuntu 14.04 LTS / 16.04 LTS / 18.04 LTS / 20.04 LTS / 22.04 LTS / 24.04 LTS / 25.04 : Python vulnerabilities (USN-7710-1)
 258124, #HIGH, Ubuntu 14.04 LTS / 16.04 LTS / 18.04 LTS / 20.04 LTS / 22.04 LTS / 24.04 LTS / 25.04 : UDisks vulnerability (USN-7723-1)
+241176, #HIGH, Ubuntu 20.04 LTS / 22.04 LTS : Linux kernel vulnerabilities (USN-7608-1)
+242343, #HIGH, Ubuntu 20.04 LTS / 22.04 LTS : Linux kernel vulnerabilities (USN-7654-1)
+243278, #HIGH, Ubuntu 20.04 LTS / 22.04 LTS : Linux kernel vulnerabilities (USN-7683-1)
+240497, #HIGH, Ubuntu 20.04 LTS : Linux kernel (HWE) vulnerabilities (USN-7593-1)
 
 							]
 						}

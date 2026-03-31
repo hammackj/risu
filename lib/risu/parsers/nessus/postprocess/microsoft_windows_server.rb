@@ -124,6 +124,14 @@ module Risu
 274783, #CRITICAL, KB5068905: Windows Server 2012 R2 Security Update (November 2025)
 249131, #CRITICAL, KB5063950: Windows Server 2012 R2 Security Update (August 2025)
 241546, #HIGH, KB5062597: Windows Server 2012 R2 Security Update (July 2025)
+234049, #HIGH, KB5055557: Windows Server 2012 R2 Security Update (April 2025)
+235859, #HIGH, KB5058403: Windows Server 2012 R2 Security Update (May 2025)
+238075, #HIGH, KB5061018: Windows Server 2012 R2 Security Update (June 2025)
+261797, #HIGH, KB5065507: Windows Server 2012 R2 Security Update (September 2025)
+277995, #HIGH, KB5071503: Windows Server 2012 R2 Security Update (December 2025)
+283471, #HIGH, KB5073696: Windows Server 2012 R2 Security Update (January 2026)
+298555, #HIGH, KB5075970: Windows Server 2012 R2 Security Update (February 2026)
+301770, #MEDIUM, KB5078774: Windows Server 2012 R2 Security Update (March 2026)
 							]
 						}
 					end

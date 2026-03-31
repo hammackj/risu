@@ -19,20 +19,29 @@
 # THE SOFTWARE.
 
 
-require 'test_helper'
+module Risu
+	module Parsers
+		module Nessus
+			module PostProcess
+				class VimRollups < Risu::Base::PostProcessBase
 
-class ExceptionTest < ActiveSupport::TestCase
-	test "should have InvalidDocument exception available" do
-		assert Risu::Exceptions::InvalidDocument != nil
-	end
+					#
+					def initialize
+						@info =
+						{
+							:description => "Vim Patch Rollup",
+							:plugin_id => -99913,
+							:plugin_name => "Missing the latest Vim",
+							:item_name => "Update to the latest Vim",
+							:plugin_ids => [
+301247, #HIGH, Vim < 9.2.0073 Command Injection (GHSA-m3xh-9434-g336)
+301510, #HIGH, Vim < 9.2.0077 Heap-based Buffer Overflow (GHSA-r2gw-2x48-jj5p)
 
-	test "should be able to raise InvalidDocument" do
-		assert_raise Risu::Exceptions::InvalidDocument do
-			raise Risu::Exceptions::InvalidDocument, "test error"
+							]
+						}
+					end
+				end
+			end
 		end
-	end
-
-	test "InvalidDocument should be a subclass of StandardError" do
-		assert Risu::Exceptions::InvalidDocument.ancestors.include?(StandardError), "GOT #{Risu::Exceptions::InvalidDocument.ancestors}"
 	end
 end

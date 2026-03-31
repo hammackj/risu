@@ -52,6 +52,7 @@ module Risu
 207862, #MEDIUM, SolarWinds Serv-U 15.2.0 < 15.2.3 XSS
 207860, #MEDIUM, SolarWinds Serv-U 15.0 < 15.3.1
 234441, #LOW, SolarWinds Serv-U 15.0 < 15.5.1 XSS
+209168, #HIGH, SolarWinds Serv-U 15.4.2.0 < 15.5 / 15.4.0 < 15.5 Multiple Vulnerabilities XSS
 
 							]
 						}

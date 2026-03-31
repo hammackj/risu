@@ -19,20 +19,32 @@
 # THE SOFTWARE.
 
 
-require 'test_helper'
+module Risu
+	module Parsers
+		module Nessus
+			module PostProcess
+				class MicrosoftTeams < Risu::Base::PostProcessBase
 
-class ExceptionTest < ActiveSupport::TestCase
-	test "should have InvalidDocument exception available" do
-		assert Risu::Exceptions::InvalidDocument != nil
-	end
+					#
+					def initialize
+						@info =
+						{
+							:description => "Microsoft Teams Patch Rollup",
+							:plugin_id => -99912,
+							:plugin_name => "Missing the latest Microsoft Teams",
+							:item_name => "Update to the latest Microsoft Teams",
+							:plugin_ids => [
+144813, #HIGH, Microsoft Teams < 1.3.0.13000 Remote Code Execution
+175408, #MEDIUM, Microsoft Teams < 1.6.0.11166 Information Disclosure
+179635, #HIGH, Microsoft Teams < 1.6.0.18681 RCE
+250276, #HIGH, Microsoft Teams for Desktop < 25122.1415.3698.6812 Remote Code Execution (August 2025)
+264898, #HIGH, Microsoft Teams for Desktop < 25163.3611.3774.6315 Elevation of Privilege
 
-	test "should be able to raise InvalidDocument" do
-		assert_raise Risu::Exceptions::InvalidDocument do
-			raise Risu::Exceptions::InvalidDocument, "test error"
+							]
+						}
+					end
+				end
+			end
 		end
-	end
-
-	test "InvalidDocument should be a subclass of StandardError" do
-		assert Risu::Exceptions::InvalidDocument.ancestors.include?(StandardError), "GOT #{Risu::Exceptions::InvalidDocument.ancestors}"
 	end
 end
