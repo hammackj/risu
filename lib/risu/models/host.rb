@@ -56,7 +56,7 @@ module Risu
 					hosts = Host.where("ip is not NULL").order("ip").to_a
 
 					hosts.each do |host|
-						ips << host.ip if host.ip != nil
+						ips << host.ip if !host.ip.nil?
 					end
 
 					ips.join("\n")
@@ -437,6 +437,37 @@ module Risu
 
 				# Generates a graph of the high and medium findings count per host
 				#
+				# Generates a pie chart showing authenticated vs unauthenticated scan coverage
+				#
+				# @return [StringIO] Object containing the generated PNG image
+				def auth_coverage_graph
+					g = Gruff::Pie.new(GRAPH_WIDTH)
+					g.title = "Scan Authentication Coverage"
+					g.sort = false
+					g.theme = {
+						:colors => Risu::ALT_GRAPH_COLORS,
+						:background_colors => %w(white white)
+					}
+
+					auth = 0
+					unauth = 0
+
+					HostProperty.where(:name => "Credentialed_Scan").each do |prop|
+						if prop.value == "true"
+							auth += 1
+						else
+							unauth += 1
+						end
+					end
+
+					g.data("Authenticated (#{auth})", auth) if auth > 0
+					g.data("Unauthenticated (#{unauth})", unauth) if unauth > 0
+
+					image = g.to_image
+					image.format = 'png'
+					StringIO.new(image.to_blob)
+				end
+
 				# @deprecated
 				#
 				# @return [StringIO] Binary image object of the results
@@ -451,7 +482,7 @@ module Risu
 					}
 
 					Item.risks_by_host(limit).to_a.each do |item|
-						ip = Host.find_by_id(item.host_id).name
+						ip = Host.find_by(:id => item.host_id).name
 						count = Item.where(:host_id => item.host_id).where(:severity => 4).size
 
 						if count > 0
@@ -573,7 +604,7 @@ module Risu
 
 					#Creates very odd graphs
 					#Host.os_other.each do |host|
-					# g.data(host.os, Host.where(:os => host.os).size) unless host.os == nil
+					# g.data(host.os, Host.where(:os => host.os).size) unless host.os.nil?
 					#end
 
 					image = g.to_image
@@ -771,9 +802,9 @@ module Risu
 					aix_text = unsupported_os_aix
 					win_text = unsupported_os_windows
 					freebsd_text = unsupported_os_freebsd
+					debian_text = unsupported_os_debian
 
-					#If all the text is nil just return nil
-					if aix_text == "" && win_text == "" && freebsd_text == ""
+					if aix_text.empty? && win_text.empty? && freebsd_text.empty? && debian_text.empty?
 						return false
 					end
 
@@ -791,6 +822,7 @@ module Risu
 					aix_text = unsupported_os_aix
 					win_text = unsupported_os_windows
 					freebsd_text = unsupported_os_freebsd
+					debian_text = unsupported_os_debian
 
 					unsupported_os_text = "Several unsupported operating systems were discovered on the network. " +
 					"These operating systems are no longer updated by the specific vendor. These operating systems should be " +
@@ -799,6 +831,7 @@ module Risu
 					unsupported_os_text << "#{win_text}" if win_text != ""
 					unsupported_os_text << "#{aix_text}" if aix_text != ""
 					unsupported_os_text << "#{freebsd_text}" if freebsd_text != ""
+					unsupported_os_text << "#{debian_text}" if debian_text != ""
 
 					return unsupported_os_text
 				end
@@ -806,15 +839,16 @@ module Risu
 				# @TODO comments
 				# @deprecated
 				def unsupported_os_windows
-					win_95_text = ""
-					win_98_text = ""
-					win_me_text = ""
-					win_nt_text = ""
-					win_2000_text = ""
-					win_xp_text = ""
-					win_2003_text = ""
-					win_7_text = ""
-					win_2008 = ""
+					win_95_text = String.new
+					win_98_text = String.new
+					win_me_text = String.new
+					win_nt_text = String.new
+					win_2000_text = String.new
+					win_xp_text = String.new
+					win_2003_text = String.new
+					win_7_text = String.new
+					win_2008_text = String.new
+					win_2012_text = String.new
 
 					win_95 = Host.os_windows_95
 					win_98 = Host.os_windows_98
@@ -825,6 +859,8 @@ module Risu
 					win_2003 = Plugin.where(:plugin_name => "Microsoft Windows Server 2003 Unsupported Installation Detection")
 					win_7 = Host.os_windows_7
 					win_2008 = Host.os_windows_2k8
+					win_2012 = Host.os_windows_2k12
+					win_2012_plugin = Plugin.where(:id => 192813)
 
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
@@ -849,23 +885,26 @@ module Risu
 					win_2003_text = "Windows 2003 is an unsupported operating system; Microsoft has stopped support as of July 2015. " +
 					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_2003.size >= 1
 
-					win_7_text = "Windows 7 is an unsupported operating system; Microsoft has stopped support as of Janurary 2020. " +
+					win_7_text = "Windows 7 is an unsupported operating system; Microsoft has stopped support as of January 2020. " +
 					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_7.size >= 1
 
-					win_2008_text = 'Windows 2008 is an unsupported operating system; Microsoft has stopped support as of Janurary 2020. " +
-					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n' if win_2008.size >= 1
+					win_2008_text = "Windows Server 2008 is an unsupported operating system; Microsoft has stopped support as of January 2020. " +
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_2008.size >= 1
 
-					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}#{win_7_text}#{win_2008_text}"
+					win_2012_text = "Windows Server 2012 is an unsupported operating system; Microsoft has stopped support as of October 2023. " +
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_2012.size >= 1 || win_2012_plugin.size >= 1
+
+					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}#{win_7_text}#{win_2008_text}#{win_2012_text}"
 				end
 
 				# @TODO comments
 				# @deprecated
 				def unsupported_os_aix
-					text = ""
+					text = String.new
 					aix = Host.os_aix.where("OS LIKE 'AIX 5.%'")
 
 					text = "AIX 5.x is an unsupported operating system since IBM has stopped support as of April 2011. " +
-					"Please see http://www-03.ibm.com/systems/power/software/aix/ for more information " +
+					"Please see https://www.ibm.com/support/pages/aix-support-lifecycle-information for more information " +
 					"about obtaining a newer supported version.\n\n" if aix.size >= 1
 
 					return text
@@ -874,11 +913,21 @@ module Risu
 				# @TODO comments
 				# @deprecated
 				def unsupported_os_freebsd
-					text = ""
+					text = String.new
 					freebsd = Host.os_freebsd.where("OS LIKE 'FreeBSD 5.%'")
 
-					text = "FreeBSD 5 support ended on 2008-05-31. Upgrade to FreeBSD 8.2 or 7.4. For more information, " +
-					"see : http://www.freebsd.org/security/\n\n" if freebsd.size >= 1
+					text = "FreeBSD 5 support ended on 2008-05-31. For more information, " +
+					"see: https://www.freebsd.org/security/\n\n" if freebsd.size >= 1
+
+					return text
+				end
+
+				def unsupported_os_debian
+					text = String.new
+					debian_8 = Plugin.where(:id => 201420)
+
+					text = "Debian 8 (Jessie) is an unsupported operating system; Debian has stopped security support as of June 2020. " +
+					"Please see https://wiki.debian.org/LTS for more information.\n\n" if debian_8.size >= 1
 
 					return text
 				end

@@ -54,7 +54,7 @@ module Risu
 						@output.font_size(16) do
 
 							host_string = "#{host.ip}"
-							host_string << " (#{host.fqdn})" if host.fqdn != nil
+							host_string << " (#{host.fqdn})" if !host.fqdn.nil?
 
 							output.text "#{host_string}", :style => :bold
 						end
@@ -68,7 +68,7 @@ module Risu
 						end
 
 						host.items.critical_risks_unique_sorted.each do |item|
-							name = Plugin.find_by_id(item.plugin_id).plugin_name
+							name = Plugin.find_by(:id => item.plugin_id).plugin_name
 							output.text "#{name}"
 						end
 					end
@@ -81,7 +81,7 @@ module Risu
 						}
 
 						host.items.high_risks_unique_sorted.each do |item|
-							name = Plugin.find_by_id(item.plugin_id).plugin_name
+							name = Plugin.find_by(:id => item.plugin_id).plugin_name
 							output.text "#{name}"
 						end
 					end
@@ -94,7 +94,7 @@ module Risu
 						}
 
 						host.items.medium_risks_unique_sorted.each do |item|
-							name = Plugin.find_by_id(item.plugin_id).plugin_name
+							name = Plugin.find_by(:id => item.plugin_id).plugin_name
 							output.text "#{name}"
 						end
 					end

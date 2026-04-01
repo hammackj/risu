@@ -68,7 +68,8 @@ module Risu
 				auth_hosts = []
 
 				auth.each do |h|
-					auth_hosts.push Host.find(h).ip
+					host = Host.find_by(:id => h)
+					auth_hosts.push host.ip if host
 				end
 
 				@output.text "Authenticated Count:", :style => :bold
@@ -91,14 +92,14 @@ module Risu
 
 					authenticated = nil
 
-					if host.host_properties.where(:name => "Credentialed_Scan").first != nil
+					if !host.host_properties.where(:name => "Credentialed_Scan").first.nil?
 						authenticated = host.host_properties.where(:name => "Credentialed_Scan").first.value
 					end
 
 					os = host.os
 
 					host_name = host.name
-					host_name = "#{host.name} (#{host.netbios})" if host.netbios != nil
+					host_name = "#{host.name} (#{host.netbios})" if !host.netbios.nil?
 
 					row.push(host_name)
 					row.push(os)

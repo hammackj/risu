@@ -50,7 +50,7 @@ module Risu
 							t = template_manager.find_template_by_name(template)
 							t = t.class.new
 							t.output = output
-							t.render(output) unless t == nil
+							t.render(output) unless t.nil?
 						end
 					elsif t.template_info[:renderer] == "PDF"
 						Prawn::Document.generate(@output_file, :margin => [75, 50, 75, 50]) do |output|
@@ -59,11 +59,11 @@ module Risu
 							t = t.class.new
 							t.output = output
 							t.page_count = 1
-							t.render(output) unless t == nil
+							t.render(output) unless t.nil?
 						end
 					end
 				rescue => e
-					puts "Templater Error: #{e.message} \n #{e.backtrace.join("\n\t")}\n"
+					STDERR.puts "Templater Error: #{e.message} \n #{e.backtrace.join("\n\t")}\n"
 				end
 			end
 		end

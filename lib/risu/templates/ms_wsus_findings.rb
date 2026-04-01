@@ -55,7 +55,7 @@ module Risu
 				results = Item.where(:plugin_id => 58133)
 
 				results.each do |item|
-					if item.plugin_output == nil
+					if item.plugin_output.nil?
 						next
 					end
 

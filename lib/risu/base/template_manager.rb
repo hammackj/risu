@@ -53,7 +53,7 @@ module Risu
 						begin
 							require x
 						rescue => e
-							puts "[FAILED] #{x} failed\n + #{e.inspect}"
+							STDERR.puts "[FAILED] #{x} failed\n + #{e.inspect}"
 							next
 						end
 					end
@@ -64,7 +64,7 @@ module Risu
 						end
 					end
 				rescue => error
-					puts "[!] Invalid template path, #{error.inspect}"
+					STDERR.puts "[!] Invalid template path, #{error.inspect}"
 				end
 			end
 
@@ -78,7 +78,7 @@ module Risu
 			def validate template
 			  t = template.new
 
-				return false if t == nil
+				return false if t.nil?
 			  return t.respond_to?(:render)
 			end
 

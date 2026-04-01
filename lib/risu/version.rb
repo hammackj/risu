@@ -23,7 +23,7 @@ module Risu
 	APP_NAME = "risu"
 	VERSION = "1.8.6"
 	HOME_PAGE = "https://hammackj.github.io/risu/"
-	GITHUB = "http://github.com/hammackj/risu"
+	GITHUB = "https://github.com/hammackj/risu"
 	EMAIL = "jacob.hammack@hammackj.com"
 	AUTHORS = ["Jacob Hammack", "Andrew Benson", "Joseph Kordish", "bluehavana"]
 end

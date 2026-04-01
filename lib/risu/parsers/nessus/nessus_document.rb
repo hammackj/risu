@@ -74,7 +74,7 @@ module Risu
 					@hosts = Host.all
 
 					@hosts.each do |host|
-						if host.ip == nil
+						if host.ip.nil?
 							begin
 								ip = IPAddr.new host.name
 								host.ip = ip.to_string

@@ -88,7 +88,7 @@ module Risu
 
 						#If no values were entered put a default value in
 						@report.each do |k, v|
-							if v == nil
+							if v.nil?
 								@report[k] = "No #{k}"
 							end
 						end
@@ -107,7 +107,7 @@ module Risu
 			# @param direction [Symbol] :up or :down
 			def migrate direction
 				begin
-					if @database["adapter"] == nil
+					if @database["adapter"].nil?
 						return false, "[!] Invalid database adapter, please check your configuration file"
 					end
 
@@ -146,7 +146,7 @@ module Risu
 			# @TODO better comments
 			def db_connect
 				begin
-					if @database["adapter"] == nil
+					if @database["adapter"].nil?
 						puts "[!] #{@database['adapter']}" if @options[:debug]
 
 						return false, "[!] Invalid database adapter, please check your configuration file"
@@ -282,14 +282,14 @@ module Risu
 						end
 
 						opt.on('--create-config-file [FILE]',"Creates a configuration file in the current directory with the specified name, Default is #{CONFIG_FILE}") do |option|
-							if option == nil
+							if option.nil?
 								option = CONFIG_FILE
 							end
 
 							if File.exist?(option) == true
 								puts "[!] Configuration file already exists; If you wish to over-write this file please delete it."
 							else
-								if option == nil
+								if option.nil?
 									create_config
 								else
 									create_config option
@@ -336,7 +336,7 @@ module Risu
 						end
 					end
 
-					if ARGV.length != 0
+					if ARGV.any?
 						opts.parse!
 					else
 						puts opts.to_s + "\n"
@@ -373,7 +373,7 @@ module Risu
 					puts "[*] Enabling Debug Mode"
 				end
 
-				if @options[:config_file] != nil
+				if !@options[:config_file].nil?
 					load_config @options[:config_file]
 				else
 					load_config
@@ -381,7 +381,7 @@ module Risu
 
 				db_connect
 
-				if @options[:console] != nil
+				if !@options[:console].nil?
 					consolize do
 						puts Risu::CLI::Banner
 						puts "#{APP_NAME} Console v#{VERSION}"
@@ -389,23 +389,23 @@ module Risu
 					exit
 				end
 
-				if @options[:test_connection] != nil
+				if !@options[:test_connection].nil?
 					puts "#{test_connection?[1]}"
 					exit
 				end
 
-				if @options[:create_tables] != nil
+				if !@options[:create_tables].nil?
 					migrate(:up)
 					exit
 				end
 
-				if @options[:drop_tables] != nil
+				if !@options[:drop_tables].nil?
 					migrate(:down)
 					exit
 				end
 
-				if @options[:template] != nil and @options[:output_file] != nil
-					if @template_manager.find_template_by_name(@options[:template]) == nil
+				if !@options[:template].nil? and !@options[:output_file].nil?
+					if @template_manager.find_template_by_name(@options[:template]).nil?
 						puts "[!] Template \"#{@options[:template]}\" does not exist. Please check the name"
 						exit
 					end

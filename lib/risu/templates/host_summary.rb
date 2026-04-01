@@ -68,7 +68,7 @@ module Risu
 					info = Item.info_risks.where(:host_id => host.id).count
 
 					host_name = host.name
-					host_name = "#{host.name} (#{host.netbios})" if host.netbios != nil
+					host_name = "#{host.name} (#{host.netbios})" if !host.netbios.nil?
 
 					row.push(host_name)
 					row.push(total)

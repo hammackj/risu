@@ -56,8 +56,8 @@ module Risu
 
                 plugin_data = Plugin.where(:id => plugin_to_find).first
 
-                if plugin_data == nil
-                    puts "No Data for Microsoft Windows Unquoted Service Path Enumeration Report, exiting"
+                if plugin_data.nil?
+                    STDERR.puts "No Data for Microsoft Windows Unquoted Service Path Enumeration Report, exiting"
                     return
                 end
 
@@ -68,8 +68,8 @@ module Risu
                 text "\n"
                 text "\n"
 
-                if plugin_data.items == nil
-                    puts "No Data for Microsoft Windows Unquoted Service Path Enumeration Report, exiting"
+                if plugin_data.items.nil?
+                    STDERR.puts "No Data for Microsoft Windows Unquoted Service Path Enumeration Report, exiting"
                     return
                 end
 

@@ -59,7 +59,7 @@ module Risu
 			# @TODO pull to main Host api
 			#
 			def host_list_text(hosts)
-				host_string = ""
+				host_string = String.new
 				hosts.all.each do |host|
 					host_string << "#{host.ip}"
 					host_string << " (#{host.netbios})" if host.netbios
@@ -94,7 +94,7 @@ module Risu
 					text "<b>CVE Reference</b>: #{ref_string(stig.plugin.references.cve)}", :inline_format => true
 					text "<b>IAVA Reference</b>: #{ref_string(stig.plugin.references.iava)}", :inline_format => true
 
-					if stig.plugin.description != nil
+					if !stig.plugin.description.nil?
 						text "\nDescription:", :style => :bold
 						text stig.plugin.description
 					end
@@ -106,9 +106,9 @@ module Risu
 			#
 			#
 			def ref_string ref
-				return "" if ref == nil
+				return "" if ref.nil?
 
-				ref_string = ""
+				ref_string = String.new
 				ref.each do |r|
 					ref_string << r.value + ", "
 				end

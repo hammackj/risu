@@ -67,7 +67,7 @@ module Risu
 
 							hosts = Item.where(:plugin_id => plugin_id).group(:host_id)
 							#item = Item.where(:plugin_id => plugin_id)
-							plugin = Plugin.find_by_id(plugin_id)
+							plugin = Plugin.find_by(:id => plugin_id)
 
 							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
@@ -81,46 +81,46 @@ module Risu
 
 							hostlist = Array.new
 							hosts.each do |host|
-								h = Host.find_by_id(host.host_id)
+								h = Host.find_by(:id => host.host_id)
 								host_string = "#{h.name}"
-								host_string << " (#{h.fqdn})" if h.fqdn != nil
+								host_string << " (#{h.fqdn})" if !h.fqdn.nil?
 								hostlist << host_string
 							end
 
 							@output.text hostlist.join(', ')
 
-							#if item.plugin_output != nil
+							#if !item.plugin_output.nil?
 							#	@output.text "\nPlugin output", :style => :bold
 							#	@output.text f.plugin_output
 							#end
 
-							if plugin.description != nil
+							if !plugin.description.nil?
 								@output.text "\nDescription", :style => :bold
 								@output.text plugin.description.gsub(/[ ]{2,}/, " ")
 							end
 
-							if plugin.synopsis != nil
+							if !plugin.synopsis.nil?
 								@output.text "\nSynopsis", :style => :bold
 								@output.text plugin.synopsis
 							end
 
-							if plugin.cvss_base_score != nil
+							if !plugin.cvss_base_score.nil?
 								@output.text "\nCVSS Base Score", :style => :bold
 								@output.text plugin.cvss_base_score
 							end
 
-							if plugin.exploit_available != nil
+							if !plugin.exploit_available.nil?
 								@output.text "\nExploit Available", :style => :bold
 
 								plugin.exploit_available? ? "Yes" : "No"
 							end
 
-							if plugin.solution != nil
+							if !plugin.solution.nil?
 								@output.text "\nSolution", :style => :bold
 								@output.text plugin.solution
 							end
 
-							if references.size != 0
+							if references.any?
 								@output.text "\nReferences", :style => :bold
 								@output.text plugin.references.reference_string, :inline_format => true
 								@output.text "<b>nessus_plugin</b>: http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin_id}", :inline_format => true
@@ -133,7 +133,7 @@ module Risu
 						end
 					end
 
-					@output.start_new_page unless h[:values] == nil
+					@output.start_new_page unless h[:values].nil?
 				end
 
 				@output.number_pages "<page> of <total>", :at => [@output.bounds.right - 75, 0], :width => 150, :page_filter => :all

@@ -36,7 +36,7 @@ module Risu
         }
 
         Item.risks_by_host(limit).to_a.each do |item|
-          ip = Host.find_by_id(item.host_id).name
+          ip = Host.find_by(:id => item.host_id).name
           count = Item.where(:host_id => item.host_id).where(:severity => 4).count
 
           if count > 0

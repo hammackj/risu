@@ -163,7 +163,7 @@ module Risu
 				def start_element(element, attributes = [])
 					attributes = attributes.to_h
 					@tag = element
-					@vals[@tag] = ""
+					@vals[@tag] = String.new
 
 					if !VALID_ELEMENTS.include?(element)
 						@new_tags << "New XML element detected: #{element}. Please report this at #{Risu::GITHUB}/issues/new or via email to #{Risu::EMAIL}"
@@ -180,8 +180,8 @@ module Risu
 				#
 				# @param text
 				def characters(text)
-					if @vals[@tag] == nil then
-						@vals[@tag] = text
+					if @vals[@tag].nil?
+						@vals[@tag] = String.new(text)
 					else
 						@vals[@tag] << text
 					end

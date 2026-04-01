@@ -46,7 +46,7 @@ module Risu
 				text "\n\n\n"
 
 				unique_risks = Array.new
-				unique_risks << Hash[:title => "Malicious Processes", :color => "9B30FF", :values => Item.where(:plugin_id => 59275)] if Item.where(:plugin_id => 59275).count != 0
+				unique_risks << Hash[:title => "Malicious Processes", :color => "9B30FF", :values => Item.where(:plugin_id => 59275)] if Item.where(:plugin_id => 59275).any?
 
 				unique_risks.each_with_index do |h, index|
 					if h[:values].length > 0
@@ -60,7 +60,7 @@ module Risu
 						text "\n"
 
 						h[:values].each do |f|
-							plugin = Plugin.find_by_id(f.plugin_id)
+							plugin = Plugin.find_by(:id => f.plugin_id)
 
 							references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
@@ -70,45 +70,45 @@ module Risu
 
 							text "Host", :style => :bold
 
-							ho = Host.find_by_id(f.host_id)
+							ho = Host.find_by(:id => f.host_id)
 
 							host_string = "#{ho.name}"
-							host_string << " (#{ho.fqdn})" if ho.fqdn != nil
+							host_string << " (#{ho.fqdn})" if !ho.fqdn.nil?
 
 							text host_string
 
-							if f.plugin_output != nil
+							if !f.plugin_output.nil?
 								text "\nPlugin output", :style => :bold
 								text f.plugin_output
 							end
 
-							if plugin.description != nil
+							if !plugin.description.nil?
 								text "\nDescription", :style => :bold
 								text plugin.description.gsub(/[ ]{2,}/, " "), :inline_format => true
 							end
 
-							if plugin.synopsis != nil
+							if !plugin.synopsis.nil?
 								text "\nSynopsis", :style => :bold
 								text plugin.synopsis
 							end
 
-							if plugin.cvss_base_score != nil
+							if !plugin.cvss_base_score.nil?
 								text "\nCVSS Base Score", :style => :bold
 								text plugin.cvss_base_score
 							end
 
-							if plugin.exploit_available != nil
+							if !plugin.exploit_available.nil?
 								text "\nExploit Available", :style => :bold
 
 								plugin.exploit_available? ? "Yes" : "No"
 							end
 
-							if plugin.solution != nil
+							if !plugin.solution.nil?
 								text "\nSolution", :style => :bold
 								text plugin.solution
 							end
 
-							if references.size != 0
+							if references.any?
 								text "\nReferences", :style => :bold
 								text plugin.references.reference_string, :inline_format => true
 								plugin_url = "http://www.tenablesecurity.com/plugins/index.php?view=single&id=#{plugin.id}"
@@ -119,7 +119,7 @@ module Risu
 						end
 					end
 
-					output.start_new_page if unique_risks[index+1] != nil
+					output.start_new_page if !unique_risks[index+1].nil?
 				end
 
 				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all

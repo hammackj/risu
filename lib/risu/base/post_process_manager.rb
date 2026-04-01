@@ -67,8 +67,8 @@ module Risu
 						begin
 							require x
 						rescue => e
-							#puts e.inspect
-							#puts e.backtrace
+							#STDERR.puts e.inspect
+							#STDERR.puts e.backtrace
 							next
 						end
 					end
@@ -79,9 +79,9 @@ module Risu
 				    end
 				  end
 				rescue => e
-					puts "[!] Invalid post processing path"
-					puts e.inspect
-  					puts e.backtrace
+					STDERR.puts "[!] Invalid post processing path"
+					STDERR.puts e.inspect
+  					STDERR.puts e.backtrace
 				end
 			end
 
@@ -95,7 +95,7 @@ module Risu
 			def validate template
 				t = template.new
 
-				return false if t == nil
+				return false if t.nil?
 				return t.instance_variable_defined?("@info")
 			end
 
@@ -103,7 +103,7 @@ module Risu
 			def display_postprocesses
 				puts "Available Post Processing"
 			  @registered_postprocesses.each do |p|
-			      if p.info[:plugin_id] != nil
+			      if !p.info[:plugin_id].nil?
 			      	puts "\t#{p.info[:description]} (#{p.info[:plugin_id]})\n"
 			      else
 			      	puts "\t#{p.info[:description]}"

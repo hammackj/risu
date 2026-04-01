@@ -27,11 +27,11 @@ module Risu
 
 					#
 					def initialize
-						@name = ""
+						@name = String.new
 						@plugin_id = -1
 						@plugin_ids = []
-						@plugin_name = ""
-						@item_name = ""
+						@plugin_name = String.new
+						@item_name = String.new
 					end
 
 					#NOTE:
@@ -41,14 +41,14 @@ module Risu
 						newest_plugin = nil
 
 						@plugin_ids.uniq.each do |id|
-							plugin = Plugin.find_by_id(id)
+							plugin = Plugin.find_by(:id => id)
 
-							if plugin == nil || plugin.plugin_modification_date == nil
+							if plugin.nil? || plugin.plugin_modification_date.nil?
 								next
 							end
 
 							if plugin.plugin_modification_date >= newest
-								newest = plugin.plugin_modification_date if plugin.plugin_modification_date != nil
+								newest = plugin.plugin_modification_date if !plugin.plugin_modification_date.nil?
 								newest_plugin = plugin
 							end
 						end
@@ -59,15 +59,15 @@ module Risu
 					# Creates a rollup plugin
 					#
 					def create_plugin
-						plugin = Plugin.find_by_id(@plugin_id)
+						plugin = Plugin.find_by(:id => @plugin_id)
 
 						newest_plugin = newest_plugin()
 
-						if newest_plugin == nil
+						if newest_plugin.nil?
 							return
 						end
 
-						if plugin == nil
+						if plugin.nil?
 							plugin = Plugin.new
 						end
 

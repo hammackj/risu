@@ -45,22 +45,18 @@ module Risu
 				return scan_info
 			end
 
-			# TODO doc
-			#
+			# Returns a hash with 'auth' and 'unauth' counts based on
+			# the Credentialed_Scan host property set by Nessus.
 			def authenticated_count
 				count = {}
 				count["auth"] = 0
 				count["unauth"] = 0
 
-				Item.where(:plugin_id => 19506).each do |item|
-					scan_info = scan_info_to_hash (item.plugin_output)
-
-					auth = scan_info["credentialed_checks"]
-
-					if auth =~ /yes/
-						count["auth"] = count["auth"] + 1
+				HostProperty.where(:name => "Credentialed_Scan").each do |prop|
+					if prop.value == "true"
+						count["auth"] += 1
 					else
-						count["unauth"] = count["unauth"] + 1
+						count["unauth"] += 1
 					end
 				end
 

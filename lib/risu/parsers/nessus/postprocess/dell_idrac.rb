@@ -34,8 +34,8 @@ module Risu
 							:plugin_name => "Missing the latest Dell iDRAC Patches",
 							:item_name => "Update to the latest Dell iDRAC",
 							:plugin_ids => [
-109208, #Dell iDRAC Products Multiple Vulnerabilities (Mar 2018) 
-111604, #Dell iDRAC Products Multiple Vulnerabilities (June 2018) 
+109208, #Dell iDRAC Products Multiple Vulnerabilities (Mar 2018)
+111604, #Dell iDRAC Products Multiple Vulnerabilities (June 2018)
 119833, #Dell iDRAC Products Multiple Vulnerabilities (December 2018)
 90265, #Dell iDRAC6 / iDRAC7 / iDRAC8 Path Traversal Authentication Bypass
 135187, #Dell iDRAC Buffer Overflow Vulnerability (CVE-2020-5344)
@@ -55,6 +55,7 @@ module Risu
 202259, #MEDIUM, Dell EMC iDRAC9 < 7.00.00.172 / 7.10.00.00 < 7.10.50.00 (DSA-2024-099)
 148955, #MEDIUM, Dell iDRAC XSS (DSA-2021-073)
 161799, #HIGH, Dell EMC iDRAC9 4.40.x < 4.40.29.00 (DSA-2021-177)
+303190, #MEDIUM, Dell iDRAC9 < 7.00.00.174 / 7.10.90.00 Information Disclosure (DSA-2026-113)
 
 							]
 						}

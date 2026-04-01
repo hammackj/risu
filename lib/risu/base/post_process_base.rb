@@ -40,9 +40,9 @@ module Risu
 
 			def == other
 
-				if self.info == nil || self.info[:plugin_id] == nil
+				if self.info.nil? || self.info[:plugin_id].nil?
 					false
-				elsif other == nil || other.info == nil || other.info[:plugin_id] == nil
+				elsif other.nil? || other.info.nil? || other.info[:plugin_id].nil?
 					false
 				else
 					self.info[:plugin_id] == other.info[:plugin_id]
@@ -63,9 +63,9 @@ module Risu
 			# to be rolled up.
 			def create_plugin
 
-				plugin = Plugin.find_by_id(@info[:plugin_id])
+				plugin = Plugin.find_by(:id => @info[:plugin_id])
 
-				if plugin == nil
+				if plugin.nil?
 					plugin = Plugin.new
 				end
 

@@ -64,7 +64,7 @@ module Risu
 					next if total == 0
 
 					host_string = "#{host.ip}"
-					host_string << " (#{host.fqdn})" if host.fqdn != nil
+					host_string << " (#{host.fqdn})" if !host.fqdn.nil?
 
 					@output.font_size(16) do
 						output.text "#{host_string}", :style => :bold
@@ -73,7 +73,7 @@ module Risu
 					@output.text "\n"
 
 					authenticated = nil
-					if host.host_properties.where(:name => "Credentialed_Scan").first != nil
+					if !host.host_properties.where(:name => "Credentialed_Scan").first.nil?
 						authenticated = host.host_properties.where(:name => "Credentialed_Scan").first.value
 					end
 
@@ -110,7 +110,7 @@ module Risu
 						end
 
 						host.items.critical_risks_unique_sorted.each do |item|
-							name = Plugin.find_by_id(item.plugin_id).plugin_name
+							name = Plugin.find_by(:id => item.plugin_id).plugin_name
 							output.text "#{name}"
 						end
 
@@ -125,7 +125,7 @@ module Risu
 						}
 
 						host.items.high_risks_unique_sorted.each do |item|
-							name = Plugin.find_by_id(item.plugin_id).plugin_name
+							name = Plugin.find_by(:id => item.plugin_id).plugin_name
 							output.text "#{name}"
 						end
 
@@ -140,7 +140,7 @@ module Risu
 						}
 
 						host.items.medium_risks_unique_sorted.each do |item|
-							name = Plugin.find_by_id(item.plugin_id).plugin_name
+							name = Plugin.find_by(:id => item.plugin_id).plugin_name
 							output.text "#{name}"
 						end
 
@@ -155,7 +155,7 @@ module Risu
 						}
 
 						host.items.low_risks_unique_sorted.each do |item|
-							name = Plugin.find_by_id(item.plugin_id).plugin_name
+							name = Plugin.find_by(:id => item.plugin_id).plugin_name
 							output.text "#{name}"
 						end
 
@@ -170,7 +170,7 @@ module Risu
 						}
 
 						host.items.info_risks_unique_sorted.each do |item|
-							name = Plugin.find_by_id(item.plugin_id).plugin_name
+							name = Plugin.find_by(:id => item.plugin_id).plugin_name
 							output.text "#{name}"
 						end
 

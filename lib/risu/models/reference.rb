@@ -41,12 +41,12 @@ module Risu
 						"msvr", "apple_sa", "icsa"
 					]
 
-					ref_string = ""
+					ref_string = String.new
 
 					reference_names.each do |type|
 						ref = reference_string_by self.send(type)
 
-						ref_string << "<b>#{type}</b>: #{ref}\n" if ref.length != 0
+						ref_string << "<b>#{type}</b>: #{ref}\n" unless ref.empty?
 					end
 
 					ref_string

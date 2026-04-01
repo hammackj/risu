@@ -26,7 +26,7 @@ module Risu
 			def anon_ftp_count
 				begin
 					return Item.where(:plugin_id => Plugin.where(:plugin_name => "Anonymous FTP Enabled").first.id).count
-				rescue
+				rescue NoMethodError
 					return 0
 				end
 			end
@@ -43,10 +43,10 @@ module Risu
 				findings =  Item.where(:plugin_id => Plugin.where(:plugin_name => "Anonymous FTP Enabled").first.id)
 
 				findings.each do |finding|
-					host = Host.find_by_id(finding.host_id)
+					host = Host.find_by(:id => finding.host_id)
 
 					host_string = "#{host.name}"
-					host_string << " (#{host.fqdn})" if host.fqdn != nil
+					host_string << " (#{host.fqdn})" if !host.fqdn.nil?
 
 					text "Host", :style => :bold
 					text host_string
@@ -70,7 +70,7 @@ module Risu
 				count = 0
 				begin
 					anon_smb_query().each do |finding|
-						host = Host.find_by_id(finding.host_id)
+						host = Host.find_by(:id => finding.host_id)
 
 						login = host.host_properties.where(:name => 'smb-login-used').first.value
 						login = login.split("\\")[1] if login.include?("\\")
@@ -82,7 +82,7 @@ module Risu
 
 						count = count + 1
 					end
-				rescue
+				rescue NoMethodError
 					return 0
 				end
 
@@ -98,7 +98,7 @@ module Risu
 				heading2 "Anonymous SMB Share Detection"
 
 				anon_smb_query().each do |finding|
-					host = Host.find_by_id(finding.host_id)
+					host = Host.find_by(:id => finding.host_id)
 
 					login = host.host_properties.where(:name => 'smb-login-used').first.value
 					login = login.split("\\")[1] if login.include?("\\")
@@ -109,7 +109,7 @@ module Risu
 					end
 
 					host_string = "#{host.name}"
-					host_string << " (#{host.fqdn})" if host.fqdn != nil
+					host_string << " (#{host.fqdn})" if !host.fqdn.nil?
 
 					text "Host", :style => :bold
 					text host_string
@@ -126,8 +126,8 @@ module Risu
 			def shares_section
 				poor_count = 0
 
-				anon_ftp_text = ""
-				anon_smb_text = ""
+				anon_ftp_text = String.new
+				anon_smb_text = String.new
 
 				v_anon_smb_count = 0
 				v_anon_ftp_count = 0
@@ -177,8 +177,8 @@ module Risu
 			def shares_section_has_findings?
 				poor_count = 0
 
-				anon_ftp_text = ""
-				anon_smb_text = ""
+				anon_ftp_text = String.new
+				anon_smb_text = String.new
 
 				v_anon_smb_count = 0
 				v_anon_ftp_count = 0

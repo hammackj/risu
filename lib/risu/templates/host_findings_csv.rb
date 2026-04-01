@@ -30,9 +30,9 @@ module Risu
 				{
 					:name => "host_findings_csv",
 					:author => "hammackj",
-					:version => "0.0.4",
+					:version => "0.0.5",
 					:renderer => "CSV",
-					:description => "Generates a findings report by host and outputs to CSV"
+					:description => "Generates a findings report of all severities by host and outputs to CSV"
 
 				}
 			end
@@ -52,38 +52,31 @@ module Risu
 
 						host = Host.where(:id => item.host_id).first
 
-						solution = plugin.solution.gsub("\n", " ").gsub(",", "")
-						
-						mac_address = ""
+						solution = plugin.solution ? plugin.solution.gsub("\n", " ").gsub(",", ";") : ""
 
-						if host.mac != nil
-							mac_address = host.mac.gsub("\n", " ").gsub(",", "")
+						mac_address = String.new
+
+						if !host.mac.nil?
+							mac_address = host.mac.gsub("\n", " ").gsub(",", ";")
 						else
 							mac_address = "FF:FF:FF:FF:FF:FF"
 						end
 
-						@output.text "#{host.ip}, #{host.fqdn}, #{host.netbios}, #{mac_address}, #{item.plugin_name}, #{plugin.risk_factor}, #{plugin.cvss_base_score}, #{solution}"
+						plugin_name = item.plugin_name ? item.plugin_name.gsub(",", ";") : ""
+
+						@output.text "#{host.ip}, #{host.fqdn}, #{host.netbios}, #{mac_address}, #{plugin_name}, #{plugin.risk_factor}, #{plugin.cvss_base_score}, #{solution}"
 					end
 				end
 			end
 
 			# Flattens CVS output removing newlines and commas
 			def flatten text
-				if text == nil
+				if text.nil?
 					return nil
 				end
 
-#				puts "===="
-#				puts text
-
-
 				output = text.gsub("\n", " ")
 				output = output.gsub(",", ";")
-				
-
-#				puts output
-
-#				puts "==="
 
 				return "'" + output + "'"
 			end
@@ -94,6 +87,9 @@ module Risu
 				@output.text "IP Address, FQDN, Netbios Name, MAC Address, Finding, Risk Factor, CVSS Base Score, Solution"
 				csv Plugin.critical_risks.order(cvss_base_score: :desc)
 				csv Plugin.high_risks.order(cvss_base_score: :desc)
+				csv Plugin.medium_risks.order(cvss_base_score: :desc)
+				csv Plugin.low_risks.order(cvss_base_score: :desc)
+				csv Plugin.none_risks.order(cvss_base_score: :desc)
 			end
 		end
 	end

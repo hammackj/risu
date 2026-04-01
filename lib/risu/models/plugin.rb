@@ -102,7 +102,7 @@ module Risu
 					}
 
 					Item.risks_by_plugin(limit).to_a.each do |plugin|
-						plugin_name = Plugin.find_by_id(plugin.plugin_id).plugin_name
+						plugin_name = Plugin.find_by(:id => plugin.plugin_id).plugin_name
 
 						#We need to filter the names a little to make everything look nice on the graph
 						#@TODO this concept should be added to the database via a yaml file
@@ -114,7 +114,7 @@ module Risu
 							when 38664 then "Intel Common Base Agent Remote Command Execution"
 							when 42411 then "Windows SMB Shares Unprivileged Access"
 							else
-								plugin_name = Plugin.find_by_id(plugin.plugin_id).plugin_name
+								plugin_name = Plugin.find_by(:id => plugin.plugin_id).plugin_name
 						end
 
 						if plugin_name =~ /^(MS\d{2}-\d{3}):/

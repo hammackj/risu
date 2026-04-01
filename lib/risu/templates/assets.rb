@@ -47,11 +47,11 @@ module Risu
 
 				Host.sorted.each do |host|
 					text "Name: #{host.name}\n"
-					text "FQDN: #{host.fqdn}\n" unless host.fqdn == nil
-					text "IP Address: #{host.ip}\n" unless host.ip == nil
-					text "NetBios: #{host.netbios}\n" unless host.netbios == nil
-					text sprintf "Mac Address: %s\n", host.mac.chomp.gsub("\n", ", ") unless host.mac == nil
-					text sprintf "Operation System: %s\n", host.os.chomp.gsub("\n", "/") unless host.os == nil
+					text "FQDN: #{host.fqdn}\n" unless host.fqdn.nil?
+					text "IP Address: #{host.ip}\n" unless host.ip.nil?
+					text "NetBios: #{host.netbios}\n" unless host.netbios.nil?
+					text sprintf "Mac Address: %s\n", host.mac.chomp.gsub("\n", ", ") unless host.mac.nil?
+					text sprintf "Operation System: %s\n", host.os.chomp.gsub("\n", "/") unless host.os.nil?
 					text "\n"
 				end
 			end

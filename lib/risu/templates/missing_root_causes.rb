@@ -61,11 +61,11 @@ module Risu
 				}
 
 				Item.critical_risks_unique_sorted.each do |item|
-					plugin = Plugin.find_by_id(item.plugin_id)
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
+					plugin = Plugin.find_by(:id => item.plugin_id)
+					name = Plugin.find_by(:id => item.plugin_id).plugin_name
 					count = Item.where(:plugin_id => item.plugin_id).count
 
-					if plugin.root_cause != nil
+					if !plugin.root_cause.nil?
 						next
 					end
 
@@ -82,11 +82,11 @@ module Risu
 				end
 
 				Item.high_risks_unique_sorted.each do |item|
-					plugin = Plugin.find_by_id(item.plugin_id)
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
+					plugin = Plugin.find_by(:id => item.plugin_id)
+					name = Plugin.find_by(:id => item.plugin_id).plugin_name
 					count = Item.where(:plugin_id => item.plugin_id).count
 
-					if plugin.root_cause != nil
+					if !plugin.root_cause.nil?
 						next
 					end					
 
@@ -103,11 +103,11 @@ module Risu
 				}
 
 				Item.medium_risks_unique_sorted.each do |item|
-					plugin = Plugin.find_by_id(item.plugin_id)
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
+					plugin = Plugin.find_by(:id => item.plugin_id)
+					name = Plugin.find_by(:id => item.plugin_id).plugin_name
 					count = Item.where(:plugin_id => item.plugin_id).count
 
-					if plugin.root_cause != nil
+					if !plugin.root_cause.nil?
 						next
 					end
 
@@ -124,11 +124,11 @@ module Risu
 				}
 
 				Item.low_risks_unique_sorted.each do |item|
-					plugin = Plugin.find_by_id(item.plugin_id)
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
+					plugin = Plugin.find_by(:id => item.plugin_id)
+					name = Plugin.find_by(:id => item.plugin_id).plugin_name
 					count = Item.where(:plugin_id => item.plugin_id).count
 
-					if plugin.root_cause != nil
+					if !plugin.root_cause.nil?
 						next
 					end
 
@@ -145,11 +145,11 @@ module Risu
 				}
 				
 				Item.info_risks_unique_sorted.each do |item|
-					plugin = Plugin.find_by_id(item.plugin_id)
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
+					plugin = Plugin.find_by(:id => item.plugin_id)
+					name = Plugin.find_by(:id => item.plugin_id).plugin_name
 					count = Item.where(:plugin_id => item.plugin_id).count
 
-					if plugin.root_cause != nil
+					if !plugin.root_cause.nil?
 						next
 					end
 				

@@ -49,8 +49,7 @@ module Risu
 				def start_element(element, attributes = [])
 					attributes = attributes.to_h
 					@tag = element
-					@vals[@tag] = ""
-					puts element
+					@vals[@tag] = String.new
 
 					case element
 						when "device"
@@ -69,7 +68,7 @@ module Risu
 				#
 				# @param text
 				def characters(text)
-					if @vals[@tag] == nil then
+					if @vals[@tag].nil? then
 						@vals[@tag] = text
 					else
 						@vals[@tag] << text

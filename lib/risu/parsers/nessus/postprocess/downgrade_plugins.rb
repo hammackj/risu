@@ -60,12 +60,12 @@ module Risu
 						@plugins_to_severity.each do |k, v|
 							items = Item.where(:plugin_id => k)
 
-							if items == nil
+							if items.nil?
 								next
 							end
 
               items.each do |item|
-                if item == nil
+                if item.nil?
                   next
                 end
 

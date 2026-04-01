@@ -59,9 +59,9 @@ module Risu
 				header_widths = {0 => 108, 1 => 264, 2 => 140}
 
 				Item.ms_update.each do |item|
-					host = Host.find_by_id(item.host_id)
+					host = Host.find_by(:id => item.host_id)
 
-					if host == nil
+					if host.nil?
 						next
 					end
 

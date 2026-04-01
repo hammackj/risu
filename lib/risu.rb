@@ -69,22 +69,18 @@ module Risu
 end
 
 # TODO move these require to another file or move the above metadata to a config.rb
-require "logger"
+require 'logger'
 require 'active_record'
 require 'active_support'
 require 'nokogiri'
-require 'logger'
 require 'ipaddr'
 require 'yaml'
 require 'gruff'
 require 'prawn'
 require 'prawn/table'
 require 'stringio'
-#require 'mysql2'
 require 'irb'
 require 'sqlite3'
-require 'nokogiri'
-
 require 'optparse'
 
 require 'risu/version'
