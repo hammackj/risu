@@ -1,5 +1,89 @@
 # News
 
+# 1.8.6 (April 2026)
+
+## Major Features
+
+- **Engagement Configuration System** — New YAML-driven `risu_engagement.yml` for per-engagement report data (phishing campaigns, pen test findings, unmitigated findings, recommendations). Eliminates hardcoded client data in templates. See `docs/risu_engagement.yml.example` for the full schema.
+- **Unmitigated Findings Support** — Reads `shared_items_global.csv` from risu_db_diff to identify findings that persist across scan cycles. Top 10 by severity/host count shown in reports.
+- **5 New Graphs** — Exploitability breakdown (pie), findings by patch age (bar), top hosts by finding count (bar), authentication coverage (pie), findings trend (persistent vs new from diff data).
+
+## New Public Templates
+
+- `unsupported_os` — Unsupported/EOL operating system report with per-OS host tables
+- `unsupported_software` — EOL software report using `unsupported_by_vendor` flag and name matching
+- `default_credentials` — Default credentials report with summary and per-finding host detail
+- `insecure_windows_service_permissions` — Plugin 65057 detail report with remediation steps
+- `winverifytrust` — CVE-2013-3900 report with registry fix, PowerShell, and GPO deployment steps
+- `actively_exploited` — Findings flagged as exploited by malware in the wild
+- `in_the_news` — High-profile vulnerabilities with media coverage
+- `patch_age_priority` — Findings ranked by vulnerability age with bracket breakdown
+- `host_inventory` — Full asset inventory with OS distribution, auth status, per-host finding counts
+- `unmitigated_findings` — Cross-scan comparison report from risu_db_diff output
+
+## Updated Templates
+
+- `exploitablity_summary` — Added detailed exploitable findings section with affected hosts and exploit frameworks
+- `technical_findings` — Added per-host rollup patch breakdown showing individual patches behind each rollup
+- `host_findings_csv` — Now exports all severity levels (was Critical/High only). Fixed nil gsub crash.
+- `graphs` — Added all 5 new graphs
+
+## Postprocessors
+
+- Added Microsoft Teams patch rollup (plugin_id: -99912)
+- Added Vim patch rollup
+- Updated plugin IDs for apache_log4j, microsoft_dot_net, microsoft_office, microsoft_windows_server, notepad_plus_plus, servu, ubuntu, wireshark
+- Added root cause mappings: Server 2008 SEoL (192782), Server 2012 SEoL (192813), Debian 8 SEoL (201420)
+
+## Unsupported OS Detection
+
+- Added Windows Server 2012 and Server 2008 detection via both OS string and SEoL plugin IDs
+- Added Debian 8 (201420), Ubuntu 14.04 (201408), Ubuntu 18.04 (201456) detection
+- Added `unsupported_os_merged` helper to deduplicate hosts across detection methods
+- Fixed quoting bug in Windows Server 2008 unsupported OS text
+- Fixed "Janurary" typo in Windows 7/2008 unsupported OS text
+- Updated appendix section to use merged detection for all OS entries
+
+## Code Quality
+
+- Replaced all `== nil` / `!= nil` with `.nil?` (109 instances)
+- Replaced all `find_by_id(x)` with `find_by(:id => x)` (75 instances)
+- Replaced `.length/.size/.count != 0` with `.any?`
+- Replaced frozen string literals `= ""` with `String.new` (28 instances)
+- Replaced bare `rescue` blocks with `rescue NoMethodError`
+- Converted debug `puts` to `STDERR.puts`, removed debug output
+- Fixed frozen string `<<` warnings in SAX listener and reference model
+- Removed duplicate requires (logger, nokogiri) in risu.rb
+- Replaced `exit` with `return` in plugin_summary template
+- Updated stale HTTP URLs to HTTPS (GitHub, IBM, FreeBSD)
+- Fixed `authenticated_count` to use HostProperty instead of plugin 19506
+
+## Dependencies
+
+- Updated activerecord/activesupport constraint to `~> 7.2`
+- Updated sqlite3 constraint to `~> 1.7`
+- Updated nokogiri constraint to `~> 1.16`
+- Updated prawn constraint to `~> 2.4`
+- Updated concurrent-ruby constraint to `~> 1.3`
+- Added csv gem dependency for Ruby 3.4+ compatibility
+- Updated schema migration version from 4.2 to 7.0
+
+## Tests
+
+- Added 144 new tests (265 -> 409 total)
+- New test files: graph_test, engagement_config_test, scan_helper_test, item_top10_test, new_templates_test, nessus_sax_listener_extended_test, postprocess_base_test, risk_score_test, root_cause_test, template_render_test
+- Line coverage: 70.51% -> 81.87%
+- Tests validate all postprocessors respond to `run`, have valid plugin_ids arrays, no duplicates
+- Tests validate all new templates load, render, produce output, and have required metadata
+
+## Bug Fixes
+
+- Fixed `authentication_summary` crash when host_property references nonexistent host
+- Fixed `host_findings_csv` and `host_findings_csv_older_than` nil gsub crash on plugins with no solution
+- Fixed `plugin_summary` calling `exit` and killing the test runner / process
+- Fixed `top_10_sorted` sorting by count only — now sorts by severity, CVSS, then count
+- Found duplicate plugin IDs in AdobeAir postprocessor
+
 # 1.8.4 (Feburary 6, 2020)
 - A great deal of changes/bug fixes/post processing
 
