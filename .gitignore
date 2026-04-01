@@ -11,3 +11,7 @@ coverage/
 Gemfile.lock
 tools/output
 certs/
+root_cause_graph.png
+stigs_severity.png
+windows_client_os_graph.png
+risks_by_severity_graph.png
