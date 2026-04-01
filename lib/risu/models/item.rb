@@ -326,11 +326,11 @@ module Risu
 					low = Item.low_risks.count
 					#info = Item.info_risks.count
 
-					if crit == nil then crit = 0 end
-					if high == nil then high = 0 end
-					if medium == nil then medium = 0 end
-					if low == nil then low = 0 end
-					#if info == nil then info = 0 end
+					if crit.nil? then crit = 0 end
+					if high.nil? then high = 0 end
+					if medium.nil? then medium = 0 end
+					if low.nil? then low = 0 end
+					#if info.nil? then info = 0 end
 
 					g.data("Critical", crit)
 					g.data("High", high)
@@ -373,9 +373,9 @@ module Risu
 					ii = Item.stig_findings("II").count
 					iii = Item.stig_findings("III").count
 
-					if i == nil then i = 0 end
-					if ii == nil then ii = 0 end
-					if iii == nil then iii = 0 end
+					if i.nil? then i = 0 end
+					if ii.nil? then ii = 0 end
+					if iii.nil? then iii = 0 end
 
 					g.data("Cat I", i)
 					g.data("Cat II", ii)
@@ -391,6 +391,107 @@ module Risu
 
 					return "stigs_severity.png"
 					#StringIO.new(image.to_blob)
+				end
+
+				# Generates a pie chart showing exploitable vs non-exploitable findings
+				#
+				# @return [StringIO] Object containing the generated PNG image
+				def exploitability_graph
+					g = Gruff::Pie.new(GRAPH_WIDTH)
+					g.title = "Exploitability Breakdown"
+					g.sort = false
+					g.theme = {
+						:colors => Risu::GRAPH_COLORS,
+						:background_colors => %w(white white)
+					}
+
+					exploitable = Item.joins("INNER JOIN plugins ON plugins.id = items.plugin_id")
+						.where("plugins.exploit_available = ?", true)
+						.where("items.severity > 0")
+						.where(:rollup_finding => false).count
+
+					not_exploitable = Item.where("severity > 0")
+						.where(:rollup_finding => false).count - exploitable
+
+					g.data("Exploitable (#{exploitable})", exploitable) if exploitable > 0
+					g.data("Not Exploitable (#{not_exploitable})", not_exploitable) if not_exploitable > 0
+
+					image = g.to_image
+					image.format = 'png'
+					StringIO.new(image.to_blob)
+				end
+
+				# Generates a bar chart showing findings by age bracket
+				#
+				# @return [StringIO] Object containing the generated PNG image
+				def findings_by_age_graph
+					g = Gruff::Bar.new(GRAPH_WIDTH)
+					g.title = "Findings by Patch Age"
+					g.sort = false
+					g.marker_count = 1
+					g.theme = {
+						:colors => Risu::ALT_GRAPH_COLORS,
+						:background_colors => %w(white white)
+					}
+
+					today = Date.today
+					brackets = { "<3mo" => 0, "3-6mo" => 0, "6mo-1yr" => 0, "1-3yr" => 0, ">3yr" => 0 }
+
+					Item.where(:severity => [3, 4], :rollup_finding => false).select("DISTINCT plugin_id").each do |item|
+						plugin = Plugin.find_by(:id => item.plugin_id)
+						next if plugin.nil? || plugin.vuln_publication_date.nil?
+
+						days = (today - plugin.vuln_publication_date.to_date).to_i
+
+						if days > 1095
+							brackets[">3yr"] += 1
+						elsif days > 365
+							brackets["1-3yr"] += 1
+						elsif days > 180
+							brackets["6mo-1yr"] += 1
+						elsif days > 90
+							brackets["3-6mo"] += 1
+						else
+							brackets["<3mo"] += 1
+						end
+					end
+
+					brackets.each { |label, count| g.data(label, count) }
+
+					image = g.to_image
+					image.format = 'png'
+					StringIO.new(image.to_blob)
+				end
+
+				# Generates a bar chart showing top 10 hosts by finding count
+				#
+				# @return [StringIO] Object containing the generated PNG image
+				def top_hosts_by_finding_count_graph(limit=10)
+					g = Gruff::Bar.new(GRAPH_WIDTH)
+					g.title = "Top #{limit} Hosts by Finding Count"
+					g.sort = false
+					g.marker_count = 1
+					g.theme = {
+						:colors => Risu::GRAPH_COLORS,
+						:background_colors => %w(white white)
+					}
+
+					host_counts = Item.where("severity > 0")
+						.where(:rollup_finding => false)
+						.group(:host_id)
+						.order("count_all DESC")
+						.limit(limit)
+						.count
+
+					host_counts.each do |host_id, count|
+						host = Host.find_by(:id => host_id)
+						next if host.nil?
+						g.data(host.ip || host.name, count)
+					end
+
+					image = g.to_image
+					image.format = 'png'
+					StringIO.new(image.to_blob)
 				end
 
 				# Calculates a vulnerable host percent based on Critical and High findings
@@ -732,8 +833,8 @@ module Risu
 					return data
 				end
 
-				# Returns an array of plugin_id and plugin_name for the top 10
-				# findings sorted by CVSS score
+				# Returns an array of plugin_name and count for the top 10
+				# findings sorted by severity, then CVSS, then count
 				#
 				# @return [Array] Sorted top 10 findings
 				def top_10_sorted
@@ -741,22 +842,27 @@ module Risu
 					data = Array.new
 
 					raw.each do |vuln|
-						row = Array.new
 						plugin_id = vuln[0]
 						count = vuln[1]
 
-						name = scrub_plugin_name(Plugin.find_by_id(plugin_id).plugin_name)
+						plugin = Plugin.find_by(:id => plugin_id)
+						next if plugin.nil?
 
-						row.push(name)
-						row.push(count)
-						data.push(row)
+						name = scrub_plugin_name(plugin.plugin_name)
+						severity = plugin.risk_factor || "None"
+						cvss = plugin.cvss_base_score.to_f || 0.0
+
+						data.push([name, count, severity, cvss])
 					end
 
-					data = data.sort do |a, b|
-						b[1] <=> a[1]
+					severity_order = { "Critical" => 4, "High" => 3, "Medium" => 2, "Low" => 1, "None" => 0 }
+
+					data = data.sort_by do |row|
+						[-(severity_order[row[2]] || 0), -row[3], -row[1]]
 					end
 
-					return data
+					# Return only name and count for the table
+					data.map { |row| [row[0], row[1]] }
 				end
 
 				def common_patches_sorted
@@ -768,7 +874,7 @@ module Risu
 						plugin_id = vuln[0]
 						count = vuln[1]
 
-						name = scrub_plugin_name(Plugin.find_by_id(plugin_id).plugin_name)
+						name = scrub_plugin_name(Plugin.find_by(:id => plugin_id).plugin_name)
 
 						row.push(name)
 						row.push(count)
