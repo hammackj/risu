@@ -418,12 +418,16 @@ module Risu
 					where("os NOT LIKE '%Mac OS X%'")
 				end
 
-				#@TODO comment
+				# Queries for all hosts with an AIX based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_aix
 					where("os LIKE '%AIX%'")
 				end
 
-				#@TODO comment
+				# Negation query for all hosts with an AIX based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def not_os_aix
 					where("os NOT LIKE '%AIX%'")
 				end
@@ -435,8 +439,6 @@ module Risu
 					not_os_osx.not_os_linux.not_os_netbsd.not_os_freebsd.not_os_cisco.not_os_vxworks.not_os_vmware_esx.not_os_windows.not_os_aix
 				end
 
-				# Generates a graph of the high and medium findings count per host
-				#
 				# Generates a pie chart showing authenticated vs unauthenticated scan coverage
 				#
 				# @return [StringIO] Object containing the generated PNG image
@@ -499,9 +501,10 @@ module Risu
                                         StringIO.new(image.to_blob)
                     end
 
-				# @deprecated
-				# @TODO comments
+				# Checks whether there is data available to render the Windows OS graph
 				#
+				# @deprecated
+				# @return [Boolean] true if any Windows OS hosts exist
 				def windows_os_graph_has_data?
 					nt = Host.os_windows_nt.to_a.size
 					w2k = Host.os_windows_2k.to_a.size
@@ -523,6 +526,9 @@ module Risu
 					end
 				end
 
+				# Checks whether there is data available to render the Windows client OS graph
+				#
+				# @return [Boolean] true if any Windows client OS hosts exist
 				def windows_client_os_graph_has_data?
 					xp = Host.os_windows_xp.to_a.size
 					vista = Host.os_windows_vista.to_a.size
@@ -538,10 +544,10 @@ module Risu
 					end
 				end
 
+				# Checks whether there is data available to render the non-Windows OS graph
 				#
 				# @deprecated
-				# @TODO comments
-				#
+				# @return [Boolean] true if any non-Windows OS hosts exist
 				def other_os_graph_has_data?
 					linux = Host.os_linux.to_a.size
 					osx = Host.os_osx.to_a.size
@@ -706,9 +712,13 @@ module Risu
 					return "windows_client_os_graph.png"
 				end
 
-				# @deprecated
-				#@TODO comment
+				# Generates descriptive text for the Windows Server OS distribution graph
 				#
+				# Calculates per-version percentages and appends unsupported OS warnings
+				# when legacy versions (NT, 2000) are detected.
+				#
+				# @deprecated
+				# @return [String] narrative text describing Windows Server OS distribution
 				def windows_os_graph_text
 					nt = Host.os_windows_nt.to_a.size
 					w2k = Host.os_windows_2k.to_a.size
@@ -760,6 +770,12 @@ module Risu
 					return text
 				end
 
+				# Generates descriptive text for the Windows client OS distribution graph
+				#
+				# Calculates per-version percentages for client Windows editions
+				# (XP, Vista, 7, 8, 10, 11).
+				#
+				# @return [String] narrative text describing Windows client OS distribution
 				def windows_client_os_graph_text
 					xp = Host.os_windows_xp.to_a.size
 					vista = Host.os_windows_vista.to_a.size
@@ -795,9 +811,11 @@ module Risu
 					return text
 				end
 
+				# Determines whether any unsupported operating systems exist on the network
 				#
-				# @TODO comments
+				# Checks AIX, Windows, FreeBSD, and Debian for end-of-life versions.
 				#
+				# @return [Boolean] true if any unsupported OS is detected
 				def unsupported_os?
 					aix_text = unsupported_os_aix
 					win_text = unsupported_os_windows
@@ -811,9 +829,13 @@ module Risu
 					return true
 				end
 
-				# @TODO add plural check
-				# @deprecated
+				# Generates a full narrative describing all unsupported operating systems found
 				#
+				# Combines output from unsupported OS checks for Windows, AIX, FreeBSD,
+				# and Debian into a single report-ready text block.
+				#
+				# @deprecated
+				# @return [String, nil] descriptive text of unsupported OSes, or nil if none found
 				def unsupported_os_text
 					if !unsupported_os?
 						return nil
@@ -836,8 +858,13 @@ module Risu
 					return unsupported_os_text
 				end
 
-				# @TODO comments
+				# Generates text describing all unsupported Microsoft Windows versions found
+				#
+				# Checks for Windows 95, 98, ME, NT, 2000, XP, 2003, 7, Server 2008,
+				# and Server 2012, returning end-of-life advisory text for each detected version.
+				#
 				# @deprecated
+				# @return [String] advisory text for each unsupported Windows version, or empty string if none
 				def unsupported_os_windows
 					win_95_text = String.new
 					win_98_text = String.new
@@ -897,8 +924,12 @@ module Risu
 					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}#{win_7_text}#{win_2008_text}#{win_2012_text}"
 				end
 
-				# @TODO comments
+				# Generates text describing unsupported AIX versions found on the network
+				#
+				# Detects AIX 5.x hosts, which reached end of support in April 2011.
+				#
 				# @deprecated
+				# @return [String] advisory text for unsupported AIX, or empty string if none
 				def unsupported_os_aix
 					text = String.new
 					aix = Host.os_aix.where("OS LIKE 'AIX 5.%'")
@@ -910,8 +941,12 @@ module Risu
 					return text
 				end
 
-				# @TODO comments
+				# Generates text describing unsupported FreeBSD versions found on the network
+				#
+				# Detects FreeBSD 5.x hosts, which reached end of support in May 2008.
+				#
 				# @deprecated
+				# @return [String] advisory text for unsupported FreeBSD, or empty string if none
 				def unsupported_os_freebsd
 					text = String.new
 					freebsd = Host.os_freebsd.where("OS LIKE 'FreeBSD 5.%'")
@@ -922,6 +957,11 @@ module Risu
 					return text
 				end
 
+				# Generates text describing unsupported Debian versions found on the network
+				#
+				# Detects Debian 8 (Jessie) via plugin 201420, which lost security support in June 2020.
+				#
+				# @return [String] advisory text for unsupported Debian, or empty string if none
 				def unsupported_os_debian
 					text = String.new
 					debian_8 = Plugin.where(:id => 201420)
@@ -932,9 +972,13 @@ module Risu
 					return text
 				end
 
-				# @TODO comments
-				#turn the os counts into blocks
+				# Generates descriptive text for the non-Windows OS distribution graph
+				#
+				# Calculates per-OS percentages for Linux, AIX, FreeBSD, VMware, and others,
+				# and appends unsupported OS warnings when applicable.
+				#
 				# @deprecated
+				# @return [String] narrative text describing non-Windows OS distribution
 				def other_os_graph_text
 					text = "This graph shows the percentage of the different Non-Windows based operating systems " +
 					"found on the #{Report.title} network.\n\n"
@@ -969,9 +1013,11 @@ module Risu
 					return text
 				end
 
+				# Returns the top N most vulnerable hosts sorted by finding count
 				#
-				# @TODO comments
+				# @param n [Integer] number of top hosts to return
 				#
+				# @return [Array<ActiveRecord::Relation>] the top N host records by vulnerability count
 				def top_n_vulnerable(n)
 					hosts = Item.risks_by_host(Host.count).size
 					hosts = hosts.sort_by {|k, v| v}
@@ -986,29 +1032,34 @@ module Risu
 					hosts[0...n]
 				end
 
+				# Returns unique hosts with critical findings, sorted by count descending
 				#
-				# @TODO comments
-				#
+				# @return [Array<Array(Integer, Integer)>] pairs of [host_id, finding_count]
 				def unique_hosts_with_critical
 					hosts = Item.critical_risks_by_host(Host.all.size).size
 					hosts = hosts.sort_by {| _k, v | v}
 					hosts.reverse!
 				end
 
+				# Returns unique hosts with high findings, sorted by count descending
 				#
-				# @TODO comments
-				#
+				# @return [Array<Array(Integer, Integer)>] pairs of [host_id, finding_count]
 				def unique_hosts_with_high
 					hosts = Item.high_risks_by_host(Host.all.size).size
 					hosts = hosts.sort_by {| _k, v | v}
 					hosts.reverse!
 				end
 
-				# @TODO
+				# Returns the count of unique hosts that have critical or high findings
+				#
+				# @return [Integer] number of unique hosts with critical or high severity findings
 				def unique_hosts_with_critical_and_high_count
 					unique_hosts_with_critical_and_high().size
 				end
 
+				# Returns unique host IDs that have either critical or high findings
+				#
+				# @return [Array<Integer>] deduplicated list of host IDs
 				def unique_hosts_with_critical_and_high
 					hosts = Array.new
 					crit = Item.critical_risks_by_host(Host.all.size)
@@ -1026,10 +1077,19 @@ module Risu
 					hosts.uniq
 				end
 
+				# Returns the count of unique hosts with common missing rollup patches
+				#
+				# @return [Integer] number of unique hosts missing common patches
 				def unique_hosts_with_common_missing_patches_count
 					unique_hosts_with_common_missing_patches().size
 				end
 
+				# Returns unique host IDs that are missing common rollup patches
+				#
+				# Checks each host against Risu Rollup Plugins family to identify
+				# hosts with commonly missing software patches.
+				#
+				# @return [Array<Integer>] deduplicated list of host IDs missing common patches
 				def unique_hosts_with_common_missing_patches
 					results = Array.new
 

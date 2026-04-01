@@ -22,8 +22,13 @@ module Risu
 	module Templates
 		module ScanHelper
 
+			# Parses Nessus plugin output text into a normalized hash of key/value pairs.
+			# Each line is expected to be in "Key: Value" format; keys are downcased and
+			# spaces are replaced with underscores.
 			#
-			# TODO doc
+			# @param plugin_output [String] raw plugin output text from a Nessus finding
+			#
+			# @return [Hash{String => String}] parsed key/value pairs
 			def scan_info_to_hash plugin_output
 				scan_info = {}
 
@@ -45,8 +50,10 @@ module Risu
 				return scan_info
 			end
 
-			# Returns a hash with 'auth' and 'unauth' counts based on
-			# the Credentialed_Scan host property set by Nessus.
+			# Counts the number of authenticated and unauthenticated scan targets based
+			# on the Credentialed_Scan host property set by Nessus.
+			#
+			# @return [Hash{String => Integer}] hash with "auth" and "unauth" counts
 			def authenticated_count
 				count = {}
 				count["auth"] = 0

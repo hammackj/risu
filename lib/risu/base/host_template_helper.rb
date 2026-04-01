@@ -22,7 +22,12 @@ module Risu
 	module Templates
 		module HostTemplateHelper
 
+			# Renders a PDF table of hosts affected by an unsupported OS, looked up by plugin name.
 			#
+			# @param title [String] the heading title for the section
+			# @param plugin_name [String] the Nessus plugin name used to find affected hosts
+			#
+			# @return [void]
 			def unsupported_os title, plugin_name
 				if item_count_by_plugin_name(plugin_name) <= 0
 					STDERR.puts "No Items for #{plugin_name}, unsupported_os"
@@ -57,7 +62,12 @@ module Risu
 
 			end
 
+			# Renders a PDF table of hosts affected by an unsupported OS, looked up by plugin ID.
 			#
+			# @param title [String] the heading title for the section
+			# @param plugin_id [Integer] the Nessus plugin ID used to find affected hosts
+			#
+			# @return [void]
 			def unsupported_os_by_plugin_id title, plugin_id
 				plugin = Plugin.find_by(:id => plugin_id)
 				return if plugin.nil?
@@ -91,7 +101,15 @@ module Risu
 				text "\n"
 			end
 
-			# Merged lookup: combines hosts from OS string scope, plugin name, and plugin IDs
+			# Renders a PDF table of hosts running an unsupported OS by combining results
+			# from an ActiveRecord OS scope, plugin names, and plugin IDs.
+			#
+			# @param title [String] the heading title for the section
+			# @param os_scope [ActiveRecord::Relation, nil] optional Host scope filtered by OS string
+			# @param plugin_names [Array<String>] Nessus plugin names whose findings contribute hosts
+			# @param plugin_ids [Array<Integer>] Nessus plugin IDs whose findings contribute hosts
+			#
+			# @return [void]
 			def unsupported_os_merged(title, os_scope: nil, plugin_names: [], plugin_ids: [])
 				host_ids = []
 
@@ -137,7 +155,10 @@ module Risu
 				text "\n"
 			end
 
+			# Renders the full appendix section covering all known unsupported OS categories
+			# (Windows NT through Server 2012, AIX, FreeBSD, Debian, Ubuntu, etc.).
 			#
+			# @return [void]
 			def unsupported_os_appendix_section
 				unsupported_os_merged("Unsupported Windows NT Installations",
 					os_scope: Host.os_windows_nt,

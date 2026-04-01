@@ -22,7 +22,9 @@ module Risu
 	module Templates
 		module SharesTemplateHelper
 
+			# Returns the number of hosts with anonymous FTP enabled.
 			#
+			# @return [Integer] count of anonymous FTP findings, or 0 if the plugin is not present
 			def anon_ftp_count
 				begin
 					return Item.where(:plugin_id => Plugin.where(:plugin_name => "Anonymous FTP Enabled").first.id).count
@@ -31,7 +33,10 @@ module Risu
 				end
 			end
 
+			# Renders a PDF section listing each host with anonymous FTP enabled,
+			# including the plugin output details.
 			#
+			# @return [void]
 			def anon_ftp_section
 
 				if anon_ftp_count() <= 0
@@ -60,12 +65,17 @@ module Risu
 				end
 			end
 
+			# Queries for items associated with the "Microsoft Windows SMB Shares Unprivileged Access" plugin.
 			#
+			# @return [ActiveRecord::Relation] collection of Item records for the SMB shares plugin
 			def anon_smb_query
 				return Item.where(:plugin_id => Plugin.where(:plugin_name => "Microsoft Windows SMB Shares Unprivileged Access").first.id)
 			end
 
+			# Returns the number of hosts with truly anonymous (non-authenticated user) SMB share access.
+			# Findings attributed to the authenticated scan user are excluded.
 			#
+			# @return [Integer] count of anonymous SMB share findings, or 0 if the plugin is not present
 			def anon_smb_count
 				count = 0
 				begin
@@ -89,7 +99,10 @@ module Risu
 				return count
 			end
 
+			# Renders a PDF section listing each host with anonymous SMB share access,
+			# excluding findings attributed to the authenticated scan user.
 			#
+			# @return [void]
 			def anon_smb_section
 				if anon_smb_count() <= 0
 					return
@@ -123,6 +136,10 @@ module Risu
 				end
 			end
 
+			# Renders the summary section for anonymous FTP and SMB share findings,
+			# including descriptive narrative text and an "Other Findings of Interest" heading.
+			#
+			# @return [void]
 			def shares_section
 				poor_count = 0
 
@@ -168,12 +185,17 @@ module Risu
 				@output.text "\n"
 			end
 
+			# Renders the appendix sections for anonymous FTP and anonymous SMB share findings.
+			#
+			# @return [void]
 			def shares_appendix_section
 				anon_ftp_section
 				anon_smb_section
 			end
 
+			# Checks whether there are any anonymous FTP or anonymous SMB share findings.
 			#
+			# @return [Boolean] true if at least one anonymous FTP or SMB finding exists
 			def shares_section_has_findings?
 				poor_count = 0
 

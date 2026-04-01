@@ -753,9 +753,14 @@ module Risu
 
 				end
 
-				# Scrubs a plugin_name to remove all pointless data
+				# Scrubs a plugin name to remove extraneous annotations
 				#
-				# @return [String] Scrubbed plugin name
+				# Strips parenthetical tags such as "(remote check)", "(remote)",
+				# "(uncredentialed check)", and VMSA identifiers from plugin names.
+				#
+				# @param name [String] the raw plugin name to clean
+				#
+				# @return [String] the cleaned plugin name with annotations removed
 				def scrub_plugin_name name
 
 					#puts "-#{name.inspect}-"
@@ -811,6 +816,11 @@ module Risu
 					return data
 				end
 
+				# Returns raw common patch data as [plugin_id, count] pairs sorted by count descending
+				#
+				# Filters to only include patches with a count greater than zero.
+				#
+				# @return [Array<Array(Integer, Integer)>] sorted pairs of [plugin_id, count]
 				def common_patches_sorted_raw
 					raw = common_patches_order_by_cvss_raw
 
@@ -833,10 +843,13 @@ module Risu
 					return data
 				end
 
-				# Returns an array of plugin_name and count for the top 10
-				# findings sorted by severity, then CVSS, then count
+				# Returns notable findings sorted by severity, then CVSS score, then count
 				#
-				# @return [Array] Sorted top 10 findings
+				# Excludes Risu Rollup Plugins. Each entry is [plugin_name, count],
+				# ordered by descending severity, then descending CVSS base score,
+				# then descending host count.
+				#
+				# @return [Array<Array(String, Integer)>] sorted pairs of [plugin_name, count]
 				def top_10_sorted
 					raw = notable_order_by_cvss_raw
 					data = Array.new
@@ -865,6 +878,9 @@ module Risu
 					data.map { |row| [row[0], row[1]] }
 				end
 
+				# Returns common rollup patches as [plugin_name, count] pairs sorted by count descending
+				#
+				# @return [Array<Array(String, Integer)>] sorted pairs of [plugin_name, count]
 				def common_patches_sorted
 					raw = common_patches_order_by_cvss_raw
 					data = Array.new
@@ -888,12 +904,11 @@ module Risu
 					return data
 				end
 
-				# Returns a prawn pdf table for the top 10 notable findings
+				# Renders a Prawn PDF table of the top 10 notable findings
 				#
-				# @TODO change this method to return a array/table and let the template render it
-				# @TODO rename to notable_table also
+				# @param output [Prawn::Document] the PDF document to render the table into
 				#
-				# @param output device to write the table to
+				# @return [void]
 				def top_10_table(output)
 					headers = ["Description", "Count"]
 					header_widths = {0 => (output.bounds.width - 50), 1 => 50}
@@ -906,6 +921,11 @@ module Risu
 					end
 				end
 
+				# Renders a Prawn PDF table of the top 10 common missing patches
+				#
+				# @param output [Prawn::Document] the PDF document to render the table into
+				#
+				# @return [void]
 				def common_patches_table(output)
 					headers = ["Description", "Count"]
 					header_widths = {0 => (output.bounds.width - 50), 1 => 50}

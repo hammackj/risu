@@ -30,10 +30,18 @@ module Risu
 			has_many :references
 			has_many :individual_plugin_selections
 
+			# Sets the CVSS base score, converting the value to a float before storage
+			#
+			# @param cvss_base_score [String, Numeric] the CVSS base score to store
+			#
+			# @return [void]
 			def cvss_base_score=(cvss_base_score)
 				write_attribute(:cvss_base_score, cvss_base_score.to_f)
 			end
 
+			# Returns the CVSS base score as a string
+			#
+			# @return [String] the CVSS base score
 			def cvss_base_score
 				read_attribute(:cvss_base_score).to_s
 			end
@@ -82,15 +90,18 @@ module Risu
 					where(:risk_factor => "None")
 				end
 
-				# TODO doc
+				# Queries for all plugins that are flagged as being in the news
 				#
+				# @return [ActiveRecord::Relation] plugins where in_the_news is true
 				def in_the_news
 					where(:in_the_news => true)
 				end
 
-				# Creates a graph based on the top plugins sorted by count
+				# Generates a bar chart of the top critical findings by plugin count
 				#
-				# @return Filename of the created graph
+				# @param limit [Integer] maximum number of plugins to include (default 10)
+				#
+				# @return [StringIO] Object containing the generated PNG image
 				def top_by_count_graph(limit=10)
 					g = Gruff::Bar.new(GRAPH_WIDTH)
 					g.title = sprintf "Top %d Critical Findings By Plugin", Item.risks_by_plugin(limit).to_a.count
@@ -133,6 +144,11 @@ module Risu
                                         StringIO.new(image.to_blob)
                                 end
 
+				# Generates a pie chart showing vulnerability root cause distribution
+				#
+				# Categories are Vendor Patch, Vendor Support, and Configuration.
+				#
+				# @return [String] filename of the generated PNG image
 				def root_cause_graph
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = sprintf "Vulnerability Root Cause"
@@ -159,6 +175,9 @@ module Risu
 					#StringIO.new(image.to_blob)
 				end
 
+				# Generates descriptive text explaining the root cause graph categories
+				#
+				# @return [String] narrative text describing Vendor Patch, Vendor Support, and Configuration categories
 				def root_cause_graph_text
 					graph_text = "This graph shows the basic root cause of a vulnerability, the data is broken up into " +
 					"three categories. Vendor Patch, Vendor Support and Configuration.\n\n"

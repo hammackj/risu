@@ -22,7 +22,9 @@
 module Risu
 	module Base
 
-		#
+		# Base class for all post-process plugins. Subclasses are automatically registered
+		# via the inherited hook and can roll up multiple Nessus plugin findings into a
+		# single consolidated plugin entry.
 		class PostProcessBase
 			@possible_postprocesses = Array.new
 
@@ -30,14 +32,25 @@ module Risu
 				attr_reader :possible_postprocesses
 			end
 
-			#
+			# @return [Hash] metadata hash containing :plugin_id, :plugin_name, :plugin_ids,
+			#   :description, :version, :item_name, and other post-processor configuration
 			attr_accessor :info
 
+			# Callback invoked when a class inherits from PostProcessBase. Registers the
+			# subclass so it can be discovered and executed by the PostProcessManager.
 			#
+			# @param child [Class] the subclass being registered
+			#
+			# @return [void]
 			def self.inherited child
 				possible_postprocesses << child
 			end
 
+			# Compares two post-processors for equality based on their plugin ID.
+			#
+			# @param other [PostProcessBase, nil] the other post-processor to compare
+			#
+			# @return [Boolean] true if both have the same plugin_id
 			def == other
 
 				if self.info.nil? || self.info[:plugin_id].nil?
@@ -49,6 +62,11 @@ module Risu
 				end
 			end
 
+			# Compares two post-processors by plugin ID for sorting purposes.
+			#
+			# @param other [PostProcessBase] the other post-processor to compare
+			#
+			# @return [Integer] -1, 0, or 1
 			def <=> other
 				if self.info[:plugin_id] < other.info[:plugin_id]
 					-1
@@ -59,8 +77,10 @@ module Risu
 				end
 			end
 
-			# Create a plugin based on a combination of all plugins
-			# to be rolled up.
+			# Creates or updates a rollup Plugin record by aggregating metadata from all
+			# constituent plugin IDs (CVSS scores, exploit availability, risk factor, etc.).
+			#
+			# @return [Boolean] result of the Plugin#save call
 			def create_plugin
 
 				plugin = Plugin.find_by(:id => @info[:plugin_id])
@@ -161,7 +181,12 @@ module Risu
 				plugin.save
 			end
 
+			# Creates a new rollup Item record associating a host with this post-processor's plugin.
 			#
+			# @param host_id [Integer] the database ID of the host
+			# @param severity [Integer] the severity level for the rollup finding
+			#
+			# @return [Boolean] result of the Item#save call
 			def create_item host_id, severity
 				item = Item.new
 
@@ -176,16 +201,29 @@ module Risu
 				item.save
 			end
 
+			# Checks whether any findings exist for this post-processor's constituent plugin IDs.
 			#
+			# @return [Boolean] true if at least one Item exists for the tracked plugin IDs
 			def has_findings
 				Item.where(:plugin_id => @info[:plugin_ids]).count > 0
 			end
 
+			# Checks whether a specific host has findings for this post-processor's constituent plugin IDs.
+			#
+			# @param host_id [Integer] the database ID of the host to check
+			#
+			# @return [Boolean] true if at least one Item exists for the host and tracked plugin IDs
 			def has_host_findings(host_id)
 				Item.where(:plugin_id => @info[:plugin_ids]).where(:host_id => host_id).count > 0
 			end
 
+			# Returns the higher of two severity values, used to track the maximum severity
+			# across multiple findings during rollup processing.
 			#
+			# @param current_severity [Integer] the running maximum severity
+			# @param severity [Integer] the severity of the current finding
+			#
+			# @return [Integer] the greater of the two severity values
 			def calculate_severity current_severity, severity
 				if severity > current_severity
 					return severity
@@ -194,7 +232,10 @@ module Risu
 				end
 			end
 
+			# Executes the post-processor: creates the rollup plugin, downgrades original
+			# findings to severity -1, and creates consolidated rollup items per host.
 			#
+			# @return [void]
 			def run
 				if !has_findings()
 					return
