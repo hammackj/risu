@@ -362,6 +362,9 @@ module Risu
 							78555 => "Vendor Support", # OpenSSL Unsupported -
 							56997 => "Vendor Support", # VMware ESX / ESXi Unsupported Version Detection -
 							108797 => "Vendor Support", # Unsupported Windows OS (remote)
+							192782 => "Vendor Support", # Microsoft Windows Server 2008 SEoL
+							192813 => "Vendor Support", # Microsoft Windows Server 2012 SEoL
+							201420 => "Vendor Support", # Debian Linux SEoL (8.x)
 							73756 => "Vendor Support", # Microsoft SQL Server Unsupported Version Detection
 							172179 => "Vendor Support", # Microsoft .NET Core SEoL -
 
@@ -518,7 +521,7 @@ module Risu
 						@plugins_to_cause.each do |k, v|
 							plugin = Plugin.where(:id => k).first
 
-							if plugin == nil
+							if plugin.nil?
 								next
 							end
 

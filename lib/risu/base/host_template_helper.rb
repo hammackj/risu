@@ -37,10 +37,10 @@ module Risu
 				findings =  Item.where(:plugin_id => Plugin.where(:plugin_name => plugin_name).first.id)
 
 				findings.each do |finding|
-					host = Host.find_by_id(finding.host_id)
+					host = Host.find_by(:id => finding.host_id)
 
 					host_string = "#{host.name}"
-					host_string << " (#{host.fqdn})" if host.fqdn != nil
+					host_string << " (#{host.fqdn})" if !host.fqdn.nil?
 
 					row = Array.new
 					row.push host_string
@@ -58,12 +58,135 @@ module Risu
 			end
 
 			#
+			def unsupported_os_by_plugin_id title, plugin_id
+				plugin = Plugin.find_by(:id => plugin_id)
+				return if plugin.nil?
+
+				items = Item.where(:plugin_id => plugin_id)
+				return if items.count == 0
+
+				heading2 title
+
+				headers = ["Host"]
+				data = Array.new
+
+				items.each do |finding|
+					host = Host.find_by(:id => finding.host_id)
+					next if host.nil?
+
+					host_string = "#{host.name}"
+					host_string << " (#{host.fqdn})" if !host.fqdn.nil?
+
+					row = Array.new
+					row.push host_string
+
+					data << row
+				end
+
+				@output.table([headers] + data, :header => true, :width => output.bounds.width) do
+					row(0).style(:font_style => :bold, :background_color => 'cccccc')
+					cells.borders = [:top, :bottom, :left, :right]
+				end
+
+				text "\n"
+			end
+
+			# Merged lookup: combines hosts from OS string scope, plugin name, and plugin IDs
+			def unsupported_os_merged(title, os_scope: nil, plugin_names: [], plugin_ids: [])
+				host_ids = []
+
+				# OS string scope
+				if os_scope
+					host_ids += os_scope.pluck(:id)
+				end
+
+				# Plugin name lookups
+				plugin_names.each do |name|
+					plugin = Plugin.where(:plugin_name => name).first
+					next if plugin.nil?
+					host_ids += Item.where(:plugin_id => plugin.id).pluck(:host_id)
+				end
+
+				# Plugin ID lookups
+				plugin_ids.each do |pid|
+					host_ids += Item.where(:plugin_id => pid).pluck(:host_id)
+				end
+
+				host_ids.uniq!
+				return if host_ids.empty?
+
+				hosts = Host.where(:id => host_ids)
+				return if hosts.empty?
+
+				heading2 title
+
+				headers = ["Host"]
+				data = []
+
+				hosts.each do |host|
+					host_string = "#{host.name}"
+					host_string << " (#{host.fqdn})" if !host.fqdn.nil?
+					data << [host_string]
+				end
+
+				@output.table([headers] + data, :header => true, :width => output.bounds.width) do
+					row(0).style(:font_style => :bold, :background_color => 'cccccc')
+					cells.borders = [:top, :bottom, :left, :right]
+				end
+
+				text "\n"
+			end
+
+			#
 			def unsupported_os_appendix_section
-				unsupported_os("Unsupported Windows NT Installations", "Microsoft Windows NT 4.0 Unsupported Installation Detection")
-				unsupported_os("Unsupported Windows 2000 Installations", "Microsoft Windows 2000 Unsupported Installation Detection")
-				unsupported_os("Unsupported Windows XP Installations", "Microsoft Windows XP Unsupported Installation Detection")
-				unsupported_os("Unsupported Windows 2003 Installations", "Microsoft Windows Server 2003 Unsupported Installation Detection")
-				unsupported_os("Unsupported Windows 8 Installations", "Microsoft Windows 8 Unsupported Installation Detection")
+				unsupported_os_merged("Unsupported Windows NT Installations",
+					os_scope: Host.os_windows_nt,
+					plugin_names: ["Microsoft Windows NT 4.0 Unsupported Installation Detection"])
+
+				unsupported_os_merged("Unsupported Windows 2000 Installations",
+					os_scope: Host.os_windows_2k,
+					plugin_names: ["Microsoft Windows 2000 Unsupported Installation Detection"])
+
+				unsupported_os_merged("Unsupported Windows XP Installations",
+					os_scope: Host.os_windows_xp,
+					plugin_names: ["Microsoft Windows XP Unsupported Installation Detection"])
+
+				unsupported_os_merged("Unsupported Windows Server 2003 Installations",
+					os_scope: Host.os_windows_2k3,
+					plugin_names: ["Microsoft Windows Server 2003 Unsupported Installation Detection"])
+
+				unsupported_os_merged("Unsupported Windows Vista Installations",
+					os_scope: Host.os_windows_vista)
+
+				unsupported_os_merged("Unsupported Windows 7 Installations",
+					os_scope: Host.os_windows_7)
+
+				unsupported_os_merged("Unsupported Windows 8 Installations",
+					plugin_names: ["Microsoft Windows 8 Unsupported Installation Detection"])
+
+				unsupported_os_merged("Unsupported Windows Server 2008 Installations",
+					os_scope: Host.os_windows_2k8,
+					plugin_names: ["Microsoft Windows Server 2008 Unsupported Version Detection"],
+					plugin_ids: [192782])
+
+				unsupported_os_merged("Unsupported Windows Server 2012 Installations",
+					os_scope: Host.os_windows_2k12,
+					plugin_ids: [192813])
+
+				unsupported_os_merged("Unsupported AIX 5.x Installations",
+					os_scope: Host.os_aix.where("OS LIKE 'AIX 5.%'"))
+
+				unsupported_os_merged("Unsupported FreeBSD 5.x Installations",
+					os_scope: Host.os_freebsd.where("OS LIKE 'FreeBSD 5.%'"))
+
+				unsupported_os_merged("Unsupported Debian 8 (Jessie) Installations",
+					plugin_ids: [201420])
+
+				unsupported_os_merged("Unsupported Ubuntu 14.04 Installations",
+					plugin_ids: [201408])
+
+				unsupported_os_merged("Unsupported Ubuntu 18.04 Installations",
+					plugin_ids: [201456])
 
 				text "\n"
 			end
