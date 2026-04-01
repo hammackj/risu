@@ -1,0 +1,129 @@
+# Risu Engagement Configuration
+# Copy this file to risu_engagement.yml in your assessment directory
+# and customize per engagement. All report templates read from this
+# single file — enable only the sections relevant to your engagement.
+
+# --- Vulnerability Assessment ---
+
+engagement:
+  # External assessment
+  external_assessment: false
+  external_date: ""
+
+  # Unmitigated findings from risu_db_diff
+  # Point this to the shared_items_global.csv from your risu_diff output directory
+  has_unmitigated_findings: false
+  unmitigated_file: "risu_diff/shared_items_global.csv"
+  unmitigated_min_severity: 3   # 3=High, 4=Critical only
+  previous_scan_date: ""
+
+# Phishing assessment
+phishing:
+  enabled: false
+  has_results: false
+  campaigns:
+    - name: "Campaign One"
+      description: "Description of the phishing campaign."
+      date_range: ""
+      timespan_hours: 0
+      sent: 0
+      delivered: 0
+      opened: 0
+      clicked: 0
+      submitted: 0
+      reported: 0
+      results_file: "phishing/campaign_1.csv"
+
+# Vuln assessment recommendations
+# Supports plain strings or title/detail objects:
+#   - "Plain string recommendation"
+#   - title: "Bold Title"
+#     detail: "Description text"
+recommendations: []
+
+# --- Penetration Test ---
+
+pen_test:
+  enabled: false
+  overall_risk: "Low"
+  start_date: ""
+  end_date: ""
+
+  summary: ""
+
+  # Optional: custom conclusion text (use | for multi-paragraph)
+  # conclusion: |
+  #   First paragraph.
+  #
+  #   Second paragraph.
+
+  targets:
+    H-001:
+      ip: "10.0.0.1"
+      description: "Target description"
+
+  open_ports:
+    - host: "10.0.0.1"
+      port: "443"
+      protocol: "TCP"
+      service: "HTTPS"
+      version: ""
+      notes: ""
+
+  findings:
+    - id: "F-001"
+      title: "Example Finding"
+      severity: "Medium"
+      likelihood: "Low"
+      impact: "Low"
+      status: "Unresolved"
+      affected_assets:
+        - "H-001"
+      description: "Description of the finding."
+      evidence_description: "What was observed during testing."
+      impact_detail: "What could happen if exploited."
+      likelihood_detail: "How likely exploitation is and why."
+      recommendation: >
+        - Recommended remediation steps
+      evidence_files:
+        - "evidence/F-001_evidence_01.png"
+
+  risk_matrix:
+    - impact: "High"
+      low: ""
+      medium: ""
+      high: ""
+    - impact: "Medium"
+      low: ""
+      medium: ""
+      high: ""
+    - impact: "Low"
+      low: ""
+      medium: ""
+      high: ""
+
+  recommendations: []
+
+  tools:
+    - name: "Kali Linux"
+      version: ""
+      description: "Linux Pen Testing Platform"
+    - name: "nmap"
+      version: ""
+      description: "Port Scanner"
+    - name: "Nessus"
+      version: ""
+      description: "Vulnerability Scanner"
+
+  glossary:
+    CVSS: "Common Vulnerability Scoring System"
+    HTTP: "Hypertext Transfer Protocol"
+    OSINT: "Open-Source Intelligence"
+    RCE: "Remote Code Execution"
+    SSH: "Secure Shell"
+    SSL: "Secure Sockets Layer"
+    TCP: "Transmission Control Protocol"
+    UDP: "User Datagram Protocol"
+    VPN: "Virtual Private Network"
+
+  references: {}

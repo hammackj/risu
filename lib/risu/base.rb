@@ -34,5 +34,6 @@ require 'risu/base/shares_template_helper'
 require 'risu/base/scan_helper'
 require 'risu/base/template_helper'
 
+require 'risu/base/engagement_config'
 require 'risu/base/post_process_base'
 require 'risu/base/post_process_manager'

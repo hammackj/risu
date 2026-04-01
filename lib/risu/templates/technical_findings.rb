@@ -41,7 +41,7 @@ module Risu
 
 					risks.each do |f|
 						hosts = Item.where(:plugin_id => f.plugin_id).group(:host_id)
-						plugin = Plugin.find_by_id(f.plugin_id)
+						plugin = Plugin.find_by(:id => f.plugin_id)
 
 						#references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
@@ -57,16 +57,16 @@ module Risu
 
 						hostlist = Array.new
 						hosts.each do |host|
-							ho = Host.find_by_id(host.host_id)
+							ho = Host.find_by(:id => host.host_id)
 							host_string = "#{ho.name}"
-							host_string << " (#{ho.fqdn})" if ho.fqdn != nil
+							host_string << " (#{ho.fqdn})" if !ho.fqdn.nil?
 							hostlist << host_string
 						end
 
 						text hostlist.join(', ')
 
 						definition "Plugin output", f.plugin_output
-						definition "Description", plugin.description.gsub(/[ ]{2,}/, " ") if plugin.description != nil
+						definition "Description", plugin.description.gsub(/[ ]{2,}/, " ") if !plugin.description.nil?
 						definition "Synopsis", plugin.synopsis
 						definition "CVSS Base Score", plugin.cvss_base_score
 						definition "Exploit Available", plugin.exploit_available? ? "Yes" : "No"
@@ -94,10 +94,10 @@ module Risu
 
 				# If you uncomment the med/low change the true in high to false for a new page after it
 
-				print_technical_findings(Item.critical_risks_unique, "Critical Findings", Risu::GRAPH_COLORS[0]) if Item.critical_risks_unique.to_a.size != 0
-				print_technical_findings(Item.high_risks_unique, "High Findings", Risu::GRAPH_COLORS[1], true) if Item.high_risks_unique.to_a.size != 0
-				#print_technical_findings(Item.medium_risks_unique, "Medium Findings", Risu::GRAPH_COLORS[2]) if Item.medium_risks_unique.to_a.size != 0
-				#print_technical_findings(Item.low_risks_unique, "Low Findings", Risu::GRAPH_COLORS[3], true) if Item.low_risks_unique.to_a.size != 0
+				print_technical_findings(Item.critical_risks_unique, "Critical Findings", Risu::GRAPH_COLORS[0]) if Item.critical_risks_unique.to_a.any?
+				print_technical_findings(Item.high_risks_unique, "High Findings", Risu::GRAPH_COLORS[1], true) if Item.high_risks_unique.to_a.any?
+				#print_technical_findings(Item.medium_risks_unique, "Medium Findings", Risu::GRAPH_COLORS[2]) if Item.medium_risks_unique.to_a.any?
+				#print_technical_findings(Item.low_risks_unique, "Low Findings", Risu::GRAPH_COLORS[3], true) if Item.low_risks_unique.to_a.any?
 
 				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all
 			end
