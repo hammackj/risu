@@ -34,8 +34,8 @@ module Risu
 							:plugin_name => "Missing the latest IrfanView Patches",
 							:item_name => "Update to the latest IrfanView",
 							:plugin_ids => [
-								68888,
-								72395,
+								68888, #HIGH, IrfanView < 4.36 Multiple Vulnerabilities
+								72395, #HIGH, IrfanView < 4.37 Multiple Buffer Overflow Vulnerabilities
 							]
 						}
 					end

@@ -34,12 +34,12 @@ module Risu
 							:plugin_name => "Missing the latest VMware vSphere Client Patches",
 							:item_name => "Update to the latest VMware vSphere Client",
 							:plugin_ids => [
-                				64559,
-                				73595,
-                				51057,
-								76355,
-								87675,
-								95657, #VMware vSphere Client XXE Injection Information Disclosure (VMSA-2016-0022)
+                				64559, #CRITICAL, VMware vSphere Client Memory Corruption (VMSA-2013-0001)
+                				73595, #HIGH, VMware vSphere Client Multiple Vulnerabilities (VMSA-2014-0003)
+                				51057, #HIGH, VMware Products Multiple Vulnerabilities (VMSA-2010-0018)
+								76355, #MEDIUM, VMware vSphere Client Multiple Vulnerabilities (VMSA-2014-0006)
+								87675, #HIGH, VMware ESX / ESXi vSphere Client RCE (VMSA-2014-0003)
+								95657, #MEDIUM, VMware vSphere Client XXE Injection Information Disclosure (VMSA-2016-0022)
 
 							]
 						}

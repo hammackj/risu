@@ -34,8 +34,8 @@ module Risu
 							:plugin_name => "Missing the latest Tenable Nessus",
 							:item_name => "Update to the latest Tenable Nessus",
 							:plugin_ids => [
-123462, #Tenable Nessus < 8.3.0 Multiple Vulnerabilities (TNS-2019-02)
-121620, #Tenable Nessus < 8.2.2 Stored XSS Vulnerability (TNS-2019-01)
+123462, #MEDIUM, Tenable Nessus < 8.3.0 Multiple Vulnerabilities (TNS-2019-02)
+121620, #LOW, Tenable Nessus < 8.2.2 Stored XSS Vulnerability (TNS-2019-01)
 234837, #HIGH, Tenable Nessus < 10.8.4 Multiple Vulnerabilities (TNS-2025-05)
 241370, #HIGH, Tenable Nessus <= 10.8.4 Multiple Vulnerabilities (TNS-2025-13)
 278743, #HIGH, Tenable Nessus 10.8.0 <= 10.8.6 / 10.9.0 < 10.9.6 / 10.10.0 <= 10.10.1 / 10.11.0 < 10.11.1 Multiple Vulnerabilities (TNS-2025-24)

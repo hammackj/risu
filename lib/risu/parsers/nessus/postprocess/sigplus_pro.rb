@@ -34,8 +34,8 @@ module Risu
 							:plugin_name => "Missing the latest SigPlus Pro Patches",
 							:item_name => "Update to the latest SigPlus Pro",
 							:plugin_ids => [
-								51895,
-								51894,
+								51895, #HIGH, SigPlus Pro ActiveX Control < 4.29 Multiple Vulnerabilities
+								51894, #HIGH, SigPlus Pro ActiveX Control LCDWriteString() Method HexString Parameter Overflow
 
 
 

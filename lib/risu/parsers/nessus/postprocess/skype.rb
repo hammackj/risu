@@ -34,7 +34,7 @@ module Risu
 							:plugin_name => "Missing the latest Skype Patches",
 							:item_name => "Update to the latest Skype",
 							:plugin_ids => [
-								66695,
+								66695, #CRITICAL, Skype < 6.3.0.105 Multiple Vulnerabilities (credentialed check)
 								101084
 
 							]

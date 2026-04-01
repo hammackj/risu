@@ -34,8 +34,8 @@ module Risu
 							:plugin_name => "Missing the latest Foxit 3D Plugin",
 							:item_name => "Update to the latest Foxit 3D Plugin",
 							:plugin_ids => [
-132633, #Foxit 3D Plugin Beta 9.7.0.29430 NULL Pointer Dereference Vulnerability 
-139233, #Foxit 3D Plugin Beta < 9.7.2.29539 RCE
+132633, #HIGH, Foxit 3D Plugin Beta 9.7.0.29430 NULL Pointer Dereference Vulnerability
+139233, #HIGH, Foxit 3D Plugin Beta < 9.7.2.29539 RCE
 							]
 						}
 					end

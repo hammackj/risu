@@ -34,8 +34,8 @@ module Risu
 							:plugin_name => "Missing the latest FileZilla Client Patches",
 							:item_name => "Update to the latest FileZilla Client",
 							:plugin_ids => [
-								69476, #FileZilla Client < 3.7.2 SFTP Integer Overflow
-								69494, #FileZilla Client < 3.7.3 Multiple Vulnerabilities
+								69476, #MEDIUM, FileZilla Client < 3.7.2 SFTP Integer Overflow
+								69494, #MEDIUM, FileZilla Client < 3.7.3 Multiple Vulnerabilities
 								206646, #MEDIUM, FileZilla < 3.67.0 Insecure Key Recovery Vulnerability (CVE-2024-31497)
 							]
 						}

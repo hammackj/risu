@@ -34,21 +34,21 @@ module Risu
 							:plugin_name => "Missing the latest VLC Patches",
 							:item_name => "Update to the latest VLC",
 							:plugin_ids => [
-								58416,
-								60049,
-								63381,
-								66216,
-								72279,
-								69015,
-								70560,
-								78626,
-								55608,
-								63137,
-100592, #VLC Media Player < 2.2.5 Multiple Vulnerabilities - 100592
-105294, #VLC Media Player < 2.2.7 Overflow Condition
-136422, #VLC < 3.0.9 Multiple Vulnerabilities
-126246, #VLC < 3.0.7 Multiple Vulnerabilities
-128080, #VLC < 3.0.8 Multiple Vulnerabilities
+								58416, #HIGH, VLC Media Player < 2.0.1 Multiple Vulnerabilities
+								60049, #MEDIUM, VLC Media Player < 2.0.2 Multiple Vulnerabilities
+								63381, #HIGH, VLC < 2.0.5 Multiple Vulnerabilities
+								66216, #MEDIUM, VLC < 2.0.6 ASF Demuxer Buffer Overflow
+								72279, #HIGH, VLC 2.x < 2.1.2 parseRTSPRequestString Function RTSP Command Parsing Overflow
+								69015, #MEDIUM, VLC < 2.0.7 Multiple Vulnerabilities
+								70560, #HIGH, VLC < 2.0.9 DoS
+								78626, #HIGH, VLC Media Player < 2.1.5 Multiple Vulnerabilities
+								55608, #HIGH, VLC Media Player 0.5.0 to 1.1.10 Multiple Buffer Overflows
+								63137, #HIGH, VLC get_chunk_header Function TiVo File Remote Code Execution
+100592, #MEDIUM, VLC Media Player < 2.2.5 Multiple Vulnerabilities
+105294, #HIGH, VLC Media Player < 2.2.7 Overflow Condition
+136422, #HIGH, VLC < 3.0.9 Multiple Vulnerabilities
+126246, #HIGH, VLC < 3.0.7 Multiple Vulnerabilities
+128080, #HIGH, VLC < 3.0.8 Multiple Vulnerabilities
 
 							]
 						}

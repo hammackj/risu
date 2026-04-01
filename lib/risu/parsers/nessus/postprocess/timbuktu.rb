@@ -34,7 +34,7 @@ module Risu
 							:plugin_name => "Missing the latest Timbuktu Pro Patches",
 							:item_name => "Update to the latest Timbuktu Pro",
 							:plugin_ids => [
-								25954,
+								25954, #CRITICAL, Timbuktu Pro < 8.6.5 Multiple Vulnerabilities
 								39563
 
 

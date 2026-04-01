@@ -34,7 +34,7 @@ module Risu
 							:plugin_name => "Missing the latest Apple iCloud",
 							:item_name => "Update to the latest Apple iCloud",
 							:plugin_ids => [
-                                125878, #Apple iCloud < 7.12 Multiple Vulnerabilities
+                                125878, #HIGH, Apple iCloud < 7.12 Multiple Vulnerabilities
 							]
 						}
 					end

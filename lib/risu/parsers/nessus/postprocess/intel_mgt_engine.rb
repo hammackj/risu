@@ -34,9 +34,9 @@ module Risu
 							:plugin_name => "Missing the latest Intel Management Engine Patches",
 							:item_name => "Update to the latest Intel Management Engine",
 							:plugin_ids => [
-97998, #Intel Management Engine Insecure Read / Write Operations RCE (INTEL-SA-00075)
-97999, #Intel Management Engine Authentication Bypass (INTEL-SA-00075)
-97997, #Intel Management Engine Insecure Read / Write Operations RCE (INTEL-SA-00075)
+97998, #CRITICAL, Intel Management Engine Insecure Read / Write Operations RCE (INTEL-SA-00075) (remote check)
+97999, #CRITICAL, Intel Management Engine Authentication Bypass (INTEL-SA-00075) (remote check)
+97997, #CRITICAL, Intel Management Engine Insecure Read / Write Operations RCE (INTEL-SA-00075)
 							]
 						}
 					end

@@ -34,7 +34,7 @@ module Risu
 							:plugin_name => "Missing the latest Microsoft Visual Studio",
 							:item_name => "Update to the latest Microsoft Visual Studio",
 							:plugin_ids => [
-                                121065, #Security Updates for Microsoft Visual Studio Products (January 2019)
+                                121065, #HIGH, Security Updates for Microsoft Visual Studio Products (January 2019)
 							]
 						}
 					end

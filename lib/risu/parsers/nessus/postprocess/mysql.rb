@@ -34,14 +34,14 @@ module Risu
 							:plugin_name => "Missing the latest MySQL",
 							:item_name => "Update to the latest MySQL",
 							:plugin_ids => [
-132957, #MySQL 5.7.x < 5.7.29 Multiple Vulnerabilities (Jan 2020 CPU)
-141797, #MySQL 5.7.x < 5.7.32 Multiple Vulnerabilities (Oct 2020 CPU)
-154259, #MySQL 5.7.x < 5.7.36 Multiple Vulnerabilities (Oct 2021 CPU)
-148936, #MySQL 5.7.x < 5.7.34 Multiple Vulnerabilities (Apr 2021 CPU)
-151969, #MySQL 5.7.x < 5.7.35 Multiple Vulnerabilities (Jul 2021 CPU)
-145247, #MySQL 5.7.x < 5.7.33 Multiple Vulnerabilities (Jan 2021 CPU)
-138561, #MySQL Denial of Service (Jul 2020 CPU)
-138570, #MySQL 5.7.x < 5.7.31 Multiple Vulnerabilities (Jul 2020 CPU)
+132957, #HIGH, MySQL 5.7.x < 5.7.29 Multiple Vulnerabilities (Jan 2020 CPU)
+141797, #HIGH, MySQL 5.7.x < 5.7.32 Multiple Vulnerabilities (Oct 2020 CPU)
+154259, #HIGH, MySQL 5.7.x < 5.7.36 Multiple Vulnerabilities (Oct 2021 CPU)
+148936, #MEDIUM, MySQL 5.7.x < 5.7.34 Multiple Vulnerabilities (Apr 2021 CPU)
+151969, #MEDIUM, MySQL 5.7.x < 5.7.35 Multiple Vulnerabilities (Jul 2021 CPU)
+145247, #MEDIUM, MySQL 5.7.x < 5.7.33 Multiple Vulnerabilities (Jan 2021 CPU)
+138561, #MEDIUM, MySQL Denial of Service (Jul 2020 CPU)
+138570, #MEDIUM, MySQL 5.7.x < 5.7.31 Multiple Vulnerabilities (Jul 2020 CPU)
 
 
 							]

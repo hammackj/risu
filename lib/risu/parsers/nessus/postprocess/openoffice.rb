@@ -34,18 +34,18 @@ module Risu
 							:plugin_name => "Missing the latest OpenOffice Patches",
 							:item_name => "Update to the latest OpenOffice",
 							:plugin_ids => [
-								77408, #Apache OpenOffice < 4.1.1 Multiple Vulnerabilities
-								86904, #Apache OpenOffice < 4.1.2 Multiple Vulnerabilities
-								94199, #Apache OpenOffice < 4.1.3 Multiple Vulnerabilities
-								61731, #Apache OpenOffice < 3.4.1 Multiple Heap-Based Buffer Overflows
-								69185, #Apache OpenOffice < 4.0 Multiple Memory Corruption Vulnerabilities
-								51773, #Oracle OpenOffice.org < 3.3 Multiple Vulnerabilities
-								58727, #OpenOffice XML External Entity RDF Document Handling Information Disclosure 59191, #Apache OpenOffice < 3.4.0 Multiple Memory Corruption Vulnerabilities
-								59191, #Apache OpenOffice < 3.4.0 Multiple Memory Corruption Vulnerabilities
-								104351, #Apache OpenOffice < 4.1.4 Multiple Vulnerabilities
-								40826, #OpenOffice < 3.1.1 Multiple Buffer Overflows
-44597, #Sun OpenOffice.org < 3.2 Multiple Vulnerabilities
-46814, #Oracle OpenOffice.org < 3.2.1 Multiple Vulnerabilities
+								77408, #HIGH, Apache OpenOffice < 4.1.1 Multiple Vulnerabilities
+								86904, #MEDIUM, Apache OpenOffice < 4.1.2 Multiple Vulnerabilities
+								94199, #HIGH, Apache OpenOffice < 4.1.3 Multiple Vulnerabilities
+								61731, #HIGH, Apache OpenOffice < 3.4.1 Multiple Heap-Based Buffer Overflows
+								69185, #MEDIUM, Apache OpenOffice < 4.0 Multiple Memory Corruption Vulnerabilities
+								51773, #HIGH, Oracle OpenOffice.org < 3.3 Multiple Vulnerabilities
+								58727, #HIGH, OpenOffice XML External Entity RDF Document Handling Information Disclosure
+								59191, #HIGH, Apache OpenOffice < 3.4.0 Multiple Memory Corruption Vulnerabilities
+								104351, #MEDIUM, Apache OpenOffice < 4.1.4 Multiple Vulnerabilities
+								40826, #HIGH, OpenOffice < 3.1.1 Multiple Buffer Overflows
+44597, #HIGH, Sun OpenOffice.org < 3.2 Multiple Vulnerabilities
+46814, #HIGH, Oracle OpenOffice.org < 3.2.1 Multiple Vulnerabilities
 							]
 						}
 					end

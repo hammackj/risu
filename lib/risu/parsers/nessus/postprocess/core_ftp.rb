@@ -34,9 +34,9 @@ module Risu
 							:plugin_name => "Missing the latest CoreFTP Patches",
 							:item_name => "Update to the latest CoreFTP",
 							:plugin_ids => [
-								65789, #Core FTP < 2.2 build 1769 Multiple Buffer Overflows
-								70656, #Core FTP < 2.2 build 1785 CWD Command Buffer Overflow
-								59243, #Core FTP Filename Processing Boundary Error FTP List Command Response Parsing Remote Overflow
+								65789, #MEDIUM, Core FTP < 2.2 build 1769 Multiple Buffer Overflows
+								70656, #HIGH, Core FTP < 2.2 build 1785 CWD Command Buffer Overflow
+								59243, #HIGH, Core FTP Filename Processing Boundary Error FTP List Command Response Parsing Remote Overflow
 							]
 						}
 					end

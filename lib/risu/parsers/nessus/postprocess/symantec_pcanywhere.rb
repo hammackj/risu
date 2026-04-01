@@ -34,11 +34,11 @@ module Risu
 							:plugin_name => "Missing the latest Symantec pcAnywhere Patches",
 							:item_name => "Update to the latest Symantec pcAnywhere",
 							:plugin_ids => [
-                20743,
-                57796,
-                58119,
-                35976,
-                58204,
+                20743, #HIGH, Symantec pcAnywhere Launch with Windows Caller Properties Local Privilege Escalation
+                57796, #CRITICAL, Symantec pcAnywhere Multiple Vulnerabilities (SYM12-002)
+                58119, #CRITICAL, Symantec pcAnywhere awhost32 Remote Code Execution
+                35976, #MEDIUM, Symantec pcAnywhere CHF File Pathname Format String Denial of Service
+                58204, #MEDIUM, Symantec pcAnywhere awhost32 Denial of Service (SYM12-003)
 
 
 							]

@@ -34,10 +34,10 @@ module Risu
 							:plugin_name => "Missing the latest Macrovision FLEXnet Patches",
 							:item_name => "Update to the latest Macrovision FLEXnet",
 							:plugin_ids => [
-								25371,
-								24712,
-								27599,
-								128148, #Flexera FlexNet Publisher < 11.16.2 Multiple Vulnerabilities
+								25371, #HIGH, Macrovision FLEXnet DWUpdateService ActiveX (agent.exe) Multiple Method Arbitrary Command Execution
+								24712, #HIGH, FLEXnet Connect Update Service Agent ActiveX (isusweb.dll) Overflow
+								27599, #HIGH, FLEXnet Connect Update Service ActiveX Control Multiple Code Execution Vulnerabilities
+								128148, #HIGH, Flexera FlexNet Publisher < 11.16.2 Multiple Vulnerabilities
 							]
 						}
 					end

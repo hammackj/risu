@@ -34,12 +34,12 @@ module Risu
 							:plugin_name => "Missing the latest Apache Log4j",
 							:item_name => "Update to the latest Apache Log4j",
 							:plugin_ids => [
-156002, #Apache Log4j < 2.15.0 Remote Code Execution (Windows)
-156327, #Apache Log4j 2.0 < 2.3.2 / 2.4 < 2.12.4 / 2.13 < 2.17.1 RCE
-156860, #Apache Log4j 1.x Multiple Vulnerabilities
-156057, #Apache Log4j 2.x < 2.16.0 RCE
-156183, #Apache Log4j 2.x < 2.17.0 DoS
-156103, #Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)
+156002, #HIGH, Apache Log4j < 2.15.0 Remote Code Execution (Windows)
+156327, #HIGH, Apache Log4j 2.0 < 2.3.2 / 2.4 < 2.12.4 / 2.13 < 2.17.1 RCE
+156860, #HIGH, Apache Log4j 1.x Multiple Vulnerabilities
+156057, #MEDIUM, Apache Log4j 2.x < 2.16.0 RCE
+156183, #MEDIUM, Apache Log4j 2.x < 2.17.0 DoS
+156103, #MEDIUM, Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)
 182252, #CRITICAL, Apache Log4j SEoL (<= 1.x)
 282519, #MEDIUM, Apache Log4j 2.0-beta9 < 2.25.3 MitM
 							]

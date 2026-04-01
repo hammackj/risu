@@ -34,7 +34,7 @@ module Risu
 							:plugin_name => "Missing the latest Cisco Telepresence",
 							:item_name => "Update to the latest Cisco Telepresence",
 							:plugin_ids => [
-100838, #Cisco TelePresence Endpoint SIP INVITE Packet Flood DoS (cisco-sa-20170607-tele)
+100838, #HIGH, Cisco TelePresence Endpoint SIP INVITE Packet Flood DoS (cisco-sa-20170607-tele)
 							]
 						}
 					end

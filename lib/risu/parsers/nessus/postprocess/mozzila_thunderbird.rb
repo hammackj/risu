@@ -34,11 +34,11 @@ module Risu
 							:plugin_name => "Missing the latest Mozzila Thunderbird Patches",
 							:item_name => "Update to the latest Mozzila Thunderbird",
 							:plugin_ids => [
-								105507, #Mozilla Thunderbird < 52.5.2 Multiple Vulnerabilities
-								108519, #Mozilla Thunderbird < 52.6 Multiple Vulnerabilities
-								109946, #Mozilla Thunderbird < 52.8 Multiple Vulnerabilities (EFAIL)
-								105044, #Mozilla Thunderbird < 52.5 Multiple Vulnerabilities
-								111044, #Mozilla Thunderbird < 52.9 Multiple Vulnerabilities
+								105507, #HIGH, Mozilla Thunderbird < 52.5.2
+								108519, #HIGH, Mozilla Thunderbird < 52.6
+								109946, #HIGH, Mozilla Thunderbird < 52.8
+								105044, #CRITICAL, Mozilla Thunderbird < 52.5
+								111044, #HIGH, Mozilla Thunderbird < 52.9
 							]
 						}
 					end

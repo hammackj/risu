@@ -34,9 +34,9 @@ module Risu
 							:plugin_name => "Missing the latest Adobe Coldfusion Patches",
 							:item_name => "Update to the latest Adobe Coldfusion",
 							:plugin_ids => [
-								64689, #Adobe ColdFusion Authentication Bypass (APSB13-03)
-								72091, #Adobe ColdFusion Unsupported Version Detection
-								99731, #Adobe ColdFusion BlazeDS Java Object Deserialization RCE
+								64689, #CRITICAL, Adobe ColdFusion Authentication Bypass (APSB13-03)
+								72091, #CRITICAL, Adobe ColdFusion Unsupported Version Detection
+								99731, #CRITICAL, Adobe ColdFusion BlazeDS Java Object Deserialization RCE
 							]
 						}
 					end

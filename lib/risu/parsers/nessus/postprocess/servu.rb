@@ -34,17 +34,17 @@ module Risu
 							:plugin_name => "Missing the latest Serv-U Patches",
 							:item_name => "Update to the latest Serv-U",
 							:plugin_ids => [
-36035,
-41980,
-48435,
-69060,
-71863,
-72658,
-76369,
-151646, #Serv-U FTP Server <= 15.2.3 Hotfix 1 Memory Escape Vulnerability
-156886, #Serv-U FTP Server < 15.3 Improper Input Validation
-169899, #SolarWinds Serv-U < 15.3.0 Common Key (CVE-2021-35252)
-177024, #SolarWinds Serv-U < 15.4 Exposure of Sensitive Information (CVE-2023-23841)
+36035, #MEDIUM, Serv-U < 8.0.0.1 Multiple Vulnerabilities (DoS
+41980, #MEDIUM, Serv-U < 9.0.0.1
+48435, #MEDIUM, Serv-U < 10.2.0.0
+69060, #MEDIUM, Serv-U < 14.0.2.0 FTP Server SSL Renegotiation DoS
+71863, #MEDIUM, Serv-U FTP Server < 15.0.0.0 Multiple Security Vulnerabilities
+72658, #MEDIUM, Serv-U FTP Server < 15.0.1.20 DoS
+76369, #MEDIUM, Serv-U FTP Server < 15.1.0.458 Multiple Vulnerabilities
+151646, #CRITICAL, Serv-U FTP Server <= 15.2.3 Hotfix 1 Memory Escape Vulnerability
+156886, #MEDIUM, Serv-U FTP Server < 15.3 Improper Input Validation
+169899, #HIGH, SolarWinds Serv-U < 15.3.0 Common Key (CVE-2021-35252)
+177024, #HIGH, SolarWinds Serv-U < 15.4 Exposure of Sensitive Information (CVE-2023-23841)
 193517, #HIGH, SolarWinds Serv-U < 15.4.2 Directory Traversal (CVE-2024-28073)
 207863, #HIGH, SolarWinds Serv-U 15.2.4 < 15.2.5 Multiple Vulnerabilities
 146308, #HIGH, Serv-U FTP Server < 15.2.2 Hotfix 1 Arbitrary File Read/Write

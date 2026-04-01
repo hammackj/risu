@@ -34,19 +34,19 @@ module Risu
 							:plugin_name => "Missing the latest Foxit Reader Patches",
 							:item_name => "Update to the latest Foxit Reader",
 							:plugin_ids => [
-52458, #Foxit Reader < 4.3.1.0218 Multiple Vulnerabilities
-55671, #Foxit Reader < 5.0.2.0718 Multiple Vulnerabilities
-57050, #Foxit Reader < 5.1.3.1201 Memory Corruption RCE
-62063, #Foxit Reader < 5.3 Cross-References RCE
-62384, #Foxit Reader < 5.4.3 Trojan DLL Injection
-72723, #Foxit Reader < 6.1.4 Trojan DLL Injection
-62064, #Foxit Reader < 5.4 Trojan DLL Injection
-86698, #Foxit Reader < 7.2 Multiple Vulnerabilities
-90567, #Foxit Reader < 7.3.4 Multiple Vulnerabilities
-101524, #Foxit Reader < 8.3.1 Multiple Vulnerabilities
-112059, #Foxit Reader < 8.3.7 Multiple Vulnerabilities
-131078, #Foxit Reader < 9.5 Multiple Vulnerabilities
-135849, #Foxit Reader < 9.7.2 Multiple Vulnerabilities
+52458, #HIGH, Foxit Reader < 4.3.1.0218 Multiple Vulnerabilities
+55671, #HIGH, Foxit Reader < 5.0.2.0718 Multiple Vulnerabilities
+57050, #HIGH, Foxit Reader < 5.1.3.1201 Memory Corruption RCE
+62063, #HIGH, Foxit Reader < 5.3 Cross-References RCE
+62384, #MEDIUM, Foxit Reader < 5.4.3 Trojan DLL Injection
+72723, #MEDIUM, Foxit Reader < 6.1.4 Trojan DLL Injection
+62064, #MEDIUM, Foxit Reader < 5.4 Trojan DLL Injection
+86698, #HIGH, Foxit Reader < 7.2 Multiple Vulnerabilities
+90567, #MEDIUM, Foxit Reader < 7.3.4 Multiple Vulnerabilities
+101524, #HIGH, Foxit Reader < 8.3.1 Multiple Vulnerabilities
+112059, #MEDIUM, Foxit Reader < 8.3.7 Multiple Vulnerabilities
+131078, #MEDIUM, Foxit Reader < 9.5 Multiple Vulnerabilities
+135849, #HIGH, Foxit Reader < 9.7.2 Multiple Vulnerabilities
 
 							]
 						}

@@ -34,10 +34,10 @@ module Risu
 							:plugin_name => "Missing the latest Artifex Ghostscript",
 							:item_name => "Update to the latest Artifex Ghostscript",
 							:plugin_ids => [
-                                117459, #Artifex Ghostscript Multiple Vulnerabilities
-117596, #Artifex Ghostscript < 9.25 PostScript Code Execution Vulnerability
-119240, #Artifex Ghostscript < 9.26 PostScript Multiple Vulnerabilities
-130273, #Artifex Ghostscript < 9.50 Multiple Vulnerabilities
+                                117459, #MEDIUM, Artifex Ghostscript Multiple Vulnerabilities
+117596, #HIGH, Artifex Ghostscript < 9.25 PostScript Code Execution Vulnerability
+119240, #HIGH, Artifex Ghostscript < 9.26 PostScript Multiple Vulnerabilities
+130273, #HIGH, Artifex Ghostscript < 9.50 Multiple Vulnerabilities
 177205, #CRITICAL, Artifex Ghostscript < 10.01.1 Buffer Overflow
 177836, #HIGH, Artifex Ghostscript < 10.01.2 Security Bypass
 186904, #HIGH, Artifex Ghostscript < 10.2.1 DoS

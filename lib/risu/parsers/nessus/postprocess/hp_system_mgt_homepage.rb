@@ -34,29 +34,29 @@ module Risu
 							:plugin_name => "Missing the latest HP System Management Homepage Patches",
 							:item_name => "Update to the latest HP System Management Homepage",
 							:plugin_ids => [
-								53532,
-								58811,
-								59851,
-								66541,
-								69020,
-								70118,
-								76345,
-								49272,
-								72959,
-								46015,
-								46677,
-								78090,
-								33548,
-								34694,
-								38832,
-								85181,
-								84923,
-								73639,
-								90150,
-								90251,
-								91222,
-								94654,
-103530, #HP System Management Homepage < 7.6.1 Multiple Vulnerabilities (HPSBMU03753)
+								53532, #CRITICAL, HP System Management Homepage < 6.3 Multiple Vulnerabilities
+								58811, #CRITICAL, HP System Management Homepage < 7.0 Multiple Vulnerabilities
+								59851, #CRITICAL, HP System Management Homepage < 7.1.1 Multiple Vulnerabilities
+								66541, #HIGH, HP System Management Homepage < 7.2.0.14 iprange Parameter Code Execution
+								69020, #HIGH, HP System Management Homepage < 7.2.1.0 Multiple Vulnerabilities (BEAST)
+								70118, #HIGH, HP System Management Homepage ginkgosnmp.inc Command Injection
+								76345, #MEDIUM, HP System Management Homepage < 7.2.4.1 / 7.3.3.1 OpenSSL Multiple Vulnerabilities
+								49272, #HIGH, HP System Management Homepage < 6.2 Multiple Vulnerabilities
+								72959, #MEDIUM, HP System Management Homepage < 7.3 Multiple Vulnerabilities
+								46015, #CRITICAL, HP System Management Homepage < 6.0.0.96 / 6.0.0-95 Multiple Vulnerabilities
+								46677, #MEDIUM, HP System Management Homepage < 6.1.0.102 / 6.1.0-103 Multiple Vulnerabilities
+								78090, #HIGH, HP System Management Homepage < 7.4 Multiple Vulnerabilities
+								33548, #MEDIUM, HP System Management Homepage < 2.1.12 Unspecified XSS
+								34694, #MEDIUM, HP System Management Homepage < 2.1.15.210 Unspecified XSS
+								38832, #MEDIUM, HP System Management Homepage < 3.0.1.73 Multiple Flaws
+								85181, #MEDIUM, HP System Management Homepage < 7.2.5 / 7.4.1 Multiple Vulnerabilities (POODLE)
+								84923, #HIGH, HP System Management Homepage 7.3.x / 7.4.x < 7.5.0 Multiple Vulnerabilities (FREAK)
+								73639, #MEDIUM, HP System Management Homepage OpenSSL Multiple Vulnerabilities (Heartbleed)
+								90150, #CRITICAL, HP System Management Homepage < 7.5.4 Multiple Vulnerabilities (Logjam)
+								90251, #HIGH, HP System Management Homepage < 7.2.6 Multiple Vulnerabilities (FREAK)
+								91222, #CRITICAL, HP System Management Homepage Multiple Vulnerabilities (HPSBMU03593)
+								94654, #HIGH, HP System Management Homepage < 7.6 Multiple Vulnerabilities (HPSBMU03653) (httpoxy)
+103530, #MEDIUM, HP System Management Homepage < 7.6.1 Multiple Vulnerabilities (HPSBMU03753)
 
 
 							]
