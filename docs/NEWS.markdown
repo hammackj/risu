@@ -46,8 +46,8 @@
 
 ## Code Quality
 
-- Replaced all `== nil` / `!= nil` with `.nil?` (109 instances)
-- Replaced all `find_by_id(x)` with `find_by(:id => x)` (75 instances)
+- Replaced all `== nil` / `!= nil` with `.nil?` (109 instances across lib and private templates)
+- Replaced all `find_by_id(x)` with `find_by(:id => x)` (91 instances across lib and private templates)
 - Replaced `.length/.size/.count != 0` with `.any?`
 - Replaced frozen string literals `= ""` with `String.new` (28 instances)
 - Replaced bare `rescue` blocks with `rescue NoMethodError`
@@ -57,14 +57,34 @@
 - Replaced `exit` with `return` in plugin_summary template
 - Updated stale HTTP URLs to HTTPS (GitHub, IBM, FreeBSD)
 - Fixed `authenticated_count` to use HostProperty instead of plugin 19506
+- Updated gemspec copyright to 2026
+
+## Documentation
+
+- Added comprehensive YARD documentation across 10 core files
+- graph_template_helper: documented all 11 graph page methods
+- host_template_helper: documented unsupported_os, unsupported_os_by_plugin_id, unsupported_os_merged
+- scan_helper: documented scan_info_to_hash and authenticated_count
+- shares_template_helper: documented all 8 methods
+- malware_template_helper: documented all 8 methods
+- post_process_base: documented class and all 10 public methods
+- host.rb: documented 16 methods including new graph and unsupported OS methods
+- item.rb: documented 7 methods including updated top_10_sorted sort logic
+- plugin.rb: documented 5 methods including cvss accessors and graph methods
+- reference.rb: documented reference_string and all 27 reference accessor methods
+- engagement_config.rb: full YARD documentation on all public methods
+- Cleaned up docs/todo.markdown — removed completed and stale items
 
 ## Dependencies
 
 - Updated activerecord/activesupport constraint to `~> 7.2`
 - Updated sqlite3 constraint to `~> 1.7`
 - Updated nokogiri constraint to `~> 1.16`
-- Updated prawn constraint to `~> 2.4`
-- Updated concurrent-ruby constraint to `~> 1.3`
+- Updated prawn to 2.5.0 (font caching fix, improved glyph lookup)
+- Updated concurrent-ruby to 1.3.6 (removed logger dependency)
+- Updated yard to 0.9.38 (Ruby 3.5 compatibility)
+- Updated prawn gemspec constraint to `~> 2.4`
+- Updated concurrent-ruby gemspec constraint to `~> 1.3`
 - Added csv gem dependency for Ruby 3.4+ compatibility
 - Updated schema migration version from 4.2 to 7.0
 
@@ -82,7 +102,9 @@
 - Fixed `host_findings_csv` and `host_findings_csv_older_than` nil gsub crash on plugins with no solution
 - Fixed `plugin_summary` calling `exit` and killing the test runner / process
 - Fixed `top_10_sorted` sorting by count only — now sorts by severity, CVSS, then count
-- Found duplicate plugin IDs in AdobeAir postprocessor
+- Fixed duplicate plugin IDs in AdobeAir postprocessor (73432, 73993, 74430, 66444, 66871)
+- Fixed unsupported OS report showing Server 2012 twice (merged OS string and plugin detection)
+- Fixed unsupported OS appendix showing Server 2008 twice (same merge fix)
 
 # 1.8.4 (Feburary 6, 2020)
 - A great deal of changes/bug fixes/post processing

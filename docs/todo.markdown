@@ -4,7 +4,6 @@
 
 # Known Bugs
 - OS's with 2000 or XP can be misidentified by Nessus showing both, messing up some of the graphs
-- AdobeAir postprocessor has duplicate plugin IDs: 66444, 66871, 73432, 73993, 74430
 
 # Ideas
 
