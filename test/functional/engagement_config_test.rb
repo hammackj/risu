@@ -286,6 +286,155 @@ class EngagementConfigTest < ActiveSupport::TestCase
 		assert_equal [], config.load_phishing_results("/nonexistent/file.csv")
 	end
 
+	# Confidentiality level
+	test "should return default confidentiality level" do
+		config = Risu::Base::EngagementConfig.new("/nonexistent/path.yml")
+		assert_equal "Confidential", config.confidentiality_level
+	end
+
+	test "should read confidentiality level from file" do
+		file = write_config(<<~YAML)
+			engagement:
+			  confidentiality_level: "Internal Use Only"
+		YAML
+
+		config = Risu::Base::EngagementConfig.new(file)
+		assert_equal "Internal Use Only", config.confidentiality_level
+	end
+
+	# Purge hosts
+	test "should return empty purge list by default" do
+		config = Risu::Base::EngagementConfig.new("/nonexistent/path.yml")
+		assert_equal [], config.purge_hosts_list
+	end
+
+	test "should read purge hosts list from file" do
+		file = write_config(<<~YAML)
+			purge_hosts:
+			  - mac: "AA:BB:CC:DD:EE:FF"
+			  - fqdn: "assessor.local"
+			  - ip: "192.168.1.100"
+		YAML
+
+		config = Risu::Base::EngagementConfig.new(file)
+		assert_equal 3, config.purge_hosts_list.size
+		assert_equal "AA:BB:CC:DD:EE:FF", config.purge_hosts_list[0]["mac"]
+		assert_equal "assessor.local", config.purge_hosts_list[1]["fqdn"]
+		assert_equal "192.168.1.100", config.purge_hosts_list[2]["ip"]
+	end
+
+	test "should purge hosts by mac address" do
+		file = write_config(<<~YAML)
+			purge_hosts:
+			  - mac: "AA:BB:CC:DD:EE:FF"
+		YAML
+
+		config = Risu::Base::EngagementConfig.new(file)
+		host_count_before = Host.count
+		item_count_before = Item.where(:host_id => 1).count
+
+		result = config.purge_hosts!
+
+		assert_equal host_count_before - 1, Host.count
+		assert_equal 0, Item.where(:host_id => 1).count
+		assert result[:hosts_deleted] > 0
+		assert result[:items_deleted] >= 0
+	end
+
+	test "should purge hosts by fqdn" do
+		file = write_config(<<~YAML)
+			purge_hosts:
+			  - fqdn: "host2.risutests.com"
+		YAML
+
+		config = Risu::Base::EngagementConfig.new(file)
+		host_count_before = Host.count
+
+		result = config.purge_hosts!
+
+		assert_equal host_count_before - 1, Host.count
+		assert_equal 0, Item.where(:host_id => 2).count
+		assert result[:hosts_deleted] > 0
+	end
+
+	test "should purge hosts by ip" do
+		file = write_config(<<~YAML)
+			purge_hosts:
+			  - ip: "10.0.0.1"
+		YAML
+
+		config = Risu::Base::EngagementConfig.new(file)
+		host_count_before = Host.count
+
+		result = config.purge_hosts!
+
+		assert_equal host_count_before - 1, Host.count
+		assert result[:hosts_deleted] > 0
+	end
+
+	test "should not duplicate purge when host matches multiple criteria" do
+		file = write_config(<<~YAML)
+			purge_hosts:
+			  - mac: "AA:BB:CC:DD:EE:FF"
+			  - ip: "10.0.0.1"
+			  - fqdn: "host1.risutests.com"
+		YAML
+
+		config = Risu::Base::EngagementConfig.new(file)
+		host_count_before = Host.count
+
+		result = config.purge_hosts!
+
+		assert_equal host_count_before - 1, Host.count, "Should only delete host once even with multiple matches"
+		assert_equal 1, result[:hosts_deleted]
+	end
+
+	test "should return zero counts when no hosts match purge criteria" do
+		file = write_config(<<~YAML)
+			purge_hosts:
+			  - ip: "99.99.99.99"
+		YAML
+
+		config = Risu::Base::EngagementConfig.new(file)
+		result = config.purge_hosts!
+
+		assert_equal 0, result[:hosts_deleted]
+		assert_equal 0, result[:items_deleted]
+	end
+
+	# Reports section
+	test "should return empty reports by default" do
+		config = Risu::Base::EngagementConfig.new("/nonexistent/path.yml")
+		assert_equal "", config.report_prefix
+		assert_equal [], config.filtered_templates
+		assert_equal [], config.unfiltered_templates
+		assert_equal [], config.csv_reports
+	end
+
+	test "should read reports section from file" do
+		file = write_config(<<~YAML)
+			reports:
+			  prefix: "acme"
+			  filtered:
+			    - technical_findings
+			    - hipaa_executive_summary
+			  unfiltered:
+			    - technical_findings
+			  csv:
+			    - template: host_findings_csv
+			      suffix: host_findings
+		YAML
+
+		config = Risu::Base::EngagementConfig.new(file)
+		assert_equal "acme", config.report_prefix
+		assert_equal 2, config.filtered_templates.size
+		assert_equal "technical_findings", config.filtered_templates.first
+		assert_equal 1, config.unfiltered_templates.size
+		assert_equal 1, config.csv_reports.size
+		assert_equal "host_findings_csv", config.csv_reports.first["template"]
+		assert_equal "host_findings", config.csv_reports.first["suffix"]
+	end
+
 	# Config file search
 	test "should search for risu_engagement.yml and risu_pen_test.yml" do
 		assert Risu::Base::EngagementConfig::SEARCH_FILES.include?("risu_engagement.yml")

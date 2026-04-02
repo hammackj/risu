@@ -96,6 +96,13 @@ module Risu
 					"tools" => [],
 					"glossary" => {},
 					"references" => {}
+				},
+				"purge_hosts" => [],
+				"reports" => {
+					"prefix" => "",
+					"filtered" => [],
+					"unfiltered" => [],
+					"csv" => []
 				}
 			}
 
@@ -418,6 +425,76 @@ module Risu
 				end
 
 				results
+			end
+
+			# --- Purge Hosts Section ---
+
+			# @return [Array<Hash>] List of host match criteria for purging.
+			#   Each entry can have keys: "mac", "fqdn", "ip"
+			def purge_hosts_list
+				@data["purge_hosts"] || []
+			end
+
+			# Removes hosts matching the purge_hosts criteria from the database.
+			# Deletes all Items belonging to matched hosts, then the hosts themselves.
+			#
+			# @return [Hash] summary with :hosts_deleted and :items_deleted counts
+			def purge_hosts!
+				hosts_to_purge = []
+
+				purge_hosts_list.each do |criteria|
+					if criteria["mac"]
+						hosts_to_purge += Host.where(:mac => criteria["mac"]).to_a
+					end
+					if criteria["fqdn"]
+						hosts_to_purge += Host.where(:fqdn => criteria["fqdn"]).to_a
+					end
+					if criteria["ip"]
+						hosts_to_purge += Host.where(:ip => criteria["ip"]).to_a
+					end
+				end
+
+				hosts_to_purge.uniq!(&:id)
+
+				items_deleted = 0
+				hosts_deleted = 0
+
+				hosts_to_purge.each do |host|
+					items_deleted += Item.where(:host_id => host.id).delete_all
+					HostProperty.where(:host_id => host.id).delete_all
+					Patch.where(:host_id => host.id).delete_all
+					hosts_deleted += Host.where(:id => host.id).delete_all
+				end
+
+				{ hosts_deleted: hosts_deleted, items_deleted: items_deleted }
+			end
+
+			# --- Reports Section ---
+
+			# @return [Hash] Raw reports configuration
+			def reports
+				@data["reports"] || {}
+			end
+
+			# @return [String] Report filename prefix
+			def report_prefix
+				reports["prefix"] || ""
+			end
+
+			# @return [Array<String>] Template names for filtered report builds
+			def filtered_templates
+				reports["filtered"] || []
+			end
+
+			# @return [Array<String>] Template names for unfiltered report builds
+			def unfiltered_templates
+				reports["unfiltered"] || []
+			end
+
+			# @return [Array<Hash>] CSV report definitions.
+			#   Each entry has "template" and "suffix" keys.
+			def csv_reports
+				reports["csv"] || []
 			end
 
 			private

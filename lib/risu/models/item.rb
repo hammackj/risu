@@ -437,7 +437,7 @@ module Risu
 					today = Date.today
 					brackets = { "<3mo" => 0, "3-6mo" => 0, "6mo-1yr" => 0, "1-3yr" => 0, ">3yr" => 0 }
 
-					Item.where(:severity => [3, 4], :rollup_finding => false).select("DISTINCT plugin_id").each do |item|
+					Item.where("(severity IN (3, 4) AND rollup_finding = ?) OR (severity = -1 AND real_severity IN (3, 4))", false).select("DISTINCT plugin_id").each do |item|
 						plugin = Plugin.find_by(:id => item.plugin_id)
 						next if plugin.nil? || plugin.vuln_publication_date.nil?
 
