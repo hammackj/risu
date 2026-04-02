@@ -90,6 +90,26 @@ module Risu
 					return
 				end
 
+				# Deduplicate: suppress generic OS detections when a more specific plugin covers the same host
+				plugin_host_map = {}
+				active_plugins.each do |pid|
+					plugin_host_map[pid] = Item.where(:plugin_id => pid).where("severity >= 0").pluck(:host_id).uniq
+				end
+
+				# Generic OS detection plugin IDs:
+				# 33850 - Unix Operating System Unsupported Version Detection
+				# 108797 - Microsoft Windows Unsupported Version Detection
+				generic_plugin_ids = [33850, 108797]
+
+				generic_pids = active_plugins & generic_plugin_ids
+
+				generic_pids.each do |gpid|
+					specific_host_ids = (active_plugins - [gpid]).flat_map { |pid| plugin_host_map[pid] || [] }.uniq
+					plugin_host_map[gpid] = plugin_host_map[gpid] - specific_host_ids
+				end
+
+				active_plugins.reject! { |pid| generic_pids.include?(pid) && plugin_host_map[pid].empty? }
+
 				# Summary table
 				heading1 "Summary"
 
@@ -105,7 +125,7 @@ module Risu
 					plugin = Plugin.find_by(:id => pid)
 					next if plugin.nil?
 
-					host_count = Item.where(:plugin_id => pid).where("severity >= 0").map(&:host_id).uniq.size
+					host_count = plugin_host_map[pid].size
 					severity = plugin.risk_factor || "N/A"
 
 					summary_data << [
@@ -136,7 +156,8 @@ module Risu
 					plugin = Plugin.find_by(:id => pid)
 					next if plugin.nil?
 
-					items = Item.where(:plugin_id => pid).where("severity >= 0")
+					allowed_hosts = plugin_host_map[pid] || []
+					items = Item.where(:plugin_id => pid, :host_id => allowed_hosts).where("severity >= 0")
 					next if items.count == 0
 
 					heading2 Item.scrub_plugin_name(plugin.plugin_name)

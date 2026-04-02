@@ -73,7 +73,8 @@ module Risu
 					"has_unmitigated_findings" => false,
 					"unmitigated_file" => nil,
 					"unmitigated_min_severity" => 3,
-					"previous_scan_date" => nil
+					"previous_scan_date" => nil,
+					"confidentiality_level" => "Confidential"
 				},
 				"phishing" => {
 					"enabled" => false,
@@ -158,6 +159,11 @@ module Risu
 			# @return [String, nil] Date label for the previous scan
 			def previous_scan_date
 				engagement["previous_scan_date"]
+			end
+
+			# @return [String] Confidentiality level for the report (e.g. "Confidential", "Internal Use Only")
+			def confidentiality_level
+				engagement["confidentiality_level"] || "Confidential"
 			end
 
 			# --- Phishing Section ---
