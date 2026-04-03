@@ -74,9 +74,8 @@ class PluginTest < ActiveSupport::TestCase
 		assert Plugin.in_the_news.count == 1, "GOT #{Plugin.in_the_news.count}"
 	end
 
-	test "returns a graph Plugin.root_cause_graph" do
-		result = Plugin.root_cause_graph
-		assert result.class == String, "GOT #{result.class}"
+	test "returns a StringIO for Plugin.root_cause_graph" do
+		assert_equal StringIO, Plugin.root_cause_graph.class
 	end
 
 	test "returns a String for Plugin.root_cause_graph_text" do

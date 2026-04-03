@@ -387,10 +387,7 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 
-					image.write("stigs_severity.png")
-
-					return "stigs_severity.png"
-					#StringIO.new(image.to_blob)
+					StringIO.new(image.to_blob)
 				end
 
 				# Generates a pie chart showing exploitable vs non-exploitable findings

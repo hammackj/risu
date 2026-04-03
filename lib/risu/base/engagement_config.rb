@@ -102,7 +102,8 @@ module Risu
 					"prefix" => "",
 					"filtered" => [],
 					"unfiltered" => [],
-					"csv" => []
+					"csv_filtered" => [],
+					"csv_unfiltered" => []
 				}
 			}
 
@@ -481,20 +482,68 @@ module Risu
 				reports["prefix"] || ""
 			end
 
+			# @return [Array<Hash>] Raw filtered report entries.
+			#   Each entry is a Hash with "template" and optional "package" keys,
+			#   or a plain String for backwards compatibility.
+			def filtered_entries
+				reports["filtered"] || []
+			end
+
 			# @return [Array<String>] Template names for filtered report builds
 			def filtered_templates
-				reports["filtered"] || []
+				filtered_entries.map { |e| e.is_a?(Hash) ? e["template"] : e }
+			end
+
+			# @return [Array<Hash>] Raw unfiltered report entries.
+			def unfiltered_entries
+				reports["unfiltered"] || []
 			end
 
 			# @return [Array<String>] Template names for unfiltered report builds
 			def unfiltered_templates
-				reports["unfiltered"] || []
+				unfiltered_entries.map { |e| e.is_a?(Hash) ? e["template"] : e }
 			end
 
-			# @return [Array<Hash>] CSV report definitions.
-			#   Each entry has "template" and "suffix" keys.
-			def csv_reports
-				reports["csv"] || []
+			# @return [Array<Hash>] Filtered CSV report definitions.
+			#   Each entry has "template", "suffix", and optional "package" keys.
+			def csv_filtered_reports
+				reports["csv_filtered"] || reports["csv"] || []
+			end
+
+			# @return [Array<Hash>] Unfiltered CSV report definitions.
+			#   Each entry has "template", "suffix", and optional "package" keys.
+			def csv_unfiltered_reports
+				reports["csv_unfiltered"] || reports["csv"] || []
+			end
+
+			# Returns template names from filtered entries marked for packaging
+			#
+			# @return [Array<String>] Template names where package is true
+			def package_filtered_templates
+				filtered_entries.select { |e| e.is_a?(Hash) && e["package"] == true }
+					.map { |e| e["template"] }
+			end
+
+			# Returns template names from unfiltered entries marked for packaging
+			#
+			# @return [Array<String>] Template names where package is true
+			def package_unfiltered_templates
+				unfiltered_entries.select { |e| e.is_a?(Hash) && e["package"] == true }
+					.map { |e| e["template"] }
+			end
+
+			# Returns filtered CSV report entries marked for packaging
+			#
+			# @return [Array<Hash>] CSV entries where package is true
+			def package_csv_filtered_reports
+				csv_filtered_reports.select { |e| e["package"] == true }
+			end
+
+			# Returns unfiltered CSV report entries marked for packaging
+			#
+			# @return [Array<Hash>] CSV entries where package is true
+			def package_csv_unfiltered_reports
+				csv_unfiltered_reports.select { |e| e["package"] == true }
 			end
 
 			private

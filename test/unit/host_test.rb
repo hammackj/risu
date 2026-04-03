@@ -320,8 +320,8 @@ class HostTest < ActiveSupport::TestCase
 		assert Host.unique_hosts_with_critical_and_high_count == 2, "GOT #{Host.unique_hosts_with_critical_and_high_count}"
 	end
 
-	test "should return a String for Host.windows_client_os_graph" do
-		assert Host.windows_client_os_graph.class == String, "GOT #{Host.windows_client_os_graph.class}"
+	test "should return a StringIO for Host.windows_client_os_graph" do
+		assert_equal StringIO, Host.windows_client_os_graph.class
 	end
 
 	test "should return a String for Host.windows_client_os_graph_text" do

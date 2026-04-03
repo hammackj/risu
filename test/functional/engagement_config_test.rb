@@ -408,10 +408,11 @@ class EngagementConfigTest < ActiveSupport::TestCase
 		assert_equal "", config.report_prefix
 		assert_equal [], config.filtered_templates
 		assert_equal [], config.unfiltered_templates
-		assert_equal [], config.csv_reports
+		assert_equal [], config.csv_filtered_reports
+		assert_equal [], config.csv_unfiltered_reports
 	end
 
-	test "should read reports section from file" do
+	test "should read reports section with plain string format" do
 		file = write_config(<<~YAML)
 			reports:
 			  prefix: "acme"
@@ -430,9 +431,70 @@ class EngagementConfigTest < ActiveSupport::TestCase
 		assert_equal 2, config.filtered_templates.size
 		assert_equal "technical_findings", config.filtered_templates.first
 		assert_equal 1, config.unfiltered_templates.size
-		assert_equal 1, config.csv_reports.size
-		assert_equal "host_findings_csv", config.csv_reports.first["template"]
-		assert_equal "host_findings", config.csv_reports.first["suffix"]
+		# Falls back to csv when csv_filtered/csv_unfiltered not present
+		assert_equal 1, config.csv_filtered_reports.size
+		assert_equal "host_findings_csv", config.csv_filtered_reports.first["template"]
+		assert_equal "host_findings", config.csv_filtered_reports.first["suffix"]
+		assert_equal 1, config.csv_unfiltered_reports.size
+	end
+
+	test "should read reports section with separate csv filtered and unfiltered" do
+		file = write_config(<<~YAML)
+			reports:
+			  prefix: "acme"
+			  filtered:
+			    - template: technical_findings
+			      package: true
+			    - template: hipaa_executive_summary
+			      package: true
+			    - template: host_inventory
+			      package: false
+			  unfiltered:
+			    - template: technical_findings
+			      package: false
+			    - template: hipaa_executive_summary
+			      package: true
+			  csv_filtered:
+			    - template: host_findings_csv
+			      suffix: host_findings
+			      package: true
+			    - template: host_findings_csv_older_than
+			      suffix: host_findings_older_than
+			      package: false
+			  csv_unfiltered:
+			    - template: host_findings_csv
+			      suffix: host_findings
+			      package: false
+		YAML
+
+		config = Risu::Base::EngagementConfig.new(file)
+		assert_equal "acme", config.report_prefix
+		assert_equal 3, config.filtered_templates.size
+		assert_equal "technical_findings", config.filtered_templates.first
+		assert_equal 2, config.unfiltered_templates.size
+
+		assert_equal 2, config.csv_filtered_reports.size
+		assert_equal 1, config.csv_unfiltered_reports.size
+
+		assert_equal 2, config.package_filtered_templates.size
+		assert_equal "technical_findings", config.package_filtered_templates.first
+		assert_equal "hipaa_executive_summary", config.package_filtered_templates.last
+		assert_equal false, config.package_filtered_templates.include?("host_inventory")
+
+		assert_equal 1, config.package_unfiltered_templates.size
+		assert_equal "hipaa_executive_summary", config.package_unfiltered_templates.first
+
+		assert_equal 1, config.package_csv_filtered_reports.size
+		assert_equal "host_findings_csv", config.package_csv_filtered_reports.first["template"]
+		assert_equal 0, config.package_csv_unfiltered_reports.size
+	end
+
+	test "should return empty package lists by default" do
+		config = Risu::Base::EngagementConfig.new("/nonexistent/path.yml")
+		assert_equal [], config.package_filtered_templates
+		assert_equal [], config.package_unfiltered_templates
+		assert_equal [], config.package_csv_filtered_reports
+		assert_equal [], config.package_csv_unfiltered_reports
 	end
 
 	# Config file search

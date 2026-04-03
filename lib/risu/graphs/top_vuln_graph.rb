@@ -50,10 +50,7 @@ module Risu
         #puts image.inspect
         #puts image.methods
 
-        image.write("TopVulnGraph.png")
-
-        return "TopVulnGraph.png"
-        #StringIO.new(image.to_blob)
+        StringIO.new(image.to_blob)
       end
 
       def graph_text

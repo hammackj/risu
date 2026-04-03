@@ -169,10 +169,7 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 			
-					image.write("root_cause_graph.png")
-			
-					return "root_cause_graph.png"
-					#StringIO.new(image.to_blob)
+					StringIO.new(image.to_blob)
 				end
 
 				# Generates descriptive text explaining the root cause graph categories

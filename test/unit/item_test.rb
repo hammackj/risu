@@ -282,9 +282,8 @@ class ItemTest < ActiveSupport::TestCase
 		assert Item.scrub_plugin_name("Test (VMSA-2020-0001)") == "Test", "GOT #{Item.scrub_plugin_name("Test (VMSA-2020-0001)")}"
 	end
 
-	test "returns a graph Item.stigs_severity_graph" do
-		result = Item.stigs_severity_graph
-		assert result.class == String, "GOT #{result.class}"
+	test "returns a StringIO for Item.stigs_severity_graph" do
+		assert_equal StringIO, Item.stigs_severity_graph.class
 	end
 
 	test "returns items for Item.stig_findings I" do

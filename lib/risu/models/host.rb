@@ -707,9 +707,7 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 
-					image.write("windows_client_os_graph.png")
-
-					return "windows_client_os_graph.png"
+					StringIO.new(image.to_blob)
 				end
 
 				# Generates descriptive text for the Windows Server OS distribution graph
