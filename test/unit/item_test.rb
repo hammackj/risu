@@ -357,4 +357,67 @@ class ItemTest < ActiveSupport::TestCase
 		result = Item.calculate_overall_unique_host_count
 		assert result >= 0, "GOT #{result}"
 	end
+
+	# findings_by_age_graph should include downgraded rollup items
+	test "findings_by_age_graph includes items with real_severity" do
+		# Create a plugin with a vuln_publication_date
+		plugin = Plugin.create!(
+			:id => 88881,
+			:plugin_name => "Downgraded Test Plugin",
+			:risk_factor => "High",
+			:vuln_publication_date => Date.today - 30
+		)
+
+		# Create a normal high item (should be included by severity 3)
+		Item.create!(
+			:host_id => 1,
+			:plugin_id => 88881,
+			:port => 0,
+			:severity => 3,
+			:rollup_finding => false
+		)
+
+		result = Item.findings_by_age_graph
+		assert_equal StringIO, result.class
+
+		# Now downgrade that item (simulating rollup) and verify still included
+		item = Item.where(:plugin_id => 88881).first
+		item.real_severity = 3
+		item.severity = -1
+		item.save!
+
+		result2 = Item.findings_by_age_graph
+		assert_equal StringIO, result2.class
+
+		# Clean up
+		Item.where(:plugin_id => 88881).delete_all
+		Plugin.where(:id => 88881).delete_all
+	end
+
+	test "findings_by_age_graph excludes downgraded items with low real_severity" do
+		plugin = Plugin.create!(
+			:id => 88882,
+			:plugin_name => "Low Downgraded Plugin",
+			:risk_factor => "Low",
+			:vuln_publication_date => Date.today - 60
+		)
+
+		# Create a downgraded item with real_severity 1 (Low) - should NOT be included
+		Item.create!(
+			:host_id => 1,
+			:plugin_id => 88882,
+			:port => 0,
+			:severity => -1,
+			:real_severity => 1,
+			:rollup_finding => false
+		)
+
+		# Should still produce a valid graph
+		result = Item.findings_by_age_graph
+		assert_equal StringIO, result.class
+
+		# Clean up
+		Item.where(:plugin_id => 88882).delete_all
+		Plugin.where(:id => 88882).delete_all
+	end
 end
