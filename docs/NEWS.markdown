@@ -90,14 +90,39 @@
 
 ## Tests
 
-- Added 144 new tests (265 -> 409 total)
-- New test files: graph_test, engagement_config_test, scan_helper_test, item_top10_test, new_templates_test, nessus_sax_listener_extended_test, postprocess_base_test, risk_score_test, root_cause_test, template_render_test
-- Line coverage: 70.51% -> 81.87%
+- Added 144+ new tests (265 -> 420+ total)
+- New test files: graph_test, engagement_config_test, scan_helper_test, item_top10_test, new_templates_test, nessus_sax_listener_extended_test, postprocess_base_test, risk_score_test, root_cause_test, template_render_test, unsupported_software_dedup_test
+- Tests for engagement config: confidentiality_level, purge_hosts (by mac/fqdn/ip/dedup/no-match), reports (string/hash format), csv_filtered/unfiltered, package flags
+- Tests for unsupported software dedup: generic suppression, partial coverage, non-generic unaffected
+- Tests for findings_by_age_graph: rollup inclusion via real_severity, low severity exclusion
 - Tests validate all postprocessors respond to `run`, have valid plugin_ids arrays, no duplicates
 - Tests validate all new templates load, render, produce output, and have required metadata
 
+## Engagement Configuration Enhancements
+
+- **Host Purging** — New `purge_hosts` section in engagement YAML to remove assessor machines by mac/fqdn/ip. Replaces external Rakefile functions. Cleans up items, host_properties, and patches.
+- **Report Configuration** — New `reports` section with prefix, filtered/unfiltered template lists (with `package` flag per entry), and separate `csv_filtered`/`csv_unfiltered` sections.
+- **Confidentiality Level** — New `confidentiality_level` field in engagement config (defaults to "Confidential").
+- **Package Support** — Templates and CSVs can be flagged `package: true` for selective ZIP bundling.
+
+## Graph Fixes
+
+- Converted all 5 remaining PNG-file-writing graphs to in-memory StringIO streaming (stigs_severity, root_cause, windows_client_os, top_vuln, windows_os). No more stale `.png` files left on disk.
+- Fixed `findings_by_age_graph` to include rolled-up constituent patches using `real_severity` for downgraded items (severity -1). Previously all rolled-up findings were invisible in the patch age chart.
+
+## Unsupported Software Dedup
+
+- Added deduplication logic to `unsupported_software` template: generic OS detection plugins (33850 Unix, 108797 Windows) are suppressed when a more specific plugin covers the same host (e.g., VMware ESXi detection). Generic plugin retained only for hosts not covered by a specific detection.
+
+## Postprocessors
+
+- Added 12 new root cause mappings:
+  - Vendor Patch: Apache Log4j (-99930), Intel Management Engine (-99951), Microsoft Windows Server (-99926), SIGRed/CVE-2020-1350 (138554), Serv-U (-99996), Dell Client BIOS (-99918), Microsoft Teams (-99912), Nginx (-99914)
+  - Configuration: Untrusted Office Macro Execution (123459), Intel BHI/CVE-2022-0001 (302873), QOTD Service Detection (10198), Apache Multiviews (10704)
+
 ## Bug Fixes
 
+- Fixed `calculate_vulnerable_host_percent` mismatch in HIPAA executive summary — host count included common patches but percentage did not, causing inconsistent posture ratings
 - Fixed `authentication_summary` crash when host_property references nonexistent host
 - Fixed `host_findings_csv` and `host_findings_csv_older_than` nil gsub crash on plugins with no solution
 - Fixed `plugin_summary` calling `exit` and killing the test runner / process
