@@ -122,7 +122,7 @@
 
 ## Bug Fixes
 
-- Fixed `calculate_vulnerable_host_percent` mismatch in HIPAA executive summary — host count included common patches but percentage did not, causing inconsistent posture ratings
+- Fixed `calculate_vulnerable_host_percent` and `calculate_overall_host_percent` mismatch — host count included common patches but percentage did not, causing inconsistent posture ratings in templates using both values
 - Fixed `authentication_summary` crash when host_property references nonexistent host
 - Fixed `host_findings_csv` and `host_findings_csv_older_than` nil gsub crash on plugins with no solution
 - Fixed `plugin_summary` calling `exit` and killing the test runner / process
