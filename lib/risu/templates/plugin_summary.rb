@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -42,8 +42,8 @@ module Risu
 					title text, 18, color
 
 					risks.each do |f|
-						host = Host.find_by_id(f.host_id)
-						plugin = Plugin.find_by_id(f.plugin_id)
+						host = Host.find_by(:id => f.host_id)
+						plugin = Plugin.find_by(:id => f.plugin_id)
 
 						#references = Reference.where(:plugin_id => plugin.id).group(:value).order(:reference_name)
 
@@ -54,12 +54,12 @@ module Risu
                         text "Host", :style => :bold
                         
                         host_string = "#{host.name}"
-                        host_string << " (#{host.fqdn})" if host.fqdn != nil
+                        host_string << " (#{host.fqdn})" if !host.fqdn.nil?
 
                         text  host_string
 
 						definition "Plugin output", f.plugin_output
-						definition "Description", plugin.description.gsub(/[ ]{2,}/, " ") if plugin.description != nil
+						definition "Description", plugin.description.gsub(/[ ]{2,}/, " ") if !plugin.description.nil?
 						definition "Synopsis", plugin.synopsis
 						definition "CVSS Base Score", plugin.cvss_base_score
 						definition "Exploit Available", plugin.exploit_available? ? "Yes" : "No"
@@ -81,11 +81,11 @@ module Risu
 				text Report.classification.upcase, :align => :center
 				text "\n"
 
-				plugin =Plugin.find_by_id(PLUGIN_ID)
+				plugin = Plugin.find_by(:id => PLUGIN_ID)
 
-				if plugin == nil
-					puts "Unable to find #{PLUGIN_ID}."
-					exit
+				if plugin.nil?
+					STDERR.puts "Unable to find #{PLUGIN_ID}."
+					return
 				end
 
 				report_title Report.title
@@ -97,12 +97,11 @@ module Risu
                 
                 findings = Item.where(:plugin_id => PLUGIN_ID)
 
-                puts findings.to_a.count
 
-				print_findings(findings, "Plugin Summary", Risu::GRAPH_COLORS[0]) if findings.to_a.size != 0
-				#print_technical_findings(Item.high_risks_unique, "High Findings", Risu::GRAPH_COLORS[1], true) if Item.high_risks_unique.to_a.size != 0
-				#print_technical_findings(Item.medium_risks_unique, "Medium Findings", Risu::GRAPH_COLORS[2]) if Item.medium_risks_unique.to_a.size != 0
-				#print_technical_findings(Item.low_risks_unique, "Low Findings", Risu::GRAPH_COLORS[3], true) if Item.low_risks_unique.to_a.size != 0
+				print_findings(findings, "Plugin Summary", Risu::GRAPH_COLORS[0]) if findings.to_a.any?
+				#print_technical_findings(Item.high_risks_unique, "High Findings", Risu::GRAPH_COLORS[1], true) if Item.high_risks_unique.to_a.any?
+				#print_technical_findings(Item.medium_risks_unique, "Medium Findings", Risu::GRAPH_COLORS[2]) if Item.medium_risks_unique.to_a.any?
+				#print_technical_findings(Item.low_risks_unique, "Low Findings", Risu::GRAPH_COLORS[3], true) if Item.low_risks_unique.to_a.any?
 
 				output.number_pages "<page> of <total>", :at => [output.bounds.right - 75, 0], :width => 150, :page_filter => :all
 			end

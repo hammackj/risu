@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,7 @@ ActiveRecord::Migration.verbose = false
 module Risu
 	module Parsers
 		module Nexpose
-			class SimpleNexpose
-				include LibXML::XML::SaxParser::Callbacks
+			class SimpleNexpose < Nokogiri::XML::SAX::Document
 
 					VALID_FINGERPRINTS = {
 						"description" => :os,
@@ -47,10 +46,10 @@ module Risu
 
 				# @TODO comment
 				#
-				def on_start_element(element, attributes)
+				def start_element(element, attributes = [])
+					attributes = attributes.to_h
 					@tag = element
-					@vals[@tag] = ""
-					puts element
+					@vals[@tag] = String.new
 
 					case element
 						when "device"
@@ -68,8 +67,8 @@ module Risu
 				# Called when the inner text of a element is reached
 				#
 				# @param text
-				def on_characters(text)
-					if @vals[@tag] == nil then
+				def characters(text)
+					if @vals[@tag].nil? then
 						@vals[@tag] = text
 					else
 						@vals[@tag] << text
@@ -79,7 +78,7 @@ module Risu
 				# Called when the end of the XML element is reached
 				#
 				# @param element
-				def on_end_element(element)
+				def end_element(element)
 					@tag = nil
 					case element
 						when "device"

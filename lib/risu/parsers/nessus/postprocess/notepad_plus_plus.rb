@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,9 @@ module Risu
 208192, #HIGH, Notepad++ < 8.4.1 DLL hijacking vulnerability
 181867, #HIGH, Notepad++ < 8.5.7 Multiple Buffer Overflow Vulnerabilities
 205291, #HIGH, Notepad++ < 8.1.1 Arbitrary Code Execution
+299664, #HIGH, Notepad++ < 8.9.2 Unsafe Search Path (GHSA-rjvm-fcxw-2jxq)
+240630, #HIGH, Notepad++ < 8.8.2 Privilege Escalation (CVE-2025-49144)
+297910, #HIGH, Notepad++ < 8.8.9 Update Integrity Verification Vulnerability
 
 							]
 						}
@@ -46,5 +49,3 @@ module Risu
 		end
 	end
 end
-
-

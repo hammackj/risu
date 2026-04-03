@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -44,10 +44,10 @@ module Risu
 			end
 
 			def print_risk_summary risks, text, color
-				print_risk_title(text, color) if risks.length != 0
+				print_risk_title(text, color) if risks.any?
 
 				risks.each do |item|
-					name = Plugin.find_by_id(item.plugin_id).plugin_name
+					name = Plugin.find_by(:id => item.plugin_id).plugin_name
 					count = Item.where(:plugin_id => item.plugin_id).count
 
 					text "#{count} - #{name}"

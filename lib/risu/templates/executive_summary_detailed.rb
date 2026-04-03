@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -103,7 +103,7 @@ module Risu
 				output.table([headers] + data, :header => true, :row_colors => ['ffffff', 'f0f0f0']) do
 					row(0).style(:font_style => :bold, :background_color => 'cccccc')
 					cells.borders = [:top, :bottom, :left, :right]
-				end unless data == nil
+				end unless data.nil?
 
 				output.text "\n\n\n"
 
@@ -134,7 +134,7 @@ module Risu
 				top10vulns.each do |vuln|
 					row = Array.new
 
-					plugin = Plugin.find_by_id(vuln.plugin_id)
+					plugin = Plugin.find_by(:id => vuln.plugin_id)
 					#rails3
 					#plug = Item.find(:all, :conditions => {:plugin_id => vuln.plugin_id})
 					#rails4
@@ -150,7 +150,7 @@ module Risu
 				output.table([headers] + results, :header => true, :column_widths => header_widths, :row_colors => ['ffffff', 'f0f0f0']) do
 					row(0).style(:font_style => :bold, :background_color => 'D0D0D0')
 					cells.borders = [:top, :bottom, :left, :right]
-				end unless results == nil
+				end unless results.nil?
 
 				output.text "\n"
 
@@ -166,8 +166,8 @@ module Risu
 				top10vulns.each do |vuln|
 					row = Array.new
 
-					#plugin = Plugin.find_by_id(vuln.plugin_id)
-					ip = Host.find_by_id(vuln.host_id).name
+					#plugin = Plugin.find_by(:id => vuln.plugin_id)
+					ip = Host.find_by(:id => vuln.host_id).name
 					count = Item.where(:host_id => vuln.host_id).where("severity IN (?)", [0,1,2,3]).count
 					#output.text "#{plugin.plugin_name}"
 
@@ -179,7 +179,7 @@ module Risu
 				output.table([headers] + results, :header => true, :column_widths => header_widths, :row_colors => ['ffffff', 'f0f0f0']) do
 					row(0).style(:font_style => :bold, :background_color => 'D0D0D0')
 					cells.borders = [:top, :bottom, :left, :right]
-				end unless results == nil
+				end unless results.nil?
 
 				output.text "\n"
 
@@ -195,7 +195,7 @@ module Risu
 				top10vulns.each do |service|
 					row = Array.new
 
-					#plugin = Plugin.find_by_id(service.plugin_id)
+					#plugin = Plugin.find_by(:id => service.plugin_id)
 					#rails3
 					#svc = Item.find(:all, :conditions => {:svc_name => service.svc_name})
 					svc = Item.all.where(:svc_name => service.svc_name)
@@ -210,7 +210,7 @@ module Risu
 				output.table([headers] + results, :header => true, :column_widths => header_widths, :row_colors => ['ffffff', 'f0f0f0']) do
 					row(0).style(:font_style => :bold, :background_color => 'D0D0D0')
 					cells.borders = [:top, :bottom, :left, :right]
-				end unless results == nil
+				end unless results.nil?
 
 				output.start_new_page
 

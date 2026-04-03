@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,15 +34,15 @@ module Risu
 							:plugin_name => "Missing the latest Symantec Endpoint Patches",
 							:item_name => "Update to the latest Symantec Endpoint",
 							:plugin_ids => [
-								91895,
-								71993,
-								90199,
-								59366,
-								71994,
-								72542,
-								85256,
-104459, #Symantec Endpoint Protection Client 12.1.x < 12.1 RU6 MP9 / 14.0.x < 14.0 RU1 Multiple Vulnerabilities (SYM17-011)
-131233, #Symantec Endpoint Protection Client 12.x < 12.1.7454.7000 / 14.x < 14.2.5323.2000 Multiple Vulnerabilities (SYMSA1488)
+								91895, #CRITICAL, Symantec Endpoint Protection Client 12.1.x < 12.1 RU6 MP5 Multiple Vulnerabilities (SYM16-010)
+								71993, #HIGH, Symantec Endpoint Protection Client < 11.0.7.4 / 12.1.2 (SYM14-001)
+								90199, #HIGH, Symantec Endpoint Protection Client < 12.1 RU6 MP4 SysPlant.sys Driver RCE (SYM16-003)
+								59366, #HIGH, Symantec Endpoint Protection Manager < 11 RU7 MP2 (SYM12-007 / SYM12-008) (credentialed check)
+								71994, #HIGH, Symantec Endpoint Protection Manager < 11.0.7.4 / 12.1.2 RU2 (SYM14-001)
+								72542, #HIGH, Symantec Endpoint Protection Manager < 11.0 RU7-MP4a / 12.1 RU4a Multiple Vulnerabilities (SYM14-004)
+								85256, #HIGH, Symantec Endpoint Protection Manager 11.x / 12.x < 12.1 RU6 MP1 Multiple Vulnerabilities (SYM15-007)
+104459, #MEDIUM, Symantec Endpoint Protection Client 12.1.x < 12.1 RU6 MP9 / 14.0.x < 14.0 RU1 Multiple Vulnerabilities (SYM17-011)
+131233, #HIGH, Symantec Endpoint Protection Client 12.x < 12.1.7454.7000 / 14.x < 14.2.5323.2000 Multiple Vulnerabilities (SYMSA1488)
 
 							]
 						}

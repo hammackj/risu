@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,9 +20,14 @@
 
 module Risu
 	module Templates
+
+		# Mixin providing graph page helpers for PDF report templates.
+		# Each method renders a full-page graph with descriptive text.
+		# Include via TemplateHelper.
 		module GraphTemplateHelper
 
-			#
+			# Renders the non-Windows OS distribution pie chart on a new page.
+			# Skips rendering if no non-Windows OS data exists.
 			def other_os_graph_page
 				if Host.other_os_graph_has_data?
 					new_page
@@ -31,7 +36,8 @@ module Risu
 				end
 			end
 
-			#
+			# Renders the Windows Server OS distribution pie chart on a new page.
+			# Skips rendering if no Windows Server OS data exists.
 			def windows_os_graph_page
 				if Host.windows_os_graph_has_data?
 					new_page
@@ -40,6 +46,8 @@ module Risu
 				end
 			end
 
+			# Renders the Windows Client OS distribution pie chart on a new page.
+			# Skips rendering if no Windows Client OS data exists.
 			def windows_client_os_graph_page
 				if Host.windows_client_os_graph_has_data?
 					new_page
@@ -48,25 +56,91 @@ module Risu
 				end
 			end
 
-			#
+			# Renders the vulnerability root cause breakdown pie chart on a new page.
+			# Shows Vendor Patch vs Vendor Support vs Configuration distribution.
 			def root_cause_graph_page
 				new_page
 				@output.image Plugin.root_cause_graph, :width => 500, :height => 375, :position => :center
 				text Plugin.root_cause_graph_text
 			end
 
-			#
+			# Renders the risks by service bar chart on a new page.
+			# Shows the top 5 services with the most findings.
 			def risks_by_service_graph_page
 				new_page
 				@output.image Item.risks_by_service_graph(5), :width => 500, :height => 375, :position => :center
 				text Item.risks_by_service_graph_text
 			end
 
-			#
+			# Renders the risks by severity bar chart on a new page.
+			# Shows Critical, High, Medium, and Low finding counts.
 			def risks_by_severity_graph_page
 				new_page
 				@output.image Item.risks_by_severity_graph, :width => 500, :height => 375, :position => :center
 				text Item.risks_by_severity_graph_text, :inline_format => true
+			end
+
+			# Renders the exploitability breakdown pie chart on a new page.
+			# Shows the proportion of findings with known public exploits.
+			def exploitability_graph_page
+				new_page
+				@output.image Item.exploitability_graph, :width => 500, :height => 375, :position => :center
+				text "This chart shows the proportion of findings that have known public " \
+					"exploits available versus those that do not. Exploitable findings " \
+					"should be prioritized for remediation as they can be leveraged by " \
+					"attackers using readily available tools."
+			end
+
+			# Renders the findings by patch age bar chart on a new page.
+			# Shows Critical/High findings grouped into age brackets
+			# (<3mo, 3-6mo, 6mo-1yr, 1-3yr, >3yr).
+			def findings_by_age_graph_page
+				new_page
+				@output.image Item.findings_by_age_graph, :width => 500, :height => 375, :position => :center
+				text "This chart shows critical and high severity findings grouped by how " \
+					"long the vulnerability has been publicly known. Older unpatched " \
+					"findings indicate gaps in the patch management cycle and represent " \
+					"increased risk due to the availability of mature exploits."
+			end
+
+			# Renders the top 10 hosts by finding count bar chart on a new page.
+			# Shows which hosts have the highest concentration of findings.
+			def top_hosts_graph_page
+				new_page
+				@output.image Item.top_hosts_by_finding_count_graph, :width => 500, :height => 375, :position => :center
+				text "This chart shows the hosts with the highest number of findings. " \
+					"These systems should be prioritized for remediation as they " \
+					"represent the largest concentration of risk on the network."
+			end
+
+			# Renders the authentication coverage pie chart on a new page.
+			# Shows the proportion of authenticated vs unauthenticated scan hosts.
+			def auth_coverage_graph_page
+				new_page
+				@output.image Host.auth_coverage_graph, :width => 500, :height => 375, :position => :center
+				text "This chart shows the proportion of hosts that were scanned with " \
+					"authentication credentials versus those that were not. Authenticated " \
+					"scans provide significantly deeper coverage and more accurate results. " \
+					"Unauthenticated hosts may have undetected vulnerabilities."
+			end
+
+			# Renders the findings trend bar chart on a new page.
+			# Compares persistent vs new findings between the current and previous
+			# scan using data from the risu_db_diff CSV. Skips rendering if no
+			# diff file is configured in the engagement config.
+			def findings_trend_graph_page
+				config = Risu::Base::EngagementConfig.new
+				graph = config.findings_trend_graph
+				return if graph.nil?
+
+				previous = config.previous_scan_date || "the previous assessment"
+
+				new_page
+				@output.image graph, :width => 500, :height => 375, :position => :center
+				text "This chart compares the current assessment to the #{previous} assessment. " \
+					"Persistent findings are vulnerabilities that were present in both scans and " \
+					"remain unresolved. New findings were not present in the previous scan. " \
+					"A high number of persistent findings indicates remediation gaps."
 			end
 		end
 	end

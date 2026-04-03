@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,8 +34,8 @@ module Risu
 							:plugin_name => "Missing the latest Foxit 3D Plugin",
 							:item_name => "Update to the latest Foxit 3D Plugin",
 							:plugin_ids => [
-132633, #Foxit 3D Plugin Beta 9.7.0.29430 NULL Pointer Dereference Vulnerability 
-139233, #Foxit 3D Plugin Beta < 9.7.2.29539 RCE
+132633, #HIGH, Foxit 3D Plugin Beta 9.7.0.29430 NULL Pointer Dereference Vulnerability
+139233, #HIGH, Foxit 3D Plugin Beta < 9.7.2.29539 RCE
 							]
 						}
 					end

@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -82,6 +82,12 @@ module Risu
 
 				output.image Plugin.root_cause_graph, :width => 500, :height => 375, :position => :center
 				output.text Plugin.root_cause_graph_text
+
+				exploitability_graph_page
+				findings_by_age_graph_page
+				top_hosts_graph_page
+				auth_coverage_graph_page
+				findings_trend_graph_page
 			end
 		end
 	end

@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -46,21 +46,21 @@ module Risu
 				text "\n\n\n"
 
 				Item.ms_patches.each do |item|
-					host = Host.find_by_id(item.host_id)
+					host = Host.find_by(:id => item.host_id)
 
-					next if host == nil
+					next if host.nil?
 
-					if host.name != nil
+					if !host.name.nil?
 						text "Host:", :style => :bold
 						text host.name
 					end
 
-					if host.os != nil
+					if !host.os.nil?
 						text "OS:", :style => :bold
 						text host.os
 					end
 
-					if host.mac != nil
+					if !host.mac.nil?
 						text "Mac:", :style => :bold
 						text host.mac
 					end

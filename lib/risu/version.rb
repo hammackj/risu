@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ module Risu
 	APP_NAME = "risu"
 	VERSION = "1.8.6"
 	HOME_PAGE = "https://hammackj.github.io/risu/"
-	GITHUB = "http://github.com/hammackj/risu"
+	GITHUB = "https://github.com/hammackj/risu"
 	EMAIL = "jacob.hammack@hammackj.com"
 	AUTHORS = ["Jacob Hammack", "Andrew Benson", "Joseph Kordish", "bluehavana"]
 end

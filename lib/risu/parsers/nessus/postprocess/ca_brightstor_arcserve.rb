@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,14 +34,14 @@ module Risu
 							:plugin_name => "Missing the latest CA BrightStor ARCserve Backup Patches",
 							:item_name => "Update to the latest CA BrightStor ARCserve Backup",
 							:plugin_ids => [
-								24015, #CA BrightStor ARCserve Backup Multiple Vulnerabilities (QO84983)
-								24816, #CA BrightStor ARCserve Backup Tape Engine and Portmapper Multiple Vulnerabilities (QO86255)
-								25086, #CA BrightStor ARCserve Backup Multiple Vulnerabilities (QO87569)
-								26970, #CA BrightStor ARCserve Backup Multiple Remote Vulnerabilities (QO91094)
-								32398, #CA BrightStor ARCserve Backup Multiple Vulnerabilities (QO92996)
-								34393, #CA BrightStor ARCserve Backup RPC Interface (asdbapi.dll) Traversal Arbitrary Command Execution
-								22510, #CA BrightStor ARCserve Backup for Windows Multiple Remote Buffer Overflows (QO81201)
-								23841, #CA BrightStor ARCserve Backup Discovery Service Overflow
+								24015, #CRITICAL, CA BrightStor ARCserve Backup Multiple Vulnerabilities (QO84983)
+								24816, #CRITICAL, CA BrightStor ARCserve Backup Tape Engine and Portmapper Multiple Vulnerabilities (QO86255)
+								25086, #CRITICAL, CA BrightStor ARCserve Backup Multiple Vulnerabilities (QO87569)
+								26970, #CRITICAL, CA BrightStor ARCserve Backup Multiple Remote Vulnerabilities (QO91094)
+								32398, #CRITICAL, CA BrightStor ARCserve Backup Multiple Vulnerabilities (QO92996)
+								34393, #CRITICAL, CA BrightStor ARCserve Backup RPC Interface (asdbapi.dll) Traversal Arbitrary Command Execution
+								22510, #HIGH, CA BrightStor ARCserve Backup for Windows Multiple Remote Buffer Overflows (QO81201)
+								23841, #HIGH, CA BrightStor ARCserve Backup Discovery Service Overflow
 							]
 						}
 					end

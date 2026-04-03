@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ module Risu
 							:plugin_name => "Missing the latest MongoDB",
 							:item_name => "Update to the latest MongoDB",
 							:plugin_ids => [
-122243, #MongoDB 2.6.x < 2.6.9, 3.0.x < 3.0.14, 3.2.x < 3.2.8 mongod
+122243, #HIGH, MongoDB 2.6.x < 2.6.9
 
 							]
 						}

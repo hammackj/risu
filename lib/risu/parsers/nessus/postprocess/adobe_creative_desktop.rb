@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,9 +34,9 @@ module Risu
 							:plugin_name => "Missing the latest Adobe Creative Cloud Desktop Patches",
 							:item_name => "Update to the latest Adobe Creative Cloud Desktop",
 							:plugin_ids => [
-								99366, #Adobe Creative Cloud Desktop < 4.0.0.185 Multiple Vulnerabilities (APSB17-13)
-								91386, #Adobe Creative Cloud <= 3.5.1.209 Arbitrary File Read/Write Vulnerability
-94055, #Adobe Creative Cloud Desktop < 3.8.0.310 Unquoted Search Path Local Privilege Escalation (APSB16-34)
+								99366, #HIGH, Adobe Creative Cloud Desktop < 4.0.0.185 Multiple Vulnerabilities (APSB17-13)
+								91386, #HIGH, Adobe Creative Cloud <= 3.5.1.209 Arbitrary File Read/Write Vulnerability
+94055, #HIGH, Adobe Creative Cloud Desktop < 3.8.0.310 Unquoted Search Path Local Privilege Escalation (APSB16-34)
 
 							]
 						}

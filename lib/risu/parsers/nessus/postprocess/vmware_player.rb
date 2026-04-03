@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,13 +34,13 @@ module Risu
 							:plugin_name => "Missing the latest VMware Player Patches",
 							:item_name => "Update to the latest VMware Player",
 							:plugin_ids => [
-								71231,
-								76454,
-								73672,
-								74265,
-								84219,
-								84805,
-								81185,
+								71231, #HIGH, VMware Player 5.x < 5.0.3 LGTOSYNC.SYS Guest Privilege Escalation (VMSA-2013-0014)
+								76454, #MEDIUM, VMware Player < 5.0.4 / 6.0.3 OpenSSL Library Multiple Vulnerabilities (Windows)
+								73672, #MEDIUM, VMware Player 6.x < 6.0.2 OpenSSL Library Multiple Vulnerabilities (VMSA-2014-0004) (Heartbleed)
+								74265, #MEDIUM, VMware Player 6.x < 6.0.2 Windows 8.1 Guest Privilege Escalation (VMSA-2014-0005)
+								84219, #MEDIUM, VMware Player 6.x < 6.0.6 Multiple Vulnerabilities (VMSA-2015-0004)
+								84805, #HIGH, VMware Player 6.x < 6.0.7 / 7.x < 7.1.1 DACL Privilege Escalation (VMSA-2015-0005)
+								81185, #MEDIUM, VMware Player 6.x < 6.0.5 Multiple Vulnerabilities (VMSA-2015-0001) (Windows)
 
 
 							]

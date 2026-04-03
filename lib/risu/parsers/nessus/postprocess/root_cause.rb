@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -362,6 +362,9 @@ module Risu
 							78555 => "Vendor Support", # OpenSSL Unsupported -
 							56997 => "Vendor Support", # VMware ESX / ESXi Unsupported Version Detection -
 							108797 => "Vendor Support", # Unsupported Windows OS (remote)
+							192782 => "Vendor Support", # Microsoft Windows Server 2008 SEoL
+							192813 => "Vendor Support", # Microsoft Windows Server 2012 SEoL
+							201420 => "Vendor Support", # Debian Linux SEoL (8.x)
 							73756 => "Vendor Support", # Microsoft SQL Server Unsupported Version Detection
 							172179 => "Vendor Support", # Microsoft .NET Core SEoL -
 
@@ -417,6 +420,18 @@ module Risu
 132101 => "Configuration", #Windows Speculative Execution Configuration Check
 166555 => "Vendor Patch", #WinVerifyTrust Signature Validation CVE-2013-3900 Mitigation (EnableCertPaddingCheck)
 -99916 => "Vendor Patch", #Missing the latest JQuery
+-99930 => "Vendor Patch", #Missing the latest Apache Log4j
+-99951 => "Vendor Patch", #Missing the latest Intel Management Engine Patches
+-99926 => "Vendor Patch", #Missing the latest Microsoft Windows Server
+138554 => "Vendor Patch", #Microsoft DNS Server Remote Code Execution (SIGRed)
+-99996 => "Vendor Patch", #Missing the latest Serv-U Patches
+-99918 => "Vendor Patch", #Missing the latest Dell Client BIOS
+-99912 => "Vendor Patch", #Missing the latest Microsoft Teams
+-99914 => "Vendor Patch", #Missing the latest Nginx
+123459 => "Configuration", #Untrusted Microsoft Office Macro Execution Enabled
+302873 => "Configuration", #Windows Speculative Execution Configuration Check - Intel BHI (CVE-2022-0001)
+10198 => "Configuration", #Quote of the Day (QOTD) Service Detection
+10704 => "Configuration", #Apache Multiviews Arbitrary Directory Listing
 76474 => "Configuration", #SNMP 'GETBULK' Reflection DDoS
 10663 => "Configuration", #DHCP Server Detection
 201408 => "Vendor Support", #Canonical Ubuntu Linux SEoL (14.04.x)
@@ -518,7 +533,7 @@ module Risu
 						@plugins_to_cause.each do |k, v|
 							plugin = Plugin.where(:id => k).first
 
-							if plugin == nil
+							if plugin.nil?
 								next
 							end
 

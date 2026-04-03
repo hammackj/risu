@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -55,7 +55,7 @@ module Risu
 				results = Item.where(:plugin_id => 58133)
 
 				results.each do |item|
-					if item.plugin_output == nil
+					if item.plugin_output.nil?
 						next
 					end
 

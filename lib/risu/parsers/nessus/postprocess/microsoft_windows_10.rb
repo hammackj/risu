@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ module Risu
 							:plugin_name => "Missing the latest Microsoft Windows 10",
 							:item_name => "Update to the latest Microsoft Windows 10",
 							:plugin_ids => [
-170963, #Microsoft Windows 10 Version 21H2 Unsupported Version Detection                                 
+170963, #CRITICAL, Microsoft Windows 10 Version 21H2 Unsupported Version Detection (deprecated)
 208292, #HIGH, KB5044273: Windows 10 version 21H2 / Windows 10 Version 22H2 Security Update (October 2024)
 205452, #CRITICAL, KB5041580: Windows 10 Version 21H2 / Windows 10 Version 22H2 Security Update (August 2024)
 206894, #CRITICAL, KB5043064: Windows 10 Version 21H2 / Windows 10 Version 22H2 Security Update (September 2024)

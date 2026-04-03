@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -18,36 +18,50 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-
 module Risu
-	module Models
+  module Models
+    # Report Model
+    class Report < ActiveRecord::Base
+      has_many :hosts
+      belongs_to :policy
 
-		# Report Model
-		class Report < ActiveRecord::Base
-		  has_many :hosts
-		  belongs_to :policy
+      class << self
+        attr_accessor :title, :author, :company, :classification, :network, :owner, :location, :stakeholders, :reviewers,
+                      :extra
 
-			class << self
+        #
+        # @scan_date = Host.where("start is not null").first[:start].to_s
+        #
+        def scan_date
+          Host.where('start IS NOT NULL').first[:start]
+        end
 
-				attr_accessor :title, :author, :company, :classification, :network, :owner, :location, :stakeholders, :reviewers, :extra
+        #
+        # @TODO comment this / rewrite this
+        #
+        def scanner_nessus_ratings_text_legacy
+          text = "The vulnerability scanner used by #{Report.company} rates the findings as follows: Critical, High, Medium, Low and Informational. Critical findings represent a security gap and the highest risk rating. These generally represent vulnerabilities that can lead to full system compromise due to missing security patches. Critical findings should be remediated first as they generally leave the network wide open. High findings are slightly less severe than Critical findings however, the severity depends on the calculated CVSS base score. Medium findings are considered a security warning; these are not as severe as high but should be evaluated on a risk-by-risk basis. These are typically configuration errors that can lead to information disclosures such as usernames, passwords, and configuration settings. Low findings are identified as security notes; these provide information the scanner discovered during the scanning process. The information includes items such as hostname, domain name, and MAC address. Open Port findings represent the open ports on each system that the scanner found during the scan process. These should be evaluated against firewall settings to test the firewall configurations.\n\n"
 
-				#
-				#@scan_date = Host.where("start is not null").first[:start].to_s
-				#
-				def scan_date
-					Host.where("start IS NOT NULL").first[:start]
-				end
+          text << "After the scanner is complete, the scanner evaluates each finding and bases it on the Common Vulnerability Scoring System (CVSS) score assigned to each finding. Any findings with a CVSS base score of 10 are upgraded to a Critical finding. These represent vulnerabilities that are trivial to gain administrator access to the system, with little to no effort. For more information on the CVSS scoring system please visit: https://nvd.nist.gov/vuln-metrics/cvss.\n\n"
 
-				#
-				# @TODO comment this / rewrite this
-				#
-				def scanner_nessus_ratings_text
-					text = "The vulnerability scanner used by #{Report.company} rates the findings as follows: Critical, High, Medium, Low and Informational. Critical findings represent a security hole, this is the highest rating a risk can get.  These generally represent vulnerabilities that can lead to full system compromise due to missing security patches. Critical findings should be re-mediated first as they generally leave the network wide open. High findings are slightly less severe than Critical findings but the severity depends on the calculated CVSS base score. Medium findings are considered a security warning; these are not as severe as high but should be evaluated on a risk-by-risk basis. These are typically configuration errors that can lead to information disclosures such as usernames, passwords, and configuration settings. Low findings are identified as security notes; these provide information the scanner discovered during the scanning process. The information includes items such as hostname, domain name, and MAC address. Open Port findings represent the open ports on each system that the scanner found during the scan process. These should be evaluated against firewall settings to test the firewall configurations.\n\n"
-					text << "After the scanner is complete, the scanner evaluates each finding and bases it on the Common Vulnerability Scoring System (CVSS) score assigned to each finding. Any findings with a CVSS base score of 10 are upgraded to a Critical finding. These represent vulnerabilities that are trivial to gain administrator access to the system, with little to no effort. For more information on the CVSS scoring system please visit: http://nvd.nist.gov/cvss.cfm.\n\n"
+          text
+        end
 
-					return text
-				end
-			end
-		end
-	end
+        def scanner_nessus_ratings_text
+          <<~TEXT
+            #{Report.company}'s vulnerability scanner rates findings as:
+
+            - Critical: highest risk; remediate first.
+            - High: severe; prioritize remediation.
+            - Medium: notable; often misconfigurations.
+            - Low: minor or hard to exploit.
+            - Informational: environmental details.
+            - Open Port: observed services; validate against firewall policy.
+
+            Severities align to CVSS base scores; items with a CVSS score of 10 are treated as Critical. Learn more: https://nvd.nist.gov/vuln-metrics/cvss
+          TEXT
+        end
+      end
+    end
+  end
 end

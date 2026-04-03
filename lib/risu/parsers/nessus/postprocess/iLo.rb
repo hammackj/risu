@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,14 +34,14 @@ module Risu
 							:plugin_name => "Missing the latest iLO Patches",
 							:item_name => "Update to the latest iLO Patches",
 							:plugin_ids => [
-122032, #iLO 4 < 2.60 / iLO 5 < 1.30 Multiple Vulnerabilities
-125342, #iLO 4 < 2.70 / iLO 5 < 1.40a Multiple Vulnerabilities
-122095, #iLO 4 < 2.53 Remote Code Execution Vulnerability
-122187, #iLO 3 < 1.88 / iLO 4 < 2.44 XSS Vulnerability
-122191, #iLO 3 < 1.85 / iLO 4 < 2.22 Denial of Service Vulnerability
-102803, #HP iLO 4 <= 2.52 RCE
-134976, #iLO 3 < 1.90 / iLO 4 < 2.61 / iLO 5 < 1.35 Remote Code Execution Vulnerability (HPESBHF03866)
-140770, #HP iLO 3 < 1.93 / HP iLO 4 < 2.75 / HP iLO 5 < 2.18 Ripple20 Multiple vulnerabilities
+122032, #HIGH, iLO 4 < 2.60 / iLO 5 < 1.30 Multiple Vulnerabilities
+125342, #HIGH, iLO 4 < 2.70 / iLO 5 < 1.40a Multiple Vulnerabilities
+122095, #CRITICAL, iLO 4 < 2.53 Remote Code Execution Vulnerability
+122187, #MEDIUM, iLO 3 < 1.88 / iLO 4 < 2.44 XSS Vulnerability
+122191, #MEDIUM, iLO 3 < 1.85 / iLO 4 < 2.22 Denial of Service Vulnerability
+102803, #CRITICAL, HP iLO 4 <= 2.52 RCE
+134976, #HIGH, iLO 3 < 1.90 / iLO 4 < 2.61 / iLO 5 < 1.35 Remote Code Execution Vulnerability (HPESBHF03866)
+140770, #HIGH, HP iLO 3 < 1.93 / HP iLO 4 < 2.75 / HP iLO Superdome 4 < 1.64 / HP iLO 5 < 2.18 / HP Moonshot/Edgeline iLO 5 < 2.30 Ripple20 Multiple vulnerabilities
 162139, #HIGH, iLO 4 < 2.80 DoS
 							]
 						}

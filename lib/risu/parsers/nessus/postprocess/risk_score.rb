@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -46,7 +46,7 @@ module Risu
 							vuln_publication_date = plugin.vuln_publication_date
 
 							vuln_pub_days = 1
-							vuln_pub_days = (DateTime.now.to_date - vuln_publication_date.to_date).to_i if vuln_publication_date != nil
+							vuln_pub_days = (DateTime.now.to_date - vuln_publication_date.to_date).to_i if !vuln_publication_date.nil?
 
 							exploitable = plugin.exploit_available
 							exploitable_factor = 1

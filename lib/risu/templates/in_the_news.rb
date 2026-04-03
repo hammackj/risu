@@ -1,0 +1,193 @@
+# Copyright (c) 2010-2026 Jacob Hammack.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
+
+module Risu
+	module Templates
+		class InTheNews < Risu::Base::TemplateBase
+			include TemplateHelper
+
+			def initialize
+				@template_info =
+				{
+					:name => "in_the_news",
+					:author => "hammackj",
+					:version => "0.0.1",
+					:renderer => "PDF",
+					:description => "Generates a High-Profile / In-the-News Vulnerabilities Report"
+				}
+			end
+
+			def render output
+				# Find in-the-news plugins with active findings
+				news_plugins = Plugin.in_the_news.to_a.select do |plugin|
+					Item.where(:plugin_id => plugin.id).where("severity >= 0").count > 0
+				end
+
+				# Title page
+				text Report.classification.upcase, :align => :center
+				text "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+
+				@output.font_size(24) do
+					@output.text Report.title, :align => :left
+				end
+				@output.font_size(18) do
+					@output.text "High-Profile Vulnerabilities", :align => :left
+					@output.text "\n"
+				end
+				@output.font_size(14) do
+					@output.text "This report was prepared by\n#{Report.author}", :align => :left
+				end
+				@output.font_size(10) do
+					@output.text "\n\n"
+					@output.text Report.scan_date.strftime('%B %d, %Y'), :align => :left
+				end
+
+				new_page
+
+				# Overview
+				heading1 "Overview"
+
+				text "This report identifies vulnerabilities on the network that have received " \
+					"significant public attention or media coverage. These are the vulnerabilities " \
+					"that executives, board members, and auditors are most likely to ask about."
+				text "\n"
+
+				text "High-profile vulnerabilities often receive expedited exploit development " \
+					"and wider targeting by threat actors due to the publicity. Even when a " \
+					"vulnerability's technical severity is moderate, the increased attacker " \
+					"interest driven by media coverage elevates the practical risk."
+				text "\n"
+
+				if news_plugins.empty?
+					heading1 "Results"
+					text "No high-profile or in-the-news vulnerabilities were detected on the network."
+					@output.number_pages "<page> of <total>", :at => [@output.bounds.right - 75, 0], :width => 150, :page_filter => :all
+					return
+				end
+
+				# Sort by severity then CVSS
+				severity_order = {"Critical" => 0, "High" => 1, "Medium" => 2, "Low" => 3, "None" => 4}
+				news_plugins.sort_by! do |p|
+					[severity_order[p.risk_factor] || 5, -(p.cvss_base_score.to_f)]
+				end
+
+				# Summary
+				heading1 "Summary"
+
+				host_ids = []
+				news_plugins.each do |plugin|
+					Item.where(:plugin_id => plugin.id).where("severity >= 0").each do |item|
+						host_ids << item.host_id
+					end
+				end
+				host_ids.uniq!
+
+				text "#{news_plugins.size} high-profile " \
+					"vulnerability#{'ies' if news_plugins.size != 1} " \
+					"found across #{host_ids.size} host#{'s' if host_ids.size != 1}."
+				text "\n"
+
+				headers = ["Finding", "Severity", "CVSS", "Exploit", "Hosts"]
+				header_widths = {0 => (page_width - 60 - 45 - 50 - 45), 1 => 60, 2 => 45, 3 => 50, 4 => 45}
+
+				summary_data = news_plugins.map do |plugin|
+					host_count = Item.where(:plugin_id => plugin.id).where("severity >= 0").map(&:host_id).uniq.size
+					exploit = plugin.exploit_available == true ? "Yes" : "No"
+					[
+						Item.scrub_plugin_name(plugin.plugin_name),
+						plugin.risk_factor || "N/A",
+						plugin.cvss_base_score.to_s,
+						exploit,
+						host_count.to_s
+					]
+				end
+
+				@output.table([headers] + summary_data, :header => true, :column_widths => header_widths,
+					:width => page_width, :row_colors => ['ffffff', 'E5E5E5']) do
+					row(0).style(:font_style => :bold, :background_color => 'D0D0D0')
+					cells.borders = [:top, :bottom, :left, :right]
+					column(2).style(:align => :center)
+					column(3).style(:align => :center)
+					column(4).style(:align => :center)
+				end
+
+				text "\n"
+				new_page
+
+				# Detailed findings
+				heading1 "Detailed Findings"
+
+				news_plugins.each_with_index do |plugin, idx|
+					items = Item.where(:plugin_id => plugin.id).where("severity >= 0")
+					next if items.count == 0
+
+					hosts = items.group_by(&:host_id)
+
+					heading2 Item.scrub_plugin_name(plugin.plugin_name)
+
+					exploit = plugin.exploit_available == true ? "Yes" : "No"
+					malware = plugin.exploited_by_malware == true ? "Yes" : "No"
+
+					meta = [
+						["Plugin ID", plugin.id.to_s],
+						["Severity", plugin.risk_factor || "N/A"],
+						["CVSS Score", plugin.cvss_base_score.to_s],
+						["Exploit Available", exploit],
+						["Exploited by Malware", malware],
+						["Affected Hosts", hosts.size.to_s]
+					]
+
+					@output.table(meta, :header => false,
+						:column_widths => {0 => 140, 1 => page_width - 140},
+						:width => page_width) do
+						cells.borders = [:top, :bottom, :left, :right]
+						column(0).style(:font_style => :bold, :background_color => 'F5F5F5')
+					end
+
+					text "\n"
+
+					hostlist = []
+					hosts.each do |host_id, _|
+						host = Host.find_by(:id => host_id)
+						next if host.nil?
+						hs = host.ip.to_s
+						hs << " (#{host.fqdn})" if host.fqdn
+						hostlist << hs
+					end
+
+					definition "Affected Hosts", hostlist.join(", ")
+
+					definition "Synopsis", plugin.synopsis if plugin.synopsis
+					definition "Description", plugin.description.gsub(/[ ]{2,}/, " ") if plugin.description
+					definition "Solution", plugin.solution if plugin.solution
+
+					refs = plugin.references.reference_string
+					definition "References", refs, :inline_format => true if refs && !refs.strip.empty?
+
+					text "\n"
+					@output.start_new_page if idx != news_plugins.size - 1
+				end
+
+				@output.number_pages "<page> of <total>", :at => [@output.bounds.right - 75, 0], :width => 150, :page_filter => :all
+			end
+		end
+	end
+end

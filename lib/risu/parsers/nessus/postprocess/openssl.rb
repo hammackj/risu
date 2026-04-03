@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,62 +34,62 @@ module Risu
 							:plugin_name => "Missing the latest OpenSSL Patches",
 							:item_name => "Update to the latest OpenSSL",
 							:plugin_ids => [
-								11267, #OpenSSL < 0.9.6j / 0.9.7b Multiple Vulnerabilities
-								12110, #OpenSSL < 0.9.6m / 0.9.7d Multiple Remote DoS
-								74363, #OpenSSL 0.9.8 < 0.9.8za Multiple Vulnerabilities
-								77086, #OpenSSL 0.9.8 < 0.9.8zb Multiple Vulnerabilities
-								74326, #OpenSSL 'ChangeCipherSpec' MiTM Potential Vulnerability
-								73412, #OpenSSL Heartbeat Information Disclosure (Heartbleed)
-								77200, #OpenSSL 'ChangeCipherSpec' MiTM Vulnerability
-								17757, #OpenSSL < 0.9.7l / 0.9.8d Multiple Vulnerabilities
-								73404, #OpenSSL 1.0.1 < 1.0.1g Multiple Vulnerabilities (Heartbleed)
-								74364, #OpenSSL 1.0.1 < 1.0.1h Multiple Vulnerabilities
-								77088, #OpenSSL 1.0.1 < 1.0.1i Multiple Vulnerabilities
-								17755, #OpenSSL < 0.9.7h / 0.9.8a Protocol Version Rollback
-								17756, #OpenSSL < 0.9.7k / 0.9.8c PKCS Padding RSA Signature Forgery Vulnerability
-								17758, #OpenSSL < 0.9.7m / 0.9.8e Buffer Overflow (deprecated)
-								17759, #OpenSSL < 0.9.8 Weak Default Configuration
-								17761, #OpenSSL < 0.9.8i Denial of Service
-								17762, #OpenSSL < 0.9.8j Signature Spoofing
-								17763, #OpenSSL < 0.9.8k Multiple Vulnerabilities
-								17765, #OpenSSL < 0.9.8l Multiple Vulnerabilities
-								57459, #OpenSSL < 0.9.8s Multiple Vulnerabilities
-								58799, #OpenSSL < 0.9.8w ASN.1 asn1_d2i_read_bio Memory Corruption
-								17760, #OpenSSL < 0.9.8f Multiple Vulnerabilities
-								56996, #OpenSSL < 0.9.8h Multiple Vulnerabilities
-								58564, #OpenSSL < 0.9.8u Multiple Vulnerabilities
-								59076, #OpenSSL 0.9.8 < 0.9.8x DTLS CBC Denial of Service
-								64532, #OpenSSL < 0.9.8y Multiple Vulnerabilities
-								71857, #OpenSSL 1.0.1 < 1.0.1f Multiple Vulnerabilities
-								78554, #OpenSSL 1.0.1 < 1.0.1j Multiple Vulnerabilities (POODLE)
-								80568, #OpenSSL 1.0.1 < 1.0.1k Multiple Vulnerabilities (FREAK)
-								82032, #OpenSSL 1.0.1 < 1.0.1m Multiple Vulnerabilities
-								84153, #OpenSSL 1.0.1 < 1.0.1n Multiple Vulnerabilities (Logjam)
-								51892, #OpenSSL SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG Session Resume Ciphersuite Downgrade Issue
-								17766, #OpenSSL < 0.9.8p / 1.0.0b Buffer Overflow
-								17767, #OpenSSL < 0.9.8p / 1.0.0e Double Free Vulnerability
-								90888, #OpenSSL 1.0.1 < 1.0.1o ASN.1 Encoder Negative Zero Value Handling RCE -
-								93814, #OpenSSL 1.0.1 < 1.0.1u Multiple Vulnerabilities
-								89081, #OpenSSL 1.0.1 < 1.0.1s Multiple Vulnerabilities (DROWN)
-								84636, #OpenSSL 1.0.1 < 1.0.1p Multiple Vulnerabilities -
-								87221, #OpenSSL 1.0.1 < 1.0.1q Multiple DoS -
-								88529, #OpenSSL 1.0.1 < 1.0.1r Multiple Vulnerabilities -
-								90890, #OpenSSL 1.0.1 < 1.0.1t Multiple Vulnerabilities -
-								93112, #OpenSSL < 1.1.0 Default Weak 64-bit Block Cipher
-								89082, #OpenSSL 1.0.2 < 1.0.2g Multiple Vulnerabilities (DROWN)
-								96873, #OpenSSL 1.0.2 < 1.0.2k Multiple Vulnerabilities
-								93815, #OpenSSL 1.0.2 < 1.0.2i Multiple Vulnerabilities
-								78552, #OpenSSL 0.9.8 < 0.9.8zc Multiple Vulnerabilities
-80566, #OpenSSL 0.9.8 < 0.9.8zd Multiple Vulnerabilities
-82030, #OpenSSL 0.9.8 < 0.9.8zf Multiple Vulnerabilities
-84151, #OpenSSL 0.9.8 < 0.9.8zg Multiple Vulnerabilities
-87219, #OpenSSL 0.9.8 < 0.9.8zh X509_ATTRIBUTE Memory Leak DoS
-87222, #OpenSSL 1.0.2 < 1.0.2e Multiple Vulnerabilities
-88530, #OpenSSL 1.0.2 < 1.0.2f Multiple Vulnerabilities
-90891, #OpenSSL 1.0.2 < 1.0.2h Multiple Vulnerabilities
-109945, #OpenSSL 1.0.x < 1.0.2o Multiple Vulnerabilities
-112119, #OpenSSL 1.0.x < 1.0.2p Multiple Vulnerabilities
-104408, #OpenSSL 1.0.x < 1.0.2m RSA/DSA Unspecified Carry Issue
+								11267, #MEDIUM, OpenSSL < 0.9.6j / 0.9.7b Multiple Vulnerabilities
+								12110, #MEDIUM, OpenSSL < 0.9.6m / 0.9.7d Multiple Remote DoS
+								74363, #HIGH, OpenSSL 0.9.8 < 0.9.8za Multiple Vulnerabilities
+								77086, #MEDIUM, OpenSSL 0.9.8 < 0.9.8zb Multiple Vulnerabilities
+								74326, #MEDIUM, OpenSSL 'ChangeCipherSpec' MiTM Potential Vulnerability
+								73412, #MEDIUM, OpenSSL Heartbeat Information Disclosure (Heartbleed)
+								77200, #MEDIUM, OpenSSL 'ChangeCipherSpec' MiTM Vulnerability
+								17757, #CRITICAL, OpenSSL < 0.9.7l / 0.9.8d Multiple Vulnerabilities
+								73404, #MEDIUM, OpenSSL 1.0.1 < 1.0.1g Multiple Vulnerabilities
+								74364, #HIGH, OpenSSL 1.0.1 < 1.0.1h Multiple Vulnerabilities
+								77088, #HIGH, OpenSSL 1.0.1 < 1.0.1i Multiple Vulnerabilities
+								17755, #MEDIUM, OpenSSL < 0.9.7h / 0.9.8a Protocol Version Rollback
+								17756, #MEDIUM, OpenSSL < 0.9.7k / 0.9.8c PKCS Padding RSA Signature Forgery Vulnerability
+								17758, #MEDIUM, OpenSSL < 0.9.7m / 0.9.8e Buffer Overflow (deprecated)
+								17759, #MEDIUM, OpenSSL < 0.9.8 Weak Default Configuration
+								17761, #MEDIUM, OpenSSL 0.9.8 < 0.9.8i Vulnerability
+								17762, #MEDIUM, OpenSSL 0.9.8 < 0.9.8j Vulnerability
+								17763, #LOW, OpenSSL 0.9.8 < 0.9.8k Multiple Vulnerabilities
+								17765, #MEDIUM, OpenSSL < 0.9.8l Multiple Vulnerabilities
+								57459, #HIGH, OpenSSL 0.9.8 < 0.9.8s Multiple Vulnerabilities
+								58799, #HIGH, OpenSSL 0.9.8 < 0.9.8v Vulnerability
+								17760, #HIGH, OpenSSL 0.9.8 < 0.9.8f Multiple Vulnerabilities
+								56996, #MEDIUM, OpenSSL 0.9.8f < 0.9.8h Multiple Vulnerabilities
+								58564, #MEDIUM, OpenSSL 0.9.8 < 0.9.8u Vulnerability
+								59076, #MEDIUM, OpenSSL 0.9.8 < 0.9.8x Vulnerability
+								64532, #LOW, OpenSSL 0.9.8 < 0.9.8y Multiple Vulnerabilities
+								71857, #MEDIUM, OpenSSL 1.0.1 < 1.0.1f Multiple Vulnerabilities
+								78554, #MEDIUM, OpenSSL 1.0.1 < 1.0.1j Multiple Vulnerabilities
+								80568, #MEDIUM, OpenSSL 1.0.1 < 1.0.1k Multiple Vulnerabilities
+								82032, #MEDIUM, OpenSSL 1.0.1 < 1.0.1m Multiple Vulnerabilities
+								84153, #MEDIUM, OpenSSL 1.0.1 < 1.0.1n Multiple Vulnerabilities
+								51892, #MEDIUM, OpenSSL SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG Session Resume Ciphersuite Downgrade Issue
+								17766, #HIGH, OpenSSL < 0.9.8p / 1.0.0b Buffer Overflow
+								17767, #MEDIUM, OpenSSL < 0.9.8p / 1.0.0e Double Free Vulnerability
+								90888, #CRITICAL, OpenSSL 1.0.1 < 1.0.1o Vulnerability
+								93814, #HIGH, OpenSSL 1.0.1 < 1.0.1u Multiple Vulnerabilities
+								89081, #CRITICAL, OpenSSL 1.0.1 < 1.0.1s Multiple Vulnerabilities
+								84636, #MEDIUM, OpenSSL 1.0.1 < 1.0.1p Multiple Vulnerabilities
+								87221, #MEDIUM, OpenSSL 1.0.1 < 1.0.1q Multiple Vulnerabilities
+								88529, #MEDIUM, OpenSSL 1.0.1 < 1.0.1r Vulnerability
+								90890, #MEDIUM, OpenSSL 1.0.1 < 1.0.1t Multiple Vulnerabilities
+								93112, #MEDIUM, OpenSSL < 1.0.2i Default Weak 64-bit Block Cipher (SWEET32)
+								89082, #CRITICAL, OpenSSL 1.0.2 < 1.0.2g Multiple Vulnerabilities
+								96873, #MEDIUM, OpenSSL 1.0.2 < 1.0.2k Multiple Vulnerabilities
+								93815, #HIGH, OpenSSL 1.0.2 < 1.0.2i Multiple Vulnerabilities
+								78552, #MEDIUM, OpenSSL 0.9.8 < 0.9.8zc Multiple Vulnerabilities
+80566, #MEDIUM, OpenSSL 0.9.8 < 0.9.8zd Multiple Vulnerabilities
+82030, #MEDIUM, OpenSSL 0.9.8 < 0.9.8zf Multiple Vulnerabilities
+84151, #MEDIUM, OpenSSL 0.9.8 < 0.9.8zg Multiple Vulnerabilities
+87219, #MEDIUM, OpenSSL 0.9.8 < 0.9.8zh Vulnerability
+87222, #MEDIUM, OpenSSL 1.0.2 < 1.0.2e Multiple Vulnerabilities
+88530, #MEDIUM, OpenSSL 1.0.2 < 1.0.2f Multiple Vulnerabilities
+90891, #MEDIUM, OpenSSL 1.0.2 < 1.0.2h Multiple Vulnerabilities
+109945, #MEDIUM, OpenSSL 1.0.2b < 1.0.2o Vulnerability
+112119, #MEDIUM, OpenSSL 1.0.2 < 1.0.2p Multiple Vulnerabilities
+104408, #MEDIUM, OpenSSL 1.0.2 < 1.0.2m Multiple Vulnerabilities
 							]
 						}
 					end

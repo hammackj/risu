@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -276,8 +276,8 @@ module Risu
 				def risks_by_service_graph(limit=10)
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = sprintf "Top %d Services By Vulnerability", Item.risks_by_service(limit).to_a.count
-					g.sort = false
-					g.marker_count = 1
+					#g.sort = false
+					#g.marker_count = 1
 					g.theme = {
 						:colors => Risu::ALT_GRAPH_COLORS,
 						:background_colors => %w(white white)
@@ -289,15 +289,12 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
-					image.write("risks_by_service_graph.png")
-			
-					return "risks_by_service_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+
+                                        StringIO.new(image.to_blob)
+                                end
 
 				# Generates text for the Risks by Service graph
 				#
@@ -329,11 +326,11 @@ module Risu
 					low = Item.low_risks.count
 					#info = Item.info_risks.count
 
-					if crit == nil then crit = 0 end
-					if high == nil then high = 0 end
-					if medium == nil then medium = 0 end
-					if low == nil then low = 0 end
-					#if info == nil then info = 0 end
+					if crit.nil? then crit = 0 end
+					if high.nil? then high = 0 end
+					if medium.nil? then medium = 0 end
+					if low.nil? then low = 0 end
+					#if info.nil? then info = 0 end
 
 					g.data("Critical", crit)
 					g.data("High", high)
@@ -346,11 +343,8 @@ module Risu
 					#puts image.inspect
 					#puts image.methods
 
-					image.write("risks_by_severity_graph.png")
-
-					return "risks_by_severity_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+                                        StringIO.new(image.to_blob)
+                                end
 
 				# Queries for all DISA Stig findings by category
 				#
@@ -379,9 +373,9 @@ module Risu
 					ii = Item.stig_findings("II").count
 					iii = Item.stig_findings("III").count
 
-					if i == nil then i = 0 end
-					if ii == nil then ii = 0 end
-					if iii == nil then iii = 0 end
+					if i.nil? then i = 0 end
+					if ii.nil? then ii = 0 end
+					if iii.nil? then iii = 0 end
 
 					g.data("Cat I", i)
 					g.data("Cat II", ii)
@@ -389,14 +383,112 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
-					image.write("stigs_severity.png")
-			
-					return "stigs_severity.png"
-					#StringIO.new(image.to_blob)
+
+					StringIO.new(image.to_blob)
+				end
+
+				# Generates a pie chart showing exploitable vs non-exploitable findings
+				#
+				# @return [StringIO] Object containing the generated PNG image
+				def exploitability_graph
+					g = Gruff::Pie.new(GRAPH_WIDTH)
+					g.title = "Exploitability Breakdown"
+					g.sort = false
+					g.theme = {
+						:colors => Risu::GRAPH_COLORS,
+						:background_colors => %w(white white)
+					}
+
+					exploitable = Item.joins("INNER JOIN plugins ON plugins.id = items.plugin_id")
+						.where("plugins.exploit_available = ?", true)
+						.where("items.severity > 0")
+						.where(:rollup_finding => false).count
+
+					not_exploitable = Item.where("severity > 0")
+						.where(:rollup_finding => false).count - exploitable
+
+					g.data("Exploitable (#{exploitable})", exploitable) if exploitable > 0
+					g.data("Not Exploitable (#{not_exploitable})", not_exploitable) if not_exploitable > 0
+
+					image = g.to_image
+					image.format = 'png'
+					StringIO.new(image.to_blob)
+				end
+
+				# Generates a bar chart showing findings by age bracket
+				#
+				# @return [StringIO] Object containing the generated PNG image
+				def findings_by_age_graph
+					g = Gruff::Bar.new(GRAPH_WIDTH)
+					g.title = "Findings by Patch Age"
+					g.sort = false
+					g.marker_count = 1
+					g.theme = {
+						:colors => Risu::ALT_GRAPH_COLORS,
+						:background_colors => %w(white white)
+					}
+
+					today = Date.today
+					brackets = { "<3mo" => 0, "3-6mo" => 0, "6mo-1yr" => 0, "1-3yr" => 0, ">3yr" => 0 }
+
+					Item.where("(severity IN (3, 4) AND rollup_finding = ?) OR (severity = -1 AND real_severity IN (3, 4))", false).select("DISTINCT plugin_id").each do |item|
+						plugin = Plugin.find_by(:id => item.plugin_id)
+						next if plugin.nil? || plugin.vuln_publication_date.nil?
+
+						days = (today - plugin.vuln_publication_date.to_date).to_i
+
+						if days > 1095
+							brackets[">3yr"] += 1
+						elsif days > 365
+							brackets["1-3yr"] += 1
+						elsif days > 180
+							brackets["6mo-1yr"] += 1
+						elsif days > 90
+							brackets["3-6mo"] += 1
+						else
+							brackets["<3mo"] += 1
+						end
+					end
+
+					brackets.each { |label, count| g.data(label, count) }
+
+					image = g.to_image
+					image.format = 'png'
+					StringIO.new(image.to_blob)
+				end
+
+				# Generates a bar chart showing top 10 hosts by finding count
+				#
+				# @return [StringIO] Object containing the generated PNG image
+				def top_hosts_by_finding_count_graph(limit=10)
+					g = Gruff::Bar.new(GRAPH_WIDTH)
+					g.title = "Top #{limit} Hosts by Finding Count"
+					g.sort = false
+					g.marker_count = 1
+					g.theme = {
+						:colors => Risu::GRAPH_COLORS,
+						:background_colors => %w(white white)
+					}
+
+					host_counts = Item.where("severity > 0")
+						.where(:rollup_finding => false)
+						.group(:host_id)
+						.order("count_all DESC")
+						.limit(limit)
+						.count
+
+					host_counts.each do |host_id, count|
+						host = Host.find_by(:id => host_id)
+						next if host.nil?
+						g.data(host.ip || host.name, count)
+					end
+
+					image = g.to_image
+					image.format = 'png'
+					StringIO.new(image.to_blob)
 				end
 
 				# Calculates a vulnerable host percent based on Critical and High findings
@@ -520,8 +612,8 @@ module Risu
 
 					graph_text << "The majority of the critical findings were found on #{host_percent.round}% of the total assessed computers. #{risk_text}\n\n"
 
-					graph_text << "The systems with critical vulnerabilities represent the largest threat to the network, " +
-					"so patching this group is paramount to the overall network security. It only takes one vulnerability " +
+					graph_text << "The systems with critical vulnerabilities represent the largest threat to the network " +
+					"so, patching this group is paramount to the overall network security. It only takes one vulnerability " +
 					"to create a security incident.\n\n"
 
 					graph_text << "It should be noted that low findings and open ports represent the discovery "
@@ -658,9 +750,14 @@ module Risu
 
 				end
 
-				# Scrubs a plugin_name to remove all pointless data
+				# Scrubs a plugin name to remove extraneous annotations
 				#
-				# @return [String] Scrubbed plugin name
+				# Strips parenthetical tags such as "(remote check)", "(remote)",
+				# "(uncredentialed check)", and VMSA identifiers from plugin names.
+				#
+				# @param name [String] the raw plugin name to clean
+				#
+				# @return [String] the cleaned plugin name with annotations removed
 				def scrub_plugin_name name
 
 					#puts "-#{name.inspect}-"
@@ -716,6 +813,11 @@ module Risu
 					return data
 				end
 
+				# Returns raw common patch data as [plugin_id, count] pairs sorted by count descending
+				#
+				# Filters to only include patches with a count greater than zero.
+				#
+				# @return [Array<Array(Integer, Integer)>] sorted pairs of [plugin_id, count]
 				def common_patches_sorted_raw
 					raw = common_patches_order_by_cvss_raw
 
@@ -738,33 +840,44 @@ module Risu
 					return data
 				end
 
-				# Returns an array of plugin_id and plugin_name for the top 10
-				# findings sorted by CVSS score
+				# Returns notable findings sorted by severity, then CVSS score, then count
 				#
-				# @return [Array] Sorted top 10 findings
+				# Excludes Risu Rollup Plugins. Each entry is [plugin_name, count],
+				# ordered by descending severity, then descending CVSS base score,
+				# then descending host count.
+				#
+				# @return [Array<Array(String, Integer)>] sorted pairs of [plugin_name, count]
 				def top_10_sorted
 					raw = notable_order_by_cvss_raw
 					data = Array.new
 
 					raw.each do |vuln|
-						row = Array.new
 						plugin_id = vuln[0]
 						count = vuln[1]
 
-						name = scrub_plugin_name(Plugin.find_by_id(plugin_id).plugin_name)
+						plugin = Plugin.find_by(:id => plugin_id)
+						next if plugin.nil?
 
-						row.push(name)
-						row.push(count)
-						data.push(row)
+						name = scrub_plugin_name(plugin.plugin_name)
+						severity = plugin.risk_factor || "None"
+						cvss = plugin.cvss_base_score.to_f || 0.0
+
+						data.push([name, count, severity, cvss])
 					end
 
-					data = data.sort do |a, b|
-						b[1] <=> a[1]
+					severity_order = { "Critical" => 4, "High" => 3, "Medium" => 2, "Low" => 1, "None" => 0 }
+
+					data = data.sort_by do |row|
+						[-(severity_order[row[2]] || 0), -row[3], -row[1]]
 					end
 
-					return data
+					# Return only name and count for the table
+					data.map { |row| [row[0], row[1]] }
 				end
 
+				# Returns common rollup patches as [plugin_name, count] pairs sorted by count descending
+				#
+				# @return [Array<Array(String, Integer)>] sorted pairs of [plugin_name, count]
 				def common_patches_sorted
 					raw = common_patches_order_by_cvss_raw
 					data = Array.new
@@ -774,7 +887,7 @@ module Risu
 						plugin_id = vuln[0]
 						count = vuln[1]
 
-						name = scrub_plugin_name(Plugin.find_by_id(plugin_id).plugin_name)
+						name = scrub_plugin_name(Plugin.find_by(:id => plugin_id).plugin_name)
 
 						row.push(name)
 						row.push(count)
@@ -788,12 +901,11 @@ module Risu
 					return data
 				end
 
-				# Returns a prawn pdf table for the top 10 notable findings
+				# Renders a Prawn PDF table of the top 10 notable findings
 				#
-				# @TODO change this method to return a array/table and let the template render it
-				# @TODO rename to notable_table also
+				# @param output [Prawn::Document] the PDF document to render the table into
 				#
-				# @param output device to write the table to
+				# @return [void]
 				def top_10_table(output)
 					headers = ["Description", "Count"]
 					header_widths = {0 => (output.bounds.width - 50), 1 => 50}
@@ -806,6 +918,11 @@ module Risu
 					end
 				end
 
+				# Renders a Prawn PDF table of the top 10 common missing patches
+				#
+				# @param output [Prawn::Document] the PDF document to render the table into
+				#
+				# @return [void]
 				def common_patches_table(output)
 					headers = ["Description", "Count"]
 					header_widths = {0 => (output.bounds.width - 50), 1 => 50}

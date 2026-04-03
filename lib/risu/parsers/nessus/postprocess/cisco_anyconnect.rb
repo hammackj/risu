@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,30 +34,30 @@ module Risu
 							:plugin_name => "Missing the latest Cisco AnyConnect Client Patches",
 							:item_name => "Update to the latest Cisco AnyConnect Client",
 							:plugin_ids => [
-								76491, #Cisco AnyConnect Secure Mobility Client 2.x / 3.x < 3.1(5170) Multiple OpenSSL Vulnerabilities
-								81978, #Cisco AnyConnect Secure Mobility Client < 3.1.10010.0 / 4.0.x < 4.0.4014.0 / 4.1.x < 4.1.4011.0 Code Execution Vulnerability
-								86302, #Cisco AnyConnect Secure Mobility Client 3.x < 3.1.11004.0 / 4.x < 4.1.6020.0 Privilege Escalation
-								78676, #Cisco AnyConnect Secure Mobility Client < 3.1(5187) (POODLE)
-								81671, #Cisco AnyConnect Secure Mobility Client < 3.1(6068) XSS
-								82270, #Cisco AnyConnect Secure Mobility Client < 3.1(7021) / <= 4.0(48) Multiple Vulnerabilities (FREAK)
-								85266, #Cisco AnyConnect Secure Mobility Client < 3.1.8009.0 / 4.0.x < 4.0.2052.0 / 4.1.x < 4.1.28.0 Multiple Vulnerabilities
-								85267, #Cisco AnyConnect Secure Mobility Client < 3.1.10010.0 / 4.0.x < 4.0.4013.0 / 4.1.x < 4.1.4011.0 IPC File Write Vulnerability
-								85541, #Cisco AnyConnect Secure Mobility Client 3.x < 3.1.10010.0 / 4.x < 4.1.4011.0 Arbitrary File Write
-								87894, #Cisco AnyConnect Secure Mobility Client 2.x < 3.1.13015.0 / 4.x < 4.2.1035.0 Arbitrary File Manipulation
-								88100, #Cisco AnyConnect Secure Mobility Client < 3.1.13015.0 / 4.2.x < 4.2.1035.0 Multiple OpenSSL Vulnerabilities
-								54954, #Cisco AnyConnect Secure Mobility Client < 2.3.254 Multiple Vulnerabilities
-								59820, #Cisco AnyConnect Secure Mobility Client VPN Downloader RCE (cisco-sa-20120620-ac)
-								93382, #Cisco AnyConnect Secure Mobility Client 4.2.x < 4.2.5015.0 / 4.3.x < 4.3.2039.0 Privilege Escalation Vulnerability
-								71464, #Cisco AnyConnect Secure Mobility Client 2.x / 3.x < 3.0(629) ATL Buffer Overflow
-								95951, #Cisco AnyConnect Secure Mobility Client 3.1.x < 4.3.4019.0 / 4.4.x < 4.4.225.0 Privilege Escalation
-								100790, #Cisco AnyConnect Secure Mobility Client < 4.4.02034 Local Privilege Escalation
-								139411, #Cisco AnyConnect Secure Mobility Client for Windows Multiple Vulnerablities
-								144945, #Cisco AnyConnect Secure Mobility Client for Windows DLL Injection (cisco-sa-anyconnect-dll-injec- pQnryXLf)
-								149448, #Cisco AnyConnect Secure Mobility Client for Windows DLL and Executable Hijacking Vulnerabilities (cisco-sa-anyconnect-code-exec-jR3tWTA6)
-								110563, #Cisco AnyConnect Secure Mobility Client < 4.6.01098 Certificate Bypass Vulnerability
-								134164, #Cisco AnyConnect Secure Mobility Client for Windows Uncontrolled Search Path Vulnerability
-								148450, #Cisco AnyConnect Secure Mobility Client DoS (cisco-sa-anyconnect-dos-55AYyxYr)
-								150811, #Cisco AnyConnect Secure Mobility Client for Windows with VPN Posture (HostScan) Module DLL
+								76491, #MEDIUM, Cisco AnyConnect Secure Mobility Client 2.x / 3.x < 3.1(5170) Multiple OpenSSL Vulnerabilities
+								81978, #HIGH, Cisco AnyConnect Secure Mobility Client < 3.1.10010.0 / 4.0.x < 4.0.4014.0 / 4.1.x < 4.1.4011.0 Code Execution Vulnerability
+								86302, #HIGH, Cisco AnyConnect Secure Mobility Client 3.x < 3.1.11004.0 / 4.x < 4.1.6020.0 Privilege Escalation
+								78676, #MEDIUM, Cisco AnyConnect Secure Mobility Client < 3.1(5187) (POODLE)
+								81671, #MEDIUM, Cisco AnyConnect Secure Mobility Client < 3.1(6068) XSS
+								82270, #MEDIUM, Cisco AnyConnect Secure Mobility Client < 3.1(7021) / <= 4.0(48) Multiple Vulnerabilities (FREAK)
+								85266, #MEDIUM, Cisco AnyConnect Secure Mobility Client < 3.1.8009.0 / 4.0.x < 4.0.2052.0 / 4.1.x < 4.1.28.0 Multiple Vulnerabilities
+								85267, #MEDIUM, Cisco AnyConnect Secure Mobility Client < 3.1.10010.0 / 4.0.x < 4.0.4013.0 / 4.1.x < 4.1.4011.0 IPC File Write Vulnerability
+								85541, #MEDIUM, Cisco AnyConnect Secure Mobility Client 3.x < 3.1.10010.0 / 4.x < 4.1.4011.0 Arbitrary File Write
+								87894, #MEDIUM, Cisco AnyConnect Secure Mobility Client 2.x < 3.1.13015.0 / 4.x < 4.2.1035.0 Arbitrary File Manipulation
+								88100, #MEDIUM, Cisco AnyConnect Secure Mobility Client < 3.1.13015.0 / 4.2.x < 4.2.1035.0 Multiple OpenSSL Vulnerabilities
+								54954, #HIGH, Cisco AnyConnect Secure Mobility Client < 2.3.254 Multiple Vulnerabilities
+								59820, #HIGH, Cisco AnyConnect Secure Mobility Client VPN Downloader RCE (cisco-sa-20120620-ac)
+								93382, #HIGH, Cisco AnyConnect Secure Mobility Client 4.2.x < 4.2.5015.0 / 4.3.x < 4.3.2039.0 Privilege Escalation Vulnerability
+								71464, #MEDIUM, Cisco AnyConnect Secure Mobility Client 2.x / 3.x < 3.0(629) ATL Buffer Overflow
+								95951, #HIGH, Cisco AnyConnect Secure Mobility Client 3.1.x < 4.3.4019.0 / 4.4.x < 4.4.225.0 Privilege Escalation
+								100790, #HIGH, Cisco AnyConnect Secure Mobility Client < 4.4.02034 Local Privilege Escalation
+								139411, #MEDIUM, Cisco AnyConnect Secure Mobility Client for Windows DoS
+								144945, #HIGH, Cisco AnyConnect Secure Mobility Client for Windows DLL Injection (cisco-sa-anyconnect-dll-injec-pQnryXLf)
+								149448, #HIGH, Cisco AnyConnect Secure Mobility Client for Windows DLL and Executable Hijacking Vulnerabilities (cisco-sa-anyconnect-code-exec-jR3tWTA6)
+								110563, #MEDIUM, Cisco AnyConnect Secure Mobility Client < 4.6.01098 Certificate Bypass Vulnerability
+								134164, #MEDIUM, Cisco AnyConnect Secure Mobility Client for Windows Uncontrolled Search Path Vulnerability
+								148450, #MEDIUM, Cisco AnyConnect Secure Mobility Client DoS (cisco-sa-anyconnect-dos-55AYyxYr)
+								150811, #MEDIUM, Cisco AnyConnect Secure Mobility Client for Windows with VPN Posture (HostScan) Module DLL Hijacking Vulnerability (cisco-sa-anyconnect-pos-dll-ff8j6dFv)
 																								
 							]
 						}

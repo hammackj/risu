@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -72,7 +72,7 @@ module Risu
 					@hosts_passed.each do |host_prop|
 						host = host_prop.host
 						text "#{host.ip} / #{host.fqdn} - passed\n"
-					end unless @hosts_passed == nil
+					end unless @hosts_passed.nil?
 
 					output.start_new_page
 				end
@@ -100,7 +100,7 @@ module Risu
 
 						text "\n"
 
-					end unless @hosts_failed == nil
+					end unless @hosts_failed.nil?
 
 					output.start_new_page
 				end

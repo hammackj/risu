@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,44 +34,44 @@ module Risu
 							:plugin_name => "Missing the latest Oracle Database Patches",
 							:item_name => "Update to the latest Oracle Database",
 							:plugin_ids => [
-								45625,
-								56051,
-								56052,
-								56053,
-								56056,
-								56066,
-								50652,
-								47718,
-								45626,
-								51573,
-								53897,
-								56054,
-								56055,
-								56057,
-								56058,
-								56060,
-								56064,
-								56065,
-								56059,
-								56061,
-								56062,
-								56063,
-								56653,
-								57589,
-								55632,
-								11227,
-								10848,
-								10851,
-								11223,
-								11224,
-								11226,
-								10852,
-								55786,
-								84822,
-								82903,
-								80906,
-								78540,
-								72982,
+								45625, #CRITICAL, Oracle Database Multiple Vulnerabilities (January 2010 CPU)
+								56051, #CRITICAL, Oracle Database Multiple Vulnerabilities (January 2006 CPU)
+								56052, #CRITICAL, Oracle Database Multiple Vulnerabilities (April 2006 CPU)
+								56053, #CRITICAL, Oracle Database Multiple Vulnerabilities (July 2006 CPU)
+								56056, #CRITICAL, Oracle Database Multiple Vulnerabilities (April 2007 CPU)
+								56066, #CRITICAL, Oracle Database Multiple Vulnerabilities (October 2009 CPU)
+								50652, #HIGH, Oracle Database Multiple Vulnerabilities (October 2010 CPU)
+								47718, #HIGH, Oracle Database Multiple Vulnerabilities (July 2010 CPU)
+								45626, #HIGH, Oracle Database Multiple Vulnerabilities (April 2010 CPU)
+								51573, #HIGH, Oracle Database Multiple Vulnerabilities (January 2011 CPU)
+								53897, #HIGH, Oracle Database Multiple Vulnerabilities (April 2011 CPU)
+								56054, #HIGH, Oracle Database Multiple Vulnerabilities (October 2006 CPU)
+								56055, #HIGH, Oracle Database Multiple Vulnerabilities (January 2007 CPU)
+								56057, #HIGH, Oracle Database Multiple Vulnerabilities (July 2007 CPU)
+								56058, #HIGH, Oracle Database Multiple Vulnerabilities (October 2007 CPU)
+								56060, #HIGH, Oracle Database Multiple Vulnerabilities (April 2008 CPU)
+								56064, #HIGH, Oracle Database Multiple Vulnerabilities (April 2009 CPU)
+								56065, #HIGH, Oracle Database Multiple Vulnerabilities (July 2009 CPU)
+								56059, #MEDIUM, Oracle Database Multiple Vulnerabilities (January 2008 CPU)
+								56061, #MEDIUM, Oracle Database Multiple Vulnerabilities (July 2008 CPU)
+								56062, #MEDIUM, Oracle Database Multiple Vulnerabilities (October 2008 CPU)
+								56063, #MEDIUM, Oracle Database Multiple Vulnerabilities (January 2009 CPU)
+								56653, #HIGH, Oracle Database Multiple Vulnerabilities (October 2011 CPU)
+								57589, #MEDIUM, Oracle Database Multiple Vulnerabilities (January 2012 CPU)
+								55632, #HIGH, Oracle Database Multiple Vulnerabilities (July 2011 CPU)
+								11227, #HIGH, Oracle 9iAS Default SOAP Configuration Unauthorized Application Deployment
+								10848, #MEDIUM, Oracle 9iAS DMS / JPM Pages Anonymous Access
+								10851, #MEDIUM, Oracle 9iAS Java Process Manager /oprocmgr-status Anonymous Process Manipulation
+								11223, #MEDIUM, Oracle 9iAS soapdocs Directory Remote Information Disclosure
+								11224, #MEDIUM, Oracle 9iAS XSQLServlet soapConfig.xml Authentication Credentials Disclosure
+								11226, #MEDIUM, Oracle 9iAS Nonexistent .jsp File Request Error Message Path Disclosure
+								10852, #MEDIUM, Oracle 9iAS _pages Directory Compiled JSP Source Disclosure
+								55786, #CRITICAL, Oracle Database Unsupported Version Detection
+								84822, #HIGH, Oracle Database Multiple Vulnerabilities (July 2015 CPU)
+								82903, #HIGH, Oracle Database Multiple Vulnerabilities (April 2015 CPU)
+								80906, #HIGH, Oracle Database Multiple Vulnerabilities (January 2015 CPU)
+								78540, #HIGH, Oracle Database Multiple Vulnerabilities (October 2014 CPU)
+								72982, #CRITICAL, Oracle RDBMS Patchset Out of Date (credentialed check)
 
 
 

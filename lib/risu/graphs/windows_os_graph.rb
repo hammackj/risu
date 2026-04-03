@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,8 @@ module Risu
 			def graph
         g = Gruff::Pie.new(GRAPH_WIDTH)
         g.title = "Windows Operating Systems By Percentage"
-        g.sort = false
-        g.marker_count = 1
+        #g.sort = false
+        #g.marker_count = 1
         g.theme = {
           :colors => Risu::GRAPH_COLORS,
           :background_colors => %w(white white)
@@ -63,10 +63,7 @@ module Risu
         #puts image.inspect
         #puts image.methods
 
-        image.write("TopVulnGraph.png")
-
-        return "TopVulnGraph.png"
-        #StringIO.new(image.to_blob)
+        StringIO.new(image.to_blob)
       end
 
       def text

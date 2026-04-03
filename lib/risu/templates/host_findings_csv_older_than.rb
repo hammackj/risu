@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -52,16 +52,16 @@ module Risu
 
 						host = Host.where(:id => item.host_id).first
 
-						solution = plugin.solution.gsub("\n", " ").gsub(",", "")
+						solution = plugin.solution ? plugin.solution.gsub("\n", " ").gsub(",", ";") : ""
                         vuln_publication_date = plugin.vuln_publication_date
 
                         date_older_than = is_older_than(vuln_publication_date)
 						
-						mac_address = ""
+						mac_address = String.new
 
                         plugin_name = flatten item.plugin_name
 
-						if host.mac != nil
+						if !host.mac.nil?
 							mac_address = host.mac.gsub("\n", " ").gsub(",", "")
 						else
 							mac_address = "FF:FF:FF:FF:FF:FF"
@@ -74,7 +74,7 @@ module Risu
 
             def is_older_than(date)
 
-                if date == nil
+                if date.nil?
                     return nil
                 end
 
@@ -89,7 +89,7 @@ module Risu
 
 			# Flattens CVS output removing newlines and commas
 			def flatten text
-				if text == nil
+				if text.nil?
 					return nil
 				end
 

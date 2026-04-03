@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,14 +34,15 @@ module Risu
 							:plugin_name => "Missing the latest 7-Zip Patches",
 							:item_name => "Update to the latest 7-Zip",
 							:plugin_ids => [
-91230, #7-Zip < 16.00 Multiple Vulnerabilities
-109730, #7-Zip < 18.05 Memory Corruption Arbitrary Code Execution
-109799, #7-Zip < 16.03 NULL Pointer Dereference DoS
-109800, #7-Zip < 18.00 Multiple Vulnerabilities
+91230, #HIGH, 7-Zip < 16.00 Multiple Vulnerabilities
+109730, #MEDIUM, 7-Zip < 18.05 Memory Corruption Arbitrary Code Execution
+109799, #MEDIUM, 7-Zip < 16.03 NULL Pointer Dereference DoS
+109800, #MEDIUM, 7-Zip < 18.00 Multiple Vulnerabilities
 180360, #HIGH, 7-Zip < 23.00 Multiple Vulnerabilities
 211725, #HIGH, 7-Zip < 24.07 RCE (ZDI-24-1532)
 214542, #HIGH, 7-Zip < 24.09 (ZDI-25-045)
 209231, #HIGH, 7-Zip < 24.01 Heap-based Buffer Overflow
+242639, #MEDIUM, 7-Zip < 25.00
 							]
 						}
 					end

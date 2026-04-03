@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,8 +34,8 @@ module Risu
 							:plugin_name => "Missing the latest SigPlus Pro Patches",
 							:item_name => "Update to the latest SigPlus Pro",
 							:plugin_ids => [
-								51895,
-								51894,
+								51895, #HIGH, SigPlus Pro ActiveX Control < 4.29 Multiple Vulnerabilities
+								51894, #HIGH, SigPlus Pro ActiveX Control LCDWriteString() Method HexString Parameter Overflow
 
 
 

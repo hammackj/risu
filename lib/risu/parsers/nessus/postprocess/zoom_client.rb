@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,16 +34,16 @@ module Risu
 							:plugin_name => "Missing the latest Zoom Client for Meetings",
 							:item_name => "Update to the latest Zoom Client for Meetings",
 							:plugin_ids => [
-135188, #Zoom Client for Meetings < 4.6.19253.0401 Multiple Vulnerabilities
-168792, #Zoom Client for Meetings < 5.12.2 Vulnerability (ZSB-22024)
-168821, #Zoom Client for Meetings < 5.3.0 Vulnerability (ZSB-21003)
-177219, #Zoom Client for Meetings < 5.14.0 Vulnerability (ZSB-23013)
-177223, #Zoom Client for Meetings < 5.14.0 Vulnerability (ZSB-23015)
-168797, #Zoom Client for Meetings < 5.8.4 Vulnerability (ZSB-21019)
-168807, #Zoom Client for Meetings < 5.6.3 Vulnerability (ZSB-22002)
-168816, #Zoom Client for Meetings < 5.6.3 Vulnerability (ZSB-21002)
-174469, #Zoom Client for Meetings < 5.13.3 Vulnerability / Zoom VDI < 5.13.1 Information Disclosure (ZSB-23001)
-158168, #Zoom Client < 5.8.4 Multiple Vulnerabilities
+135188, #CRITICAL, Zoom Client for Meetings < 4.6.19253.0401 Multiple Vulnerabilities
+168792, #CRITICAL, Zoom Client for Meetings < 5.12.2 Vulnerability (ZSB-22024)
+168821, #CRITICAL, Zoom Client for Meetings < 5.3.0 Vulnerability (ZSB-21003)
+177219, #HIGH, Zoom Client for Meetings < 5.14.0 Vulnerability (ZSB-23013)
+177223, #HIGH, Zoom Client for Meetings < 5.14.0 Vulnerability (ZSB-23015)
+168797, #HIGH, Zoom Client for Meetings < 5.8.4 Vulnerability (ZSB-21019)
+168807, #HIGH, Zoom Client for Meetings < 5.6.3 Vulnerability (ZSB-22002)
+168816, #HIGH, Zoom Client for Meetings < 5.6.3 Vulnerability (ZSB-21002)
+174469, #HIGH, Zoom VDI Meeting Client < 5.13.1 Vulnerability (ZSB-23001)
+158168, #HIGH, Zoom Client < 5.8.4 Multiple Vulnerabilities
 184369, #CRITICAL, Zoom Client for Meetings < 5.15.2 Vulnerability (ZSB-23038)
 184371, #CRITICAL, Zoom Client for Meetings < 5.14.7 Vulnerability (ZSB-23032)
 184379, #CRITICAL, Zoom Client for Meetings < 5.14.7 Vulnerability (ZSB-23030)

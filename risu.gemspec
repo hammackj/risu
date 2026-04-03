@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2024 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -45,16 +45,20 @@ Gem::Specification.new do |s|
 	#s.cert_chain  = ['certs/hammackj.pem']
 	#s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 
-	s.add_runtime_dependency 'rails', '~> 6.1', '>= 6.1.1'
-	s.add_runtime_dependency 'libxml-ruby', '~> 2.9', '>= 2.9.0'
-	s.add_runtime_dependency 'prawn', '~> 2.1', '>= 2.1.0'
+	s.add_runtime_dependency 'activerecord', '~> 7.2'
+	s.add_runtime_dependency 'activesupport', '~> 7.2'
+	s.add_runtime_dependency 'prawn', '~> 2.4'
 	s.add_runtime_dependency 'prawn-table', '~> 0.2', '>= 0.2.2'
-	s.add_runtime_dependency 'gruff', '~> 0.19', '>= 0.19.0'
-	#s.add_runtime_dependency 'mysql2', '~> 0.5', '>= 0.5.2'
-	s.add_runtime_dependency 'rmagick', '~> 5.2', '>= 5.2.0'
-	s.add_runtime_dependency 'sqlite3', '~> 1.3', '>= 1.3.11'
-	s.add_runtime_dependency 'nokogiri', '~> 1.7', '>= 1.7.0.1'
-	s.add_runtime_dependency 'concurrent-ruby', '1.3.4'
+	s.add_runtime_dependency 'gruff', '~> 0.29'
+	s.add_runtime_dependency 'rmagick', '~> 5.5'
+	s.add_runtime_dependency 'sqlite3', '~> 1.7'
+	s.add_runtime_dependency 'nokogiri', '~> 1.16'
+	s.add_runtime_dependency 'concurrent-ruby', '~> 1.3'
+	s.add_runtime_dependency 'matrix', '~> 0.4'
+	s.add_runtime_dependency 'mutex_m'
+	s.add_runtime_dependency 'drb'
+	s.add_runtime_dependency 'irb'
+	s.add_runtime_dependency 'csv'
 
 	s.add_development_dependency 'simplecov', '~> 0.15', '>= 0.15'
 	s.add_development_dependency 'yard', '~> 0.9', '>= 0.9.20'

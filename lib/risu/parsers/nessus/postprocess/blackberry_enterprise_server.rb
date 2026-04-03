@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,14 +34,14 @@ module Risu
 							:plugin_name => "Missing the latest Black Berry Enterprise Server Patches",
 							:item_name => "Update to the latest Black Berry Enterprise Server",
 							:plugin_ids => [
-								50071, #BlackBerry Enterprise Server / Attachment Service PDF Distiller Buffer Overflow (KB24547)
-								51191, #BlackBerry Enterprise Server / Attachment Service PDF Distiller Buffer Overflow (KB24761)
-								51527, #BlackBerry Enterprise Server / Attachment Service PDF Distiller Buffer Overflow (KB25382)
-								55819, #BlackBerry Enterprise Server PNG and TIFF Image Processing Vulnerabilities (KB27244)
-								55670, #BlackBerry Enterprise Server Administration API Unspecified Remote Vulnerability (KB27258)
-								53829, #BlackBerry Enterprise Server Web Desktop Manager XSS (KB26296)
-								72583, #BlackBerry Enterprise Server / Enterprise Service / Enterprise Server Express Information Disclosure (KB35647)
-								77327, #BlackBerry Enterprise Server / Enterprise Service / Enterprise Server Express Information Disclosure (KB36175)
+								50071, #HIGH, BlackBerry Enterprise Server / Attachment Service PDF Distiller Buffer Overflow (KB24547)
+								51191, #HIGH, BlackBerry Enterprise Server / Attachment Service PDF Distiller Buffer Overflow (KB24761)
+								51527, #HIGH, BlackBerry Enterprise Server / Attachment Service PDF Distiller Buffer Overflow (KB25382)
+								55819, #CRITICAL, BlackBerry Enterprise Server PNG and TIFF Image Processing Vulnerabilities (KB27244)
+								55670, #MEDIUM, BlackBerry Enterprise Server Administration API Unspecified Remote Vulnerability (KB27258)
+								53829, #LOW, BlackBerry Enterprise Server Web Desktop Manager XSS (KB26296)
+								72583, #MEDIUM, BlackBerry Enterprise Server / Enterprise Service / Enterprise Server Express Information Disclosure (KB35647)
+								77327, #MEDIUM, BlackBerry Enterprise Server / Enterprise Service / Enterprise Server Express Information Disclosure (KB36175)
 							]
 						}
 					end

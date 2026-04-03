@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -40,16 +40,14 @@ module Risu
 					parser = nil
 
 					if File.exist?(@document)
-						parser = LibXML::XML::Parser.file @document
-					elsif @document.class == "String"
-						parser = LibXML::XML::Parser.string @document
+						doc = Nokogiri::XML(File.open(@document))
+					elsif @document.is_a?(String)
+						doc = Nokogiri::XML(@document)
 					else
 						return false
 					end
 
-					doc = parser.parse
-
-					if doc.root.name == nil
+					if doc.root.nil? || doc.root.name.nil?
 						return false
 					end
 
@@ -64,13 +62,11 @@ module Risu
 
 				# Invokes the SAX parser on the XML document
 				def parse
-					@parser = LibXML::XML::SaxParser.file @document
-					@parser.callbacks = NessusSaxListener.new
-					@parser.parse
+					listener = NessusSaxListener.new
+					@parser = Nokogiri::XML::SAX::Parser.new(listener)
+					@parser.parse_file @document
 
-					#require 'pry'
-					#binding.pry
-					@new_tags == @parser.callbacks.new_tags
+					@new_tags == listener.new_tags
 				end
 
 				# Fixes the ip field if nil and replaces it with the name if its an ip
@@ -78,7 +74,7 @@ module Risu
 					@hosts = Host.all
 
 					@hosts.each do |host|
-						if host.ip == nil
+						if host.ip.nil?
 							begin
 								ip = IPAddr.new host.name
 								host.ip = ip.to_string

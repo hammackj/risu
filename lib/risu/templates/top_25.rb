@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -79,13 +79,13 @@ module Risu
 
 					assets = 0
 
-					if Item.where(:plugin_id => plugin.id).group(:host_id) != nil
+					if !Item.where(:plugin_id => plugin.id).group(:host_id).nil?
 						assets = Item.where(:plugin_id => plugin.id).group(:host_id).to_a.count
 					end
 
 					# vuln_pub_days = 1
 
-					# vuln_pub_days = (DateTime.now.to_date - plugin.vuln_publication_date.to_date).to_i if plugin.vuln_publication_date != nil
+					# vuln_pub_days = (DateTime.now.to_date - plugin.vuln_publication_date.to_date).to_i if !plugin.vuln_publication_date.nil?
 
 					# risk = (plugin.cvss_base_score.to_f * vuln_pub_days)  * assets
 					risk = plugin.risk_score

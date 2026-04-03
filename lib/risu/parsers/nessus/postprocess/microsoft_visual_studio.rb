@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ module Risu
 							:plugin_name => "Missing the latest Microsoft Visual Studio",
 							:item_name => "Update to the latest Microsoft Visual Studio",
 							:plugin_ids => [
-                                121065, #Security Updates for Microsoft Visual Studio Products (January 2019)
+                                121065, #HIGH, Security Updates for Microsoft Visual Studio Products (January 2019)
 							]
 						}
 					end

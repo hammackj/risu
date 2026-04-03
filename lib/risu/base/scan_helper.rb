@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,13 @@ module Risu
 	module Templates
 		module ScanHelper
 
+			# Parses Nessus plugin output text into a normalized hash of key/value pairs.
+			# Each line is expected to be in "Key: Value" format; keys are downcased and
+			# spaces are replaced with underscores.
 			#
-			# TODO doc
+			# @param plugin_output [String] raw plugin output text from a Nessus finding
+			#
+			# @return [Hash{String => String}] parsed key/value pairs
 			def scan_info_to_hash plugin_output
 				scan_info = {}
 
@@ -45,22 +50,20 @@ module Risu
 				return scan_info
 			end
 
-			# TODO doc
+			# Counts the number of authenticated and unauthenticated scan targets based
+			# on the Credentialed_Scan host property set by Nessus.
 			#
+			# @return [Hash{String => Integer}] hash with "auth" and "unauth" counts
 			def authenticated_count
 				count = {}
 				count["auth"] = 0
 				count["unauth"] = 0
 
-				Item.where(:plugin_id => 19506).each do |item|
-					scan_info = scan_info_to_hash (item.plugin_output)
-
-					auth = scan_info["credentialed_checks"]
-
-					if auth =~ /yes/
-						count["auth"] = count["auth"] + 1
+				HostProperty.where(:name => "Credentialed_Scan").each do |prop|
+					if prop.value == "true"
+						count["auth"] += 1
 					else
-						count["unauth"] = count["unauth"] + 1
+						count["unauth"] += 1
 					end
 				end
 

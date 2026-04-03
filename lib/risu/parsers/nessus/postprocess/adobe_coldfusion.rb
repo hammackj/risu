@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,9 +34,9 @@ module Risu
 							:plugin_name => "Missing the latest Adobe Coldfusion Patches",
 							:item_name => "Update to the latest Adobe Coldfusion",
 							:plugin_ids => [
-								64689, #Adobe ColdFusion Authentication Bypass (APSB13-03)
-								72091, #Adobe ColdFusion Unsupported Version Detection
-								99731, #Adobe ColdFusion BlazeDS Java Object Deserialization RCE
+								64689, #CRITICAL, Adobe ColdFusion Authentication Bypass (APSB13-03)
+								72091, #CRITICAL, Adobe ColdFusion Unsupported Version Detection
+								99731, #CRITICAL, Adobe ColdFusion BlazeDS Java Object Deserialization RCE
 							]
 						}
 					end

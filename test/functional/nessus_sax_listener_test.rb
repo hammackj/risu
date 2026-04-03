@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -28,9 +28,9 @@ class NessusSaxListenerTest < ActiveSupport::TestCase
 			setup_test_database (false)
 			xml = build_nessus_xml "HOST_END", "Thu Jul 7 14:49:31 2011"
 
-			@parser = LibXML::XML::SaxParser.string xml
-			@parser.callbacks = Risu::Parsers::Nessus::NessusSaxListener.new
-			@parser.parse
+			listener = Risu::Parsers::Nessus::NessusSaxListener.new
+			@parser = Nokogiri::XML::SAX::Parser.new(listener)
+			@parser.parse(xml)
 	end
 
 	#Expand this to cover the entire Nessus xml spec

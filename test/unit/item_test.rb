@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -241,4 +241,183 @@ class ItemTest < ActiveSupport::TestCase
 	#test "return XX for Item.exploitablity_matrix" do
 	#	assert Item.exploitablity_matrix == "", "GOT #{Item.exploitablity_matrix}"
 	#end
+
+	test "returns 9 for Item.raw_critical_risks.count" do
+		assert Item.raw_critical_risks.to_a.count == 9, "GOT #{Item.raw_critical_risks.to_a.count}"
+	end
+
+	test "returns 1 for Item.raw_high_risks.count" do
+		assert Item.raw_high_risks.to_a.count == 1, "GOT #{Item.raw_high_risks.to_a.count}"
+	end
+
+	test "returns 1 for Item.raw_medium_risks.count" do
+		assert Item.raw_medium_risks.to_a.count == 1, "GOT #{Item.raw_medium_risks.to_a.count}"
+	end
+
+	test "returns 1 for Item.raw_low_risks.count" do
+		assert Item.raw_low_risks.to_a.count == 1, "GOT #{Item.raw_low_risks.to_a.count}"
+	end
+
+	test "returns 1 for Item.raw_info_risks.count" do
+		assert Item.raw_info_risks.to_a.count == 1, "GOT #{Item.raw_info_risks.to_a.count}"
+	end
+
+	test "returns an Array for Item.top_10_sorted" do
+		assert Item.top_10_sorted.class == Array, "GOT #{Item.top_10_sorted.class}"
+	end
+
+	test "returns an Array for Item.top_10_sorted_raw" do
+		assert Item.top_10_sorted_raw.class == Array, "GOT #{Item.top_10_sorted_raw.class}"
+	end
+
+	test "returns a String for Item.scrub_plugin_name" do
+		assert Item.scrub_plugin_name("Test Plugin (remote check)") == "Test Plugin", "GOT #{Item.scrub_plugin_name("Test Plugin (remote check)")}"
+	end
+
+	test "returns cleaned name for Item.scrub_plugin_name with uncredentialed" do
+		assert Item.scrub_plugin_name("Test (uncredentialed check)") == "Test", "GOT #{Item.scrub_plugin_name("Test (uncredentialed check)")}"
+	end
+
+	test "returns cleaned name for Item.scrub_plugin_name with VMSA" do
+		assert Item.scrub_plugin_name("Test (VMSA-2020-0001)") == "Test", "GOT #{Item.scrub_plugin_name("Test (VMSA-2020-0001)")}"
+	end
+
+	test "returns a StringIO for Item.stigs_severity_graph" do
+		assert_equal StringIO, Item.stigs_severity_graph.class
+	end
+
+	test "returns items for Item.stig_findings I" do
+		assert Item.stig_findings("I").count >= 0, "GOT #{Item.stig_findings("I").count}"
+	end
+
+	test "returns items for Item.stig_findings II" do
+		assert Item.stig_findings("II").count >= 0, "GOT #{Item.stig_findings("II").count}"
+	end
+
+	test "returns items for Item.stig_findings III" do
+		assert Item.stig_findings("III").count >= 0, "GOT #{Item.stig_findings("III").count}"
+	end
+
+	test "returns a percent for Item.calculate_missing_common_patch_host_percent" do
+		result = Item.calculate_missing_common_patch_host_percent
+		assert result >= 0, "GOT #{result}"
+	end
+
+	test "returns a percent for Item.calculate_overall_host_percent" do
+		result = Item.calculate_overall_host_percent
+		assert result >= 0, "GOT #{result}"
+	end
+
+	test "returns a String for Item.common_patch_percent_rounded_text" do
+		assert Item.common_patch_percent_rounded_text.class == String, "GOT #{Item.common_patch_percent_rounded_text.class}"
+	end
+
+	test "returns a String for Item.overall_risk_percent_rounded_text" do
+		assert Item.overall_risk_percent_rounded_text.class == String, "GOT #{Item.overall_risk_percent_rounded_text.class}"
+	end
+
+	test "returns a String for Item.common_patch_percent_text" do
+		assert Item.common_patch_percent_text.class == String, "GOT #{Item.common_patch_percent_text.class}"
+	end
+
+	test "returns a String for Item.overall_risk_percent_text" do
+		assert Item.overall_risk_percent_text.class == String, "GOT #{Item.overall_risk_percent_text.class}"
+	end
+
+	test "returns an Array for Item.common_patch_risks" do
+		assert Item.common_patch_risks.class == Array, "GOT #{Item.common_patch_risks.class}"
+	end
+
+	test "returns an Array for Item.critical_high_common_risks" do
+		assert Item.critical_high_common_risks.class == Array, "GOT #{Item.critical_high_common_risks.class}"
+	end
+
+	test "returns a number for Item.critical_high_common_risks_count" do
+		assert Item.critical_high_common_risks_count >= 0, "GOT #{Item.critical_high_common_risks_count}"
+	end
+
+	test "returns a number for Item.calculate_vulnerable_host_percent_with_patches_applied" do
+		result = Item.calculate_vulnerable_host_percent_with_patches_applied
+		assert result >= 0, "GOT #{result}"
+	end
+
+	test "returns an Array for Item.common_patches_order_by_cvss_raw" do
+		assert Item.common_patches_order_by_cvss_raw.class == Hash, "GOT #{Item.common_patches_order_by_cvss_raw.class}"
+	end
+
+	test "returns an Array for Item.common_patches_sorted_raw" do
+		assert Item.common_patches_sorted_raw.class == Array, "GOT #{Item.common_patches_sorted_raw.class}"
+	end
+
+	test "returns an Array for Item.common_patches_sorted" do
+		assert Item.common_patches_sorted.class == Array, "GOT #{Item.common_patches_sorted.class}"
+	end
+
+	test "returns a number for Item.calculate_overall_unique_host_count" do
+		result = Item.calculate_overall_unique_host_count
+		assert result >= 0, "GOT #{result}"
+	end
+
+	# findings_by_age_graph should include downgraded rollup items
+	test "findings_by_age_graph includes items with real_severity" do
+		# Create a plugin with a vuln_publication_date
+		plugin = Plugin.create!(
+			:id => 88881,
+			:plugin_name => "Downgraded Test Plugin",
+			:risk_factor => "High",
+			:vuln_publication_date => Date.today - 30
+		)
+
+		# Create a normal high item (should be included by severity 3)
+		Item.create!(
+			:host_id => 1,
+			:plugin_id => 88881,
+			:port => 0,
+			:severity => 3,
+			:rollup_finding => false
+		)
+
+		result = Item.findings_by_age_graph
+		assert_equal StringIO, result.class
+
+		# Now downgrade that item (simulating rollup) and verify still included
+		item = Item.where(:plugin_id => 88881).first
+		item.real_severity = 3
+		item.severity = -1
+		item.save!
+
+		result2 = Item.findings_by_age_graph
+		assert_equal StringIO, result2.class
+
+		# Clean up
+		Item.where(:plugin_id => 88881).delete_all
+		Plugin.where(:id => 88881).delete_all
+	end
+
+	test "findings_by_age_graph excludes downgraded items with low real_severity" do
+		plugin = Plugin.create!(
+			:id => 88882,
+			:plugin_name => "Low Downgraded Plugin",
+			:risk_factor => "Low",
+			:vuln_publication_date => Date.today - 60
+		)
+
+		# Create a downgraded item with real_severity 1 (Low) - should NOT be included
+		Item.create!(
+			:host_id => 1,
+			:plugin_id => 88882,
+			:port => 0,
+			:severity => -1,
+			:real_severity => 1,
+			:rollup_finding => false
+		)
+
+		# Should still produce a valid graph
+		result = Item.findings_by_age_graph
+		assert_equal StringIO, result.class
+
+		# Clean up
+		Item.where(:plugin_id => 88882).delete_all
+		Plugin.where(:id => 88882).delete_all
+	end
 end

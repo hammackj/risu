@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@ module Risu
 					hosts = Host.where("ip is not NULL").order("ip").to_a
 
 					hosts.each do |host|
-						ips << host.ip if host.ip != nil
+						ips << host.ip if !host.ip.nil?
 					end
 
 					ips.join("\n")
@@ -418,12 +418,16 @@ module Risu
 					where("os NOT LIKE '%Mac OS X%'")
 				end
 
-				#@TODO comment
+				# Queries for all hosts with an AIX based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def os_aix
 					where("os LIKE '%AIX%'")
 				end
 
-				#@TODO comment
+				# Negation query for all hosts with an AIX based Operating system
+				#
+				# @return [ActiveRecord::Relation] with the query results
 				def not_os_aix
 					where("os NOT LIKE '%AIX%'")
 				end
@@ -435,8 +439,37 @@ module Risu
 					not_os_osx.not_os_linux.not_os_netbsd.not_os_freebsd.not_os_cisco.not_os_vxworks.not_os_vmware_esx.not_os_windows.not_os_aix
 				end
 
-				# Generates a graph of the high and medium findings count per host
+				# Generates a pie chart showing authenticated vs unauthenticated scan coverage
 				#
+				# @return [StringIO] Object containing the generated PNG image
+				def auth_coverage_graph
+					g = Gruff::Pie.new(GRAPH_WIDTH)
+					g.title = "Scan Authentication Coverage"
+					g.sort = false
+					g.theme = {
+						:colors => Risu::ALT_GRAPH_COLORS,
+						:background_colors => %w(white white)
+					}
+
+					auth = 0
+					unauth = 0
+
+					HostProperty.where(:name => "Credentialed_Scan").each do |prop|
+						if prop.value == "true"
+							auth += 1
+						else
+							unauth += 1
+						end
+					end
+
+					g.data("Authenticated (#{auth})", auth) if auth > 0
+					g.data("Unauthenticated (#{unauth})", unauth) if unauth > 0
+
+					image = g.to_image
+					image.format = 'png'
+					StringIO.new(image.to_blob)
+				end
+
 				# @deprecated
 				#
 				# @return [StringIO] Binary image object of the results
@@ -451,7 +484,7 @@ module Risu
 					}
 
 					Item.risks_by_host(limit).to_a.each do |item|
-						ip = Host.find_by_id(item.host_id).name
+						ip = Host.find_by(:id => item.host_id).name
 						count = Item.where(:host_id => item.host_id).where(:severity => 4).size
 
 						if count > 0
@@ -461,19 +494,17 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
-					image.write("top_vuln_graph.png")
-			
-					return "top_vuln_graph.png"
-					#StringIO.new(image.to_blob)
-				end
 
-				# @deprecated
-				# @TODO comments
+                                        StringIO.new(image.to_blob)
+                    end
+
+				# Checks whether there is data available to render the Windows OS graph
 				#
+				# @deprecated
+				# @return [Boolean] true if any Windows OS hosts exist
 				def windows_os_graph_has_data?
 					nt = Host.os_windows_nt.to_a.size
 					w2k = Host.os_windows_2k.to_a.size
@@ -495,6 +526,9 @@ module Risu
 					end
 				end
 
+				# Checks whether there is data available to render the Windows client OS graph
+				#
+				# @return [Boolean] true if any Windows client OS hosts exist
 				def windows_client_os_graph_has_data?
 					xp = Host.os_windows_xp.to_a.size
 					vista = Host.os_windows_vista.to_a.size
@@ -510,10 +544,10 @@ module Risu
 					end
 				end
 
+				# Checks whether there is data available to render the non-Windows OS graph
 				#
 				# @deprecated
-				# @TODO comments
-				#
+				# @return [Boolean] true if any non-Windows OS hosts exist
 				def other_os_graph_has_data?
 					linux = Host.os_linux.to_a.size
 					osx = Host.os_osx.to_a.size
@@ -576,20 +610,17 @@ module Risu
 
 					#Creates very odd graphs
 					#Host.os_other.each do |host|
-					# g.data(host.os, Host.where(:os => host.os).size) unless host.os == nil
+					# g.data(host.os, Host.where(:os => host.os).size) unless host.os.nil?
 					#end
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
-					image.write("other_os_graph.png")
-			
-					return "other_os_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+
+                                        StringIO.new(image.to_blob)
+                        end
 
 				# Graphs the percentage of Windows Operating Systems
 				# @deprecated
@@ -598,8 +629,8 @@ module Risu
 				def windows_os_graph
 					g = Gruff::Pie.new(GRAPH_WIDTH)
 					g.title = "Windows Operating Systems By Percentage"
-					g.sort = false
-					g.marker_count = 1
+					#g.sort = false
+					#g.marker_count = 1
 					g.theme = {
 						:colors => Risu::ALT_GRAPH_COLORS,
 						:background_colors => %w(white white)
@@ -635,15 +666,12 @@ module Risu
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
-					image.write("windows_os_graph.png")
-			
-					return "windows_os_graph.png"
-					#StringIO.new(image.to_blob)
-				end
+
+          StringIO.new(image.to_blob)
+        end
 
 				# Graphs the percentage of Windows Operating Systems
 				# @deprecated
@@ -671,22 +699,24 @@ module Risu
 					g.data("7", w7) if w7 >= 1
 					g.data("8", w8) if w8 >= 1
 					g.data("10", w10) if w10 >= 1
-					g.data("11", w11) if w10 >= 1
+					g.data("11", w11) if w11 >= 1
 
 					image = g.to_image
 					image.format = 'png'
-			
+
 					#puts image.inspect
 					#puts image.methods
-			
-					image.write("windows_client_os_graph.png")
-			
-					return "windows_client_os_graph.png"
+
+					StringIO.new(image.to_blob)
 				end
 
-				# @deprecated
-				#@TODO comment
+				# Generates descriptive text for the Windows Server OS distribution graph
 				#
+				# Calculates per-version percentages and appends unsupported OS warnings
+				# when legacy versions (NT, 2000) are detected.
+				#
+				# @deprecated
+				# @return [String] narrative text describing Windows Server OS distribution
 				def windows_os_graph_text
 					nt = Host.os_windows_nt.to_a.size
 					w2k = Host.os_windows_2k.to_a.size
@@ -738,6 +768,12 @@ module Risu
 					return text
 				end
 
+				# Generates descriptive text for the Windows client OS distribution graph
+				#
+				# Calculates per-version percentages for client Windows editions
+				# (XP, Vista, 7, 8, 10, 11).
+				#
+				# @return [String] narrative text describing Windows client OS distribution
 				def windows_client_os_graph_text
 					xp = Host.os_windows_xp.to_a.size
 					vista = Host.os_windows_vista.to_a.size
@@ -745,7 +781,7 @@ module Risu
 					w8 = Host.os_windows_8.to_a.size
 					w10 = Host.os_windows_10.to_a.size
 					w11 = Host.os_windows_11.to_a.size
-					
+
 					windows_os_count = xp + vista + w7 + w8 + w10 + w11
 
 					xp_percent = (xp.to_f / windows_os_count.to_f) * 100
@@ -773,25 +809,31 @@ module Risu
 					return text
 				end
 
+				# Determines whether any unsupported operating systems exist on the network
 				#
-				# @TODO comments
+				# Checks AIX, Windows, FreeBSD, and Debian for end-of-life versions.
 				#
+				# @return [Boolean] true if any unsupported OS is detected
 				def unsupported_os?
 					aix_text = unsupported_os_aix
 					win_text = unsupported_os_windows
 					freebsd_text = unsupported_os_freebsd
+					debian_text = unsupported_os_debian
 
-					#If all the text is nil just return nil
-					if aix_text == "" && win_text == "" && freebsd_text == ""
+					if aix_text.empty? && win_text.empty? && freebsd_text.empty? && debian_text.empty?
 						return false
 					end
 
 					return true
 				end
 
-				# @TODO add plural check
-				# @deprecated
+				# Generates a full narrative describing all unsupported operating systems found
 				#
+				# Combines output from unsupported OS checks for Windows, AIX, FreeBSD,
+				# and Debian into a single report-ready text block.
+				#
+				# @deprecated
+				# @return [String, nil] descriptive text of unsupported OSes, or nil if none found
 				def unsupported_os_text
 					if !unsupported_os?
 						return nil
@@ -800,6 +842,7 @@ module Risu
 					aix_text = unsupported_os_aix
 					win_text = unsupported_os_windows
 					freebsd_text = unsupported_os_freebsd
+					debian_text = unsupported_os_debian
 
 					unsupported_os_text = "Several unsupported operating systems were discovered on the network. " +
 					"These operating systems are no longer updated by the specific vendor. These operating systems should be " +
@@ -808,22 +851,29 @@ module Risu
 					unsupported_os_text << "#{win_text}" if win_text != ""
 					unsupported_os_text << "#{aix_text}" if aix_text != ""
 					unsupported_os_text << "#{freebsd_text}" if freebsd_text != ""
+					unsupported_os_text << "#{debian_text}" if debian_text != ""
 
 					return unsupported_os_text
 				end
 
-				# @TODO comments
+				# Generates text describing all unsupported Microsoft Windows versions found
+				#
+				# Checks for Windows 95, 98, ME, NT, 2000, XP, 2003, 7, Server 2008,
+				# and Server 2012, returning end-of-life advisory text for each detected version.
+				#
 				# @deprecated
+				# @return [String] advisory text for each unsupported Windows version, or empty string if none
 				def unsupported_os_windows
-					win_95_text = ""
-					win_98_text = ""
-					win_me_text = ""
-					win_nt_text = ""
-					win_2000_text = ""
-					win_xp_text = ""
-					win_2003_text = ""
-					win_7_text = ""
-					win_2008 = ""
+					win_95_text = String.new
+					win_98_text = String.new
+					win_me_text = String.new
+					win_nt_text = String.new
+					win_2000_text = String.new
+					win_xp_text = String.new
+					win_2003_text = String.new
+					win_7_text = String.new
+					win_2008_text = String.new
+					win_2012_text = String.new
 
 					win_95 = Host.os_windows_95
 					win_98 = Host.os_windows_98
@@ -834,67 +884,99 @@ module Risu
 					win_2003 = Plugin.where(:plugin_name => "Microsoft Windows Server 2003 Unsupported Installation Detection")
 					win_7 = Host.os_windows_7
 					win_2008 = Host.os_windows_2k8
+					win_2012 = Host.os_windows_2k12
+					win_2012_plugin = Plugin.where(:id => 192813)
 
 					#Host.os_windows.not_os_windows_7.not_os_windows_2008.not_os_windows_vista.not_os_windows_2003.not_os_windows_xp
 
 					win_95_text = "Windows 95 is an unsupported operating system; Microsoft has stopped support as of December 2001. " +
-					"Please see http://en.wikipedia.org/wiki/Windows_95 for more information.\n\n" if win_95.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_95.size >= 1
 
 					win_98_text = "Windows 98 is an unsupported operating system; Microsoft has stopped support as of July 2006. " +
-					"Please see http://support.microsoft.com/gp/lifean18 for more information.\n\n" if win_98.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_98.size >= 1
 
 					win_me_text = "Windows Millennium is an unsupported operating system; Microsoft has stopped support as of July 2006. " +
-					"Please see http://support.microsoft.com/gp/lifean18 for more information.\n\n" if win_me.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_me.size >= 1
 
 					win_nt_text = "Windows NT is an unsupported operating system; Microsoft has stopped support as of December 2004. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_nt.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_nt.size >= 1
 
 					win_2000_text = "Windows 2000 is an unsupported operating system; Microsoft has stopped support as of July 2010. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2000.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_2000.size >= 1
 
 					win_xp_text = "Windows XP is an unsupported operating system; Microsoft has stopped support as of April 2014. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_xp.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_xp.size >= 1
 
 					win_2003_text = "Windows 2003 is an unsupported operating system; Microsoft has stopped support as of July 2015. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2003.size >= 1
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_2003.size >= 1
 
-					win_7_text = "Windows 7 is an unsupported operating system; Microsoft has stopped support as of Janurary 2020. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_7.size >= 1
+					win_7_text = "Windows 7 is an unsupported operating system; Microsoft has stopped support as of January 2020. " +
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_7.size >= 1
 
-					win_2008_text = "Windows 2008 is an unsupported operating system; Microsoft has stopped support as of Janurary 2020. " +
-					"Please see http://windows.microsoft.com/en-us/windows/products/lifecycle for more information.\n\n" if win_2008.size >= 1
+					win_2008_text = "Windows Server 2008 is an unsupported operating system; Microsoft has stopped support as of January 2020. " +
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_2008.size >= 1
 
-					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}#{win_7_text}#{win_2008_text}"
+					win_2012_text = "Windows Server 2012 is an unsupported operating system; Microsoft has stopped support as of October 2023. " +
+					"Please see https://learn.microsoft.com/en-us/lifecycle/ for more information.\n\n" if win_2012.size >= 1 || win_2012_plugin.size >= 1
+
+					return "#{win_95_text}#{win_98_text}#{win_me_text}#{win_nt_text}#{win_2000_text}#{win_xp_text}#{win_2003_text}#{win_7_text}#{win_2008_text}#{win_2012_text}"
 				end
 
-				# @TODO comments
+				# Generates text describing unsupported AIX versions found on the network
+				#
+				# Detects AIX 5.x hosts, which reached end of support in April 2011.
+				#
 				# @deprecated
+				# @return [String] advisory text for unsupported AIX, or empty string if none
 				def unsupported_os_aix
-					text = ""
+					text = String.new
 					aix = Host.os_aix.where("OS LIKE 'AIX 5.%'")
 
 					text = "AIX 5.x is an unsupported operating system since IBM has stopped support as of April 2011. " +
-					"Please see http://www-03.ibm.com/systems/power/software/aix/ for more information " +
+					"Please see https://www.ibm.com/support/pages/aix-support-lifecycle-information for more information " +
 					"about obtaining a newer supported version.\n\n" if aix.size >= 1
 
 					return text
 				end
 
-				# @TODO comments
+				# Generates text describing unsupported FreeBSD versions found on the network
+				#
+				# Detects FreeBSD 5.x hosts, which reached end of support in May 2008.
+				#
 				# @deprecated
+				# @return [String] advisory text for unsupported FreeBSD, or empty string if none
 				def unsupported_os_freebsd
-					text = ""
+					text = String.new
 					freebsd = Host.os_freebsd.where("OS LIKE 'FreeBSD 5.%'")
 
-					text = "FreeBSD 5 support ended on 2008-05-31. Upgrade to FreeBSD 8.2 or 7.4. For more information, " +
-					"see : http://www.freebsd.org/security/\n\n" if freebsd.size >= 1
+					text = "FreeBSD 5 support ended on 2008-05-31. For more information, " +
+					"see: https://www.freebsd.org/security/\n\n" if freebsd.size >= 1
 
 					return text
 				end
 
-				# @TODO comments
-				#turn the os counts into blocks
+				# Generates text describing unsupported Debian versions found on the network
+				#
+				# Detects Debian 8 (Jessie) via plugin 201420, which lost security support in June 2020.
+				#
+				# @return [String] advisory text for unsupported Debian, or empty string if none
+				def unsupported_os_debian
+					text = String.new
+					debian_8 = Plugin.where(:id => 201420)
+
+					text = "Debian 8 (Jessie) is an unsupported operating system; Debian has stopped security support as of June 2020. " +
+					"Please see https://wiki.debian.org/LTS for more information.\n\n" if debian_8.size >= 1
+
+					return text
+				end
+
+				# Generates descriptive text for the non-Windows OS distribution graph
+				#
+				# Calculates per-OS percentages for Linux, AIX, FreeBSD, VMware, and others,
+				# and appends unsupported OS warnings when applicable.
+				#
 				# @deprecated
+				# @return [String] narrative text describing non-Windows OS distribution
 				def other_os_graph_text
 					text = "This graph shows the percentage of the different Non-Windows based operating systems " +
 					"found on the #{Report.title} network.\n\n"
@@ -929,9 +1011,11 @@ module Risu
 					return text
 				end
 
+				# Returns the top N most vulnerable hosts sorted by finding count
 				#
-				# @TODO comments
+				# @param n [Integer] number of top hosts to return
 				#
+				# @return [Array<ActiveRecord::Relation>] the top N host records by vulnerability count
 				def top_n_vulnerable(n)
 					hosts = Item.risks_by_host(Host.count).size
 					hosts = hosts.sort_by {|k, v| v}
@@ -946,29 +1030,34 @@ module Risu
 					hosts[0...n]
 				end
 
+				# Returns unique hosts with critical findings, sorted by count descending
 				#
-				# @TODO comments
-				#
+				# @return [Array<Array(Integer, Integer)>] pairs of [host_id, finding_count]
 				def unique_hosts_with_critical
 					hosts = Item.critical_risks_by_host(Host.all.size).size
 					hosts = hosts.sort_by {| _k, v | v}
 					hosts.reverse!
 				end
 
+				# Returns unique hosts with high findings, sorted by count descending
 				#
-				# @TODO comments
-				#
+				# @return [Array<Array(Integer, Integer)>] pairs of [host_id, finding_count]
 				def unique_hosts_with_high
 					hosts = Item.high_risks_by_host(Host.all.size).size
 					hosts = hosts.sort_by {| _k, v | v}
 					hosts.reverse!
 				end
 
-				# @TODO
+				# Returns the count of unique hosts that have critical or high findings
+				#
+				# @return [Integer] number of unique hosts with critical or high severity findings
 				def unique_hosts_with_critical_and_high_count
 					unique_hosts_with_critical_and_high().size
 				end
 
+				# Returns unique host IDs that have either critical or high findings
+				#
+				# @return [Array<Integer>] deduplicated list of host IDs
 				def unique_hosts_with_critical_and_high
 					hosts = Array.new
 					crit = Item.critical_risks_by_host(Host.all.size)
@@ -986,10 +1075,19 @@ module Risu
 					hosts.uniq
 				end
 
+				# Returns the count of unique hosts with common missing rollup patches
+				#
+				# @return [Integer] number of unique hosts missing common patches
 				def unique_hosts_with_common_missing_patches_count
 					unique_hosts_with_common_missing_patches().size
 				end
 
+				# Returns unique host IDs that are missing common rollup patches
+				#
+				# Checks each host against Risu Rollup Plugins family to identify
+				# hosts with commonly missing software patches.
+				#
+				# @return [Array<Integer>] deduplicated list of host IDs missing common patches
 				def unique_hosts_with_common_missing_patches
 					results = Array.new
 

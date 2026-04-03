@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ module Risu
         }
 
         Item.risks_by_host(limit).to_a.each do |item|
-          ip = Host.find_by_id(item.host_id).name
+          ip = Host.find_by(:id => item.host_id).name
           count = Item.where(:host_id => item.host_id).where(:severity => 4).count
 
           if count > 0
@@ -50,10 +50,7 @@ module Risu
         #puts image.inspect
         #puts image.methods
 
-        image.write("TopVulnGraph.png")
-
-        return "TopVulnGraph.png"
-        #StringIO.new(image.to_blob)
+        StringIO.new(image.to_blob)
       end
 
       def graph_text

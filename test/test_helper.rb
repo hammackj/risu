@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,12 +25,11 @@ SimpleCov.start
 base = __FILE__
 $:.unshift(File.join(File.dirname(base), '../lib'))
 
-require 'rails'
-require 'rails/test_help'
-require 'test/unit'
 require 'active_record'
 require 'active_record/fixtures'
 require 'active_support'
+require 'active_support/test_case'
+require 'minitest/autorun'
 require 'tmpdir'
 
 require 'risu'

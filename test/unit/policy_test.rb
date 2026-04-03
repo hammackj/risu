@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2025 Jacob Hammack.
+# Copyright (c) 2010-2026 Jacob Hammack.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,10 +19,18 @@
 # THE SOFTWARE.
 
 
-#require 'test_helper'
+require 'test_helper'
 
-#class PolicyTest < ActiveSupport::TestCase
-	#test "" do
-	#	assert true
-	#end
-#end
+class PolicyTest < ActiveSupport::TestCase
+	def setup
+		setup_test_database
+	end
+
+	test "returns 1 for Policy.count" do
+		assert Policy.count == 1, "GOT #{Policy.count}"
+	end
+
+	test "returns A fake policy for Policy.first.name" do
+		assert Policy.first.name == "A fake policy", "GOT #{Policy.first.name}"
+	end
+end
